@@ -13,6 +13,7 @@ OOGL.Vector3.prototype = {
 		this.x /= length;
 		this.y /= length;
 		this.z /= length;
+		return this;
 	},
 	getNormal: function () {
 		var length = Math.sqrt(this.x * this.x + this.y * this.y + this.z * this.z);
@@ -22,6 +23,7 @@ OOGL.Vector3.prototype = {
 		this.x += v.x;
 		this.y += v.y;
 		this.z += v.z;
+		return this;
 	},
 	plus: function (v) {
 		return new OOGL.Vector3(this.x + v.x, this.y + v.y, this.z + v.z);
@@ -30,6 +32,7 @@ OOGL.Vector3.prototype = {
 		this.x -= v.x;
 		this.y -= v.y;
 		this.z -= v.z;
+		return this;
 	},
 	minus: function (v) {
 		return new OOGL.Vector3(this.x - v.x, this.y - v.y, this.z - v.z);
@@ -38,11 +41,13 @@ OOGL.Vector3.prototype = {
 		this.x *= f;
 		this.y *= f;
 		this.z *= f;
+		return this;
 	},
 	divide: function (f) {
 		this.x /= f;
 		this.y /= f;
 		this.z /= f;
+		return this;
 	},
 	by: function (f) {
 		return new OOGL.Vector3(this.x * f, this.y * f, this.z * f);
@@ -50,11 +55,24 @@ OOGL.Vector3.prototype = {
 	dot: function (v) {
 		return this.x * v.x + this.y * v.y + this.z * v.z;
 	},
+	cross: function (v) {
+		var x = this.y * v.z - this.z * v.y;
+		var y = this.z * v.x - this.x * v.z;
+		var z = this.x * v.y - this.y * v.x;
+		this.x = x;
+		this.y = y;
+		this.z = z;
+		return this;
+	},
+	getCrossProduct: function (v) {
+		return new OOGL.Vector3(this.y * v.z - this.z * v.y, this.z * v.x - this.x * v.z, this.x * v.y - this.y * v.x);
+	},
 	reflect: function (n) {
 		var dot = this.x * n.x + this.y * n.y + this.z * v.z;
 		this.x -= 2 * dot * n.x;
 		this.y -= 2 * dot * n.y;
 		this.z -= 2 * dot * n.z;
+		return this;
 	},
 	getReflected: function (n) {
 		var dot = this.x * n.x + this.y * n.y + this.z * v.z;
@@ -72,6 +90,7 @@ OOGL.Vector3.prototype = {
 			this.y = eta * this.y - (eta * dot + sqrt(k)) * n.y;
 			this.z = eta * this.z - (eta * dot + sqrt(k)) * n.z;
 		}
+		return this;
 	},
 	getRefracted: function (n, eta) {
 		var dot = this.x * n.x + this.y * n.y + this.z * v.z;

@@ -11,6 +11,7 @@ OOGL.Vector2.prototype = {
 		var length = Math.sqrt(this.x * this.x + this.y * this.y);
 		this.x /= length;
 		this.y /= length;
+		return this;
 	},
 	getNormal: function () {
 		var length = Math.sqrt(this.x * this.x + this.y * this.y);
@@ -19,6 +20,7 @@ OOGL.Vector2.prototype = {
 	add: function (v) {
 		this.x += v.x;
 		this.y += v.y;
+		return this;
 	},
 	plus: function (v) {
 		return new OOGL.Vector2(this.x + v.x, this.y + v.y);
@@ -26,6 +28,7 @@ OOGL.Vector2.prototype = {
 	subtract: function (v) {
 		this.x -= v.x;
 		this.y -= v.y;
+		return this;
 	},
 	minus: function (v) {
 		return new OOGL.Vector2(this.x - v.x, this.y - v.y);
@@ -33,10 +36,12 @@ OOGL.Vector2.prototype = {
 	multiply: function (f) {
 		this.x *= f;
 		this.y *= f;
+		return this;
 	},
 	divide: function (f) {
 		this.x /= f;
 		this.y /= f;
+		return this;
 	},
 	by: function (f) {
 		return new OOGL.Vector2(this.x * f, this.y * f);
@@ -48,6 +53,7 @@ OOGL.Vector2.prototype = {
 		var dot = this.x * n.x + this.y * n.y;
 		this.x -= 2 * dot * n.x;
 		this.y -= 2 * dot * n.y;
+		return this;
 	},
 	getReflected: function (n) {
 		var dot = this.x * n.x + this.y * n.y;
@@ -63,6 +69,7 @@ OOGL.Vector2.prototype = {
 			this.x = eta * this.x - (eta * dot + sqrt(k)) * n.x;
 			this.y = eta * this.y - (eta * dot + sqrt(k)) * n.y;
 		}
+		return this;
 	},
 	getRefracted: function (n, eta) {
 		var dot = this.x * n.x + this.y * n.y;
