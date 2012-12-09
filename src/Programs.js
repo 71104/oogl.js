@@ -50,6 +50,16 @@ OOGL.Context.prototype.Program = function () {
 
 OOGL.Context.prototype.DefaultProgram = function (name, attributes, callback) {
 	var program = new this.Program();
-	// TODO
+	var vertexShader = new this.VertexShader(name, function () {
+		program.attachShader(vertexShader);
+		var fragmentShader = new this.FragmentShader(name, function () {
+			program.attachShader(fragmentShader);
+			for (var i = 0; i < attributes.length; i++) {
+				// TODO bind attribute location
+			}
+			program.linkOrThrow();
+			callback && callback();
+		});
+	});
 	return program;
 };

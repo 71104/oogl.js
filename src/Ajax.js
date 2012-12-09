@@ -1,31 +1,65 @@
-OOGL.Ajax = (function () {
-	var xhr = ('XMLHttpRequest' in window) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
+OOGL.Ajax = new (function () {
 	var errorCallback = function () {};
+
 	this.onError = function (callback) {
 		errorCallback = callback || function () {};
 	};
-	this.get = function (name, callback) {
-		// TODO
+
+	function XHR(handler) {
+		var xhr = ('XMLHttpRequest' in window) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
+		xhr.onreadystatechange = handler;
+		return xhr;
+	}
+
+	function makeRequest(method, url, callback) {
+		var xhr = new XHR(function () {
+			if (xhr.readyState === 4) {
+				if (xhr.status === 200) {
+					callback(xhr.responseText);
+				} else {
+					errorCallback();
+				}
+			}
+		});
+		xhr.open(method, url);
+		xhr.send();
+	}
+	function makeJSONRequest(method, url, callback) {
+		var xhr = new XHR(function () {
+			if (xhr.readyState === 4) {
+				if (xhr.status === 200) {
+					callback(JSON.parse(xhr.responseText));
+				} else {
+					errorCallback();
+				}
+			}
+		});
+		xhr.open(method, url);
+		xhr.send();
+	}
+
+	this.get = function (url, callback) {
+		makeRequest('GET', url, callback);
 	};
-	this.getJSON = function (name, callback) {
-		// TODO
+	this.getJSON = function (url, callback) {
+		makeJSONRequest('GET', url, callback);
 	};
-	this.post = function (name, callback) {
-		// TODO
+	this.post = function (url, callback) {
+		makeRequest('POST', url, callback);
 	};
-	this.postJSON = function (name, callback) {
-		// TODO
+	this.postJSON = function (url, callback) {
+		makeJSONRequest('POST', url, callback);
 	};
-	this.put = function (name, callback) {
-		// TODO
+	this.put = function (url, callback) {
+		makeRequest('PUT', url, callback);
 	};
-	this.putJSON = function (name, callback) {
-		// TODO
+	this.putJSON = function (url, callback) {
+		makeJSONRequest('PUT', url, callback);
 	};
-	this._delete = function (name, callback) {
-		// TODO
+	this._delete = function (url, callback) {
+		makeRequest('DELETE', url, callback);
 	};
-	this.deleteJSON = function (name, callback) {
-		// TODO
+	this.deleteJSON = function (url, callback) {
+		makeJSONRequest('DELETE', url, callback);
 	};
 })();

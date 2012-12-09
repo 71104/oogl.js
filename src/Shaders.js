@@ -41,9 +41,21 @@ OOGL.Context.prototype.Shader = function (type) {
 	};
 };
 
-OOGL.Context.prototype.VertexShader = function () {
-	return new this.Shader(this.VERTEX_SHADER);
+OOGL.Context.prototype.VertexShader = function (name, callback) {
+	var shader = new this.Shader(this.VERTEX_SHADER);
+	OOGL.Ajax.get(name + '.vert', function (source) {
+		shader.source(source);
+		shader.compileOrThrow();
+		callback && callback();
+	});
+	return shader;
 };
-OOGL.Context.prototype.FragmentShader = function () {
-	return new this.Shader(this.FRAGMENT_SHADER);
+OOGL.Context.prototype.FragmentShader = function (name, callback) {
+	var shader = new this.Shader(this.FRAGMENT_SHADER);
+	OOGL.Ajax.get(name + '.frag', function (source) {
+		shader.source(source);
+		shader.compileOrThrow();
+		callback && callback();
+	});
+	return shader;
 };
