@@ -5,6 +5,9 @@ OOGL.Vector3 = function (x, y, z) {
 };
 
 OOGL.Vector3.prototype = {
+	toHomogeneous: function () {
+		return new OOGL.Vector4(this.x, this.y, this.z, 1);
+	},
 	length: function () {
 		return Math.sqrt(this.x * this.x + this.y * this.y + this.z * this.z);
 	},
