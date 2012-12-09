@@ -65,5 +65,7 @@ OOGL.Context.prototype.DynamicElementArrayBuffer = function () {
 	return new this.DynamicBuffer(this.ELEMENT_ARRAY_BUFFER);
 };
 
-OOGL.Context.prototype.VertexArray = OOGL.Context.prototype.StaticArrayBuffer;
+OOGL.Context.prototype.VertexArray = function (index, components, array) {
+	// TODO
+};
 OOGL.Context.prototype.IndexArray = OOGL.Context.prototype.StaticElementArrayBuffer;
