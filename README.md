@@ -70,3 +70,18 @@ The OOGL calls needed to create a vertex array, load the shaders and make the dr
 The constructed DefaultProgram object refers to the test.vert and test.frag files because of its 'test' first argument; the '.vert' and '.frag' extensions are added automatically.
 
 The last calls (program.use() through oogl.flush()) are made asynchronously in a callback function passed to the DefaultProgram constructor because the shader files need to be loaded asynchronously through AJAX.
+
+Math stuff
+==========
+
+TBD
+
+jQuery
+======
+
+TBD
+
+Credits
+=======
+
+OOGL was created by Alberto La Rocca and is licensed under the MIT License.
