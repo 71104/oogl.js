@@ -8,7 +8,11 @@ OOGL provides an augmented GL context that adds object-oriented features that al
 Getting started
 ===============
 
-To get started with OOGL, place a <canvas> in your DOM and create an OOGL context through JavaScript:
+To get started with OOGL, include it using a <script> tag in the <head> of your document:
+
+	<script type="text/javascript" src="http://cdn.oogljs.com/oogl-1.0.0.min.js"></script>
+
+Then place a <canvas> in your DOM and create an OOGL context through JavaScript:
 
 	<canvas id="canvas" width="800" height="600">
 		<p>No browser support.</p>
@@ -16,7 +20,10 @@ To get started with OOGL, place a <canvas> in your DOM and create an OOGL contex
 	<script type="text/javascript">
 	$(function () {
 		var oogl = new $.Context('canvas');
-		// GL calls...
+		oogl.clearColor(0, 0, 0, 1);
+		oogl.clear(oogl.COLOR_BUFFER_BIT);
+		// other GL calls...
+		oogl.flush();
 	});
 	</script>
 
