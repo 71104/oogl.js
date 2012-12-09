@@ -8,7 +8,7 @@ OOGL provides an augmented GL context that adds object-oriented features that al
 Getting started
 ===============
 
-To get started with OOGL, include it using a <script> tag in the <head> of your document:
+To get started with OOGL, include it using a &t;script&gt; tag in the &lt;head&gt; of your document:
 
 	<script type="text/javascript" src="http://cdn.oogljs.com/oogl-1.0.0.min.js"></script>
 
