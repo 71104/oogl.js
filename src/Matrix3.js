@@ -1,8 +1,19 @@
 OOGL.Matrix3 = function (data) {
+	if (data.length != 9) {
+		throw 'A 3x3 matrix must have exactly 9 elements.';
+	}
 	return data.slice(0);
 };
 
 OOGL.Matrix3.prototype = {
+	toHomogeneous: function () {
+		return new OOGL.Matrix4([
+			this[0], this[1], this[2], 0,
+			this[3], this[4], this[5], 0,
+			this[6], this[7], this[8], 0,
+			0, 0, 0, 1
+			]);
+	},
 	get: function (i, j) {
 		return this[i * 3 + j];
 	},
@@ -112,3 +123,23 @@ OOGL.Matrix3.prototype = {
 
 OOGL.Matrix3.NULL = new OOGL.Matrix3([0, 0, 0, 0, 0, 0, 0, 0, 0]);
 OOGL.Matrix3.IDENTITY = new OOGL.Matrix3([1, 0, 0, 0, 1, 0, 0, 0, 1]);
+
+OOGL.RotationMatrix3 = function (x, y, z, a) {
+	var s = Math.sin(a);
+	var c = Math.cos(a);
+	return new OOGL.Matrix3([
+		c + x * x * (1 - c),
+		y * x * (1 - c) + z * s,
+		z * x * (1 - c) - y * s,
+		x * y * (1 - c) - z * s,
+		c + y * y * (1 - c),
+		z * y * (1 - c) + x * s,
+		x * z * (1 - c) + y * s,
+		y * z * (1 - c) - x * s,
+		c + z * z * (1 - c)
+		]);
+};
+
+OOGL.ScalingMatrix3 = function (x, y, z) {
+	return new OOGL.Matrix3([x, 0, 0, 0, y, 0, 0, 0, z]);
+};
