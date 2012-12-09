@@ -59,7 +59,7 @@ OOGL.Matrix2.prototype = {
 		if (x instanceof OOGL.Vector2) {
 			return new OOGL.Vector2(
 				this[0] * x.x + this[1] * x.y,
-				this[2] * x.x + this[3] * x.y,
+				this[2] * x.x + this[3] * x.y
 				);
 		} else {
 			var newArray = [];

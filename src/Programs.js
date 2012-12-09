@@ -46,7 +46,7 @@ OOGL.Context.prototype.Program = function () {
 			return gl.getProgramParameter(program, gl.DELETE_STATUS);
 		}
 	};
-}
+};
 
 OOGL.Context.prototype.DefaultProgram = function (name, attributes, callback) {
 	var program = new this.Program();

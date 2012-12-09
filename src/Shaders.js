@@ -39,11 +39,11 @@ OOGL.Context.prototype.Shader = function (type) {
 			return gl.getShaderParameter(shader, gl.DELETE_STATUS);
 		}
 	};
-}
+};
 
 OOGL.Context.prototype.VertexShader = function () {
 	return new this.Shader(this.VERTEX_SHADER);
-}
+};
 OOGL.Context.prototype.FragmentShader = function () {
 	return new this.Shader(this.FRAGMENT_SHADER);
-}
+};
