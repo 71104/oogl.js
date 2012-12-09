@@ -6,6 +6,13 @@ OOGL.Matrix4 = function (data) {
 };
 
 OOGL.Matrix4.prototype = {
+	get: function (i, j) {
+		return this[i * 4 + j];
+	},
+	put: function (i, j, value) {
+		this[i * 4 + j] = value;
+		return this;
+	}
 	// TODO
 };
 
