@@ -6,14 +6,15 @@ module.exports = function (grunt) {
 				'<%= grunt.template.today("yyyy-mm-dd") %>\n' +
 				'* http://oogljs.com/\n' +
 				'* Copyright (c) <%= grunt.template.today("yyyy") %> ' +
-				'Alberto La Rocca */',
+				'Alberto La Rocca */'
 		},
 		lint: {
 			files: ['src/*.js']
 		},
-		concat: {
+		min: {
 			dist: {
 				src: [
+					'<banner>',
 					'src/OOGL.js',
 					'src/Ajax.js',
 					'src/Vector2.js',
@@ -29,9 +30,9 @@ module.exports = function (grunt) {
 					'src/Framebuffer.js',
 					'src/Renderbuffer.js'
 					],
-				dest: 'oogl-<%= meta.version %>.js'
-			},
+				dest: 'oogl-<%= meta.version %>.min.js'
+			}
 		}
 	});
-	grunt.registerTask('default', 'lint concat');
+	grunt.registerTask('default', 'lint min');
 };

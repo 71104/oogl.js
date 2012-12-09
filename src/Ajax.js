@@ -13,10 +13,19 @@ OOGL.Ajax = (function () {
 	this.post = function (name, callback) {
 		// TODO
 	};
+	this.postJSON = function (name, callback) {
+		// TODO
+	};
 	this.put = function (name, callback) {
 		// TODO
 	};
+	this.putJSON = function (name, callback) {
+		// TODO
+	};
 	this._delete = function (name, callback) {
+		// TODO
+	};
+	this.deleteJSON = function (name, callback) {
 		// TODO
 	};
 })();

@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>OOGL Test</title>
-<script type="text/javascript" src="oogl-1.0.min.js"></script>
+<script type="text/javascript" src="../oogl-1.0.0.min.js"></script>
 </head>
 <body>
 	<canvas id="canvas" width="800" height="600">
@@ -11,7 +11,9 @@
 	<script type="text/javascript">
 $(function () {
 	var oogl = new $.Context('canvas');
+	oogl.clearColor(0, 0, 0, 1);
 	oogl.clear(oogl.COLOR_BUFFER_BIT);
+	oogl.flush();
 });
 	</script>
 </body>
