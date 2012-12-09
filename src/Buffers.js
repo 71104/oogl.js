@@ -1,4 +1,5 @@
-OOGL.Buffer = function (gl, target, usage) {
+OOGL.Context.prototype.Buffer = function (target, usage) {
+	var gl = this;
 	var buffer = gl.createBuffer(target);
 	return {
 		underlying: function () {
@@ -28,41 +29,41 @@ OOGL.Buffer = function (gl, target, usage) {
 	};
 };
 
-OOGL.StaticBuffer = function (gl, target) {
-	return new OOGL.Buffer(gl, target, gl.STATIC_DRAW);
+OOGL.Context.prototype.StaticBuffer = function (target) {
+	return new this.Buffer(target, this.STATIC_DRAW);
 };
-OOGL.StreamBuffer = function (gl, target) {
-	return new OOGL.Buffer(gl, target, gl.STREAM_DRAW);
+OOGL.Context.prototype.StreamBuffer = function (target) {
+	return new this.Buffer(target, this.STREAM_DRAW);
 };
-OOGL.DynamicBuffer = function (gl, target) {
-	return new OOGL.Buffer(gl, target, gl.DYNAMIC_DRAW);
-};
-
-OOGL.ArrayBuffer = function (gl, usage) {
-	return new OOGL.Buffer(gl, gl.ARRAY_BUFFER, usage);
-};
-OOGL.ElementArrayBuffer = function (gl, usage) {
-	return new OOGL.Buffer(gl, gl.ELEMENT_ARRAY_BUFFER, usage);
+OOGL.Context.prototype.DynamicBuffer = function (target) {
+	return new this.Buffer(target, this.DYNAMIC_DRAW);
 };
 
-OOGL.StaticArrayBuffer = function (gl) {
-	return new OOGL.StaticBuffer(gl, gl.ARRAY_BUFFER);
+OOGL.Context.prototype.ArrayBuffer = function (usage) {
+	return new this.Buffer(this.ARRAY_BUFFER, usage);
 };
-OOGL.StaticElementArrayBuffer = function (gl) {
-	return new OOGL.StaticBuffer(gl, gl.ELEMENT_ARRAY_BUFFER);
-};
-OOGL.StreamArrayBuffer = function (gl) {
-	return new OOGL.StreamBuffer(gl, gl.ARRAY_BUFFER);
-};
-OOGL.StreamElementArrayBuffer = function (gl) {
-	return new OOGL.StreamBuffer(gl, gl.ELEMENT_ARRAY_BUFFER);
-};
-OOGL.DynamicArrayBuffer = function (gl) {
-	return new OOGL.DynamicBuffer(gl, gl.ARRAY_BUFFER);
-};
-OOGL.DynamicElementArrayBuffer = function (gl) {
-	return new OOGL.DynamicBuffer(gl, gl.ELEMENT_ARRAY_BUFFER);
+OOGL.Context.prototype.ElementArrayBuffer = function (usage) {
+	return new this.Buffer(this.ELEMENT_ARRAY_BUFFER, usage);
 };
 
-OOGL.VertexArray = OOGL.StaticArrayBuffer;
-OOGL.IndexArray = OOGL.StaticElementArrayBuffer;
+OOGL.Context.prototype.StaticArrayBuffer = function () {
+	return new this.StaticBuffer(this.ARRAY_BUFFER);
+};
+OOGL.Context.prototype.StaticElementArrayBuffer = function () {
+	return new this.StaticBuffer(this.ELEMENT_ARRAY_BUFFER);
+};
+OOGL.Context.prototype.StreamArrayBuffer = function () {
+	return new this.StreamBuffer(this.ARRAY_BUFFER);
+};
+OOGL.Context.prototype.StreamElementArrayBuffer = function () {
+	return new this.StreamBuffer(this.ELEMENT_ARRAY_BUFFER);
+};
+OOGL.Context.prototype.DynamicArrayBuffer = function () {
+	return new this.DynamicBuffer(this.ARRAY_BUFFER);
+};
+OOGL.Context.prototype.DynamicElementArrayBuffer = function () {
+	return new this.DynamicBuffer(this.ELEMENT_ARRAY_BUFFER);
+};
+
+OOGL.Context.prototype.VertexArray = OOGL.Context.prototype.StaticArrayBuffer;
+OOGL.Context.prototype.IndexArray = OOGL.Context.prototype.StaticElementArrayBuffer;

@@ -1,4 +1,5 @@
-OOGL.Texture = function (gl, target) {
+OOGL.Context.prototype.Texture = function (target) {
+	var gl = this;
 	var texture = gl.createTexture();
 	gl.bindTexture(target, texture);
 	return {
@@ -29,9 +30,9 @@ OOGL.Texture = function (gl, target) {
 	};
 };
 
-OOGL.Texture2D = function (gl) {
-	return new OOGL.Texture(gl, gl.TEXTURE_2D);
+OOGL.Context.prototype.Texture2D = function () {
+	return new this.Texture(this.TEXTURE_2D);
 };
-OOGL.CubeMap = function (gl) {
-	return new OOGL.Texture(gl, gl.TEXTURE_CUBE_MAP);
+OOGL.Context.prototype.CubeMap = function () {
+	return new this.Texture(this.TEXTURE_CUBE_MAP);
 };

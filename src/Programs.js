@@ -1,4 +1,5 @@
-OOGL.Program = function (gl) {
+OOGL.Context.prototype.Program = function () {
+	var gl = this;
 	var program = gl.createProgram();
 	return {
 		underlying: function () {
@@ -47,8 +48,8 @@ OOGL.Program = function (gl) {
 	};
 }
 
-OOGL.DefaultProgram = function (gl, name, attributes, callback) {
-	var program = new OOGL.Program(gl);
+OOGL.Context.prototype.DefaultProgram = function (name, attributes, callback) {
+	var program = new this.Program();
 	// TODO
 	return program;
 };

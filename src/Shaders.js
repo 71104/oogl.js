@@ -1,4 +1,5 @@
-OOGL.Shader = function (gl, type) {
+OOGL.Context.prototype.Shader = function (type) {
+	var gl = this;
 	var shader = gl.createShader(type);
 	return {
 		underlying: function () {
@@ -40,9 +41,9 @@ OOGL.Shader = function (gl, type) {
 	};
 }
 
-OOGL.VertexShader = function (gl) {
-	return new Shader(gl, gl.VERTEX_SHADER);
+OOGL.Context.prototype.VertexShader = function () {
+	return new this.Shader(this.VERTEX_SHADER);
 }
-OOGL.FragmentShader = function (gl) {
-	return new Shader(gl, gl.FRAGMENT_SHADER);
+OOGL.Context.prototype.FragmentShader = function () {
+	return new this.Shader(this.FRAGMENT_SHADER);
 }

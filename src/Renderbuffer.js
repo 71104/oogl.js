@@ -1,4 +1,5 @@
-OOGL.Renderbuffer = function (gl) {
+OOGL.Context.prototype.Renderbuffer = function () {
+	var gl = this;
 	var renderbuffer = gl.createRenderbuffer();
 	return {
 		underlying: function () {

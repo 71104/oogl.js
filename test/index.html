@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>OOGL Test</title>
+<script type="text/javascript" src="oogl-1.0.min.js"></script>
+</head>
+<body>
+	<canvas id="canvas" width="800" height="600">
+		<p>No browser support.</p>
+	</canvas>
+	<script type="text/javascript">
+$(function () {
+	var oogl = new $.Context('canvas');
+	oogl.clear(oogl.COLOR_BUFFER_BIT);
+});
+	</script>
+</body>
+</html>

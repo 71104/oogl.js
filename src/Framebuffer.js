@@ -1,4 +1,5 @@
-OOGL.Framebuffer = function (gl) {
+OOGL.Context.prototype.Framebuffer = function () {
+	var gl = this;
 	var framebuffer = gl.createFramebuffer();
 	return {
 		underlying: function () {
