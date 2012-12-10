@@ -12,7 +12,7 @@ OOGL.Matrix3.prototype = {
 			this[3], this[4], this[5], 0,
 			this[6], this[7], this[8], 0,
 			0, 0, 0, 1
-			]);
+		]);
 	},
 	get: function (i, j) {
 		return this[i * 3 + j];
@@ -24,7 +24,7 @@ OOGL.Matrix3.prototype = {
 	transpose: function () {
 		var newArray = [this[0], this[3], this[6], this[1], this[4], this[7], this[2], this[5], this[8]];
 		for (var i = 0; i < 9; i++) {
-			this[i] = newrray[i];
+			this[i] = newArray[i];
 		}
 		return this;
 	},
@@ -97,7 +97,7 @@ OOGL.Matrix3.prototype = {
 			(this[3] * this[7] - this[4] * this[6]) / determinant,
 			(this[1] * this[6] - this[0] * this[7]) / determinant,
 			(this[0] * this[4] - this[1] * this[3]) / determinant
-			];
+		];
 		for (var i = 0; i < 9; i++) {
 			this[i] = newArray[i];
 		}
@@ -117,7 +117,7 @@ OOGL.Matrix3.prototype = {
 			(this[3] * this[7] - this[4] * this[6]) / determinant,
 			(this[1] * this[6] - this[0] * this[7]) / determinant,
 			(this[0] * this[4] - this[1] * this[3]) / determinant
-			]);
+		]);
 	}
 };
 
@@ -137,7 +137,7 @@ OOGL.RotationMatrix3 = function (x, y, z, a) {
 		x * z * (1 - c) + y * s,
 		y * z * (1 - c) - x * s,
 		c + z * z * (1 - c)
-		]);
+	]);
 };
 
 OOGL.ScalingMatrix3 = function (x, y, z) {

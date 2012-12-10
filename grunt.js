@@ -1,4 +1,21 @@
 module.exports = function (grunt) {
+	var files = [
+		'<banner>',
+		'src/OOGL.js',
+		'src/Ajax.js',
+		'src/Vector2.js',
+		'src/Vector3.js',
+		'src/Vector4.js',
+		'src/Matrix2.js',
+		'src/Matrix3.js',
+		'src/Matrix4.js',
+		'src/Buffers.js',
+		'src/Textures.js',
+		'src/Shaders.js',
+		'src/Programs.js',
+		'src/Framebuffer.js',
+		'src/Renderbuffer.js'
+		];
 	grunt.initConfig({
 		meta: {
 			version: '1.0.0',
@@ -9,30 +26,47 @@ module.exports = function (grunt) {
 				'Alberto La Rocca */'
 		},
 		lint: {
-			files: ['src/*.js']
+			files: ['oogl-<%= meta.version %>.js']
+		},
+		jshint: {
+			options: {
+				camelcase: true,
+				curly: true,
+				immed: true,
+				indent: 4,
+				latedef: true,
+				newcap: true,
+				noarg: true,
+				quotmark: 'single',
+				undef: true,
+				unused: true,
+				strict: false,
+				trailing: true,
+				boss: true,
+				debug: true,
+				expr: true,
+				loopfunc: true,
+				multistr: true,
+				supernew: true,
+				browser: true
+			},
+			globals: {
+				ActiveXObject: false
+			}
+		},
+		concat: {
+			dist: {
+				src: files,
+				dest: 'oogl-<%= meta.version %>.js'
+			}
 		},
 		min: {
 			dist: {
-				src: [
-					'<banner>',
-					'src/OOGL.js',
-					'src/Ajax.js',
-					'src/Vector2.js',
-					'src/Vector3.js',
-					'src/Vector4.js',
-					'src/Matrix2.js',
-					'src/Matrix3.js',
-					'src/Matrix4.js',
-					'src/Buffers.js',
-					'src/Textures.js',
-					'src/Shaders.js',
-					'src/Programs.js',
-					'src/Framebuffer.js',
-					'src/Renderbuffer.js'
-					],
+				src: files,
 				dest: 'oogl-<%= meta.version %>.min.js'
 			}
 		}
 	});
-	grunt.registerTask('default', 'lint min');
+	grunt.registerTask('default', 'min');
+	grunt.registerTask('debug', 'concat lint');
 };

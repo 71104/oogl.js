@@ -5,6 +5,7 @@ var OOGL = function (callback) {
 };
 
 if (typeof $ === 'undefined') {
+	/*jshint undef: false */
 	$ = OOGL;
 }
 

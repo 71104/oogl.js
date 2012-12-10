@@ -16,7 +16,7 @@ OOGL.Matrix2.prototype = {
 	transpose: function () {
 		var newArray = [this[0], this[2], this[1], this[3]];
 		for (var i = 0; i < 4; i++) {
-			this[i] = newrray[i];
+			this[i] = newArray[i];
 		}
 		return this;
 	},
@@ -79,7 +79,7 @@ OOGL.Matrix2.prototype = {
 			this[1] / determinant,
 			this[2] / determinant,
 			this[0] / determinant
-			];
+		];
 		for (var i = 0; i < 4; i++) {
 			this[i] = newArray[i];
 		}
@@ -92,7 +92,7 @@ OOGL.Matrix2.prototype = {
 			this[1] / determinant,
 			this[2] / determinant,
 			this[0] / determinant
-			]);
+		]);
 	}
 };
 

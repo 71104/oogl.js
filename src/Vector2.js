@@ -66,8 +66,8 @@ OOGL.Vector2.prototype = {
 			this.x = 0;
 			this.y = 0;
 		} else {
-			this.x = eta * this.x - (eta * dot + sqrt(k)) * n.x;
-			this.y = eta * this.y - (eta * dot + sqrt(k)) * n.y;
+			this.x = eta * this.x - (eta * dot + Math.sqrt(k)) * n.x;
+			this.y = eta * this.y - (eta * dot + Math.sqrt(k)) * n.y;
 		}
 		return this;
 	},
@@ -77,7 +77,10 @@ OOGL.Vector2.prototype = {
 		if (k < 0) {
 			return OOGL.Vector2.NULL;
 		} else {
-			return new OOGL.Vector2(eta * this.x - (eta * dot + sqrt(k)) * n.x, eta * this.y - (eta * dot + sqrt(k)) * n.y);
+			return new OOGL.Vector2(
+				eta * this.x - (eta * dot + Math.sqrt(k)) * n.x,
+				eta * this.y - (eta * dot + Math.sqrt(k)) * n.y
+				);
 		}
 	}
 };

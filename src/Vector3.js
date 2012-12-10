@@ -71,37 +71,41 @@ OOGL.Vector3.prototype = {
 		return new OOGL.Vector3(this.y * v.z - this.z * v.y, this.z * v.x - this.x * v.z, this.x * v.y - this.y * v.x);
 	},
 	reflect: function (n) {
-		var dot = this.x * n.x + this.y * n.y + this.z * v.z;
+		var dot = this.x * n.x + this.y * n.y + this.z * n.z;
 		this.x -= 2 * dot * n.x;
 		this.y -= 2 * dot * n.y;
 		this.z -= 2 * dot * n.z;
 		return this;
 	},
 	getReflected: function (n) {
-		var dot = this.x * n.x + this.y * n.y + this.z * v.z;
+		var dot = this.x * n.x + this.y * n.y + this.z * n.z;
 		return new OOGL.Vector3(this.x - 2 * dot * n.x, this.y - 2 * dot * n.y, this.z - 2 * dot * n.z);
 	},
 	refract: function (n, eta) {
-		var dot = this.x * n.x + this.y * n.y + this.z * v.z;
+		var dot = this.x * n.x + this.y * n.y + this.z * n.z;
 		var k = 1 - eta * eta * (1 - dot * dot);
 		if (k < 0) {
 			this.x = 0;
 			this.y = 0;
 			this.z = 0;
 		} else {
-			this.x = eta * this.x - (eta * dot + sqrt(k)) * n.x;
-			this.y = eta * this.y - (eta * dot + sqrt(k)) * n.y;
-			this.z = eta * this.z - (eta * dot + sqrt(k)) * n.z;
+			this.x = eta * this.x - (eta * dot + Math.sqrt(k)) * n.x;
+			this.y = eta * this.y - (eta * dot + Math.sqrt(k)) * n.y;
+			this.z = eta * this.z - (eta * dot + Math.sqrt(k)) * n.z;
 		}
 		return this;
 	},
 	getRefracted: function (n, eta) {
-		var dot = this.x * n.x + this.y * n.y + this.z * v.z;
+		var dot = this.x * n.x + this.y * n.y + this.z * n.z;
 		var k = 1 - eta * eta * (1 - dot * dot);
 		if (k < 0) {
 			return OOGL.Vector3.NULL;
 		} else {
-			return new OOGL.Vector3(eta * this.x - (eta * dot + sqrt(k)) * n.x, eta * this.y - (eta * dot + sqrt(k)) * n.y, eta * this.z - (eta * dot + sqrt(k)) * n.z);
+			return new OOGL.Vector3(
+				eta * this.x - (eta * dot + Math.sqrt(k)) * n.x,
+				eta * this.y - (eta * dot + Math.sqrt(k)) * n.y,
+				eta * this.z - (eta * dot + Math.sqrt(k)) * n.z
+				);
 		}
 	}
 };

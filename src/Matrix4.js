@@ -40,7 +40,7 @@ OOGL.RotationMatrix4 = function (x, y, z, a) {
 		0,
 		0,
 		1
-		]);
+	]);
 };
 
 OOGL.ScalingMatrix4 = function (x, y, z) {

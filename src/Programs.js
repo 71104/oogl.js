@@ -36,7 +36,7 @@ OOGL.Context.prototype.Program = function () {
 			gl.useProgram(program);
 		},
 		validate: function () {
-			gl.validateProgram(validate);
+			gl.validateProgram(program);
 			return gl.getProgramParameter(program, gl.VALIDATE_STATUS);
 		},
 		_delete: function () {
