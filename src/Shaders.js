@@ -1,48 +1,47 @@
-OOGL.Context.prototype.Shader = function (type) {
-	var gl = this;
-	var shader = gl.createShader(type);
+context.Shader = function (type) {
+	var shader = context.createShader(type);
 	return {
 		underlying: function () {
 			return shader;
 		},
 		getParameter: function (name) {
-			return gl.getShaderParameter(shader, name);
+			return context.getShaderParameter(shader, name);
 		},
 		getType: function () {
-			return gl.getShaderParameter(shader, gl.SHADER_TYPE);
+			return context.getShaderParameter(shader, context.SHADER_TYPE);
 		},
 		source: function (source) {
-			gl.shaderSource(shader, source);
+			context.shaderSource(shader, source);
 		},
 		getSource: function () {
-			return gl.getShaderParameter(shader, gl.SHADER_SOURCE);
+			return context.getShaderParameter(shader, context.SHADER_SOURCE);
 		},
 		compile: function () {
-			gl.compileShader(shader);
+			context.compileShader(shader);
 		},
 		getCompileStatus: function () {
-			return gl.getShaderParameter(shader, gl.COMPILE_STATUS);
+			return context.getShaderParameter(shader, context.COMPILE_STATUS);
 		},
 		getInfoLog: function () {
-			return gl.getShaderInfoLog(shader);
+			return context.getShaderInfoLog(shader);
 		},
 		compileOrThrow: function () {
-			gl.compileShader(shader);
-			if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
-				throw gl.getShaderInfoLog(shader);
+			context.compileShader(shader);
+			if (!context.getShaderParameter(shader, context.COMPILE_STATUS)) {
+				throw context.getShaderInfoLog(shader);
 			}
 		},
 		_delete: function () {
-			gl.deleteShader(shader);
+			context.deleteShader(shader);
 		},
 		getDeleteStatus: function () {
-			return gl.getShaderParameter(shader, gl.DELETE_STATUS);
+			return context.getShaderParameter(shader, context.DELETE_STATUS);
 		}
 	};
 };
 
-OOGL.Context.prototype.VertexShader = function (name, callback) {
-	var shader = new this.Shader(this.VERTEX_SHADER);
+context.VertexShader = function (name, callback) {
+	var shader = new context.Shader(context.VERTEX_SHADER);
 	OOGL.Ajax.get(name + '.vert', function (source) {
 		shader.source(source);
 		shader.compileOrThrow();
@@ -50,8 +49,8 @@ OOGL.Context.prototype.VertexShader = function (name, callback) {
 	});
 	return shader;
 };
-OOGL.Context.prototype.FragmentShader = function (name, callback) {
-	var shader = new this.Shader(this.FRAGMENT_SHADER);
+context.FragmentShader = function (name, callback) {
+	var shader = new context.Shader(context.FRAGMENT_SHADER);
 	OOGL.Ajax.get(name + '.frag', function (source) {
 		shader.source(source);
 		shader.compileOrThrow();

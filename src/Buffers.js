@@ -1,77 +1,76 @@
-OOGL.Context.prototype.Buffer = function (target, usage) {
-	var gl = this;
-	var buffer = gl.createBuffer(target);
+context.Buffer = function (target, usage) {
+	var buffer = context.createBuffer(target);
 	return {
 		underlying: function () {
 			return buffer;
 		},
 		getParameter: function (name) {
-			return gl.getBufferParameter(target, name);
+			return context.getBufferParameter(target, name);
 		},
 		getSize: function () {
-			return gl.getBufferParameter(target, gl.BUFFER_SIZE);
+			return context.getBufferParameter(target, context.BUFFER_SIZE);
 		},
 		getUsage: function () {
-			return gl.getBufferParameter(target, gl.BUFFER_USAGE);
+			return context.getBufferParameter(target, context.BUFFER_USAGE);
 		},
 		bind: function () {
-			gl.bindBuffer(target, buffer);
+			context.bindBuffer(target, buffer);
 		},
 		data: function (sizeOrData) {
-			gl.bufferData(target, sizeOrData, usage);
+			context.bufferData(target, sizeOrData, usage);
 		},
 		subData: function (offset, data) {
-			gl.bufferSubData(target, offset, data);
+			context.bufferSubData(target, offset, data);
 		},
 		_delete: function () {
-			gl.deleteBuffer(buffer);
+			context.deleteBuffer(buffer);
 		}
 	};
 };
 
-OOGL.Context.prototype.StaticBuffer = function (target) {
-	return new this.Buffer(target, this.STATIC_DRAW);
+context.StaticBuffer = function (target) {
+	return new context.Buffer(target, context.STATIC_DRAW);
 };
-OOGL.Context.prototype.StreamBuffer = function (target) {
-	return new this.Buffer(target, this.STREAM_DRAW);
+context.StreamBuffer = function (target) {
+	return new context.Buffer(target, context.STREAM_DRAW);
 };
-OOGL.Context.prototype.DynamicBuffer = function (target) {
-	return new this.Buffer(target, this.DYNAMIC_DRAW);
-};
-
-OOGL.Context.prototype.ArrayBuffer = function (usage) {
-	return new this.Buffer(this.ARRAY_BUFFER, usage);
-};
-OOGL.Context.prototype.ElementArrayBuffer = function (usage) {
-	return new this.Buffer(this.ELEMENT_ARRAY_BUFFER, usage);
+context.DynamicBuffer = function (target) {
+	return new context.Buffer(target, context.DYNAMIC_DRAW);
 };
 
-OOGL.Context.prototype.StaticArrayBuffer = function () {
-	return new this.StaticBuffer(this.ARRAY_BUFFER);
+context.ArrayBuffer = function (usage) {
+	return new context.Buffer(context.ARRAY_BUFFER, usage);
 };
-OOGL.Context.prototype.StaticElementArrayBuffer = function () {
-	return new this.StaticBuffer(this.ELEMENT_ARRAY_BUFFER);
-};
-OOGL.Context.prototype.StreamArrayBuffer = function () {
-	return new this.StreamBuffer(this.ARRAY_BUFFER);
-};
-OOGL.Context.prototype.StreamElementArrayBuffer = function () {
-	return new this.StreamBuffer(this.ELEMENT_ARRAY_BUFFER);
-};
-OOGL.Context.prototype.DynamicArrayBuffer = function () {
-	return new this.DynamicBuffer(this.ARRAY_BUFFER);
-};
-OOGL.Context.prototype.DynamicElementArrayBuffer = function () {
-	return new this.DynamicBuffer(this.ELEMENT_ARRAY_BUFFER);
+context.ElementArrayBuffer = function (usage) {
+	return new context.Buffer(context.ELEMENT_ARRAY_BUFFER, usage);
 };
 
-OOGL.Context.prototype.VertexArray = function () {
-	var buffer = new this.StaticArrayBuffer();
+context.StaticArrayBuffer = function () {
+	return new context.StaticBuffer(context.ARRAY_BUFFER);
+};
+context.StaticElementArrayBuffer = function () {
+	return new context.StaticBuffer(context.ELEMENT_ARRAY_BUFFER);
+};
+context.StreamArrayBuffer = function () {
+	return new context.StreamBuffer(context.ARRAY_BUFFER);
+};
+context.StreamElementArrayBuffer = function () {
+	return new context.StreamBuffer(context.ELEMENT_ARRAY_BUFFER);
+};
+context.DynamicArrayBuffer = function () {
+	return new context.DynamicBuffer(context.ARRAY_BUFFER);
+};
+context.DynamicElementArrayBuffer = function () {
+	return new context.DynamicBuffer(context.ELEMENT_ARRAY_BUFFER);
+};
+
+context.VertexArray = function () {
+	var buffer = new context.StaticArrayBuffer();
 	// TODO
 	return buffer;
 };
-OOGL.Context.prototype.IndexArray = function () {
-	var buffer = new this.StaticElementArrayBuffer();
+context.IndexArray = function () {
+	var buffer = new context.StaticElementArrayBuffer();
 	// TODO
 	return buffer;
 };

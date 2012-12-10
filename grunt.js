@@ -9,12 +9,14 @@ module.exports = function (grunt) {
 		'src/Matrix2.js',
 		'src/Matrix3.js',
 		'src/Matrix4.js',
+		'src/ContextBegin.js',
 		'src/Buffers.js',
 		'src/Textures.js',
 		'src/Shaders.js',
 		'src/Programs.js',
 		'src/Framebuffer.js',
-		'src/Renderbuffer.js'
+		'src/Renderbuffer.js',
+		'src/ContextEnd.js'
 		];
 	grunt.initConfig({
 		meta: {

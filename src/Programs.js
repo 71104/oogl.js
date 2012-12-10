@@ -1,58 +1,57 @@
-OOGL.Context.prototype.Program = function () {
-	var gl = this;
-	var program = gl.createProgram();
+context.Program = function () {
+	var program = context.createProgram();
 	return {
 		underlying: function () {
 			return program;
 		},
 		getParameter: function (name) {
-			return gl.getProgramParameter(program, name);
+			return context.getProgramParameter(program, name);
 		},
 		attachShader: function (shader) {
-			gl.attachShader(program, shader.underlying());
+			context.attachShader(program, shader.underlying());
 		},
 		detachShader: function (shader) {
-			gl.detachShader(program, shader.underlying());
+			context.detachShader(program, shader.underlying());
 		},
 		bindAttribLocation: function (index, name) {
-			gl.bindAttribLocation(program, index, name);
+			context.bindAttribLocation(program, index, name);
 		},
 		link: function () {
-			gl.linkProgram(program);
+			context.linkProgram(program);
 		},
 		getLinkStatus: function () {
-			return gl.getProgramParameter(program, gl.LINK_STATUS);
+			return context.getProgramParameter(program, context.LINK_STATUS);
 		},
 		getInfoLog: function () {
-			return gl.getProgramInfoLog(program);
+			return context.getProgramInfoLog(program);
 		},
 		linkOrThrow: function () {
-			gl.linkProgram(program);
-			if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
-				throw gl.getProgramInfoLog(program);
+			context.linkProgram(program);
+			if (!context.getProgramParameter(program, context.LINK_STATUS)) {
+				throw context.getProgramInfoLog(program);
 			}
 		},
 		use: function () {
-			gl.useProgram(program);
+			context.useProgram(program);
 		},
 		validate: function () {
-			gl.validateProgram(program);
-			return gl.getProgramParameter(program, gl.VALIDATE_STATUS);
+			context.validateProgram(program);
+			return context.getProgramParameter(program, context.VALIDATE_STATUS);
 		},
 		_delete: function () {
-			gl.deleteProgram(program);
+			context.deleteProgram(program);
 		},
 		getDeleteStatus: function () {
-			return gl.getProgramParameter(program, gl.DELETE_STATUS);
+			return context.getProgramParameter(program, context.DELETE_STATUS);
 		}
 	};
 };
 
-OOGL.Context.prototype.DefaultProgram = function (name, attributes, callback) {
-	var program = new this.Program();
-	var vertexShader = new this.VertexShader(name, function () {
+context.DefaultProgram = function (name, attributes, callback) {
+	var program = new context.Program();
+	var vertexShader = new context.VertexShader(name, function () {
 		program.attachShader(vertexShader);
-		var fragmentShader = new this.FragmentShader(name, function () {
+		var fragmentShader = new context.FragmentShader(name, function () {
 			program.attachShader(fragmentShader);
 			for (var i = 0; i < attributes.length; i++) {
 				// TODO bind attribute location
