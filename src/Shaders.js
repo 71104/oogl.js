@@ -1,3 +1,5 @@
+/*global OOGL: false, context: false */
+
 context.Shader = function (type) {
 	var shader = context.createShader(type);
 	return {

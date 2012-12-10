@@ -1,3 +1,5 @@
+/*global OOGL: false */
+
 OOGL.Matrix4 = function (data) {
 	if (data.length != 16) {
 		throw 'A 4x4 matrix must have exactly 16 elements.';

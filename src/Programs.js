@@ -1,3 +1,5 @@
+/*global context: false */
+
 context.Program = function () {
 	var program = context.createProgram();
 	return {

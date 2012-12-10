@@ -1,3 +1,5 @@
+/*global OOGL: false */
+
 OOGL.Matrix2 = function (data) {
 	if (data.length != 4) {
 		throw 'A 2x2 matrix must have exactly 4 elements.';

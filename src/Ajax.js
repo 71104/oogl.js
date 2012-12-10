@@ -1,3 +1,5 @@
+/*global OOGL: false */
+
 OOGL.Ajax = new (function () {
 	var errorCallback = function () {};
 

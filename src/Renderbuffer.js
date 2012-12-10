@@ -1,3 +1,5 @@
+/*global context: false */
+
 context.Renderbuffer = function () {
 	var renderbuffer = context.createRenderbuffer();
 	return {

@@ -1,3 +1,5 @@
+/*global context: false */
+
 context.Buffer = function (target, usage) {
 	var buffer = context.createBuffer(target);
 	return {

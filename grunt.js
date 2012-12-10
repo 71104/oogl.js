@@ -28,7 +28,22 @@ module.exports = function (grunt) {
 				'Alberto La Rocca */'
 		},
 		lint: {
-			files: ['oogl-<%= meta.version %>.js']
+			files: [
+				'src/OOGL.js',
+				'src/Ajax.js',
+				'src/Vector2.js',
+				'src/Vector3.js',
+				'src/Vector4.js',
+				'src/Matrix2.js',
+				'src/Matrix3.js',
+				'src/Matrix4.js',
+				'src/Buffers.js',
+				'src/Textures.js',
+				'src/Shaders.js',
+				'src/Programs.js',
+				'src/Framebuffer.js',
+				'src/Renderbuffer.js'
+				]
 		},
 		jshint: {
 			options: {
@@ -70,5 +85,5 @@ module.exports = function (grunt) {
 		}
 	});
 	grunt.registerTask('default', 'min');
-	grunt.registerTask('debug', 'concat lint');
+	grunt.registerTask('debug', 'lint concat');
 };

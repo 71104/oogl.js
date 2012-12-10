@@ -1,3 +1,5 @@
+/*global context: false */
+
 context.Framebuffer = function () {
 	var framebuffer = context.createFramebuffer();
 	return {

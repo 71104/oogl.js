@@ -1,3 +1,5 @@
+/*global context: false */
+
 context.Texture = function (target) {
 	var texture = context.createTexture();
 	context.bindTexture(target, texture);

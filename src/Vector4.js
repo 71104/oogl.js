@@ -1,3 +1,5 @@
+/*global OOGL: false */
+
 OOGL.Vector4 = function (x, y, z, w) {
 	this.x = x;
 	this.y = y;

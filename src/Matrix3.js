@@ -1,3 +1,5 @@
+/*global OOGL: false */
+
 OOGL.Matrix3 = function (data) {
 	if (data.length != 9) {
 		throw 'A 3x3 matrix must have exactly 9 elements.';
