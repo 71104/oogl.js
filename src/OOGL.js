@@ -23,5 +23,8 @@ OOGL.Context = function (canvasOrId, attributes) {
 	if (!context) {
 		throw 'WebGL not supported.';
 	}
+	for (var property in OOGL.Context.prototype) {
+		context[property] = OOGL.Context.prototype[property];
+	}
 	return context;
 };
