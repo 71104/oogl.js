@@ -56,7 +56,7 @@ context.DefaultProgram = function (name, attributes, callback) {
 		var fragmentShader = new context.FragmentShader(name, function () {
 			program.attachShader(fragmentShader);
 			for (var i = 0; i < attributes.length; i++) {
-				// TODO bind attribute location
+				program.bindAttribLocation(i, attributes[i]);
 			}
 			program.linkOrThrow();
 			callback && callback();

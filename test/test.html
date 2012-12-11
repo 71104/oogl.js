@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>OOGL Test</title>
+<script type="text/javascript" src="oogl-1.0.0.js"></script>
+</head>
+<body>
+	<canvas id="canvas" width="800" height="600">
+		<p>No browser support.</p>
+	</canvas>
+	<script type="text/javascript">
+$(function () {
+	var oogl = new $.Context('canvas');
+	oogl.clearColor(0, 0, 0, 1);
+	oogl.clear(oogl.COLOR_BUFFER_BIT);
+	var array = new oogl.VertexArray(0, 2, [-1, 1, -1, -1, 1, -1]);
+	var program = new oogl.DefaultProgram('test', ['in_Vertex'], function () {
+		program.use();
+		oogl.drawArrays(oogl.TRIANGLES, 0, 3);
+		oogl.flush();
+	});
+});
+	</script>
+</body>
+</html>
