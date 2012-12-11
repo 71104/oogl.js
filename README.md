@@ -10,15 +10,15 @@ OOGL is not another scene graph library: OOGL strongly focuses on performance an
 Getting started
 ===============
 
-To get started with OOGL, include it using a `&lt;script&gt;` tag in the `&lt;head&gt;` of your document:
+To get started with OOGL, include it using a `<script>` tag in the `<head>` of your document:
 
-```javascript
+```html
 <script type="text/javascript" src="http://cdn.oogljs.com/oogl-1.0.0.min.js"></script>
 ```
 
-Then place a `&lt;canvas&gt;` in your DOM and create an OOGL context through JavaScript:
+Then place a `<canvas>` in your DOM and create an OOGL context through JavaScript:
 
-```javascript
+```html
 <canvas id="canvas" width="800" height="600">
 	<p>No browser support.</p>
 </canvas>
@@ -64,7 +64,6 @@ Assume they are called `test.vert` and `test.frag`, respectively, and they are l
 The OOGL calls needed to create a vertex array, load the shaders and make the drawing are as follows:
 
 ```javascript
-<script type="text/javascript">
 $(function () {
 	var oogl = new $.Context('canvas');
 	oogl.clearColor(0, 0, 0, 1);
@@ -76,7 +75,6 @@ $(function () {
 		oogl.flush();
 	});
 });
-</script>
 ```
 
 The constructed `DefaultProgram` object refers to the `test.vert` and `test.frag` files because of its `test` first argument; the `.vert` and `.frag` extensions are added automatically.
