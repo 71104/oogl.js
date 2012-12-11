@@ -1,0 +1,133 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>oogl.js by 71104</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/71104/oogl.js">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/71104/oogl.js/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/71104/oogl.js/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>oogl.js</h1>
+          <p>A thin object-oriented layer above WebGL.</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/71104">71104</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h1>oogl.js</h1>
+
+<p>A thin object-oriented layer above WebGL.</p>
+
+<p>OOGL provides an augmented GL context that adds object-oriented features that allow you to make GL calls more easily while keeping maximum possible performance.</p>
+
+<p>OOGL is not another scene graph library: OOGL strongly focuses on performance and thus lets you do exactly what you would do in plain WebGL, just easier.</p>
+
+<h1>Getting started</h1>
+
+<p>To get started with OOGL, include it using a <code>&lt;script&gt;</code> tag in the <code>&lt;head&gt;</code> of your document:</p>
+
+<div class="highlight"><pre><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">src=</span><span class="s">"http://cdn.oogljs.com/oogl-1.0.0.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+</pre></div>
+
+<p>Then place a <code>&lt;canvas&gt;</code> in your DOM and create an OOGL context through JavaScript:</p>
+
+<div class="highlight"><pre><span class="nt">&lt;canvas</span> <span class="na">id=</span><span class="s">"canvas"</span> <span class="na">width=</span><span class="s">"800"</span> <span class="na">height=</span><span class="s">"600"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;p&gt;</span>No browser support.<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/canvas&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
+<span class="nx">$</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">oogl</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">$</span><span class="p">.</span><span class="nx">Context</span><span class="p">(</span><span class="s1">'canvas'</span><span class="p">);</span>
+
+    <span class="c1">// example GL calls</span>
+    <span class="nx">oogl</span><span class="p">.</span><span class="nx">clearColor</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="nx">oogl</span><span class="p">.</span><span class="nx">clear</span><span class="p">(</span><span class="nx">oogl</span><span class="p">.</span><span class="nx">COLOR_BUFFER_BIT</span><span class="p">);</span>
+    <span class="nx">oogl</span><span class="p">.</span><span class="nx">flush</span><span class="p">();</span>
+<span class="p">});</span>
+<span class="nt">&lt;/script&gt;</span>
+</pre></div>
+
+<p>The <code>oogl</code> object now contains all the WebGL functions a normal <code>gl</code> object would contain, plus OOGL-specific features.</p>
+
+<h1>The first triangle</h1>
+
+<p>Drawing with OOGL is easier than doing it with plain WebGL.</p>
+
+<p>Let's first create a pair of shaders. Here's the vertex one:</p>
+
+<div class="highlight"><pre><span class="k">attribute</span> <span class="k">vec2</span> <span class="n">in_Vertex</span><span class="p">;</span>
+
+<span class="k">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">gl_Position</span> <span class="o">=</span> <span class="k">vec4</span><span class="p">(</span><span class="n">in_Vertex</span><span class="p">,</span> <span class="mo">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>And the fragment one:</p>
+
+<div class="highlight"><pre><span class="k">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">gl_FragColor</span> <span class="o">=</span> <span class="k">vec4</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>Assume they are called <code>test.vert</code> and <code>test.frag</code>, respectively, and they are located in the same directory as the HTML page.</p>
+
+<p>The OOGL calls needed to create a vertex array, load the shaders and make the drawing are as follows:</p>
+
+<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">oogl</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">$</span><span class="p">.</span><span class="nx">Context</span><span class="p">(</span><span class="s1">'canvas'</span><span class="p">);</span>
+    <span class="nx">oogl</span><span class="p">.</span><span class="nx">clearColor</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="nx">oogl</span><span class="p">.</span><span class="nx">clear</span><span class="p">(</span><span class="nx">oogl</span><span class="p">.</span><span class="nx">COLOR_BUFFER_BIT</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">array</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">oogl</span><span class="p">.</span><span class="nx">VertexArray</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]);</span>
+    <span class="kd">var</span> <span class="nx">program</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">oogl</span><span class="p">.</span><span class="nx">DefaultProgram</span><span class="p">(</span><span class="s1">'test'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'in_Vertex'</span><span class="p">],</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">program</span><span class="p">.</span><span class="nx">use</span><span class="p">();</span>
+        <span class="nx">oogl</span><span class="p">.</span><span class="nx">drawArrays</span><span class="p">(</span><span class="nx">oogl</span><span class="p">.</span><span class="nx">TRIANGLES</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+        <span class="nx">oogl</span><span class="p">.</span><span class="nx">flush</span><span class="p">();</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+</pre></div>
+
+<p>The constructed <code>DefaultProgram</code> object refers to the <code>test.vert</code> and <code>test.frag</code> files because of its <code>test</code> first argument; the <code>.vert</code> and <code>.frag</code> extensions are added automatically.</p>
+
+<p>The last calls (<code>program.use()</code> through <code>oogl.flush()</code>) are made asynchronously in a callback function passed to the <code>DefaultProgram</code> constructor because the shader files need to be loaded asynchronously through AJAX.</p>
+
+<h1>Math stuff</h1>
+
+<p>TBD</p>
+
+<h1>jQuery</h1>
+
+<p>TBD</p>
+
+<h1>Credits</h1>
+
+<p>OOGL was created by Alberto La Rocca and is licensed under the MIT License.</p>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
