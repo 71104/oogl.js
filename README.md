@@ -3,9 +3,9 @@ oogl.js
 
 A thin object-oriented layer above WebGL.
 
-OOGL provides an augmented GL context that adds object-oriented features that allow you to make GL calls more easily while keeping maximum possible performance.
+OOGL provides an extended GL context that adds object-oriented features allowing you to make GL calls more easily while keeping maximum possible performance.
 
-OOGL is not another scene graph library: OOGL strongly focuses on performance and thus lets you do exactly what you would do in plain WebGL, just easier.
+OOGL is not another scene graph library: OOGL strongly focuses on performance and lets you do exactly what you would do in plain WebGL, just easier.
 
 Getting started
 ===============

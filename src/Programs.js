@@ -2,6 +2,7 @@
 
 context.Program = function () {
 	var program = context.createProgram();
+	var locationCache = {};
 	return {
 		underlying: function () {
 			return program;
@@ -19,6 +20,7 @@ context.Program = function () {
 			context.bindAttribLocation(program, index, name);
 		},
 		link: function () {
+			locationCache = {};
 			context.linkProgram(program);
 		},
 		getLinkStatus: function () {
@@ -40,6 +42,22 @@ context.Program = function () {
 			context.validateProgram(program);
 			return context.getProgramParameter(program, context.VALIDATE_STATUS);
 		},
+		getActiveAttrib: function (index) {
+			return context.getActiveAttrib(program, index);
+		},
+		getActiveUniform: function (index) {
+			return context.getActiveUniform(program, index);
+		},
+		getAttribLocation: function (name) {
+			return context.getAttribLocation(program, name);
+		},
+		getUniform: function (location) {
+			return context.getUniform(program, location);
+		},
+		getUniformLocation: function (name) {
+			return locationCache[name] = context.getUniformLocation(program, name);
+		},
+		// TODO uniform
 		_delete: function () {
 			context.deleteProgram(program);
 		},

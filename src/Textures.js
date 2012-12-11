@@ -2,7 +2,6 @@
 
 context.Texture = function (target) {
 	var texture = context.createTexture();
-	context.bindTexture(target, texture);
 	return {
 		underlying: function () {
 			return texture;
@@ -25,6 +24,12 @@ context.Texture = function (target) {
 		image2D: function () {
 			// TODO
 		},
+		subImage2D: function () {
+			// TODO
+		},
+		copyImage2D: function () {
+			// TODO
+		},
 		_delete: function () {
 			context.deleteTexture(texture);
 		}
@@ -36,4 +41,30 @@ context.Texture2D = function () {
 };
 context.CubeMap = function () {
 	return new context.Texture(context.TEXTURE_CUBE_MAP);
+};
+
+context.Textures = function (textures) {
+	var textures = textures.slice(0);
+	return {
+		add: function (texture) {
+			textures.push(texture);
+		},
+		bind: function () {
+			for (var i = 0; i < textures.length; i++) {
+				context.activeTexture(context.TEXTURE0 + i);
+				textures[i].bind();
+			}
+		},
+		uniform: function (program, names) {
+			for (var i = 0; i < textures.length; i++) {
+				// TODO
+			}
+		},
+		_delete: function () {
+			for (var i in textures) {
+				textures[i]._delete();
+			}
+			textures = [];
+		}
+	};
 };
