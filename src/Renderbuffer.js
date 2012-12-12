@@ -41,4 +41,5 @@ context.Renderbuffer = function () {
 	renderbuffer._delete = function () {
 		context.deleteRenderbuffer(renderbuffer);
 	};
+	return renderbuffer;
 };
