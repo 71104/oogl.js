@@ -1,34 +1,48 @@
 /*global context: false */
 
-context.Buffer = function (target, usage) {
-	var buffer = context.createBuffer(target);
-	return {
-		underlying: function () {
-			return buffer;
-		},
-		getParameter: function (name) {
-			return context.getBufferParameter(target, name);
-		},
-		getSize: function () {
-			return context.getBufferParameter(target, context.BUFFER_SIZE);
-		},
-		getUsage: function () {
-			return context.getBufferParameter(target, context.BUFFER_USAGE);
-		},
-		bind: function () {
-			context.bindBuffer(target, buffer);
-		},
-		data: function (sizeOrData) {
-			context.bufferData(target, sizeOrData, usage);
-		},
-		subData: function (offset, data) {
-			context.bufferSubData(target, offset, data);
-		},
-		_delete: function () {
-			context.deleteBuffer(buffer);
-		}
+context.Buffer = (function () {
+	var types = {
+		'byte': Int8Array,
+		'ubyte': Uint8Array,
+		'short': Int16Array,
+		'ushort': Uint16Array,
+		'float': Float32Array
 	};
-};
+	return function (target, type, usage) {
+		var Constructor;
+		if (types.hasOwnProperty(type)) {
+			Constructor = types[type];
+		} else {
+			throw 'Invalid buffer type, must be one of "byte", "ubyte", "short", "ushort" and "float".';
+		}
+		var buffer = context.createBuffer(target);
+		buffer.getParameter = function (name) {
+			return context.getBufferParameter(target, name);
+		};
+		buffer.getSize = function () {
+			return context.getBufferParameter(target, context.BUFFER_SIZE);
+		};
+		buffer.getUsage = function () {
+			return context.getBufferParameter(target, context.BUFFER_USAGE);
+		};
+		buffer.bind = function () {
+			context.bindBuffer(target, buffer);
+		};
+		buffer.data = function (sizeOrData) {
+			if (typeof sizeOrData !== 'number') {
+				sizeOrData = new Constructor(sizeOrData);
+			}
+			context.bufferData(target, sizeOrData, usage);
+		};
+		buffer.subData = function (offset, data) {
+			context.bufferSubData(target, offset, new Constructor(data));
+		};
+		buffer._delete = function () {
+			context.deleteBuffer(buffer);
+		};
+		return buffer;
+	};
+})();
 
 context.StaticBuffer = function (target) {
 	return new context.Buffer(target, context.STATIC_DRAW);

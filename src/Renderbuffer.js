@@ -2,48 +2,43 @@
 
 context.Renderbuffer = function () {
 	var renderbuffer = context.createRenderbuffer();
-	return {
-		underlying: function () {
-			return renderbuffer;
-		},
-		getParameter: function (name) {
-			return context.getRenderbufferParameter(context.RENDERBUFFER, name);
-		},
-		getWidth: function () {
-			return context.getRenderbufferParameter(context.RENDERBUFFER, context.RENDERBUFFER_WIDTH);
-		},
-		getHeight: function () {
-			return context.getRenderbufferParameter(context.RENDERBUFFER, context.RENDERBUFFER_HEIGHT);
-		},
-		getInternalFormat: function () {
-			return context.getRenderbufferParameter(context.RENDERBUFFER, context.RENDERBUFFER_INTERNAL_FORMAT);
-		},
-		getRedSize: function () {
-			return context.getRenderbufferParameter(context.RENDERBUFFER, context.RENDERBUFFER_RED_SIZE);
-		},
-		getGreenSize: function () {
-			return context.getRenderbufferParameter(context.RENDERBUFFER, context.RENDERBUFFER_GREEN_SIZE);
-		},
-		getBlueSize: function () {
-			return context.getRenderbufferParameter(context.RENDERBUFFER, context.RENDERBUFFER_BLUE_SIZE);
-		},
-		getAlphaSize: function () {
-			return context.getRenderbufferParameter(context.RENDERBUFFER, context.RENDERBUFFER_ALPHA_SIZE);
-		},
-		getDepthSize: function () {
-			return context.getRenderbufferParameter(context.RENDERBUFFER, context.RENDERBUFFER_DEPTH_SIZE);
-		},
-		getStencilSize: function () {
-			return context.getRenderbufferParameter(context.RENDERBUFFER, context.RENDERBUFFER_STENCIL_SIZE);
-		},
-		bind: function () {
-			context.bindRenderbuffer(context.RENDERBUFFER, renderbuffer);
-		},
-		storage: function (internalFormat, width, height) {
-			context.renderbufferStorage(context.RENDERBUFFER, internalFormat, width, height);
-		},
-		_delete: function () {
-			context.deleteRenderbuffer(renderbuffer);
-		}
+	renderbuffer.getParameter = function (name) {
+		return context.getRenderbufferParameter(context.RENDERBUFFER, name);
+	};
+	renderbuffer.getWidth = function () {
+		return context.getRenderbufferParameter(context.RENDERBUFFER, context.RENDERBUFFER_WIDTH);
+	};
+	renderbuffer.getHeight = function () {
+		return context.getRenderbufferParameter(context.RENDERBUFFER, context.RENDERBUFFER_HEIGHT);
+	};
+	renderbuffer.getInternalFormat = function () {
+		return context.getRenderbufferParameter(context.RENDERBUFFER, context.RENDERBUFFER_INTERNAL_FORMAT);
+	};
+	renderbuffer.getRedSize = function () {
+		return context.getRenderbufferParameter(context.RENDERBUFFER, context.RENDERBUFFER_RED_SIZE);
+	};
+	renderbuffer.getGreenSize = function () {
+		return context.getRenderbufferParameter(context.RENDERBUFFER, context.RENDERBUFFER_GREEN_SIZE);
+	};
+	renderbuffer.getBlueSize = function () {
+		return context.getRenderbufferParameter(context.RENDERBUFFER, context.RENDERBUFFER_BLUE_SIZE);
+	};
+	renderbuffer.getAlphaSize = function () {
+		return context.getRenderbufferParameter(context.RENDERBUFFER, context.RENDERBUFFER_ALPHA_SIZE);
+	};
+	renderbuffer.getDepthSize = function () {
+		return context.getRenderbufferParameter(context.RENDERBUFFER, context.RENDERBUFFER_DEPTH_SIZE);
+	};
+	renderbuffer.getStencilSize = function () {
+		return context.getRenderbufferParameter(context.RENDERBUFFER, context.RENDERBUFFER_STENCIL_SIZE);
+	};
+	renderbuffer.bind = function () {
+		context.bindRenderbuffer(context.RENDERBUFFER, renderbuffer);
+	};
+	renderbuffer.storage = function (internalFormat, width, height) {
+		context.renderbufferStorage(context.RENDERBUFFER, internalFormat, width, height);
+	};
+	renderbuffer._delete = function () {
+		context.deleteRenderbuffer(renderbuffer);
 	};
 };

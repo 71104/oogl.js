@@ -2,38 +2,34 @@
 
 context.Texture = function (target) {
 	var texture = context.createTexture();
-	return {
-		underlying: function () {
-			return texture;
-		},
-		bind: function () {
-			context.bindTexture(target, texture);
-		},
-		getParameter: function (name) {
-			return context.getTexParameter(target, name);
-		},
-		parameterf: function (name, value) {
-			context.texParameterf(target, name, value);
-		},
-		parameteri: function (name, value) {
-			context.texParameteri(target, name, value);
-		},
-		generateMipmap: function () {
-			context.generateMipmap(target);
-		},
-		image2D: function () {
-			// TODO
-		},
-		subImage2D: function () {
-			// TODO
-		},
-		copyImage2D: function () {
-			// TODO
-		},
-		_delete: function () {
-			context.deleteTexture(texture);
-		}
+	texture.bind = function () {
+		context.bindTexture(target, texture);
 	};
+	texture.getParameter = function (name) {
+		return context.getTexParameter(target, name);
+	};
+	texture.parameterf = function (name, value) {
+		context.texParameterf(target, name, value);
+	};
+	texture.parameteri = function (name, value) {
+		context.texParameteri(target, name, value);
+	};
+	texture.generateMipmap = function () {
+		context.generateMipmap(target);
+	};
+	texture.image2D = function () {
+		// TODO
+	};
+	texture.subImage2D = function () {
+		// TODO
+	};
+	texture.copyImage2D = function () {
+		// TODO
+	};
+	texture._delete = function () {
+		context.deleteTexture(texture);
+	};
+	return texture;
 };
 
 context.Texture2D = function () {
@@ -44,11 +40,8 @@ context.CubeMap = function () {
 };
 
 context.Textures = function (textures) {
-	var textures = textures.slice(0);
+	textures = textures.slice(0);
 	return {
-		add: function (texture) {
-			textures.push(texture);
-		},
 		bind: function () {
 			for (var i = 0; i < textures.length; i++) {
 				context.activeTexture(context.TEXTURE0 + i);
@@ -57,7 +50,7 @@ context.Textures = function (textures) {
 		},
 		uniform: function (program, names) {
 			for (var i = 0; i < textures.length; i++) {
-				// TODO
+				program.uniform1i(names[i], i);
 			}
 		},
 		_delete: function () {

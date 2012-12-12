@@ -2,27 +2,23 @@
 
 context.Framebuffer = function () {
 	var framebuffer = context.createFramebuffer();
-	return {
-		underlying: function () {
-			return framebuffer;
-		},
-		getAttachmentParameter: function (attachment, name) {
-			return context.getFramebufferAttachmentParameter(context.FRAMEBUFFER, attachment, name);
-		},
-		bind: function () {
-			context.bindFramebuffer(context.FRAMEBUFFER, framebuffer);
-		},
-		checkStatus: function () {
-			return context.checkFramebufferStatus(context.FRAMEBUFFER);
-		},
-		renderbuffer: function (attachment, renderbuffer) {
-			context.framebufferRenderbuffer(context.FRAMEBUFFER, attachment, context.RENDERBUFFER, renderbuffer.underlying());
-		},
-		texture2D: function (attachment, textarget, texture, level) {
-			context.framebufferTexture2D(context.FRAMEBUFFER, attachment, textarget, texture.underlying(), level);
-		},
-		_delete: function () {
-			context.deleteFramebuffer(framebuffer);
-		}
+	framebuffer.getAttachmentParameter = function (attachment, name) {
+		return context.getFramebufferAttachmentParameter(context.FRAMEBUFFER, attachment, name);
 	};
+	framebuffer.bind = function () {
+		context.bindFramebuffer(context.FRAMEBUFFER, framebuffer);
+	};
+	framebuffer.checkStatus = function () {
+		return context.checkFramebufferStatus(context.FRAMEBUFFER);
+	};
+	framebuffer.renderbuffer = function (attachment, renderbuffer) {
+		context.framebufferRenderbuffer(context.FRAMEBUFFER, attachment, context.RENDERBUFFER, renderbuffer);
+	};
+	framebuffer.texture2D = function (attachment, textarget, texture, level) {
+		context.framebufferTexture2D(context.FRAMEBUFFER, attachment, textarget, texture, level);
+	};
+	framebuffer._delete = function () {
+		context.deleteFramebuffer(framebuffer);
+	};
+	return framebuffer;
 };

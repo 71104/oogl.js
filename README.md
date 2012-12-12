@@ -69,7 +69,7 @@ $(function () {
 	oogl.clearColor(0, 0, 0, 1);
 	oogl.clear(oogl.COLOR_BUFFER_BIT);
 	var array = new oogl.VertexArray(0, 2, [-1, 1, -1, -1, 1, -1]);
-	var program = new oogl.DefaultProgram('test', ['in_Vertex'], function () {
+	var program = new oogl.AjaxProgram('test', ['in_Vertex'], function () {
 		program.use();
 		oogl.drawArrays(oogl.TRIANGLES, 0, 3);
 		oogl.flush();
@@ -77,9 +77,9 @@ $(function () {
 });
 ```
 
-The constructed `DefaultProgram` object refers to the `test.vert` and `test.frag` files because of its `test` first argument; the `.vert` and `.frag` extensions are added automatically.
+Here we use the `AjaxProgram` utility class to load the shader pair asynchronously. The constructed `AjaxProgram` object refers to the `test.vert` and `test.frag` files because of its `test` first argument; the `.vert` and `.frag` extensions are added automatically.
 
-The last calls (`program.use()` through `oogl.flush()`) are made asynchronously in a callback function passed to the `DefaultProgram` constructor because the shader files need to be loaded asynchronously through AJAX.
+The last calls (`program.use()` through `oogl.flush()`) are made asynchronously in a callback function passed to the `AjaxProgram` constructor that is called after the shaders have been loaded and compiled and the program have been linked.
 
 Math stuff
 ==========

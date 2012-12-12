@@ -14,7 +14,7 @@ $(function () {
 	oogl.clearColor(0, 0, 0, 1);
 	oogl.clear(oogl.COLOR_BUFFER_BIT);
 	var array = new oogl.VertexArray(0, 2, [-1, 1, -1, -1, 1, -1]);
-	var program = new oogl.DefaultProgram('test', ['in_Vertex'], function () {
+	var program = new oogl.AjaxProgram('test', ['in_Vertex'], function () {
 		program.use();
 		oogl.drawArrays(oogl.TRIANGLES, 0, 3);
 		oogl.flush();
