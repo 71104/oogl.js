@@ -79,7 +79,7 @@ $(function () {
 
 Here we use the `AjaxProgram` utility class to load the shader pair asynchronously. The constructed `AjaxProgram` object refers to the `test.vert` and `test.frag` files because of its `test` first argument; the `.vert` and `.frag` extensions are added automatically.
 
-The last calls (`program.use()` through `oogl.flush()`) are made asynchronously in a callback function passed to the `AjaxProgram` constructor that is called after the shaders have been loaded and compiled and the program have been linked.
+The last calls (`program.use()` through `oogl.flush()`) are made asynchronously in a callback function passed to the `AjaxProgram` constructor that is called after the shaders have been loaded and compiled and the program has been linked.
 
 Math stuff
 ==========
