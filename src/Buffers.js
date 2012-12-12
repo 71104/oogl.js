@@ -44,40 +44,40 @@ context.Buffer = (function () {
 	};
 })();
 
-context.StaticBuffer = function (target) {
-	return new context.Buffer(target, context.STATIC_DRAW);
+context.StaticBuffer = function (target, type) {
+	return new context.Buffer(target, type, context.STATIC_DRAW);
 };
-context.StreamBuffer = function (target) {
-	return new context.Buffer(target, context.STREAM_DRAW);
+context.StreamBuffer = function (target, type) {
+	return new context.Buffer(target, type, context.STREAM_DRAW);
 };
-context.DynamicBuffer = function (target) {
-	return new context.Buffer(target, context.DYNAMIC_DRAW);
-};
-
-context.ArrayBuffer = function (usage) {
-	return new context.Buffer(context.ARRAY_BUFFER, usage);
-};
-context.ElementArrayBuffer = function (usage) {
-	return new context.Buffer(context.ELEMENT_ARRAY_BUFFER, usage);
+context.DynamicBuffer = function (target, type) {
+	return new context.Buffer(target, type, context.DYNAMIC_DRAW);
 };
 
-context.StaticArrayBuffer = function () {
-	return new context.StaticBuffer(context.ARRAY_BUFFER);
+context.ArrayBuffer = function (type, usage) {
+	return new context.Buffer(context.ARRAY_BUFFER, type, usage);
 };
-context.StaticElementArrayBuffer = function () {
-	return new context.StaticBuffer(context.ELEMENT_ARRAY_BUFFER);
+context.ElementArrayBuffer = function (type, usage) {
+	return new context.Buffer(context.ELEMENT_ARRAY_BUFFER, type, usage);
 };
-context.StreamArrayBuffer = function () {
-	return new context.StreamBuffer(context.ARRAY_BUFFER);
+
+context.StaticArrayBuffer = function (type) {
+	return new context.StaticBuffer(context.ARRAY_BUFFER, type);
 };
-context.StreamElementArrayBuffer = function () {
-	return new context.StreamBuffer(context.ELEMENT_ARRAY_BUFFER);
+context.StaticElementArrayBuffer = function (type) {
+	return new context.StaticBuffer(context.ELEMENT_ARRAY_BUFFER, type);
 };
-context.DynamicArrayBuffer = function () {
-	return new context.DynamicBuffer(context.ARRAY_BUFFER);
+context.StreamArrayBuffer = function (type) {
+	return new context.StreamBuffer(context.ARRAY_BUFFER, type);
 };
-context.DynamicElementArrayBuffer = function () {
-	return new context.DynamicBuffer(context.ELEMENT_ARRAY_BUFFER);
+context.StreamElementArrayBuffer = function (type) {
+	return new context.StreamBuffer(context.ELEMENT_ARRAY_BUFFER, type);
+};
+context.DynamicArrayBuffer = function (type) {
+	return new context.DynamicBuffer(context.ARRAY_BUFFER, type);
+};
+context.DynamicElementArrayBuffer = function (type) {
+	return new context.DynamicBuffer(context.ELEMENT_ARRAY_BUFFER, type);
 };
 
 context.VertexArray = function () {
