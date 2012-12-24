@@ -1,0 +1,10 @@
+{
+	"name": "OOGL.js 1.0",
+	"description": "A thin object oriented layer above WebGL.",
+	"version": "1.0.0",
+	"url": "http://oogljs.com/",
+	"options": {
+		"linkNatives": "true",
+		"outdir": "doc"
+	}
+}

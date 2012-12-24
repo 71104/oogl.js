@@ -23,8 +23,8 @@ Then place a `<canvas>` in your DOM and create an OOGL context through JavaScrip
 	<p>No browser support.</p>
 </canvas>
 <script type="text/javascript">
-$(function () {
-	var oogl = new $.Context('canvas');
+OOGL(function () {
+	var oogl = new OOGL.Context('canvas');
 
 	// example GL calls
 	oogl.clearColor(0, 0, 0, 1);
@@ -64,8 +64,8 @@ Assume they are called `test.vert` and `test.frag`, respectively, and they are l
 The OOGL calls needed to create a vertex array, load the shaders and make the drawing are as follows:
 
 ```javascript
-$(function () {
-	var oogl = new $.Context('canvas');
+OOGL(function () {
+	var oogl = new OOGL.Context('canvas');
 	oogl.clearColor(0, 0, 0, 1);
 	oogl.clear(oogl.COLOR_BUFFER_BIT);
 	var array = new oogl.VertexArray(0, 2, [-1, 1, -1, -1, 1, -1]);

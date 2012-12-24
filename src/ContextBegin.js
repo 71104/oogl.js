@@ -1,3 +1,15 @@
+/**
+ * TODO
+ *
+ * @class OOGL.Context
+ * @constructor
+ * @param {Mixed} canvasOrId TODO
+ * @param {Object} attributes TODO
+ * @example
+ *	var oogl = new OOGL.Context('canvas', {
+ *		stencil: true
+ *	});
+ */
 OOGL.Context = function (canvasOrId, attributes) {
 	var canvas;
 	if (typeof canvasOrId !== 'string') {
