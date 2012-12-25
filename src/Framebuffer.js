@@ -1,11 +1,12 @@
 /*global context: false */
 
 /**
- * TODO
+ * Wraps a GL framebuffer object.
  *
  * @class .Framebuffer
  * @constructor
  * @example
+ *	var oogl = new OOGL.Context('canvas');
  *	var framebuffer = new oogl.Framebuffer();
  */
 context.Framebuffer = function () {
@@ -32,6 +33,7 @@ context.Framebuffer = function () {
 	 * @param
 	 * @return
 	 * @example
+	 *	framebuffer.bind();
 	 */
 	framebuffer.bind = function () {
 		context.bindFramebuffer(context.FRAMEBUFFER, framebuffer);
@@ -80,6 +82,7 @@ context.Framebuffer = function () {
 	 * @param
 	 * @return
 	 * @example
+	 *	framebuffer._delete();
 	 */
 	framebuffer._delete = function () {
 		context.deleteFramebuffer(framebuffer);

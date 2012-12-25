@@ -15,6 +15,7 @@
  *	indicates the type of data to put in the buffer.
  * @param usage TODO
  * @example
+ *	var oogl = new OOGL.Context('canvas');
  *	var buffer = new oogl.Buffer(oogl.ARRAY_BUFFER, 'float', oogl.STATIC_DRAW);
  */
 context.Buffer = (function () {
@@ -153,7 +154,7 @@ context.Buffer = (function () {
 		 *
 		 * @method _delete
 		 * @example
-		 *	buffer.delete();
+		 *	buffer._delete();
 		 */
 		buffer._delete = function () {
 			context.deleteBuffer(buffer);
@@ -163,38 +164,156 @@ context.Buffer = (function () {
 	};
 })();
 
+/**
+ * Wraps a GL buffer whose usage is set to `gl.STATIC_DRAW`.
+ *
+ * @class .StaticBuffer
+ * @constructor
+ * @param {Number} target TODO
+ * @param {String} type TODO
+ * @example
+ *	var buffer = new oogl.StaticBuffer(oogl.ARRAY_BUFFER, 'float');
+ */
 context.StaticBuffer = function (target, type) {
 	return new context.Buffer(target, type, context.STATIC_DRAW);
 };
+
+/**
+ * Wraps a GL buffer whose usage is set to `gl.STREAM_DRAW`.
+ *
+ * @class .StreamBuffer
+ * @constructor
+ * @param {Number} target TODO
+ * @param {String} type TODO
+ * @example
+ *	var buffer = new oogl.StreamBuffer(oogl.ARRAY_BUFFER, 'float');
+ */
 context.StreamBuffer = function (target, type) {
 	return new context.Buffer(target, type, context.STREAM_DRAW);
 };
+
+/**
+ * Wraps a GL buffer whose usage is set to `gl.DYNAMIC_DRAW`.
+ *
+ * @class .DynamicBuffer
+ * @constructor
+ * @param {Number} target TODO
+ * @param {String} type TODO
+ * @example
+ *	var buffer = new oogl.DynamicBuffer(oogl.ARRAY_BUFFER, 'float');
+ */
 context.DynamicBuffer = function (target, type) {
 	return new context.Buffer(target, type, context.DYNAMIC_DRAW);
 };
 
+/**
+ * Wraps a GL buffer whose target is set to `gl.ARRAY_BUFFER`.
+ *
+ * @class .ArrayBuffer
+ * @constructor
+ * @param {String} type TODO
+ * @param {Number} usage TODO
+ * @example
+ *	var buffer = new oogl.ArrayBuffer('float', oogl.STATIC_DRAW);
+ */
 context.ArrayBuffer = function (type, usage) {
 	return new context.Buffer(context.ARRAY_BUFFER, type, usage);
 };
+
+/**
+ * Wraps a GL buffer whose target is set to `gl.ELEMENT_ARRAY_BUFFER`.
+ *
+ * @class .ElementArrayBuffer
+ * @constructor
+ * @param {String} type TODO
+ * @param {Number} usage TODO
+ * @example
+ *	var buffer = new oogl.ElementArrayBuffer('float', oogl.STATIC_DRAW);
+ */
 context.ElementArrayBuffer = function (type, usage) {
 	return new context.Buffer(context.ELEMENT_ARRAY_BUFFER, type, usage);
 };
 
+/**
+ * Wraps a GL buffer whose target is set to `gl.ARRAY_BUFFER` and usage to
+ * `gl.STATIC_DRAW`.
+ *
+ * @class .StaticArrayBuffer
+ * @constructor
+ * @param {String} type TODO
+ * @example
+ *	var buffer = new oogl.StaticArrayBuffer('float');
+ */
 context.StaticArrayBuffer = function (type) {
 	return new context.StaticBuffer(context.ARRAY_BUFFER, type);
 };
+
+/**
+ * Wraps a GL buffer whose target is set to `gl.ELEMENT_ARRAY_BUFFER` and usage
+ * to `gl.STATIC_DRAW`.
+ *
+ * @class .StaticElementArrayBuffer
+ * @constructor
+ * @param {String} type TODO
+ * @example
+ *	var buffer = new oogl.StaticElementArrayBuffer('float');
+ */
 context.StaticElementArrayBuffer = function (type) {
 	return new context.StaticBuffer(context.ELEMENT_ARRAY_BUFFER, type);
 };
+
+/**
+ * Wraps a GL buffer whose target is set to `gl.ARRAY_BUFFER` and usage to
+ * `gl.STREAM_DRAW`.
+ *
+ * @class .StreamArrayBuffer
+ * @constructor
+ * @param {String} type TODO
+ * @example
+ *	var buffer = new oogl.StreamArrayBuffer('float');
+ */
 context.StreamArrayBuffer = function (type) {
 	return new context.StreamBuffer(context.ARRAY_BUFFER, type);
 };
+
+/**
+ * Wraps a GL buffer whose target is set to `gl.ELEMENT_ARRAY_BUFFER` and usage
+ * to `gl.STREAM_DRAW`.
+ *
+ * @class .StreamElementArrayBuffer
+ * @constructor
+ * @param {String} type TODO
+ * @example
+ *	var buffer = new oogl.StreamElementArrayBuffer('float');
+ */
 context.StreamElementArrayBuffer = function (type) {
 	return new context.StreamBuffer(context.ELEMENT_ARRAY_BUFFER, type);
 };
+
+/**
+ * Wraps a GL buffer whose target is set to `gl.ARRAY_BUFFER` and usage to
+ * `gl.DYNAMIC_DRAW`.
+ *
+ * @class .DynamicArrayBuffer
+ * @constructor
+ * @param {String} type TODO
+ * @example
+ *	var buffer = new oogl.DynamicArrayBuffer('float');
+ */
 context.DynamicArrayBuffer = function (type) {
 	return new context.DynamicBuffer(context.ARRAY_BUFFER, type);
 };
+
+/**
+ * Wraps a GL buffer whose target is set to `gl.ELEMENT_ARRAY_BUFFER` and usage
+ * to `gl.DYNAMIC_DRAW`.
+ *
+ * @class .DynamicElementArrayBuffer
+ * @constructor
+ * @param {String} type TODO
+ * @example
+ *	var buffer = new oogl.DynamicElementArrayBuffer('float');
+ */
 context.DynamicElementArrayBuffer = function (type) {
 	return new context.DynamicBuffer(context.ELEMENT_ARRAY_BUFFER, type);
 };

@@ -1,5 +1,19 @@
 /*global OOGL: false */
 
+/**
+ * A mutable 2x2 matrix.
+ *
+ * @class OOGL.Matrix2
+ * @constructor
+ * @param {Number[]} data A 4-element array of the floating point values to be
+ *	put into the matrix.
+ *
+ *	The array is duplicated into the matrix, changes to the specified array will
+ *	not affect the content of the newly created matrix.
+ *
+ *	An exception is thrown if the length of the `data` array is different from
+ *	4.
+ */
 OOGL.Matrix2 = function (data) {
 	if (data.length != 4) {
 		throw 'A 2x2 matrix must have exactly 4 elements.';
@@ -8,9 +22,28 @@ OOGL.Matrix2 = function (data) {
 };
 
 OOGL.Matrix2.prototype = {
+	/**
+	 * Returns the element at the specified row and column in the matrix.
+	 *
+	 * Row and column indices are zero-based.
+	 *
+	 * @method get
+	 * @param {Number} i The row index.
+	 * @param {Number} j The column index.
+	 * @return {Number} The value at the specified row and column.
+	 */
 	get: function (i, j) {
 		return this[i * 2 + j];
 	},
+
+	/**
+	 * Changes the element at the specified row and column in the matrix.
+	 *
+	 * @method put
+	 * @param {Number} i TODO
+	 * @param {Number} j TODO
+	 * @param {Number} value TODO
+	 */
 	put: function (i, j, value) {
 		this[i * 2 + j] = value;
 		return this;
