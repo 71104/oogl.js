@@ -63,7 +63,7 @@ OOGL.Vector2.prototype = {
 	 * Computes the normalized vector and returns it as a new `Vector2` object.
 	 * This vector is not changed.
 	 *
-	 * @method getNormal
+	 * @method getNormalized
 	 * @return OOGL.Vector2
 	 * @example
 	 *	var v1 = new OOGL.Vector2(3, 4);
