@@ -169,18 +169,79 @@ OOGL.Vector2.prototype = {
 		this.y /= f;
 		return this;
 	},
+
+	/**
+	 * Multiplies this vector by the specified constant factor and returns the
+	 * product as a new `Vector2` object. This vector is not changed.
+	 *
+	 * @method by
+	 * @param {Number} f The constant factor.
+	 * @return {OOGL.Vector2} The product vector.
+	 * @example
+	 *	var v1 = new OOGL.Vector2(3, 4);
+	 *	var v2 = v1.by(2); // (6, 8)
+	 */
 	by: function (f) {
 		return new OOGL.Vector2(this.x * f, this.y * f);
 	},
+
+	/**
+	 * Computes the dot product between this vector and the specified one.
+	 *
+	 * @method dot
+	 * @param {OOGL.Vector2} v The other vector.
+	 * @return {Number} The computed dot product.
+	 * @example
+	 *	var v1 = new OOGL.Vector2(1, 2);
+	 *	var v2 = new OOGL.Vector2(3, 4);
+	 *	var dot = v1.dot(v2); // 11
+	 */
 	dot: function (v) {
 		return this.x * v.x + this.y * v.y;
 	},
+
+	/**
+	 * Reflects this vector against a line whose normal vector is specified. The
+	 * reflection of a vector `v` is computed as:
+	 *
+	 *	v - 2 * (v.n) * n
+	 *
+	 * where `v.n` is the dot product between the vector and the normal.
+	 *
+	 * This method modifies the original object.
+	 *
+	 * @method reflect
+	 * @param {OOGL.Vector2} n The normal vector.
+	 * @chainable
+	 * @example
+	 *	// reflects a velocity vector against a floor
+	 *	velocity.reflect(new OOGL.Vector2(0, 1));
+	 */
 	reflect: function (n) {
 		var dot = this.x * n.x + this.y * n.y;
 		this.x -= 2 * dot * n.x;
 		this.y -= 2 * dot * n.y;
 		return this;
 	},
+
+	/**
+	 * Computes the reflection of this vector against a line whose normal vector
+	 * is specified. The reflection of a vector `v` is computed as:
+	 *
+	 *	v - 2 * (v.n) * n
+	 *
+	 * where `v.n` is the dot product between the vector and the normal.
+	 *
+	 * The computed vector is returned as a new `Vector2` object, this vector is
+	 * not changed.
+	 *
+	 * @method getReflected
+	 * @param {OOGL.Vector2} n The normal vector.
+	 * @return {OOGL.Vector2} The computed reflected vector.
+	 * @example
+	 *	// reflects a velocity vector against a floor
+	 *	var newVelocity = velocity.getReflected(new OOGL.Vector2(0, 1));
+	 */
 	getReflected: function (n) {
 		var dot = this.x * n.x + this.y * n.y;
 		return new OOGL.Vector2(this.x - 2 * dot * n.x, this.y - 2 * dot * n.y);
