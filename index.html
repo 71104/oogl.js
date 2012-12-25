@@ -57,10 +57,11 @@
 
 <div class="highlight"><pre><span class="nt">&lt;canvas</span> <span class="na">id=</span><span class="s">"canvas"</span> <span class="na">width=</span><span class="s">"800"</span> <span class="na">height=</span><span class="s">"600"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;p&gt;</span>No browser support.<span class="nt">&lt;/p&gt;</span>
+
 <span class="nt">&lt;/canvas&gt;</span>
 <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
-<span class="nx">$</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">oogl</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">$</span><span class="p">.</span><span class="nx">Context</span><span class="p">(</span><span class="s1">'canvas'</span><span class="p">);</span>
+<span class="nx">OOGL</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">oogl</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">OOGL</span><span class="p">.</span><span class="nx">Context</span><span class="p">(</span><span class="s1">'canvas'</span><span class="p">);</span>
 
     <span class="c1">// example GL calls</span>
     <span class="nx">oogl</span><span class="p">.</span><span class="nx">clearColor</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
@@ -96,12 +97,12 @@
 
 <p>The OOGL calls needed to create a vertex array, load the shaders and make the drawing are as follows:</p>
 
-<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">oogl</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">$</span><span class="p">.</span><span class="nx">Context</span><span class="p">(</span><span class="s1">'canvas'</span><span class="p">);</span>
+<div class="highlight"><pre><span class="nx">OOGL</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">oogl</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">OOGL</span><span class="p">.</span><span class="nx">Context</span><span class="p">(</span><span class="s1">'canvas'</span><span class="p">);</span>
     <span class="nx">oogl</span><span class="p">.</span><span class="nx">clearColor</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
     <span class="nx">oogl</span><span class="p">.</span><span class="nx">clear</span><span class="p">(</span><span class="nx">oogl</span><span class="p">.</span><span class="nx">COLOR_BUFFER_BIT</span><span class="p">);</span>
     <span class="kd">var</span> <span class="nx">array</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">oogl</span><span class="p">.</span><span class="nx">VertexArray</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]);</span>
-    <span class="kd">var</span> <span class="nx">program</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">oogl</span><span class="p">.</span><span class="nx">DefaultProgram</span><span class="p">(</span><span class="s1">'test'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'in_Vertex'</span><span class="p">],</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">program</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">oogl</span><span class="p">.</span><span class="nx">AjaxProgram</span><span class="p">(</span><span class="s1">'test'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'in_Vertex'</span><span class="p">],</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
         <span class="nx">program</span><span class="p">.</span><span class="nx">use</span><span class="p">();</span>
         <span class="nx">oogl</span><span class="p">.</span><span class="nx">drawArrays</span><span class="p">(</span><span class="nx">oogl</span><span class="p">.</span><span class="nx">TRIANGLES</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
         <span class="nx">oogl</span><span class="p">.</span><span class="nx">flush</span><span class="p">();</span>
@@ -109,9 +110,9 @@
 <span class="p">});</span>
 </pre></div>
 
-<p>The constructed <code>DefaultProgram</code> object refers to the <code>test.vert</code> and <code>test.frag</code> files because of its <code>test</code> first argument; the <code>.vert</code> and <code>.frag</code> extensions are added automatically.</p>
+<p>Here we use the <code>AjaxProgram</code> utility class to load the shader pair asynchronously. The constructed <code>AjaxProgram</code> object refers to the <code>test.vert</code> and <code>test.frag</code> files because of its <code>test</code> first argument; the <code>.vert</code> and <code>.frag</code> extensions are added automatically.</p>
 
-<p>The last calls (<code>program.use()</code> through <code>oogl.flush()</code>) are made asynchronously in a callback function passed to the <code>DefaultProgram</code> constructor because the shader files need to be loaded asynchronously through AJAX.</p>
+<p>The last calls (<code>program.use()</code> through <code>oogl.flush()</code>) are made asynchronously in a callback function passed to the <code>AjaxProgram</code> constructor that is called after the shaders have been loaded and compiled and the program has been linked.</p>
 
 <h1>Math stuff</h1>
 
