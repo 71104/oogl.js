@@ -23,7 +23,7 @@ module.exports = function (grunt) {
 			version: '1.0.0',
 			banner: '/*! Object-Oriented Graphics Library - v<%= meta.version %> - ' +
 				'<%= grunt.template.today("yyyy-mm-dd") %>\n' +
-				'* Released under the MIT License' +
+				'* Released under the MIT License\n' +
 				'* http://oogljs.com/\n' +
 				'* Copyright (c) <%= grunt.template.today("yyyy") %> Alberto La Rocca */'
 		},
