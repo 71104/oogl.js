@@ -93,7 +93,7 @@ var v = new OOGL.Vector3(x, y, z);
 program.uniformVec3(v);
 ```
 
-OOGL provides classes for handling 2-, 3- and 4-component vectors and 2x2, 3x3 and 4x4 matrices.
+OOGL provides classes to handle 2-, 3- and 4-component vectors and 2x2, 3x3 and 4x4 matrices.
 
 OOGL math classes are developed with a strong focus on performances and can be used to perform physics or other vector and matrix computations at maximum speed.
 
