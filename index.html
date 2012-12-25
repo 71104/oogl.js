@@ -116,7 +116,17 @@
 
 <h1>Math stuff</h1>
 
-<p>TBD</p>
+<p>OOGL includes mutable vector and matrix classes that perfectly integrate with the provided program and shader classes; you can easily use them to exchange variables with your shaders.</p>
+
+<p>For example you can specify a <code>vec3</code> uniform variable in this way:</p>
+
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">v</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">OOGL</span><span class="p">.</span><span class="nx">Vector3</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">,</span> <span class="nx">z</span><span class="p">);</span>
+<span class="nx">program</span><span class="p">.</span><span class="nx">uniformVec3</span><span class="p">(</span><span class="nx">v</span><span class="p">);</span>
+</pre></div>
+
+<p>OOGL provides classes to handle 2-, 3- and 4-component vectors and 2x2, 3x3 and 4x4 matrices.</p>
+
+<p>OOGL math classes are developed with a strong focus on performances and can be used to perform physics or other vector and matrix computations at maximum speed.</p>
 
 <h1>jQuery</h1>
 
