@@ -8,11 +8,12 @@
  * @param {Number[]} data A 4-element array of the floating point values to be
  *	put into the matrix.
  *
- *	The array is duplicated into the matrix, changes to the specified array will
- *	not affect the content of the newly created matrix.
+ * The array is duplicated into the matrix, changes to the specified array will
+ * not affect the content of the newly created matrix.
  *
- *	An exception is thrown if the length of the `data` array is different from
- *	4.
+ * An exception is thrown if the length of the `data` array is different from 4.
+ * @example
+ *	var matrix = new OOGL.Matrix2([1, 0, 0, 1]);
  */
 OOGL.Matrix2 = function (data) {
 	if (data.length != 4) {
@@ -31,6 +32,9 @@ OOGL.Matrix2.prototype = {
 	 * @param {Number} i The row index.
 	 * @param {Number} j The column index.
 	 * @return {Number} The value at the specified row and column.
+	 * @example
+	 *	var m = new OOGL.Matrix2([1, 2, 3, 4]);
+	 *	var determinant = m.get(0, 0) * m.get(1, 1) - m.get(0, 1) * m.get(1, 0);
 	 */
 	get: function (i, j) {
 		return this[i * 2 + j];
