@@ -218,9 +218,9 @@ OOGL.Matrix2.prototype = {
 	 * @param {OOGL.Vector2} v The vector to multiply.
 	 * @return {OOGL.Vector2} The product vector.
 	 * @example
-	 *	var m1 = new OOGL.Matrix2([2, 0, 0, 2]);
+	 *	var m = new OOGL.Matrix2([2, 0, 0, 2]);
 	 *	var v = new OOGL.Vector2(2, 2);
-	 *	var w = m1.by(v); // (4, 4)
+	 *	var w = m.by(v); // (4, 4)
 	 */
 	by: function (x) {
 		if (x instanceof OOGL.Vector2) {
@@ -243,7 +243,7 @@ OOGL.Matrix2.prototype = {
 	 * @method determinant
 	 * @return {Number} The computed determinant.
 	 * @example
-	 *	var m = new OOGL.Matrix([1, 2, 3, 4]);
+	 *	var m = new OOGL.Matrix2([1, 2, 3, 4]);
 	 *	var d = m.determinant(); // -2
 	 */
 	determinant: function () {
