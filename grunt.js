@@ -23,9 +23,9 @@ module.exports = function (grunt) {
 			version: '1.0.0',
 			banner: '/*! Object-Oriented Graphics Library - v<%= meta.version %> - ' +
 				'<%= grunt.template.today("yyyy-mm-dd") %>\n' +
+				'* Released under the MIT License' +
 				'* http://oogljs.com/\n' +
-				'* Copyright (c) <%= grunt.template.today("yyyy") %> ' +
-				'Alberto La Rocca */'
+				'* Copyright (c) <%= grunt.template.today("yyyy") %> Alberto La Rocca */'
 		},
 		lint: {
 			files: [
