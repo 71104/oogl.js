@@ -84,6 +84,8 @@ The last calls (`program.use()` through `oogl.flush()`) are made asynchronously 
 Math stuff
 ==========
 
+OOGL includes mutable vector and matrix classes that perfectly integrate with the provided program and shader classes; you can easily use them to exchange variables with your shaders.
+
 TBD
 
 jQuery

@@ -5,7 +5,7 @@
  *
  * Instancing an object of this class is equivalent to calling the GL function
  * `createBuffer` with the specified target. Subsequent GL `bufferData` and
- * `bufferSubData` calls will be made using the specified usage.
+ * `bufferSubData` calls will be made by this buffer using the specified usage.
  *
  * @class .Buffer
  * @extends WebGLBuffer
