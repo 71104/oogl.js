@@ -1,5 +1,18 @@
 /*global OOGL: false, context: false */
 
+/**
+ * Wraps a GL shader.
+ *
+ * @class .Shader
+ * @extends WebGLShader
+ * @constructor
+ * @param {Number} type The type of shader. Either `oogl.VERTEX_SHADER` or
+ *	`oogl.FRAGMENT_SHADER`.
+ * @example
+ *	var vertexShader = new oogl.Shader(oogl.VERTEX_SHADER);
+ *	vertexShader.source(vertexSource);
+ *	vertexShader.compileOrThrow();
+ */
 context.Shader = function (type) {
 	var shader = context.createShader(type);
 	shader.getParameter = function (name) {

@@ -47,8 +47,7 @@ context.AttributeArray1 = function (index, type, data, normalize) {
 	}
 
 	var buffer = new context.StaticArrayBuffer(type);
-	buffer.bind();
-	buffer.data(data);
+	buffer.bindAndData(data);
 	context.enableVertexAttribArray(index);
 
 	/**
@@ -150,8 +149,7 @@ context.AttributeArray2 = function (index, type, data, normalize) {
 	}
 
 	var buffer = new context.StaticArrayBuffer(type);
-	buffer.bind();
-	buffer.data(data);
+	buffer.bindAndData(data);
 	context.enableVertexAttribArray(index);
 
 	/**
@@ -253,8 +251,7 @@ context.AttributeArray3 = function (index, type, data, normalize) {
 	}
 
 	var buffer = new context.StaticArrayBuffer(type);
-	buffer.bind();
-	buffer.data(data);
+	buffer.bindAndData(data);
 	context.enableVertexAttribArray(index);
 
 	/**
@@ -356,8 +353,7 @@ context.AttributeArray4 = function (index, type, data, normalize) {
 	}
 
 	var buffer = new context.StaticArrayBuffer(type);
-	buffer.bind();
-	buffer.data(data);
+	buffer.bindAndData(data);
 	context.enableVertexAttribArray(index);
 
 	/**
@@ -525,8 +521,21 @@ context.AttributeArrays = function (count) {
 		 *	arrays.drawTriangles();
 		 */
 		bindAndPointer: function (stride, offset) {
-			for (var i in arrays) {
-				arrays[i].bindAndPointer(stride, offset);
+			var i;
+			if (arguments.length < 2) {
+				if (arguments.length < 1) {
+					for (i in arrays) {
+						arrays[i].bindAndPointer();
+					}
+				} else {
+					for (i in arrays) {
+						arrays[i].bindAndPointer(stride);
+					}
+				}
+			} else {
+				for (i in arrays) {
+					arrays[i].bindAndPointer(stride, offset);
+				}
 			}
 		},
 
@@ -667,8 +676,7 @@ context.ElementArray = function (indices, type) {
 	}
 
 	var buffer = new context.StaticElementArrayBuffer(types[type]);
-	buffer.bind();
-	buffer.data(indices);
+	buffer.bindAndData(indices);
 
 	/**
 	 * Draws the elements in `gl.TRIANGLES` mode.

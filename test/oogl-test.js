@@ -1579,7 +1579,7 @@ context.Buffer = (function () {
 		};
 
 		/**
-		 * Queries a parameter related to this buffer.
+		 * Queries a buffer-related parameter.
 		 *
 		 * `gl.getBufferParameter` equivalent.
 		 *
@@ -1924,8 +1924,7 @@ context.AttributeArray1 = function (index, type, data, normalize) {
 	}
 
 	var buffer = new context.StaticArrayBuffer(type);
-	buffer.bind();
-	buffer.data(data);
+	buffer.bindAndData(data);
 	context.enableVertexAttribArray(index);
 
 	/**
@@ -2027,8 +2026,7 @@ context.AttributeArray2 = function (index, type, data, normalize) {
 	}
 
 	var buffer = new context.StaticArrayBuffer(type);
-	buffer.bind();
-	buffer.data(data);
+	buffer.bindAndData(data);
 	context.enableVertexAttribArray(index);
 
 	/**
@@ -2130,8 +2128,7 @@ context.AttributeArray3 = function (index, type, data, normalize) {
 	}
 
 	var buffer = new context.StaticArrayBuffer(type);
-	buffer.bind();
-	buffer.data(data);
+	buffer.bindAndData(data);
 	context.enableVertexAttribArray(index);
 
 	/**
@@ -2233,8 +2230,7 @@ context.AttributeArray4 = function (index, type, data, normalize) {
 	}
 
 	var buffer = new context.StaticArrayBuffer(type);
-	buffer.bind();
-	buffer.data(data);
+	buffer.bindAndData(data);
 	context.enableVertexAttribArray(index);
 
 	/**
@@ -2402,8 +2398,21 @@ context.AttributeArrays = function (count) {
 		 *	arrays.drawTriangles();
 		 */
 		bindAndPointer: function (stride, offset) {
-			for (var i in arrays) {
-				arrays[i].bindAndPointer(stride, offset);
+			var i;
+			if (arguments.length < 2) {
+				if (arguments.length < 1) {
+					for (i in arrays) {
+						arrays[i].bindAndPointer();
+					}
+				} else {
+					for (i in arrays) {
+						arrays[i].bindAndPointer(stride);
+					}
+				}
+			} else {
+				for (i in arrays) {
+					arrays[i].bindAndPointer(stride, offset);
+				}
 			}
 		},
 
@@ -2544,8 +2553,7 @@ context.ElementArray = function (indices, type) {
 	}
 
 	var buffer = new context.StaticElementArrayBuffer(types[type]);
-	buffer.bind();
-	buffer.data(indices);
+	buffer.bindAndData(indices);
 
 	/**
 	 * Draws the elements in `gl.TRIANGLES` mode.
@@ -2688,6 +2696,19 @@ context.Textures = function (textures) {
 
 /*global OOGL: false, context: false */
 
+/**
+ * Wraps a GL shader.
+ *
+ * @class .Shader
+ * @extends WebGLShader
+ * @constructor
+ * @param {Number} type The type of shader. Either `oogl.VERTEX_SHADER` or
+ *	`oogl.FRAGMENT_SHADER`.
+ * @example
+ *	var vertexShader = new oogl.Shader(oogl.VERTEX_SHADER);
+ *	vertexShader.source(vertexSource);
+ *	vertexShader.compileOrThrow();
+ */
 context.Shader = function (type) {
 	var shader = context.createShader(type);
 	shader.getParameter = function (name) {
@@ -2764,9 +2785,38 @@ context.AjaxFragmentShader = function (name, callback) {
 
 /*global OOGL: false, context: false */
 
+/**
+ * Wraps a GL program.
+ *
+ * `Program` objects also maintain an independent uniform location cache so that
+ * uniform operations are sped up as `gl.getUniformLocation` calls are needed
+ * only once per variable name. The cache is automatically invalidated when the
+ * program is linked using the provided `link` or `linkOrThrow` methods.
+ *
+ * @class .Program
+ * @extends WebGLProgram
+ * @constructor
+ * @example
+ *	var program = new oogl.Program();
+ *	program.attachShader(vertexShader); // either a WebGLShader or OOGL.VertexShader object
+ *	program.attachShader(fragmentShader); // either a WebGLShader or OOGL.VertexShader object
+ *	program.linkOrThrow();
+ */
 context.Program = function () {
 	var program = context.createProgram();
 	var locationCache = {};
+
+	/**
+	 * Queries a program-related parameter.
+	 *
+	 * `gl.getProgramParameter` equivalent.
+	 *
+	 * @method getParameter
+	 * @param {String} name TODO
+	 * @return {Mixed} TODO
+	 * @example
+	 *	TODO
+	 */
 	program.getParameter = function (name) {
 		return context.getProgramParameter(program, name);
 	};

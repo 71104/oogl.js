@@ -52,7 +52,7 @@ context.Buffer = (function () {
 		};
 
 		/**
-		 * Queries a parameter related to this buffer.
+		 * Queries a buffer-related parameter.
 		 *
 		 * `gl.getBufferParameter` equivalent.
 		 *

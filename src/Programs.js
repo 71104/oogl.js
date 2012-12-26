@@ -1,8 +1,37 @@
 /*global OOGL: false, context: false */
 
+/**
+ * Wraps a GL program.
+ *
+ * `Program` objects also maintain an independent uniform location cache so that
+ * uniform operations are sped up as `gl.getUniformLocation` calls are needed
+ * only once per variable name. The cache is automatically invalidated when the
+ * program is linked using the provided `link` or `linkOrThrow` methods.
+ *
+ * @class .Program
+ * @extends WebGLProgram
+ * @constructor
+ * @example
+ *	var program = new oogl.Program();
+ *	program.attachShader(vertexShader); // either a WebGLShader or OOGL.VertexShader object
+ *	program.attachShader(fragmentShader); // either a WebGLShader or OOGL.VertexShader object
+ *	program.linkOrThrow();
+ */
 context.Program = function () {
 	var program = context.createProgram();
 	var locationCache = {};
+
+	/**
+	 * Queries a program-related parameter.
+	 *
+	 * `gl.getProgramParameter` equivalent.
+	 *
+	 * @method getParameter
+	 * @param {String} name TODO
+	 * @return {Mixed} TODO
+	 * @example
+	 *	TODO
+	 */
 	program.getParameter = function (name) {
 		return context.getProgramParameter(program, name);
 	};
