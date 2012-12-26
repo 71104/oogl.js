@@ -15,6 +15,18 @@
  */
 context.Shader = function (type) {
 	var shader = context.createShader(type);
+
+	/**
+	 * Queries a shader-related parameter.
+	 *
+	 * `gl.getShaderParameter` equivalent.
+	 *
+	 * @method getParameter
+	 * @param {String} name TODO
+	 * @return {Mixed} TODO
+	 * @example
+	 *	TODO
+	 */
 	shader.getParameter = function (name) {
 		return context.getShaderParameter(shader, name);
 	};

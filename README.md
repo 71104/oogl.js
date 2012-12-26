@@ -54,6 +54,8 @@ void main() {
 And the fragment one:
 
 ```glsl
+precision mediump float;
+
 void main() {
 	gl_FragColor = vec4(1);
 }
@@ -98,6 +100,8 @@ void main() {
 ```
 
 ```glsl
+precision mediump float;
+
 varying vec3 ex_Color;
 
 void main() {
