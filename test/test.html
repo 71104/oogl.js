@@ -13,12 +13,12 @@ $(function () {
 	var oogl = new $.Context('canvas');
 	oogl.clearColor(0, 0, 0, 1);
 	oogl.clear(oogl.COLOR_BUFFER_BIT);
-	var array = new oogl.AttributeArray2(0, 'float', [-1, 1, -1, -1, 1, -1]);
-	array.bind();
-	array.pointer();
+	var arrays = new oogl.AttributeArrays();
+	arrays.add2('float', [-1, 1, -1, -1, 1, -1]);
+	arrays.bindAndPointer();
 	var program = new oogl.AjaxProgram('test', ['in_Vertex'], function () {
 		program.use();
-		oogl.drawArrays(oogl.TRIANGLES, 0, 3);
+		arrays.drawTriangles();
 		oogl.flush();
 	});
 });
