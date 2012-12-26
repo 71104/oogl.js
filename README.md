@@ -83,6 +83,41 @@ Here we use the `AjaxProgram` utility class to load the shader pair asynchronous
 
 The last calls (`program.use()` through `oogl.flush()`) are made asynchronously in a callback function passed to the `AjaxProgram` constructor that is called after the shaders have been loaded and compiled and the program has been linked.
 
+Should you wish to apply per-vertex interpolated colors, you first modify the shaders as follows:
+
+```glsl
+attribute vec2 in_Vertex;
+
+void main() {
+	gl_Position = vec4(in_Vertex, 0, 2);
+}
+```
+
+```glsl
+void main() {
+	gl_FragColor = vec4(1);
+}
+```
+
+And then use the `AttributeArrays` utility class in the JavaScript code:
+
+```javascript
+OOGL(function () {
+	var oogl = new OOGL.Context('canvas');
+	oogl.clearColor(0, 0, 0, 1);
+	oogl.clear(oogl.COLOR_BUFFER_BIT);
+	var arrays = new oogl.AttributeArrays(3);
+	arrays.add2('float', [-1, 1, -1, -1, 1, -1]);
+	arrays.add3('float', [0, 1, 0, 1, 0, 0, 0, 0, 1]);
+	arrays.bindAndPointer();
+	var program = new oogl.AjaxProgram('test', ['in_Vertex'], function () {
+		program.use();
+		arrays.drawTriangles();
+		oogl.flush();
+	});
+});
+```
+
 Math stuff
 ==========
 
