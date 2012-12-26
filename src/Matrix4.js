@@ -1,5 +1,14 @@
 /*global OOGL: false */
 
+/**
+ * A mutable 4x4 matrix.
+ *
+ * @class OOGL.Matrix4
+ * @constructor
+ * @param {Number[]} data TODO
+ * @example
+ *	TODO
+ */
 OOGL.Matrix4 = function (data) {
 	if (data.length != 16) {
 		throw 'A 4x4 matrix must have exactly 16 elements.';
@@ -8,9 +17,30 @@ OOGL.Matrix4 = function (data) {
 };
 
 OOGL.Matrix4.prototype = {
+	/**
+	 * TODO
+	 *
+	 * @method get
+	 * @param {Number} i TODO
+	 * @param {Number} j TODO
+	 * @return {Number} TODO
+	 * @example
+	 *	TODO
+	 */
 	get: function (i, j) {
 		return this[i * 4 + j];
 	},
+
+	/**
+	 * TODO
+	 *
+	 * @method put
+	 * @param {Number} i TODO
+	 * @param {Number} j TODO
+	 * @param {Number} value TODO
+	 * @example
+	 *	TODO
+	 */
 	put: function (i, j, value) {
 		this[i * 4 + j] = value;
 		return this;

@@ -304,6 +304,16 @@ OOGL.Matrix3.prototype = {
 		}
 		return this;
 	},
+
+	/**
+	 * Computes the inverse of this matrix and returns it as a new `Matrix3`
+	 * object.
+	 *
+	 * @method getInverse
+	 * @example
+	 *	var m1 = new OOGL.Matrix3([7, 6, 1, 1, 7, 6, 6, 7, 1]);
+	 *	var m2 = m1.getInverse(); // [0.5, -0.014, -0.414, -0.5, -0.014,  0.586, 0.5, 0.186, -0.614]
+	 */
 	getInverse: function () {
 		var determinant = this[0] * (this[4] * this[8] - this[5] * this[7]) -
 			this[1] * (this[3] * this[8] - this[5] * this[6]) +
@@ -322,9 +332,39 @@ OOGL.Matrix3.prototype = {
 	}
 };
 
+/**
+ * The null 3x3 matrix.
+ *
+ * @property NULL
+ * @static
+ * @type OOGL.Matrix3
+ */
 OOGL.Matrix3.NULL = new OOGL.Matrix3([0, 0, 0, 0, 0, 0, 0, 0, 0]);
+
+/**
+ * The 3x3 identity matrix.
+ *
+ * @property IDENTITY
+ * @static
+ * @type OOGL.Matrix3
+ */
 OOGL.Matrix3.IDENTITY = new OOGL.Matrix3([1, 0, 0, 0, 1, 0, 0, 0, 1]);
 
+/**
+ * Creates a 3D rotation matrix that rotates everything counterclockwise about
+ * the specified `(x, y, z)` axis by the specified `a` angle.
+ *
+ * The specified `x`, `y` and `z` components must form a unit-length vector.
+ *
+ * @class OOGL.RotationMatrix3
+ * @extends OOGL.Matrix3
+ * @constructor
+ * @param {Number} x The X component of the rotation axis.
+ * @param {Number} y The Y component of the rotation axis.
+ * @param {Number} z The Z component of the rotation axis.
+ * @example
+ *	var m = new OOGL.RotationMatrix3(0, 1, 0, Math.PI / 2); // 90 degrees horizontal rotation
+ */
 OOGL.RotationMatrix3 = function (x, y, z, a) {
 	var s = Math.sin(a);
 	var c = Math.cos(a);
@@ -341,6 +381,19 @@ OOGL.RotationMatrix3 = function (x, y, z, a) {
 	]);
 };
 
+/**
+ * Creates a 3D scaling matrix using the specified `x`, `y` and `z` scaling
+ * factors.
+ *
+ * @class OOGL.ScalingMatrix3
+ * @extends OOGL.Matrix3
+ * @constructor
+ * @param {Number} x The X scaling factor.
+ * @param {Number} y The Y scaling factor.
+ * @param {Number} z The Z scaling factor.
+ * @example
+ *	var m = new OOGL.ScalingMatrix3(0.5, 0.5, 0.5); // halves the size of everything
+ */
 OOGL.ScalingMatrix3 = function (x, y, z) {
 	return new OOGL.Matrix3([x, 0, 0, 0, y, 0, 0, 0, z]);
 };
