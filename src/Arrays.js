@@ -440,7 +440,13 @@ context.AttributeArrays = function (count) {
 		 */
 		drawTriangles: (function (all) {
 			return function (offset, count) {
-				context.drawArrays(context.TRIANGLES, offset || 0, count || all);
+				if (arguments.length < 2) {
+					count = all;
+					if (arguments.length < 1) {
+						offset = 0;
+					}
+				}
+				context.drawArrays(context.TRIANGLES, offset, count);
 			};
 		})(count),
 
@@ -463,7 +469,13 @@ context.AttributeArrays = function (count) {
 		 */
 		drawTriangleFan: (function (all) {
 			return function (offset, count) {
-				context.drawArrays(context.TRIANGLE_FAN, offset || 0, count || all);
+				if (arguments.length < 2) {
+					count = all;
+					if (arguments.length < 1) {
+						offset = 0;
+					}
+				}
+				context.drawArrays(context.TRIANGLE_FAN, offset, count);
 			};
 		})(count),
 
@@ -486,7 +498,13 @@ context.AttributeArrays = function (count) {
 		 */
 		drawTriangleStrip: (function (all) {
 			return function (offset, count) {
-				context.drawArrays(context.TRIANGLE_STRIP, offset || 0, count || all);
+				if (arguments.length < 2) {
+					count = all;
+					if (arguments.length < 1) {
+						offset = 0;
+					}
+				}
+				context.drawArrays(context.TRIANGLE_STRIP, offset, count);
 			};
 		})(count),
 
@@ -506,13 +524,114 @@ context.AttributeArrays = function (count) {
 };
 
 /**
- * TODO
+ * Represents an element array.
  *
- * @class ElementArray
+ * This class inherits `StaticElementArrayBuffer` and introduces utility
+ * methods.
+ *
+ * @class .ElementArray
+ * @extends .StaticElementArrayBuffer
  * @constructor
+ * @param {Number[]} indices The element indices.
+ * @param {String} [type='ushort'] TODO
+ * @example
+ *	var program = new oogl.AutoProgram(vertexSource, fragmentSource, ['in_Vertex', 'in_Color', 'in_TexCoord']);
+ *	var arrays = new oogl.AttributeArrays();
+ *	arrays.add3('float', vertices);
+ *	arrays.add3('float', colors);
+ *	arrays.add2('float', textureCoordinates);
+ *	arrays.bindAndPointer();
+ *	var elements = new oogl.ElementArray(indices);
+ *	elements.bind();
+ *	program.use();
+ *	elements.drawTriangles();
  */
-context.ElementArray = function () {
-	var buffer = new context.StaticElementArrayBuffer();
-	// TODO
+context.ElementArray = function (indices, type) {
+	var count = indices.length;
+
+	var types = {
+		'ubyte': context.UNSIGNED_BYTE,
+		'ushort': context.UNSIGNED_SHORT
+	};
+	if (!types.hasOwnProperty(type || 'ushort')) {
+		throw 'Invalid element type, must be either "ubyte" or "ubyte".';
+	}
+
+	var buffer = new context.StaticElementArrayBuffer(types[type]);
+	buffer.bind();
+	buffer.data(indices);
+
+	/**
+	 * Draws the elements in `gl.TRIANGLES` mode.
+	 *
+	 * Equivalent to calling `gl.drawElements` with `gl.TRIANGLES`.
+	 *
+	 * @method drawTriangles
+	 * @param {Number} [offset=0] The index of the first element to draw.
+	 * @param {Number} [count] The number of elements to draw. When not
+	 *	specified defaults to the `count` parameter passed to the `ElementArray`
+	 *	constructor.
+	 * @example
+	 */
+	buffer.drawTriangles = (function (all) {
+		return function (offset, count) {
+			if (arguments.length < 2) {
+				count = all;
+				if (arguments.length < 1) {
+					offset = 0;
+				}
+			}
+			context.drawElements(context.TRIANGLES, count, types[type], offset);
+		};
+	})(count);
+
+	/**
+	 * Draws the elements in `gl.TRIANGLE_FAN` mode.
+	 *
+	 * Equivalent to calling `gl.drawElements` with `gl.TRIANGLE_FAN`.
+	 *
+	 * @method drawTriangles
+	 * @param {Number} [offset=0] The index of the first element to draw.
+	 * @param {Number} [count] The number of elements to draw. When not
+	 *	specified defaults to the `count` parameter passed to the `ElementArray`
+	 *	constructor.
+	 * @example
+	 */
+	buffer.drawTriangleFan = (function (all) {
+		return function (offset, count) {
+			if (arguments.length < 2) {
+				count = all;
+				if (arguments.length < 1) {
+					offset = 0;
+				}
+			}
+			context.drawElements(context.TRIANGLE_FAN, count, types[type], offset);
+		};
+	})(count);
+
+	/**
+	 * Draws the elements in `gl.TRIANGLE_STRIP` mode.
+	 *
+	 * Equivalent to calling `gl.drawElements` with `gl.TRIANGLE_STRIP`.
+	 *
+	 * @method drawTriangleStrip
+	 * @param {Number} [offset=0] The index of the first element to draw.
+	 * @param {Number} [count] The number of elements to draw. When not
+	 *	specified defaults to the `count` parameter passed to the `ElementArray`
+	 *	constructor.
+	 * @example
+	 */
+	buffer.drawTriangleStrip = (function (all) {
+		return function (offset, count) {
+			if (arguments.length < 2) {
+				count = all;
+				if (arguments.length < 1) {
+					offset = 0;
+				}
+			}
+			context.drawElements(context.TRIANGLE_STRIP, count, types[type], offset);
+		};
+	})(count);
+
 	return buffer;
 };

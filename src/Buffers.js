@@ -168,6 +168,7 @@ context.Buffer = (function () {
  * Wraps a GL buffer whose usage is set to `gl.STATIC_DRAW`.
  *
  * @class .StaticBuffer
+ * @extends .Buffer
  * @constructor
  * @param {Number} target TODO
  * @param {String} type TODO
@@ -182,6 +183,7 @@ context.StaticBuffer = function (target, type) {
  * Wraps a GL buffer whose usage is set to `gl.STREAM_DRAW`.
  *
  * @class .StreamBuffer
+ * @extends .Buffer
  * @constructor
  * @param {Number} target TODO
  * @param {String} type TODO
@@ -196,6 +198,7 @@ context.StreamBuffer = function (target, type) {
  * Wraps a GL buffer whose usage is set to `gl.DYNAMIC_DRAW`.
  *
  * @class .DynamicBuffer
+ * @extends .Buffer
  * @constructor
  * @param {Number} target TODO
  * @param {String} type TODO
@@ -210,6 +213,7 @@ context.DynamicBuffer = function (target, type) {
  * Wraps a GL buffer whose target is set to `gl.ARRAY_BUFFER`.
  *
  * @class .ArrayBuffer
+ * @extends .Buffer
  * @constructor
  * @param {String} type TODO
  * @param {Number} usage TODO
@@ -224,6 +228,7 @@ context.ArrayBuffer = function (type, usage) {
  * Wraps a GL buffer whose target is set to `gl.ELEMENT_ARRAY_BUFFER`.
  *
  * @class .ElementArrayBuffer
+ * @extends .Buffer
  * @constructor
  * @param {String} type TODO
  * @param {Number} usage TODO
@@ -239,6 +244,7 @@ context.ElementArrayBuffer = function (type, usage) {
  * `gl.STATIC_DRAW`.
  *
  * @class .StaticArrayBuffer
+ * @extends .StaticBuffer
  * @constructor
  * @param {String} type TODO
  * @example
@@ -253,6 +259,7 @@ context.StaticArrayBuffer = function (type) {
  * to `gl.STATIC_DRAW`.
  *
  * @class .StaticElementArrayBuffer
+ * @extends .StaticBuffer
  * @constructor
  * @param {String} type TODO
  * @example
@@ -267,6 +274,7 @@ context.StaticElementArrayBuffer = function (type) {
  * `gl.STREAM_DRAW`.
  *
  * @class .StreamArrayBuffer
+ * @extends .StreamBuffer
  * @constructor
  * @param {String} type TODO
  * @example
@@ -281,6 +289,7 @@ context.StreamArrayBuffer = function (type) {
  * to `gl.STREAM_DRAW`.
  *
  * @class .StreamElementArrayBuffer
+ * @extends .StreamBuffer
  * @constructor
  * @param {String} type TODO
  * @example
@@ -295,6 +304,7 @@ context.StreamElementArrayBuffer = function (type) {
  * `gl.DYNAMIC_DRAW`.
  *
  * @class .DynamicArrayBuffer
+ * @extends .DynamicBuffer
  * @constructor
  * @param {String} type TODO
  * @example
@@ -309,6 +319,7 @@ context.DynamicArrayBuffer = function (type) {
  * to `gl.DYNAMIC_DRAW`.
  *
  * @class .DynamicElementArrayBuffer
+ * @extends .DynamicBuffer
  * @constructor
  * @param {String} type TODO
  * @example
