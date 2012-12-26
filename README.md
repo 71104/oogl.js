@@ -87,15 +87,21 @@ Should you wish to apply per-vertex interpolated colors, you first modify the sh
 
 ```glsl
 attribute vec2 in_Vertex;
+attribute vec3 in_Color;
+
+varying vec3 ex_Color;
 
 void main() {
 	gl_Position = vec4(in_Vertex, 0, 2);
+	ex_Color = in_Color;
 }
 ```
 
 ```glsl
+varying vec3 ex_Color;
+
 void main() {
-	gl_FragColor = vec4(1);
+	gl_FragColor = vec4(ex_Color, 1);
 }
 ```
 
@@ -110,7 +116,7 @@ OOGL(function () {
 	arrays.add2('float', [-1, 1, -1, -1, 1, -1]);
 	arrays.add3('float', [0, 1, 0, 1, 0, 0, 0, 0, 1]);
 	arrays.bindAndPointer();
-	var program = new oogl.AjaxProgram('test', ['in_Vertex'], function () {
+	var program = new oogl.AjaxProgram('test', ['in_Vertex', 'in_Color'], function () {
 		program.use();
 		arrays.drawTriangles();
 		oogl.flush();
