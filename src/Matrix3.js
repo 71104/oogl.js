@@ -362,6 +362,7 @@ OOGL.Matrix3.IDENTITY = new OOGL.Matrix3([1, 0, 0, 0, 1, 0, 0, 0, 1]);
  * @param {Number} x The X component of the rotation axis.
  * @param {Number} y The Y component of the rotation axis.
  * @param {Number} z The Z component of the rotation axis.
+ * @param {Number} a The rotation angle.
  * @example
  *	var m = new OOGL.RotationMatrix3(0, 1, 0, Math.PI / 2); // 90 degrees horizontal rotation
  */
