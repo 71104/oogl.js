@@ -1,8 +1,39 @@
 /*global OOGL: false */
 
+/**
+ * A mutable 3-component vector.
+ *
+ * @class OOGL.Vector3
+ * @constructor
+ * @param {Number} x The X component.
+ * @param {Number} y The Y component.
+ * @param {Number} z The Z component.
+ * @example
+ *	var v = new OOGL.Vector3(3, 4, 5);
+ */
 OOGL.Vector3 = function (x, y, z) {
+	/**
+	 * The X component.
+	 *
+	 * @property x
+	 * @type Number
+	 */
 	this.x = x;
+
+	/**
+	 * The Y component.
+	 *
+	 * @property y
+	 * @type Number
+	 */
 	this.y = y;
+
+	/**
+	 * The Z component.
+	 *
+	 * @property z
+	 * @type Number
+	 */
 	this.z = z;
 };
 

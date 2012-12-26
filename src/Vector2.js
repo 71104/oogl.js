@@ -246,6 +246,22 @@ OOGL.Vector2.prototype = {
 		var dot = this.x * n.x + this.y * n.y;
 		return new OOGL.Vector2(this.x - 2 * dot * n.x, this.y - 2 * dot * n.y);
 	},
+
+	/**
+	 * Refracts this vector given a surface normal `n` and the `eta` ratio
+	 * between refraction indices.
+	 *
+	 * This method modifies the original object.
+	 *
+	 * @method refract
+	 * @chainable
+	 * @param {OOGL.Vector2} n The surface normal at the incidence point.
+	 * @param {Number} eta The ratio between refraction indices.
+	 * @example
+	 *	var v = new OOGL.Vector2(0.3, -1);
+	 *	var n = new OOGL.Vector2(0, 1);
+	 *	v.refract(n, 1.3);
+	 */
 	refract: function (n, eta) {
 		var dot = this.x * n.x + this.y * n.y;
 		var k = 1 - eta * eta * (1 - dot * dot);
@@ -258,6 +274,21 @@ OOGL.Vector2.prototype = {
 		}
 		return this;
 	},
+
+	/**
+	 * Refracts this vector given a surface normal `n` and the `eta` ratio
+	 * between refraction indices; the computed vector is returned as a new
+	 * `OOGL.Vector2` object, this object is not changed.
+	 *
+	 * @method getRefracted
+	 * @param {OOGL.Vector2} n The surface normal at the incidence point.
+	 * @param {Number} eta The ratio between refraction indices.
+	 * @return {OOGL.Vector2} The refracted vector.
+	 * @example
+	 *	var v = new OOGL.Vector2(0.3, -1);
+	 *	var n = new OOGL.Vector2(0, 1);
+	 *	var w = v.getRefracted(n, 1.3);
+	 */
 	getRefracted: function (n, eta) {
 		var dot = this.x * n.x + this.y * n.y;
 		var k = 1 - eta * eta * (1 - dot * dot);
