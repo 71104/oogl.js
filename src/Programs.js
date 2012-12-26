@@ -1,4 +1,4 @@
-/*global context: false */
+/*global OOGL: false, context: false */
 
 context.Program = function () {
 	var program = context.createProgram();
@@ -84,10 +84,10 @@ context.AutoProgram = function (vertexSource, fragmentSource, attributes) {
 
 context.AjaxProgram = function (name, attributes, callback) {
 	var program = new context.Program();
-	var vertexShader = new context.VertexShader(name, function () {
-		program.attachShader(vertexShader);
-		var fragmentShader = new context.FragmentShader(name, function () {
-			program.attachShader(fragmentShader);
+	OOGL.Ajax.get(name + '.vert', function (vertexSource) {
+		program.attachShader(new context.VertexShader(vertexSource));
+		OOGL.Ajax.get(name + '.frag', function (fragmentSource) {
+			program.attachShader(new context.FragmentShader(fragmentSource));
 			program.bindAttribLocations(attributes);
 			program.linkOrThrow();
 			callback && callback();

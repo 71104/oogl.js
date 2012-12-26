@@ -47,6 +47,8 @@ context.AttributeArray1 = function (index, type, data, normalize) {
 	}
 
 	var buffer = new context.StaticArrayBuffer(type);
+	buffer.bind();
+	buffer.data(data);
 	context.enableVertexAttribArray(index);
 
 	/**
@@ -123,6 +125,8 @@ context.AttributeArray2 = function (index, type, data, normalize) {
 	}
 
 	var buffer = new context.StaticArrayBuffer(type);
+	buffer.bind();
+	buffer.data(data);
 	context.enableVertexAttribArray(index);
 
 	/**
@@ -199,6 +203,8 @@ context.AttributeArray3 = function (index, type, data, normalize) {
 	}
 
 	var buffer = new context.StaticArrayBuffer(type);
+	buffer.bind();
+	buffer.data(data);
 	context.enableVertexAttribArray(index);
 
 	/**
@@ -275,6 +281,8 @@ context.AttributeArray4 = function (index, type, data, normalize) {
 	}
 
 	var buffer = new context.StaticArrayBuffer(type);
+	buffer.bind();
+	buffer.data(data);
 	context.enableVertexAttribArray(index);
 
 	/**
