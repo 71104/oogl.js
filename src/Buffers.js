@@ -317,14 +317,3 @@ context.DynamicArrayBuffer = function (type) {
 context.DynamicElementArrayBuffer = function (type) {
 	return new context.DynamicBuffer(context.ELEMENT_ARRAY_BUFFER, type);
 };
-
-context.VertexArray = function (index, components, data) {
-	var buffer = new context.StaticArrayBuffer();
-	// TODO
-	return buffer;
-};
-context.IndexArray = function () {
-	var buffer = new context.StaticElementArrayBuffer();
-	// TODO
-	return buffer;
-};
