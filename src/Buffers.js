@@ -134,6 +134,25 @@ context.Buffer = (function () {
 		};
 
 		/**
+		 * Binds this buffer to its target and then allocates or specifies
+		 * buffer data.
+		 *
+		 * Equivalent to calling `bind` and `data` subsequently.
+		 *
+		 * @method bindAndData
+		 * @param {Mixed} sizeOrData TODO
+		 * @example
+		 *	TODO
+		 */
+		buffer.bindAndData = function (sizeOrData) {
+			context.bindBuffer(target, buffer);
+			if (typeof sizeOrData !== 'number') {
+				sizeOrData = new Constructor(sizeOrData);
+			}
+			context.bufferData(target, sizeOrData, usage);
+		};
+
+		/**
 		 * Specifies buffer data.
 		 *
 		 * Equivalent to calling `gl.bufferSubData` with the target specified to
