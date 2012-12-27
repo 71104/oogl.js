@@ -98,7 +98,7 @@ OOGL.Vector2.prototype = {
 	 * @param {OOGL.Vector2} v The vector to add.
 	 * @return {OOGL.Vector2} The sum vector.
 	 * @example
-	 *	var v1 = new OOGL.Vector(3, 4);
+	 *	var v1 = new OOGL.Vector2(3, 4);
 	 *	var v2 = new OOGL.Vector2(1, 2);
 	 *	var v3 = v1.plus(v2); // (4, 6)
 	 */

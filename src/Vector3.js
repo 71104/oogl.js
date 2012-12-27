@@ -38,12 +38,44 @@ OOGL.Vector3 = function (x, y, z) {
 };
 
 OOGL.Vector3.prototype = {
+	/**
+	 * Creates a homogeneous version of this vector by adding a unitary `w`
+	 * coordinate and returns it as a new `Vector4` object. This vector is not
+	 * changed.
+	 *
+	 * @method toHomogeneous
+	 * @return {OOGL.Vector4} A homogeneous vector corresponding to this vector.
+	 * @example
+	 *	var v = new OOGL.Vector3(1, 2, 3);
+	 *	var w = v.toHomogeneous(); // (1, 2, 3, 1)
+	 */
 	toHomogeneous: function () {
 		return new OOGL.Vector4(this.x, this.y, this.z, 1);
 	},
+
+	/**
+	 * Computes the modulus of the vector. This is computed as
+	 * `Math.sqrt(x * x + y * y + z * z)`.
+	 *
+	 * @method length
+	 * @return {Number} The computed value.
+	 * @example
+	 *	var v = new OOGL.Vector3(1, 2, 2);
+	 *	var l = v.length(); // 3
+	 */
 	length: function () {
 		return Math.sqrt(this.x * this.x + this.y * this.y + this.z * this.z);
 	},
+
+	/**
+	 * Normalizes this vector so that its length becomes 1.
+	 *
+	 * @method normalize
+	 * @chainable
+	 * @example
+	 *	var v = new OOGL.Vector3(1, 2, 2);
+	 *	v.normalize(); // v is now (0.33, 0.66, 0.66)
+	 */
 	normalize: function () {
 		var length = Math.sqrt(this.x * this.x + this.y * this.y + this.z * this.z);
 		this.x /= length;
@@ -51,16 +83,51 @@ OOGL.Vector3.prototype = {
 		this.z /= length;
 		return this;
 	},
+
+	/**
+	 * Computes the normalized vector and returns it as a new `Vector3` object.
+	 * This vector is not changed.
+	 *
+	 * @method getNormalized
+	 * @return OOGL.Vector3
+	 * @example
+	 *	var v1 = new OOGL.Vector3(1, 2, 2);
+	 *	var v2 = v1.getNormalized(); // (0.33, 0.66, 0.66)
+	 */
 	getNormal: function () {
 		var length = Math.sqrt(this.x * this.x + this.y * this.y + this.z * this.z);
 		return new OOGL.Vector3(this.x / length, this.y / length, this.z / length);
 	},
+
+	/**
+	 * Adds the specified 2-component vector to this one.
+	 *
+	 * @method add
+	 * @param {OOGL.Vector3} v The vector to add.
+	 * @chainable
+	 * @example
+	 *	var v = new OOGL.Vector3(4, 5, 6);
+	 *	v.add(new OOGL.Vector3(1, 2, 3)); // v is now (5, 7, 9)
+	 */
 	add: function (v) {
 		this.x += v.x;
 		this.y += v.y;
 		this.z += v.z;
 		return this;
 	},
+
+	/**
+	 * Adds the specified 2-component vector to this one and returns the sum as
+	 * a new `Vector3` object. This vector is not changed.
+	 *
+	 * @method plus
+	 * @param {OOGL.Vector3} v The vector to add.
+	 * @return {OOGL.Vector3} The sum vector.
+	 * @example
+	 *	var v1 = new OOGL.Vector3(4, 5, 6);
+	 *	var v2 = new OOGL.Vector3(1, 2, 3);
+	 *	var v3 = v1.plus(v2); // (5, 7, 9)
+	 */
 	plus: function (v) {
 		return new OOGL.Vector3(this.x + v.x, this.y + v.y, this.z + v.z);
 	},
