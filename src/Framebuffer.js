@@ -3,6 +3,10 @@
 /**
  * Wraps a GL framebuffer object.
  *
+ * Instancing an object of this class is equivalent to calling the GL function
+ * `createFramebuffer`. The returned `WebGLFramebuffer` object is extended by
+ * OOGL-specific features and returned by the `Framebuffer` constructor.
+ *
  * @class .Framebuffer
  * @constructor
  * @example
@@ -14,6 +18,8 @@ context.Framebuffer = function () {
 
 	/**
 	 * TODO
+	 *
+	 * `gl.getAttachmentParameter` equivalent.
 	 *
 	 * @method getAttachmentParameter
 	 * @param {Number} attachment TODO
@@ -29,9 +35,9 @@ context.Framebuffer = function () {
 	/**
 	 * TODO
 	 *
-	 * @method
-	 * @param
-	 * @return
+	 * `gl.bindFramebuffer` equivalent.
+	 *
+	 * @method bind
 	 * @example
 	 *	framebuffer.bind();
 	 */
@@ -42,10 +48,12 @@ context.Framebuffer = function () {
 	/**
 	 * TODO
 	 *
-	 * @method
-	 * @param
-	 * @return
+	 * `gl.checkFramebufferStatus` equivalent.
+	 *
+	 * @method checkStatus
+	 * @return {Number} TODO
 	 * @example
+	 *	var status = framebuffer.checkStatus();
 	 */
 	framebuffer.checkStatus = function () {
 		return context.checkFramebufferStatus(context.FRAMEBUFFER);
@@ -54,10 +62,13 @@ context.Framebuffer = function () {
 	/**
 	 * TODO
 	 *
-	 * @method
-	 * @param
-	 * @return
+	 * `gl.framebufferRenderbuffer` equivalent.
+	 *
+	 * @method renderbuffer
+	 * @param {Number} attachment TODO
+	 * @param {WebGLRenderbuffer} renderbuffer TODO
 	 * @example
+	 *	TODO
 	 */
 	framebuffer.renderbuffer = function (attachment, renderbuffer) {
 		context.framebufferRenderbuffer(context.FRAMEBUFFER, attachment, context.RENDERBUFFER, renderbuffer);
@@ -66,10 +77,15 @@ context.Framebuffer = function () {
 	/**
 	 * TODO
 	 *
-	 * @method
-	 * @param
-	 * @return
+	 * `gl.framebufferTexture2D` equivalent.
+	 *
+	 * @method texture2D
+	 * @param {Number} attachment TODO
+	 * @param {Number} textarget TODO
+	 * @param {WebGLTexture} texture TODO
+	 * @param {Number} level TODO
 	 * @example
+	 *	TODO
 	 */
 	framebuffer.texture2D = function (attachment, textarget, texture, level) {
 		context.framebufferTexture2D(context.FRAMEBUFFER, attachment, textarget, texture, level);
@@ -78,9 +94,9 @@ context.Framebuffer = function () {
 	/**
 	 * TODO
 	 *
-	 * @method
-	 * @param
-	 * @return
+	 * `gl.deleteFramebuffer` equivalent.
+	 *
+	 * @method _delete
 	 * @example
 	 *	framebuffer._delete();
 	 */
