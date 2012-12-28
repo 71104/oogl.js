@@ -13,7 +13,7 @@ Getting started
 To get started with OOGL, include it using a `<script>` tag in the `<head>` of your document:
 
 ```html
-<script type="text/javascript" src="http://cdn.oogljs.com/oogl-1.0.0.min.js"></script>
+<script type="text/javascript" src="oogl-1.0.0.min.js"></script>
 ```
 
 Then place a `<canvas>` in your DOM and create an OOGL context through JavaScript:
@@ -143,11 +143,6 @@ program.uniformVec3(v);
 OOGL provides classes to handle 2-, 3- and 4-component vectors and 2x2, 3x3 and 4x4 matrices.
 
 OOGL math classes are developed with a strong focus on performances and can be used to perform physics or other vector and matrix computations in JavaScript at maximum speed.
-
-jQuery
-======
-
-TBD
 
 Credits
 =======
