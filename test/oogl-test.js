@@ -1744,7 +1744,7 @@ OOGL.ScalingMatrix4 = function (x, y, z) {
  * @param {Mixed} canvasOrId An HTMLCanvasElement DOM object, or a string
  *	containing its `id` attribute, representing the canvas whose WebGL context
  *	has to be wrapped.
- * @param {Object} attributes WebGL attributes to pass to `canvas.getContext`.
+ * @param {Object} [attributes] WebGL attributes to pass to `canvas.getContext`.
  * @example
  *	var oogl = new OOGL.Context('canvas', {
  *		stencil: true
@@ -1773,9 +1773,6 @@ OOGL.Context = function (canvasOrId, attributes) {
  * Instancing an object of this class is equivalent to calling the GL function
  * `createBuffer`. The returned `WebGLBuffer` object is extended by
  * OOGL-specific features and returned by the `Buffer` constructor.
- *
- * `Buffer` objects represent WebGL buffers with a fixed, specified target, data
- * type and usage.
  *
  * @class .Buffer
  * @extends WebGLBuffer
@@ -2922,14 +2919,132 @@ context.ElementArray = function (indices, type) {
 
 /*global context: false */
 
+/**
+ * Wraps a GL texture with a specified target.
+ *
+ * Instancing an object of this class is equivalent to calling the GL function
+ * `createTexture`. The returned `WebGLTexture` object is extended by
+ * OOGL-specific features and returned by the `Texture` constructor.
+ *
+ * @class .Texture
+ * @extends WebGLTexture
+ * @constructor
+ * @param {Number} target The target against which this texture will be bound
+ *	when the provided `bind` method is used. Either `gl.TEXTURE_2D` or
+ *	`gl.TEXTURE_CUBE_MAP`.
+ * @example
+ *	var oogl = new OOGL.Context('canvas');
+ *	var texture = new oogl.Texture(oogl.TEXTURE_2D);
+ */
 context.Texture = function (target) {
 	var texture = context.createTexture();
+
+	/**
+	 * Indicates whether this is a valid GL texture.
+	 *
+	 * `gl.isTexture` equivalent.
+	 *
+	 * @method is
+	 * @return {Boolean} `true` if this is a valid GL texture, `false`
+	 *	otherwise.
+	 * @example
+	 *	if (texture.is()) {
+	 *		// ...
+	 */
+	texture.is = function () {
+		return context.isTexture(texture);
+	};
+
+	/**
+	 * Binds this texture to its target.
+	 *
+	 * `gl.bindTexture` equivalent.
+	 *
+	 * @method bind
+	 * @example
+	 *	texture.bind();
+	 */
 	texture.bind = function () {
 		context.bindTexture(target, texture);
 	};
+
+	/**
+	 * Queries a texture-related parameter.
+	 *
+	 * `gl.getTexParameter` equivalent.
+	 *
+	 * @method getParameter
+	 * @param {Number} name The name of the parameter to query.
+	 * @return {Mixed} The queried value.
+	 * @example
+	 *	var wrapS = texture.getParameter(oogl.TEXTURE_WRAP_S);
+	 */
 	texture.getParameter = function (name) {
 		return context.getTexParameter(target, name);
 	};
+
+	/**
+	 * Queries the "min filter" parameter of this texture.
+	 *
+	 * Equivalent to calling `gl.getTexParameter` with `gl.TEXTURE_MIN_FILTER`.
+	 *
+	 * @method getMinFilter
+	 * @return {Number} The "min filter" parameter; one of `gl.NEAREST`,
+	 *	`gl.LINEAR`, `gl.NEAREST_MIPMAP_NEAREST`, `gl.LINEAR_MIPMAP_NEAREST`,
+	 *	`gl.NEAREST_MIPMAP_LINEAR` or `gl.LINEAR_MIPMAP_LINEAR`.
+	 * @example
+	 *	var minFilter = texture.getMinFilter();
+	 */
+	texture.getMinFilter = function () {
+		return context.getTexParameter(target, context.TEXTURE_MIN_FILTER);
+	};
+
+	/**
+	 * Queries the "mag filter" parameter of this texture.
+	 *
+	 * Equivalent to calling `gl.getTexParameter` with `gl.TEXTURE_MAG_FILTER`.
+	 *
+	 * @method getMagFilter
+	 * @return {Number} The "mag filter" parameter; one of `gl.NEAREST`,
+	 *	`gl.LINEAR`.
+	 * @example
+	 *	var magFilter = texture.getMagFilter();
+	 */
+	texture.getMagFilter = function () {
+		return context.getTexParameter(target, context.TEXTURE_MAG_FILTER);
+	};
+
+	/**
+	 * Queries the "wrap S" parameter of this texture.
+	 *
+	 * Equivalent to calling `gl.getTexParameter` with `gl.TEXTURE_WRAP_S`.
+	 *
+	 * @method getWrapS
+	 * @return {Number} The "wrap S" parameter; one of `gl.CLAMP_TO_EDGE`,
+	 *	`gl.MIRRORED_REPEAT` or `gl.REPEAT`.
+	 * @example
+	 *	var wrapS = texture.getWrapS();
+	 */
+	texture.getWrapS = function () {
+		return context.getTexParameter(target, context.TEXTURE_WRAP_S);
+	};
+
+
+	/**
+	 * Queries the "wrap T" parameter of this texture.
+	 *
+	 * Equivalent to calling `gl.getTexParameter` with `gl.TEXTURE_WRAP_T`.
+	 *
+	 * @method getWrapT
+	 * @return {Number} The "wrap T" parameter; one of `gl.CLAMP_TO_EDGE`,
+	 *	`gl.MIRRORED_REPEAT` or `gl.REPEAT`.
+	 * @example
+	 *	var wrapT = texture.getWrapT();
+	 */
+	texture.getWrapT = function () {
+		return context.getTexParameter(target, context.TEXTURE_WRAP_T);
+	};
+
 	texture.parameterf = function (name, value) {
 		context.texParameterf(target, name, value);
 	};
@@ -2945,8 +3060,11 @@ context.Texture = function (target) {
 	texture.subImage2D = function () {
 		// TODO
 	};
-	texture.copyImage2D = function () {
-		// TODO
+	texture.copyImage2D = function (level, internalFormat, x, y, width, height, border) {
+		context.copyTexImage2D(target, level, internalFormat, x, y, width, height, border || 0);
+	};
+	texture.copySubImage2D = function (level, xoffset, yoffset, x, y, width, height) {
+		context.copyTexSubImage2D(target, level, xoffset, yoffset, x, y, width, height);
 	};
 	texture._delete = function () {
 		context.deleteTexture(texture);
@@ -3114,35 +3232,181 @@ context.Program = function () {
 	 * `gl.getProgramParameter` equivalent.
 	 *
 	 * @method getParameter
-	 * @param {String} name TODO
-	 * @return {Mixed} TODO
+	 * @param {String} name The name of the parameter to query.
+	 * @return {Mixed} The queried value.
 	 * @example
-	 *	TODO
+	 *	if (!program.getParameter(oogl.LINK_STATUS)) {
+	 *		throw program.getInfoLog();
+	 *	}
 	 */
 	program.getParameter = function (name) {
 		return context.getProgramParameter(program, name);
 	};
+
+	/**
+	 * Attaches the specified shader to this program.
+	 *
+	 * `gl.attachShader` equivalent.
+	 *
+	 * @method attachShader
+	 * @param {WebGLShader} shader The shader to attach. Can also be an OOGL
+	 *	`Shader`.
+	 * @example
+	 *	var program = new oogl.Program();
+	 *	program.attachShader(new oogl.VertexShader(vertexSource));
+	 *	program.attachShader(new oogl.FragmentShader(fragmentSource));
+	 *	program.linkOrThrow();
+	 */
 	program.attachShader = function (shader) {
 		context.attachShader(program, shader);
 	};
+
+	/**
+	 * Detaches the specified shader from this program.
+	 *
+	 * `gl.detachShader` equivalent.
+	 *
+	 * @method detachShader
+	 * @param {WebGLShader} shader The shader to detach. Can also be an OOGL
+	 *	`Shader`.
+	 * @example
+	 *	var vertexShader = new oogl.Shader(oogl.VERTEX_SHADER);
+	 *	var program = new oogl.Program();
+	 *	program.attachShader(vertexShader);
+	 *	program.detachShader(vertexShader);
+	 */
 	program.detachShader = function (shader) {
 		context.detachShader(program, shader);
 	};
+
+	/**
+	 * Returns an array of `WebGLShader` representing the shaders currently
+	 * attached to this program.
+	 *
+	 * `gl.getAttachedShaders` equivalent.
+	 *
+	 * @method getAttachedShaders
+	 * @return {WebGLShader[]} An array of the currently attached shaders.
+	 * @example
+	 *	var program = new oogl.Program();
+	 *	program.attachShader(new oogl.VertexShader(vertexSource));
+	 *	program.attachShader(new oogl.FragmentShader(fragmentSource));
+	 *	var shaders = program.getAttachedShaders(); // shaders now contains two elements
+	 */
+	program.getAttachedShaders = function () {
+		return context.getAttachedShaders(program);
+	};
+
+	/**
+	 * Returns the number of currently attached shaders.
+	 *
+	 * Equivalent to calling `gl.getProgramParameter` with
+	 * `gl.ATTACHED_SHADERS`.
+	 *
+	 * @method getNumberOfAttachedShaders
+	 * @return {Number} The number of currently attached shaders.
+	 * @example
+	 *	var program = new oogl.Program();
+	 *	program.attachShader(new oogl.VertexShader(vertexSource));
+	 *	program.attachShader(new oogl.FragmentShader(fragmentSource));
+	 *	var count = program.getNumberOfAttachedShaders(); // 2
+	 */
+	program.getNumberOfAttachedShaders = function () {
+		return context.getProgramParameter(program, context.ATTACHED_SHADERS);
+	};
+
+	/**
+	 * Binds the specified shader attribute variable `name` to the attribute
+	 * array whose `index` is specified.
+	 *
+	 * `gl.bindAttribLocation` equivalent.
+	 *
+	 * @method bindAttribLocation
+	 * @param {Number} index The index of the attribute array.
+	 * @param {String} name The name of the shader attribute variable.
+	 * @example
+	 *	program.bindAttribLocation(0, 'in_Vertex');
+	 *	program.bindAttribLocation(1, 'in_Color');
+	 *	program.bindAttribLocation(2, 'in_TexCoords');
+	 */
 	program.bindAttribLocation = function (index, name) {
 		context.bindAttribLocation(program, index, name);
 	};
+
+	/**
+	 * Iterates over the specified `attributes` array of strings and binds each
+	 * string to its index. For example, these calls:
+	 *
+	 *	program.bindAttribLocation(0, 'in_Vertex');
+	 *	program.bindAttribLocation(1, 'in_Color');
+	 *	program.bindAttribLocation(2, 'in_TexCoords');
+	 *
+	 * Can be made only once using `bindAttribLocations` like this:
+	 *
+	 *	program.bindAttribLocations(['in_Vertex', 'in_Color', 'in_TexCoords']);
+	 *
+	 * @method bindAttribLocations
+	 * @params {String[]} attributes The array, or index-to-string map,
+	 *	specifying the names to bind and their respective indices.
+	 * @example
+	 *	program.bindAttribLocations(['in_Vertex', 'in_Color', 'in_TexCoords']);
+	 */
 	program.bindAttribLocations = function (attributes) {
-		for (var i = 0; i < attributes.length; i++) {
-			context.bindAttribLocation(program, i, attributes[i]);
+		for (var i in attributes) {
+			context.bindAttribLocation(program, parseInt(i, 10), attributes[i]);
 		}
 	};
+
+	/**
+	 * Links the program and invalidates the uniform location cache used to
+	 * speed up uniform operations.
+	 *
+	 * `gl.linkProgram` equivalent.
+	 *
+	 * @method link
+	 * @example
+	 *	program.link();
+	 *	if (!program.getLinkStatus()) {
+	 *		throw program.getInfoLog();
+	 *	}
+	 */
 	program.link = function () {
 		locationCache = {};
 		context.linkProgram(program);
 	};
+
+	/**
+	 * Returns the link status of this program.
+	 *
+	 * Equivalent to calling `gl.getProgramParameter` with `gl.LINK_STATUS`.
+	 *
+	 * @method getLinkStatus
+	 * @return {Boolean} `true` if the program has been successuflly linked,
+	 *	`false` otherwise.
+	 * @example
+	 *	program.link();
+	 *	if (!program.getLinkStatus()) {
+	 *		throw program.getInfoLog();
+	 *	}
+	 */
 	program.getLinkStatus = function () {
 		return context.getProgramParameter(program, context.LINK_STATUS);
 	};
+
+	/**
+	 * Returns the info log generated by the last link operation for this
+	 * program.
+	 *
+	 * `gl.getProgramInfoLog` equivalent.
+	 *
+	 * @method getInfoLog
+	 * @return {String} The info log.
+	 * @example
+	 *	program.link();
+	 *	if (!program.getLinkStatus()) {
+	 *		throw program.getInfoLog();
+	 *	}
+	 */
 	program.getInfoLog = function () {
 		return context.getProgramInfoLog(program);
 	};
@@ -3157,6 +3421,8 @@ context.Program = function () {
 	};
 	program.validate = function () {
 		context.validateProgram(program);
+	};
+	program.getValidateStatus = function () {
 		return context.getProgramParameter(program, context.VALIDATE_STATUS);
 	};
 	program.getActiveAttrib = function (index) {

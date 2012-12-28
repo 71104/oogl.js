@@ -7,9 +7,6 @@
  * `createBuffer`. The returned `WebGLBuffer` object is extended by
  * OOGL-specific features and returned by the `Buffer` constructor.
  *
- * `Buffer` objects represent WebGL buffers with a fixed, specified target, data
- * type and usage.
- *
  * @class .Buffer
  * @extends WebGLBuffer
  * @constructor

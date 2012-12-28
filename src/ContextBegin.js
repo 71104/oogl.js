@@ -50,7 +50,7 @@
  * @param {Mixed} canvasOrId An HTMLCanvasElement DOM object, or a string
  *	containing its `id` attribute, representing the canvas whose WebGL context
  *	has to be wrapped.
- * @param {Object} attributes WebGL attributes to pass to `canvas.getContext`.
+ * @param {Object} [attributes] WebGL attributes to pass to `canvas.getContext`.
  * @example
  *	var oogl = new OOGL.Context('canvas', {
  *		stencil: true
