@@ -17,6 +17,22 @@ context.Framebuffer = function () {
 	var framebuffer = context.createFramebuffer();
 
 	/**
+	 * Indicates whether this is a valid GL framebuffer.
+	 *
+	 * `gl.isFramebuffer` equivalent.
+	 *
+	 * @method is
+	 * @return {Boolean} `true` if this is a valid GL framebuffer, `false`
+	 *	otherwise.
+	 * @example
+	 *	if (framebuffer.is()) {
+	 *		// ...
+	 */
+	framebuffer.is = function () {
+		return context.isFramebuffer(framebuffer);
+	};
+
+	/**
 	 * TODO
 	 *
 	 * `gl.getAttachmentParameter` equivalent.

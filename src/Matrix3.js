@@ -245,18 +245,18 @@ OOGL.Matrix3.prototype = {
 	 *	var w = m.by(v); // (6, 6, 4)
 	 */
 	by: function (x) {
-		if (x instanceof OOGL.Vector3) {
-			return new OOGL.Vector3(
-				this[0] * x.x + this[1] * x.y + this[2] * x.z,
-				this[3] * x.x + this[4] * x.y + this[5] * x.z,
-				this[6] * x.x + this[7] * x.y + this[8] * x.z
-				);
-		} else {
+		if (typeof x === 'number') {
 			var newArray = [];
 			for (var i = 0; i < 9; i++) {
 				newArray.push(this[i] * x);
 			}
 			return new OOGL.Matrix3(newArray);
+		} else {
+			return new OOGL.Vector3(
+				this[0] * x.x + this[1] * x.y + this[2] * x.z,
+				this[3] * x.x + this[4] * x.y + this[5] * x.z,
+				this[6] * x.x + this[7] * x.y + this[8] * x.z
+				);
 		}
 	},
 

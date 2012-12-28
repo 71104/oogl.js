@@ -223,17 +223,17 @@ OOGL.Matrix2.prototype = {
 	 *	var w = m.by(v); // (4, 4)
 	 */
 	by: function (x) {
-		if (x instanceof OOGL.Vector2) {
-			return new OOGL.Vector2(
-				this[0] * x.x + this[1] * x.y,
-				this[2] * x.x + this[3] * x.y
-				);
-		} else {
+		if (typeof x === 'number') {
 			var newArray = [];
 			for (var i = 0; i < 4; i++) {
 				newArray.push(this[i] * x);
 			}
 			return new OOGL.Matrix2(newArray);
+		} else {
+			return new OOGL.Vector2(
+				this[0] * x.x + this[1] * x.y,
+				this[2] * x.x + this[3] * x.y
+				);
 		}
 	},
 

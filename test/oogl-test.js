@@ -1020,17 +1020,17 @@ OOGL.Matrix2.prototype = {
 	 *	var w = m.by(v); // (4, 4)
 	 */
 	by: function (x) {
-		if (x instanceof OOGL.Vector2) {
-			return new OOGL.Vector2(
-				this[0] * x.x + this[1] * x.y,
-				this[2] * x.x + this[3] * x.y
-				);
-		} else {
+		if (typeof x === 'number') {
 			var newArray = [];
 			for (var i = 0; i < 4; i++) {
 				newArray.push(this[i] * x);
 			}
 			return new OOGL.Matrix2(newArray);
+		} else {
+			return new OOGL.Vector2(
+				this[0] * x.x + this[1] * x.y,
+				this[2] * x.x + this[3] * x.y
+				);
 		}
 	},
 
@@ -1387,18 +1387,18 @@ OOGL.Matrix3.prototype = {
 	 *	var w = m.by(v); // (6, 6, 4)
 	 */
 	by: function (x) {
-		if (x instanceof OOGL.Vector3) {
-			return new OOGL.Vector3(
-				this[0] * x.x + this[1] * x.y + this[2] * x.z,
-				this[3] * x.x + this[4] * x.y + this[5] * x.z,
-				this[6] * x.x + this[7] * x.y + this[8] * x.z
-				);
-		} else {
+		if (typeof x === 'number') {
 			var newArray = [];
 			for (var i = 0; i < 9; i++) {
 				newArray.push(this[i] * x);
 			}
 			return new OOGL.Matrix3(newArray);
+		} else {
+			return new OOGL.Vector3(
+				this[0] * x.x + this[1] * x.y + this[2] * x.z,
+				this[3] * x.x + this[4] * x.y + this[5] * x.z,
+				this[6] * x.x + this[7] * x.y + this[8] * x.z
+				);
 		}
 	},
 
@@ -3208,6 +3208,10 @@ context.AjaxFragmentShader = function (name, callback) {
 /**
  * Wraps a GL program.
  *
+ * Instancing an object of this class is equivalent to calling the GL function
+ * `createProgram`. The returned `WebGLProgram` object is extended by
+ * OOGL-specific features and returned by the `Program` constructor.
+ *
  * `Program` objects also maintain an independent uniform location cache so that
  * uniform operations are sped up as `gl.getUniformLocation` calls are needed
  * only once per variable name. The cache is automatically invalidated when the
@@ -3410,30 +3414,121 @@ context.Program = function () {
 	program.getInfoLog = function () {
 		return context.getProgramInfoLog(program);
 	};
+
+	/**
+	 * Links the program, invalidates the uniform location cache used to speed
+	 * up uniform operations and checks the link status; throws the info log if
+	 * the program did not link successfully.
+	 *
+	 * @method linkOrThrow
+	 * @example
+	 *	program.attachShader(new oogl.VertexShader(vertexSource));
+	 *	program.attachShader(new oogl.FragmentShader(fragmentSource));
+	 *	program.linkOrThrow();
+	 */
 	program.linkOrThrow = function () {
+		locationCache = {};
 		context.linkProgram(program);
 		if (!context.getProgramParameter(program, context.LINK_STATUS)) {
 			throw context.getProgramInfoLog(program);
 		}
 	};
+
+	/**
+	 * Uses the program in the GL pipeline.
+	 *
+	 * `gl.useProgram` equivalent.
+	 *
+	 * @method use
+	 * @example
+	 *	program.use();
+	 */
 	program.use = function () {
 		context.useProgram(program);
 	};
+
+	/**
+	 * Validates the program.
+	 *
+	 * `gl.validateProgram` equivalent.
+	 *
+	 * @method validate
+	 * @example
+	 *	program.validate();
+	 *	if (!program.getValidateStatus()) {
+	 *		throw 'program validation error';
+	 *	}
+	 */
 	program.validate = function () {
 		context.validateProgram(program);
 	};
+
+	/**
+	 * Returns the validation status produced by the last validation operation
+	 * for this program.
+	 *
+	 * Equivalent to calling `gl.getProgramParameter` with `gl.VALIDATE_STATUS`.
+	 *
+	 * @method getValidateStatus
+	 * @return {Boolean} The validation status.
+	 * @example
+	 *	program.validate();
+	 *	if (!program.getValidateStatus()) {
+	 *		throw 'program validation error';
+	 *	}
+	 */
 	program.getValidateStatus = function () {
 		return context.getProgramParameter(program, context.VALIDATE_STATUS);
 	};
+
+	/**
+	 * TODO
+	 *
+	 * @method getActiveAttrib
+	 * @param {Number} index TODO
+	 * @return {WebGLActiveInfo} TODO
+	 * @example
+	 *	TODO
+	 */
 	program.getActiveAttrib = function (index) {
 		return context.getActiveAttrib(program, index);
 	};
+
+	/**
+	 * TODO
+	 *
+	 * @method getActiveUniform
+	 * @param {Number} index TODO
+	 * @return {WebGLActiveInfo} TODO
+	 * @example
+	 *	TODO
+	 */
 	program.getActiveUniform = function (index) {
 		return context.getActiveUniform(program, index);
 	};
+
+	/**
+	 * TODO
+	 *
+	 * @method getAttribLocation
+	 * @param {String} name TODO
+	 * @return {Number} TODO
+	 * @example
+	 *	TODO
+	 */
 	program.getAttribLocation = function (name) {
 		return context.getAttribLocation(program, name);
 	};
+
+	/**
+	 * TODO
+	 *
+	 * @method getUniform
+	 * @param {Mixed} locationOrName TODO
+	 * @return {Mixed} TODO
+	 * @example
+	 *	TODO
+	 */
 	program.getUniform = function (locationOrName) {
 		if (typeof locationOrName !== 'string') {
 			return context.getUniform(program, locationOrName);
@@ -3442,19 +3537,59 @@ context.Program = function () {
 				(locationCache[locationOrName] = context.getUniformLocation(program, locationOrName)));
 		}
 	};
+
+	/**
+	 * TODO
+	 *
+	 * @method getUniformLocation
+	 * @param {String} name TODO
+	 * @return {Number} TODO
+	 * @example
+	 *	TODO
+	 */
 	program.getUniformLocation = function (name) {
 		return locationCache[name] = context.getUniformLocation(program, name);
 	};
+
 	// TODO uniform
+
+	/**
+	 * TODO
+	 *
+	 * @method _delete
+	 * @example
+	 *	program._delete();
+	 */
 	program._delete = function () {
 		context.deleteProgram(program);
 	};
+
+	/**
+	 * TODO
+	 *
+	 * @method getDeleteStatus
+	 * @return {Boolean} TODO
+	 * @example
+	 *	TODO
+	 */
 	program.getDeleteStatus = function () {
 		return context.getProgramParameter(program, context.DELETE_STATUS);
 	};
+
 	return program;
 };
 
+/**
+ * TODO
+ *
+ * @class .AutoProgram
+ * @constructor
+ * @param {String} vertexSource TODO
+ * @param {String} fragmentSource TODO
+ * @param {String[]} attributes TODO
+ * @example
+ *	var program = new oogl.AutoProgram(vertexSource, fragmentSource, ['in_Vertex', 'in_Color', 'in_TexCoords']);
+ */
 context.AutoProgram = function (vertexSource, fragmentSource, attributes) {
 	var program = new context.Program();
 	program.attachShader(new context.VertexShader(vertexSource));
@@ -3464,6 +3599,26 @@ context.AutoProgram = function (vertexSource, fragmentSource, attributes) {
 	return program;
 };
 
+
+/**
+ * TODO
+ *
+ * @class .AjaxProgram
+ * @constructor
+ * @param {String} name TODO
+ * @param {String[]} attributes TODO
+ * @param {Function} callback TODO
+ * @example
+ *	var arrays = new oogl.AttributeArrays(vertices.length);
+ *	arrays.add3('float', vertices);
+ *	arrays.add3('float', colors);
+ *	arrays.add2('float', textureCoordinates);
+ *	var program = new oogl.AjaxProgram('box', ['in_Vertex', 'in_Color', 'in_TexCoords'], function () {
+ *		program.use();
+ *		arrays.drawTriangles();
+ *		oogl.flush();
+ *	});
+ */
 context.AjaxProgram = function (name, attributes, callback) {
 	var program = new context.Program();
 	OOGL.Ajax.get(name + '.vert', function (vertexSource) {
@@ -3483,6 +3638,10 @@ context.AjaxProgram = function (name, attributes, callback) {
 /**
  * Wraps a GL framebuffer object.
  *
+ * Instancing an object of this class is equivalent to calling the GL function
+ * `createFramebuffer`. The returned `WebGLFramebuffer` object is extended by
+ * OOGL-specific features and returned by the `Framebuffer` constructor.
+ *
  * @class .Framebuffer
  * @constructor
  * @example
@@ -3493,7 +3652,25 @@ context.Framebuffer = function () {
 	var framebuffer = context.createFramebuffer();
 
 	/**
+	 * Indicates whether this is a valid GL framebuffer.
+	 *
+	 * `gl.isFramebuffer` equivalent.
+	 *
+	 * @method is
+	 * @return {Boolean} `true` if this is a valid GL framebuffer, `false`
+	 *	otherwise.
+	 * @example
+	 *	if (framebuffer.is()) {
+	 *		// ...
+	 */
+	framebuffer.is = function () {
+		return context.isFramebuffer(framebuffer);
+	};
+
+	/**
 	 * TODO
+	 *
+	 * `gl.getAttachmentParameter` equivalent.
 	 *
 	 * @method getAttachmentParameter
 	 * @param {Number} attachment TODO
@@ -3509,9 +3686,9 @@ context.Framebuffer = function () {
 	/**
 	 * TODO
 	 *
-	 * @method
-	 * @param
-	 * @return
+	 * `gl.bindFramebuffer` equivalent.
+	 *
+	 * @method bind
 	 * @example
 	 *	framebuffer.bind();
 	 */
@@ -3522,10 +3699,12 @@ context.Framebuffer = function () {
 	/**
 	 * TODO
 	 *
-	 * @method
-	 * @param
-	 * @return
+	 * `gl.checkFramebufferStatus` equivalent.
+	 *
+	 * @method checkStatus
+	 * @return {Number} TODO
 	 * @example
+	 *	var status = framebuffer.checkStatus();
 	 */
 	framebuffer.checkStatus = function () {
 		return context.checkFramebufferStatus(context.FRAMEBUFFER);
@@ -3534,10 +3713,13 @@ context.Framebuffer = function () {
 	/**
 	 * TODO
 	 *
-	 * @method
-	 * @param
-	 * @return
+	 * `gl.framebufferRenderbuffer` equivalent.
+	 *
+	 * @method renderbuffer
+	 * @param {Number} attachment TODO
+	 * @param {WebGLRenderbuffer} renderbuffer TODO
 	 * @example
+	 *	TODO
 	 */
 	framebuffer.renderbuffer = function (attachment, renderbuffer) {
 		context.framebufferRenderbuffer(context.FRAMEBUFFER, attachment, context.RENDERBUFFER, renderbuffer);
@@ -3546,10 +3728,15 @@ context.Framebuffer = function () {
 	/**
 	 * TODO
 	 *
-	 * @method
-	 * @param
-	 * @return
+	 * `gl.framebufferTexture2D` equivalent.
+	 *
+	 * @method texture2D
+	 * @param {Number} attachment TODO
+	 * @param {Number} textarget TODO
+	 * @param {WebGLTexture} texture TODO
+	 * @param {Number} level TODO
 	 * @example
+	 *	TODO
 	 */
 	framebuffer.texture2D = function (attachment, textarget, texture, level) {
 		context.framebufferTexture2D(context.FRAMEBUFFER, attachment, textarget, texture, level);
@@ -3558,9 +3745,9 @@ context.Framebuffer = function () {
 	/**
 	 * TODO
 	 *
-	 * @method
-	 * @param
-	 * @return
+	 * `gl.deleteFramebuffer` equivalent.
+	 *
+	 * @method _delete
 	 * @example
 	 *	framebuffer._delete();
 	 */

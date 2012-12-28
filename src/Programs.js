@@ -275,15 +275,55 @@ context.Program = function () {
 	program.getValidateStatus = function () {
 		return context.getProgramParameter(program, context.VALIDATE_STATUS);
 	};
+
+	/**
+	 * TODO
+	 *
+	 * @method getActiveAttrib
+	 * @param {Number} index TODO
+	 * @return {WebGLActiveInfo} TODO
+	 * @example
+	 *	TODO
+	 */
 	program.getActiveAttrib = function (index) {
 		return context.getActiveAttrib(program, index);
 	};
+
+	/**
+	 * TODO
+	 *
+	 * @method getActiveUniform
+	 * @param {Number} index TODO
+	 * @return {WebGLActiveInfo} TODO
+	 * @example
+	 *	TODO
+	 */
 	program.getActiveUniform = function (index) {
 		return context.getActiveUniform(program, index);
 	};
+
+	/**
+	 * TODO
+	 *
+	 * @method getAttribLocation
+	 * @param {String} name TODO
+	 * @return {Number} TODO
+	 * @example
+	 *	TODO
+	 */
 	program.getAttribLocation = function (name) {
 		return context.getAttribLocation(program, name);
 	};
+
+	/**
+	 * TODO
+	 *
+	 * @method getUniform
+	 * @param {Mixed} locationOrName TODO
+	 * @return {Mixed} TODO
+	 * @example
+	 *	TODO
+	 */
 	program.getUniform = function (locationOrName) {
 		if (typeof locationOrName !== 'string') {
 			return context.getUniform(program, locationOrName);
@@ -292,16 +332,45 @@ context.Program = function () {
 				(locationCache[locationOrName] = context.getUniformLocation(program, locationOrName)));
 		}
 	};
+
+	/**
+	 * TODO
+	 *
+	 * @method getUniformLocation
+	 * @param {String} name TODO
+	 * @return {Number} TODO
+	 * @example
+	 *	TODO
+	 */
 	program.getUniformLocation = function (name) {
 		return locationCache[name] = context.getUniformLocation(program, name);
 	};
+
 	// TODO uniform
+
+	/**
+	 * TODO
+	 *
+	 * @method _delete
+	 * @example
+	 *	program._delete();
+	 */
 	program._delete = function () {
 		context.deleteProgram(program);
 	};
+
+	/**
+	 * TODO
+	 *
+	 * @method getDeleteStatus
+	 * @return {Boolean} TODO
+	 * @example
+	 *	TODO
+	 */
 	program.getDeleteStatus = function () {
 		return context.getProgramParameter(program, context.DELETE_STATUS);
 	};
+
 	return program;
 };
 
