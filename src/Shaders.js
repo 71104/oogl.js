@@ -22,14 +22,26 @@ context.Shader = function (type) {
 	 * `gl.getShaderParameter` equivalent.
 	 *
 	 * @method getParameter
-	 * @param {String} name TODO
-	 * @return {Mixed} TODO
+	 * @param {String} name The parameter name.
+	 * @return {Mixed} The queried value.
 	 * @example
-	 *	TODO
+	 *	var shaderType = shader.getParameter(oogl.SHADER_TYPE);
 	 */
 	shader.getParameter = function (name) {
 		return context.getShaderParameter(shader, name);
 	};
+
+	/**
+	 * Returns the type of this shader, which is either `gl.VERTEX_SHADER` or
+	 * `gl.FRAGMENT_SHADER`.
+	 *
+	 * Equivalent to calling `gl.getShaderParameter` with `gl.SHADER_TYPE`.
+	 *
+	 * @method getType
+	 * @return {Number} The type of this shader.
+	 * @example
+	 *	var shaderType = shader.getType();
+	 */
 	shader.getType = function () {
 		return context.getShaderParameter(shader, context.SHADER_TYPE);
 	};
@@ -63,6 +75,16 @@ context.Shader = function (type) {
 	return shader;
 };
 
+/**
+ * TODO
+ *
+ * @class .VertexShader
+ * @extends .Shader
+ * @constructor
+ * @param {String} [source] TODO
+ * @example
+ *	TODO
+ */
 context.VertexShader = function (source) {
 	var shader = new context.Shader(context.VERTEX_SHADER);
 	if (source) {
@@ -71,6 +93,17 @@ context.VertexShader = function (source) {
 	}
 	return shader;
 };
+
+/**
+ * TODO
+ *
+ * @class .FragmentShader
+ * @extends .Shader
+ * @constructor
+ * @param {String} [source] TODO
+ * @example
+ *	TODO
+ */
 context.FragmentShader = function (source) {
 	var shader = new context.Shader(context.FRAGMENT_SHADER);
 	if (source) {
@@ -80,6 +113,17 @@ context.FragmentShader = function (source) {
 	return shader;
 };
 
+/**
+ * TODO
+ *
+ * @class .AjaxVertexShader
+ * @extends .Shader
+ * @constructor
+ * @param {String} name TODO
+ * @param {Function} callback TODO
+ * @example
+ *	TODO
+ */
 context.AjaxVertexShader = function (name, callback) {
 	var shader = new context.Shader(context.VERTEX_SHADER);
 	OOGL.Ajax.get(name + '.vert', function (source) {
@@ -89,6 +133,18 @@ context.AjaxVertexShader = function (name, callback) {
 	});
 	return shader;
 };
+
+/**
+ * TODO
+ *
+ * @class .AjaxFragmentShader
+ * @extends .Shader
+ * @constructor
+ * @param {String} name TODO
+ * @param {Function} callback TODO
+ * @example
+ *	TODO
+ */
 context.AjaxFragmentShader = function (name, callback) {
 	var shader = new context.Shader(context.FRAGMENT_SHADER);
 	OOGL.Ajax.get(name + '.frag', function (source) {

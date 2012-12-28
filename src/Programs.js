@@ -145,7 +145,7 @@ context.Program = function () {
 	 *	program.bindAttribLocations(['in_Vertex', 'in_Color', 'in_TexCoords']);
 	 *
 	 * @method bindAttribLocations
-	 * @params {String[]} attributes The array, or index-to-string map,
+	 * @param {String[]} attributes The array, or index-to-string map,
 	 *	specifying the names to bind and their respective indices.
 	 * @example
 	 *	program.bindAttribLocations(['in_Vertex', 'in_Color', 'in_TexCoords']);
@@ -378,6 +378,7 @@ context.Program = function () {
  * TODO
  *
  * @class .AutoProgram
+ * @extends .Program
  * @constructor
  * @param {String} vertexSource TODO
  * @param {String} fragmentSource TODO
@@ -399,6 +400,7 @@ context.AutoProgram = function (vertexSource, fragmentSource, attributes) {
  * TODO
  *
  * @class .AjaxProgram
+ * @extends .Program
  * @constructor
  * @param {String} name TODO
  * @param {String[]} attributes TODO
