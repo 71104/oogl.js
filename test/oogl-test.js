@@ -2229,13 +2229,7 @@ context.AttributeArray1 = function (index, type, data, normalize) {
 	 *	array.pointer();
 	 */
 	buffer.pointer = function (stride, offset) {
-		if (arguments.length < 2) {
-			offset = 0;
-			if (arguments.length < 1) {
-				stride = 0;
-			}
-		}
-		context.vertexAttribPointer(index, 1, types[type].glType, !!normalize, stride * types[type].size, offset * types[type].size);
+		context.vertexAttribPointer(index, 1, types[type].glType, !!normalize, (stride || 0) * types[type].size, (offset || 0) * types[type].size);
 	};
 
 	/**
@@ -2254,13 +2248,7 @@ context.AttributeArray1 = function (index, type, data, normalize) {
 	 */
 	buffer.bindAndPointer = function (stride, offset) {
 		context.bindBuffer(context.ARRAY_BUFFER, buffer);
-		if (arguments.length < 2) {
-			offset = 0;
-			if (arguments.length < 1) {
-				stride = 0;
-			}
-		}
-		context.vertexAttribPointer(index, 1, types[type].glType, !!normalize, stride * types[type].size, offset * types[type].size);
+		context.vertexAttribPointer(index, 1, types[type].glType, !!normalize, (stride || 0) * types[type].size, (offset || 0) * types[type].size);
 	};
 
 	return buffer;
@@ -2331,13 +2319,7 @@ context.AttributeArray2 = function (index, type, data, normalize) {
 	 *	array.pointer();
 	 */
 	buffer.pointer = function (stride, offset) {
-		if (arguments.length < 2) {
-			offset = 0;
-			if (arguments.length < 1) {
-				stride = 0;
-			}
-		}
-		context.vertexAttribPointer(index, 2, types[type].glType, !!normalize, stride * types[type].size, offset * types[type].size);
+		context.vertexAttribPointer(index, 2, types[type].glType, !!normalize, (stride || 0) * types[type].size, (offset || 0) * types[type].size);
 	};
 
 	/**
@@ -2356,13 +2338,7 @@ context.AttributeArray2 = function (index, type, data, normalize) {
 	 */
 	buffer.bindAndPointer = function (stride, offset) {
 		context.bindBuffer(context.ARRAY_BUFFER, buffer);
-		if (arguments.length < 2) {
-			offset = 0;
-			if (arguments.length < 1) {
-				stride = 0;
-			}
-		}
-		context.vertexAttribPointer(index, 2, types[type].glType, !!normalize, stride * types[type].size, offset * types[type].size);
+		context.vertexAttribPointer(index, 2, types[type].glType, !!normalize, (stride || 0) * types[type].size, (offset || 0) * types[type].size);
 	};
 
 	return buffer;
@@ -2433,13 +2409,7 @@ context.AttributeArray3 = function (index, type, data, normalize) {
 	 *	array.pointer();
 	 */
 	buffer.pointer = function (stride, offset) {
-		if (arguments.length < 2) {
-			offset = 0;
-			if (arguments.length < 1) {
-				stride = 0;
-			}
-		}
-		context.vertexAttribPointer(index, 3, types[type].glType, !!normalize, stride * types[type].size, offset * types[type].size);
+		context.vertexAttribPointer(index, 3, types[type].glType, !!normalize, (stride || 0) * types[type].size, (offset || 0) * types[type].size);
 	};
 
 	/**
@@ -2458,13 +2428,7 @@ context.AttributeArray3 = function (index, type, data, normalize) {
 	 */
 	buffer.bindAndPointer = function (stride, offset) {
 		context.bindBuffer(context.ARRAY_BUFFER, buffer);
-		if (arguments.length < 2) {
-			offset = 0;
-			if (arguments.length < 1) {
-				stride = 0;
-			}
-		}
-		context.vertexAttribPointer(index, 3, types[type].glType, !!normalize, stride * types[type].size, offset * types[type].size);
+		context.vertexAttribPointer(index, 3, types[type].glType, !!normalize, (stride || 0) * types[type].size, (offset || 0) * types[type].size);
 	};
 
 	return buffer;
@@ -2537,13 +2501,7 @@ context.AttributeArray4 = function (index, type, data, normalize) {
 	 *	array.pointer();
 	 */
 	buffer.pointer = function (stride, offset) {
-		if (arguments.length < 2) {
-			offset = 0;
-			if (arguments.length < 1) {
-				stride = 0;
-			}
-		}
-		context.vertexAttribPointer(index, 4, types[type].glType, !!normalize, stride * types[type].size, offset * types[type].size);
+		context.vertexAttribPointer(index, 4, types[type].glType, !!normalize, (stride || 0) * types[type].size, (offset || 0) * types[type].size);
 	};
 
 	/**
@@ -2562,13 +2520,7 @@ context.AttributeArray4 = function (index, type, data, normalize) {
 	 */
 	buffer.bindAndPointer = function (stride, offset) {
 		context.bindBuffer(context.ARRAY_BUFFER, buffer);
-		if (arguments.length < 2) {
-			offset = 0;
-			if (arguments.length < 1) {
-				stride = 0;
-			}
-		}
-		context.vertexAttribPointer(index, 4, types[type].glType, !!normalize, stride * types[type].size, offset * types[type].size);
+		context.vertexAttribPointer(index, 4, types[type].glType, !!normalize, (stride || 0) * types[type].size, (offset || 0) * types[type].size);
 	};
 
 	return buffer;
@@ -2685,21 +2637,8 @@ context.AttributeArrays = function (count) {
 		 *	arrays.drawTriangles();
 		 */
 		bindAndPointer: function (stride, offset) {
-			var i;
-			if (arguments.length < 2) {
-				if (arguments.length < 1) {
-					for (i in arrays) {
-						arrays[i].bindAndPointer();
-					}
-				} else {
-					for (i in arrays) {
-						arrays[i].bindAndPointer(stride);
-					}
-				}
-			} else {
-				for (i in arrays) {
-					arrays[i].bindAndPointer(stride, offset);
-				}
+			for (var i in arrays) {
+				arrays[i].bindAndPointer(stride, offset);
 			}
 		},
 
