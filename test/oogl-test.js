@@ -1,4 +1,4 @@
-/*! Object-Oriented Graphics Library - v1.0.0 - 2012-12-28
+/*! Object-Oriented Graphics Library - v1.0.0 - 2012-12-29
 * Released under the MIT License
 * http://oogljs.com/
 * Copyright (c) 2012 Alberto La Rocca */
@@ -3149,45 +3149,150 @@ context.Shader = function (type) {
 	shader.getType = function () {
 		return context.getShaderParameter(shader, context.SHADER_TYPE);
 	};
+
+	/**
+	 * Specifies the GLSL source code for this shader.
+	 *
+	 * `gl.shaderSource` equivalent.
+	 *
+	 * @method source
+	 * @param {String} source The GLSL source code.
+	 * @example
+	 *	var shader = new oogl.Shader(oogl.VERTEX_SHADER);
+	 *	shader.source(vertexSource);
+	 */
 	shader.source = function (source) {
 		context.shaderSource(shader, source);
 	};
+
+	/**
+	 * Returns the GLSL source code for this shader.
+	 *
+	 * Equivalent to calling `gl.getShaderParameter` with `gl.SHADER_SOURCE`.
+	 *
+	 * @method getSource
+	 * @return {String} The GLSL source code.
+	 * @example
+	 *	var vertexSource = vertexShader.getSource();
+	 */
 	shader.getSource = function () {
 		return context.getShaderParameter(shader, context.SHADER_SOURCE);
 	};
+
+	/**
+	 * Compiles this shader.
+	 *
+	 * `gl.compileShader` equivalent.
+	 *
+	 * @method compile
+	 * @example
+	 *	shader.source(shaderSource);
+	 *	shader.compile();
+	 *	if (!shader.getCompileStatus()) {
+	 *		throw shader.getInfoLog();
+	 *	}
+	 */
 	shader.compile = function () {
 		context.compileShader(shader);
 	};
+
+	/**
+	 * Returns the compile status produced by the last compile operation for
+	 * this shader.
+	 *
+	 * Equivalent to calling `gl.getShaderParameter` with `gl.COMPILE_STATUS`.
+	 *
+	 * @method getCompileStatus
+	 * @return {Boolean} `true` if the shader was compiled successfully, `false`
+	 *	otherwise.
+	 * @example
+	 *	shader.source(shaderSource);
+	 *	shader.compile();
+	 *	if (!shader.getCompileStatus()) {
+	 *		throw shader.getInfoLog();
+	 *	}
+	 */
 	shader.getCompileStatus = function () {
 		return context.getShaderParameter(shader, context.COMPILE_STATUS);
 	};
+
+	/**
+	 * Returns the info log produced by the last compile operation for this
+	 * shader.
+	 *
+	 * `gl.getShaderInfoLog` equivalent.
+	 *
+	 * @method getInfoLog
+	 * @return {String} The info log.
+	 * @example
+	 *	shader.source(shaderSource);
+	 *	shader.compile();
+	 *	if (!shader.getCompileStatus()) {
+	 *		throw shader.getInfoLog();
+	 *	}
+	 */
 	shader.getInfoLog = function () {
 		return context.getShaderInfoLog(shader);
 	};
+
+	/**
+	 * Compiles this shader, throws the info log if the shader does not compile
+	 * successfully.
+	 *
+	 * @method compileOrThrow
+	 * @example
+	 *	shader.source(shaderSource);
+	 *	shader.compileOrThrow();
+	 */
 	shader.compileOrThrow = function () {
 		context.compileShader(shader);
 		if (!context.getShaderParameter(shader, context.COMPILE_STATUS)) {
 			throw context.getShaderInfoLog(shader);
 		}
 	};
+
+	/**
+	 * Deletes this shader.
+	 *
+	 * @method _delete
+	 * @example
+	 *	shader._delete();
+	 */
 	shader._delete = function () {
 		context.deleteShader(shader);
 	};
+
+	/**
+	 * Returns the delete status for this shader.
+	 *
+	 * @method getDeleteStatus
+	 * @return {Boolean} `true` if the shader has been deleted, `false`
+	 *	otherwise.
+	 * @example
+	 *	if (shader.getDeleteStatus()) {
+	 *		throw 'The shader has been deleted.';
+	 *	}
+	 */
 	shader.getDeleteStatus = function () {
 		return context.getShaderParameter(shader, context.DELETE_STATUS);
 	};
+
 	return shader;
 };
 
 /**
- * TODO
+ * A `Shader` whose type is `gl.VERTEX_SHADER`.
+ *
+ * The `VertexShader` constructor optionally takes a string argument containing
+ * the GLSL source code for the shader and tries to compile it through the
+ * provided `compileOrThrow` method.
  *
  * @class .VertexShader
  * @extends .Shader
  * @constructor
- * @param {String} [source] TODO
+ * @param {String} [source] The optional GLSL source code for the shader.
  * @example
- *	TODO
+ *	var vertexShader = new oogl.VertexShader(vertexSource);
  */
 context.VertexShader = function (source) {
 	var shader = new context.Shader(context.VERTEX_SHADER);
@@ -3199,14 +3304,18 @@ context.VertexShader = function (source) {
 };
 
 /**
- * TODO
+ * A `Shader` whose type is `gl.FRAGMENT_SHADER`.
+ *
+ * The `FragmentShader` constructor optionally takes a string argument
+ * containing the GLSL source code for the shader and tries to compile it
+ * through the provided `compileOrThrow` method.
  *
  * @class .FragmentShader
  * @extends .Shader
  * @constructor
- * @param {String} [source] TODO
+ * @param {String} [source] The optional GLSL source code for the shader.
  * @example
- *	TODO
+ *	var fragmentShader = new oogl.FragmentShader(fragmentSource);
  */
 context.FragmentShader = function (source) {
 	var shader = new context.Shader(context.FRAGMENT_SHADER);
@@ -3218,19 +3327,26 @@ context.FragmentShader = function (source) {
 };
 
 /**
- * TODO
+ * A vertex shader which tries to load its GLSL source code using AJAX.
+ *
+ * The `AjaxVertexShader` constructor also tries to compile the shader using the
+ * provided `compileOrThrow` method. After the source code has been loaded and
+ * compiled successfully the specified callback function is invoked.
  *
  * @class .AjaxVertexShader
  * @extends .Shader
  * @constructor
- * @param {String} name TODO
- * @param {Function} callback TODO
+ * @param {String} url A URL referring to the GLSL source code.
+ * @param {Function} [callback] The callback function.
  * @example
- *	TODO
+ *	var program = new oogl.Program();
+ *	var vertexShader = new oogl.AjaxVertexShader('vert/box.vert', function () {
+ *		program.attachShader(vertexShader);
+ *	});
  */
-context.AjaxVertexShader = function (name, callback) {
+context.AjaxVertexShader = function (url, callback) {
 	var shader = new context.Shader(context.VERTEX_SHADER);
-	OOGL.Ajax.get(name + '.vert', function (source) {
+	OOGL.Ajax.get(url, function (source) {
 		shader.source(source);
 		shader.compileOrThrow();
 		callback && callback();
@@ -3239,19 +3355,26 @@ context.AjaxVertexShader = function (name, callback) {
 };
 
 /**
- * TODO
+ * A fragment shader which tries to load its GLSL source code using AJAX.
+ *
+ * The `AjaxFragmentShader` constructor also tries to compile the shader using
+ * the provided `compileOrThrow` method. After the source code has been loaded
+ * and compiled successfully the specified callback function is invoked.
  *
  * @class .AjaxFragmentShader
  * @extends .Shader
  * @constructor
- * @param {String} name TODO
- * @param {Function} callback TODO
+ * @param {String} url A URL referring to the GLSL source code.
+ * @param {Function} [callback] The callback function.
  * @example
- *	TODO
+ *	var program = new oogl.Program();
+ *	var fragmentShader = new oogl.AjaxFragmentShader('frag/box.frag', function () {
+ *		program.attachShader(fragmentShader);
+ *	});
  */
-context.AjaxFragmentShader = function (name, callback) {
+context.AjaxFragmentShader = function (url, callback) {
 	var shader = new context.Shader(context.FRAGMENT_SHADER);
-	OOGL.Ajax.get(name + '.frag', function (source) {
+	OOGL.Ajax.get(url, function (source) {
 		shader.source(source);
 		shader.compileOrThrow();
 		callback && callback();
