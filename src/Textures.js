@@ -296,11 +296,11 @@ context.Textures = function (textures) {
 	textures = textures && textures.slice(0) || [];
 	return {
 		/**
-		 * Adds a `.Texture` to this sets of textures.
+		 * Adds a `Texture` to this set.
 		 *
-		 * The added texture is automatically assigned a texture unit, but the
-		 * set must be re-bound (using the `bind` method) before its textures
-		 * can be used in programs.
+		 * The texture is automatically assigned a texture unit, but the set
+		 * must be re-bound (using the `bind` method) before its textures can be
+		 * used in programs.
 		 *
 		 * @method add
 		 * @param {.Texture} texture The OOGL texture to add.

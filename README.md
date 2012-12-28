@@ -71,8 +71,7 @@ OOGL(function () {
 	oogl.clearColor(0, 0, 0, 1);
 	oogl.clear(oogl.COLOR_BUFFER_BIT);
 	var array = new oogl.AttributeArray2(0, 'float', [-1, 1, -1, -1, 1, -1]);
-	array.bind();
-	array.pointer();
+	array.bindAndPointer();
 	var program = new oogl.AjaxProgram('test', ['in_Vertex'], function () {
 		program.use();
 		oogl.drawArrays(oogl.TRIANGLES, 0, 3);

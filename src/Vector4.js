@@ -48,6 +48,17 @@ OOGL.Vector4 = function (x, y, z, w) {
 };
 
 OOGL.Vector4.prototype = {
+	/**
+	 * Converts this homogeneous vector to a 3-component standard vector
+	 * dividing the X, Y and Z components by the W component. This method
+	 * produces a new `OOGL.Vector3` object, while this vector is not changed.
+	 *
+	 * @method toStandard
+	 * @return {OOGL.Vector3} The computed standard vector.
+	 * @example
+	 *	var w = new OOGL.Vector4(2, 4, 6, 2);
+	 *	var v = w.toStandard(); // v is (1, 2, 3)
+	 */
 	toStandard: function () {
 		return new OOGL.Vector3(this.x / this.w, this.y / this.w, this.z / this.w);
 	}

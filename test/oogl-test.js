@@ -790,6 +790,17 @@ OOGL.Vector4 = function (x, y, z, w) {
 };
 
 OOGL.Vector4.prototype = {
+	/**
+	 * Converts this homogeneous vector to a 3-component standard vector
+	 * dividing the X, Y and Z components by the W component. This method
+	 * produces a new `OOGL.Vector3` object, while this vector is not changed.
+	 *
+	 * @method toStandard
+	 * @return {OOGL.Vector3} The computed standard vector.
+	 * @example
+	 *	var w = new OOGL.Vector4(2, 4, 6, 2);
+	 *	var v = w.toStandard(); // v is (1, 2, 3)
+	 */
 	toStandard: function () {
 		return new OOGL.Vector3(this.x / this.w, this.y / this.w, this.z / this.w);
 	}
@@ -3154,11 +3165,11 @@ context.Textures = function (textures) {
 	textures = textures && textures.slice(0) || [];
 	return {
 		/**
-		 * Adds a `.Texture` to this sets of textures.
+		 * Adds a `Texture` to this set.
 		 *
-		 * The added texture is automatically assigned a texture unit, but the
-		 * set must be re-bound (using the `bind` method) before its textures
-		 * can be used in programs.
+		 * The texture is automatically assigned a texture unit, but the set
+		 * must be re-bound (using the `bind` method) before its textures can be
+		 * used in programs.
 		 *
 		 * @method add
 		 * @param {.Texture} texture The OOGL texture to add.
