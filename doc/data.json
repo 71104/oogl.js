@@ -19,12 +19,12 @@
             "name": "src\\Arrays.js",
             "modules": {},
             "classes": {
-                ".AttributeArray1": 1,
-                ".AttributeArray2": 1,
-                ".AttributeArray3": 1,
-                ".AttributeArray4": 1,
-                ".AttributeArrays": 1,
-                ".ElementArray": 1
+                "oogl.AttributeArray1": 1,
+                "oogl.AttributeArray2": 1,
+                "oogl.AttributeArray3": 1,
+                "oogl.AttributeArray4": 1,
+                "oogl.AttributeArrays": 1,
+                "oogl.ElementArray": 1
             },
             "fors": {},
             "namespaces": {}
@@ -33,18 +33,18 @@
             "name": "src\\Buffers.js",
             "modules": {},
             "classes": {
-                ".Buffer": 1,
-                ".StaticBuffer": 1,
-                ".StreamBuffer": 1,
-                ".DynamicBuffer": 1,
-                ".ArrayBuffer": 1,
-                ".ElementArrayBuffer": 1,
-                ".StaticArrayBuffer": 1,
-                ".StaticElementArrayBuffer": 1,
-                ".StreamArrayBuffer": 1,
-                ".StreamElementArrayBuffer": 1,
-                ".DynamicArrayBuffer": 1,
-                ".DynamicElementArrayBuffer": 1
+                "oogl.Buffer": 1,
+                "oogl.StaticBuffer": 1,
+                "oogl.StreamBuffer": 1,
+                "oogl.DynamicBuffer": 1,
+                "oogl.ArrayBuffer": 1,
+                "oogl.ElementArrayBuffer": 1,
+                "oogl.StaticArrayBuffer": 1,
+                "oogl.StaticElementArrayBuffer": 1,
+                "oogl.StreamArrayBuffer": 1,
+                "oogl.StreamElementArrayBuffer": 1,
+                "oogl.DynamicArrayBuffer": 1,
+                "oogl.DynamicElementArrayBuffer": 1
             },
             "fors": {},
             "namespaces": {}
@@ -62,7 +62,7 @@
             "name": "src\\Framebuffer.js",
             "modules": {},
             "classes": {
-                ".Framebuffer": 1
+                "oogl.Framebuffer": 1
             },
             "fors": {},
             "namespaces": {}
@@ -105,9 +105,9 @@
             "name": "src\\Programs.js",
             "modules": {},
             "classes": {
-                ".Program": 1,
-                ".AutoProgram": 1,
-                ".AjaxProgram": 1
+                "oogl.Program": 1,
+                "oogl.AutoProgram": 1,
+                "oogl.AjaxProgram": 1
             },
             "fors": {},
             "namespaces": {}
@@ -116,7 +116,7 @@
             "name": "src\\Renderbuffer.js",
             "modules": {},
             "classes": {
-                ".Renderbuffer": 1
+                "oogl.Renderbuffer": 1
             },
             "fors": {},
             "namespaces": {}
@@ -125,11 +125,11 @@
             "name": "src\\Shaders.js",
             "modules": {},
             "classes": {
-                ".Shader": 1,
-                ".VertexShader": 1,
-                ".FragmentShader": 1,
-                ".AjaxVertexShader": 1,
-                ".AjaxFragmentShader": 1
+                "oogl.Shader": 1,
+                "oogl.VertexShader": 1,
+                "oogl.FragmentShader": 1,
+                "oogl.AjaxVertexShader": 1,
+                "oogl.AjaxFragmentShader": 1
             },
             "fors": {},
             "namespaces": {}
@@ -138,10 +138,10 @@
             "name": "src\\Textures.js",
             "modules": {},
             "classes": {
-                ".Texture": 1,
-                ".Texture2D": 1,
-                ".CubeMap": 1,
-                ".Textures": 1
+                "oogl.Texture": 1,
+                "oogl.Texture2D": 1,
+                "oogl.CubeMap": 1,
+                "oogl.Textures": 1
             },
             "fors": {},
             "namespaces": {}
@@ -189,9 +189,9 @@
             "description": "Provides methods for performing AJAX requests. Useful for loading assets such\nas shaders.",
             "static": 1
         },
-        ".AttributeArray1": {
-            "name": ".AttributeArray1",
-            "shortname": ".AttributeArray1",
+        "oogl.AttributeArray1": {
+            "name": "oogl.AttributeArray1",
+            "shortname": "oogl.AttributeArray1",
             "classitems": [],
             "plugins": [],
             "extensions": [],
@@ -200,7 +200,7 @@
             "file": "src\\Arrays.js",
             "line": 3,
             "description": "Creates an array buffer with static draw usage representing a single\ncomponent vertex attribute array.\n\nThe attribute array is associated to the specified `index`: the\n`AttributeArray` constructor enables the `index`-th attribute array calling\n`gl.enableVertexAttribArray` and the provided `pointer` method invokes\n`gl.vertexAttribPointer` with the specified `index` and `type`.",
-            "extends": ".StaticArrayBuffer",
+            "extends": "oogl.StaticArrayBuffer",
             "is_constructor": 1,
             "params": [
                 {
@@ -230,9 +230,9 @@
                 "\n\tvar array = new oogl.AttributeArray1(0, 'float', [1, 2, 3, 4, 5, 6, 7, 8]);"
             ]
         },
-        ".AttributeArray2": {
-            "name": ".AttributeArray2",
-            "shortname": ".AttributeArray2",
+        "oogl.AttributeArray2": {
+            "name": "oogl.AttributeArray2",
+            "shortname": "oogl.AttributeArray2",
             "classitems": [],
             "plugins": [],
             "extensions": [],
@@ -241,7 +241,7 @@
             "file": "src\\Arrays.js",
             "line": 93,
             "description": "Creates an array buffer with static draw usage representing a 2-component\nvertex attribute array.\n\nThe attribute array is associated to the specified `index`: the\n`AttributeArray` constructor enables the `index`-th attribute array calling\n`gl.enableVertexAttribArray` and the provided `pointer` method invokes\n`gl.vertexAttribPointer` with the specified `index` and `type`.",
-            "extends": ".StaticArrayBuffer",
+            "extends": "oogl.StaticArrayBuffer",
             "is_constructor": 1,
             "params": [
                 {
@@ -271,9 +271,9 @@
                 "\n\tvar array = new oogl.AttributeArray2(0, 'float', [1, 2, 3, 4, 5, 6, 7, 8]);"
             ]
         },
-        ".AttributeArray3": {
-            "name": ".AttributeArray3",
-            "shortname": ".AttributeArray3",
+        "oogl.AttributeArray3": {
+            "name": "oogl.AttributeArray3",
+            "shortname": "oogl.AttributeArray3",
             "classitems": [],
             "plugins": [],
             "extensions": [],
@@ -282,7 +282,7 @@
             "file": "src\\Arrays.js",
             "line": 183,
             "description": "Creates an array buffer with static draw usage representing a 3-component\nvertex attribute array.\n\nThe attribute array is associated to the specified `index`: the\n`AttributeArray` constructor enables the `index`-th attribute array calling\n`gl.enableVertexAttribArray` and the provided `pointer` method invokes\n`gl.vertexAttribPointer` with the specified `index` and `type`.",
-            "extends": ".StaticArrayBuffer",
+            "extends": "oogl.StaticArrayBuffer",
             "is_constructor": 1,
             "params": [
                 {
@@ -312,9 +312,9 @@
                 "\n\tvar array = new oogl.AttributeArray(0, 'float', [1, 2, 3, 4, 5, 6, 7, 8]);"
             ]
         },
-        ".AttributeArray4": {
-            "name": ".AttributeArray4",
-            "shortname": ".AttributeArray4",
+        "oogl.AttributeArray4": {
+            "name": "oogl.AttributeArray4",
+            "shortname": "oogl.AttributeArray4",
             "classitems": [],
             "plugins": [],
             "extensions": [],
@@ -323,7 +323,7 @@
             "file": "src\\Arrays.js",
             "line": 273,
             "description": "Creates an array buffer with static draw usage representing a 4-component\nvertex attribute array.\n\nThe attribute array is associated to the specified `index`: the\n`AttributeArray` constructor enables the `index`-th attribute array calling\n`gl.enableVertexAttribArray` and the provided `pointer` method invokes\n`gl.vertexAttribPointer` with the specified `index` and `type`.",
-            "extends": ".StaticArrayBuffer",
+            "extends": "oogl.StaticArrayBuffer",
             "is_constructor": 1,
             "params": [
                 {
@@ -353,9 +353,9 @@
                 "\n\tvar array = new oogl.AttributeArray4(0, 'float', [1, 2, 3, 4, 5, 6, 7, 8]);"
             ]
         },
-        ".AttributeArrays": {
-            "name": ".AttributeArrays",
-            "shortname": ".AttributeArrays",
+        "oogl.AttributeArrays": {
+            "name": "oogl.AttributeArrays",
+            "shortname": "oogl.AttributeArrays",
             "classitems": [],
             "plugins": [],
             "extensions": [],
@@ -376,9 +376,9 @@
                 "\n\tvar program = new oogl.AutoProgram(vertexSource, fragmentSource, ['in_Vertex', 'in_Color', 'in_TexCoord']);\n\tvar arrays = new oogl.AttributeArrays();\n\tarrays.add3('float', vertices);\n\tarrays.add3('float', colors);\n\tarrays.add2('float', textureCoordinates);\n\tarrays.bindAndPointer();\n\tprogram.use();\n\tarrays.drawTriangles();"
             ]
         },
-        ".ElementArray": {
-            "name": ".ElementArray",
-            "shortname": ".ElementArray",
+        "oogl.ElementArray": {
+            "name": "oogl.ElementArray",
+            "shortname": "oogl.ElementArray",
             "classitems": [],
             "plugins": [],
             "extensions": [],
@@ -387,7 +387,7 @@
             "file": "src\\Arrays.js",
             "line": 583,
             "description": "Represents an element array.\n\nThis class inherits `StaticElementArrayBuffer` and introduces utility\nmethods.",
-            "extends": ".StaticElementArrayBuffer",
+            "extends": "oogl.StaticElementArrayBuffer",
             "is_constructor": 1,
             "params": [
                 {
@@ -407,9 +407,9 @@
                 "\n\tvar program = new oogl.AutoProgram(vertexSource, fragmentSource, ['in_Vertex', 'in_Color', 'in_TexCoord']);\n\tvar arrays = new oogl.AttributeArrays();\n\tarrays.add3('float', vertices);\n\tarrays.add3('float', colors);\n\tarrays.add2('float', textureCoordinates);\n\tarrays.bindAndPointer();\n\tvar elements = new oogl.ElementArray(indices);\n\telements.bind();\n\tprogram.use();\n\telements.drawTriangles();"
             ]
         },
-        ".Buffer": {
-            "name": ".Buffer",
-            "shortname": ".Buffer",
+        "oogl.Buffer": {
+            "name": "oogl.Buffer",
+            "shortname": "oogl.Buffer",
             "classitems": [],
             "plugins": [],
             "extensions": [],
@@ -441,9 +441,9 @@
                 "\n\tvar oogl = new OOGL.Context('canvas');\n\tvar buffer = new oogl.Buffer(oogl.ARRAY_BUFFER, 'float', oogl.STATIC_DRAW);"
             ]
         },
-        ".StaticBuffer": {
-            "name": ".StaticBuffer",
-            "shortname": ".StaticBuffer",
+        "oogl.StaticBuffer": {
+            "name": "oogl.StaticBuffer",
+            "shortname": "oogl.StaticBuffer",
             "classitems": [],
             "plugins": [],
             "extensions": [],
@@ -452,7 +452,7 @@
             "file": "src\\Buffers.js",
             "line": 212,
             "description": "Wraps a GL buffer whose usage is set to `gl.STATIC_DRAW`.",
-            "extends": ".Buffer",
+            "extends": "oogl.Buffer",
             "is_constructor": 1,
             "params": [
                 {
@@ -470,9 +470,9 @@
                 "\n\tvar buffer = new oogl.StaticBuffer(oogl.ARRAY_BUFFER, 'float');"
             ]
         },
-        ".StreamBuffer": {
-            "name": ".StreamBuffer",
-            "shortname": ".StreamBuffer",
+        "oogl.StreamBuffer": {
+            "name": "oogl.StreamBuffer",
+            "shortname": "oogl.StreamBuffer",
             "classitems": [],
             "plugins": [],
             "extensions": [],
@@ -481,7 +481,7 @@
             "file": "src\\Buffers.js",
             "line": 230,
             "description": "Wraps a GL buffer whose usage is set to `gl.STREAM_DRAW`.",
-            "extends": ".Buffer",
+            "extends": "oogl.Buffer",
             "is_constructor": 1,
             "params": [
                 {
@@ -499,9 +499,9 @@
                 "\n\tvar buffer = new oogl.StreamBuffer(oogl.ARRAY_BUFFER, 'float');"
             ]
         },
-        ".DynamicBuffer": {
-            "name": ".DynamicBuffer",
-            "shortname": ".DynamicBuffer",
+        "oogl.DynamicBuffer": {
+            "name": "oogl.DynamicBuffer",
+            "shortname": "oogl.DynamicBuffer",
             "classitems": [],
             "plugins": [],
             "extensions": [],
@@ -510,7 +510,7 @@
             "file": "src\\Buffers.js",
             "line": 248,
             "description": "Wraps a GL buffer whose usage is set to `gl.DYNAMIC_DRAW`.",
-            "extends": ".Buffer",
+            "extends": "oogl.Buffer",
             "is_constructor": 1,
             "params": [
                 {
@@ -528,9 +528,9 @@
                 "\n\tvar buffer = new oogl.DynamicBuffer(oogl.ARRAY_BUFFER, 'float');"
             ]
         },
-        ".ArrayBuffer": {
-            "name": ".ArrayBuffer",
-            "shortname": ".ArrayBuffer",
+        "oogl.ArrayBuffer": {
+            "name": "oogl.ArrayBuffer",
+            "shortname": "oogl.ArrayBuffer",
             "classitems": [],
             "plugins": [],
             "extensions": [],
@@ -539,7 +539,7 @@
             "file": "src\\Buffers.js",
             "line": 266,
             "description": "Wraps a GL buffer whose target is set to `gl.ARRAY_BUFFER`.",
-            "extends": ".Buffer",
+            "extends": "oogl.Buffer",
             "is_constructor": 1,
             "params": [
                 {
@@ -557,9 +557,9 @@
                 "\n\tvar buffer = new oogl.ArrayBuffer('float', oogl.STATIC_DRAW);"
             ]
         },
-        ".ElementArrayBuffer": {
-            "name": ".ElementArrayBuffer",
-            "shortname": ".ElementArrayBuffer",
+        "oogl.ElementArrayBuffer": {
+            "name": "oogl.ElementArrayBuffer",
+            "shortname": "oogl.ElementArrayBuffer",
             "classitems": [],
             "plugins": [],
             "extensions": [],
@@ -568,7 +568,7 @@
             "file": "src\\Buffers.js",
             "line": 284,
             "description": "Wraps a GL buffer whose target is set to `gl.ELEMENT_ARRAY_BUFFER`.",
-            "extends": ".Buffer",
+            "extends": "oogl.Buffer",
             "is_constructor": 1,
             "params": [
                 {
@@ -586,9 +586,9 @@
                 "\n\tvar buffer = new oogl.ElementArrayBuffer('float', oogl.STATIC_DRAW);"
             ]
         },
-        ".StaticArrayBuffer": {
-            "name": ".StaticArrayBuffer",
-            "shortname": ".StaticArrayBuffer",
+        "oogl.StaticArrayBuffer": {
+            "name": "oogl.StaticArrayBuffer",
+            "shortname": "oogl.StaticArrayBuffer",
             "classitems": [],
             "plugins": [],
             "extensions": [],
@@ -597,7 +597,7 @@
             "file": "src\\Buffers.js",
             "line": 302,
             "description": "Wraps a GL buffer whose target is set to `gl.ARRAY_BUFFER` and usage to\n`gl.STATIC_DRAW`.",
-            "extends": ".StaticBuffer",
+            "extends": "oogl.StaticBuffer",
             "is_constructor": 1,
             "params": [
                 {
@@ -610,9 +610,9 @@
                 "\n\tvar buffer = new oogl.StaticArrayBuffer('float');"
             ]
         },
-        ".StaticElementArrayBuffer": {
-            "name": ".StaticElementArrayBuffer",
-            "shortname": ".StaticElementArrayBuffer",
+        "oogl.StaticElementArrayBuffer": {
+            "name": "oogl.StaticElementArrayBuffer",
+            "shortname": "oogl.StaticElementArrayBuffer",
             "classitems": [],
             "plugins": [],
             "extensions": [],
@@ -621,7 +621,7 @@
             "file": "src\\Buffers.js",
             "line": 318,
             "description": "Wraps a GL buffer whose target is set to `gl.ELEMENT_ARRAY_BUFFER` and usage\nto `gl.STATIC_DRAW`.",
-            "extends": ".StaticBuffer",
+            "extends": "oogl.StaticBuffer",
             "is_constructor": 1,
             "params": [
                 {
@@ -634,9 +634,9 @@
                 "\n\tvar buffer = new oogl.StaticElementArrayBuffer('float');"
             ]
         },
-        ".StreamArrayBuffer": {
-            "name": ".StreamArrayBuffer",
-            "shortname": ".StreamArrayBuffer",
+        "oogl.StreamArrayBuffer": {
+            "name": "oogl.StreamArrayBuffer",
+            "shortname": "oogl.StreamArrayBuffer",
             "classitems": [],
             "plugins": [],
             "extensions": [],
@@ -645,7 +645,7 @@
             "file": "src\\Buffers.js",
             "line": 334,
             "description": "Wraps a GL buffer whose target is set to `gl.ARRAY_BUFFER` and usage to\n`gl.STREAM_DRAW`.",
-            "extends": ".StreamBuffer",
+            "extends": "oogl.StreamBuffer",
             "is_constructor": 1,
             "params": [
                 {
@@ -658,9 +658,9 @@
                 "\n\tvar buffer = new oogl.StreamArrayBuffer('float');"
             ]
         },
-        ".StreamElementArrayBuffer": {
-            "name": ".StreamElementArrayBuffer",
-            "shortname": ".StreamElementArrayBuffer",
+        "oogl.StreamElementArrayBuffer": {
+            "name": "oogl.StreamElementArrayBuffer",
+            "shortname": "oogl.StreamElementArrayBuffer",
             "classitems": [],
             "plugins": [],
             "extensions": [],
@@ -669,7 +669,7 @@
             "file": "src\\Buffers.js",
             "line": 350,
             "description": "Wraps a GL buffer whose target is set to `gl.ELEMENT_ARRAY_BUFFER` and usage\nto `gl.STREAM_DRAW`.",
-            "extends": ".StreamBuffer",
+            "extends": "oogl.StreamBuffer",
             "is_constructor": 1,
             "params": [
                 {
@@ -682,9 +682,9 @@
                 "\n\tvar buffer = new oogl.StreamElementArrayBuffer('float');"
             ]
         },
-        ".DynamicArrayBuffer": {
-            "name": ".DynamicArrayBuffer",
-            "shortname": ".DynamicArrayBuffer",
+        "oogl.DynamicArrayBuffer": {
+            "name": "oogl.DynamicArrayBuffer",
+            "shortname": "oogl.DynamicArrayBuffer",
             "classitems": [],
             "plugins": [],
             "extensions": [],
@@ -693,7 +693,7 @@
             "file": "src\\Buffers.js",
             "line": 366,
             "description": "Wraps a GL buffer whose target is set to `gl.ARRAY_BUFFER` and usage to\n`gl.DYNAMIC_DRAW`.",
-            "extends": ".DynamicBuffer",
+            "extends": "oogl.DynamicBuffer",
             "is_constructor": 1,
             "params": [
                 {
@@ -706,9 +706,9 @@
                 "\n\tvar buffer = new oogl.DynamicArrayBuffer('float');"
             ]
         },
-        ".DynamicElementArrayBuffer": {
-            "name": ".DynamicElementArrayBuffer",
-            "shortname": ".DynamicElementArrayBuffer",
+        "oogl.DynamicElementArrayBuffer": {
+            "name": "oogl.DynamicElementArrayBuffer",
+            "shortname": "oogl.DynamicElementArrayBuffer",
             "classitems": [],
             "plugins": [],
             "extensions": [],
@@ -717,7 +717,7 @@
             "file": "src\\Buffers.js",
             "line": 382,
             "description": "Wraps a GL buffer whose target is set to `gl.ELEMENT_ARRAY_BUFFER` and usage\nto `gl.DYNAMIC_DRAW`.",
-            "extends": ".DynamicBuffer",
+            "extends": "oogl.DynamicBuffer",
             "is_constructor": 1,
             "params": [
                 {
@@ -760,9 +760,9 @@
                 "\n\tvar oogl = new OOGL.Context('canvas', {\n\t\tstencil: true\n\t});"
             ]
         },
-        ".Framebuffer": {
-            "name": ".Framebuffer",
-            "shortname": ".Framebuffer",
+        "oogl.Framebuffer": {
+            "name": "oogl.Framebuffer",
+            "shortname": "oogl.Framebuffer",
             "classitems": [],
             "plugins": [],
             "extensions": [],
@@ -1079,9 +1079,9 @@
                 "\n\tvar m = new OOGL.ScalingMatrix4(0.5, 0.5, 0.5); // halves the size of everything"
             ]
         },
-        ".Program": {
-            "name": ".Program",
-            "shortname": ".Program",
+        "oogl.Program": {
+            "name": "oogl.Program",
+            "shortname": "oogl.Program",
             "classitems": [],
             "plugins": [],
             "extensions": [],
@@ -1096,9 +1096,9 @@
                 "\n\tvar program = new oogl.Program();\n\tprogram.attachShader(vertexShader); // either a WebGLShader or OOGL.VertexShader object\n\tprogram.attachShader(fragmentShader); // either a WebGLShader or OOGL.VertexShader object\n\tprogram.linkOrThrow();"
             ]
         },
-        ".AutoProgram": {
-            "name": ".AutoProgram",
-            "shortname": ".AutoProgram",
+        "oogl.AutoProgram": {
+            "name": "oogl.AutoProgram",
+            "shortname": "oogl.AutoProgram",
             "classitems": [],
             "plugins": [],
             "extensions": [],
@@ -1107,7 +1107,7 @@
             "file": "src\\Programs.js",
             "line": 377,
             "description": "TODO",
-            "extends": ".Program",
+            "extends": "oogl.Program",
             "is_constructor": 1,
             "params": [
                 {
@@ -1130,9 +1130,9 @@
                 "\n\tvar program = new oogl.AutoProgram(vertexSource, fragmentSource, ['in_Vertex', 'in_Color', 'in_TexCoords']);"
             ]
         },
-        ".AjaxProgram": {
-            "name": ".AjaxProgram",
-            "shortname": ".AjaxProgram",
+        "oogl.AjaxProgram": {
+            "name": "oogl.AjaxProgram",
+            "shortname": "oogl.AjaxProgram",
             "classitems": [],
             "plugins": [],
             "extensions": [],
@@ -1141,7 +1141,7 @@
             "file": "src\\Programs.js",
             "line": 399,
             "description": "TODO",
-            "extends": ".Program",
+            "extends": "oogl.Program",
             "is_constructor": 1,
             "params": [
                 {
@@ -1164,9 +1164,9 @@
                 "\n\tvar arrays = new oogl.AttributeArrays(vertices.length);\n\tarrays.add3('float', vertices);\n\tarrays.add3('float', colors);\n\tarrays.add2('float', textureCoordinates);\n\tvar program = new oogl.AjaxProgram('box', ['in_Vertex', 'in_Color', 'in_TexCoords'], function () {\n\t\tprogram.use();\n\t\tarrays.drawTriangles();\n\t\toogl.flush();\n\t});"
             ]
         },
-        ".Renderbuffer": {
-            "name": ".Renderbuffer",
-            "shortname": ".Renderbuffer",
+        "oogl.Renderbuffer": {
+            "name": "oogl.Renderbuffer",
+            "shortname": "oogl.Renderbuffer",
             "classitems": [],
             "plugins": [],
             "extensions": [],
@@ -1180,9 +1180,9 @@
                 "\n\tvar oogl = new OOGL.Context('canvas');\n\tvar renderbuffer = new oogl.Renderbuffer();"
             ]
         },
-        ".Shader": {
-            "name": ".Shader",
-            "shortname": ".Shader",
+        "oogl.Shader": {
+            "name": "oogl.Shader",
+            "shortname": "oogl.Shader",
             "classitems": [],
             "plugins": [],
             "extensions": [],
@@ -1204,9 +1204,9 @@
                 "\n\tvar vertexShader = new oogl.Shader(oogl.VERTEX_SHADER);\n\tvertexShader.source(vertexSource);\n\tvertexShader.compileOrThrow();"
             ]
         },
-        ".VertexShader": {
-            "name": ".VertexShader",
-            "shortname": ".VertexShader",
+        "oogl.VertexShader": {
+            "name": "oogl.VertexShader",
+            "shortname": "oogl.VertexShader",
             "classitems": [],
             "plugins": [],
             "extensions": [],
@@ -1215,7 +1215,7 @@
             "file": "src\\Shaders.js",
             "line": 179,
             "description": "A `Shader` whose type is `gl.VERTEX_SHADER`.\n\nThe `VertexShader` constructor optionally takes a string argument containing\nthe GLSL source code for the shader and tries to compile it through the\nprovided `compileOrThrow` method.",
-            "extends": ".Shader",
+            "extends": "oogl.Shader",
             "is_constructor": 1,
             "params": [
                 {
@@ -1229,9 +1229,9 @@
                 "\n\tvar vertexShader = new oogl.VertexShader(vertexSource);"
             ]
         },
-        ".FragmentShader": {
-            "name": ".FragmentShader",
-            "shortname": ".FragmentShader",
+        "oogl.FragmentShader": {
+            "name": "oogl.FragmentShader",
+            "shortname": "oogl.FragmentShader",
             "classitems": [],
             "plugins": [],
             "extensions": [],
@@ -1240,7 +1240,7 @@
             "file": "src\\Shaders.js",
             "line": 202,
             "description": "A `Shader` whose type is `gl.FRAGMENT_SHADER`.\n\nThe `FragmentShader` constructor optionally takes a string argument\ncontaining the GLSL source code for the shader and tries to compile it\nthrough the provided `compileOrThrow` method.",
-            "extends": ".Shader",
+            "extends": "oogl.Shader",
             "is_constructor": 1,
             "params": [
                 {
@@ -1254,9 +1254,9 @@
                 "\n\tvar fragmentShader = new oogl.FragmentShader(fragmentSource);"
             ]
         },
-        ".AjaxVertexShader": {
-            "name": ".AjaxVertexShader",
-            "shortname": ".AjaxVertexShader",
+        "oogl.AjaxVertexShader": {
+            "name": "oogl.AjaxVertexShader",
+            "shortname": "oogl.AjaxVertexShader",
             "classitems": [],
             "plugins": [],
             "extensions": [],
@@ -1265,7 +1265,7 @@
             "file": "src\\Shaders.js",
             "line": 225,
             "description": "A vertex shader which tries to load its GLSL source code using AJAX.\n\nThe `AjaxVertexShader` constructor also tries to compile the shader using the\nprovided `compileOrThrow` method. After the source code has been loaded and\ncompiled successfully the specified callback function is invoked.",
-            "extends": ".Shader",
+            "extends": "oogl.Shader",
             "is_constructor": 1,
             "params": [
                 {
@@ -1284,9 +1284,9 @@
                 "\n\tvar program = new oogl.Program();\n\tvar vertexShader = new oogl.AjaxVertexShader('vert/box.vert', function () {\n\t\tprogram.attachShader(vertexShader);\n\t});"
             ]
         },
-        ".AjaxFragmentShader": {
-            "name": ".AjaxFragmentShader",
-            "shortname": ".AjaxFragmentShader",
+        "oogl.AjaxFragmentShader": {
+            "name": "oogl.AjaxFragmentShader",
+            "shortname": "oogl.AjaxFragmentShader",
             "classitems": [],
             "plugins": [],
             "extensions": [],
@@ -1295,7 +1295,7 @@
             "file": "src\\Shaders.js",
             "line": 253,
             "description": "A fragment shader which tries to load its GLSL source code using AJAX.\n\nThe `AjaxFragmentShader` constructor also tries to compile the shader using\nthe provided `compileOrThrow` method. After the source code has been loaded\nand compiled successfully the specified callback function is invoked.",
-            "extends": ".Shader",
+            "extends": "oogl.Shader",
             "is_constructor": 1,
             "params": [
                 {
@@ -1314,9 +1314,9 @@
                 "\n\tvar program = new oogl.Program();\n\tvar fragmentShader = new oogl.AjaxFragmentShader('frag/box.frag', function () {\n\t\tprogram.attachShader(fragmentShader);\n\t});"
             ]
         },
-        ".Texture": {
-            "name": ".Texture",
-            "shortname": ".Texture",
+        "oogl.Texture": {
+            "name": "oogl.Texture",
+            "shortname": "oogl.Texture",
             "classitems": [],
             "plugins": [],
             "extensions": [],
@@ -1338,9 +1338,9 @@
                 "\n\tvar oogl = new OOGL.Context('canvas');\n\tvar texture = new oogl.Texture(oogl.TEXTURE_2D);"
             ]
         },
-        ".Texture2D": {
-            "name": ".Texture2D",
-            "shortname": ".Texture2D",
+        "oogl.Texture2D": {
+            "name": "oogl.Texture2D",
+            "shortname": "oogl.Texture2D",
             "classitems": [],
             "plugins": [],
             "extensions": [],
@@ -1349,15 +1349,15 @@
             "file": "src\\Textures.js",
             "line": 246,
             "description": "A texture whose type is `gl.TEXTURE_2D`.\n\nTODO",
-            "extends": ".Texture",
+            "extends": "oogl.Texture",
             "is_constructor": 1,
             "example": [
                 "\n\tTODO"
             ]
         },
-        ".CubeMap": {
-            "name": ".CubeMap",
-            "shortname": ".CubeMap",
+        "oogl.CubeMap": {
+            "name": "oogl.CubeMap",
+            "shortname": "oogl.CubeMap",
             "classitems": [],
             "plugins": [],
             "extensions": [],
@@ -1366,15 +1366,15 @@
             "file": "src\\Textures.js",
             "line": 261,
             "description": "A texture whose type is `gl.TEXTURE_CUBE_MAP`.\n\nTODO",
-            "extends": ".Texture",
+            "extends": "oogl.Texture",
             "is_constructor": 1,
             "example": [
                 "\n\tTODO"
             ]
         },
-        ".Textures": {
-            "name": ".Textures",
-            "shortname": ".Textures",
+        "oogl.Textures": {
+            "name": "oogl.Textures",
+            "shortname": "oogl.Textures",
             "classitems": [],
             "plugins": [],
             "extensions": [],
@@ -1706,7 +1706,7 @@
             "example": [
                 "\n\tvar array = new oogl.AttributeArray(0, 'float', [1, 2, 3, 4, 5, 6, 7, 8]);\n\tarray.bind();\n\tarray.pointer();"
             ],
-            "class": ".AttributeArray1"
+            "class": "oogl.AttributeArray1"
         },
         {
             "file": "src\\Arrays.js",
@@ -1733,7 +1733,7 @@
             "example": [
                 "\n\tbuffer.bindAndPointer();"
             ],
-            "class": ".AttributeArray1"
+            "class": "oogl.AttributeArray1"
         },
         {
             "file": "src\\Arrays.js",
@@ -1760,7 +1760,7 @@
             "example": [
                 "\n\tvar array = new oogl.AttributeArray(0, 'float', [1, 2, 3, 4, 5, 6, 7, 8]);\n\tarray.bind();\n\tarray.pointer();"
             ],
-            "class": ".AttributeArray2"
+            "class": "oogl.AttributeArray2"
         },
         {
             "file": "src\\Arrays.js",
@@ -1787,7 +1787,7 @@
             "example": [
                 "\n\tbuffer.bindAndPointer();"
             ],
-            "class": ".AttributeArray2"
+            "class": "oogl.AttributeArray2"
         },
         {
             "file": "src\\Arrays.js",
@@ -1814,7 +1814,7 @@
             "example": [
                 "\n\tvar array = new oogl.AttributeArray3(0, 'float', [1, 2, 3, 4, 5, 6, 7, 8]);\n\tarray.bind();\n\tarray.pointer();"
             ],
-            "class": ".AttributeArray3"
+            "class": "oogl.AttributeArray3"
         },
         {
             "file": "src\\Arrays.js",
@@ -1841,7 +1841,7 @@
             "example": [
                 "\n\tbuffer.bindAndPointer();"
             ],
-            "class": ".AttributeArray3"
+            "class": "oogl.AttributeArray3"
         },
         {
             "file": "src\\Arrays.js",
@@ -1868,7 +1868,7 @@
             "example": [
                 "\n\tvar array = new oogl.AttributeArray4(0, 'float', [1, 2, 3, 4, 5, 6, 7, 8]);\n\tarray.bind();\n\tarray.pointer();"
             ],
-            "class": ".AttributeArray4"
+            "class": "oogl.AttributeArray4"
         },
         {
             "file": "src\\Arrays.js",
@@ -1895,7 +1895,7 @@
             "example": [
                 "\n\tbuffer.bindAndPointer();"
             ],
-            "class": ".AttributeArray4"
+            "class": "oogl.AttributeArray4"
         },
         {
             "file": "src\\Arrays.js",
@@ -1925,7 +1925,7 @@
             "example": [
                 "\n\tarrays.add1('float', [1, 2, 3, 4, 5, 6, 7, 8]);"
             ],
-            "class": ".AttributeArrays"
+            "class": "oogl.AttributeArrays"
         },
         {
             "file": "src\\Arrays.js",
@@ -1955,7 +1955,7 @@
             "example": [
                 "\n\tarrays.add2('float', [1, 2, 3, 4, 5, 6, 7, 8]);"
             ],
-            "class": ".AttributeArrays"
+            "class": "oogl.AttributeArrays"
         },
         {
             "file": "src\\Arrays.js",
@@ -1985,7 +1985,7 @@
             "example": [
                 "\n\tarrays.add3('float', [1, 2, 3, 4, 5, 6, 7, 8, 9]);"
             ],
-            "class": ".AttributeArrays"
+            "class": "oogl.AttributeArrays"
         },
         {
             "file": "src\\Arrays.js",
@@ -2015,7 +2015,7 @@
             "example": [
                 "\n\tarrays.add4('float', [1, 2, 3, 4, 5, 6, 7, 8]);"
             ],
-            "class": ".AttributeArrays"
+            "class": "oogl.AttributeArrays"
         },
         {
             "file": "src\\Arrays.js",
@@ -2042,7 +2042,7 @@
             "example": [
                 "\n\tvar program = new oogl.AutoProgram(vertexSource, fragmentSource, ['in_Vertex', 'in_Color', 'in_TexCoord']);\n\tvar arrays = new oogl.AttributeArrays();\n\tarrays.add3('float', vertices);\n\tarrays.add3('float', colors);\n\tarrays.add2('float', textureCoordinates);\n\tarrays.bindAndPointer();\n\tprogram.use();\n\tarrays.drawTriangles();"
             ],
-            "class": ".AttributeArrays"
+            "class": "oogl.AttributeArrays"
         },
         {
             "file": "src\\Arrays.js",
@@ -2068,7 +2068,7 @@
             "example": [
                 "\n\tarrays.bindAndPointer();\n\tarrays.drawTriangles();"
             ],
-            "class": ".AttributeArrays"
+            "class": "oogl.AttributeArrays"
         },
         {
             "file": "src\\Arrays.js",
@@ -2094,7 +2094,7 @@
             "example": [
                 "\n\tarrays.bindAndPointer();\n\tarrays.drawTriangleFan();"
             ],
-            "class": ".AttributeArrays"
+            "class": "oogl.AttributeArrays"
         },
         {
             "file": "src\\Arrays.js",
@@ -2120,7 +2120,7 @@
             "example": [
                 "\n\tarrays.bindAndPointer();\n\tarrays.drawTriangleStrip();"
             ],
-            "class": ".AttributeArrays"
+            "class": "oogl.AttributeArrays"
         },
         {
             "file": "src\\Arrays.js",
@@ -2131,7 +2131,7 @@
             "example": [
                 "\n\tarrays._delete();"
             ],
-            "class": ".AttributeArrays"
+            "class": "oogl.AttributeArrays"
         },
         {
             "file": "src\\Arrays.js",
@@ -2157,7 +2157,7 @@
             "example": [
                 ""
             ],
-            "class": ".ElementArray"
+            "class": "oogl.ElementArray"
         },
         {
             "file": "src\\Arrays.js",
@@ -2183,7 +2183,7 @@
             "example": [
                 ""
             ],
-            "class": ".ElementArray"
+            "class": "oogl.ElementArray"
         },
         {
             "file": "src\\Arrays.js",
@@ -2209,7 +2209,7 @@
             "example": [
                 ""
             ],
-            "class": ".ElementArray"
+            "class": "oogl.ElementArray"
         },
         {
             "file": "src\\Buffers.js",
@@ -2224,7 +2224,7 @@
             "example": [
                 "\n\tif (buffer.is()) {\n\t\t// ..."
             ],
-            "class": ".Buffer"
+            "class": "oogl.Buffer"
         },
         {
             "file": "src\\Buffers.js",
@@ -2246,7 +2246,7 @@
             "example": [
                 "\n\tvar size = buffer.getParameter(oogl.BUFFER_SIZE);"
             ],
-            "class": ".Buffer"
+            "class": "oogl.Buffer"
         },
         {
             "file": "src\\Buffers.js",
@@ -2261,7 +2261,7 @@
             "example": [
                 "\n\tvar size = buffer.getSize();"
             ],
-            "class": ".Buffer"
+            "class": "oogl.Buffer"
         },
         {
             "file": "src\\Buffers.js",
@@ -2276,7 +2276,7 @@
             "example": [
                 "\n\tvar usage = buffer.getUsage();"
             ],
-            "class": ".Buffer"
+            "class": "oogl.Buffer"
         },
         {
             "file": "src\\Buffers.js",
@@ -2287,7 +2287,7 @@
             "example": [
                 "\n\tbuffer.bind();"
             ],
-            "class": ".Buffer"
+            "class": "oogl.Buffer"
         },
         {
             "file": "src\\Buffers.js",
@@ -2305,7 +2305,7 @@
             "example": [
                 "\n\tbuffer.data([1, 1, -1, 1, -1, -1, 1, -1]);"
             ],
-            "class": ".Buffer"
+            "class": "oogl.Buffer"
         },
         {
             "file": "src\\Buffers.js",
@@ -2323,7 +2323,7 @@
             "example": [
                 "\n\tbuffer.bindAndData([1, 1, -1, 1, -1, -1, 1, -1]);"
             ],
-            "class": ".Buffer"
+            "class": "oogl.Buffer"
         },
         {
             "file": "src\\Buffers.js",
@@ -2346,7 +2346,7 @@
             "example": [
                 "\n\tbuffer.data([1, 1, -1, 0, 0, 0, 0, 0]);\n\tbuffer.subData(3, [1, -1, -1, 1, -1]); // buffer now contains [1, 1, -1, 1, -1, -1, 1, -1]"
             ],
-            "class": ".Buffer"
+            "class": "oogl.Buffer"
         },
         {
             "file": "src\\Buffers.js",
@@ -2357,7 +2357,7 @@
             "example": [
                 "\n\tbuffer._delete();"
             ],
-            "class": ".Buffer"
+            "class": "oogl.Buffer"
         },
         {
             "file": "src\\Framebuffer.js",
@@ -2372,7 +2372,7 @@
             "example": [
                 "\n\tif (framebuffer.is()) {\n\t\t// ..."
             ],
-            "class": ".Framebuffer"
+            "class": "oogl.Framebuffer"
         },
         {
             "file": "src\\Framebuffer.js",
@@ -2399,7 +2399,7 @@
             "example": [
                 "\n\tvar attachmentType = framebuffer.getAttachmentParameter(oogl.COLOR_ATTACHMENT0, oogl.FRAMEBUFFER_ATTACHMENT_TYPE);"
             ],
-            "class": ".Framebuffer"
+            "class": "oogl.Framebuffer"
         },
         {
             "file": "src\\Framebuffer.js",
@@ -2410,7 +2410,7 @@
             "example": [
                 "\n\tframebuffer.bind();"
             ],
-            "class": ".Framebuffer"
+            "class": "oogl.Framebuffer"
         },
         {
             "file": "src\\Framebuffer.js",
@@ -2425,7 +2425,7 @@
             "example": [
                 "\n\tvar status = framebuffer.checkStatus();"
             ],
-            "class": ".Framebuffer"
+            "class": "oogl.Framebuffer"
         },
         {
             "file": "src\\Framebuffer.js",
@@ -2448,7 +2448,7 @@
             "example": [
                 "\n\tTODO"
             ],
-            "class": ".Framebuffer"
+            "class": "oogl.Framebuffer"
         },
         {
             "file": "src\\Framebuffer.js",
@@ -2481,7 +2481,7 @@
             "example": [
                 "\n\tTODO"
             ],
-            "class": ".Framebuffer"
+            "class": "oogl.Framebuffer"
         },
         {
             "file": "src\\Framebuffer.js",
@@ -2492,7 +2492,7 @@
             "example": [
                 "\n\tframebuffer._delete();"
             ],
-            "class": ".Framebuffer"
+            "class": "oogl.Framebuffer"
         },
         {
             "file": "src\\Matrix2.js",
@@ -3158,7 +3158,7 @@
             "example": [
                 "\n\tif (!program.getParameter(oogl.LINK_STATUS)) {\n\t\tthrow program.getInfoLog();\n\t}"
             ],
-            "class": ".Program"
+            "class": "oogl.Program"
         },
         {
             "file": "src\\Programs.js",
@@ -3176,7 +3176,7 @@
             "example": [
                 "\n\tvar program = new oogl.Program();\n\tprogram.attachShader(new oogl.VertexShader(vertexSource));\n\tprogram.attachShader(new oogl.FragmentShader(fragmentSource));\n\tprogram.linkOrThrow();"
             ],
-            "class": ".Program"
+            "class": "oogl.Program"
         },
         {
             "file": "src\\Programs.js",
@@ -3194,7 +3194,7 @@
             "example": [
                 "\n\tvar vertexShader = new oogl.Shader(oogl.VERTEX_SHADER);\n\tvar program = new oogl.Program();\n\tprogram.attachShader(vertexShader);\n\tprogram.detachShader(vertexShader);"
             ],
-            "class": ".Program"
+            "class": "oogl.Program"
         },
         {
             "file": "src\\Programs.js",
@@ -3209,7 +3209,7 @@
             "example": [
                 "\n\tvar program = new oogl.Program();\n\tprogram.attachShader(new oogl.VertexShader(vertexSource));\n\tprogram.attachShader(new oogl.FragmentShader(fragmentSource));\n\tvar shaders = program.getAttachedShaders(); // shaders now contains two elements"
             ],
-            "class": ".Program"
+            "class": "oogl.Program"
         },
         {
             "file": "src\\Programs.js",
@@ -3224,7 +3224,7 @@
             "example": [
                 "\n\tvar program = new oogl.Program();\n\tprogram.attachShader(new oogl.VertexShader(vertexSource));\n\tprogram.attachShader(new oogl.FragmentShader(fragmentSource));\n\tvar count = program.getNumberOfAttachedShaders(); // 2"
             ],
-            "class": ".Program"
+            "class": "oogl.Program"
         },
         {
             "file": "src\\Programs.js",
@@ -3247,7 +3247,7 @@
             "example": [
                 "\n\tprogram.bindAttribLocation(0, 'in_Vertex');\n\tprogram.bindAttribLocation(1, 'in_Color');\n\tprogram.bindAttribLocation(2, 'in_TexCoords');"
             ],
-            "class": ".Program"
+            "class": "oogl.Program"
         },
         {
             "file": "src\\Programs.js",
@@ -3265,7 +3265,7 @@
             "example": [
                 "\n\tprogram.bindAttribLocations(['in_Vertex', 'in_Color', 'in_TexCoords']);"
             ],
-            "class": ".Program"
+            "class": "oogl.Program"
         },
         {
             "file": "src\\Programs.js",
@@ -3276,7 +3276,7 @@
             "example": [
                 "\n\tprogram.link();\n\tif (!program.getLinkStatus()) {\n\t\tthrow program.getInfoLog();\n\t}"
             ],
-            "class": ".Program"
+            "class": "oogl.Program"
         },
         {
             "file": "src\\Programs.js",
@@ -3291,7 +3291,7 @@
             "example": [
                 "\n\tprogram.link();\n\tif (!program.getLinkStatus()) {\n\t\tthrow program.getInfoLog();\n\t}"
             ],
-            "class": ".Program"
+            "class": "oogl.Program"
         },
         {
             "file": "src\\Programs.js",
@@ -3306,7 +3306,7 @@
             "example": [
                 "\n\tprogram.link();\n\tif (!program.getLinkStatus()) {\n\t\tthrow program.getInfoLog();\n\t}"
             ],
-            "class": ".Program"
+            "class": "oogl.Program"
         },
         {
             "file": "src\\Programs.js",
@@ -3317,7 +3317,7 @@
             "example": [
                 "\n\tprogram.attachShader(new oogl.VertexShader(vertexSource));\n\tprogram.attachShader(new oogl.FragmentShader(fragmentSource));\n\tprogram.linkOrThrow();"
             ],
-            "class": ".Program"
+            "class": "oogl.Program"
         },
         {
             "file": "src\\Programs.js",
@@ -3328,7 +3328,7 @@
             "example": [
                 "\n\tprogram.use();"
             ],
-            "class": ".Program"
+            "class": "oogl.Program"
         },
         {
             "file": "src\\Programs.js",
@@ -3339,7 +3339,7 @@
             "example": [
                 "\n\tprogram.validate();\n\tif (!program.getValidateStatus()) {\n\t\tthrow 'program validation error';\n\t}"
             ],
-            "class": ".Program"
+            "class": "oogl.Program"
         },
         {
             "file": "src\\Programs.js",
@@ -3354,7 +3354,7 @@
             "example": [
                 "\n\tprogram.validate();\n\tif (!program.getValidateStatus()) {\n\t\tthrow 'program validation error';\n\t}"
             ],
-            "class": ".Program"
+            "class": "oogl.Program"
         },
         {
             "file": "src\\Programs.js",
@@ -3376,7 +3376,7 @@
             "example": [
                 "\n\tTODO"
             ],
-            "class": ".Program"
+            "class": "oogl.Program"
         },
         {
             "file": "src\\Programs.js",
@@ -3398,7 +3398,7 @@
             "example": [
                 "\n\tTODO"
             ],
-            "class": ".Program"
+            "class": "oogl.Program"
         },
         {
             "file": "src\\Programs.js",
@@ -3420,7 +3420,7 @@
             "example": [
                 "\n\tTODO"
             ],
-            "class": ".Program"
+            "class": "oogl.Program"
         },
         {
             "file": "src\\Programs.js",
@@ -3442,7 +3442,7 @@
             "example": [
                 "\n\tTODO"
             ],
-            "class": ".Program"
+            "class": "oogl.Program"
         },
         {
             "file": "src\\Programs.js",
@@ -3464,7 +3464,7 @@
             "example": [
                 "\n\tTODO"
             ],
-            "class": ".Program"
+            "class": "oogl.Program"
         },
         {
             "file": "src\\Programs.js",
@@ -3475,7 +3475,7 @@
             "example": [
                 "\n\tprogram._delete();"
             ],
-            "class": ".Program"
+            "class": "oogl.Program"
         },
         {
             "file": "src\\Programs.js",
@@ -3490,7 +3490,7 @@
             "example": [
                 "\n\tTODO"
             ],
-            "class": ".Program"
+            "class": "oogl.Program"
         },
         {
             "file": "src\\Renderbuffer.js",
@@ -3505,7 +3505,7 @@
             "example": [
                 "\n\tif (renderbuffer.is()) {\n\t\t// ..."
             ],
-            "class": ".Renderbuffer"
+            "class": "oogl.Renderbuffer"
         },
         {
             "file": "src\\Renderbuffer.js",
@@ -3527,7 +3527,7 @@
             "example": [
                 "\n\tTODO"
             ],
-            "class": ".Renderbuffer"
+            "class": "oogl.Renderbuffer"
         },
         {
             "file": "src\\Renderbuffer.js",
@@ -3542,7 +3542,7 @@
             "example": [
                 "\n\tTODO"
             ],
-            "class": ".Renderbuffer"
+            "class": "oogl.Renderbuffer"
         },
         {
             "file": "src\\Renderbuffer.js",
@@ -3557,7 +3557,7 @@
             "example": [
                 "\n\tTODO"
             ],
-            "class": ".Renderbuffer"
+            "class": "oogl.Renderbuffer"
         },
         {
             "file": "src\\Renderbuffer.js",
@@ -3572,7 +3572,7 @@
             "example": [
                 "\n\tTODO"
             ],
-            "class": ".Renderbuffer"
+            "class": "oogl.Renderbuffer"
         },
         {
             "file": "src\\Renderbuffer.js",
@@ -3587,7 +3587,7 @@
             "example": [
                 "\n\tTODO"
             ],
-            "class": ".Renderbuffer"
+            "class": "oogl.Renderbuffer"
         },
         {
             "file": "src\\Renderbuffer.js",
@@ -3602,7 +3602,7 @@
             "example": [
                 "\n\tTODO"
             ],
-            "class": ".Renderbuffer"
+            "class": "oogl.Renderbuffer"
         },
         {
             "file": "src\\Renderbuffer.js",
@@ -3617,7 +3617,7 @@
             "example": [
                 "\n\tTODO"
             ],
-            "class": ".Renderbuffer"
+            "class": "oogl.Renderbuffer"
         },
         {
             "file": "src\\Renderbuffer.js",
@@ -3632,7 +3632,7 @@
             "example": [
                 "\n\tTODO"
             ],
-            "class": ".Renderbuffer"
+            "class": "oogl.Renderbuffer"
         },
         {
             "file": "src\\Renderbuffer.js",
@@ -3647,7 +3647,7 @@
             "example": [
                 "\n\tTODO"
             ],
-            "class": ".Renderbuffer"
+            "class": "oogl.Renderbuffer"
         },
         {
             "file": "src\\Renderbuffer.js",
@@ -3662,7 +3662,7 @@
             "example": [
                 "\n\tTODO"
             ],
-            "class": ".Renderbuffer"
+            "class": "oogl.Renderbuffer"
         },
         {
             "file": "src\\Renderbuffer.js",
@@ -3673,7 +3673,7 @@
             "example": [
                 "\n\trenderbuffer.bind();"
             ],
-            "class": ".Renderbuffer"
+            "class": "oogl.Renderbuffer"
         },
         {
             "file": "src\\Renderbuffer.js",
@@ -3701,7 +3701,7 @@
             "example": [
                 "\n\tTODO"
             ],
-            "class": ".Renderbuffer"
+            "class": "oogl.Renderbuffer"
         },
         {
             "file": "src\\Renderbuffer.js",
@@ -3712,7 +3712,7 @@
             "example": [
                 "\n\trenderbuffer._delete();"
             ],
-            "class": ".Renderbuffer"
+            "class": "oogl.Renderbuffer"
         },
         {
             "file": "src\\Shaders.js",
@@ -3734,7 +3734,7 @@
             "example": [
                 "\n\tvar shaderType = shader.getParameter(oogl.SHADER_TYPE);"
             ],
-            "class": ".Shader"
+            "class": "oogl.Shader"
         },
         {
             "file": "src\\Shaders.js",
@@ -3749,7 +3749,7 @@
             "example": [
                 "\n\tvar shaderType = shader.getType();"
             ],
-            "class": ".Shader"
+            "class": "oogl.Shader"
         },
         {
             "file": "src\\Shaders.js",
@@ -3767,7 +3767,7 @@
             "example": [
                 "\n\tvar shader = new oogl.Shader(oogl.VERTEX_SHADER);\n\tshader.source(vertexSource);"
             ],
-            "class": ".Shader"
+            "class": "oogl.Shader"
         },
         {
             "file": "src\\Shaders.js",
@@ -3782,7 +3782,7 @@
             "example": [
                 "\n\tvar vertexSource = vertexShader.getSource();"
             ],
-            "class": ".Shader"
+            "class": "oogl.Shader"
         },
         {
             "file": "src\\Shaders.js",
@@ -3793,7 +3793,7 @@
             "example": [
                 "\n\tshader.source(shaderSource);\n\tshader.compile();\n\tif (!shader.getCompileStatus()) {\n\t\tthrow shader.getInfoLog();\n\t}"
             ],
-            "class": ".Shader"
+            "class": "oogl.Shader"
         },
         {
             "file": "src\\Shaders.js",
@@ -3808,7 +3808,7 @@
             "example": [
                 "\n\tshader.source(shaderSource);\n\tshader.compile();\n\tif (!shader.getCompileStatus()) {\n\t\tthrow shader.getInfoLog();\n\t}"
             ],
-            "class": ".Shader"
+            "class": "oogl.Shader"
         },
         {
             "file": "src\\Shaders.js",
@@ -3823,7 +3823,7 @@
             "example": [
                 "\n\tshader.source(shaderSource);\n\tshader.compile();\n\tif (!shader.getCompileStatus()) {\n\t\tthrow shader.getInfoLog();\n\t}"
             ],
-            "class": ".Shader"
+            "class": "oogl.Shader"
         },
         {
             "file": "src\\Shaders.js",
@@ -3834,7 +3834,7 @@
             "example": [
                 "\n\tshader.source(shaderSource);\n\tshader.compileOrThrow();"
             ],
-            "class": ".Shader"
+            "class": "oogl.Shader"
         },
         {
             "file": "src\\Shaders.js",
@@ -3845,7 +3845,7 @@
             "example": [
                 "\n\tshader._delete();"
             ],
-            "class": ".Shader"
+            "class": "oogl.Shader"
         },
         {
             "file": "src\\Shaders.js",
@@ -3860,7 +3860,7 @@
             "example": [
                 "\n\tif (shader.getDeleteStatus()) {\n\t\tthrow 'The shader has been deleted.';\n\t}"
             ],
-            "class": ".Shader"
+            "class": "oogl.Shader"
         },
         {
             "file": "src\\Textures.js",
@@ -3875,7 +3875,7 @@
             "example": [
                 "\n\tif (texture.is()) {\n\t\t// ..."
             ],
-            "class": ".Texture"
+            "class": "oogl.Texture"
         },
         {
             "file": "src\\Textures.js",
@@ -3886,7 +3886,7 @@
             "example": [
                 "\n\ttexture.bind();"
             ],
-            "class": ".Texture"
+            "class": "oogl.Texture"
         },
         {
             "file": "src\\Textures.js",
@@ -3908,7 +3908,7 @@
             "example": [
                 "\n\tvar wrapS = texture.getParameter(oogl.TEXTURE_WRAP_S);"
             ],
-            "class": ".Texture"
+            "class": "oogl.Texture"
         },
         {
             "file": "src\\Textures.js",
@@ -3923,7 +3923,7 @@
             "example": [
                 "\n\tvar minFilter = texture.getMinFilter();"
             ],
-            "class": ".Texture"
+            "class": "oogl.Texture"
         },
         {
             "file": "src\\Textures.js",
@@ -3938,7 +3938,7 @@
             "example": [
                 "\n\tvar magFilter = texture.getMagFilter();"
             ],
-            "class": ".Texture"
+            "class": "oogl.Texture"
         },
         {
             "file": "src\\Textures.js",
@@ -3953,7 +3953,7 @@
             "example": [
                 "\n\tvar wrapS = texture.getWrapS();"
             ],
-            "class": ".Texture"
+            "class": "oogl.Texture"
         },
         {
             "file": "src\\Textures.js",
@@ -3968,7 +3968,7 @@
             "example": [
                 "\n\tvar wrapT = texture.getWrapT();"
             ],
-            "class": ".Texture"
+            "class": "oogl.Texture"
         },
         {
             "file": "src\\Textures.js",
@@ -3991,7 +3991,7 @@
             "example": [
                 "\n\tTODO"
             ],
-            "class": ".Texture"
+            "class": "oogl.Texture"
         },
         {
             "file": "src\\Textures.js",
@@ -4014,7 +4014,7 @@
             "example": [
                 "\n\tTODO"
             ],
-            "class": ".Texture"
+            "class": "oogl.Texture"
         },
         {
             "file": "src\\Textures.js",
@@ -4025,7 +4025,7 @@
             "example": [
                 "\n\tTODO"
             ],
-            "class": ".Texture"
+            "class": "oogl.Texture"
         },
         {
             "file": "src\\Textures.js",
@@ -4036,7 +4036,7 @@
             "example": [
                 "\n\tTODO"
             ],
-            "class": ".Texture"
+            "class": "oogl.Texture"
         },
         {
             "file": "src\\Textures.js",
@@ -4047,7 +4047,7 @@
             "example": [
                 "\n\tTODO"
             ],
-            "class": ".Texture"
+            "class": "oogl.Texture"
         },
         {
             "file": "src\\Textures.js",
@@ -4095,7 +4095,7 @@
             "example": [
                 "\n\tTODO"
             ],
-            "class": ".Texture"
+            "class": "oogl.Texture"
         },
         {
             "file": "src\\Textures.js",
@@ -4143,7 +4143,7 @@
             "example": [
                 "\n\tTODO"
             ],
-            "class": ".Texture"
+            "class": "oogl.Texture"
         },
         {
             "file": "src\\Textures.js",
@@ -4154,7 +4154,7 @@
             "example": [
                 "\n\ttexture._delete();"
             ],
-            "class": ".Texture"
+            "class": "oogl.Texture"
         },
         {
             "file": "src\\Textures.js",
@@ -4172,7 +4172,7 @@
             "example": [
                 "\n\tTODO"
             ],
-            "class": ".Textures"
+            "class": "oogl.Textures"
         },
         {
             "file": "src\\Textures.js",
@@ -4183,7 +4183,7 @@
             "example": [
                 "\n\tTODO"
             ],
-            "class": ".Textures"
+            "class": "oogl.Textures"
         },
         {
             "file": "src\\Textures.js",
@@ -4206,7 +4206,7 @@
             "example": [
                 "\n\tTODO"
             ],
-            "class": ".Textures"
+            "class": "oogl.Textures"
         },
         {
             "file": "src\\Textures.js",
@@ -4217,7 +4217,7 @@
             "example": [
                 "\n\tTODO"
             ],
-            "class": ".Textures"
+            "class": "oogl.Textures"
         },
         {
             "file": "src\\Vector2.js",
