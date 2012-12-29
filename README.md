@@ -7,6 +7,8 @@ OOGL provides an extended GL context that adds object-oriented features allowing
 
 OOGL is not another scene graph library: OOGL strongly focuses on performance and lets you do exactly what you would do in plain WebGL, just easier.
 
+See the [OOGL API Reference](http://71104.github.com/oogl.js/doc/).
+
 Getting started
 ===============
 
@@ -126,6 +128,8 @@ OOGL(function () {
 	});
 });
 ```
+
+For further experimenting, please refer to the [OOGL API Reference](http://71104.github.com/oogl.js/doc/).
 
 Math stuff
 ==========
