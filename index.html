@@ -46,18 +46,19 @@
 
 <p>OOGL is not another scene graph library: OOGL strongly focuses on performance and lets you do exactly what you would do in plain WebGL, just easier.</p>
 
+<p><a href="http://71104.github.com/oogl.js/doc/">OOGL API Reference</a></p>
+
 <h1>Getting started</h1>
 
 <p>To get started with OOGL, include it using a <code>&lt;script&gt;</code> tag in the <code>&lt;head&gt;</code> of your document:</p>
 
-<div class="highlight"><pre><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">src=</span><span class="s">"http://cdn.oogljs.com/oogl-1.0.0.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<div class="highlight"><pre><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">src=</span><span class="s">"oogl-1.0.0.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
 </pre></div>
 
 <p>Then place a <code>&lt;canvas&gt;</code> in your DOM and create an OOGL context through JavaScript:</p>
 
 <div class="highlight"><pre><span class="nt">&lt;canvas</span> <span class="na">id=</span><span class="s">"canvas"</span> <span class="na">width=</span><span class="s">"800"</span> <span class="na">height=</span><span class="s">"600"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;p&gt;</span>No browser support.<span class="nt">&lt;/p&gt;</span>
-
 <span class="nt">&lt;/canvas&gt;</span>
 <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
 <span class="nx">OOGL</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
@@ -88,7 +89,9 @@
 
 <p>And the fragment one:</p>
 
-<div class="highlight"><pre><span class="k">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+<div class="highlight"><pre><span class="k">precision</span> <span class="k">mediump</span> <span class="k">float</span><span class="p">;</span>
+
+<span class="k">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="n">gl_FragColor</span> <span class="o">=</span> <span class="k">vec4</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
@@ -102,8 +105,7 @@
     <span class="nx">oogl</span><span class="p">.</span><span class="nx">clearColor</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
     <span class="nx">oogl</span><span class="p">.</span><span class="nx">clear</span><span class="p">(</span><span class="nx">oogl</span><span class="p">.</span><span class="nx">COLOR_BUFFER_BIT</span><span class="p">);</span>
     <span class="kd">var</span> <span class="nx">array</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">oogl</span><span class="p">.</span><span class="nx">AttributeArray2</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">'float'</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]);</span>
-    <span class="nx">array</span><span class="p">.</span><span class="nx">bind</span><span class="p">();</span>
-    <span class="nx">array</span><span class="p">.</span><span class="nx">pointer</span><span class="p">();</span>
+    <span class="nx">array</span><span class="p">.</span><span class="nx">bindAndPointer</span><span class="p">();</span>
     <span class="kd">var</span> <span class="nx">program</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">oogl</span><span class="p">.</span><span class="nx">AjaxProgram</span><span class="p">(</span><span class="s1">'test'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'in_Vertex'</span><span class="p">],</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
         <span class="nx">program</span><span class="p">.</span><span class="nx">use</span><span class="p">();</span>
         <span class="nx">oogl</span><span class="p">.</span><span class="nx">drawArrays</span><span class="p">(</span><span class="nx">oogl</span><span class="p">.</span><span class="nx">TRIANGLES</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
@@ -129,7 +131,9 @@
 <span class="p">}</span>
 </pre></div>
 
-<div class="highlight"><pre><span class="k">varying</span> <span class="k">vec3</span> <span class="n">ex_Color</span><span class="p">;</span>
+<div class="highlight"><pre><span class="k">precision</span> <span class="k">mediump</span> <span class="k">float</span><span class="p">;</span>
+
+<span class="k">varying</span> <span class="k">vec3</span> <span class="n">ex_Color</span><span class="p">;</span>
 
 <span class="k">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="n">gl_FragColor</span> <span class="o">=</span> <span class="k">vec4</span><span class="p">(</span><span class="n">ex_Color</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
@@ -154,6 +158,8 @@
 <span class="p">});</span>
 </pre></div>
 
+<p>For further experimenting, please read the <a href="http://71104.github.com/oogl.js/doc/">OOGL API Reference</a>.</p>
+
 <h1>Math stuff</h1>
 
 <p>OOGL includes mutable vector and matrix classes that perfectly integrate with the provided program and shader classes; you can easily use them to exchange variables with your shaders.</p>
@@ -167,10 +173,6 @@
 <p>OOGL provides classes to handle 2-, 3- and 4-component vectors and 2x2, 3x3 and 4x4 matrices.</p>
 
 <p>OOGL math classes are developed with a strong focus on performances and can be used to perform physics or other vector and matrix computations in JavaScript at maximum speed.</p>
-
-<h1>jQuery</h1>
-
-<p>TBD</p>
 
 <h1>Credits</h1>
 
