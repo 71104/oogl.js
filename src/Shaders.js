@@ -3,7 +3,7 @@
 /**
  * Wraps a GL shader.
  *
- * @class .Shader
+ * @class oogl.Shader
  * @extends WebGLShader
  * @constructor
  * @param {Number} type The type of shader. Either `oogl.VERTEX_SHADER` or
@@ -183,8 +183,8 @@ context.Shader = function (type) {
  * the GLSL source code for the shader and tries to compile it through the
  * provided `compileOrThrow` method.
  *
- * @class .VertexShader
- * @extends .Shader
+ * @class oogl.VertexShader
+ * @extends oogl.Shader
  * @constructor
  * @param {String} [source] The optional GLSL source code for the shader.
  * @example
@@ -206,8 +206,8 @@ context.VertexShader = function (source) {
  * containing the GLSL source code for the shader and tries to compile it
  * through the provided `compileOrThrow` method.
  *
- * @class .FragmentShader
- * @extends .Shader
+ * @class oogl.FragmentShader
+ * @extends oogl.Shader
  * @constructor
  * @param {String} [source] The optional GLSL source code for the shader.
  * @example
@@ -229,8 +229,8 @@ context.FragmentShader = function (source) {
  * provided `compileOrThrow` method. After the source code has been loaded and
  * compiled successfully the specified callback function is invoked.
  *
- * @class .AjaxVertexShader
- * @extends .Shader
+ * @class oogl.AjaxVertexShader
+ * @extends oogl.Shader
  * @constructor
  * @param {String} url A URL referring to the GLSL source code.
  * @param {Function} [callback] The callback function.
@@ -257,8 +257,8 @@ context.AjaxVertexShader = function (url, callback) {
  * the provided `compileOrThrow` method. After the source code has been loaded
  * and compiled successfully the specified callback function is invoked.
  *
- * @class .AjaxFragmentShader
- * @extends .Shader
+ * @class oogl.AjaxFragmentShader
+ * @extends oogl.Shader
  * @constructor
  * @param {String} url A URL referring to the GLSL source code.
  * @param {Function} [callback] The callback function.

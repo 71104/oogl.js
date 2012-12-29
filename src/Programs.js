@@ -12,7 +12,7 @@
  * only once per variable name. The cache is automatically invalidated when the
  * program is linked using the provided `link` or `linkOrThrow` methods.
  *
- * @class .Program
+ * @class oogl.Program
  * @extends WebGLProgram
  * @constructor
  * @example
@@ -377,8 +377,8 @@ context.Program = function () {
 /**
  * TODO
  *
- * @class .AutoProgram
- * @extends .Program
+ * @class oogl.AutoProgram
+ * @extends oogl.Program
  * @constructor
  * @param {String} vertexSource TODO
  * @param {String} fragmentSource TODO
@@ -399,8 +399,8 @@ context.AutoProgram = function (vertexSource, fragmentSource, attributes) {
 /**
  * TODO
  *
- * @class .AjaxProgram
- * @extends .Program
+ * @class oogl.AjaxProgram
+ * @extends oogl.Program
  * @constructor
  * @param {String} name TODO
  * @param {String[]} attributes TODO

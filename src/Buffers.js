@@ -7,7 +7,7 @@
  * `createBuffer`. The returned `WebGLBuffer` object is extended by
  * OOGL-specific features and returned by the `Buffer` constructor.
  *
- * @class .Buffer
+ * @class oogl.Buffer
  * @extends WebGLBuffer
  * @constructor
  * @param {Number} target The target against which this buffer will be bound
@@ -212,8 +212,8 @@ context.Buffer = (function () {
 /**
  * Wraps a GL buffer whose usage is set to `gl.STATIC_DRAW`.
  *
- * @class .StaticBuffer
- * @extends .Buffer
+ * @class oogl.StaticBuffer
+ * @extends oogl.Buffer
  * @constructor
  * @param {Number} target The target against which this buffer will be bound
  *	when the provided `bind` method is used. Either `gl.ARRAY_BUFFER` or
@@ -230,8 +230,8 @@ context.StaticBuffer = function (target, type) {
 /**
  * Wraps a GL buffer whose usage is set to `gl.STREAM_DRAW`.
  *
- * @class .StreamBuffer
- * @extends .Buffer
+ * @class oogl.StreamBuffer
+ * @extends oogl.Buffer
  * @constructor
  * @param {Number} target The target against which this buffer will be bound
  *	when the provided `bind` method is used. Either `gl.ARRAY_BUFFER` or
@@ -248,8 +248,8 @@ context.StreamBuffer = function (target, type) {
 /**
  * Wraps a GL buffer whose usage is set to `gl.DYNAMIC_DRAW`.
  *
- * @class .DynamicBuffer
- * @extends .Buffer
+ * @class oogl.DynamicBuffer
+ * @extends oogl.Buffer
  * @constructor
  * @param {Number} target The target against which this buffer will be bound
  *	when the provided `bind` method is used. Either `gl.ARRAY_BUFFER` or
@@ -266,8 +266,8 @@ context.DynamicBuffer = function (target, type) {
 /**
  * Wraps a GL buffer whose target is set to `gl.ARRAY_BUFFER`.
  *
- * @class .ArrayBuffer
- * @extends .Buffer
+ * @class oogl.ArrayBuffer
+ * @extends oogl.Buffer
  * @constructor
  * @param {String} type One of `byte`, `ubyte`, `short`, `ushort` and `float`;
  *	indicates the type of the data that will be put in the buffer.
@@ -284,8 +284,8 @@ context.ArrayBuffer = function (type, usage) {
 /**
  * Wraps a GL buffer whose target is set to `gl.ELEMENT_ARRAY_BUFFER`.
  *
- * @class .ElementArrayBuffer
- * @extends .Buffer
+ * @class oogl.ElementArrayBuffer
+ * @extends oogl.Buffer
  * @constructor
  * @param {String} type One of `byte`, `ubyte`, `short`, `ushort` and `float`;
  *	indicates the type of the data that will be put in the buffer.
@@ -303,8 +303,8 @@ context.ElementArrayBuffer = function (type, usage) {
  * Wraps a GL buffer whose target is set to `gl.ARRAY_BUFFER` and usage to
  * `gl.STATIC_DRAW`.
  *
- * @class .StaticArrayBuffer
- * @extends .StaticBuffer
+ * @class oogl.StaticArrayBuffer
+ * @extends oogl.StaticBuffer
  * @constructor
  * @param {String} type One of `byte`, `ubyte`, `short`, `ushort` and `float`;
  *	indicates the type of the data that will be put in the buffer.
@@ -319,8 +319,8 @@ context.StaticArrayBuffer = function (type) {
  * Wraps a GL buffer whose target is set to `gl.ELEMENT_ARRAY_BUFFER` and usage
  * to `gl.STATIC_DRAW`.
  *
- * @class .StaticElementArrayBuffer
- * @extends .StaticBuffer
+ * @class oogl.StaticElementArrayBuffer
+ * @extends oogl.StaticBuffer
  * @constructor
  * @param {String} type One of `byte`, `ubyte`, `short`, `ushort` and `float`;
  *	indicates the type of the data that will be put in the buffer.
@@ -335,8 +335,8 @@ context.StaticElementArrayBuffer = function (type) {
  * Wraps a GL buffer whose target is set to `gl.ARRAY_BUFFER` and usage to
  * `gl.STREAM_DRAW`.
  *
- * @class .StreamArrayBuffer
- * @extends .StreamBuffer
+ * @class oogl.StreamArrayBuffer
+ * @extends oogl.StreamBuffer
  * @constructor
  * @param {String} type One of `byte`, `ubyte`, `short`, `ushort` and `float`;
  *	indicates the type of the data that will be put in the buffer.
@@ -351,8 +351,8 @@ context.StreamArrayBuffer = function (type) {
  * Wraps a GL buffer whose target is set to `gl.ELEMENT_ARRAY_BUFFER` and usage
  * to `gl.STREAM_DRAW`.
  *
- * @class .StreamElementArrayBuffer
- * @extends .StreamBuffer
+ * @class oogl.StreamElementArrayBuffer
+ * @extends oogl.StreamBuffer
  * @constructor
  * @param {String} type One of `byte`, `ubyte`, `short`, `ushort` and `float`;
  *	indicates the type of the data that will be put in the buffer.
@@ -367,8 +367,8 @@ context.StreamElementArrayBuffer = function (type) {
  * Wraps a GL buffer whose target is set to `gl.ARRAY_BUFFER` and usage to
  * `gl.DYNAMIC_DRAW`.
  *
- * @class .DynamicArrayBuffer
- * @extends .DynamicBuffer
+ * @class oogl.DynamicArrayBuffer
+ * @extends oogl.DynamicBuffer
  * @constructor
  * @param {String} type One of `byte`, `ubyte`, `short`, `ushort` and `float`;
  *	indicates the type of the data that will be put in the buffer.
@@ -383,8 +383,8 @@ context.DynamicArrayBuffer = function (type) {
  * Wraps a GL buffer whose target is set to `gl.ELEMENT_ARRAY_BUFFER` and usage
  * to `gl.DYNAMIC_DRAW`.
  *
- * @class .DynamicElementArrayBuffer
- * @extends .DynamicBuffer
+ * @class oogl.DynamicElementArrayBuffer
+ * @extends oogl.DynamicBuffer
  * @constructor
  * @param {String} type One of `byte`, `ubyte`, `short`, `ushort` and `float`;
  *	indicates the type of the data that will be put in the buffer.

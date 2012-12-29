@@ -7,7 +7,7 @@
  * `createFramebuffer`. The returned `WebGLFramebuffer` object is extended by
  * OOGL-specific features and returned by the `Framebuffer` constructor.
  *
- * @class .Framebuffer
+ * @class oogl.Framebuffer
  * @constructor
  * @example
  *	var oogl = new OOGL.Context('canvas');

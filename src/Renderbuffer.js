@@ -7,7 +7,7 @@
  * `createRenderbuffer`. The returned `WebGLRenderbuffer` object is extended by
  * OOGL-specific features and returned by the `Renderbuffer` constructor.
  *
- * @class .Renderbuffer
+ * @class oogl.Renderbuffer
  * @constructor
  * @example
  *	var oogl = new OOGL.Context('canvas');

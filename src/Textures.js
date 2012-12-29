@@ -7,7 +7,7 @@
  * `createTexture`. The returned `WebGLTexture` object is extended by
  * OOGL-specific features and returned by the `Texture` constructor.
  *
- * @class .Texture
+ * @class oogl.Texture
  * @extends WebGLTexture
  * @constructor
  * @param {Number} target The target against which this texture will be bound
@@ -248,8 +248,8 @@ context.Texture = function (target) {
  *
  * TODO
  *
- * @class .Texture2D
- * @extends .Texture
+ * @class oogl.Texture2D
+ * @extends oogl.Texture
  * @constructor
  * @example
  *	TODO
@@ -263,8 +263,8 @@ context.Texture2D = function () {
  *
  * TODO
  *
- * @class .CubeMap
- * @extends .Texture
+ * @class oogl.CubeMap
+ * @extends oogl.Texture
  * @constructor
  * @example
  *	TODO
@@ -284,7 +284,7 @@ context.CubeMap = function () {
  * A `Texture` object may also belong to several `Textures` sets at the same
  * time, so that it can be used by several programs.
  *
- * @class .Textures
+ * @class oogl.Textures
  * @constructor
  * @param {.Texture[]} [textures] An optional array of OOGL texture objects to
  *	add to the set. If you specify an empty array or not specify one at all you
