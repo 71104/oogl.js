@@ -11,12 +11,13 @@
  *	the full scene.
  * @example
  *	var oogl = new OOGL.Context('canvas');
- *	// setup the pipeline here creating programs and arrays
+ *	// setup the pipeline here, create programs and arrays
  *	var loop = new OOGL.RenderLoop(function () {
  *		oogl.clear(oogl.COLOR_BUFFER_BIT | oogl.DEPTH_BUFFER_BIT);
  *		arrays.drawTriangles();
  *		oogl.flush();
  *	});
+ *	loop.start();
  */
 OOGL.RenderLoop = (function () {
 	var type = 'auto';
@@ -91,12 +92,20 @@ OOGL.RenderLoop = (function () {
 			var timestamp = 0;
 
 			/**
-			 * TODO
+			 * Returns the type of this loop as a string; the return value can
+			 * be either `'request'` or `'interval'`.
 			 *
 			 * @method getType
-			 * @return {String} TODO
+			 * @return {String} The type of this loop; either `'request'` or
+			 *	`'interval'`.
 			 * @example
-			 *	TODO
+			 *	OOGL.RenderLoop.setType('auto');
+			 *	var loop = new OOGL.RenderLoop(function () {
+			 *		// ...
+			 *	});
+			 *	if (loop.getType() === 'interval') {
+			 *		// apparently rAF is not supported
+			 *	}
 			 */
 			this.getType = function () {
 				return type;
@@ -108,7 +117,7 @@ OOGL.RenderLoop = (function () {
 			 * @method getRate
 			 * @return {Number} TODO
 			 * @example
-			 *	TODO
+			 *	var rate = loop.getRate();
 			 */
 			this.getRate = function () {
 				return rate;
@@ -120,7 +129,7 @@ OOGL.RenderLoop = (function () {
 			 * @method getPeriod
 			 * @return {Number} TODO
 			 * @example
-			 *	TODO
+			 *	var period = loop.getPeriod();
 			 */
 			this.getPeriod = function () {
 				return period;
@@ -166,11 +175,12 @@ OOGL.RenderLoop = (function () {
 			};
 
 			/**
-			 * TODO
+			 * Suspends the execution of the loop. There is no effect if the
+			 * loop is not running.
 			 *
 			 * @method suspend
 			 * @example
-			 *	TODO
+			 *	loop.suspend();
 			 */
 			this.suspend = function () {
 				if (running) {
@@ -180,11 +190,12 @@ OOGL.RenderLoop = (function () {
 			};
 
 			/**
-			 * TODO
+			 * Resume the execution of the loop. There is no effect if the loop
+			 * has not been previously suspended by the `suspend` method.
 			 *
 			 * @method resume
 			 * @example
-			 *	TODO
+			 *	loop.resume();
 			 */
 			this.resume = function () {
 				if (running) {
@@ -194,11 +205,16 @@ OOGL.RenderLoop = (function () {
 			};
 
 			/**
-			 * TODO
+			 * Permanently stops the execution of the loop, whether it is
+			 * suspended or not. There is no effect if the loop has not been
+			 * started yet.
+			 *
+			 * The execution of this render loop cannot be restarted after it
+			 * has been stopped.
 			 *
 			 * @method stop
 			 * @example
-			 *	TODO
+			 *	loop.stop();
 			 */
 			this.stop = function () {
 				running = false;
