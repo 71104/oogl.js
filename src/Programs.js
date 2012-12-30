@@ -435,18 +435,82 @@ context.Program = function () {
 		context.uniform4f(getUniformLocation(name), x, y, z, w);
 	};
 
+	/**
+	 * Specifies the value for a `float` uniform variable as an array.
+	 *
+	 * `gl.uniform1fv` equivalent.
+	 *
+	 * `Program` objects have an internal location cache used by `uniform`
+	 * methods to set uniform variables without retrieving their location each
+	 * time. The cache is invalidated every time the program is relinked using
+	 * the provided `link` method.
+	 *
+	 * @method uniform1fv
+	 * @param {String} name The name of the uniform variable.
+	 * @param {Number[]} values An array containing the new value.
+	 * @example
+	 *	TODO
+	 */
 	program.uniform1fv = function (name, values) {
 		context.uniform1fv(getUniformLocation(name), values);
 	};
 
+	/**
+	 * Specifies the value for a `vec2` uniform variable as an array.
+	 *
+	 * `gl.uniform2fv` equivalent.
+	 *
+	 * `Program` objects have an internal location cache used by `uniform`
+	 * methods to set uniform variables without retrieving their location each
+	 * time. The cache is invalidated every time the program is relinked using
+	 * the provided `link` method.
+	 *
+	 * @method uniform2fv
+	 * @param {String} name The name of the uniform variable.
+	 * @param {Number[]} values An array containing the new values.
+	 * @example
+	 *	TODO
+	 */
 	program.uniform2fv = function (name, values) {
 		context.uniform2fv(getUniformLocation(name), values);
 	};
 
+	/**
+	 * Specifies the value for a `vec3` uniform variable as an array.
+	 *
+	 * `gl.uniform3fv` equivalent.
+	 *
+	 * `Program` objects have an internal location cache used by `uniform`
+	 * methods to set uniform variables without retrieving their location each
+	 * time. The cache is invalidated every time the program is relinked using
+	 * the provided `link` method.
+	 *
+	 * @method uniform3fv
+	 * @param {String} name The name of the uniform variable.
+	 * @param {Number[]} values An array containing the new values.
+	 * @example
+	 *	TODO
+	 */
 	program.uniform3fv = function (name, values) {
 		context.uniform3fv(getUniformLocation(name), values);
 	};
 
+	/**
+	 * Specifies the value for a `vec4` uniform variable as an array.
+	 *
+	 * `gl.uniform4fv` equivalent.
+	 *
+	 * `Program` objects have an internal location cache used by `uniform`
+	 * methods to set uniform variables without retrieving their location each
+	 * time. The cache is invalidated every time the program is relinked using
+	 * the provided `link` method.
+	 *
+	 * @method uniform4fv
+	 * @param {String} name The name of the uniform variable.
+	 * @param {Number[]} values An array containing the new values.
+	 * @example
+	 *	TODO
+	 */
 	program.uniform4fv = function (name, values) {
 		context.uniform4fv(getUniformLocation(name), values);
 	};
