@@ -311,7 +311,7 @@ OOGL.RenderLoop = (function () {
 		}.hasOwnProperty(type)) {
 			type = newType;
 		} else {
-			throw 'invalid loop type must be one of `request`, `interval` or `auto`.';
+			throw 'invalid loop type, must be one of `request`, `interval` or `auto`.';
 		}
 	};
 

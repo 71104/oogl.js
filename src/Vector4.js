@@ -49,6 +49,20 @@ OOGL.Vector4 = function (x, y, z, w) {
 
 OOGL.Vector4.prototype = {
 	/**
+	 * Returns this vector as an array of four elements.
+	 *
+	 * @method toArray
+	 * @return {Number[]} An array containing the X, Y, Z and W components of
+	 *	this vector.
+	 * @example
+	 *	var v = new OOGL.Vector4(1, 2, 3, 1);
+	 *	program.uniform4fv('Position', v.toArray());
+	 */
+	toArray: function () {
+		return [this.x, this.y, this.z, this.w];
+	},
+
+	/**
 	 * Converts this homogeneous vector to a 3-component standard vector
 	 * dividing the X, Y and Z components by the W component. This method
 	 * produces a new `OOGL.Vector3` object, while this vector is not changed.

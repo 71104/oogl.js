@@ -223,6 +223,20 @@ OOGL.Vector2 = function (x, y) {
 
 OOGL.Vector2.prototype = {
 	/**
+	 * Returns this vector as an array of two elements.
+	 *
+	 * @method toArray
+	 * @return {Number[]} An array containing the X and Y components of this
+	 *	vector.
+	 * @example
+	 *	var v = new OOGL.Vector2(1, 2);
+	 *	program.uniform2fv('Position', v.toArray());
+	 */
+	toArray: function () {
+		return [this.x, this.y];
+	},
+
+	/**
 	 * Computes the modulus of the vector. This is computed as
 	 * `Math.sqrt(x * x + y * y)`.
 	 *
@@ -564,6 +578,20 @@ OOGL.Vector3 = function (x, y, z) {
 
 OOGL.Vector3.prototype = {
 	/**
+	 * Returns this vector as an array of three elements.
+	 *
+	 * @method toArray
+	 * @return {Number[]} An array containing the X, Y and Z components of this
+	 *	vector.
+	 * @example
+	 *	var v = new OOGL.Vector3(1, 2, 3);
+	 *	program.uniform3fv('Position', v.toArray());
+	 */
+	toArray: function () {
+		return [this.x, this.y, this.z];
+	},
+
+	/**
 	 * Creates a homogeneous version of this vector by adding a unitary `w`
 	 * coordinate and returns it as a new `Vector4` object. This vector is not
 	 * changed.
@@ -790,6 +818,20 @@ OOGL.Vector4 = function (x, y, z, w) {
 };
 
 OOGL.Vector4.prototype = {
+	/**
+	 * Returns this vector as an array of four elements.
+	 *
+	 * @method toArray
+	 * @return {Number[]} An array containing the X, Y, Z and W components of
+	 *	this vector.
+	 * @example
+	 *	var v = new OOGL.Vector4(1, 2, 3, 1);
+	 *	program.uniform4fv('Position', v.toArray());
+	 */
+	toArray: function () {
+		return [this.x, this.y, this.z, this.w];
+	},
+
 	/**
 	 * Converts this homogeneous vector to a 3-component standard vector
 	 * dividing the X, Y and Z components by the W component. This method
@@ -3847,6 +3889,10 @@ context.Program = function () {
 		}
 	};
 
+	function getUniformLocation(name) {
+		return locationCache[name] = context.getUniformLocation(program, name);
+	}
+
 	/**
 	 * TODO
 	 *
@@ -3856,11 +3902,154 @@ context.Program = function () {
 	 * @example
 	 *	TODO
 	 */
-	program.getUniformLocation = function (name) {
-		return locationCache[name] = context.getUniformLocation(program, name);
+	program.getUniformLocation = getUniformLocation;
+
+	/**
+	 * Specifies the value for a `float` uniform variable.
+	 *
+	 * `gl.uniform1f` equivalent.
+	 *
+	 * `Program` objects have an internal location cache used by `uniform`
+	 * methods to set uniform variables without retrieving their location each
+	 * time. The cache is invalidated every time the program is relinked using
+	 * the provided `link` method.
+	 *
+	 * @method uniform1f
+	 * @param {String} name The name of the uniform variable.
+	 * @param {Number} x The new value.
+	 * @example
+	 *	TODO
+	 */
+	program.uniform1f = function (name, x) {
+		context.uniform1f(getUniformLocation(name), x);
 	};
 
-	// TODO uniform
+	/**
+	 * Specifies the value for a `vec2` uniform variable.
+	 *
+	 * `gl.uniform2f` equivalent.
+	 *
+	 * `Program` objects have an internal location cache used by `uniform`
+	 * methods to set uniform variables without retrieving their location each
+	 * time. The cache is invalidated every time the program is relinked using
+	 * the provided `link` method.
+	 *
+	 * @method uniform2f
+	 * @param {String} name The name of the uniform variable.
+	 * @param {Number} x The new value for the first component.
+	 * @param {Number} y The new value for the second component.
+	 * @example
+	 *	TODO
+	 */
+	program.uniform2f = function (name, x, y) {
+		context.uniform2f(getUniformLocation(name), x, y);
+	};
+
+	/**
+	 * Specifies the value for a `vec3` uniform variable.
+	 *
+	 * `gl.uniform3f` equivalent.
+	 *
+	 * `Program` objects have an internal location cache used by `uniform`
+	 * methods to set uniform variables without retrieving their location each
+	 * time. The cache is invalidated every time the program is relinked using
+	 * the provided `link` method.
+	 *
+	 * @method uniform3f
+	 * @param {String} name The name of the uniform variable.
+	 * @param {Number} x The new value for the first component.
+	 * @param {Number} y The new value for the second component.
+	 * @param {Number} z The new value for the third component.
+	 * @example
+	 *	TODO
+	 */
+	program.uniform3f = function (name, x, y, z) {
+		context.uniform3f(getUniformLocation(name), x, y, z);
+	};
+
+
+	/**
+	 * Specifies the value for a `vec4` uniform variable.
+	 *
+	 * `gl.uniform4f` equivalent.
+	 *
+	 * `Program` objects have an internal location cache used by `uniform`
+	 * methods to set uniform variables without retrieving their location each
+	 * time. The cache is invalidated every time the program is relinked using
+	 * the provided `link` method.
+	 *
+	 * @method uniform4f
+	 * @param {String} name The name of the uniform variable.
+	 * @param {Number} x The new value for the first component.
+	 * @param {Number} y The new value for the second component.
+	 * @param {Number} z The new value for the third component.
+	 * @param {Number} w The new value for the fourth component.
+	 * @example
+	 *	TODO
+	 */
+	program.uniform4f = function (name, x, y, z, w) {
+		context.uniform4f(getUniformLocation(name), x, y, z, w);
+	};
+
+	program.uniform1fv = function (name, values) {
+		context.uniform1fv(getUniformLocation(name), values);
+	};
+
+	program.uniform2fv = function (name, values) {
+		context.uniform2fv(getUniformLocation(name), values);
+	};
+
+	program.uniform3fv = function (name, values) {
+		context.uniform3fv(getUniformLocation(name), values);
+	};
+
+	program.uniform4fv = function (name, values) {
+		context.uniform4fv(getUniformLocation(name), values);
+	};
+
+	program.uniform1i = function (name, x) {
+		context.uniform1i(getUniformLocation(name), x);
+	};
+
+	program.uniform2i = function (name, x, y) {
+		context.uniform2i(getUniformLocation(name), x, y);
+	};
+
+	program.uniform3i = function (name, x, y, z) {
+		context.uniform3i(getUniformLocation(name), x, y, z);
+	};
+
+	program.uniform4i = function (name, x, y, z, w) {
+		context.uniform4i(getUniformLocation(name), x, y, z, w);
+	};
+
+	program.uniform1iv = function (name, values) {
+		context.uniform1iv(getUniformLocation(name), values);
+	};
+
+	program.uniform2iv = function (name, values) {
+		context.uniform2iv(getUniformLocation(name), values);
+	};
+
+	program.uniform3iv = function (name, values) {
+		context.uniform3iv(getUniformLocation(name), values);
+	};
+
+	program.uniform4iv = function (name, values) {
+		context.uniform4iv(getUniformLocation(name), values);
+	};
+
+	program.uniformVec2 = function (name, v) {
+		context.uniform2f(getUniformLocation(name), v.x, v.y);
+	};
+
+	program.uniformVec3 = function (name, v) {
+		context.uniform3f(getUniformLocation(name), v.x, v.y, v.z);
+	};
+
+	program.uniformVec4 = function (name, v) {
+		context.uniform2f(getUniformLocation(name), v.x, v.y, v.z, v.w);
+	};
 
 	/**
 	 * TODO
@@ -4585,7 +4774,7 @@ OOGL.RenderLoop = (function () {
 		}.hasOwnProperty(type)) {
 			type = newType;
 		} else {
-			throw 'invalid loop type must be one of `request`, `interval` or `auto`.';
+			throw 'invalid loop type, must be one of `request`, `interval` or `auto`.';
 		}
 	};
 

@@ -39,6 +39,20 @@ OOGL.Vector3 = function (x, y, z) {
 
 OOGL.Vector3.prototype = {
 	/**
+	 * Returns this vector as an array of three elements.
+	 *
+	 * @method toArray
+	 * @return {Number[]} An array containing the X, Y and Z components of this
+	 *	vector.
+	 * @example
+	 *	var v = new OOGL.Vector3(1, 2, 3);
+	 *	program.uniform3fv('Position', v.toArray());
+	 */
+	toArray: function () {
+		return [this.x, this.y, this.z];
+	},
+
+	/**
 	 * Creates a homogeneous version of this vector by adding a unitary `w`
 	 * coordinate and returns it as a new `Vector4` object. This vector is not
 	 * changed.
