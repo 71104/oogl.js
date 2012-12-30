@@ -515,18 +515,88 @@ context.Program = function () {
 		context.uniform4fv(getUniformLocation(name), values);
 	};
 
+	/**
+	 * Specifies the value for an integer or boolean uniform variable.
+	 *
+	 * `gl.uniform1i` equivalent.
+	 *
+	 * `Program` objects have an internal location cache used by `uniform`
+	 * methods to set uniform variables without retrieving their location each
+	 * time. The cache is invalidated every time the program is relinked using
+	 * the provided `link` method.
+	 *
+	 * @method uniform1i
+	 * @param {String} name The name of the uniform variable.
+	 * @param {Number} x The new value.
+	 * @example
+	 *	TODO
+	 */
 	program.uniform1i = function (name, x) {
 		context.uniform1i(getUniformLocation(name), x);
 	};
 
+	/**
+	 * Specifies the value for an `ivec2` or `bvec2` uniform variable.
+	 *
+	 * `gl.uniform2i` equivalent.
+	 *
+	 * `Program` objects have an internal location cache used by `uniform`
+	 * methods to set uniform variables without retrieving their location each
+	 * time. The cache is invalidated every time the program is relinked using
+	 * the provided `link` method.
+	 *
+	 * @method uniform2i
+	 * @param {String} name The name of the uniform variable.
+	 * @param {Number} x The new value for the first component.
+	 * @param {Number} y The new value for the second component.
+	 * @example
+	 *	TODO
+	 */
 	program.uniform2i = function (name, x, y) {
 		context.uniform2i(getUniformLocation(name), x, y);
 	};
 
+	/**
+	 * Specifies the value for an `ivec3` or `bvec3` uniform variable.
+	 *
+	 * `gl.uniform3i` equivalent.
+	 *
+	 * `Program` objects have an internal location cache used by `uniform`
+	 * methods to set uniform variables without retrieving their location each
+	 * time. The cache is invalidated every time the program is relinked using
+	 * the provided `link` method.
+	 *
+	 * @method uniform3i
+	 * @param {String} name The name of the uniform variable.
+	 * @param {Number} x The new value for the first component.
+	 * @param {Number} y The new value for the second component.
+	 * @param {Number} z The new value for the third component.
+	 * @example
+	 *	TODO
+	 */
 	program.uniform3i = function (name, x, y, z) {
 		context.uniform3i(getUniformLocation(name), x, y, z);
 	};
 
+	/**
+	 * Specifies the value for an `ivec4` or `bvec4` uniform variable.
+	 *
+	 * `gl.uniform4i` equivalent.
+	 *
+	 * `Program` objects have an internal location cache used by `uniform`
+	 * methods to set uniform variables without retrieving their location each
+	 * time. The cache is invalidated every time the program is relinked using
+	 * the provided `link` method.
+	 *
+	 * @method uniform4i
+	 * @param {String} name The name of the uniform variable.
+	 * @param {Number} x The new value for the first component.
+	 * @param {Number} y The new value for the second component.
+	 * @param {Number} z The new value for the third component.
+	 * @param {Number} w The new value for the fourth component.
+	 * @example
+	 *	TODO
+	 */
 	program.uniform4i = function (name, x, y, z, w) {
 		context.uniform4i(getUniformLocation(name), x, y, z, w);
 	};
@@ -559,8 +629,22 @@ context.Program = function () {
 		context.uniform2f(getUniformLocation(name), v.x, v.y, v.z, v.w);
 	};
 
+	program.uniformMatrix2fv = function (name, matrix) {
+		context.uniformMatrix2fv(getUniformLocation(name), matrix);
+	};
+
+	program.uniformMatrix3fv = function (name, matrix) {
+		context.uniformMatrix3fv(getUniformLocation(name), matrix);
+	};
+
+	program.uniformMatrix4fv = function (name, matrix) {
+		context.uniformMatrix4fv(getUniformLocation(name), matrix);
+	};
+
 	/**
-	 * TODO
+	 * Deletes this program.
+	 *
+	 * `gl.deleteProgram` equivalent.
 	 *
 	 * @method _delete
 	 * @example
@@ -571,12 +655,16 @@ context.Program = function () {
 	};
 
 	/**
-	 * TODO
+	 * Returns the delete status of this program.
+	 *
+	 * Equivalent to calling `gl.getProgramParameter` with `gl.DELETE_STATUS`.
 	 *
 	 * @method getDeleteStatus
-	 * @return {Boolean} TODO
+	 * @return {Boolean} The delete status.
 	 * @example
-	 *	TODO
+	 *	if (program.getDeleteStatus()) {
+	 *		// the program has been deleted
+	 *	}
 	 */
 	program.getDeleteStatus = function () {
 		return context.getProgramParameter(program, context.DELETE_STATUS);

@@ -282,11 +282,11 @@ OOGL.RenderLoop = (function () {
 	};
 
 	/**
-	 * TODO
+	 * Returns the currently configured loop type.
 	 *
 	 * @method getType
 	 * @static
-	 * @return {String} TODO
+	 * @return {String} The loop type; can be `request`, `interval` or `auto`.
 	 * @example
 	 *	var currentType = RenderLoop.getType();
 	 */
@@ -295,11 +295,22 @@ OOGL.RenderLoop = (function () {
 	};
 
 	/**
-	 * TODO
+	 * Sets the loop type; can be `request`, `interval` or `auto`.
+	 *
+	 * When the loop type is `request` the `RenderLoop` constructor constructs
+	 * `requestAnimationFrame`-based loops.
+	 *
+	 * When the loop type is `interval` the `RenderLoop` constructor constructs
+	 * `setInterval`-based loops.
+	 *
+	 * When the loop type is `auto` the `RenderLoop` constructor constructs
+	 * `requestAnimationFrame`-based loops if the `requestAnimationFrame` API is
+	 * supported, `setInterval`-based loops otherwise.
 	 *
 	 * @method setType
 	 * @static
-	 * @param {String} newType TODO
+	 * @param {String} newType The loop type; can be `request`, `interval` or
+	 *	`auto`.
 	 * @example
 	 *	RenderLoop.setType('request');
 	 */

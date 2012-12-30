@@ -1,4 +1,4 @@
-/*! Object-Oriented Graphics Library - v1.0.0 - 2012-12-30
+/*! Object-Oriented Graphics Library - v1.0.0 - 2012-12-31
 * Released under the MIT License
 * http://oogljs.com/
 * Copyright (c) 2012 Alberto La Rocca */
@@ -3991,34 +3991,168 @@ context.Program = function () {
 		context.uniform4f(getUniformLocation(name), x, y, z, w);
 	};
 
+	/**
+	 * Specifies the value for a `float` uniform variable as an array.
+	 *
+	 * `gl.uniform1fv` equivalent.
+	 *
+	 * `Program` objects have an internal location cache used by `uniform`
+	 * methods to set uniform variables without retrieving their location each
+	 * time. The cache is invalidated every time the program is relinked using
+	 * the provided `link` method.
+	 *
+	 * @method uniform1fv
+	 * @param {String} name The name of the uniform variable.
+	 * @param {Number[]} values An array containing the new value.
+	 * @example
+	 *	TODO
+	 */
 	program.uniform1fv = function (name, values) {
 		context.uniform1fv(getUniformLocation(name), values);
 	};
 
+	/**
+	 * Specifies the value for a `vec2` uniform variable as an array.
+	 *
+	 * `gl.uniform2fv` equivalent.
+	 *
+	 * `Program` objects have an internal location cache used by `uniform`
+	 * methods to set uniform variables without retrieving their location each
+	 * time. The cache is invalidated every time the program is relinked using
+	 * the provided `link` method.
+	 *
+	 * @method uniform2fv
+	 * @param {String} name The name of the uniform variable.
+	 * @param {Number[]} values An array containing the new values.
+	 * @example
+	 *	TODO
+	 */
 	program.uniform2fv = function (name, values) {
 		context.uniform2fv(getUniformLocation(name), values);
 	};
 
+	/**
+	 * Specifies the value for a `vec3` uniform variable as an array.
+	 *
+	 * `gl.uniform3fv` equivalent.
+	 *
+	 * `Program` objects have an internal location cache used by `uniform`
+	 * methods to set uniform variables without retrieving their location each
+	 * time. The cache is invalidated every time the program is relinked using
+	 * the provided `link` method.
+	 *
+	 * @method uniform3fv
+	 * @param {String} name The name of the uniform variable.
+	 * @param {Number[]} values An array containing the new values.
+	 * @example
+	 *	TODO
+	 */
 	program.uniform3fv = function (name, values) {
 		context.uniform3fv(getUniformLocation(name), values);
 	};
 
+	/**
+	 * Specifies the value for a `vec4` uniform variable as an array.
+	 *
+	 * `gl.uniform4fv` equivalent.
+	 *
+	 * `Program` objects have an internal location cache used by `uniform`
+	 * methods to set uniform variables without retrieving their location each
+	 * time. The cache is invalidated every time the program is relinked using
+	 * the provided `link` method.
+	 *
+	 * @method uniform4fv
+	 * @param {String} name The name of the uniform variable.
+	 * @param {Number[]} values An array containing the new values.
+	 * @example
+	 *	TODO
+	 */
 	program.uniform4fv = function (name, values) {
 		context.uniform4fv(getUniformLocation(name), values);
 	};
 
+	/**
+	 * Specifies the value for an integer or boolean uniform variable.
+	 *
+	 * `gl.uniform1i` equivalent.
+	 *
+	 * `Program` objects have an internal location cache used by `uniform`
+	 * methods to set uniform variables without retrieving their location each
+	 * time. The cache is invalidated every time the program is relinked using
+	 * the provided `link` method.
+	 *
+	 * @method uniform1i
+	 * @param {String} name The name of the uniform variable.
+	 * @param {Number} x The new value.
+	 * @example
+	 *	TODO
+	 */
 	program.uniform1i = function (name, x) {
 		context.uniform1i(getUniformLocation(name), x);
 	};
 
+	/**
+	 * Specifies the value for an `ivec2` or `bvec2` uniform variable.
+	 *
+	 * `gl.uniform2i` equivalent.
+	 *
+	 * `Program` objects have an internal location cache used by `uniform`
+	 * methods to set uniform variables without retrieving their location each
+	 * time. The cache is invalidated every time the program is relinked using
+	 * the provided `link` method.
+	 *
+	 * @method uniform2i
+	 * @param {String} name The name of the uniform variable.
+	 * @param {Number} x The new value for the first component.
+	 * @param {Number} y The new value for the second component.
+	 * @example
+	 *	TODO
+	 */
 	program.uniform2i = function (name, x, y) {
 		context.uniform2i(getUniformLocation(name), x, y);
 	};
 
+	/**
+	 * Specifies the value for an `ivec3` or `bvec3` uniform variable.
+	 *
+	 * `gl.uniform3i` equivalent.
+	 *
+	 * `Program` objects have an internal location cache used by `uniform`
+	 * methods to set uniform variables without retrieving their location each
+	 * time. The cache is invalidated every time the program is relinked using
+	 * the provided `link` method.
+	 *
+	 * @method uniform3i
+	 * @param {String} name The name of the uniform variable.
+	 * @param {Number} x The new value for the first component.
+	 * @param {Number} y The new value for the second component.
+	 * @param {Number} z The new value for the third component.
+	 * @example
+	 *	TODO
+	 */
 	program.uniform3i = function (name, x, y, z) {
 		context.uniform3i(getUniformLocation(name), x, y, z);
 	};
 
+	/**
+	 * Specifies the value for an `ivec4` or `bvec4` uniform variable.
+	 *
+	 * `gl.uniform4i` equivalent.
+	 *
+	 * `Program` objects have an internal location cache used by `uniform`
+	 * methods to set uniform variables without retrieving their location each
+	 * time. The cache is invalidated every time the program is relinked using
+	 * the provided `link` method.
+	 *
+	 * @method uniform4i
+	 * @param {String} name The name of the uniform variable.
+	 * @param {Number} x The new value for the first component.
+	 * @param {Number} y The new value for the second component.
+	 * @param {Number} z The new value for the third component.
+	 * @param {Number} w The new value for the fourth component.
+	 * @example
+	 *	TODO
+	 */
 	program.uniform4i = function (name, x, y, z, w) {
 		context.uniform4i(getUniformLocation(name), x, y, z, w);
 	};
@@ -4051,8 +4185,22 @@ context.Program = function () {
 		context.uniform2f(getUniformLocation(name), v.x, v.y, v.z, v.w);
 	};
 
+	program.uniformMatrix2fv = function (name, matrix) {
+		context.uniformMatrix2fv(getUniformLocation(name), matrix);
+	};
+
+	program.uniformMatrix3fv = function (name, matrix) {
+		context.uniformMatrix3fv(getUniformLocation(name), matrix);
+	};
+
+	program.uniformMatrix4fv = function (name, matrix) {
+		context.uniformMatrix4fv(getUniformLocation(name), matrix);
+	};
+
 	/**
-	 * TODO
+	 * Deletes this program.
+	 *
+	 * `gl.deleteProgram` equivalent.
 	 *
 	 * @method _delete
 	 * @example
@@ -4063,12 +4211,16 @@ context.Program = function () {
 	};
 
 	/**
-	 * TODO
+	 * Returns the delete status of this program.
+	 *
+	 * Equivalent to calling `gl.getProgramParameter` with `gl.DELETE_STATUS`.
 	 *
 	 * @method getDeleteStatus
-	 * @return {Boolean} TODO
+	 * @return {Boolean} The delete status.
 	 * @example
-	 *	TODO
+	 *	if (program.getDeleteStatus()) {
+	 *		// the program has been deleted
+	 *	}
 	 */
 	program.getDeleteStatus = function () {
 		return context.getProgramParameter(program, context.DELETE_STATUS);
@@ -4745,11 +4897,11 @@ OOGL.RenderLoop = (function () {
 	};
 
 	/**
-	 * TODO
+	 * Returns the currently configured loop type.
 	 *
 	 * @method getType
 	 * @static
-	 * @return {String} TODO
+	 * @return {String} The loop type; can be `request`, `interval` or `auto`.
 	 * @example
 	 *	var currentType = RenderLoop.getType();
 	 */
@@ -4758,11 +4910,22 @@ OOGL.RenderLoop = (function () {
 	};
 
 	/**
-	 * TODO
+	 * Sets the loop type; can be `request`, `interval` or `auto`.
+	 *
+	 * When the loop type is `request` the `RenderLoop` constructor constructs
+	 * `requestAnimationFrame`-based loops.
+	 *
+	 * When the loop type is `interval` the `RenderLoop` constructor constructs
+	 * `setInterval`-based loops.
+	 *
+	 * When the loop type is `auto` the `RenderLoop` constructor constructs
+	 * `requestAnimationFrame`-based loops if the `requestAnimationFrame` API is
+	 * supported, `setInterval`-based loops otherwise.
 	 *
 	 * @method setType
 	 * @static
-	 * @param {String} newType TODO
+	 * @param {String} newType The loop type; can be `request`, `interval` or
+	 *	`auto`.
 	 * @example
 	 *	RenderLoop.setType('request');
 	 */
