@@ -32,7 +32,7 @@ OOGL.RenderLoop = (function () {
 		window.msCancelAnimationFrame;
 
 	var RenderLoop = (function (type, rate) {
-		var period = Math.floor(rate / 1000);
+		var period = Math.floor(1000 / rate);
 		return function (tick) {
 			var running = false;
 			var banned = false;
@@ -90,14 +90,38 @@ OOGL.RenderLoop = (function () {
 			var counter = 0;
 			var timestamp = 0;
 
+			/**
+			 * TODO
+			 *
+			 * @method getType
+			 * @return {String} TODO
+			 * @example
+			 *	TODO
+			 */
 			this.getType = function () {
 				return type;
 			};
 
+			/**
+			 * TODO
+			 *
+			 * @method getRate
+			 * @return {Number} TODO
+			 * @example
+			 *	TODO
+			 */
 			this.getRate = function () {
 				return rate;
 			};
 
+			/**
+			 * TODO
+			 *
+			 * @method getPeriod
+			 * @return {Number} TODO
+			 * @example
+			 *	TODO
+			 */
 			this.getPeriod = function () {
 				return period;
 			};
@@ -141,6 +165,13 @@ OOGL.RenderLoop = (function () {
 				}
 			};
 
+			/**
+			 * TODO
+			 *
+			 * @method suspend
+			 * @example
+			 *	TODO
+			 */
 			this.suspend = function () {
 				if (running) {
 					banned = true;
@@ -148,6 +179,13 @@ OOGL.RenderLoop = (function () {
 				}
 			};
 
+			/**
+			 * TODO
+			 *
+			 * @method resume
+			 * @example
+			 *	TODO
+			 */
 			this.resume = function () {
 				if (running) {
 					banned = false;
@@ -155,6 +193,13 @@ OOGL.RenderLoop = (function () {
 				}
 			};
 
+			/**
+			 * TODO
+			 *
+			 * @method stop
+			 * @example
+			 *	TODO
+			 */
 			this.stop = function () {
 				running = false;
 				banned = true;
@@ -226,6 +271,20 @@ OOGL.RenderLoop = (function () {
 	 */
 	RenderLoop.getRate = function () {
 		return rate;
+	};
+
+	/**
+	 * TODO
+	 *
+	 * @method getPeriod
+	 * @static
+	 * @return {Number} TODO
+	 * @example
+	 *	OOGL.RenderLoop.setRate(100);
+	 *	var period = OOGL.RenderLoop.getPeriod(); // 10
+	 */
+	RenderLoop.getPeriod = function () {
+		return Math.floor(1000 / rate);
 	};
 
 	/**

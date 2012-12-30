@@ -1,4 +1,4 @@
-/*! Object-Oriented Graphics Library - v1.0.0 - 2012-12-29
+/*! Object-Oriented Graphics Library - v1.0.0 - 2012-12-30
 * Released under the MIT License
 * http://oogljs.com/
 * Copyright (c) 2012 Alberto La Rocca */
@@ -1785,7 +1785,7 @@ OOGL.Context = function (canvasOrId, attributes) {
  * `createBuffer`. The returned `WebGLBuffer` object is extended by
  * OOGL-specific features and returned by the `Buffer` constructor.
  *
- * @class .Buffer
+ * @class oogl.Buffer
  * @extends WebGLBuffer
  * @constructor
  * @param {Number} target The target against which this buffer will be bound
@@ -1990,8 +1990,8 @@ context.Buffer = (function () {
 /**
  * Wraps a GL buffer whose usage is set to `gl.STATIC_DRAW`.
  *
- * @class .StaticBuffer
- * @extends .Buffer
+ * @class oogl.StaticBuffer
+ * @extends oogl.Buffer
  * @constructor
  * @param {Number} target The target against which this buffer will be bound
  *	when the provided `bind` method is used. Either `gl.ARRAY_BUFFER` or
@@ -2008,8 +2008,8 @@ context.StaticBuffer = function (target, type) {
 /**
  * Wraps a GL buffer whose usage is set to `gl.STREAM_DRAW`.
  *
- * @class .StreamBuffer
- * @extends .Buffer
+ * @class oogl.StreamBuffer
+ * @extends oogl.Buffer
  * @constructor
  * @param {Number} target The target against which this buffer will be bound
  *	when the provided `bind` method is used. Either `gl.ARRAY_BUFFER` or
@@ -2026,8 +2026,8 @@ context.StreamBuffer = function (target, type) {
 /**
  * Wraps a GL buffer whose usage is set to `gl.DYNAMIC_DRAW`.
  *
- * @class .DynamicBuffer
- * @extends .Buffer
+ * @class oogl.DynamicBuffer
+ * @extends oogl.Buffer
  * @constructor
  * @param {Number} target The target against which this buffer will be bound
  *	when the provided `bind` method is used. Either `gl.ARRAY_BUFFER` or
@@ -2044,8 +2044,8 @@ context.DynamicBuffer = function (target, type) {
 /**
  * Wraps a GL buffer whose target is set to `gl.ARRAY_BUFFER`.
  *
- * @class .ArrayBuffer
- * @extends .Buffer
+ * @class oogl.ArrayBuffer
+ * @extends oogl.Buffer
  * @constructor
  * @param {String} type One of `byte`, `ubyte`, `short`, `ushort` and `float`;
  *	indicates the type of the data that will be put in the buffer.
@@ -2062,8 +2062,8 @@ context.ArrayBuffer = function (type, usage) {
 /**
  * Wraps a GL buffer whose target is set to `gl.ELEMENT_ARRAY_BUFFER`.
  *
- * @class .ElementArrayBuffer
- * @extends .Buffer
+ * @class oogl.ElementArrayBuffer
+ * @extends oogl.Buffer
  * @constructor
  * @param {String} type One of `byte`, `ubyte`, `short`, `ushort` and `float`;
  *	indicates the type of the data that will be put in the buffer.
@@ -2081,8 +2081,8 @@ context.ElementArrayBuffer = function (type, usage) {
  * Wraps a GL buffer whose target is set to `gl.ARRAY_BUFFER` and usage to
  * `gl.STATIC_DRAW`.
  *
- * @class .StaticArrayBuffer
- * @extends .StaticBuffer
+ * @class oogl.StaticArrayBuffer
+ * @extends oogl.StaticBuffer
  * @constructor
  * @param {String} type One of `byte`, `ubyte`, `short`, `ushort` and `float`;
  *	indicates the type of the data that will be put in the buffer.
@@ -2097,8 +2097,8 @@ context.StaticArrayBuffer = function (type) {
  * Wraps a GL buffer whose target is set to `gl.ELEMENT_ARRAY_BUFFER` and usage
  * to `gl.STATIC_DRAW`.
  *
- * @class .StaticElementArrayBuffer
- * @extends .StaticBuffer
+ * @class oogl.StaticElementArrayBuffer
+ * @extends oogl.StaticBuffer
  * @constructor
  * @param {String} type One of `byte`, `ubyte`, `short`, `ushort` and `float`;
  *	indicates the type of the data that will be put in the buffer.
@@ -2113,8 +2113,8 @@ context.StaticElementArrayBuffer = function (type) {
  * Wraps a GL buffer whose target is set to `gl.ARRAY_BUFFER` and usage to
  * `gl.STREAM_DRAW`.
  *
- * @class .StreamArrayBuffer
- * @extends .StreamBuffer
+ * @class oogl.StreamArrayBuffer
+ * @extends oogl.StreamBuffer
  * @constructor
  * @param {String} type One of `byte`, `ubyte`, `short`, `ushort` and `float`;
  *	indicates the type of the data that will be put in the buffer.
@@ -2129,8 +2129,8 @@ context.StreamArrayBuffer = function (type) {
  * Wraps a GL buffer whose target is set to `gl.ELEMENT_ARRAY_BUFFER` and usage
  * to `gl.STREAM_DRAW`.
  *
- * @class .StreamElementArrayBuffer
- * @extends .StreamBuffer
+ * @class oogl.StreamElementArrayBuffer
+ * @extends oogl.StreamBuffer
  * @constructor
  * @param {String} type One of `byte`, `ubyte`, `short`, `ushort` and `float`;
  *	indicates the type of the data that will be put in the buffer.
@@ -2145,8 +2145,8 @@ context.StreamElementArrayBuffer = function (type) {
  * Wraps a GL buffer whose target is set to `gl.ARRAY_BUFFER` and usage to
  * `gl.DYNAMIC_DRAW`.
  *
- * @class .DynamicArrayBuffer
- * @extends .DynamicBuffer
+ * @class oogl.DynamicArrayBuffer
+ * @extends oogl.DynamicBuffer
  * @constructor
  * @param {String} type One of `byte`, `ubyte`, `short`, `ushort` and `float`;
  *	indicates the type of the data that will be put in the buffer.
@@ -2161,8 +2161,8 @@ context.DynamicArrayBuffer = function (type) {
  * Wraps a GL buffer whose target is set to `gl.ELEMENT_ARRAY_BUFFER` and usage
  * to `gl.DYNAMIC_DRAW`.
  *
- * @class .DynamicElementArrayBuffer
- * @extends .DynamicBuffer
+ * @class oogl.DynamicElementArrayBuffer
+ * @extends oogl.DynamicBuffer
  * @constructor
  * @param {String} type One of `byte`, `ubyte`, `short`, `ushort` and `float`;
  *	indicates the type of the data that will be put in the buffer.
@@ -2184,8 +2184,8 @@ context.DynamicElementArrayBuffer = function (type) {
  * `gl.enableVertexAttribArray` and the provided `pointer` method invokes
  * `gl.vertexAttribPointer` with the specified `index` and `type`.
  *
- * @class .AttributeArray1
- * @extends .StaticArrayBuffer
+ * @class oogl.AttributeArray1
+ * @extends oogl.StaticArrayBuffer
  * @constructor
  * @param {Number} index The attribute array index.
  * @param {String} type TODO
@@ -2274,8 +2274,8 @@ context.AttributeArray1 = function (index, type, data, normalize) {
  * `gl.enableVertexAttribArray` and the provided `pointer` method invokes
  * `gl.vertexAttribPointer` with the specified `index` and `type`.
  *
- * @class .AttributeArray2
- * @extends .StaticArrayBuffer
+ * @class oogl.AttributeArray2
+ * @extends oogl.StaticArrayBuffer
  * @constructor
  * @param {Number} index The attribute array index.
  * @param {String} type TODO
@@ -2364,8 +2364,8 @@ context.AttributeArray2 = function (index, type, data, normalize) {
  * `gl.enableVertexAttribArray` and the provided `pointer` method invokes
  * `gl.vertexAttribPointer` with the specified `index` and `type`.
  *
- * @class .AttributeArray3
- * @extends .StaticArrayBuffer
+ * @class oogl.AttributeArray3
+ * @extends oogl.StaticArrayBuffer
  * @constructor
  * @param {Number} index The attribute array index.
  * @param {String} type TODO
@@ -2454,8 +2454,8 @@ context.AttributeArray3 = function (index, type, data, normalize) {
  * `gl.enableVertexAttribArray` and the provided `pointer` method invokes
  * `gl.vertexAttribPointer` with the specified `index` and `type`.
  *
- * @class .AttributeArray4
- * @extends .StaticArrayBuffer
+ * @class oogl.AttributeArray4
+ * @extends oogl.StaticArrayBuffer
  * @constructor
  * @param {Number} index The attribute array index.
  * @param {String} type TODO
@@ -2541,7 +2541,7 @@ context.AttributeArray4 = function (index, type, data, normalize) {
  * Represents a set of vertex attribute arrays; simplifies the management of
  * multiple arrays.
  *
- * @class .AttributeArrays
+ * @class oogl.AttributeArrays
  * @constructor
  * @param {Number} count The number of vertex attributes each array will
  *	contain.
@@ -2761,8 +2761,8 @@ context.AttributeArrays = function (count) {
  * This class inherits `StaticElementArrayBuffer` and introduces utility
  * methods.
  *
- * @class .ElementArray
- * @extends .StaticElementArrayBuffer
+ * @class oogl.ElementArray
+ * @extends oogl.StaticElementArrayBuffer
  * @constructor
  * @param {Number[]} indices The element indices.
  * @param {String} [type='ushort'] TODO
@@ -2876,7 +2876,7 @@ context.ElementArray = function (indices, type) {
  * `createTexture`. The returned `WebGLTexture` object is extended by
  * OOGL-specific features and returned by the `Texture` constructor.
  *
- * @class .Texture
+ * @class oogl.Texture
  * @extends WebGLTexture
  * @constructor
  * @param {Number} target The target against which this texture will be bound
@@ -3117,8 +3117,8 @@ context.Texture = function (target) {
  *
  * TODO
  *
- * @class .Texture2D
- * @extends .Texture
+ * @class oogl.Texture2D
+ * @extends oogl.Texture
  * @constructor
  * @example
  *	TODO
@@ -3132,8 +3132,8 @@ context.Texture2D = function () {
  *
  * TODO
  *
- * @class .CubeMap
- * @extends .Texture
+ * @class oogl.CubeMap
+ * @extends oogl.Texture
  * @constructor
  * @example
  *	TODO
@@ -3153,7 +3153,7 @@ context.CubeMap = function () {
  * A `Texture` object may also belong to several `Textures` sets at the same
  * time, so that it can be used by several programs.
  *
- * @class .Textures
+ * @class oogl.Textures
  * @constructor
  * @param {.Texture[]} [textures] An optional array of OOGL texture objects to
  *	add to the set. If you specify an empty array or not specify one at all you
@@ -3237,7 +3237,7 @@ context.Textures = function (textures) {
 /**
  * Wraps a GL shader.
  *
- * @class .Shader
+ * @class oogl.Shader
  * @extends WebGLShader
  * @constructor
  * @param {Number} type The type of shader. Either `oogl.VERTEX_SHADER` or
@@ -3417,8 +3417,8 @@ context.Shader = function (type) {
  * the GLSL source code for the shader and tries to compile it through the
  * provided `compileOrThrow` method.
  *
- * @class .VertexShader
- * @extends .Shader
+ * @class oogl.VertexShader
+ * @extends oogl.Shader
  * @constructor
  * @param {String} [source] The optional GLSL source code for the shader.
  * @example
@@ -3440,8 +3440,8 @@ context.VertexShader = function (source) {
  * containing the GLSL source code for the shader and tries to compile it
  * through the provided `compileOrThrow` method.
  *
- * @class .FragmentShader
- * @extends .Shader
+ * @class oogl.FragmentShader
+ * @extends oogl.Shader
  * @constructor
  * @param {String} [source] The optional GLSL source code for the shader.
  * @example
@@ -3463,8 +3463,8 @@ context.FragmentShader = function (source) {
  * provided `compileOrThrow` method. After the source code has been loaded and
  * compiled successfully the specified callback function is invoked.
  *
- * @class .AjaxVertexShader
- * @extends .Shader
+ * @class oogl.AjaxVertexShader
+ * @extends oogl.Shader
  * @constructor
  * @param {String} url A URL referring to the GLSL source code.
  * @param {Function} [callback] The callback function.
@@ -3491,8 +3491,8 @@ context.AjaxVertexShader = function (url, callback) {
  * the provided `compileOrThrow` method. After the source code has been loaded
  * and compiled successfully the specified callback function is invoked.
  *
- * @class .AjaxFragmentShader
- * @extends .Shader
+ * @class oogl.AjaxFragmentShader
+ * @extends oogl.Shader
  * @constructor
  * @param {String} url A URL referring to the GLSL source code.
  * @param {Function} [callback] The callback function.
@@ -3526,7 +3526,7 @@ context.AjaxFragmentShader = function (url, callback) {
  * only once per variable name. The cache is automatically invalidated when the
  * program is linked using the provided `link` or `linkOrThrow` methods.
  *
- * @class .Program
+ * @class oogl.Program
  * @extends WebGLProgram
  * @constructor
  * @example
@@ -3891,8 +3891,8 @@ context.Program = function () {
 /**
  * TODO
  *
- * @class .AutoProgram
- * @extends .Program
+ * @class oogl.AutoProgram
+ * @extends oogl.Program
  * @constructor
  * @param {String} vertexSource TODO
  * @param {String} fragmentSource TODO
@@ -3913,8 +3913,8 @@ context.AutoProgram = function (vertexSource, fragmentSource, attributes) {
 /**
  * TODO
  *
- * @class .AjaxProgram
- * @extends .Program
+ * @class oogl.AjaxProgram
+ * @extends oogl.Program
  * @constructor
  * @param {String} name TODO
  * @param {String[]} attributes TODO
@@ -3953,7 +3953,7 @@ context.AjaxProgram = function (name, attributes, callback) {
  * `createFramebuffer`. The returned `WebGLFramebuffer` object is extended by
  * OOGL-specific features and returned by the `Framebuffer` constructor.
  *
- * @class .Framebuffer
+ * @class oogl.Framebuffer
  * @constructor
  * @example
  *	var oogl = new OOGL.Context('canvas');
@@ -4078,7 +4078,7 @@ context.Framebuffer = function () {
  * `createRenderbuffer`. The returned `WebGLRenderbuffer` object is extended by
  * OOGL-specific features and returned by the `Renderbuffer` constructor.
  *
- * @class .Renderbuffer
+ * @class oogl.Renderbuffer
  * @constructor
  * @example
  *	var oogl = new OOGL.Context('canvas');
@@ -4271,3 +4271,308 @@ context.Renderbuffer = function () {
 
 	return context;
 };
+
+/*global OOGL: false */
+
+/**
+ * Efficient render loop implementation that uses `requestAnimationFrame` where
+ * available and transparently falls back on `setInterval`.
+ *
+ * @class OOGL.RenderLoop
+ * @constructor
+ * @param {Function} tick A user-defined callback function that is invoked at
+ *	each iteration of the loop. It typically contains (OO)GL calls that render
+ *	the full scene.
+ * @example
+ *	var oogl = new OOGL.Context('canvas');
+ *	// setup the pipeline here creating programs and arrays
+ *	var loop = new OOGL.RenderLoop(function () {
+ *		oogl.clear(oogl.COLOR_BUFFER_BIT | oogl.DEPTH_BUFFER_BIT);
+ *		arrays.drawTriangles();
+ *		oogl.flush();
+ *	});
+ */
+OOGL.RenderLoop = (function () {
+	var type = 'auto';
+	var rate = 60;
+
+	var requestAnimationFrame = window.requestAnimationFrame ||
+		window.mozRequestAnimationFrame ||
+		window.webkitRequestAnimationFrame ||
+		window.msRequestAnimationFrame;
+	var cancelAnimationFrame = window.cancelAnimationFrame ||
+		window.mozCancelAnimationFrame ||
+		window.webkitCancelAnimationFrame ||
+		window.msCancelAnimationFrame;
+
+	var RenderLoop = (function (type, rate) {
+		var period = Math.floor(1000 / rate);
+		return function (tick) {
+			var running = false;
+			var banned = false;
+
+			function RequestBasedLoop() {
+				var request = null;
+				this.start = function () {
+					if (request === null) {
+						request = requestAnimationFrame(function loop() {
+							tick();
+							request = requestAnimationFrame(loop);
+						});
+					}
+				};
+				this.stop = function () {
+					if (request !== null) {
+						cancelAnimationFrame(request);
+						request = null;
+					}
+				};
+			}
+
+			function IntervalBasedLoop() {
+				var interval = null;
+				this.start = function () {
+					if (interval === null) {
+						interval = setInterval(tick, period);
+					}
+				};
+				this.stop = function () {
+					if (interval !== null) {
+						clearInterval(interval);
+						interval = null;
+					}
+				};
+			}
+
+			var loop;
+			switch (type) {
+			case 'request':
+				loop = new RequestBasedLoop();
+				break;
+			case 'interval':
+				loop = new IntervalBasedLoop();
+				break;
+			default: // auto
+				if (requestAnimationFrame) {
+					loop = new RequestBasedLoop();
+				} else {
+					loop = new IntervalBasedLoop();
+				}
+				break;
+			}
+
+			var counter = 0;
+			var timestamp = 0;
+
+			/**
+			 * TODO
+			 *
+			 * @method getType
+			 * @return {String} TODO
+			 * @example
+			 *	TODO
+			 */
+			this.getType = function () {
+				return type;
+			};
+
+			/**
+			 * TODO
+			 *
+			 * @method getRate
+			 * @return {Number} TODO
+			 * @example
+			 *	TODO
+			 */
+			this.getRate = function () {
+				return rate;
+			};
+
+			/**
+			 * TODO
+			 *
+			 * @method getPeriod
+			 * @return {Number} TODO
+			 * @example
+			 *	TODO
+			 */
+			this.getPeriod = function () {
+				return period;
+			};
+
+			/**
+			 * TODO
+			 *
+			 * @method getActualRate
+			 * @return {Number} TODO
+			 * @example
+			 *	var loop = new OOGL.RenderLoop(function () {
+			 *		// ...
+			 *	});
+			 *	loop.start();
+			 *	setInterval(function () {
+			 *		rateDisplay.innerText = loop.getActualRate();
+			 *	}, 1000);
+			 */
+			this.getActualRate = function () {
+				var now = Date.now();
+				var result = counter / (now - timestamp);
+				counter = 0;
+				timestamp = now;
+				return result;
+			};
+
+			/**
+			 * TODO
+			 *
+			 * @method start
+			 * @example
+			 *	var loop = new OOGL.RenderLoop(function () {
+			 *		// ...
+			 *	});
+			 *	loop.start();
+			 */
+			this.start = function () {
+				if (!running && !banned) {
+					running = true;
+					loop.start();
+				}
+			};
+
+			/**
+			 * TODO
+			 *
+			 * @method suspend
+			 * @example
+			 *	TODO
+			 */
+			this.suspend = function () {
+				if (running) {
+					banned = true;
+					loop.stop();
+				}
+			};
+
+			/**
+			 * TODO
+			 *
+			 * @method resume
+			 * @example
+			 *	TODO
+			 */
+			this.resume = function () {
+				if (running) {
+					banned = false;
+					loop.start();
+				}
+			};
+
+			/**
+			 * TODO
+			 *
+			 * @method stop
+			 * @example
+			 *	TODO
+			 */
+			this.stop = function () {
+				running = false;
+				banned = true;
+				loop.stop();
+			};
+		};
+	})(type, rate);
+
+	/**
+	 * Indicates whether `requestAnimationFrame` is supported.
+	 *
+	 * @method isRequestAnimationFrameSupported
+	 * @static
+	 * @return {Boolean} `true` if `requestAnimationFrame` is supported, `false`
+	 *	otherwise.
+	 * @example
+	 *	if (OOGL.RenderLoop.isRequestAnimationFrameSupported()) {
+	 *		OOGL.RenderLoop.setType('request');
+	 *	} else {
+	 *		throw 'requestAnimationFrame not supported';
+	 *	}
+	 */
+	RenderLoop.isRequestAnimationFrameSupported = function () {
+		return !!requestAnimationFrame;
+	};
+
+	/**
+	 * TODO
+	 *
+	 * @method getType
+	 * @static
+	 * @return {String} TODO
+	 * @example
+	 *	var currentType = RenderLoop.getType();
+	 */
+	RenderLoop.getType = function () {
+		return type;
+	};
+
+	/**
+	 * TODO
+	 *
+	 * @method setType
+	 * @static
+	 * @param {String} newType TODO
+	 * @example
+	 *	RenderLoop.setType('request');
+	 */
+	RenderLoop.setType = function (newType) {
+		if ({
+			request: true,
+			interval: true,
+			auto: true
+		}.hasOwnProperty(type)) {
+			type = newType;
+		} else {
+			throw 'invalid loop type must be one of `request`, `interval` or `auto`.';
+		}
+	};
+
+	/**
+	 * TODO
+	 *
+	 * @method getRate
+	 * @static
+	 * @return {Number} TODO
+	 * @example
+	 *	var currentRate = RenderLoop.getRate();
+	 */
+	RenderLoop.getRate = function () {
+		return rate;
+	};
+
+	/**
+	 * TODO
+	 *
+	 * @method getPeriod
+	 * @static
+	 * @return {Number} TODO
+	 * @example
+	 *	OOGL.RenderLoop.setRate(100);
+	 *	var period = OOGL.RenderLoop.getPeriod(); // 10
+	 */
+	RenderLoop.getPeriod = function () {
+		return Math.floor(1000 / rate);
+	};
+
+	/**
+	 * TODO
+	 *
+	 * @method setRate
+	 * @static
+	 * @param {Number} newRate TODO
+	 * @example
+	 *	RenderLoop.setRate(100);
+	 */
+	RenderLoop.setRate = function (newRate) {
+		rate = newRate;
+	};
+
+	return RenderLoop;
+})();
