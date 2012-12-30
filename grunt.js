@@ -17,7 +17,8 @@ module.exports = function (grunt) {
 		'src/Programs.js',
 		'src/Framebuffer.js',
 		'src/Renderbuffer.js',
-		'src/ContextEnd.js'
+		'src/ContextEnd.js',
+		'src/RenderLoop.js',
 		];
 	grunt.initConfig({
 		meta: {
@@ -44,7 +45,8 @@ module.exports = function (grunt) {
 				'src/Shaders.js',
 				'src/Programs.js',
 				'src/Framebuffer.js',
-				'src/Renderbuffer.js'
+				'src/Renderbuffer.js',
+				'src/RenderLoop.js',
 				]
 		},
 		jshint: {
