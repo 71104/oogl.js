@@ -112,6 +112,15 @@
             "fors": {},
             "namespaces": {}
         },
+        "src\\RenderLoop.js": {
+            "name": "src\\RenderLoop.js",
+            "modules": {},
+            "classes": {
+                "OOGL.RenderLoop": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
         "src\\Renderbuffer.js": {
             "name": "src\\Renderbuffer.js",
             "modules": {},
@@ -1162,6 +1171,29 @@
             ],
             "example": [
                 "\n\tvar arrays = new oogl.AttributeArrays(vertices.length);\n\tarrays.add3('float', vertices);\n\tarrays.add3('float', colors);\n\tarrays.add2('float', textureCoordinates);\n\tvar program = new oogl.AjaxProgram('box', ['in_Vertex', 'in_Color', 'in_TexCoords'], function () {\n\t\tprogram.use();\n\t\tarrays.drawTriangles();\n\t\toogl.flush();\n\t});"
+            ]
+        },
+        "OOGL.RenderLoop": {
+            "name": "OOGL.RenderLoop",
+            "shortname": "OOGL.RenderLoop",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src\\RenderLoop.js",
+            "line": 3,
+            "description": "Efficient render loop implementation that uses `requestAnimationFrame` where\navailable and transparently falls back on `setInterval`.",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "tick",
+                    "description": "A user-defined callback function that is invoked at\n\teach iteration of the loop. It typically contains (OO)GL calls that render\n\tthe full scene.",
+                    "type": "Function"
+                }
+            ],
+            "example": [
+                "\n\tvar oogl = new OOGL.Context('canvas');\n\t// setup the pipeline here creating programs and arrays\n\tvar loop = new OOGL.RenderLoop(function () {\n\t\toogl.clear(oogl.COLOR_BUFFER_BIT | oogl.DEPTH_BUFFER_BIT);\n\t\tarrays.drawTriangles();\n\t\toogl.flush();\n\t});"
             ]
         },
         "oogl.Renderbuffer": {
@@ -3491,6 +3523,212 @@
                 "\n\tTODO"
             ],
             "class": "oogl.Program"
+        },
+        {
+            "file": "src\\RenderLoop.js",
+            "line": 93,
+            "description": "TODO",
+            "itemtype": "method",
+            "name": "getType",
+            "return": {
+                "description": "TODO",
+                "type": "String"
+            },
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "OOGL.RenderLoop"
+        },
+        {
+            "file": "src\\RenderLoop.js",
+            "line": 105,
+            "description": "TODO",
+            "itemtype": "method",
+            "name": "getRate",
+            "return": {
+                "description": "TODO",
+                "type": "Number"
+            },
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "OOGL.RenderLoop"
+        },
+        {
+            "file": "src\\RenderLoop.js",
+            "line": 117,
+            "description": "TODO",
+            "itemtype": "method",
+            "name": "getPeriod",
+            "return": {
+                "description": "TODO",
+                "type": "Number"
+            },
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "OOGL.RenderLoop"
+        },
+        {
+            "file": "src\\RenderLoop.js",
+            "line": 129,
+            "description": "TODO",
+            "itemtype": "method",
+            "name": "getActualRate",
+            "return": {
+                "description": "TODO",
+                "type": "Number"
+            },
+            "example": [
+                "\n\tvar loop = new OOGL.RenderLoop(function () {\n\t\t// ...\n\t});\n\tloop.start();\n\tsetInterval(function () {\n\t\trateDisplay.innerText = loop.getActualRate();\n\t}, 1000);"
+            ],
+            "class": "OOGL.RenderLoop"
+        },
+        {
+            "file": "src\\RenderLoop.js",
+            "line": 151,
+            "description": "TODO",
+            "itemtype": "method",
+            "name": "start",
+            "example": [
+                "\n\tvar loop = new OOGL.RenderLoop(function () {\n\t\t// ...\n\t});\n\tloop.start();"
+            ],
+            "class": "OOGL.RenderLoop"
+        },
+        {
+            "file": "src\\RenderLoop.js",
+            "line": 168,
+            "description": "TODO",
+            "itemtype": "method",
+            "name": "suspend",
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "OOGL.RenderLoop"
+        },
+        {
+            "file": "src\\RenderLoop.js",
+            "line": 182,
+            "description": "TODO",
+            "itemtype": "method",
+            "name": "resume",
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "OOGL.RenderLoop"
+        },
+        {
+            "file": "src\\RenderLoop.js",
+            "line": 196,
+            "description": "TODO",
+            "itemtype": "method",
+            "name": "stop",
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "OOGL.RenderLoop"
+        },
+        {
+            "file": "src\\RenderLoop.js",
+            "line": 211,
+            "description": "Indicates whether `requestAnimationFrame` is supported.",
+            "itemtype": "method",
+            "name": "isRequestAnimationFrameSupported",
+            "static": 1,
+            "return": {
+                "description": "`true` if `requestAnimationFrame` is supported, `false`\n\totherwise.",
+                "type": "Boolean"
+            },
+            "example": [
+                "\n\tif (OOGL.RenderLoop.isRequestAnimationFrameSupported()) {\n\t\tOOGL.RenderLoop.setType('request');\n\t} else {\n\t\tthrow 'requestAnimationFrame not supported';\n\t}"
+            ],
+            "class": "OOGL.RenderLoop"
+        },
+        {
+            "file": "src\\RenderLoop.js",
+            "line": 229,
+            "description": "TODO",
+            "itemtype": "method",
+            "name": "getType",
+            "static": 1,
+            "return": {
+                "description": "TODO",
+                "type": "String"
+            },
+            "example": [
+                "\n\tvar currentType = RenderLoop.getType();"
+            ],
+            "class": "OOGL.RenderLoop"
+        },
+        {
+            "file": "src\\RenderLoop.js",
+            "line": 242,
+            "description": "TODO",
+            "itemtype": "method",
+            "name": "setType",
+            "static": 1,
+            "params": [
+                {
+                    "name": "newType",
+                    "description": "TODO",
+                    "type": "String"
+                }
+            ],
+            "example": [
+                "\n\tRenderLoop.setType('request');"
+            ],
+            "class": "OOGL.RenderLoop"
+        },
+        {
+            "file": "src\\RenderLoop.js",
+            "line": 263,
+            "description": "TODO",
+            "itemtype": "method",
+            "name": "getRate",
+            "static": 1,
+            "return": {
+                "description": "TODO",
+                "type": "Number"
+            },
+            "example": [
+                "\n\tvar currentRate = RenderLoop.getRate();"
+            ],
+            "class": "OOGL.RenderLoop"
+        },
+        {
+            "file": "src\\RenderLoop.js",
+            "line": 276,
+            "description": "TODO",
+            "itemtype": "method",
+            "name": "getPeriod",
+            "static": 1,
+            "return": {
+                "description": "TODO",
+                "type": "Number"
+            },
+            "example": [
+                "\n\tOOGL.RenderLoop.setRate(100);\n\tvar period = OOGL.RenderLoop.getPeriod(); // 10"
+            ],
+            "class": "OOGL.RenderLoop"
+        },
+        {
+            "file": "src\\RenderLoop.js",
+            "line": 290,
+            "description": "TODO",
+            "itemtype": "method",
+            "name": "setRate",
+            "static": 1,
+            "params": [
+                {
+                    "name": "newRate",
+                    "description": "TODO",
+                    "type": "Number"
+                }
+            ],
+            "example": [
+                "\n\tRenderLoop.setRate(100);"
+            ],
+            "class": "OOGL.RenderLoop"
         },
         {
             "file": "src\\Renderbuffer.js",

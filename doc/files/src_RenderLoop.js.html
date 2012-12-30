@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>src\Vector2.js - OOGL.js 1.0</title>
+    <title>src\RenderLoop.js - OOGL.js 1.0</title>
     <link rel="stylesheet" href="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;3.8.0pr2&#x2F;build&#x2F;cssgrids&#x2F;cssgrids-min.css">
     <link rel="stylesheet" href="..&#x2F;assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="..&#x2F;assets/css/main.css" id="site_styles">
@@ -187,341 +187,314 @@ _gaq.push(['_trackPageview']);
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1 class="file-heading">File: src\Vector2.js</h1>
+                        <h1 class="file-heading">File: src\RenderLoop.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
 &#x2F;*global OOGL: false *&#x2F;
 
 &#x2F;**
- * A mutable 2-component vector.
+ * Efficient render loop implementation that uses &#x60;requestAnimationFrame&#x60; where
+ * available and transparently falls back on &#x60;setInterval&#x60;.
  *
- * @class OOGL.Vector2
+ * @class OOGL.RenderLoop
  * @constructor
- * @param {Number} x The X component.
- * @param {Number} y The Y component.
+ * @param {Function} tick A user-defined callback function that is invoked at
+ *	each iteration of the loop. It typically contains (OO)GL calls that render
+ *	the full scene.
  * @example
- *	var v = new OOGL.Vector2(2, 3);
+ *	var oogl = new OOGL.Context(&#x27;canvas&#x27;);
+ *	&#x2F;&#x2F; setup the pipeline here creating programs and arrays
+ *	var loop = new OOGL.RenderLoop(function () {
+ *		oogl.clear(oogl.COLOR_BUFFER_BIT | oogl.DEPTH_BUFFER_BIT);
+ *		arrays.drawTriangles();
+ *		oogl.flush();
+ *	});
  *&#x2F;
-OOGL.Vector2 = function (x, y) {
-	&#x2F;**
-	 * The X component.
-	 *
-	 * @property x
-	 * @type Number
-	 *&#x2F;
-	this.x = x;
+OOGL.RenderLoop = (function () {
+	var type = &#x27;auto&#x27;;
+	var rate = 60;
+
+	var requestAnimationFrame = window.requestAnimationFrame ||
+		window.mozRequestAnimationFrame ||
+		window.webkitRequestAnimationFrame ||
+		window.msRequestAnimationFrame;
+	var cancelAnimationFrame = window.cancelAnimationFrame ||
+		window.mozCancelAnimationFrame ||
+		window.webkitCancelAnimationFrame ||
+		window.msCancelAnimationFrame;
+
+	var RenderLoop = (function (type, rate) {
+		var period = Math.floor(1000 &#x2F; rate);
+		return function (tick) {
+			var running = false;
+			var banned = false;
+
+			function RequestBasedLoop() {
+				var request = null;
+				this.start = function () {
+					if (request === null) {
+						request = requestAnimationFrame(function loop() {
+							tick();
+							request = requestAnimationFrame(loop);
+						});
+					}
+				};
+				this.stop = function () {
+					if (request !== null) {
+						cancelAnimationFrame(request);
+						request = null;
+					}
+				};
+			}
+
+			function IntervalBasedLoop() {
+				var interval = null;
+				this.start = function () {
+					if (interval === null) {
+						interval = setInterval(tick, period);
+					}
+				};
+				this.stop = function () {
+					if (interval !== null) {
+						clearInterval(interval);
+						interval = null;
+					}
+				};
+			}
+
+			var loop;
+			switch (type) {
+			case &#x27;request&#x27;:
+				loop = new RequestBasedLoop();
+				break;
+			case &#x27;interval&#x27;:
+				loop = new IntervalBasedLoop();
+				break;
+			default: &#x2F;&#x2F; auto
+				if (requestAnimationFrame) {
+					loop = new RequestBasedLoop();
+				} else {
+					loop = new IntervalBasedLoop();
+				}
+				break;
+			}
+
+			var counter = 0;
+			var timestamp = 0;
+
+			&#x2F;**
+			 * TODO
+			 *
+			 * @method getType
+			 * @return {String} TODO
+			 * @example
+			 *	TODO
+			 *&#x2F;
+			this.getType = function () {
+				return type;
+			};
+
+			&#x2F;**
+			 * TODO
+			 *
+			 * @method getRate
+			 * @return {Number} TODO
+			 * @example
+			 *	TODO
+			 *&#x2F;
+			this.getRate = function () {
+				return rate;
+			};
+
+			&#x2F;**
+			 * TODO
+			 *
+			 * @method getPeriod
+			 * @return {Number} TODO
+			 * @example
+			 *	TODO
+			 *&#x2F;
+			this.getPeriod = function () {
+				return period;
+			};
+
+			&#x2F;**
+			 * TODO
+			 *
+			 * @method getActualRate
+			 * @return {Number} TODO
+			 * @example
+			 *	var loop = new OOGL.RenderLoop(function () {
+			 *		&#x2F;&#x2F; ...
+			 *	});
+			 *	loop.start();
+			 *	setInterval(function () {
+			 *		rateDisplay.innerText = loop.getActualRate();
+			 *	}, 1000);
+			 *&#x2F;
+			this.getActualRate = function () {
+				var now = Date.now();
+				var result = counter &#x2F; (now - timestamp);
+				counter = 0;
+				timestamp = now;
+				return result;
+			};
+
+			&#x2F;**
+			 * TODO
+			 *
+			 * @method start
+			 * @example
+			 *	var loop = new OOGL.RenderLoop(function () {
+			 *		&#x2F;&#x2F; ...
+			 *	});
+			 *	loop.start();
+			 *&#x2F;
+			this.start = function () {
+				if (!running &amp;&amp; !banned) {
+					running = true;
+					loop.start();
+				}
+			};
+
+			&#x2F;**
+			 * TODO
+			 *
+			 * @method suspend
+			 * @example
+			 *	TODO
+			 *&#x2F;
+			this.suspend = function () {
+				if (running) {
+					banned = true;
+					loop.stop();
+				}
+			};
+
+			&#x2F;**
+			 * TODO
+			 *
+			 * @method resume
+			 * @example
+			 *	TODO
+			 *&#x2F;
+			this.resume = function () {
+				if (running) {
+					banned = false;
+					loop.start();
+				}
+			};
+
+			&#x2F;**
+			 * TODO
+			 *
+			 * @method stop
+			 * @example
+			 *	TODO
+			 *&#x2F;
+			this.stop = function () {
+				running = false;
+				banned = true;
+				loop.stop();
+			};
+		};
+	})(type, rate);
 
 	&#x2F;**
-	 * The Y component.
+	 * Indicates whether &#x60;requestAnimationFrame&#x60; is supported.
 	 *
-	 * @property y
-	 * @type Number
-	 *&#x2F;
-	this.y = y;
-};
-
-OOGL.Vector2.prototype = {
-	&#x2F;**
-	 * Computes the modulus of the vector. This is computed as
-	 * &#x60;Math.sqrt(x * x + y * y)&#x60;.
-	 *
-	 * @method length
-	 * @return {Number} The computed value.
+	 * @method isRequestAnimationFrameSupported
+	 * @static
+	 * @return {Boolean} &#x60;true&#x60; if &#x60;requestAnimationFrame&#x60; is supported, &#x60;false&#x60;
+	 *	otherwise.
 	 * @example
-	 *	var v = new OOGL.Vector2(3, 4);
-	 *	var l = v.length(); &#x2F;&#x2F; 5
+	 *	if (OOGL.RenderLoop.isRequestAnimationFrameSupported()) {
+	 *		OOGL.RenderLoop.setType(&#x27;request&#x27;);
+	 *	} else {
+	 *		throw &#x27;requestAnimationFrame not supported&#x27;;
+	 *	}
 	 *&#x2F;
-	length: function () {
-		return Math.sqrt(this.x * this.x + this.y * this.y);
-	},
+	RenderLoop.isRequestAnimationFrameSupported = function () {
+		return !!requestAnimationFrame;
+	};
 
 	&#x2F;**
-	 * Normalizes this vector so that its length becomes 1.
+	 * TODO
 	 *
-	 * @method normalize
-	 * @chainable
+	 * @method getType
+	 * @static
+	 * @return {String} TODO
 	 * @example
-	 *	var v = new OOGL.Vector2(3, 4);
-	 *	v.normalize(); &#x2F;&#x2F; v is now (0.6, 0.8)
+	 *	var currentType = RenderLoop.getType();
 	 *&#x2F;
-	normalize: function () {
-		var length = Math.sqrt(this.x * this.x + this.y * this.y);
-		this.x &#x2F;= length;
-		this.y &#x2F;= length;
-		return this;
-	},
+	RenderLoop.getType = function () {
+		return type;
+	};
 
 	&#x2F;**
-	 * Computes the normalized vector and returns it as a new &#x60;Vector2&#x60; object.
-	 * This vector is not changed.
+	 * TODO
 	 *
-	 * @method getNormalized
-	 * @return OOGL.Vector2
+	 * @method setType
+	 * @static
+	 * @param {String} newType TODO
 	 * @example
-	 *	var v1 = new OOGL.Vector2(3, 4);
-	 *	var v2 = v1.getNormalized(); &#x2F;&#x2F; (0.6, 0.8)
+	 *	RenderLoop.setType(&#x27;request&#x27;);
 	 *&#x2F;
-	getNormalized: function () {
-		var length = Math.sqrt(this.x * this.x + this.y * this.y);
-		return new OOGL.Vector2(this.x &#x2F; length, this.y &#x2F; length);
-	},
-
-	&#x2F;**
-	 * Adds the specified 2-component vector to this one.
-	 *
-	 * @method add
-	 * @param {OOGL.Vector2} v The vector to add.
-	 * @chainable
-	 * @example
-	 *	var v = new OOGL.Vector2(3, 4);
-	 *	v.add(new OOGL.Vector2(1, 2)); &#x2F;&#x2F; v is now (4, 6)
-	 *&#x2F;
-	add: function (v) {
-		this.x += v.x;
-		this.y += v.y;
-		return this;
-	},
-
-	&#x2F;**
-	 * Adds the specified 2-component vector to this one and returns the sum as
-	 * a new &#x60;Vector2&#x60; object. This vector is not changed.
-	 *
-	 * @method plus
-	 * @param {OOGL.Vector2} v The vector to add.
-	 * @return {OOGL.Vector2} The sum vector.
-	 * @example
-	 *	var v1 = new OOGL.Vector2(3, 4);
-	 *	var v2 = new OOGL.Vector2(1, 2);
-	 *	var v3 = v1.plus(v2); &#x2F;&#x2F; (4, 6)
-	 *&#x2F;
-	plus: function (v) {
-		return new OOGL.Vector2(this.x + v.x, this.y + v.y);
-	},
-
-	&#x2F;**
-	 * Subtracts the specified 2-component vector to this one.
-	 *
-	 * @method subtract
-	 * @param {OOGL.Vector2} v The vector to subtract.
-	 * @chainable
-	 * @example
-	 *	var v = new OOGL.Vector2(3, 4);
-	 *	v.subtract(new OOGL.Vector2(1, 2)); &#x2F;&#x2F; v is now (2, 2)
-	 *&#x2F;
-	subtract: function (v) {
-		this.x -= v.x;
-		this.y -= v.y;
-		return this;
-	},
-
-	&#x2F;**
-	 * Subtracts the specified 2-component vector to this one and returns the
-	 * difference as a new &#x60;Vector2&#x60; object. This vector is not changed.
-	 *
-	 * @method minus
-	 * @param {OOGL.Vector2} v The vector to subtract.
-	 * @return {OOGL.Vector2} The difference vector.
-	 * @example
-	 *	var v1 = new OOGL.Vector(3, 4);
-	 *	var v2 = new OOGL.Vector2(1, 2);
-	 *	var v3 = v1.minus(v2); &#x2F;&#x2F; (2, 2)
-	 *&#x2F;
-	minus: function (v) {
-		return new OOGL.Vector2(this.x - v.x, this.y - v.y);
-	},
-
-	&#x2F;**
-	 * Multiplies this vector by the specified constant factor.
-	 *
-	 * @method multiply
-	 * @param {Number} f The constant factor.
-	 * @chainable
-	 * @example
-	 *	var v = new OOGL.Vector(3, 4);
-	 *	v.multiply(2); &#x2F;&#x2F; v is now (6, 8)
-	 *&#x2F;
-	multiply: function (f) {
-		this.x *= f;
-		this.y *= f;
-		return this;
-	},
-
-	&#x2F;**
-	 * Divides this vector by the specified constant factor.
-	 *
-	 * @method divide
-	 * @param {Number} f The constant factor.
-	 * @chainable
-	 * @example
-	 *	var v = new OOGL.Vector(6, 8);
-	 *	v.multiply(2); &#x2F;&#x2F; v is now (3, 4)
-	 *&#x2F;
-	divide: function (f) {
-		this.x &#x2F;= f;
-		this.y &#x2F;= f;
-		return this;
-	},
-
-	&#x2F;**
-	 * Multiplies this vector by the specified constant factor and returns the
-	 * product as a new &#x60;Vector2&#x60; object. This vector is not changed.
-	 *
-	 * @method by
-	 * @param {Number} f The constant factor.
-	 * @return {OOGL.Vector2} The product vector.
-	 * @example
-	 *	var v1 = new OOGL.Vector2(3, 4);
-	 *	var v2 = v1.by(2); &#x2F;&#x2F; (6, 8)
-	 *&#x2F;
-	by: function (f) {
-		return new OOGL.Vector2(this.x * f, this.y * f);
-	},
-
-	&#x2F;**
-	 * Computes the dot product between this vector and the specified one.
-	 *
-	 * @method dot
-	 * @param {OOGL.Vector2} v The other vector.
-	 * @return {Number} The computed dot product.
-	 * @example
-	 *	var v1 = new OOGL.Vector2(1, 2);
-	 *	var v2 = new OOGL.Vector2(3, 4);
-	 *	var dot = v1.dot(v2); &#x2F;&#x2F; 11
-	 *&#x2F;
-	dot: function (v) {
-		return this.x * v.x + this.y * v.y;
-	},
-
-	&#x2F;**
-	 * Reflects this vector against a line whose normal vector is specified. The
-	 * reflection of a vector &#x60;v&#x60; is computed as:
-	 *
-	 *	v - 2 * (v.n) * n
-	 *
-	 * where &#x60;v.n&#x60; is the dot product between the vector and the normal.
-	 *
-	 * This method modifies the original object.
-	 *
-	 * @method reflect
-	 * @param {OOGL.Vector2} n The normal vector.
-	 * @chainable
-	 * @example
-	 *	&#x2F;&#x2F; reflects a velocity vector against a floor
-	 *	velocity.reflect(new OOGL.Vector2(0, 1));
-	 *&#x2F;
-	reflect: function (n) {
-		var dot = this.x * n.x + this.y * n.y;
-		this.x -= 2 * dot * n.x;
-		this.y -= 2 * dot * n.y;
-		return this;
-	},
-
-	&#x2F;**
-	 * Computes the reflection of this vector against a line whose normal vector
-	 * is specified. The reflection of a vector &#x60;v&#x60; is computed as:
-	 *
-	 *	v - 2 * (v.n) * n
-	 *
-	 * where &#x60;v.n&#x60; is the dot product between the vector and the normal.
-	 *
-	 * The computed vector is returned as a new &#x60;Vector2&#x60; object, this vector is
-	 * not changed.
-	 *
-	 * @method getReflected
-	 * @param {OOGL.Vector2} n The normal vector.
-	 * @return {OOGL.Vector2} The computed reflected vector.
-	 * @example
-	 *	&#x2F;&#x2F; reflects a velocity vector against a floor
-	 *	var newVelocity = velocity.getReflected(new OOGL.Vector2(0, 1));
-	 *&#x2F;
-	getReflected: function (n) {
-		var dot = this.x * n.x + this.y * n.y;
-		return new OOGL.Vector2(this.x - 2 * dot * n.x, this.y - 2 * dot * n.y);
-	},
-
-	&#x2F;**
-	 * Refracts this vector given a surface normal &#x60;n&#x60; and the &#x60;eta&#x60; ratio
-	 * between refraction indices.
-	 *
-	 * This method modifies the original object.
-	 *
-	 * @method refract
-	 * @chainable
-	 * @param {OOGL.Vector2} n The surface normal at the incidence point.
-	 * @param {Number} eta The ratio between refraction indices.
-	 * @example
-	 *	var v = new OOGL.Vector2(0.3, -1);
-	 *	var n = new OOGL.Vector2(0, 1);
-	 *	v.refract(n, 1.3);
-	 *&#x2F;
-	refract: function (n, eta) {
-		var dot = this.x * n.x + this.y * n.y;
-		var k = 1 - eta * eta * (1 - dot * dot);
-		if (k &lt; 0) {
-			this.x = 0;
-			this.y = 0;
+	RenderLoop.setType = function (newType) {
+		if ({
+			request: true,
+			interval: true,
+			auto: true
+		}.hasOwnProperty(type)) {
+			type = newType;
 		} else {
-			this.x = eta * this.x - (eta * dot + Math.sqrt(k)) * n.x;
-			this.y = eta * this.y - (eta * dot + Math.sqrt(k)) * n.y;
+			throw &#x27;invalid loop type must be one of &#x60;request&#x60;, &#x60;interval&#x60; or &#x60;auto&#x60;.&#x27;;
 		}
-		return this;
-	},
+	};
 
 	&#x2F;**
-	 * Refracts this vector given a surface normal &#x60;n&#x60; and the &#x60;eta&#x60; ratio
-	 * between refraction indices; the computed vector is returned as a new
-	 * &#x60;OOGL.Vector2&#x60; object, this object is not changed.
+	 * TODO
 	 *
-	 * @method getRefracted
-	 * @param {OOGL.Vector2} n The surface normal at the incidence point.
-	 * @param {Number} eta The ratio between refraction indices.
-	 * @return {OOGL.Vector2} The refracted vector.
+	 * @method getRate
+	 * @static
+	 * @return {Number} TODO
 	 * @example
-	 *	var v = new OOGL.Vector2(0.3, -1);
-	 *	var n = new OOGL.Vector2(0, 1);
-	 *	var w = v.getRefracted(n, 1.3);
+	 *	var currentRate = RenderLoop.getRate();
 	 *&#x2F;
-	getRefracted: function (n, eta) {
-		var dot = this.x * n.x + this.y * n.y;
-		var k = 1 - eta * eta * (1 - dot * dot);
-		if (k &lt; 0) {
-			return OOGL.Vector2.NULL;
-		} else {
-			return new OOGL.Vector2(
-				eta * this.x - (eta * dot + Math.sqrt(k)) * n.x,
-				eta * this.y - (eta * dot + Math.sqrt(k)) * n.y
-				);
-		}
-	}
-};
+	RenderLoop.getRate = function () {
+		return rate;
+	};
 
-&#x2F;**
- * The null vector &#x60;(0, 0)&#x60;.
- *
- * @property NULL
- * @static
- * @type OOGL.Vector2
- *&#x2F;
-OOGL.Vector2.NULL = new OOGL.Vector2(0, 0);
+	&#x2F;**
+	 * TODO
+	 *
+	 * @method getPeriod
+	 * @static
+	 * @return {Number} TODO
+	 * @example
+	 *	OOGL.RenderLoop.setRate(100);
+	 *	var period = OOGL.RenderLoop.getPeriod(); &#x2F;&#x2F; 10
+	 *&#x2F;
+	RenderLoop.getPeriod = function () {
+		return Math.floor(1000 &#x2F; rate);
+	};
 
-&#x2F;**
- * The &#x60;(1, 0)&#x60; vector.
- *
- * @property I
- * @static
- * @type OOGL.Vector2
- *&#x2F;
-OOGL.Vector2.I = new OOGL.Vector2(1, 0);
+	&#x2F;**
+	 * TODO
+	 *
+	 * @method setRate
+	 * @static
+	 * @param {Number} newRate TODO
+	 * @example
+	 *	RenderLoop.setRate(100);
+	 *&#x2F;
+	RenderLoop.setRate = function (newRate) {
+		rate = newRate;
+	};
 
-&#x2F;**
- * The &#x60;(0, 1)&#x60; vector.
- *
- * @property J
- * @static
- * @type OOGL.Vector2
- *&#x2F;
-OOGL.Vector2.J = new OOGL.Vector2(0, 1);
+	return RenderLoop;
+})();
 
     </pre>
 </div>

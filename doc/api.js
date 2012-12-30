@@ -6,6 +6,7 @@ YUI.add("yuidoc-meta", function(Y) {
         "OOGL.Matrix2",
         "OOGL.Matrix3",
         "OOGL.Matrix4",
+        "OOGL.RenderLoop",
         "OOGL.RotationMatrix2",
         "OOGL.RotationMatrix3",
         "OOGL.RotationMatrix4",

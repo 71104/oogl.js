@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>oogl.StaticBuffer - OOGL.js 1.0</title>
+    <title>OOGL.RenderLoop - OOGL.js 1.0</title>
     <link rel="stylesheet" href="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;3.8.0pr2&#x2F;build&#x2F;cssgrids&#x2F;cssgrids-min.css">
     <link rel="stylesheet" href="..&#x2F;assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="..&#x2F;assets/css/main.css" id="site_styles">
@@ -187,19 +187,15 @@ _gaq.push(['_trackPageview']);
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>oogl.StaticBuffer Class</h1>
+                        <h1>OOGL.RenderLoop Class</h1>
 <div class="box meta">
     
 
     
-        <div class="extends">
-            Extends <a href="..\classes\oogl.Buffer.html" class="crosslink">oogl.Buffer</a>
-        </div>
-    
 
     
         <div class="foundat">
-            Defined in: <a href="..&#x2F;files&#x2F;src_Buffers.js.html#l212"><code>src\Buffers.js:212</code></a>
+            Defined in: <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l3"><code>src\RenderLoop.js:3</code></a>
         </div>
     
 
@@ -211,14 +207,15 @@ _gaq.push(['_trackPageview']);
 
 
 <div class="box intro">
-    <p>Wraps a GL buffer whose usage is set to <code>gl.STATIC_DRAW</code>.</p>
+    <p>Efficient render loop implementation that uses <code>requestAnimationFrame</code> where
+available and transparently falls back on <code>setInterval</code>.</p>
 </div>
 
 
     <div class="constructor">
         <h2>Constructor</h2>
-        <div id="method_oogl.StaticBuffer" class="method item">
-    <h3 class="name"><code>oogl.StaticBuffer</code></h3>
+        <div id="method_OOGL.RenderLoop" class="method item">
+    <h3 class="name"><code>OOGL.RenderLoop</code></h3>
 
     
         <div class="args">
@@ -226,13 +223,7 @@ _gaq.push(['_trackPageview']);
             
                 <li class="arg">
                     
-                        <code>target</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>type</code>
+                        <code>tick</code>
                     
                 </li>
             
@@ -265,7 +256,7 @@ _gaq.push(['_trackPageview']);
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Buffers.js.html#l212"><code>src\Buffers.js:212</code></a>
+        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l3"><code>src\RenderLoop.js:3</code></a>
         
         </p>
 
@@ -287,32 +278,16 @@ _gaq.push(['_trackPageview']);
             
                 <li class="param">
                     
-                        <code class="param-name">target</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                        <code class="param-name">tick</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>The target against which this buffer will be bound
-    when the provided <code>bind</code> method is used. Either <code>gl.ARRAY_BUFFER</code> or
-    <code>gl.ELEMENT_ARRAY_BUFFER</code>.</p>
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">type</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>One of <code>byte</code>, <code>ubyte</code>, <code>short</code>, <code>ushort</code> and <code>float</code>;
-    indicates the type of the data that will be put in the buffer.</p>
+                        <p>A user-defined callback function that is invoked at
+    each iteration of the loop. It typically contains (OO)GL calls that render
+    the full scene.</p>
                     </div>
 
                     
@@ -329,7 +304,13 @@ _gaq.push(['_trackPageview']);
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>var buffer = new oogl.StaticBuffer(oogl.ARRAY_BUFFER, 'float');
+                <pre class="code prettyprint"><code>var oogl = new OOGL.Context('canvas');
+// setup the pipeline here creating programs and arrays
+var loop = new OOGL.RenderLoop(function () {
+    oogl.clear(oogl.COLOR_BUFFER_BIT | oogl.DEPTH_BUFFER_BIT);
+    arrays.drawTriangles();
+    oogl.flush();
+});
 </code></pre>
             </div>
         </div>
@@ -359,66 +340,113 @@ _gaq.push(['_trackPageview']);
                 <div class="index-section methods">
                     <h3>Methods</h3>
 
-                    <ul class="index-list methods extends">
+                    <ul class="index-list methods">
                         
-                            <li class="index-item method inherited">
-                                <a href="#method__delete">_delete</a>
+                            <li class="index-item method">
+                                <a href="#method_getActualRate">getActualRate</a>
 
                                 
                                 
                             </li>
                         
-                            <li class="index-item method inherited">
-                                <a href="#method_bind">bind</a>
+                            <li class="index-item method">
+                                <a href="#method_getPeriod">getPeriod</a>
 
                                 
                                 
                             </li>
                         
-                            <li class="index-item method inherited">
-                                <a href="#method_bindAndData">bindAndData</a>
+                            <li class="index-item method">
+                                <a href="#method_getPeriod">getPeriod</a>
+
+                                
+                                    <span class="flag static">static</span>
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_getRate">getRate</a>
+
+                                
+                                    <span class="flag static">static</span>
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_getRate">getRate</a>
 
                                 
                                 
                             </li>
                         
-                            <li class="index-item method inherited">
-                                <a href="#method_data">data</a>
+                            <li class="index-item method">
+                                <a href="#method_getType">getType</a>
 
                                 
                                 
                             </li>
                         
-                            <li class="index-item method inherited">
-                                <a href="#method_getParameter">getParameter</a>
+                            <li class="index-item method">
+                                <a href="#method_getType">getType</a>
+
+                                
+                                    <span class="flag static">static</span>
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_isRequestAnimationFrameSupported">isRequestAnimationFrameSupported</a>
+
+                                
+                                    <span class="flag static">static</span>
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_resume">resume</a>
 
                                 
                                 
                             </li>
                         
-                            <li class="index-item method inherited">
-                                <a href="#method_getSize">getSize</a>
+                            <li class="index-item method">
+                                <a href="#method_setRate">setRate</a>
+
+                                
+                                    <span class="flag static">static</span>
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_setType">setType</a>
+
+                                
+                                    <span class="flag static">static</span>
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_start">start</a>
 
                                 
                                 
                             </li>
                         
-                            <li class="index-item method inherited">
-                                <a href="#method_getUsage">getUsage</a>
+                            <li class="index-item method">
+                                <a href="#method_stop">stop</a>
 
                                 
                                 
                             </li>
                         
-                            <li class="index-item method inherited">
-                                <a href="#method_is">is</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method inherited">
-                                <a href="#method_subData">subData</a>
+                            <li class="index-item method">
+                                <a href="#method_suspend">suspend</a>
 
                                 
                                 
@@ -440,445 +468,8 @@ _gaq.push(['_trackPageview']);
                 <h2 class="off-left">Methods</h2>
 
                 
-                    <div id="method__delete" class="method item inherited">
-    <h3 class="name"><code>_delete</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="..\classes\oogl.Buffer.html#method__delete">oogl.Buffer</a>:
-            
-        
-        
-        <a href="..&#x2F;files&#x2F;src_Buffers.js.html#l195"><code>src\Buffers.js:195</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Deletes this buffer.</p>
-
-<p><code>gl.deleteBuffer</code> equivalent.</p>
-    </div>
-
-    
-
-    
-
-    
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>buffer._delete();
-</code></pre>
-            </div>
-        </div>
-    
-</div>
-
-                
-                    <div id="method_bind" class="method item inherited">
-    <h3 class="name"><code>bind</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="..\classes\oogl.Buffer.html#method_bind">oogl.Buffer</a>:
-            
-        
-        
-        <a href="..&#x2F;files&#x2F;src_Buffers.js.html#l117"><code>src\Buffers.js:117</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Binds this buffer to its target.</p>
-
-<p>Equivalent to calling <code>gl.bindBuffer</code> with the target specified to
-the constructor.</p>
-    </div>
-
-    
-
-    
-
-    
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>buffer.bind();
-</code></pre>
-            </div>
-        </div>
-    
-</div>
-
-                
-                    <div id="method_bindAndData" class="method item inherited">
-    <h3 class="name"><code>bindAndData</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>sizeOrData</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="..\classes\oogl.Buffer.html#method_bindAndData">oogl.Buffer</a>:
-            
-        
-        
-        <a href="..&#x2F;files&#x2F;src_Buffers.js.html#l155"><code>src\Buffers.js:155</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Binds this buffer to its target and then allocates or specifies
-buffer data.</p>
-
-<p>Equivalent to calling <code>bind</code> and <code>data</code> subsequently.</p>
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">sizeOrData</code>
-                        <span class="type">Mixed</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>Either a number representing the size to
-    allocate or a JavaScript <code>Array</code> containing the data to store. See
-    the <code>bind</code> method.</p>
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-
-    
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>buffer.bindAndData([1, 1, -1, 1, -1, -1, 1, -1]);
-</code></pre>
-            </div>
-        </div>
-    
-</div>
-
-                
-                    <div id="method_data" class="method item inherited">
-    <h3 class="name"><code>data</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>sizeOrData</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="..\classes\oogl.Buffer.html#method_data">oogl.Buffer</a>:
-            
-        
-        
-        <a href="..&#x2F;files&#x2F;src_Buffers.js.html#l131"><code>src\Buffers.js:131</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Allocates or specifies buffer data.</p>
-
-<p>Equivalent to calling <code>gl.bufferData</code> using the target and usage
-specified to the constructor.</p>
-
-<p>The specified argument is either the size to allocate or the data to
-store; in the latter case it is specified as a standard JavaScript
-array and automatically converted by OOGL to a typed array, depending
-on the <code>type</code> specified to the constructor.</p>
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">sizeOrData</code>
-                        <span class="type">Mixed</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>Either a number representing the size to
-    allocate or a JavaScript <code>Array</code> containing the data to store.</p>
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-
-    
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>buffer.data([1, 1, -1, 1, -1, -1, 1, -1]);
-</code></pre>
-            </div>
-        </div>
-    
-</div>
-
-                
-                    <div id="method_getParameter" class="method item inherited">
-    <h3 class="name"><code>getParameter</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>name</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Mixed</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="..\classes\oogl.Buffer.html#method_getParameter">oogl.Buffer</a>:
-            
-        
-        
-        <a href="..&#x2F;files&#x2F;src_Buffers.js.html#l73"><code>src\Buffers.js:73</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Queries a buffer-related parameter.</p>
-
-<p><code>gl.getBufferParameter</code> equivalent.</p>
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">name</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>The name of the parameter to query.</p>
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Mixed</span>:
-                    
-                    The queried value.
-                
-            </div>
-        </div>
-    
-
-    
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>var size = buffer.getParameter(oogl.BUFFER_SIZE);
-</code></pre>
-            </div>
-        </div>
-    
-</div>
-
-                
-                    <div id="method_getSize" class="method item inherited">
-    <h3 class="name"><code>getSize</code></h3>
+                    <div id="method_getActualRate" class="method item">
+    <h3 class="name"><code>getActualRate</code></h3>
 
     
         <span class="paren">()</span>
@@ -905,12 +496,15 @@ on the <code>type</code> specified to the constructor.</p>
     <div class="meta">
         
             
-                <p>Inherited from
-                <a href="..\classes\oogl.Buffer.html#method_getSize">oogl.Buffer</a>:
+                
+                <p>
+                
+                Defined in
+                
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Buffers.js.html#l88"><code>src\Buffers.js:88</code></a>
+        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l129"><code>src\RenderLoop.js:129</code></a>
         
         </p>
 
@@ -921,9 +515,7 @@ on the <code>type</code> specified to the constructor.</p>
     </div>
 
     <div class="description">
-        <p>Queries the size of this buffer.</p>
-
-<p>Equivalent to calling <code>gl.getBufferParameter</code> with <code>gl.BUFFER_SIZE</code>.</p>
+        <p>TODO</p>
     </div>
 
     
@@ -937,7 +529,7 @@ on the <code>type</code> specified to the constructor.</p>
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>:
                     
-                    The size of this buffer.
+                    TODO
                 
             </div>
         </div>
@@ -948,7 +540,13 @@ on the <code>type</code> specified to the constructor.</p>
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>var size = buffer.getSize();
+                <pre class="code prettyprint"><code>var loop = new OOGL.RenderLoop(function () {
+    // ...
+});
+loop.start();
+setInterval(function () {
+    rateDisplay.innerText = loop.getActualRate();
+}, 1000);
 </code></pre>
             </div>
         </div>
@@ -956,8 +554,8 @@ on the <code>type</code> specified to the constructor.</p>
 </div>
 
                 
-                    <div id="method_getUsage" class="method item inherited">
-    <h3 class="name"><code>getUsage</code></h3>
+                    <div id="method_getPeriod" class="method item">
+    <h3 class="name"><code>getPeriod</code></h3>
 
     
         <span class="paren">()</span>
@@ -984,12 +582,15 @@ on the <code>type</code> specified to the constructor.</p>
     <div class="meta">
         
             
-                <p>Inherited from
-                <a href="..\classes\oogl.Buffer.html#method_getUsage">oogl.Buffer</a>:
+                
+                <p>
+                
+                Defined in
+                
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Buffers.js.html#l102"><code>src\Buffers.js:102</code></a>
+        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l117"><code>src\RenderLoop.js:117</code></a>
         
         </p>
 
@@ -1000,9 +601,7 @@ on the <code>type</code> specified to the constructor.</p>
     </div>
 
     <div class="description">
-        <p>Queries the usage settings for this buffer.</p>
-
-<p>Equivalent to calling <code>gl.getBufferParameter</code> with <code>gl.BUFFER_USAGE</code>.</p>
+        <p>TODO</p>
     </div>
 
     
@@ -1016,8 +615,7 @@ on the <code>type</code> specified to the constructor.</p>
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>:
                     
-                    The usage settings for this buffer; will be one of
-    <code>gl.STATIC<em>DRAW</code>, <code>gl.STREAM</em>DRAW</code> or <code>gl.DYNAMIC_DRAW</code>.
+                    TODO
                 
             </div>
         </div>
@@ -1028,7 +626,7 @@ on the <code>type</code> specified to the constructor.</p>
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>var usage = buffer.getUsage();
+                <pre class="code prettyprint"><code>TODO
 </code></pre>
             </div>
         </div>
@@ -1036,8 +634,415 @@ on the <code>type</code> specified to the constructor.</p>
 </div>
 
                 
-                    <div id="method_is" class="method item inherited">
-    <h3 class="name"><code>is</code></h3>
+                    <div id="method_getPeriod" class="method item">
+    <h3 class="name"><code>getPeriod</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+        <span class="flag static">static</span>
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l276"><code>src\RenderLoop.js:276</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>TODO</p>
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>:
+                    
+                    TODO
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>OOGL.RenderLoop.setRate(100);
+var period = OOGL.RenderLoop.getPeriod(); // 10
+</code></pre>
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_getRate" class="method item">
+    <h3 class="name"><code>getRate</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+        <span class="flag static">static</span>
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l263"><code>src\RenderLoop.js:263</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>TODO</p>
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>:
+                    
+                    TODO
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>var currentRate = RenderLoop.getRate();
+</code></pre>
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_getRate" class="method item">
+    <h3 class="name"><code>getRate</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l105"><code>src\RenderLoop.js:105</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>TODO</p>
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>:
+                    
+                    TODO
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>TODO
+</code></pre>
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_getType" class="method item">
+    <h3 class="name"><code>getType</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l93"><code>src\RenderLoop.js:93</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>TODO</p>
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>:
+                    
+                    TODO
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>TODO
+</code></pre>
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_getType" class="method item">
+    <h3 class="name"><code>getType</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+        <span class="flag static">static</span>
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l229"><code>src\RenderLoop.js:229</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>TODO</p>
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>:
+                    
+                    TODO
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>var currentType = RenderLoop.getType();
+</code></pre>
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_isRequestAnimationFrameSupported" class="method item">
+    <h3 class="name"><code>isRequestAnimationFrameSupported</code></h3>
 
     
         <span class="paren">()</span>
@@ -1056,6 +1061,8 @@ on the <code>type</code> specified to the constructor.</p>
     
 
     
+        <span class="flag static">static</span>
+    
 
     
 
@@ -1064,12 +1071,15 @@ on the <code>type</code> specified to the constructor.</p>
     <div class="meta">
         
             
-                <p>Inherited from
-                <a href="..\classes\oogl.Buffer.html#method_is">oogl.Buffer</a>:
+                
+                <p>
+                
+                Defined in
+                
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Buffers.js.html#l57"><code>src\Buffers.js:57</code></a>
+        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l211"><code>src\RenderLoop.js:211</code></a>
         
         </p>
 
@@ -1080,9 +1090,7 @@ on the <code>type</code> specified to the constructor.</p>
     </div>
 
     <div class="description">
-        <p>Indicates whether this is a valid GL buffer.</p>
-
-<p><code>gl.isBuffer</code> equivalent.</p>
+        <p>Indicates whether <code>requestAnimationFrame</code> is supported.</p>
     </div>
 
     
@@ -1096,7 +1104,7 @@ on the <code>type</code> specified to the constructor.</p>
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
                     
-                    <code>true</code> if this is a valid GL buffer, <code>false</code>
+                    <code>true</code> if <code>requestAnimationFrame</code> is supported, <code>false</code>
     otherwise.
                 
             </div>
@@ -1108,8 +1116,11 @@ on the <code>type</code> specified to the constructor.</p>
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>if (buffer.is()) {
-    // ...
+                <pre class="code prettyprint"><code>if (OOGL.RenderLoop.isRequestAnimationFrameSupported()) {
+    OOGL.RenderLoop.setType('request');
+} else {
+    throw 'requestAnimationFrame not supported';
+}
 </code></pre>
             </div>
         </div>
@@ -1117,8 +1128,71 @@ on the <code>type</code> specified to the constructor.</p>
 </div>
 
                 
-                    <div id="method_subData" class="method item inherited">
-    <h3 class="name"><code>subData</code></h3>
+                    <div id="method_resume" class="method item">
+    <h3 class="name"><code>resume</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l182"><code>src\RenderLoop.js:182</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>TODO</p>
+    </div>
+
+    
+
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>TODO
+</code></pre>
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_setRate" class="method item">
+    <h3 class="name"><code>setRate</code></h3>
 
     
         <div class="args">
@@ -1126,13 +1200,7 @@ on the <code>type</code> specified to the constructor.</p>
             
                 <li class="arg">
                     
-                        <code>offset</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>data</code>
+                        <code>newRate</code>
                     
                 </li>
             
@@ -1149,6 +1217,8 @@ on the <code>type</code> specified to the constructor.</p>
     
 
     
+        <span class="flag static">static</span>
+    
 
     
 
@@ -1157,12 +1227,15 @@ on the <code>type</code> specified to the constructor.</p>
     <div class="meta">
         
             
-                <p>Inherited from
-                <a href="..\classes\oogl.Buffer.html#method_subData">oogl.Buffer</a>:
+                
+                <p>
+                
+                Defined in
+                
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Buffers.js.html#l176"><code>src\Buffers.js:176</code></a>
+        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l290"><code>src\RenderLoop.js:290</code></a>
         
         </p>
 
@@ -1173,10 +1246,7 @@ on the <code>type</code> specified to the constructor.</p>
     </div>
 
     <div class="description">
-        <p>Specifies buffer data.</p>
-
-<p>Equivalent to calling <code>gl.bufferSubData</code> with the target specified to
-the constructor.</p>
+        <p>TODO</p>
     </div>
 
     
@@ -1187,31 +1257,14 @@ the constructor.</p>
             
                 <li class="param">
                     
-                        <code class="param-name">offset</code>
+                        <code class="param-name">newRate</code>
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>The index of the first element to overwrite.</p>
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">data</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array" class="crosslink external" target="_blank">Array</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>A JavaScript <code>Array</code> containing the data to
-    store; the array will be automatically converted to a typed array,
-    depending on the <code>type</code> specified to the constructor.</p>
+                        <p>TODO</p>
                     </div>
 
                     
@@ -1228,8 +1281,297 @@ the constructor.</p>
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>buffer.data([1, 1, -1, 0, 0, 0, 0, 0]);
-buffer.subData(3, [1, -1, -1, 1, -1]); // buffer now contains [1, 1, -1, 1, -1, -1, 1, -1]
+                <pre class="code prettyprint"><code>RenderLoop.setRate(100);
+</code></pre>
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_setType" class="method item">
+    <h3 class="name"><code>setType</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>newType</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <span class="flag static">static</span>
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l242"><code>src\RenderLoop.js:242</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>TODO</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">newType</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>TODO</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>RenderLoop.setType('request');
+</code></pre>
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_start" class="method item">
+    <h3 class="name"><code>start</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l151"><code>src\RenderLoop.js:151</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>TODO</p>
+    </div>
+
+    
+
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>var loop = new OOGL.RenderLoop(function () {
+    // ...
+});
+loop.start();
+</code></pre>
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_stop" class="method item">
+    <h3 class="name"><code>stop</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l196"><code>src\RenderLoop.js:196</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>TODO</p>
+    </div>
+
+    
+
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>TODO
+</code></pre>
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_suspend" class="method item">
+    <h3 class="name"><code>suspend</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l168"><code>src\RenderLoop.js:168</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>TODO</p>
+    </div>
+
+    
+
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>TODO
 </code></pre>
             </div>
         </div>
