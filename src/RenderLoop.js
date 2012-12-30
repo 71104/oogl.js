@@ -188,6 +188,7 @@ OOGL.RenderLoop = (function () {
 				var result = counter / (now - timestamp - offset);
 				counter = 0;
 				timestamp = now;
+				offset = 0;
 				return result;
 			};
 
