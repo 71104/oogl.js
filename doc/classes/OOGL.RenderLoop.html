@@ -305,12 +305,13 @@ available and transparently falls back on <code>setInterval</code>.</p>
 
             <div class="example-content">
                 <pre class="code prettyprint"><code>var oogl = new OOGL.Context('canvas');
-// setup the pipeline here creating programs and arrays
+// setup the pipeline here, create programs and arrays
 var loop = new OOGL.RenderLoop(function () {
     oogl.clear(oogl.COLOR_BUFFER_BIT | oogl.DEPTH_BUFFER_BIT);
     arrays.drawTriangles();
     oogl.flush();
 });
+loop.start();
 </code></pre>
             </div>
         </div>
@@ -504,7 +505,7 @@ var loop = new OOGL.RenderLoop(function () {
             
         
         
-        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l129"><code>src\RenderLoop.js:129</code></a>
+        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l138"><code>src\RenderLoop.js:138</code></a>
         
         </p>
 
@@ -590,7 +591,7 @@ setInterval(function () {
             
         
         
-        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l117"><code>src\RenderLoop.js:117</code></a>
+        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l126"><code>src\RenderLoop.js:126</code></a>
         
         </p>
 
@@ -626,7 +627,7 @@ setInterval(function () {
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>TODO
+                <pre class="code prettyprint"><code>var period = loop.getPeriod();
 </code></pre>
             </div>
         </div>
@@ -672,7 +673,7 @@ setInterval(function () {
             
         
         
-        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l276"><code>src\RenderLoop.js:276</code></a>
+        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l292"><code>src\RenderLoop.js:292</code></a>
         
         </p>
 
@@ -755,7 +756,7 @@ var period = OOGL.RenderLoop.getPeriod(); // 10
             
         
         
-        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l263"><code>src\RenderLoop.js:263</code></a>
+        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l279"><code>src\RenderLoop.js:279</code></a>
         
         </p>
 
@@ -835,7 +836,7 @@ var period = OOGL.RenderLoop.getPeriod(); // 10
             
         
         
-        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l105"><code>src\RenderLoop.js:105</code></a>
+        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l114"><code>src\RenderLoop.js:114</code></a>
         
         </p>
 
@@ -871,7 +872,7 @@ var period = OOGL.RenderLoop.getPeriod(); // 10
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>TODO
+                <pre class="code prettyprint"><code>var rate = loop.getRate();
 </code></pre>
             </div>
         </div>
@@ -915,7 +916,7 @@ var period = OOGL.RenderLoop.getPeriod(); // 10
             
         
         
-        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l93"><code>src\RenderLoop.js:93</code></a>
+        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l94"><code>src\RenderLoop.js:94</code></a>
         
         </p>
 
@@ -926,7 +927,8 @@ var period = OOGL.RenderLoop.getPeriod(); // 10
     </div>
 
     <div class="description">
-        <p>TODO</p>
+        <p>Returns the type of this loop as a string; the return value can
+be either <code>'request'</code> or <code>'interval'</code>.</p>
     </div>
 
     
@@ -940,7 +942,8 @@ var period = OOGL.RenderLoop.getPeriod(); // 10
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>:
                     
-                    TODO
+                    The type of this loop; either <code>'request'</code> or
+    <code>'interval'</code>.
                 
             </div>
         </div>
@@ -951,7 +954,13 @@ var period = OOGL.RenderLoop.getPeriod(); // 10
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>TODO
+                <pre class="code prettyprint"><code>OOGL.RenderLoop.setType('auto');
+var loop = new OOGL.RenderLoop(function () {
+    // ...
+});
+if (loop.getType() === 'interval') {
+    // apparently rAF is not supported
+}
 </code></pre>
             </div>
         </div>
@@ -997,7 +1006,7 @@ var period = OOGL.RenderLoop.getPeriod(); // 10
             
         
         
-        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l229"><code>src\RenderLoop.js:229</code></a>
+        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l245"><code>src\RenderLoop.js:245</code></a>
         
         </p>
 
@@ -1079,7 +1088,7 @@ var period = OOGL.RenderLoop.getPeriod(); // 10
             
         
         
-        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l211"><code>src\RenderLoop.js:211</code></a>
+        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l227"><code>src\RenderLoop.js:227</code></a>
         
         </p>
 
@@ -1160,7 +1169,7 @@ var period = OOGL.RenderLoop.getPeriod(); // 10
             
         
         
-        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l182"><code>src\RenderLoop.js:182</code></a>
+        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l192"><code>src\RenderLoop.js:192</code></a>
         
         </p>
 
@@ -1171,7 +1180,8 @@ var period = OOGL.RenderLoop.getPeriod(); // 10
     </div>
 
     <div class="description">
-        <p>TODO</p>
+        <p>Resume the execution of the loop. There is no effect if the loop
+has not been previously suspended by the <code>suspend</code> method.</p>
     </div>
 
     
@@ -1183,7 +1193,7 @@ var period = OOGL.RenderLoop.getPeriod(); // 10
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>TODO
+                <pre class="code prettyprint"><code>loop.resume();
 </code></pre>
             </div>
         </div>
@@ -1235,7 +1245,7 @@ var period = OOGL.RenderLoop.getPeriod(); // 10
             
         
         
-        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l290"><code>src\RenderLoop.js:290</code></a>
+        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l306"><code>src\RenderLoop.js:306</code></a>
         
         </p>
 
@@ -1333,7 +1343,7 @@ var period = OOGL.RenderLoop.getPeriod(); // 10
             
         
         
-        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l242"><code>src\RenderLoop.js:242</code></a>
+        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l258"><code>src\RenderLoop.js:258</code></a>
         
         </p>
 
@@ -1419,7 +1429,7 @@ var period = OOGL.RenderLoop.getPeriod(); // 10
             
         
         
-        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l151"><code>src\RenderLoop.js:151</code></a>
+        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l160"><code>src\RenderLoop.js:160</code></a>
         
         </p>
 
@@ -1485,7 +1495,7 @@ loop.start();
             
         
         
-        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l196"><code>src\RenderLoop.js:196</code></a>
+        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l207"><code>src\RenderLoop.js:207</code></a>
         
         </p>
 
@@ -1496,7 +1506,12 @@ loop.start();
     </div>
 
     <div class="description">
-        <p>TODO</p>
+        <p>Permanently stops the execution of the loop, whether it is
+suspended or not. There is no effect if the loop has not been
+started yet.</p>
+
+<p>The execution of this render loop cannot be restarted after it
+has been stopped.</p>
     </div>
 
     
@@ -1508,7 +1523,7 @@ loop.start();
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>TODO
+                <pre class="code prettyprint"><code>loop.stop();
 </code></pre>
             </div>
         </div>
@@ -1548,7 +1563,7 @@ loop.start();
             
         
         
-        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l168"><code>src\RenderLoop.js:168</code></a>
+        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l177"><code>src\RenderLoop.js:177</code></a>
         
         </p>
 
@@ -1559,7 +1574,8 @@ loop.start();
     </div>
 
     <div class="description">
-        <p>TODO</p>
+        <p>Suspends the execution of the loop. There is no effect if the
+loop is not running.</p>
     </div>
 
     
@@ -1571,7 +1587,7 @@ loop.start();
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>TODO
+                <pre class="code prettyprint"><code>loop.suspend();
 </code></pre>
             </div>
         </div>

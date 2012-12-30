@@ -1193,7 +1193,7 @@
                 }
             ],
             "example": [
-                "\n\tvar oogl = new OOGL.Context('canvas');\n\t// setup the pipeline here creating programs and arrays\n\tvar loop = new OOGL.RenderLoop(function () {\n\t\toogl.clear(oogl.COLOR_BUFFER_BIT | oogl.DEPTH_BUFFER_BIT);\n\t\tarrays.drawTriangles();\n\t\toogl.flush();\n\t});"
+                "\n\tvar oogl = new OOGL.Context('canvas');\n\t// setup the pipeline here, create programs and arrays\n\tvar loop = new OOGL.RenderLoop(function () {\n\t\toogl.clear(oogl.COLOR_BUFFER_BIT | oogl.DEPTH_BUFFER_BIT);\n\t\tarrays.drawTriangles();\n\t\toogl.flush();\n\t});\n\tloop.start();"
             ]
         },
         "oogl.Renderbuffer": {
@@ -3526,22 +3526,22 @@
         },
         {
             "file": "src\\RenderLoop.js",
-            "line": 93,
-            "description": "TODO",
+            "line": 94,
+            "description": "Returns the type of this loop as a string; the return value can\nbe either `'request'` or `'interval'`.",
             "itemtype": "method",
             "name": "getType",
             "return": {
-                "description": "TODO",
+                "description": "The type of this loop; either `'request'` or\n\t`'interval'`.",
                 "type": "String"
             },
             "example": [
-                "\n\tTODO"
+                "\n\tOOGL.RenderLoop.setType('auto');\n\tvar loop = new OOGL.RenderLoop(function () {\n\t\t// ...\n\t});\n\tif (loop.getType() === 'interval') {\n\t\t// apparently rAF is not supported\n\t}"
             ],
             "class": "OOGL.RenderLoop"
         },
         {
             "file": "src\\RenderLoop.js",
-            "line": 105,
+            "line": 114,
             "description": "TODO",
             "itemtype": "method",
             "name": "getRate",
@@ -3550,13 +3550,13 @@
                 "type": "Number"
             },
             "example": [
-                "\n\tTODO"
+                "\n\tvar rate = loop.getRate();"
             ],
             "class": "OOGL.RenderLoop"
         },
         {
             "file": "src\\RenderLoop.js",
-            "line": 117,
+            "line": 126,
             "description": "TODO",
             "itemtype": "method",
             "name": "getPeriod",
@@ -3565,13 +3565,13 @@
                 "type": "Number"
             },
             "example": [
-                "\n\tTODO"
+                "\n\tvar period = loop.getPeriod();"
             ],
             "class": "OOGL.RenderLoop"
         },
         {
             "file": "src\\RenderLoop.js",
-            "line": 129,
+            "line": 138,
             "description": "TODO",
             "itemtype": "method",
             "name": "getActualRate",
@@ -3586,7 +3586,7 @@
         },
         {
             "file": "src\\RenderLoop.js",
-            "line": 151,
+            "line": 160,
             "description": "TODO",
             "itemtype": "method",
             "name": "start",
@@ -3597,40 +3597,40 @@
         },
         {
             "file": "src\\RenderLoop.js",
-            "line": 168,
-            "description": "TODO",
+            "line": 177,
+            "description": "Suspends the execution of the loop. There is no effect if the\nloop is not running.",
             "itemtype": "method",
             "name": "suspend",
             "example": [
-                "\n\tTODO"
+                "\n\tloop.suspend();"
             ],
             "class": "OOGL.RenderLoop"
         },
         {
             "file": "src\\RenderLoop.js",
-            "line": 182,
-            "description": "TODO",
+            "line": 192,
+            "description": "Resume the execution of the loop. There is no effect if the loop\nhas not been previously suspended by the `suspend` method.",
             "itemtype": "method",
             "name": "resume",
             "example": [
-                "\n\tTODO"
+                "\n\tloop.resume();"
             ],
             "class": "OOGL.RenderLoop"
         },
         {
             "file": "src\\RenderLoop.js",
-            "line": 196,
-            "description": "TODO",
+            "line": 207,
+            "description": "Permanently stops the execution of the loop, whether it is\nsuspended or not. There is no effect if the loop has not been\nstarted yet.\n\nThe execution of this render loop cannot be restarted after it\nhas been stopped.",
             "itemtype": "method",
             "name": "stop",
             "example": [
-                "\n\tTODO"
+                "\n\tloop.stop();"
             ],
             "class": "OOGL.RenderLoop"
         },
         {
             "file": "src\\RenderLoop.js",
-            "line": 211,
+            "line": 227,
             "description": "Indicates whether `requestAnimationFrame` is supported.",
             "itemtype": "method",
             "name": "isRequestAnimationFrameSupported",
@@ -3646,7 +3646,7 @@
         },
         {
             "file": "src\\RenderLoop.js",
-            "line": 229,
+            "line": 245,
             "description": "TODO",
             "itemtype": "method",
             "name": "getType",
@@ -3662,7 +3662,7 @@
         },
         {
             "file": "src\\RenderLoop.js",
-            "line": 242,
+            "line": 258,
             "description": "TODO",
             "itemtype": "method",
             "name": "setType",
@@ -3681,7 +3681,7 @@
         },
         {
             "file": "src\\RenderLoop.js",
-            "line": 263,
+            "line": 279,
             "description": "TODO",
             "itemtype": "method",
             "name": "getRate",
@@ -3697,7 +3697,7 @@
         },
         {
             "file": "src\\RenderLoop.js",
-            "line": 276,
+            "line": 292,
             "description": "TODO",
             "itemtype": "method",
             "name": "getPeriod",
@@ -3713,7 +3713,7 @@
         },
         {
             "file": "src\\RenderLoop.js",
-            "line": 290,
+            "line": 306,
             "description": "TODO",
             "itemtype": "method",
             "name": "setRate",
