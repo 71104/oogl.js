@@ -231,11 +231,17 @@ OOGL.RenderLoop = (function () {
 			var running = false;
 			var banned = false;
 
+			var counter = 0;
+			var timestamp;
+			var offset = 0;
+			var suspendTimestamp;
+
 			function RequestBasedLoop() {
 				var request = null;
 				this.start = function () {
 					if (request === null) {
 						request = requestAnimationFrame(function loop() {
+							counter++;
 							tick();
 							request = requestAnimationFrame(loop);
 						});
@@ -253,7 +259,10 @@ OOGL.RenderLoop = (function () {
 				var interval = null;
 				this.start = function () {
 					if (interval === null) {
-						interval = setInterval(tick, period);
+						interval = setInterval(function () {
+							counter++;
+							tick();
+						}, period);
 					}
 				};
 				this.stop = function () {
@@ -274,15 +283,14 @@ OOGL.RenderLoop = (function () {
 				break;
 			default: &#x2F;&#x2F; auto
 				if (requestAnimationFrame) {
+					type = &#x27;request&#x27;;
 					loop = new RequestBasedLoop();
 				} else {
+					type = &#x27;interval&#x27;;
 					loop = new IntervalBasedLoop();
 				}
 				break;
 			}
-
-			var counter = 0;
-			var timestamp = 0;
 
 			&#x2F;**
 			 * Returns the type of this loop as a string; the return value can
@@ -305,10 +313,13 @@ OOGL.RenderLoop = (function () {
 			};
 
 			&#x2F;**
-			 * TODO
+			 * The frame rate of this loop.
+			 *
+			 * Note that this value is meaningless if &#x60;requestAnimationFrame&#x60; is
+			 * being used by this loop.
 			 *
 			 * @method getRate
-			 * @return {Number} TODO
+			 * @return {Number} The frame rate of this loop.
 			 * @example
 			 *	var rate = loop.getRate();
 			 *&#x2F;
@@ -317,22 +328,40 @@ OOGL.RenderLoop = (function () {
 			};
 
 			&#x2F;**
-			 * TODO
+			 * The period of this loop, in milliseconds. It is computed using the formula:
+			 *
+			 *	period = Math.floor(1000 &#x2F; rate);
+			 *
+			 * This value is also used in &#x60;setInterval&#x60;-based loops.
 			 *
 			 * @method getPeriod
-			 * @return {Number} TODO
+			 * @return {Number} The period of this loop, in milliseconds.
 			 * @example
-			 *	var period = loop.getPeriod();
+			 *	OOGL.RenderLoop.setRate(100);
+			 *	var loop = new OOGL.RenderLoop(function () {
+			 *		&#x2F;&#x2F; ...
+			 *	});
+			 *	var period = loop.getPeriod(); &#x2F;&#x2F; 10
 			 *&#x2F;
 			this.getPeriod = function () {
 				return period;
 			};
 
 			&#x2F;**
-			 * TODO
+			 * Returns the _actual_ frame rate for this loop. This is
+			 * potentially different from the value returned by &#x60;getRate&#x60;
+			 * because the former is the measured frame rate while the latter is
+			 * the rate manually set using the static &#x60;setRate&#x60; method.
+			 *
+			 * The actual frame rate is measured as the number of loop
+			 * iterations since the last time &#x60;getActualFrameRate&#x60; was called
+			 * divided by the timespan.
+			 *
+			 * The measuring system automatically discards time spans during
+			 * which the loop was suspended.
 			 *
 			 * @method getActualRate
-			 * @return {Number} TODO
+			 * @return {Number} The measured actual frame rate.
 			 * @example
 			 *	var loop = new OOGL.RenderLoop(function () {
 			 *		&#x2F;&#x2F; ...
@@ -343,15 +372,20 @@ OOGL.RenderLoop = (function () {
 			 *	}, 1000);
 			 *&#x2F;
 			this.getActualRate = function () {
-				var now = Date.now();
-				var result = counter &#x2F; (now - timestamp);
+				var now;
+				if (banned) {
+					now = suspendTimestamp;
+				} else {
+					now = Date.now();
+				}
+				var result = counter &#x2F; (now - timestamp - offset);
 				counter = 0;
 				timestamp = now;
 				return result;
 			};
 
 			&#x2F;**
-			 * TODO
+			 * Starts the loop.
 			 *
 			 * @method start
 			 * @example
@@ -363,6 +397,7 @@ OOGL.RenderLoop = (function () {
 			this.start = function () {
 				if (!running &amp;&amp; !banned) {
 					running = true;
+					timestamp = Date.now();
 					loop.start();
 				}
 			};
@@ -378,6 +413,7 @@ OOGL.RenderLoop = (function () {
 			this.suspend = function () {
 				if (running) {
 					banned = true;
+					suspendTimestamp = Date.now();
 					loop.stop();
 				}
 			};
@@ -393,6 +429,7 @@ OOGL.RenderLoop = (function () {
 			this.resume = function () {
 				if (running) {
 					banned = false;
+					offset += Date.now() - suspendTimestamp;
 					loop.start();
 				}
 			};
@@ -412,6 +449,7 @@ OOGL.RenderLoop = (function () {
 			this.stop = function () {
 				running = false;
 				banned = true;
+				suspendTimestamp = Date.now();
 				loop.stop();
 			};
 		};

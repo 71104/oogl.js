@@ -505,7 +505,7 @@ loop.start();
             
         
         
-        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l138"><code>src\RenderLoop.js:138</code></a>
+        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l157"><code>src\RenderLoop.js:157</code></a>
         
         </p>
 
@@ -516,7 +516,17 @@ loop.start();
     </div>
 
     <div class="description">
-        <p>TODO</p>
+        <p>Returns the <em>actual</em> frame rate for this loop. This is
+potentially different from the value returned by <code>getRate</code>
+because the former is the measured frame rate while the latter is
+the rate manually set using the static <code>setRate</code> method.</p>
+
+<p>The actual frame rate is measured as the number of loop
+iterations since the last time <code>getActualFrameRate</code> was called
+divided by the timespan.</p>
+
+<p>The measuring system automatically discards time spans during
+which the loop was suspended.</p>
     </div>
 
     
@@ -530,7 +540,7 @@ loop.start();
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>:
                     
-                    TODO
+                    The measured actual frame rate.
                 
             </div>
         </div>
@@ -591,7 +601,7 @@ setInterval(function () {
             
         
         
-        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l126"><code>src\RenderLoop.js:126</code></a>
+        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l137"><code>src\RenderLoop.js:137</code></a>
         
         </p>
 
@@ -602,7 +612,12 @@ setInterval(function () {
     </div>
 
     <div class="description">
-        <p>TODO</p>
+        <p>The period of this loop, in milliseconds. It is computed using the formula:</p>
+
+<pre class="code prettyprint"><code>period = Math.floor(1000 / rate);
+</code></pre>
+
+<p>This value is also used in <code>setInterval</code>-based loops.</p>
     </div>
 
     
@@ -616,7 +631,7 @@ setInterval(function () {
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>:
                     
-                    TODO
+                    The period of this loop, in milliseconds.
                 
             </div>
         </div>
@@ -627,7 +642,11 @@ setInterval(function () {
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>var period = loop.getPeriod();
+                <pre class="code prettyprint"><code>OOGL.RenderLoop.setRate(100);
+var loop = new OOGL.RenderLoop(function () {
+    // ...
+});
+var period = loop.getPeriod(); // 10
 </code></pre>
             </div>
         </div>
@@ -673,7 +692,7 @@ setInterval(function () {
             
         
         
-        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l292"><code>src\RenderLoop.js:292</code></a>
+        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l330"><code>src\RenderLoop.js:330</code></a>
         
         </p>
 
@@ -756,7 +775,7 @@ var period = OOGL.RenderLoop.getPeriod(); // 10
             
         
         
-        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l279"><code>src\RenderLoop.js:279</code></a>
+        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l317"><code>src\RenderLoop.js:317</code></a>
         
         </p>
 
@@ -836,7 +855,7 @@ var period = OOGL.RenderLoop.getPeriod(); // 10
             
         
         
-        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l114"><code>src\RenderLoop.js:114</code></a>
+        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l122"><code>src\RenderLoop.js:122</code></a>
         
         </p>
 
@@ -847,7 +866,10 @@ var period = OOGL.RenderLoop.getPeriod(); // 10
     </div>
 
     <div class="description">
-        <p>TODO</p>
+        <p>The frame rate of this loop.</p>
+
+<p>Note that this value is meaningless if <code>requestAnimationFrame</code> is
+being used by this loop.</p>
     </div>
 
     
@@ -861,7 +883,7 @@ var period = OOGL.RenderLoop.getPeriod(); // 10
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>:
                     
-                    TODO
+                    The frame rate of this loop.
                 
             </div>
         </div>
@@ -916,7 +938,7 @@ var period = OOGL.RenderLoop.getPeriod(); // 10
             
         
         
-        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l94"><code>src\RenderLoop.js:94</code></a>
+        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l102"><code>src\RenderLoop.js:102</code></a>
         
         </p>
 
@@ -1006,7 +1028,7 @@ if (loop.getType() === 'interval') {
             
         
         
-        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l245"><code>src\RenderLoop.js:245</code></a>
+        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l283"><code>src\RenderLoop.js:283</code></a>
         
         </p>
 
@@ -1088,7 +1110,7 @@ if (loop.getType() === 'interval') {
             
         
         
-        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l227"><code>src\RenderLoop.js:227</code></a>
+        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l265"><code>src\RenderLoop.js:265</code></a>
         
         </p>
 
@@ -1169,7 +1191,7 @@ if (loop.getType() === 'interval') {
             
         
         
-        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l192"><code>src\RenderLoop.js:192</code></a>
+        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l228"><code>src\RenderLoop.js:228</code></a>
         
         </p>
 
@@ -1245,7 +1267,7 @@ has not been previously suspended by the <code>suspend</code> method.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l306"><code>src\RenderLoop.js:306</code></a>
+        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l344"><code>src\RenderLoop.js:344</code></a>
         
         </p>
 
@@ -1343,7 +1365,7 @@ has not been previously suspended by the <code>suspend</code> method.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l258"><code>src\RenderLoop.js:258</code></a>
+        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l296"><code>src\RenderLoop.js:296</code></a>
         
         </p>
 
@@ -1429,7 +1451,7 @@ has not been previously suspended by the <code>suspend</code> method.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l160"><code>src\RenderLoop.js:160</code></a>
+        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l194"><code>src\RenderLoop.js:194</code></a>
         
         </p>
 
@@ -1440,7 +1462,7 @@ has not been previously suspended by the <code>suspend</code> method.</p>
     </div>
 
     <div class="description">
-        <p>TODO</p>
+        <p>Starts the loop.</p>
     </div>
 
     
@@ -1495,7 +1517,7 @@ loop.start();
             
         
         
-        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l207"><code>src\RenderLoop.js:207</code></a>
+        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l244"><code>src\RenderLoop.js:244</code></a>
         
         </p>
 
@@ -1563,7 +1585,7 @@ has been stopped.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l177"><code>src\RenderLoop.js:177</code></a>
+        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l212"><code>src\RenderLoop.js:212</code></a>
         
         </p>
 

@@ -3526,7 +3526,7 @@
         },
         {
             "file": "src\\RenderLoop.js",
-            "line": 94,
+            "line": 102,
             "description": "Returns the type of this loop as a string; the return value can\nbe either `'request'` or `'interval'`.",
             "itemtype": "method",
             "name": "getType",
@@ -3541,12 +3541,12 @@
         },
         {
             "file": "src\\RenderLoop.js",
-            "line": 114,
-            "description": "TODO",
+            "line": 122,
+            "description": "The frame rate of this loop.\n\nNote that this value is meaningless if `requestAnimationFrame` is\nbeing used by this loop.",
             "itemtype": "method",
             "name": "getRate",
             "return": {
-                "description": "TODO",
+                "description": "The frame rate of this loop.",
                 "type": "Number"
             },
             "example": [
@@ -3556,27 +3556,27 @@
         },
         {
             "file": "src\\RenderLoop.js",
-            "line": 126,
-            "description": "TODO",
+            "line": 137,
+            "description": "The period of this loop, in milliseconds. It is computed using the formula:\n\n\tperiod = Math.floor(1000 / rate);\n\nThis value is also used in `setInterval`-based loops.",
             "itemtype": "method",
             "name": "getPeriod",
             "return": {
-                "description": "TODO",
+                "description": "The period of this loop, in milliseconds.",
                 "type": "Number"
             },
             "example": [
-                "\n\tvar period = loop.getPeriod();"
+                "\n\tOOGL.RenderLoop.setRate(100);\n\tvar loop = new OOGL.RenderLoop(function () {\n\t\t// ...\n\t});\n\tvar period = loop.getPeriod(); // 10"
             ],
             "class": "OOGL.RenderLoop"
         },
         {
             "file": "src\\RenderLoop.js",
-            "line": 138,
-            "description": "TODO",
+            "line": 157,
+            "description": "Returns the _actual_ frame rate for this loop. This is\npotentially different from the value returned by `getRate`\nbecause the former is the measured frame rate while the latter is\nthe rate manually set using the static `setRate` method.\n\nThe actual frame rate is measured as the number of loop\niterations since the last time `getActualFrameRate` was called\ndivided by the timespan.\n\nThe measuring system automatically discards time spans during\nwhich the loop was suspended.",
             "itemtype": "method",
             "name": "getActualRate",
             "return": {
-                "description": "TODO",
+                "description": "The measured actual frame rate.",
                 "type": "Number"
             },
             "example": [
@@ -3586,8 +3586,8 @@
         },
         {
             "file": "src\\RenderLoop.js",
-            "line": 160,
-            "description": "TODO",
+            "line": 194,
+            "description": "Starts the loop.",
             "itemtype": "method",
             "name": "start",
             "example": [
@@ -3597,7 +3597,7 @@
         },
         {
             "file": "src\\RenderLoop.js",
-            "line": 177,
+            "line": 212,
             "description": "Suspends the execution of the loop. There is no effect if the\nloop is not running.",
             "itemtype": "method",
             "name": "suspend",
@@ -3608,7 +3608,7 @@
         },
         {
             "file": "src\\RenderLoop.js",
-            "line": 192,
+            "line": 228,
             "description": "Resume the execution of the loop. There is no effect if the loop\nhas not been previously suspended by the `suspend` method.",
             "itemtype": "method",
             "name": "resume",
@@ -3619,7 +3619,7 @@
         },
         {
             "file": "src\\RenderLoop.js",
-            "line": 207,
+            "line": 244,
             "description": "Permanently stops the execution of the loop, whether it is\nsuspended or not. There is no effect if the loop has not been\nstarted yet.\n\nThe execution of this render loop cannot be restarted after it\nhas been stopped.",
             "itemtype": "method",
             "name": "stop",
@@ -3630,7 +3630,7 @@
         },
         {
             "file": "src\\RenderLoop.js",
-            "line": 227,
+            "line": 265,
             "description": "Indicates whether `requestAnimationFrame` is supported.",
             "itemtype": "method",
             "name": "isRequestAnimationFrameSupported",
@@ -3646,7 +3646,7 @@
         },
         {
             "file": "src\\RenderLoop.js",
-            "line": 245,
+            "line": 283,
             "description": "TODO",
             "itemtype": "method",
             "name": "getType",
@@ -3662,7 +3662,7 @@
         },
         {
             "file": "src\\RenderLoop.js",
-            "line": 258,
+            "line": 296,
             "description": "TODO",
             "itemtype": "method",
             "name": "setType",
@@ -3681,7 +3681,7 @@
         },
         {
             "file": "src\\RenderLoop.js",
-            "line": 279,
+            "line": 317,
             "description": "TODO",
             "itemtype": "method",
             "name": "getRate",
@@ -3697,7 +3697,7 @@
         },
         {
             "file": "src\\RenderLoop.js",
-            "line": 292,
+            "line": 330,
             "description": "TODO",
             "itemtype": "method",
             "name": "getPeriod",
@@ -3713,7 +3713,7 @@
         },
         {
             "file": "src\\RenderLoop.js",
-            "line": 306,
+            "line": 344,
             "description": "TODO",
             "itemtype": "method",
             "name": "setRate",
