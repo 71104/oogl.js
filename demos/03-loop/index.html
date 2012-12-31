@@ -17,10 +17,15 @@ OOGL(function () {
 	arrays.add2('float', [0, 1, -1, -1, 1, -1]);
 	arrays.add3('float', [0, 1, 0, 1, 0, 0, 0, 0, 1]);
 	arrays.bindAndPointer();
-	new oogl.AjaxProgram('triangle', ['in_Vertex', 'in_Color'], function () {
-		this.use();
-		arrays.drawTriangles();
-		oogl.flush();
+	var program = new oogl.AjaxProgram('triangle', ['in_Vertex', 'in_Color'], function () {
+		program.use();
+		var angle = 0;
+		(new OOGL.RenderLoop(function () {
+			oogl.clear(oogl.COLOR_BUFFER_BIT);
+			program.uniform1f('Angle', angle += Math.PI / 60);
+			arrays.drawTriangles();
+			oogl.flush();
+		})).start();
 	});
 });
 	</script>
