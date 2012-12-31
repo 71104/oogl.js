@@ -381,6 +381,7 @@ OOGL.RenderLoop = (function () {
 				var result = counter &#x2F; (now - timestamp - offset);
 				counter = 0;
 				timestamp = now;
+				offset = 0;
 				return result;
 			};
 
@@ -474,11 +475,11 @@ OOGL.RenderLoop = (function () {
 	};
 
 	&#x2F;**
-	 * TODO
+	 * Returns the currently configured loop type.
 	 *
 	 * @method getType
 	 * @static
-	 * @return {String} TODO
+	 * @return {String} The loop type; can be &#x60;request&#x60;, &#x60;interval&#x60; or &#x60;auto&#x60;.
 	 * @example
 	 *	var currentType = RenderLoop.getType();
 	 *&#x2F;
@@ -487,11 +488,22 @@ OOGL.RenderLoop = (function () {
 	};
 
 	&#x2F;**
-	 * TODO
+	 * Sets the loop type; can be &#x60;request&#x60;, &#x60;interval&#x60; or &#x60;auto&#x60;.
+	 *
+	 * When the loop type is &#x60;request&#x60; the &#x60;RenderLoop&#x60; constructor constructs
+	 * &#x60;requestAnimationFrame&#x60;-based loops.
+	 *
+	 * When the loop type is &#x60;interval&#x60; the &#x60;RenderLoop&#x60; constructor constructs
+	 * &#x60;setInterval&#x60;-based loops.
+	 *
+	 * When the loop type is &#x60;auto&#x60; the &#x60;RenderLoop&#x60; constructor constructs
+	 * &#x60;requestAnimationFrame&#x60;-based loops if the &#x60;requestAnimationFrame&#x60; API is
+	 * supported, &#x60;setInterval&#x60;-based loops otherwise.
 	 *
 	 * @method setType
 	 * @static
-	 * @param {String} newType TODO
+	 * @param {String} newType The loop type; can be &#x60;request&#x60;, &#x60;interval&#x60; or
+	 *	&#x60;auto&#x60;.
 	 * @example
 	 *	RenderLoop.setType(&#x27;request&#x27;);
 	 *&#x2F;
@@ -503,7 +515,7 @@ OOGL.RenderLoop = (function () {
 		}.hasOwnProperty(type)) {
 			type = newType;
 		} else {
-			throw &#x27;invalid loop type must be one of &#x60;request&#x60;, &#x60;interval&#x60; or &#x60;auto&#x60;.&#x27;;
+			throw &#x27;invalid loop type, must be one of &#x60;request&#x60;, &#x60;interval&#x60; or &#x60;auto&#x60;.&#x27;;
 		}
 	};
 

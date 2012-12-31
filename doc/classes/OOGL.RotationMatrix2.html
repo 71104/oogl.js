@@ -199,7 +199,7 @@ _gaq.push(['_trackPageview']);
 
     
         <div class="foundat">
-            Defined in: <a href="..&#x2F;files&#x2F;src_Matrix2.js.html#l315"><code>src\Matrix2.js:315</code></a>
+            Defined in: <a href="..&#x2F;files&#x2F;src_Matrix2.js.html#l373"><code>src\Matrix2.js:373</code></a>
         </div>
     
 
@@ -259,7 +259,7 @@ _gaq.push(['_trackPageview']);
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Matrix2.js.html#l315"><code>src\Matrix2.js:315</code></a>
+        <a href="..&#x2F;files&#x2F;src_Matrix2.js.html#l373"><code>src\Matrix2.js:373</code></a>
         
         </p>
 
@@ -322,6 +322,8 @@ _gaq.push(['_trackPageview']);
         
             <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
         
+        
+            <li class="api-class-tab properties"><a href="#properties">Properties</a></li>
         
         
         
@@ -433,6 +435,42 @@ _gaq.push(['_trackPageview']);
             
 
             
+                <div class="index-section properties">
+                    <h3>Properties</h3>
+
+                    <ul class="index-list properties extends">
+                        
+                            <li class="index-item property inherited">
+                                <a href="#property_0">0</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property inherited">
+                                <a href="#property_1">1</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property inherited">
+                                <a href="#property_2">2</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property inherited">
+                                <a href="#property_3">3</a>
+
+                                
+                                
+                            </li>
+                        
+                    </ul>
+                </div>
+            
 
             
 
@@ -485,7 +523,7 @@ _gaq.push(['_trackPageview']);
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Matrix2.js.html#l102"><code>src\Matrix2.js:102</code></a>
+        <a href="..&#x2F;files&#x2F;src_Matrix2.js.html#l139"><code>src\Matrix2.js:139</code></a>
         
         </p>
 
@@ -589,7 +627,7 @@ matrix.add(new OOGL.Matrix2([4, 3, 2, 1])); // matrix is now [5, 5, 5, 5]
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Matrix2.js.html#l200"><code>src\Matrix2.js:200</code></a>
+        <a href="..&#x2F;files&#x2F;src_Matrix2.js.html#l237"><code>src\Matrix2.js:237</code></a>
         
         </p>
 
@@ -691,7 +729,7 @@ var m2 = m1.by(2); // [2, 4, 6, 8]
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Matrix2.js.html#l240"><code>src\Matrix2.js:240</code></a>
+        <a href="..&#x2F;files&#x2F;src_Matrix2.js.html#l298"><code>src\Matrix2.js:298</code></a>
         
         </p>
 
@@ -785,7 +823,7 @@ var d = m.determinant(); // -2
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Matrix2.js.html#l29"><code>src\Matrix2.js:29</code></a>
+        <a href="..&#x2F;files&#x2F;src_Matrix2.js.html#l66"><code>src\Matrix2.js:66</code></a>
         
         </p>
 
@@ -799,9 +837,9 @@ var d = m.determinant(); // -2
         <p>Returns the element at the specified row and column in the matrix.</p>
 
 <p>Row and column indices are zero-based. This method is equivalent to
-fetching the <code>i * 2 + j</code>-th element of the array:</p>
+fetching the <code>j * 2 + i</code>-th element of the array:</p>
 
-<pre class="code prettyprint"><code>matrix.get(i, j) == matrix[i * 2 + j] // true
+<pre class="code prettyprint"><code>matrix.get(i, j) == matrix[j * 2 + i] // true
 </code></pre>
     </div>
 
@@ -866,7 +904,7 @@ fetching the <code>i * 2 + j</code>-th element of the array:</p>
 
             <div class="example-content">
                 <pre class="code prettyprint"><code>var m = new OOGL.Matrix2([1, 2, 3, 4]);
-var determinant = m.get(0, 0) * m.get(1, 1) - m.get(0, 1) * m.get(1, 0);
+var determinant = m.get(0, 0) * m.get(1, 1) - m.get(0, 1) * m.get(1, 0); // -5
 </code></pre>
             </div>
         </div>
@@ -907,7 +945,7 @@ var determinant = m.get(0, 0) * m.get(1, 1) - m.get(0, 1) * m.get(1, 0);
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Matrix2.js.html#l276"><code>src\Matrix2.js:276</code></a>
+        <a href="..&#x2F;files&#x2F;src_Matrix2.js.html#l334"><code>src\Matrix2.js:334</code></a>
         
         </p>
 
@@ -945,7 +983,7 @@ This matrix is not changed.</p>
 
             <div class="example-content">
                 <pre class="code prettyprint"><code>var m1 = new OOGL.Matrix2([1, 2, 3, 4]);
-var m2 = m1.getInverse(); // [-2, -1, -1.5, -0.5]
+var m2 = m1.getInverse(); // [-0.5, -1, -1.5, -2]
 </code></pre>
             </div>
         </div>
@@ -986,7 +1024,7 @@ var m2 = m1.getInverse(); // [-2, -1, -1.5, -0.5]
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Matrix2.js.html#l88"><code>src\Matrix2.js:88</code></a>
+        <a href="..&#x2F;files&#x2F;src_Matrix2.js.html#l125"><code>src\Matrix2.js:125</code></a>
         
         </p>
 
@@ -1063,7 +1101,7 @@ var m2 = m1.getTransposed(); // m2 is [1, 3, 2, 4], m1 is still [1, 2, 3, 4]
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Matrix2.js.html#l253"><code>src\Matrix2.js:253</code></a>
+        <a href="..&#x2F;files&#x2F;src_Matrix2.js.html#l311"><code>src\Matrix2.js:311</code></a>
         
         </p>
 
@@ -1087,7 +1125,7 @@ var m2 = m1.getTransposed(); // m2 is [1, 3, 2, 4], m1 is still [1, 2, 3, 4]
 
             <div class="example-content">
                 <pre class="code prettyprint"><code>var matrix = new OOGL.Matrix2([1, 2, 3, 4]);
-matrix.invert(); // matrix is now [-2, -1, -1.5, -0.5]
+matrix.invert(); // matrix is now [-0.5, -1, -1.5, -2]
 </code></pre>
             </div>
         </div>
@@ -1138,7 +1176,7 @@ matrix.invert(); // matrix is now [-2, -1, -1.5, -0.5]
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Matrix2.js.html#l162"><code>src\Matrix2.js:162</code></a>
+        <a href="..&#x2F;files&#x2F;src_Matrix2.js.html#l199"><code>src\Matrix2.js:199</code></a>
         
         </p>
 
@@ -1249,7 +1287,7 @@ var m3 = m1.minus(m2); // [1, 2, 3, 4]
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Matrix2.js.html#l182"><code>src\Matrix2.js:182</code></a>
+        <a href="..&#x2F;files&#x2F;src_Matrix2.js.html#l219"><code>src\Matrix2.js:219</code></a>
         
         </p>
 
@@ -1348,7 +1386,7 @@ matrix.multiply(2); // matrix is now [2, 4, 6, 8]
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Matrix2.js.html#l122"><code>src\Matrix2.js:122</code></a>
+        <a href="..&#x2F;files&#x2F;src_Matrix2.js.html#l159"><code>src\Matrix2.js:159</code></a>
         
         </p>
 
@@ -1469,7 +1507,7 @@ var m3 = m1.plus(m2); // [5, 5, 5, 5]
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Matrix2.js.html#l49"><code>src\Matrix2.js:49</code></a>
+        <a href="..&#x2F;files&#x2F;src_Matrix2.js.html#l86"><code>src\Matrix2.js:86</code></a>
         
         </p>
 
@@ -1483,10 +1521,10 @@ var m3 = m1.plus(m2); // [5, 5, 5, 5]
         <p>Changes the element at the specified row and column in the matrix.</p>
 
 <p>Row and column indices are zero-based. This method is equivalent to
-setting the <code>i * 2 + j</code>-th element of the array:</p>
+setting the <code>j * 2 + i</code>-th element of the array:</p>
 
 <pre class="code prettyprint"><code>matrix.put(i, j, x);
-matrix[i * 2 + j] = x; // same as previous
+matrix[j * 2 + i] = x; // same as previous
 </code></pre>
     </div>
 
@@ -1553,7 +1591,7 @@ matrix[i * 2 + j] = x; // same as previous
 
             <div class="example-content">
                 <pre class="code prettyprint"><code>var matrix = new OOGL.Matrix2([3, 3, 0, 3]);
-matrix.put(1, 0, 3); // now matrix is [3, 3, 3, 3]
+matrix.put(0, 1, 3); // now matrix is [3, 3, 3, 3]
 </code></pre>
             </div>
         </div>
@@ -1602,7 +1640,7 @@ matrix.put(1, 0, 3); // now matrix is [3, 3, 3, 3]
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Matrix2.js.html#l142"><code>src\Matrix2.js:142</code></a>
+        <a href="..&#x2F;files&#x2F;src_Matrix2.js.html#l179"><code>src\Matrix2.js:179</code></a>
         
         </p>
 
@@ -1691,7 +1729,7 @@ matrix.subtract(new OOGL.Matrix2([4, 3, 2, 1])); // matrix is now [1, 2, 3, 4]
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Matrix2.js.html#l71"><code>src\Matrix2.js:71</code></a>
+        <a href="..&#x2F;files&#x2F;src_Matrix2.js.html#l108"><code>src\Matrix2.js:108</code></a>
         
         </p>
 
@@ -1726,6 +1764,212 @@ matrix.transpose(); // matrix is now [1, 3, 2, 4]
             </div>
         
 
+        
+            <div id="properties" class="api-class-tabpanel">
+                <h2 class="off-left">Properties</h2>
+
+                
+                    <div id="property_0" class="property item inherited">
+    <h3 class="name"><code>0</code></h3>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="..\classes\OOGL.Matrix2.html#property_0">OOGL.Matrix2</a>:
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_Matrix2.js.html#l25"><code>src\Matrix2.js:25</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>The element at cell (0, 0) of this matrix.</p>
+    </div>
+
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>var a00 = matrix[0];
+</code></pre>
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="property_1" class="property item inherited">
+    <h3 class="name"><code>1</code></h3>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="..\classes\OOGL.Matrix2.html#property_1">OOGL.Matrix2</a>:
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_Matrix2.js.html#l34"><code>src\Matrix2.js:34</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>The element at cell (1, 0) of this matrix.</p>
+    </div>
+
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>var a10 = matrix[1];
+</code></pre>
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="property_2" class="property item inherited">
+    <h3 class="name"><code>2</code></h3>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="..\classes\OOGL.Matrix2.html#property_2">OOGL.Matrix2</a>:
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_Matrix2.js.html#l43"><code>src\Matrix2.js:43</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>The element at cell (0, 1) of this matrix.</p>
+    </div>
+
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>var a01 = matrix[2];
+</code></pre>
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="property_3" class="property item inherited">
+    <h3 class="name"><code>3</code></h3>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="..\classes\OOGL.Matrix2.html#property_3">OOGL.Matrix2</a>:
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_Matrix2.js.html#l52"><code>src\Matrix2.js:52</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>The element at cell (1, 1) of this matrix.</p>
+    </div>
+
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>var a11 = matrix[3];
+</code></pre>
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+            </div>
         
 
         

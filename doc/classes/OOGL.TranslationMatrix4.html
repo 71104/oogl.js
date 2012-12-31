@@ -199,7 +199,7 @@ _gaq.push(['_trackPageview']);
 
     
         <div class="foundat">
-            Defined in: <a href="..&#x2F;files&#x2F;src_Matrix4.js.html#l73"><code>src\Matrix4.js:73</code></a>
+            Defined in: <a href="..&#x2F;files&#x2F;src_Matrix4.js.html#l78"><code>src\Matrix4.js:78</code></a>
         </div>
     
 
@@ -271,7 +271,7 @@ _gaq.push(['_trackPageview']);
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Matrix4.js.html#l73"><code>src\Matrix4.js:73</code></a>
+        <a href="..&#x2F;files&#x2F;src_Matrix4.js.html#l78"><code>src\Matrix4.js:78</code></a>
         
         </p>
 
@@ -459,7 +459,7 @@ var m = new OOGL.TranslationMatrix4(3, 4, 5);
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Matrix4.js.html#l29"><code>src\Matrix4.js:29</code></a>
+        <a href="..&#x2F;files&#x2F;src_Matrix4.js.html#l34"><code>src\Matrix4.js:34</code></a>
         
         </p>
 
@@ -473,9 +473,9 @@ var m = new OOGL.TranslationMatrix4(3, 4, 5);
         <p>Returns the element at the specified row and column in the matrix.</p>
 
 <p>Row and column indices are zero-based. This method is equivalent to
-fetching the <code>i * 4 + j</code>-th element of the array:</p>
+fetching the <code>j * 4 + i</code>-th element of the array:</p>
 
-<pre class="code prettyprint"><code>matrix.get(i, j) == matrix[i * 4 + j] // true
+<pre class="code prettyprint"><code>matrix.get(i, j) == matrix[j * 4 + i] // true
 </code></pre>
     </div>
 
@@ -540,7 +540,7 @@ fetching the <code>i * 4 + j</code>-th element of the array:</p>
 
             <div class="example-content">
                 <pre class="code prettyprint"><code>var m = new OOGL.Matrix4([1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8]);
-if (m.get(2, 3) == m[4]) { // true
+if (m.get(2, 3) == m[8]) { // true
     ...
 </code></pre>
             </div>
@@ -600,7 +600,7 @@ if (m.get(2, 3) == m[4]) { // true
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Matrix4.js.html#l50"><code>src\Matrix4.js:50</code></a>
+        <a href="..&#x2F;files&#x2F;src_Matrix4.js.html#l55"><code>src\Matrix4.js:55</code></a>
         
         </p>
 
@@ -614,10 +614,10 @@ if (m.get(2, 3) == m[4]) { // true
         <p>Changes the element at the specified row and column in the matrix.</p>
 
 <p>Row and column indices are zero-based. This method is equivalent to
-setting the <code>i * 4 + j</code>-th element of the array:</p>
+setting the <code>j * 4 + i</code>-th element of the array:</p>
 
 <pre class="code prettyprint"><code>matrix.put(i, j, x);
-matrix[i * 4 + j] = x; // same as previous
+matrix[j * 4 + i] = x; // same as previous
 </code></pre>
     </div>
 

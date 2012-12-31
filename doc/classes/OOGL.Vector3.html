@@ -413,6 +413,13 @@ _gaq.push(['_trackPageview']);
                             </li>
                         
                             <li class="index-item method">
+                                <a href="#method_toArray">toArray</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
                                 <a href="#method_toHomogeneous">toHomogeneous</a>
 
                                 
@@ -508,7 +515,7 @@ _gaq.push(['_trackPageview']);
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Vector3.js.html#l102"><code>src\Vector3.js:102</code></a>
+        <a href="..&#x2F;files&#x2F;src_Vector3.js.html#l116"><code>src\Vector3.js:116</code></a>
         
         </p>
 
@@ -599,7 +606,7 @@ v.add(new OOGL.Vector3(1, 2, 3)); // v is now (5, 7, 9)
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Vector3.js.html#l87"><code>src\Vector3.js:87</code></a>
+        <a href="..&#x2F;files&#x2F;src_Vector3.js.html#l101"><code>src\Vector3.js:101</code></a>
         
         </p>
 
@@ -679,7 +686,7 @@ var v2 = v1.getNormalized(); // (0.33, 0.66, 0.66)
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Vector3.js.html#l56"><code>src\Vector3.js:56</code></a>
+        <a href="..&#x2F;files&#x2F;src_Vector3.js.html#l70"><code>src\Vector3.js:70</code></a>
         
         </p>
 
@@ -759,7 +766,7 @@ var l = v.length(); // 3
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Vector3.js.html#l70"><code>src\Vector3.js:70</code></a>
+        <a href="..&#x2F;files&#x2F;src_Vector3.js.html#l84"><code>src\Vector3.js:84</code></a>
         
         </p>
 
@@ -837,7 +844,7 @@ v.normalize(); // v is now (0.33, 0.66, 0.66)
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Vector3.js.html#l119"><code>src\Vector3.js:119</code></a>
+        <a href="..&#x2F;files&#x2F;src_Vector3.js.html#l133"><code>src\Vector3.js:133</code></a>
         
         </p>
 
@@ -907,6 +914,88 @@ var v3 = v1.plus(v2); // (5, 7, 9)
 </div>
 
                 
+                    <div id="method_toArray" class="method item">
+    <h3 class="name"><code>toArray</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number[]</a></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_Vector3.js.html#l41"><code>src\Vector3.js:41</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Returns this vector as an array of three elements.</p>
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number[]</a></span>:
+                    
+                    An array containing the X, Y and Z components of this
+    vector.
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>var v = new OOGL.Vector3(1, 2, 3);
+program.uniform3fv('Position', v.toArray());
+</code></pre>
+            </div>
+        </div>
+    
+</div>
+
+                
                     <div id="method_toHomogeneous" class="method item">
     <h3 class="name"><code>toHomogeneous</code></h3>
 
@@ -943,7 +1032,7 @@ var v3 = v1.plus(v2); // (5, 7, 9)
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Vector3.js.html#l41"><code>src\Vector3.js:41</code></a>
+        <a href="..&#x2F;files&#x2F;src_Vector3.js.html#l55"><code>src\Vector3.js:55</code></a>
         
         </p>
 

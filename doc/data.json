@@ -796,12 +796,11 @@
             "file": "src\\Matrix2.js",
             "line": 3,
             "description": "A mutable 2x2 matrix.",
-            "extends": "Array",
             "is_constructor": 1,
             "params": [
                 {
                     "name": "data",
-                    "description": "A 4-element array of the floating point values to be\n\tput into the matrix.\n\nMatrix elements are specified in row-major order.\n\nThe specified `data` array is duplicated into the matrix, changes to it will\nnot affect the content of the matrix.\n\nAn exception is thrown if the length of the `data` array is not 4.",
+                    "description": "A 4-element array of the floating point values to be\n\tput into the matrix.\n\nMatrix elements are specified in column-major order.\n\nThe specified `data` array is duplicated into the matrix, changes to it will\nnot affect the content of the matrix.\n\nAn exception is thrown if the length of the `data` array is not 4.",
                     "type": "Number[]"
                 }
             ],
@@ -818,7 +817,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "src\\Matrix2.js",
-            "line": 315,
+            "line": 373,
             "description": "Creates a 2D rotation matrix with the specified angle.",
             "extends": "OOGL.Matrix2",
             "is_constructor": 1,
@@ -842,7 +841,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "src\\Matrix2.js",
-            "line": 331,
+            "line": 389,
             "description": "Creates a 2D scaling matrix with the specified X and Y scaling factors.",
             "extends": "OOGL.Matrix2",
             "is_constructor": 1,
@@ -877,7 +876,7 @@
             "params": [
                 {
                     "name": "data",
-                    "description": "A 9-element array of the floating point values to be\n\tput into the matrix.\n\nMatrix elements are specified in row-major order.\n\nThe specified `data` array is duplicated into the matrix, changes to it will\nnot affect the content of the matrix.\n\nAn exception is thrown if the length of the `data` array is not 9.",
+                    "description": "A 9-element array of the floating point values to be\n\tput into the matrix.\n\nMatrix elements are specified in column-major order.\n\nThe specified `data` array is duplicated into the matrix, changes to it will\nnot affect the content of the matrix.\n\nAn exception is thrown if the length of the `data` array is not 9.",
                     "type": "Number[]"
                 }
             ],
@@ -894,7 +893,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "src\\Matrix3.js",
-            "line": 353,
+            "line": 412,
             "description": "Creates a 3D rotation matrix that rotates everything counterclockwise about\nthe specified `(x, y, z)` axis by the specified `a` angle.\n\nThe specified `x`, `y` and `z` components must form a unit-length vector.",
             "extends": "OOGL.Matrix3",
             "is_constructor": 1,
@@ -933,7 +932,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "src\\Matrix3.js",
-            "line": 385,
+            "line": 444,
             "description": "Creates a 3D scaling matrix using the specified `x`, `y` and `z` scaling\nfactors.",
             "extends": "OOGL.Matrix3",
             "is_constructor": 1,
@@ -973,7 +972,7 @@
             "params": [
                 {
                     "name": "data",
-                    "description": "A 16-element array of the floating point values to be\n\tput into the matrix.\n\nMatrix elements are specified in row-major order.\n\nThe specified `data` array is duplicated into the matrix, changes to it will\nnot affect the content of the matrix.\n\nAn exception is thrown if the length of the `data` array is not 16.",
+                    "description": "A 16-element array of the floating point values to be\n\tput into the matrix.\n\nMatrix elements are specified in column-major order.\n\nThe specified `data` array is duplicated into the matrix, changes to it will\nnot affect the content of the matrix.\n\nAn exception is thrown if the length of the `data` array is not 16.",
                     "type": "Number[]"
                 }
             ],
@@ -990,7 +989,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "src\\Matrix4.js",
-            "line": 73,
+            "line": 78,
             "description": "Creates a 3D translation matrix.",
             "extends": "OOGL.Matrix4",
             "is_constructor": 1,
@@ -1024,7 +1023,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "src\\Matrix4.js",
-            "line": 90,
+            "line": 95,
             "description": "Creates a 3D rotation matrix that rotates everything counterclockwise about\nthe specified `(x, y, z)` axis by the specified `a` angle.\n\nThe specified `x`, `y` and `z` components must form a unit-length vector.\n\nThe created matrix is identical to a rotation matrix created by using\n`OOGL.RotationMatrix3` and converted using its `toHomogeneous` method.",
             "extends": "OOGL.Matrix4",
             "is_constructor": 1,
@@ -1063,7 +1062,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "src\\Matrix4.js",
-            "line": 132,
+            "line": 137,
             "description": "Creates a 3D scaling matrix using the specified `x`, `y` and `z` scaling\nfactors.\n\nThe created matrix is identical to a scaling matrix created by using\n`OOGL.ScalingMatrix3` and converted using its `toHomogeneous` method.",
             "extends": "OOGL.Matrix4",
             "is_constructor": 1,
@@ -1114,7 +1113,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "src\\Programs.js",
-            "line": 377,
+            "line": 676,
             "description": "TODO",
             "extends": "oogl.Program",
             "is_constructor": 1,
@@ -1148,7 +1147,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "src\\Programs.js",
-            "line": 399,
+            "line": 698,
             "description": "TODO",
             "extends": "oogl.Program",
             "is_constructor": 1,
@@ -2528,8 +2527,56 @@
         },
         {
             "file": "src\\Matrix2.js",
-            "line": 29,
-            "description": "Returns the element at the specified row and column in the matrix.\n\nRow and column indices are zero-based. This method is equivalent to\nfetching the `i * 2 + j`-th element of the array:\n\n\tmatrix.get(i, j) == matrix[i * 2 + j] // true",
+            "line": 25,
+            "description": "The element at cell (0, 0) of this matrix.",
+            "itemtype": "property",
+            "name": "0",
+            "type": "Number",
+            "example": [
+                "\n\tvar a00 = matrix[0];"
+            ],
+            "class": "OOGL.Matrix2"
+        },
+        {
+            "file": "src\\Matrix2.js",
+            "line": 34,
+            "description": "The element at cell (1, 0) of this matrix.",
+            "itemtype": "property",
+            "name": "1",
+            "type": "Number",
+            "example": [
+                "\n\tvar a10 = matrix[1];"
+            ],
+            "class": "OOGL.Matrix2"
+        },
+        {
+            "file": "src\\Matrix2.js",
+            "line": 43,
+            "description": "The element at cell (0, 1) of this matrix.",
+            "itemtype": "property",
+            "name": "2",
+            "type": "Number",
+            "example": [
+                "\n\tvar a01 = matrix[2];"
+            ],
+            "class": "OOGL.Matrix2"
+        },
+        {
+            "file": "src\\Matrix2.js",
+            "line": 52,
+            "description": "The element at cell (1, 1) of this matrix.",
+            "itemtype": "property",
+            "name": "3",
+            "type": "Number",
+            "example": [
+                "\n\tvar a11 = matrix[3];"
+            ],
+            "class": "OOGL.Matrix2"
+        },
+        {
+            "file": "src\\Matrix2.js",
+            "line": 66,
+            "description": "Returns the element at the specified row and column in the matrix.\n\nRow and column indices are zero-based. This method is equivalent to\nfetching the `j * 2 + i`-th element of the array:\n\n\tmatrix.get(i, j) == matrix[j * 2 + i] // true",
             "itemtype": "method",
             "name": "get",
             "params": [
@@ -2549,14 +2596,14 @@
                 "type": "Number"
             },
             "example": [
-                "\n\tvar m = new OOGL.Matrix2([1, 2, 3, 4]);\n\tvar determinant = m.get(0, 0) * m.get(1, 1) - m.get(0, 1) * m.get(1, 0);"
+                "\n\tvar m = new OOGL.Matrix2([1, 2, 3, 4]);\n\tvar determinant = m.get(0, 0) * m.get(1, 1) - m.get(0, 1) * m.get(1, 0); // -5"
             ],
             "class": "OOGL.Matrix2"
         },
         {
             "file": "src\\Matrix2.js",
-            "line": 49,
-            "description": "Changes the element at the specified row and column in the matrix.\n\nRow and column indices are zero-based. This method is equivalent to\nsetting the `i * 2 + j`-th element of the array:\n\n\tmatrix.put(i, j, x);\n\tmatrix[i * 2 + j] = x; // same as previous",
+            "line": 86,
+            "description": "Changes the element at the specified row and column in the matrix.\n\nRow and column indices are zero-based. This method is equivalent to\nsetting the `j * 2 + i`-th element of the array:\n\n\tmatrix.put(i, j, x);\n\tmatrix[j * 2 + i] = x; // same as previous",
             "itemtype": "method",
             "name": "put",
             "params": [
@@ -2577,13 +2624,13 @@
                 }
             ],
             "example": [
-                "\n\tvar matrix = new OOGL.Matrix2([3, 3, 0, 3]);\n\tmatrix.put(1, 0, 3); // now matrix is [3, 3, 3, 3]"
+                "\n\tvar matrix = new OOGL.Matrix2([3, 3, 0, 3]);\n\tmatrix.put(0, 1, 3); // now matrix is [3, 3, 3, 3]"
             ],
             "class": "OOGL.Matrix2"
         },
         {
             "file": "src\\Matrix2.js",
-            "line": 71,
+            "line": 108,
             "description": "Transposes this matrix.",
             "itemtype": "method",
             "name": "transpose",
@@ -2595,7 +2642,7 @@
         },
         {
             "file": "src\\Matrix2.js",
-            "line": 88,
+            "line": 125,
             "description": "Computes the transposed matrix and returns it as a new `Matrix2` object.\nThis matrix is not changed.",
             "itemtype": "method",
             "name": "getTransposed",
@@ -2610,7 +2657,7 @@
         },
         {
             "file": "src\\Matrix2.js",
-            "line": 102,
+            "line": 139,
             "description": "Adds the specified matrix to this one.\n\nEach element of the specified matrix is added up to the respective\nelement in this matrix. The specified `m` matrix is not changed.",
             "itemtype": "method",
             "name": "add",
@@ -2629,7 +2676,7 @@
         },
         {
             "file": "src\\Matrix2.js",
-            "line": 122,
+            "line": 159,
             "description": "Adds the specified matrix to this one and returns the sum as a new\n`Matrix2` object. This matrix is not changed.",
             "itemtype": "method",
             "name": "plus",
@@ -2651,7 +2698,7 @@
         },
         {
             "file": "src\\Matrix2.js",
-            "line": 142,
+            "line": 179,
             "description": "Subtracts the specified matrix to this one.\n\nEach element of the specified matrix is subtracted to the respective\nelement in this matrix. The specified `m` matrix is not changed.",
             "itemtype": "method",
             "name": "subtract",
@@ -2670,7 +2717,7 @@
         },
         {
             "file": "src\\Matrix2.js",
-            "line": 162,
+            "line": 199,
             "description": "Subtracts the specified matrix to this one and returns the difference as\na new `Matrix2` object. This matrix is not changed.",
             "itemtype": "method",
             "name": "minus",
@@ -2692,7 +2739,7 @@
         },
         {
             "file": "src\\Matrix2.js",
-            "line": 182,
+            "line": 219,
             "description": "Multiplies this matrix by the specified constant factor. This method\nchanges the original matrix.",
             "itemtype": "method",
             "name": "multiply",
@@ -2711,7 +2758,7 @@
         },
         {
             "file": "src\\Matrix2.js",
-            "line": 200,
+            "line": 237,
             "description": "Multiplies this matrix by the specified constant factor and returns the\nproduct as a new `Matrix2` object. This matrix is not changed.",
             "itemtype": "method",
             "name": "by",
@@ -2733,7 +2780,7 @@
         },
         {
             "file": "src\\Matrix2.js",
-            "line": 212,
+            "line": 249,
             "description": "Left-multiplies this matrix by the specified `Vector2` object and returns\nthe product as a new `Vector2` object. Neither this matrix nor the\nspecified vector are changed.",
             "itemtype": "method",
             "name": "by",
@@ -2755,7 +2802,29 @@
         },
         {
             "file": "src\\Matrix2.js",
-            "line": 240,
+            "line": 263,
+            "description": "Left-multiplies this matrix by the specified `Matrix2` object and returns\nthe product as a new `Matrix2` object. Neither this matrix nor the\nspecified one are changed.",
+            "itemtype": "method",
+            "name": "by",
+            "params": [
+                {
+                    "name": "v",
+                    "description": "The matrix to multiply.",
+                    "type": "OOGL.Matrix2"
+                }
+            ],
+            "return": {
+                "description": "The product matrix.",
+                "type": "OOGL.Matrix2"
+            },
+            "example": [
+                "\n\tvar m1 = new OOGL.Matrix2([2, 0, 0, 2]);\n\tvar m2 = new OOGL.Matrix2([1, 2, 3, 4]);\n\tvar m3 = m1.by(m2); // (2, 4, 6, 8)"
+            ],
+            "class": "OOGL.Matrix2"
+        },
+        {
+            "file": "src\\Matrix2.js",
+            "line": 298,
             "description": "Computes the determinant of this matrix.",
             "itemtype": "method",
             "name": "determinant",
@@ -2770,19 +2839,19 @@
         },
         {
             "file": "src\\Matrix2.js",
-            "line": 253,
+            "line": 311,
             "description": "Inverts this matrix.",
             "itemtype": "method",
             "name": "invert",
             "chainable": 1,
             "example": [
-                "\n\tvar matrix = new OOGL.Matrix2([1, 2, 3, 4]);\n\tmatrix.invert(); // matrix is now [-2, -1, -1.5, -0.5]"
+                "\n\tvar matrix = new OOGL.Matrix2([1, 2, 3, 4]);\n\tmatrix.invert(); // matrix is now [-0.5, -1, -1.5, -2]"
             ],
             "class": "OOGL.Matrix2"
         },
         {
             "file": "src\\Matrix2.js",
-            "line": 276,
+            "line": 334,
             "description": "Computes the inverse matrix and returns it as a new `Matrix2` object.\nThis matrix is not changed.",
             "itemtype": "method",
             "name": "getInverse",
@@ -2791,13 +2860,13 @@
                 "type": "OOGL.Matrix2"
             },
             "example": [
-                "\n\tvar m1 = new OOGL.Matrix2([1, 2, 3, 4]);\n\tvar m2 = m1.getInverse(); // [-2, -1, -1.5, -0.5]"
+                "\n\tvar m1 = new OOGL.Matrix2([1, 2, 3, 4]);\n\tvar m2 = m1.getInverse(); // [-0.5, -1, -1.5, -2]"
             ],
             "class": "OOGL.Matrix2"
         },
         {
             "file": "src\\Matrix2.js",
-            "line": 297,
+            "line": 355,
             "description": "The 2x2 null matrix.",
             "itemtype": "property",
             "name": "OOGL.Matrix2.NULL",
@@ -2807,7 +2876,7 @@
         },
         {
             "file": "src\\Matrix2.js",
-            "line": 306,
+            "line": 364,
             "description": "The 2x2 identity matrix.",
             "itemtype": "property",
             "name": "OOGL.Matrix2.IDENTITY",
@@ -2817,7 +2886,7 @@
         },
         {
             "file": "src\\Matrix3.js",
-            "line": 28,
+            "line": 33,
             "description": "Yields a new `Matrix4` object corresponding to a homogeneous 4x4 matrix\nequivalent to this matrix.\n\nThe upper left block of the new 4x4 matrix is set using the values from\nthis 3x3 matrix, while the lower right corner is set to 1 and the rest to\n0.",
             "itemtype": "method",
             "name": "toHomogeneous",
@@ -2832,8 +2901,8 @@
         },
         {
             "file": "src\\Matrix3.js",
-            "line": 50,
-            "description": "Returns the element at the specified row and column in the matrix.\n\nRow and column indices are zero-based. This method is equivalent to\nfetching the `i * 3 + j`-th element of the array:\n\n\tmatrix.get(i, j) == matrix[i * 3 + j] // true",
+            "line": 55,
+            "description": "Returns the element at the specified row and column in the matrix.\n\nRow and column indices are zero-based. This method is equivalent to\nfetching the `j * 3 + i`-th element of the array:\n\n\tmatrix.get(i, j) == matrix[j * 3 + i] // true",
             "itemtype": "method",
             "name": "get",
             "params": [
@@ -2853,14 +2922,14 @@
                 "type": "Number"
             },
             "example": [
-                "\n\tvar m = new OOGL.Matrix3([1, 2, 3, 4, 5, 6, 7, 8, 9]);\n\tif (m.get(2, 1) == m[7]) { // true\n\t\t..."
+                "\n\tvar m = new OOGL.Matrix3([1, 2, 3, 4, 5, 6, 7, 8, 9]);\n\tif (m.get(2, 1) == m[6]) { // true\n\t\t..."
             ],
             "class": "OOGL.Matrix3"
         },
         {
             "file": "src\\Matrix3.js",
-            "line": 71,
-            "description": "Changes the element at the specified row and column in the matrix.\n\nRow and column indices are zero-based. This method is equivalent to\nsetting the `i * 3 + j`-th element of the array:\n\n\tmatrix.put(i, j, x);\n\tmatrix[i * 3 + j] = x; // same as previous",
+            "line": 76,
+            "description": "Changes the element at the specified row and column in the matrix.\n\nRow and column indices are zero-based. This method is equivalent to\nsetting the `j * 3 + i`-th element of the array:\n\n\tmatrix.put(i, j, x);\n\tmatrix[j * 3 + i] = x; // same as previous",
             "itemtype": "method",
             "name": "put",
             "params": [
@@ -2881,13 +2950,13 @@
                 }
             ],
             "example": [
-                "\n\tvar matrix = new OOGL.Matrix3([3, 3, 0, 3, 3, 3, 3, 3, 3]);\n\tmatrix.put(1, 0, 3); // now matrix is [3, 3, 3, 3, 3, 3, 3, 3, 3]"
+                "\n\tvar matrix = new OOGL.Matrix3([3, 3, 0, 3, 3, 3, 3, 3, 3]);\n\tmatrix.put(0, 1, 3); // now matrix is [3, 3, 3, 3, 3, 3, 3, 3, 3]"
             ],
             "class": "OOGL.Matrix3"
         },
         {
             "file": "src\\Matrix3.js",
-            "line": 93,
+            "line": 98,
             "description": "Transposes this matrix.",
             "itemtype": "method",
             "name": "transpose",
@@ -2899,7 +2968,7 @@
         },
         {
             "file": "src\\Matrix3.js",
-            "line": 110,
+            "line": 115,
             "description": "Computes the transposed matrix and returns it as a new `Matrix3` object.\nThis matrix is not changed.",
             "itemtype": "method",
             "name": "getTransposed",
@@ -2914,7 +2983,7 @@
         },
         {
             "file": "src\\Matrix3.js",
-            "line": 124,
+            "line": 129,
             "description": "Adds the specified matrix to this one.\n\nEach element of the specified matrix is added up to the respective\nelement in this matrix. The specified `m` matrix is not changed.",
             "itemtype": "method",
             "name": "add",
@@ -2933,7 +3002,7 @@
         },
         {
             "file": "src\\Matrix3.js",
-            "line": 144,
+            "line": 149,
             "description": "Adds the specified matrix to this one and returns the sum as a new\n`Matrix3` object. This matrix is not changed.",
             "itemtype": "method",
             "name": "plus",
@@ -2955,7 +3024,7 @@
         },
         {
             "file": "src\\Matrix3.js",
-            "line": 164,
+            "line": 169,
             "description": "Subtracts the specified matrix to this one.\n\nEach element of the specified matrix is subtracted to the respective\nelement in this matrix. The specified `m` matrix is not changed.",
             "itemtype": "method",
             "name": "subtract",
@@ -2974,7 +3043,7 @@
         },
         {
             "file": "src\\Matrix3.js",
-            "line": 184,
+            "line": 189,
             "description": "Subtracts the specified matrix to this one and returns the difference as\na new `Matrix3` object. This matrix is not changed.",
             "itemtype": "method",
             "name": "minus",
@@ -2996,7 +3065,7 @@
         },
         {
             "file": "src\\Matrix3.js",
-            "line": 204,
+            "line": 209,
             "description": "Multiplies this matrix by the specified constant factor. This method\nchanges the original matrix.",
             "itemtype": "method",
             "name": "multiply",
@@ -3015,7 +3084,26 @@
         },
         {
             "file": "src\\Matrix3.js",
-            "line": 222,
+            "line": 221,
+            "description": "Multiplies this matrix by the specified `Matrix3` object. This method\nchanges the original matrix.",
+            "itemtype": "method",
+            "name": "multiply",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "The multiplying matrix.",
+                    "type": "OOGL.Matrix3"
+                }
+            ],
+            "chainable": 1,
+            "example": [
+                "\n\tvar matrix = new OOGL.Matrix3([1, 2, 3, 4, 5, 6, 7, 8, 9]);\n\tmatrix.multiply(new OOGL.Matrix3([2, 0, 0, 0, 2, 0, 0, 0, 2])); // matrix is now [2, 4, 6, 8, 10, 12, 14, 16, 18]"
+            ],
+            "class": "OOGL.Matrix3"
+        },
+        {
+            "file": "src\\Matrix3.js",
+            "line": 257,
             "description": "Multiplies this matrix by the specified constant factor and returns the\nproduct as a new `Matrix3` object. This matrix is not changed.",
             "itemtype": "method",
             "name": "by",
@@ -3037,7 +3125,7 @@
         },
         {
             "file": "src\\Matrix3.js",
-            "line": 234,
+            "line": 269,
             "description": "Left-multiplies this matrix by the specified `Vector3` object and returns\nthe product as a new `Vector3` object. Neither this matrix nor the\nspecified vector are changed.",
             "itemtype": "method",
             "name": "by",
@@ -3059,7 +3147,29 @@
         },
         {
             "file": "src\\Matrix3.js",
-            "line": 263,
+            "line": 283,
+            "description": "Left-multiplies this matrix by the specified `Matrix3` object and returns\nthe product as a new `Matrix3` object. Neither this matrix nor the\nspecified one are changed.",
+            "itemtype": "method",
+            "name": "by",
+            "params": [
+                {
+                    "name": "v",
+                    "description": "The matrix to multiply.",
+                    "type": "OOGL.Matrix3"
+                }
+            ],
+            "return": {
+                "description": "The product matrix.",
+                "type": "OOGL.Matrix3"
+            },
+            "example": [
+                "\n\tvar m1 = new OOGL.Matrix3([1, 2, 3, 4, 5, 6, 7, 8, 9]);\n\tvar m2 = new OOGL.Matrix3([2, 0, 0, 0, 2, 0, 0, 0, 2]);\n\tvar m3 = m1.by(m2); // [2, 4, 6, 8, 10, 12, 14, 16, 18]"
+            ],
+            "class": "OOGL.Matrix3"
+        },
+        {
+            "file": "src\\Matrix3.js",
+            "line": 324,
             "description": "Computes the determinant of this matrix.",
             "itemtype": "method",
             "name": "determinant",
@@ -3074,30 +3184,30 @@
         },
         {
             "file": "src\\Matrix3.js",
-            "line": 278,
+            "line": 339,
             "description": "Inverts this matrix.",
             "itemtype": "method",
             "name": "invert",
             "chainable": 1,
             "example": [
-                "\n\tvar matrix = new OOGL.Matrix3([7, 6, 1, 1, 7, 6, 6, 7, 1]);\n\tmatrix.invert(); // matrix is now [0.5, -0.014, -0.414, -0.5, -0.014,  0.586, 0.5, 0.186, -0.614]"
+                "\n\tTODO"
             ],
             "class": "OOGL.Matrix3"
         },
         {
             "file": "src\\Matrix3.js",
-            "line": 308,
+            "line": 368,
             "description": "Computes the inverse of this matrix and returns it as a new `Matrix3`\nobject.",
             "itemtype": "method",
             "name": "getInverse",
             "example": [
-                "\n\tvar m1 = new OOGL.Matrix3([7, 6, 1, 1, 7, 6, 6, 7, 1]);\n\tvar m2 = m1.getInverse(); // [0.5, -0.014, -0.414, -0.5, -0.014,  0.586, 0.5, 0.186, -0.614]"
+                "\n\tTODO"
             ],
             "class": "OOGL.Matrix3"
         },
         {
             "file": "src\\Matrix3.js",
-            "line": 335,
+            "line": 394,
             "description": "The null 3x3 matrix.",
             "itemtype": "property",
             "name": "NULL",
@@ -3107,7 +3217,7 @@
         },
         {
             "file": "src\\Matrix3.js",
-            "line": 344,
+            "line": 403,
             "description": "The 3x3 identity matrix.",
             "itemtype": "property",
             "name": "IDENTITY",
@@ -3117,8 +3227,8 @@
         },
         {
             "file": "src\\Matrix4.js",
-            "line": 29,
-            "description": "Returns the element at the specified row and column in the matrix.\n\nRow and column indices are zero-based. This method is equivalent to\nfetching the `i * 4 + j`-th element of the array:\n\n\tmatrix.get(i, j) == matrix[i * 4 + j] // true",
+            "line": 34,
+            "description": "Returns the element at the specified row and column in the matrix.\n\nRow and column indices are zero-based. This method is equivalent to\nfetching the `j * 4 + i`-th element of the array:\n\n\tmatrix.get(i, j) == matrix[j * 4 + i] // true",
             "itemtype": "method",
             "name": "get",
             "params": [
@@ -3138,14 +3248,14 @@
                 "type": "Number"
             },
             "example": [
-                "\n\tvar m = new OOGL.Matrix4([1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8]);\n\tif (m.get(2, 3) == m[4]) { // true\n\t\t..."
+                "\n\tvar m = new OOGL.Matrix4([1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8]);\n\tif (m.get(2, 3) == m[8]) { // true\n\t\t..."
             ],
             "class": "OOGL.Matrix4"
         },
         {
             "file": "src\\Matrix4.js",
-            "line": 50,
-            "description": "Changes the element at the specified row and column in the matrix.\n\nRow and column indices are zero-based. This method is equivalent to\nsetting the `i * 4 + j`-th element of the array:\n\n\tmatrix.put(i, j, x);\n\tmatrix[i * 4 + j] = x; // same as previous",
+            "line": 55,
+            "description": "Changes the element at the specified row and column in the matrix.\n\nRow and column indices are zero-based. This method is equivalent to\nsetting the `j * 4 + i`-th element of the array:\n\n\tmatrix.put(i, j, x);\n\tmatrix[j * 4 + i] = x; // same as previous",
             "itemtype": "method",
             "name": "put",
             "params": [
@@ -3478,7 +3588,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 336,
+            "line": 340,
             "description": "TODO",
             "itemtype": "method",
             "name": "getUniformLocation",
@@ -3501,7 +3611,343 @@
         {
             "file": "src\\Programs.js",
             "line": 351,
-            "description": "TODO",
+            "description": "Specifies the value for a `float` uniform variable.\n\n`gl.uniform1f` equivalent.\n\n`Program` objects have an internal location cache used by `uniform`\nmethods to set uniform variables without retrieving their location each\ntime. The cache is invalidated every time the program is relinked using\nthe provided `link` method.",
+            "itemtype": "method",
+            "name": "uniform1f",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "The name of the uniform variable.",
+                    "type": "String"
+                },
+                {
+                    "name": "x",
+                    "description": "The new value.",
+                    "type": "Number"
+                }
+            ],
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "oogl.Program"
+        },
+        {
+            "file": "src\\Programs.js",
+            "line": 371,
+            "description": "Specifies the value for a `vec2` uniform variable.\n\n`gl.uniform2f` equivalent.\n\n`Program` objects have an internal location cache used by `uniform`\nmethods to set uniform variables without retrieving their location each\ntime. The cache is invalidated every time the program is relinked using\nthe provided `link` method.",
+            "itemtype": "method",
+            "name": "uniform2f",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "The name of the uniform variable.",
+                    "type": "String"
+                },
+                {
+                    "name": "x",
+                    "description": "The new value for the first component.",
+                    "type": "Number"
+                },
+                {
+                    "name": "y",
+                    "description": "The new value for the second component.",
+                    "type": "Number"
+                }
+            ],
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "oogl.Program"
+        },
+        {
+            "file": "src\\Programs.js",
+            "line": 392,
+            "description": "Specifies the value for a `vec3` uniform variable.\n\n`gl.uniform3f` equivalent.\n\n`Program` objects have an internal location cache used by `uniform`\nmethods to set uniform variables without retrieving their location each\ntime. The cache is invalidated every time the program is relinked using\nthe provided `link` method.",
+            "itemtype": "method",
+            "name": "uniform3f",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "The name of the uniform variable.",
+                    "type": "String"
+                },
+                {
+                    "name": "x",
+                    "description": "The new value for the first component.",
+                    "type": "Number"
+                },
+                {
+                    "name": "y",
+                    "description": "The new value for the second component.",
+                    "type": "Number"
+                },
+                {
+                    "name": "z",
+                    "description": "The new value for the third component.",
+                    "type": "Number"
+                }
+            ],
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "oogl.Program"
+        },
+        {
+            "file": "src\\Programs.js",
+            "line": 415,
+            "description": "Specifies the value for a `vec4` uniform variable.\n\n`gl.uniform4f` equivalent.\n\n`Program` objects have an internal location cache used by `uniform`\nmethods to set uniform variables without retrieving their location each\ntime. The cache is invalidated every time the program is relinked using\nthe provided `link` method.",
+            "itemtype": "method",
+            "name": "uniform4f",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "The name of the uniform variable.",
+                    "type": "String"
+                },
+                {
+                    "name": "x",
+                    "description": "The new value for the first component.",
+                    "type": "Number"
+                },
+                {
+                    "name": "y",
+                    "description": "The new value for the second component.",
+                    "type": "Number"
+                },
+                {
+                    "name": "z",
+                    "description": "The new value for the third component.",
+                    "type": "Number"
+                },
+                {
+                    "name": "w",
+                    "description": "The new value for the fourth component.",
+                    "type": "Number"
+                }
+            ],
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "oogl.Program"
+        },
+        {
+            "file": "src\\Programs.js",
+            "line": 438,
+            "description": "Specifies the value for a `float` uniform variable as an array.\n\n`gl.uniform1fv` equivalent.\n\n`Program` objects have an internal location cache used by `uniform`\nmethods to set uniform variables without retrieving their location each\ntime. The cache is invalidated every time the program is relinked using\nthe provided `link` method.",
+            "itemtype": "method",
+            "name": "uniform1fv",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "The name of the uniform variable.",
+                    "type": "String"
+                },
+                {
+                    "name": "values",
+                    "description": "An array containing the new value.",
+                    "type": "Number[]"
+                }
+            ],
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "oogl.Program"
+        },
+        {
+            "file": "src\\Programs.js",
+            "line": 458,
+            "description": "Specifies the value for a `vec2` uniform variable as an array.\n\n`gl.uniform2fv` equivalent.\n\n`Program` objects have an internal location cache used by `uniform`\nmethods to set uniform variables without retrieving their location each\ntime. The cache is invalidated every time the program is relinked using\nthe provided `link` method.",
+            "itemtype": "method",
+            "name": "uniform2fv",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "The name of the uniform variable.",
+                    "type": "String"
+                },
+                {
+                    "name": "values",
+                    "description": "An array containing the new values.",
+                    "type": "Number[]"
+                }
+            ],
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "oogl.Program"
+        },
+        {
+            "file": "src\\Programs.js",
+            "line": 478,
+            "description": "Specifies the value for a `vec3` uniform variable as an array.\n\n`gl.uniform3fv` equivalent.\n\n`Program` objects have an internal location cache used by `uniform`\nmethods to set uniform variables without retrieving their location each\ntime. The cache is invalidated every time the program is relinked using\nthe provided `link` method.",
+            "itemtype": "method",
+            "name": "uniform3fv",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "The name of the uniform variable.",
+                    "type": "String"
+                },
+                {
+                    "name": "values",
+                    "description": "An array containing the new values.",
+                    "type": "Number[]"
+                }
+            ],
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "oogl.Program"
+        },
+        {
+            "file": "src\\Programs.js",
+            "line": 498,
+            "description": "Specifies the value for a `vec4` uniform variable as an array.\n\n`gl.uniform4fv` equivalent.\n\n`Program` objects have an internal location cache used by `uniform`\nmethods to set uniform variables without retrieving their location each\ntime. The cache is invalidated every time the program is relinked using\nthe provided `link` method.",
+            "itemtype": "method",
+            "name": "uniform4fv",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "The name of the uniform variable.",
+                    "type": "String"
+                },
+                {
+                    "name": "values",
+                    "description": "An array containing the new values.",
+                    "type": "Number[]"
+                }
+            ],
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "oogl.Program"
+        },
+        {
+            "file": "src\\Programs.js",
+            "line": 518,
+            "description": "Specifies the value for an integer or boolean uniform variable.\n\n`gl.uniform1i` equivalent.\n\n`Program` objects have an internal location cache used by `uniform`\nmethods to set uniform variables without retrieving their location each\ntime. The cache is invalidated every time the program is relinked using\nthe provided `link` method.",
+            "itemtype": "method",
+            "name": "uniform1i",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "The name of the uniform variable.",
+                    "type": "String"
+                },
+                {
+                    "name": "x",
+                    "description": "The new value.",
+                    "type": "Number"
+                }
+            ],
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "oogl.Program"
+        },
+        {
+            "file": "src\\Programs.js",
+            "line": 538,
+            "description": "Specifies the value for an `ivec2` or `bvec2` uniform variable.\n\n`gl.uniform2i` equivalent.\n\n`Program` objects have an internal location cache used by `uniform`\nmethods to set uniform variables without retrieving their location each\ntime. The cache is invalidated every time the program is relinked using\nthe provided `link` method.",
+            "itemtype": "method",
+            "name": "uniform2i",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "The name of the uniform variable.",
+                    "type": "String"
+                },
+                {
+                    "name": "x",
+                    "description": "The new value for the first component.",
+                    "type": "Number"
+                },
+                {
+                    "name": "y",
+                    "description": "The new value for the second component.",
+                    "type": "Number"
+                }
+            ],
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "oogl.Program"
+        },
+        {
+            "file": "src\\Programs.js",
+            "line": 559,
+            "description": "Specifies the value for an `ivec3` or `bvec3` uniform variable.\n\n`gl.uniform3i` equivalent.\n\n`Program` objects have an internal location cache used by `uniform`\nmethods to set uniform variables without retrieving their location each\ntime. The cache is invalidated every time the program is relinked using\nthe provided `link` method.",
+            "itemtype": "method",
+            "name": "uniform3i",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "The name of the uniform variable.",
+                    "type": "String"
+                },
+                {
+                    "name": "x",
+                    "description": "The new value for the first component.",
+                    "type": "Number"
+                },
+                {
+                    "name": "y",
+                    "description": "The new value for the second component.",
+                    "type": "Number"
+                },
+                {
+                    "name": "z",
+                    "description": "The new value for the third component.",
+                    "type": "Number"
+                }
+            ],
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "oogl.Program"
+        },
+        {
+            "file": "src\\Programs.js",
+            "line": 581,
+            "description": "Specifies the value for an `ivec4` or `bvec4` uniform variable.\n\n`gl.uniform4i` equivalent.\n\n`Program` objects have an internal location cache used by `uniform`\nmethods to set uniform variables without retrieving their location each\ntime. The cache is invalidated every time the program is relinked using\nthe provided `link` method.",
+            "itemtype": "method",
+            "name": "uniform4i",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "The name of the uniform variable.",
+                    "type": "String"
+                },
+                {
+                    "name": "x",
+                    "description": "The new value for the first component.",
+                    "type": "Number"
+                },
+                {
+                    "name": "y",
+                    "description": "The new value for the second component.",
+                    "type": "Number"
+                },
+                {
+                    "name": "z",
+                    "description": "The new value for the third component.",
+                    "type": "Number"
+                },
+                {
+                    "name": "w",
+                    "description": "The new value for the fourth component.",
+                    "type": "Number"
+                }
+            ],
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "oogl.Program"
+        },
+        {
+            "file": "src\\Programs.js",
+            "line": 644,
+            "description": "Deletes this program.\n\n`gl.deleteProgram` equivalent.",
             "itemtype": "method",
             "name": "_delete",
             "example": [
@@ -3511,16 +3957,16 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 362,
-            "description": "TODO",
+            "line": 657,
+            "description": "Returns the delete status of this program.\n\nEquivalent to calling `gl.getProgramParameter` with `gl.DELETE_STATUS`.",
             "itemtype": "method",
             "name": "getDeleteStatus",
             "return": {
-                "description": "TODO",
+                "description": "The delete status.",
                 "type": "Boolean"
             },
             "example": [
-                "\n\tTODO"
+                "\n\tif (program.getDeleteStatus()) {\n\t\t// the program has been deleted\n\t}"
             ],
             "class": "oogl.Program"
         },
@@ -3586,7 +4032,7 @@
         },
         {
             "file": "src\\RenderLoop.js",
-            "line": 194,
+            "line": 195,
             "description": "Starts the loop.",
             "itemtype": "method",
             "name": "start",
@@ -3597,7 +4043,7 @@
         },
         {
             "file": "src\\RenderLoop.js",
-            "line": 212,
+            "line": 213,
             "description": "Suspends the execution of the loop. There is no effect if the\nloop is not running.",
             "itemtype": "method",
             "name": "suspend",
@@ -3608,7 +4054,7 @@
         },
         {
             "file": "src\\RenderLoop.js",
-            "line": 228,
+            "line": 229,
             "description": "Resume the execution of the loop. There is no effect if the loop\nhas not been previously suspended by the `suspend` method.",
             "itemtype": "method",
             "name": "resume",
@@ -3619,7 +4065,7 @@
         },
         {
             "file": "src\\RenderLoop.js",
-            "line": 244,
+            "line": 245,
             "description": "Permanently stops the execution of the loop, whether it is\nsuspended or not. There is no effect if the loop has not been\nstarted yet.\n\nThe execution of this render loop cannot be restarted after it\nhas been stopped.",
             "itemtype": "method",
             "name": "stop",
@@ -3630,7 +4076,7 @@
         },
         {
             "file": "src\\RenderLoop.js",
-            "line": 265,
+            "line": 266,
             "description": "Indicates whether `requestAnimationFrame` is supported.",
             "itemtype": "method",
             "name": "isRequestAnimationFrameSupported",
@@ -3646,13 +4092,13 @@
         },
         {
             "file": "src\\RenderLoop.js",
-            "line": 283,
-            "description": "TODO",
+            "line": 284,
+            "description": "Returns the currently configured loop type.",
             "itemtype": "method",
             "name": "getType",
             "static": 1,
             "return": {
-                "description": "TODO",
+                "description": "The loop type; can be `request`, `interval` or `auto`.",
                 "type": "String"
             },
             "example": [
@@ -3662,15 +4108,15 @@
         },
         {
             "file": "src\\RenderLoop.js",
-            "line": 296,
-            "description": "TODO",
+            "line": 297,
+            "description": "Sets the loop type; can be `request`, `interval` or `auto`.\n\nWhen the loop type is `request` the `RenderLoop` constructor constructs\n`requestAnimationFrame`-based loops.\n\nWhen the loop type is `interval` the `RenderLoop` constructor constructs\n`setInterval`-based loops.\n\nWhen the loop type is `auto` the `RenderLoop` constructor constructs\n`requestAnimationFrame`-based loops if the `requestAnimationFrame` API is\nsupported, `setInterval`-based loops otherwise.",
             "itemtype": "method",
             "name": "setType",
             "static": 1,
             "params": [
                 {
                     "name": "newType",
-                    "description": "TODO",
+                    "description": "The loop type; can be `request`, `interval` or\n\t`auto`.",
                     "type": "String"
                 }
             ],
@@ -3681,7 +4127,7 @@
         },
         {
             "file": "src\\RenderLoop.js",
-            "line": 317,
+            "line": 329,
             "description": "TODO",
             "itemtype": "method",
             "name": "getRate",
@@ -3697,7 +4143,7 @@
         },
         {
             "file": "src\\RenderLoop.js",
-            "line": 330,
+            "line": 342,
             "description": "TODO",
             "itemtype": "method",
             "name": "getPeriod",
@@ -3713,7 +4159,7 @@
         },
         {
             "file": "src\\RenderLoop.js",
-            "line": 344,
+            "line": 356,
             "description": "TODO",
             "itemtype": "method",
             "name": "setRate",
@@ -4478,6 +4924,21 @@
         {
             "file": "src\\Vector2.js",
             "line": 32,
+            "description": "Returns this vector as an array of two elements.",
+            "itemtype": "method",
+            "name": "toArray",
+            "return": {
+                "description": "An array containing the X and Y components of this\n\tvector.",
+                "type": "Number[]"
+            },
+            "example": [
+                "\n\tvar v = new OOGL.Vector2(1, 2);\n\tprogram.uniform2fv('Position', v.toArray());"
+            ],
+            "class": "OOGL.Vector2"
+        },
+        {
+            "file": "src\\Vector2.js",
+            "line": 46,
             "description": "Computes the modulus of the vector. This is computed as\n`Math.sqrt(x * x + y * y)`.",
             "itemtype": "method",
             "name": "length",
@@ -4492,7 +4953,7 @@
         },
         {
             "file": "src\\Vector2.js",
-            "line": 46,
+            "line": 60,
             "description": "Normalizes this vector so that its length becomes 1.",
             "itemtype": "method",
             "name": "normalize",
@@ -4504,7 +4965,7 @@
         },
         {
             "file": "src\\Vector2.js",
-            "line": 62,
+            "line": 76,
             "description": "Computes the normalized vector and returns it as a new `Vector2` object.\nThis vector is not changed.",
             "itemtype": "method",
             "name": "getNormalized",
@@ -4518,7 +4979,7 @@
         },
         {
             "file": "src\\Vector2.js",
-            "line": 77,
+            "line": 91,
             "description": "Adds the specified 2-component vector to this one.",
             "itemtype": "method",
             "name": "add",
@@ -4537,7 +4998,7 @@
         },
         {
             "file": "src\\Vector2.js",
-            "line": 93,
+            "line": 107,
             "description": "Adds the specified 2-component vector to this one and returns the sum as\na new `Vector2` object. This vector is not changed.",
             "itemtype": "method",
             "name": "plus",
@@ -4559,7 +5020,7 @@
         },
         {
             "file": "src\\Vector2.js",
-            "line": 109,
+            "line": 123,
             "description": "Subtracts the specified 2-component vector to this one.",
             "itemtype": "method",
             "name": "subtract",
@@ -4578,7 +5039,7 @@
         },
         {
             "file": "src\\Vector2.js",
-            "line": 125,
+            "line": 139,
             "description": "Subtracts the specified 2-component vector to this one and returns the\ndifference as a new `Vector2` object. This vector is not changed.",
             "itemtype": "method",
             "name": "minus",
@@ -4600,7 +5061,7 @@
         },
         {
             "file": "src\\Vector2.js",
-            "line": 141,
+            "line": 155,
             "description": "Multiplies this vector by the specified constant factor.",
             "itemtype": "method",
             "name": "multiply",
@@ -4619,7 +5080,7 @@
         },
         {
             "file": "src\\Vector2.js",
-            "line": 157,
+            "line": 171,
             "description": "Divides this vector by the specified constant factor.",
             "itemtype": "method",
             "name": "divide",
@@ -4638,7 +5099,7 @@
         },
         {
             "file": "src\\Vector2.js",
-            "line": 173,
+            "line": 187,
             "description": "Multiplies this vector by the specified constant factor and returns the\nproduct as a new `Vector2` object. This vector is not changed.",
             "itemtype": "method",
             "name": "by",
@@ -4660,7 +5121,7 @@
         },
         {
             "file": "src\\Vector2.js",
-            "line": 188,
+            "line": 202,
             "description": "Computes the dot product between this vector and the specified one.",
             "itemtype": "method",
             "name": "dot",
@@ -4682,7 +5143,7 @@
         },
         {
             "file": "src\\Vector2.js",
-            "line": 203,
+            "line": 217,
             "description": "Reflects this vector against a line whose normal vector is specified. The\nreflection of a vector `v` is computed as:\n\n\tv - 2 * (v.n) * n\n\nwhere `v.n` is the dot product between the vector and the normal.\n\nThis method modifies the original object.",
             "itemtype": "method",
             "name": "reflect",
@@ -4701,7 +5162,7 @@
         },
         {
             "file": "src\\Vector2.js",
-            "line": 227,
+            "line": 241,
             "description": "Computes the reflection of this vector against a line whose normal vector\nis specified. The reflection of a vector `v` is computed as:\n\n\tv - 2 * (v.n) * n\n\nwhere `v.n` is the dot product between the vector and the normal.\n\nThe computed vector is returned as a new `Vector2` object, this vector is\nnot changed.",
             "itemtype": "method",
             "name": "getReflected",
@@ -4723,7 +5184,7 @@
         },
         {
             "file": "src\\Vector2.js",
-            "line": 250,
+            "line": 264,
             "description": "Refracts this vector given a surface normal `n` and the `eta` ratio\nbetween refraction indices.\n\nThis method modifies the original object.",
             "itemtype": "method",
             "name": "refract",
@@ -4747,7 +5208,7 @@
         },
         {
             "file": "src\\Vector2.js",
-            "line": 278,
+            "line": 292,
             "description": "Refracts this vector given a surface normal `n` and the `eta` ratio\nbetween refraction indices; the computed vector is returned as a new\n`OOGL.Vector2` object, this object is not changed.",
             "itemtype": "method",
             "name": "getRefracted",
@@ -4774,7 +5235,7 @@
         },
         {
             "file": "src\\Vector2.js",
-            "line": 306,
+            "line": 320,
             "description": "The null vector `(0, 0)`.",
             "itemtype": "property",
             "name": "NULL",
@@ -4784,7 +5245,7 @@
         },
         {
             "file": "src\\Vector2.js",
-            "line": 315,
+            "line": 329,
             "description": "The `(1, 0)` vector.",
             "itemtype": "property",
             "name": "I",
@@ -4794,7 +5255,7 @@
         },
         {
             "file": "src\\Vector2.js",
-            "line": 324,
+            "line": 338,
             "description": "The `(0, 1)` vector.",
             "itemtype": "property",
             "name": "J",
@@ -4832,6 +5293,21 @@
         {
             "file": "src\\Vector3.js",
             "line": 41,
+            "description": "Returns this vector as an array of three elements.",
+            "itemtype": "method",
+            "name": "toArray",
+            "return": {
+                "description": "An array containing the X, Y and Z components of this\n\tvector.",
+                "type": "Number[]"
+            },
+            "example": [
+                "\n\tvar v = new OOGL.Vector3(1, 2, 3);\n\tprogram.uniform3fv('Position', v.toArray());"
+            ],
+            "class": "OOGL.Vector3"
+        },
+        {
+            "file": "src\\Vector3.js",
+            "line": 55,
             "description": "Creates a homogeneous version of this vector by adding a unitary `w`\ncoordinate and returns it as a new `Vector4` object. This vector is not\nchanged.",
             "itemtype": "method",
             "name": "toHomogeneous",
@@ -4846,7 +5322,7 @@
         },
         {
             "file": "src\\Vector3.js",
-            "line": 56,
+            "line": 70,
             "description": "Computes the modulus of the vector. This is computed as\n`Math.sqrt(x * x + y * y + z * z)`.",
             "itemtype": "method",
             "name": "length",
@@ -4861,7 +5337,7 @@
         },
         {
             "file": "src\\Vector3.js",
-            "line": 70,
+            "line": 84,
             "description": "Normalizes this vector so that its length becomes 1.",
             "itemtype": "method",
             "name": "normalize",
@@ -4873,7 +5349,7 @@
         },
         {
             "file": "src\\Vector3.js",
-            "line": 87,
+            "line": 101,
             "description": "Computes the normalized vector and returns it as a new `Vector3` object.\nThis vector is not changed.",
             "itemtype": "method",
             "name": "getNormalized",
@@ -4887,7 +5363,7 @@
         },
         {
             "file": "src\\Vector3.js",
-            "line": 102,
+            "line": 116,
             "description": "Adds the specified 2-component vector to this one.",
             "itemtype": "method",
             "name": "add",
@@ -4906,7 +5382,7 @@
         },
         {
             "file": "src\\Vector3.js",
-            "line": 119,
+            "line": 133,
             "description": "Adds the specified 2-component vector to this one and returns the sum as\na new `Vector3` object. This vector is not changed.",
             "itemtype": "method",
             "name": "plus",
@@ -4965,6 +5441,21 @@
         {
             "file": "src\\Vector4.js",
             "line": 51,
+            "description": "Returns this vector as an array of four elements.",
+            "itemtype": "method",
+            "name": "toArray",
+            "return": {
+                "description": "An array containing the X, Y, Z and W components of\n\tthis vector.",
+                "type": "Number[]"
+            },
+            "example": [
+                "\n\tvar v = new OOGL.Vector4(1, 2, 3, 1);\n\tprogram.uniform4fv('Position', v.toArray());"
+            ],
+            "class": "OOGL.Vector4"
+        },
+        {
+            "file": "src\\Vector4.js",
+            "line": 65,
             "description": "Converts this homogeneous vector to a 3-component standard vector\ndividing the X, Y and Z components by the W component. This method\nproduces a new `OOGL.Vector3` object, while this vector is not changed.",
             "itemtype": "method",
             "name": "toStandard",

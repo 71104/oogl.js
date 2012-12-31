@@ -223,6 +223,20 @@ OOGL.Vector2 = function (x, y) {
 
 OOGL.Vector2.prototype = {
 	&#x2F;**
+	 * Returns this vector as an array of two elements.
+	 *
+	 * @method toArray
+	 * @return {Number[]} An array containing the X and Y components of this
+	 *	vector.
+	 * @example
+	 *	var v = new OOGL.Vector2(1, 2);
+	 *	program.uniform2fv(&#x27;Position&#x27;, v.toArray());
+	 *&#x2F;
+	toArray: function () {
+		return [this.x, this.y];
+	},
+
+	&#x2F;**
 	 * Computes the modulus of the vector. This is computed as
 	 * &#x60;Math.sqrt(x * x + y * y)&#x60;.
 	 *

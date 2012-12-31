@@ -526,6 +526,10 @@ context.Program = function () {
 		}
 	};
 
+	function getUniformLocation(name) {
+		return locationCache[name] = context.getUniformLocation(program, name);
+	}
+
 	&#x2F;**
 	 * TODO
 	 *
@@ -535,14 +539,305 @@ context.Program = function () {
 	 * @example
 	 *	TODO
 	 *&#x2F;
-	program.getUniformLocation = function (name) {
-		return locationCache[name] = context.getUniformLocation(program, name);
-	};
-
-	&#x2F;&#x2F; TODO uniform
+	program.getUniformLocation = getUniformLocation;
 
 	&#x2F;**
-	 * TODO
+	 * Specifies the value for a &#x60;float&#x60; uniform variable.
+	 *
+	 * &#x60;gl.uniform1f&#x60; equivalent.
+	 *
+	 * &#x60;Program&#x60; objects have an internal location cache used by &#x60;uniform&#x60;
+	 * methods to set uniform variables without retrieving their location each
+	 * time. The cache is invalidated every time the program is relinked using
+	 * the provided &#x60;link&#x60; method.
+	 *
+	 * @method uniform1f
+	 * @param {String} name The name of the uniform variable.
+	 * @param {Number} x The new value.
+	 * @example
+	 *	TODO
+	 *&#x2F;
+	program.uniform1f = function (name, x) {
+		context.uniform1f(getUniformLocation(name), x);
+	};
+
+	&#x2F;**
+	 * Specifies the value for a &#x60;vec2&#x60; uniform variable.
+	 *
+	 * &#x60;gl.uniform2f&#x60; equivalent.
+	 *
+	 * &#x60;Program&#x60; objects have an internal location cache used by &#x60;uniform&#x60;
+	 * methods to set uniform variables without retrieving their location each
+	 * time. The cache is invalidated every time the program is relinked using
+	 * the provided &#x60;link&#x60; method.
+	 *
+	 * @method uniform2f
+	 * @param {String} name The name of the uniform variable.
+	 * @param {Number} x The new value for the first component.
+	 * @param {Number} y The new value for the second component.
+	 * @example
+	 *	TODO
+	 *&#x2F;
+	program.uniform2f = function (name, x, y) {
+		context.uniform2f(getUniformLocation(name), x, y);
+	};
+
+	&#x2F;**
+	 * Specifies the value for a &#x60;vec3&#x60; uniform variable.
+	 *
+	 * &#x60;gl.uniform3f&#x60; equivalent.
+	 *
+	 * &#x60;Program&#x60; objects have an internal location cache used by &#x60;uniform&#x60;
+	 * methods to set uniform variables without retrieving their location each
+	 * time. The cache is invalidated every time the program is relinked using
+	 * the provided &#x60;link&#x60; method.
+	 *
+	 * @method uniform3f
+	 * @param {String} name The name of the uniform variable.
+	 * @param {Number} x The new value for the first component.
+	 * @param {Number} y The new value for the second component.
+	 * @param {Number} z The new value for the third component.
+	 * @example
+	 *	TODO
+	 *&#x2F;
+	program.uniform3f = function (name, x, y, z) {
+		context.uniform3f(getUniformLocation(name), x, y, z);
+	};
+
+
+	&#x2F;**
+	 * Specifies the value for a &#x60;vec4&#x60; uniform variable.
+	 *
+	 * &#x60;gl.uniform4f&#x60; equivalent.
+	 *
+	 * &#x60;Program&#x60; objects have an internal location cache used by &#x60;uniform&#x60;
+	 * methods to set uniform variables without retrieving their location each
+	 * time. The cache is invalidated every time the program is relinked using
+	 * the provided &#x60;link&#x60; method.
+	 *
+	 * @method uniform4f
+	 * @param {String} name The name of the uniform variable.
+	 * @param {Number} x The new value for the first component.
+	 * @param {Number} y The new value for the second component.
+	 * @param {Number} z The new value for the third component.
+	 * @param {Number} w The new value for the fourth component.
+	 * @example
+	 *	TODO
+	 *&#x2F;
+	program.uniform4f = function (name, x, y, z, w) {
+		context.uniform4f(getUniformLocation(name), x, y, z, w);
+	};
+
+	&#x2F;**
+	 * Specifies the value for a &#x60;float&#x60; uniform variable as an array.
+	 *
+	 * &#x60;gl.uniform1fv&#x60; equivalent.
+	 *
+	 * &#x60;Program&#x60; objects have an internal location cache used by &#x60;uniform&#x60;
+	 * methods to set uniform variables without retrieving their location each
+	 * time. The cache is invalidated every time the program is relinked using
+	 * the provided &#x60;link&#x60; method.
+	 *
+	 * @method uniform1fv
+	 * @param {String} name The name of the uniform variable.
+	 * @param {Number[]} values An array containing the new value.
+	 * @example
+	 *	TODO
+	 *&#x2F;
+	program.uniform1fv = function (name, values) {
+		context.uniform1fv(getUniformLocation(name), values);
+	};
+
+	&#x2F;**
+	 * Specifies the value for a &#x60;vec2&#x60; uniform variable as an array.
+	 *
+	 * &#x60;gl.uniform2fv&#x60; equivalent.
+	 *
+	 * &#x60;Program&#x60; objects have an internal location cache used by &#x60;uniform&#x60;
+	 * methods to set uniform variables without retrieving their location each
+	 * time. The cache is invalidated every time the program is relinked using
+	 * the provided &#x60;link&#x60; method.
+	 *
+	 * @method uniform2fv
+	 * @param {String} name The name of the uniform variable.
+	 * @param {Number[]} values An array containing the new values.
+	 * @example
+	 *	TODO
+	 *&#x2F;
+	program.uniform2fv = function (name, values) {
+		context.uniform2fv(getUniformLocation(name), values);
+	};
+
+	&#x2F;**
+	 * Specifies the value for a &#x60;vec3&#x60; uniform variable as an array.
+	 *
+	 * &#x60;gl.uniform3fv&#x60; equivalent.
+	 *
+	 * &#x60;Program&#x60; objects have an internal location cache used by &#x60;uniform&#x60;
+	 * methods to set uniform variables without retrieving their location each
+	 * time. The cache is invalidated every time the program is relinked using
+	 * the provided &#x60;link&#x60; method.
+	 *
+	 * @method uniform3fv
+	 * @param {String} name The name of the uniform variable.
+	 * @param {Number[]} values An array containing the new values.
+	 * @example
+	 *	TODO
+	 *&#x2F;
+	program.uniform3fv = function (name, values) {
+		context.uniform3fv(getUniformLocation(name), values);
+	};
+
+	&#x2F;**
+	 * Specifies the value for a &#x60;vec4&#x60; uniform variable as an array.
+	 *
+	 * &#x60;gl.uniform4fv&#x60; equivalent.
+	 *
+	 * &#x60;Program&#x60; objects have an internal location cache used by &#x60;uniform&#x60;
+	 * methods to set uniform variables without retrieving their location each
+	 * time. The cache is invalidated every time the program is relinked using
+	 * the provided &#x60;link&#x60; method.
+	 *
+	 * @method uniform4fv
+	 * @param {String} name The name of the uniform variable.
+	 * @param {Number[]} values An array containing the new values.
+	 * @example
+	 *	TODO
+	 *&#x2F;
+	program.uniform4fv = function (name, values) {
+		context.uniform4fv(getUniformLocation(name), values);
+	};
+
+	&#x2F;**
+	 * Specifies the value for an integer or boolean uniform variable.
+	 *
+	 * &#x60;gl.uniform1i&#x60; equivalent.
+	 *
+	 * &#x60;Program&#x60; objects have an internal location cache used by &#x60;uniform&#x60;
+	 * methods to set uniform variables without retrieving their location each
+	 * time. The cache is invalidated every time the program is relinked using
+	 * the provided &#x60;link&#x60; method.
+	 *
+	 * @method uniform1i
+	 * @param {String} name The name of the uniform variable.
+	 * @param {Number} x The new value.
+	 * @example
+	 *	TODO
+	 *&#x2F;
+	program.uniform1i = function (name, x) {
+		context.uniform1i(getUniformLocation(name), x);
+	};
+
+	&#x2F;**
+	 * Specifies the value for an &#x60;ivec2&#x60; or &#x60;bvec2&#x60; uniform variable.
+	 *
+	 * &#x60;gl.uniform2i&#x60; equivalent.
+	 *
+	 * &#x60;Program&#x60; objects have an internal location cache used by &#x60;uniform&#x60;
+	 * methods to set uniform variables without retrieving their location each
+	 * time. The cache is invalidated every time the program is relinked using
+	 * the provided &#x60;link&#x60; method.
+	 *
+	 * @method uniform2i
+	 * @param {String} name The name of the uniform variable.
+	 * @param {Number} x The new value for the first component.
+	 * @param {Number} y The new value for the second component.
+	 * @example
+	 *	TODO
+	 *&#x2F;
+	program.uniform2i = function (name, x, y) {
+		context.uniform2i(getUniformLocation(name), x, y);
+	};
+
+	&#x2F;**
+	 * Specifies the value for an &#x60;ivec3&#x60; or &#x60;bvec3&#x60; uniform variable.
+	 *
+	 * &#x60;gl.uniform3i&#x60; equivalent.
+	 *
+	 * &#x60;Program&#x60; objects have an internal location cache used by &#x60;uniform&#x60;
+	 * methods to set uniform variables without retrieving their location each
+	 * time. The cache is invalidated every time the program is relinked using
+	 * the provided &#x60;link&#x60; method.
+	 *
+	 * @method uniform3i
+	 * @param {String} name The name of the uniform variable.
+	 * @param {Number} x The new value for the first component.
+	 * @param {Number} y The new value for the second component.
+	 * @param {Number} z The new value for the third component.
+	 * @example
+	 *	TODO
+	 *&#x2F;
+	program.uniform3i = function (name, x, y, z) {
+		context.uniform3i(getUniformLocation(name), x, y, z);
+	};
+
+	&#x2F;**
+	 * Specifies the value for an &#x60;ivec4&#x60; or &#x60;bvec4&#x60; uniform variable.
+	 *
+	 * &#x60;gl.uniform4i&#x60; equivalent.
+	 *
+	 * &#x60;Program&#x60; objects have an internal location cache used by &#x60;uniform&#x60;
+	 * methods to set uniform variables without retrieving their location each
+	 * time. The cache is invalidated every time the program is relinked using
+	 * the provided &#x60;link&#x60; method.
+	 *
+	 * @method uniform4i
+	 * @param {String} name The name of the uniform variable.
+	 * @param {Number} x The new value for the first component.
+	 * @param {Number} y The new value for the second component.
+	 * @param {Number} z The new value for the third component.
+	 * @param {Number} w The new value for the fourth component.
+	 * @example
+	 *	TODO
+	 *&#x2F;
+	program.uniform4i = function (name, x, y, z, w) {
+		context.uniform4i(getUniformLocation(name), x, y, z, w);
+	};
+
+	program.uniform1iv = function (name, values) {
+		context.uniform1iv(getUniformLocation(name), values);
+	};
+
+	program.uniform2iv = function (name, values) {
+		context.uniform2iv(getUniformLocation(name), values);
+	};
+
+	program.uniform3iv = function (name, values) {
+		context.uniform3iv(getUniformLocation(name), values);
+	};
+
+	program.uniform4iv = function (name, values) {
+		context.uniform4iv(getUniformLocation(name), values);
+	};
+
+	program.uniformVec2 = function (name, v) {
+		context.uniform2f(getUniformLocation(name), v.x, v.y);
+	};
+
+	program.uniformVec3 = function (name, v) {
+		context.uniform3f(getUniformLocation(name), v.x, v.y, v.z);
+	};
+
+	program.uniformVec4 = function (name, v) {
+		context.uniform2f(getUniformLocation(name), v.x, v.y, v.z, v.w);
+	};
+
+	program.uniformMatrix2fv = function (name, matrix) {
+		context.uniformMatrix2fv(getUniformLocation(name), matrix);
+	};
+
+	program.uniformMatrix3fv = function (name, matrix) {
+		context.uniformMatrix3fv(getUniformLocation(name), matrix);
+	};
+
+	program.uniformMatrix4fv = function (name, matrix) {
+		context.uniformMatrix4fv(getUniformLocation(name), matrix);
+	};
+
+	&#x2F;**
+	 * Deletes this program.
+	 *
+	 * &#x60;gl.deleteProgram&#x60; equivalent.
 	 *
 	 * @method _delete
 	 * @example
@@ -553,12 +848,16 @@ context.Program = function () {
 	};
 
 	&#x2F;**
-	 * TODO
+	 * Returns the delete status of this program.
+	 *
+	 * Equivalent to calling &#x60;gl.getProgramParameter&#x60; with &#x60;gl.DELETE_STATUS&#x60;.
 	 *
 	 * @method getDeleteStatus
-	 * @return {Boolean} TODO
+	 * @return {Boolean} The delete status.
 	 * @example
-	 *	TODO
+	 *	if (program.getDeleteStatus()) {
+	 *		&#x2F;&#x2F; the program has been deleted
+	 *	}
 	 *&#x2F;
 	program.getDeleteStatus = function () {
 		return context.getProgramParameter(program, context.DELETE_STATUS);

@@ -692,7 +692,7 @@ var period = loop.getPeriod(); // 10
             
         
         
-        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l330"><code>src\RenderLoop.js:330</code></a>
+        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l342"><code>src\RenderLoop.js:342</code></a>
         
         </p>
 
@@ -775,7 +775,7 @@ var period = OOGL.RenderLoop.getPeriod(); // 10
             
         
         
-        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l317"><code>src\RenderLoop.js:317</code></a>
+        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l329"><code>src\RenderLoop.js:329</code></a>
         
         </p>
 
@@ -1028,7 +1028,7 @@ if (loop.getType() === 'interval') {
             
         
         
-        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l283"><code>src\RenderLoop.js:283</code></a>
+        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l284"><code>src\RenderLoop.js:284</code></a>
         
         </p>
 
@@ -1039,7 +1039,7 @@ if (loop.getType() === 'interval') {
     </div>
 
     <div class="description">
-        <p>TODO</p>
+        <p>Returns the currently configured loop type.</p>
     </div>
 
     
@@ -1053,7 +1053,7 @@ if (loop.getType() === 'interval') {
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>:
                     
-                    TODO
+                    The loop type; can be <code>request</code>, <code>interval</code> or <code>auto</code>.
                 
             </div>
         </div>
@@ -1110,7 +1110,7 @@ if (loop.getType() === 'interval') {
             
         
         
-        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l265"><code>src\RenderLoop.js:265</code></a>
+        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l266"><code>src\RenderLoop.js:266</code></a>
         
         </p>
 
@@ -1191,7 +1191,7 @@ if (loop.getType() === 'interval') {
             
         
         
-        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l228"><code>src\RenderLoop.js:228</code></a>
+        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l229"><code>src\RenderLoop.js:229</code></a>
         
         </p>
 
@@ -1267,7 +1267,7 @@ has not been previously suspended by the <code>suspend</code> method.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l344"><code>src\RenderLoop.js:344</code></a>
+        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l356"><code>src\RenderLoop.js:356</code></a>
         
         </p>
 
@@ -1365,7 +1365,7 @@ has not been previously suspended by the <code>suspend</code> method.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l296"><code>src\RenderLoop.js:296</code></a>
+        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l297"><code>src\RenderLoop.js:297</code></a>
         
         </p>
 
@@ -1376,7 +1376,17 @@ has not been previously suspended by the <code>suspend</code> method.</p>
     </div>
 
     <div class="description">
-        <p>TODO</p>
+        <p>Sets the loop type; can be <code>request</code>, <code>interval</code> or <code>auto</code>.</p>
+
+<p>When the loop type is <code>request</code> the <code>RenderLoop</code> constructor constructs
+<code>requestAnimationFrame</code>-based loops.</p>
+
+<p>When the loop type is <code>interval</code> the <code>RenderLoop</code> constructor constructs
+<code>setInterval</code>-based loops.</p>
+
+<p>When the loop type is <code>auto</code> the <code>RenderLoop</code> constructor constructs
+<code>requestAnimationFrame</code>-based loops if the <code>requestAnimationFrame</code> API is
+supported, <code>setInterval</code>-based loops otherwise.</p>
     </div>
 
     
@@ -1394,7 +1404,8 @@ has not been previously suspended by the <code>suspend</code> method.</p>
                     
 
                     <div class="param-description">
-                        <p>TODO</p>
+                        <p>The loop type; can be <code>request</code>, <code>interval</code> or
+    <code>auto</code>.</p>
                     </div>
 
                     
@@ -1451,7 +1462,7 @@ has not been previously suspended by the <code>suspend</code> method.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l194"><code>src\RenderLoop.js:194</code></a>
+        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l195"><code>src\RenderLoop.js:195</code></a>
         
         </p>
 
@@ -1517,7 +1528,7 @@ loop.start();
             
         
         
-        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l244"><code>src\RenderLoop.js:244</code></a>
+        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l245"><code>src\RenderLoop.js:245</code></a>
         
         </p>
 
@@ -1585,7 +1596,7 @@ has been stopped.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l212"><code>src\RenderLoop.js:212</code></a>
+        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l213"><code>src\RenderLoop.js:213</code></a>
         
         </p>
 
