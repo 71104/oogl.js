@@ -1418,13 +1418,13 @@
             "params": [
                 {
                     "name": "textures",
-                    "description": "An optional array of OOGL texture objects to\n\tadd to the set. If you specify an empty array or not specify one at all you\n\tcan later add textures using the `add` method.",
-                    "type": ".Texture[]",
+                    "description": "TODO",
+                    "type": "Object[]",
                     "optional": true
                 }
             ],
             "example": [
-                "\n\tTODO"
+                "\n\tvar textures = new oogl.Textures({\n\t\t'Texture': texture,\n\t\t'BumpMap': bumpMap\n\t});"
             ]
         },
         "OOGL.Vector2": {
@@ -4955,7 +4955,7 @@
         },
         {
             "file": "src\\Textures.js",
-            "line": 298,
+            "line": 307,
             "description": "Adds a `Texture` to this set.\n\nThe texture is automatically assigned a texture unit, but the set\nmust be re-bound (using the `bind` method) before its textures can be\nused in programs.",
             "itemtype": "method",
             "name": "add",
@@ -4963,7 +4963,7 @@
                 {
                     "name": "texture",
                     "description": "The OOGL texture to add.",
-                    "type": ".Texture"
+                    "type": "oogl.Texture"
                 }
             ],
             "example": [
@@ -4973,18 +4973,18 @@
         },
         {
             "file": "src\\Textures.js",
-            "line": 314,
+            "line": 330,
             "description": "Binds all the textures in this sets to their target in their\nrespective texture unit.\n\nEquivalent to calling `gl.activeTexture` and `gl.bindTexture` for\neach texture.",
             "itemtype": "method",
             "name": "bind",
             "example": [
-                "\n\tTODO"
+                "\n\ttextures.bind();"
             ],
             "class": "oogl.Textures"
         },
         {
             "file": "src\\Textures.js",
-            "line": 332,
+            "line": 348,
             "description": "TODO",
             "itemtype": "method",
             "name": "uniform",
@@ -4992,7 +4992,7 @@
                 {
                     "name": "program",
                     "description": "TODO",
-                    "type": ".Program"
+                    "type": "oogl.Program"
                 },
                 {
                     "name": "names",
@@ -5001,18 +5001,36 @@
                 }
             ],
             "example": [
-                "\n\tTODO"
+                "\n\tvar textures = new oogl.Textures({\n\t\t'Texture': texture,\n\t\t'BumpMap': bumpMap\n\t});\n\ttextures.bind();\n\ttextures.uniform(program);"
             ],
             "class": "oogl.Textures"
         },
         {
             "file": "src\\Textures.js",
-            "line": 347,
+            "line": 368,
+            "description": "TODO",
+            "itemtype": "method",
+            "name": "bindAndUniform",
+            "params": [
+                {
+                    "name": "program",
+                    "description": "TODO",
+                    "type": "oogl.Program"
+                }
+            ],
+            "example": [
+                "\n\tvar textures = new oogl.Textures({\n\t\t'Texture': texture,\n\t\t'BumpMap': bumpMap\n\t});\n\ttextures.bindAnduniform(program);"
+            ],
+            "class": "oogl.Textures"
+        },
+        {
+            "file": "src\\Textures.js",
+            "line": 388,
             "description": "Deletes all the textures that have been added to this set and resets\nit to an empty set.\n\n`Textures` objects may be used again after deletion.",
             "itemtype": "method",
             "name": "_delete",
             "example": [
-                "\n\tTODO"
+                "\n\ttextures._delete();"
             ],
             "class": "oogl.Textures"
         },

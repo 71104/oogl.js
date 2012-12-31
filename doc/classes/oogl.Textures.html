@@ -286,16 +286,14 @@ time, so that it can be used by several programs.</p>
                 <li class="param">
                     
                         <code class="param-name optional">[textures]</code>
-                        <span class="type">.Texture</span>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object[]</a></span>
                         <span class="flag optional" title="This parameter is optional.">optional</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>An optional array of OOGL texture objects to
-    add to the set. If you specify an empty array or not specify one at all you
-    can later add textures using the <code>add</code> method.</p>
+                        <p>TODO</p>
                     </div>
 
                     
@@ -312,7 +310,10 @@ time, so that it can be used by several programs.</p>
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>TODO
+                <pre class="code prettyprint"><code>var textures = new oogl.Textures({
+    'Texture': texture,
+    'BumpMap': bumpMap
+});
 </code></pre>
             </div>
         </div>
@@ -360,6 +361,13 @@ time, so that it can be used by several programs.</p>
                         
                             <li class="index-item method">
                                 <a href="#method_bind">bind</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_bindAndUniform">bindAndUniform</a>
 
                                 
                                 
@@ -420,7 +428,7 @@ time, so that it can be used by several programs.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Textures.js.html#l347"><code>src\Textures.js:347</code></a>
+        <a href="..&#x2F;files&#x2F;src_Textures.js.html#l388"><code>src\Textures.js:388</code></a>
         
         </p>
 
@@ -446,7 +454,7 @@ it to an empty set.</p>
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>TODO
+                <pre class="code prettyprint"><code>textures._delete();
 </code></pre>
             </div>
         </div>
@@ -496,7 +504,7 @@ it to an empty set.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Textures.js.html#l298"><code>src\Textures.js:298</code></a>
+        <a href="..&#x2F;files&#x2F;src_Textures.js.html#l307"><code>src\Textures.js:307</code></a>
         
         </p>
 
@@ -523,7 +531,7 @@ used in programs.</p>
                 <li class="param">
                     
                         <code class="param-name">texture</code>
-                        <span class="type">.Texture</span>
+                        <span class="type"><a href="..\classes\oogl.Texture.html" class="crosslink">oogl.Texture</a></span>
                     
 
                     
@@ -586,7 +594,7 @@ used in programs.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Textures.js.html#l314"><code>src\Textures.js:314</code></a>
+        <a href="..&#x2F;files&#x2F;src_Textures.js.html#l330"><code>src\Textures.js:330</code></a>
         
         </p>
 
@@ -613,7 +621,107 @@ each texture.</p>
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>TODO
+                <pre class="code prettyprint"><code>textures.bind();
+</code></pre>
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_bindAndUniform" class="method item">
+    <h3 class="name"><code>bindAndUniform</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>program</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_Textures.js.html#l368"><code>src\Textures.js:368</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>TODO</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">program</code>
+                        <span class="type"><a href="..\classes\oogl.Program.html" class="crosslink">oogl.Program</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>TODO</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>var textures = new oogl.Textures({
+    'Texture': texture,
+    'BumpMap': bumpMap
+});
+textures.bindAnduniform(program);
 </code></pre>
             </div>
         </div>
@@ -669,7 +777,7 @@ each texture.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Textures.js.html#l332"><code>src\Textures.js:332</code></a>
+        <a href="..&#x2F;files&#x2F;src_Textures.js.html#l348"><code>src\Textures.js:348</code></a>
         
         </p>
 
@@ -692,7 +800,7 @@ each texture.</p>
                 <li class="param">
                     
                         <code class="param-name">program</code>
-                        <span class="type">.Program</span>
+                        <span class="type"><a href="..\classes\oogl.Program.html" class="crosslink">oogl.Program</a></span>
                     
 
                     
@@ -730,7 +838,12 @@ each texture.</p>
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>TODO
+                <pre class="code prettyprint"><code>var textures = new oogl.Textures({
+    'Texture': texture,
+    'BumpMap': bumpMap
+});
+textures.bind();
+textures.uniform(program);
 </code></pre>
             </div>
         </div>

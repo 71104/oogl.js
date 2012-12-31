@@ -479,14 +479,23 @@ context.CubeMap = function () {
  *
  * @class oogl.Textures
  * @constructor
- * @param {.Texture[]} [textures] An optional array of OOGL texture objects to
- *	add to the set. If you specify an empty array or not specify one at all you
- *	can later add textures using the &#x60;add&#x60; method.
+ * @param {Object[]} [textures] TODO
  * @example
- *	TODO
+ *	var textures = new oogl.Textures({
+ *		&#x27;Texture&#x27;: texture,
+ *		&#x27;BumpMap&#x27;: bumpMap
+ *	});
  *&#x2F;
 context.Textures = function (textures) {
-	textures = textures &amp;&amp; textures.slice(0) || [];
+	var names = {};
+	var entries = [];
+	for (var name in textures) {
+		names[name] = true;
+		entries.push({
+			name: name,
+			texture: textures[name]
+		});
+	}
 	return {
 		&#x2F;**
 		 * Adds a &#x60;Texture&#x60; to this set.
@@ -496,12 +505,19 @@ context.Textures = function (textures) {
 		 * used in programs.
 		 *
 		 * @method add
-		 * @param {.Texture} texture The OOGL texture to add.
+		 * @param {oogl.Texture} texture The OOGL texture to add.
 		 * @example
 		 *	TODO
 		 *&#x2F;
-		add: function (texture) {
-			textures.push(texture);
+		add: function (name, texture) {
+			if (names.hasOwnProperty(name)) {
+				throw &#x27;the specified name is already in use.&#x27;;
+			} else {
+				entries.push({
+					name: name,
+					texture: texture
+				});
+			}
 		},
 
 		&#x2F;**
@@ -513,12 +529,12 @@ context.Textures = function (textures) {
 		 *
 		 * @method bind
 		 * @example
-		 *	TODO
+		 *	textures.bind();
 		 *&#x2F;
 		bind: function () {
-			for (var i = 0; i &lt; textures.length; i++) {
+			for (var i = 0; i &lt; entries.length; i++) {
 				context.activeTexture(context.TEXTURE0 + i);
-				textures[i].bind();
+				entries[i].texture.bind();
 			}
 		},
 
@@ -526,14 +542,39 @@ context.Textures = function (textures) {
 		 * TODO
 		 *
 		 * @method uniform
-		 * @param {.Program} program TODO
+		 * @param {oogl.Program} program TODO
 		 * @param {String[]} names TODO
 		 * @example
-		 *	TODO
+		 *	var textures = new oogl.Textures({
+		 *		&#x27;Texture&#x27;: texture,
+		 *		&#x27;BumpMap&#x27;: bumpMap
+		 *	});
+		 *	textures.bind();
+		 *	textures.uniform(program);
 		 *&#x2F;
-		uniform: function (program, names) {
-			for (var i = 0; i &lt; textures.length; i++) {
-				program.uniform1i(names[i], i);
+		uniform: function (program) {
+			for (var i = 0; i &lt; entries.length; i++) {
+				program.uniform1i(entries[i].name, i);
+			}
+		},
+
+		&#x2F;**
+		 * TODO
+		 *
+		 * @method bindAndUniform
+		 * @param {oogl.Program} program TODO
+		 * @example
+		 *	var textures = new oogl.Textures({
+		 *		&#x27;Texture&#x27;: texture,
+		 *		&#x27;BumpMap&#x27;: bumpMap
+		 *	});
+		 *	textures.bindAnduniform(program);
+		 *&#x2F;
+		bindAndUniform: function (program) {
+			for (var i = 0; i &lt; entries.length; i++) {
+				context.activeTexture(context.TEXTURE0 + i);
+				entries[i].texture.bind();
+				program.uniform1i(entries[i].name, i);
 			}
 		},
 
@@ -545,13 +586,14 @@ context.Textures = function (textures) {
 		 *
 		 * @method _delete
 		 * @example
-		 *	TODO
+		 *	textures._delete();
 		 *&#x2F;
 		_delete: function () {
-			for (var i in textures) {
-				textures[i]._delete();
+			for (var i in entries) {
+				entries[i].texture._delete();
 			}
-			textures = [];
+			names = {};
+			entries = [];
 		}
 	};
 };
