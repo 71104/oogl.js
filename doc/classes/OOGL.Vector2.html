@@ -371,6 +371,13 @@ _gaq.push(['_trackPageview']);
                             </li>
                         
                             <li class="index-item method">
+                                <a href="#method_clone">clone</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
                                 <a href="#method_divide">divide</a>
 
                                 
@@ -577,7 +584,7 @@ _gaq.push(['_trackPageview']);
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Vector2.js.html#l91"><code>src\Vector2.js:91</code></a>
+        <a href="..&#x2F;files&#x2F;src_Vector2.js.html#l103"><code>src\Vector2.js:103</code></a>
         
         </p>
 
@@ -678,7 +685,7 @@ v.add(new OOGL.Vector2(1, 2)); // v is now (4, 6)
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Vector2.js.html#l187"><code>src\Vector2.js:187</code></a>
+        <a href="..&#x2F;files&#x2F;src_Vector2.js.html#l199"><code>src\Vector2.js:199</code></a>
         
         </p>
 
@@ -747,6 +754,86 @@ var v2 = v1.by(2); // (6, 8)
 </div>
 
                 
+                    <div id="method_clone" class="method item">
+    <h3 class="name"><code>clone</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="..\classes\OOGL.Vector2.html" class="crosslink">OOGL.Vector2</a></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_Vector2.js.html#l32"><code>src\Vector2.js:32</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Clones this vector and returns the new one.</p>
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="..\classes\OOGL.Vector2.html" class="crosslink">OOGL.Vector2</a></span>:
+                    
+                    The new vector.
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>var position = OOGL.Vector2.NULL.clone();
+</code></pre>
+            </div>
+        </div>
+    
+</div>
+
+                
                     <div id="method_divide" class="method item">
     <h3 class="name"><code>divide</code></h3>
 
@@ -791,7 +878,7 @@ var v2 = v1.by(2); // (6, 8)
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Vector2.js.html#l171"><code>src\Vector2.js:171</code></a>
+        <a href="..&#x2F;files&#x2F;src_Vector2.js.html#l183"><code>src\Vector2.js:183</code></a>
         
         </p>
 
@@ -892,7 +979,7 @@ v.multiply(2); // v is now (3, 4)
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Vector2.js.html#l202"><code>src\Vector2.js:202</code></a>
+        <a href="..&#x2F;files&#x2F;src_Vector2.js.html#l214"><code>src\Vector2.js:214</code></a>
         
         </p>
 
@@ -997,7 +1084,7 @@ var dot = v1.dot(v2); // 11
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Vector2.js.html#l76"><code>src\Vector2.js:76</code></a>
+        <a href="..&#x2F;files&#x2F;src_Vector2.js.html#l88"><code>src\Vector2.js:88</code></a>
         
         </p>
 
@@ -1087,7 +1174,7 @@ var v2 = v1.getNormalized(); // (0.6, 0.8)
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Vector2.js.html#l241"><code>src\Vector2.js:241</code></a>
+        <a href="..&#x2F;files&#x2F;src_Vector2.js.html#l253"><code>src\Vector2.js:253</code></a>
         
         </p>
 
@@ -1216,7 +1303,7 @@ var newVelocity = velocity.getReflected(new OOGL.Vector2(0, 1));
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Vector2.js.html#l292"><code>src\Vector2.js:292</code></a>
+        <a href="..&#x2F;files&#x2F;src_Vector2.js.html#l304"><code>src\Vector2.js:304</code></a>
         
         </p>
 
@@ -1338,7 +1425,7 @@ var w = v.getRefracted(n, 1.3);
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Vector2.js.html#l46"><code>src\Vector2.js:46</code></a>
+        <a href="..&#x2F;files&#x2F;src_Vector2.js.html#l58"><code>src\Vector2.js:58</code></a>
         
         </p>
 
@@ -1430,7 +1517,7 @@ var l = v.length(); // 5
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Vector2.js.html#l139"><code>src\Vector2.js:139</code></a>
+        <a href="..&#x2F;files&#x2F;src_Vector2.js.html#l151"><code>src\Vector2.js:151</code></a>
         
         </p>
 
@@ -1544,7 +1631,7 @@ var v3 = v1.minus(v2); // (2, 2)
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Vector2.js.html#l155"><code>src\Vector2.js:155</code></a>
+        <a href="..&#x2F;files&#x2F;src_Vector2.js.html#l167"><code>src\Vector2.js:167</code></a>
         
         </p>
 
@@ -1633,7 +1720,7 @@ v.multiply(2); // v is now (6, 8)
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Vector2.js.html#l60"><code>src\Vector2.js:60</code></a>
+        <a href="..&#x2F;files&#x2F;src_Vector2.js.html#l72"><code>src\Vector2.js:72</code></a>
         
         </p>
 
@@ -1711,7 +1798,7 @@ v.normalize(); // v is now (0.6, 0.8)
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Vector2.js.html#l107"><code>src\Vector2.js:107</code></a>
+        <a href="..&#x2F;files&#x2F;src_Vector2.js.html#l119"><code>src\Vector2.js:119</code></a>
         
         </p>
 
@@ -1825,7 +1912,7 @@ var v3 = v1.plus(v2); // (4, 6)
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Vector2.js.html#l217"><code>src\Vector2.js:217</code></a>
+        <a href="..&#x2F;files&#x2F;src_Vector2.js.html#l229"><code>src\Vector2.js:229</code></a>
         
         </p>
 
@@ -1938,7 +2025,7 @@ velocity.reflect(new OOGL.Vector2(0, 1));
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Vector2.js.html#l264"><code>src\Vector2.js:264</code></a>
+        <a href="..&#x2F;files&#x2F;src_Vector2.js.html#l276"><code>src\Vector2.js:276</code></a>
         
         </p>
 
@@ -2056,7 +2143,7 @@ v.refract(n, 1.3);
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Vector2.js.html#l123"><code>src\Vector2.js:123</code></a>
+        <a href="..&#x2F;files&#x2F;src_Vector2.js.html#l135"><code>src\Vector2.js:135</code></a>
         
         </p>
 
@@ -2147,7 +2234,7 @@ v.subtract(new OOGL.Vector2(1, 2)); // v is now (2, 2)
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Vector2.js.html#l32"><code>src\Vector2.js:32</code></a>
+        <a href="..&#x2F;files&#x2F;src_Vector2.js.html#l44"><code>src\Vector2.js:44</code></a>
         
         </p>
 
@@ -2226,7 +2313,7 @@ program.uniform2fv('Position', v.toArray());
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Vector2.js.html#l329"><code>src\Vector2.js:329</code></a>
+        <a href="..&#x2F;files&#x2F;src_Vector2.js.html#l343"><code>src\Vector2.js:343</code></a>
         
         </p>
 
@@ -2241,6 +2328,15 @@ program.uniform2fv('Position', v.toArray());
 
     
 
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>TODO
+</code></pre>
+            </div>
+        </div>
     
 
     
@@ -2272,7 +2368,7 @@ program.uniform2fv('Position', v.toArray());
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Vector2.js.html#l338"><code>src\Vector2.js:338</code></a>
+        <a href="..&#x2F;files&#x2F;src_Vector2.js.html#l354"><code>src\Vector2.js:354</code></a>
         
         </p>
 
@@ -2287,6 +2383,15 @@ program.uniform2fv('Position', v.toArray());
 
     
 
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>TODO
+</code></pre>
+            </div>
+        </div>
     
 
     
@@ -2318,7 +2423,7 @@ program.uniform2fv('Position', v.toArray());
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Vector2.js.html#l320"><code>src\Vector2.js:320</code></a>
+        <a href="..&#x2F;files&#x2F;src_Vector2.js.html#l332"><code>src\Vector2.js:332</code></a>
         
         </p>
 
@@ -2333,6 +2438,15 @@ program.uniform2fv('Position', v.toArray());
 
     
 
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>var position = OOGL.Vector2.NULL.clone();
+</code></pre>
+            </div>
+        </div>
     
 
     

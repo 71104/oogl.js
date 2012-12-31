@@ -5055,6 +5055,21 @@
         {
             "file": "src\\Vector2.js",
             "line": 32,
+            "description": "Clones this vector and returns the new one.",
+            "itemtype": "method",
+            "name": "clone",
+            "return": {
+                "description": "The new vector.",
+                "type": "OOGL.Vector2"
+            },
+            "example": [
+                "\n\tvar position = OOGL.Vector2.NULL.clone();"
+            ],
+            "class": "OOGL.Vector2"
+        },
+        {
+            "file": "src\\Vector2.js",
+            "line": 44,
             "description": "Returns this vector as an array of two elements.",
             "itemtype": "method",
             "name": "toArray",
@@ -5069,7 +5084,7 @@
         },
         {
             "file": "src\\Vector2.js",
-            "line": 46,
+            "line": 58,
             "description": "Computes the modulus of the vector. This is computed as\n`Math.sqrt(x * x + y * y)`.",
             "itemtype": "method",
             "name": "length",
@@ -5084,7 +5099,7 @@
         },
         {
             "file": "src\\Vector2.js",
-            "line": 60,
+            "line": 72,
             "description": "Normalizes this vector so that its length becomes 1.",
             "itemtype": "method",
             "name": "normalize",
@@ -5096,7 +5111,7 @@
         },
         {
             "file": "src\\Vector2.js",
-            "line": 76,
+            "line": 88,
             "description": "Computes the normalized vector and returns it as a new `Vector2` object.\nThis vector is not changed.",
             "itemtype": "method",
             "name": "getNormalized",
@@ -5110,7 +5125,7 @@
         },
         {
             "file": "src\\Vector2.js",
-            "line": 91,
+            "line": 103,
             "description": "Adds the specified 2-component vector to this one.",
             "itemtype": "method",
             "name": "add",
@@ -5129,7 +5144,7 @@
         },
         {
             "file": "src\\Vector2.js",
-            "line": 107,
+            "line": 119,
             "description": "Adds the specified 2-component vector to this one and returns the sum as\na new `Vector2` object. This vector is not changed.",
             "itemtype": "method",
             "name": "plus",
@@ -5151,7 +5166,7 @@
         },
         {
             "file": "src\\Vector2.js",
-            "line": 123,
+            "line": 135,
             "description": "Subtracts the specified 2-component vector to this one.",
             "itemtype": "method",
             "name": "subtract",
@@ -5170,7 +5185,7 @@
         },
         {
             "file": "src\\Vector2.js",
-            "line": 139,
+            "line": 151,
             "description": "Subtracts the specified 2-component vector to this one and returns the\ndifference as a new `Vector2` object. This vector is not changed.",
             "itemtype": "method",
             "name": "minus",
@@ -5192,7 +5207,7 @@
         },
         {
             "file": "src\\Vector2.js",
-            "line": 155,
+            "line": 167,
             "description": "Multiplies this vector by the specified constant factor.",
             "itemtype": "method",
             "name": "multiply",
@@ -5211,7 +5226,7 @@
         },
         {
             "file": "src\\Vector2.js",
-            "line": 171,
+            "line": 183,
             "description": "Divides this vector by the specified constant factor.",
             "itemtype": "method",
             "name": "divide",
@@ -5230,7 +5245,7 @@
         },
         {
             "file": "src\\Vector2.js",
-            "line": 187,
+            "line": 199,
             "description": "Multiplies this vector by the specified constant factor and returns the\nproduct as a new `Vector2` object. This vector is not changed.",
             "itemtype": "method",
             "name": "by",
@@ -5252,7 +5267,7 @@
         },
         {
             "file": "src\\Vector2.js",
-            "line": 202,
+            "line": 214,
             "description": "Computes the dot product between this vector and the specified one.",
             "itemtype": "method",
             "name": "dot",
@@ -5274,7 +5289,7 @@
         },
         {
             "file": "src\\Vector2.js",
-            "line": 217,
+            "line": 229,
             "description": "Reflects this vector against a line whose normal vector is specified. The\nreflection of a vector `v` is computed as:\n\n\tv - 2 * (v.n) * n\n\nwhere `v.n` is the dot product between the vector and the normal.\n\nThis method modifies the original object.",
             "itemtype": "method",
             "name": "reflect",
@@ -5293,7 +5308,7 @@
         },
         {
             "file": "src\\Vector2.js",
-            "line": 241,
+            "line": 253,
             "description": "Computes the reflection of this vector against a line whose normal vector\nis specified. The reflection of a vector `v` is computed as:\n\n\tv - 2 * (v.n) * n\n\nwhere `v.n` is the dot product between the vector and the normal.\n\nThe computed vector is returned as a new `Vector2` object, this vector is\nnot changed.",
             "itemtype": "method",
             "name": "getReflected",
@@ -5315,7 +5330,7 @@
         },
         {
             "file": "src\\Vector2.js",
-            "line": 264,
+            "line": 276,
             "description": "Refracts this vector given a surface normal `n` and the `eta` ratio\nbetween refraction indices.\n\nThis method modifies the original object.",
             "itemtype": "method",
             "name": "refract",
@@ -5339,7 +5354,7 @@
         },
         {
             "file": "src\\Vector2.js",
-            "line": 292,
+            "line": 304,
             "description": "Refracts this vector given a surface normal `n` and the `eta` ratio\nbetween refraction indices; the computed vector is returned as a new\n`OOGL.Vector2` object, this object is not changed.",
             "itemtype": "method",
             "name": "getRefracted",
@@ -5366,32 +5381,41 @@
         },
         {
             "file": "src\\Vector2.js",
-            "line": 320,
+            "line": 332,
             "description": "The null vector `(0, 0)`.",
             "itemtype": "property",
             "name": "NULL",
             "static": 1,
             "type": "OOGL.Vector2",
+            "example": [
+                "\n\tvar position = OOGL.Vector2.NULL.clone();"
+            ],
             "class": "OOGL.Vector2"
         },
         {
             "file": "src\\Vector2.js",
-            "line": 329,
+            "line": 343,
             "description": "The `(1, 0)` vector.",
             "itemtype": "property",
             "name": "I",
             "static": 1,
             "type": "OOGL.Vector2",
+            "example": [
+                "\n\tTODO"
+            ],
             "class": "OOGL.Vector2"
         },
         {
             "file": "src\\Vector2.js",
-            "line": 338,
+            "line": 354,
             "description": "The `(0, 1)` vector.",
             "itemtype": "property",
             "name": "J",
             "static": 1,
             "type": "OOGL.Vector2",
+            "example": [
+                "\n\tTODO"
+            ],
             "class": "OOGL.Vector2"
         },
         {
@@ -5424,6 +5448,21 @@
         {
             "file": "src\\Vector3.js",
             "line": 41,
+            "description": "Clones this vector and returns the new one.",
+            "itemtype": "method",
+            "name": "clone",
+            "return": {
+                "description": "The new vector.",
+                "type": "OOGL.Vector3"
+            },
+            "example": [
+                "\n\tvar position = OOGL.Vector3.NULL.clone();"
+            ],
+            "class": "OOGL.Vector3"
+        },
+        {
+            "file": "src\\Vector3.js",
+            "line": 53,
             "description": "Returns this vector as an array of three elements.",
             "itemtype": "method",
             "name": "toArray",
@@ -5438,7 +5477,7 @@
         },
         {
             "file": "src\\Vector3.js",
-            "line": 55,
+            "line": 67,
             "description": "Creates a homogeneous version of this vector by adding a unitary `w`\ncoordinate and returns it as a new `Vector4` object. This vector is not\nchanged.",
             "itemtype": "method",
             "name": "toHomogeneous",
@@ -5453,7 +5492,7 @@
         },
         {
             "file": "src\\Vector3.js",
-            "line": 70,
+            "line": 82,
             "description": "Computes the modulus of the vector. This is computed as\n`Math.sqrt(x * x + y * y + z * z)`.",
             "itemtype": "method",
             "name": "length",
@@ -5468,7 +5507,7 @@
         },
         {
             "file": "src\\Vector3.js",
-            "line": 84,
+            "line": 96,
             "description": "Normalizes this vector so that its length becomes 1.",
             "itemtype": "method",
             "name": "normalize",
@@ -5480,7 +5519,7 @@
         },
         {
             "file": "src\\Vector3.js",
-            "line": 101,
+            "line": 113,
             "description": "Computes the normalized vector and returns it as a new `Vector3` object.\nThis vector is not changed.",
             "itemtype": "method",
             "name": "getNormalized",
@@ -5494,7 +5533,7 @@
         },
         {
             "file": "src\\Vector3.js",
-            "line": 116,
+            "line": 128,
             "description": "Adds the specified 2-component vector to this one.",
             "itemtype": "method",
             "name": "add",
@@ -5513,7 +5552,7 @@
         },
         {
             "file": "src\\Vector3.js",
-            "line": 133,
+            "line": 145,
             "description": "Adds the specified 2-component vector to this one and returns the sum as\na new `Vector3` object. This vector is not changed.",
             "itemtype": "method",
             "name": "plus",
@@ -5572,6 +5611,21 @@
         {
             "file": "src\\Vector4.js",
             "line": 51,
+            "description": "Clones this vector and returns the new one.",
+            "itemtype": "method",
+            "name": "clone",
+            "return": {
+                "description": "The new vector.",
+                "type": "OOGL.Vector4"
+            },
+            "example": [
+                "\n\tvar w = v.clone();"
+            ],
+            "class": "OOGL.Vector4"
+        },
+        {
+            "file": "src\\Vector4.js",
+            "line": 63,
             "description": "Returns this vector as an array of four elements.",
             "itemtype": "method",
             "name": "toArray",
@@ -5586,7 +5640,7 @@
         },
         {
             "file": "src\\Vector4.js",
-            "line": 65,
+            "line": 77,
             "description": "Converts this homogeneous vector to a 3-component standard vector\ndividing the X, Y and Z components by the W component. This method\nproduces a new `OOGL.Vector3` object, while this vector is not changed.",
             "itemtype": "method",
             "name": "toStandard",
