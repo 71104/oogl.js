@@ -1,0 +1,21 @@
+uniform float Angle;
+
+attribute vec2 in_Vertex;
+attribute vec3 in_Color;
+
+varying ex_Color;
+
+void main() {
+	gl_Position = mat4(
+		1, 0, 0, 0,
+		0, 1, 0, 0,
+		0, 0, 0, 1,
+		0, 0, 1, 0
+	) * mat4(
+		cos(Angle), 0, -sen(Angle), 0,
+		0, 1, 0, 0,
+		sen(Angle), 0, cos(Angle), 0,
+		0, 0, 0, 1
+	) * vec4(in_Vertex, 0, 2);
+	ex_Color = in_Color;
+}
