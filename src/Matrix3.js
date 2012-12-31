@@ -8,7 +8,7 @@
  * @param {Number[]} data A 9-element array of the floating point values to be
  *	put into the matrix.
  *
- * Matrix elements are specified in row-major order.
+ * Matrix elements are specified in column-major order.
  *
  * The specified `data` array is duplicated into the matrix, changes to it will
  * not affect the content of the matrix.
@@ -21,7 +21,12 @@ OOGL.Matrix3 = function (data) {
 	if (data.length != 9) {
 		throw 'A 3x3 matrix must have exactly 9 elements.';
 	}
-	return data.slice(0);
+
+	// TODO documentare elementi
+
+	for (var i = 0; i < 9; i++) {
+		this[i] = data[i];
+	}
 };
 
 OOGL.Matrix3.prototype = {
@@ -51,9 +56,9 @@ OOGL.Matrix3.prototype = {
 	 * Returns the element at the specified row and column in the matrix.
 	 *
 	 * Row and column indices are zero-based. This method is equivalent to
-	 * fetching the `i * 3 + j`-th element of the array:
+	 * fetching the `j * 3 + i`-th element of the array:
 	 *
-	 *	matrix.get(i, j) == matrix[i * 3 + j] // true
+	 *	matrix.get(i, j) == matrix[j * 3 + i] // true
 	 *
 	 * @method get
 	 * @param {Number} i The row index.
@@ -61,21 +66,21 @@ OOGL.Matrix3.prototype = {
 	 * @return {Number} The value at the specified row and column.
 	 * @example
 	 *	var m = new OOGL.Matrix3([1, 2, 3, 4, 5, 6, 7, 8, 9]);
-	 *	if (m.get(2, 1) == m[7]) { // true
+	 *	if (m.get(2, 1) == m[6]) { // true
 	 *		...
 	 */
 	get: function (i, j) {
-		return this[i * 3 + j];
+		return this[j * 3 + i];
 	},
 
 	/**
 	 * Changes the element at the specified row and column in the matrix.
 	 *
 	 * Row and column indices are zero-based. This method is equivalent to
-	 * setting the `i * 3 + j`-th element of the array:
+	 * setting the `j * 3 + i`-th element of the array:
 	 *
 	 *	matrix.put(i, j, x);
-	 *	matrix[i * 3 + j] = x; // same as previous
+	 *	matrix[j * 3 + i] = x; // same as previous
 	 *
 	 * @method put
 	 * @param {Number} i The row index.
@@ -83,10 +88,10 @@ OOGL.Matrix3.prototype = {
 	 * @param {Number} value The value to put at the specified row and column.
 	 * @example
 	 *	var matrix = new OOGL.Matrix3([3, 3, 0, 3, 3, 3, 3, 3, 3]);
-	 *	matrix.put(1, 0, 3); // now matrix is [3, 3, 3, 3, 3, 3, 3, 3, 3]
+	 *	matrix.put(0, 1, 3); // now matrix is [3, 3, 3, 3, 3, 3, 3, 3, 3]
 	 */
 	put: function (i, j, value) {
-		this[i * 3 + j] = value;
+		this[j * 3 + i] = value;
 		return this;
 	},
 
@@ -212,9 +217,39 @@ OOGL.Matrix3.prototype = {
 	 *	var matrix = new OOGL.Matrix3([1, 2, 3, 4, 5, 6, 7, 8, 9]);
 	 *	matrix.multiply(2); // matrix is now [2, 4, 6, 8, 10, 12, 14, 16, 18]
 	 */
+
+	/**
+	 * Multiplies this matrix by the specified `Matrix3` object. This method
+	 * changes the original matrix.
+	 *
+	 * @method multiply
+	 * @param {OOGL.Matrix3} x The multiplying matrix.
+	 * @chainable
+	 * @example
+	 *	var matrix = new OOGL.Matrix3([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+	 *	matrix.multiply(new OOGL.Matrix3([2, 0, 0, 0, 2, 0, 0, 0, 2])); // matrix is now [2, 4, 6, 8, 10, 12, 14, 16, 18]
+	 */
 	multiply: function (x) {
-		for (var i = 0; i < 9; i++) {
-			this[i] *= x;
+		var i;
+		if (x instanceof OOGL.Matrix3) {
+			var newArray = [
+				this[0] * x[0] + this[3] * x[1] + this[6] * x[2],
+				this[1] * x[0] + this[4] * x[1] + this[7] * x[2],
+				this[2] * x[0] + this[5] * x[1] + this[8] * x[2],
+				this[0] * x[3] + this[3] * x[4] + this[6] * x[5],
+				this[1] * x[3] + this[4] * x[4] + this[7] * x[5],
+				this[2] * x[3] + this[5] * x[4] + this[8] * x[5],
+				this[0] * x[6] + this[3] * x[7] + this[6] * x[8],
+				this[1] * x[6] + this[4] * x[7] + this[7] * x[8],
+				this[2] * x[6] + this[5] * x[7] + this[8] * x[8]
+			];
+			for (i = 0; i < 9; i++) {
+				this[i] = newArray[i];
+			}
+		} else {
+			for (i = 0; i < 9; i++) {
+				this[i] *= x;
+			}
 		}
 		return this;
 	},
@@ -244,19 +279,45 @@ OOGL.Matrix3.prototype = {
 	 *	var v = new OOGL.Vector3(3, 2, 1);
 	 *	var w = m.by(v); // (6, 6, 4)
 	 */
+
+	/**
+	 * Left-multiplies this matrix by the specified `Matrix3` object and returns
+	 * the product as a new `Matrix3` object. Neither this matrix nor the
+	 * specified one are changed.
+	 *
+	 * @method by
+	 * @param {OOGL.Matrix3} v The matrix to multiply.
+	 * @return {OOGL.Matrix3} The product matrix.
+	 * @example
+	 *	var m1 = new OOGL.Matrix3([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+	 *	var m2 = new OOGL.Matrix3([2, 0, 0, 0, 2, 0, 0, 0, 2]);
+	 *	var m3 = m1.by(m2); // [2, 4, 6, 8, 10, 12, 14, 16, 18]
+	 */
 	by: function (x) {
-		if (typeof x === 'number') {
+		if (x instanceof OOGL.Matrix3) {
+			return new OOGL.Matrix3([
+				this[0] * x[0] + this[3] * x[1] + this[6] * x[2],
+				this[1] * x[0] + this[4] * x[1] + this[7] * x[2],
+				this[2] * x[0] + this[5] * x[1] + this[8] * x[2],
+				this[0] * x[3] + this[3] * x[4] + this[6] * x[5],
+				this[1] * x[3] + this[4] * x[4] + this[7] * x[5],
+				this[2] * x[3] + this[5] * x[4] + this[8] * x[5],
+				this[0] * x[6] + this[3] * x[7] + this[6] * x[8],
+				this[1] * x[6] + this[4] * x[7] + this[7] * x[8],
+				this[2] * x[6] + this[5] * x[7] + this[8] * x[8]
+			]);
+		} else if (x instanceof OOGL.Vector3) {
+			return new OOGL.Vector3(
+				this[0] * x.x + this[3] * x.y + this[6] * x.z,
+				this[1] * x.x + this[4] * x.y + this[7] * x.z,
+				this[2] * x.x + this[5] * x.y + this[8] * x.z
+				);
+		} else {
 			var newArray = [];
 			for (var i = 0; i < 9; i++) {
 				newArray.push(this[i] * x);
 			}
 			return new OOGL.Matrix3(newArray);
-		} else {
-			return new OOGL.Vector3(
-				this[0] * x.x + this[1] * x.y + this[2] * x.z,
-				this[3] * x.x + this[4] * x.y + this[5] * x.z,
-				this[6] * x.x + this[7] * x.y + this[8] * x.z
-				);
 		}
 	},
 
@@ -271,8 +332,8 @@ OOGL.Matrix3.prototype = {
 	 */
 	determinant: function () {
 		return this[0] * (this[4] * this[8] - this[5] * this[7]) -
-			this[1] * (this[3] * this[8] - this[5] * this[6]) +
-			this[2] * (this[3] * this[7] - this[4] * this[6]);
+			this[3] * (this[1] * this[8] - this[2] * this[7]) +
+			this[6] * (this[1] * this[5] - this[2] * this[4]);
 	},
 
 	/**
@@ -281,13 +342,12 @@ OOGL.Matrix3.prototype = {
 	 * @method invert
 	 * @chainable
 	 * @example
-	 *	var matrix = new OOGL.Matrix3([7, 6, 1, 1, 7, 6, 6, 7, 1]);
-	 *	matrix.invert(); // matrix is now [0.5, -0.014, -0.414, -0.5, -0.014,  0.586, 0.5, 0.186, -0.614]
+	 *	TODO
 	 */
 	invert: function () {
 		var determinant = this[0] * (this[4] * this[8] - this[5] * this[7]) -
-			this[1] * (this[3] * this[8] - this[5] * this[6]) +
-			this[2] * (this[3] * this[7] - this[4] * this[6]);
+			this[3] * (this[1] * this[8] - this[2] * this[7]) +
+			this[6] * (this[1] * this[5] - this[2] * this[4]);
 		var newArray = [
 			(this[4] * this[8] - this[5] * this[7]) / determinant,
 			(this[2] * this[7] - this[1] * this[8]) / determinant,
@@ -311,13 +371,12 @@ OOGL.Matrix3.prototype = {
 	 *
 	 * @method getInverse
 	 * @example
-	 *	var m1 = new OOGL.Matrix3([7, 6, 1, 1, 7, 6, 6, 7, 1]);
-	 *	var m2 = m1.getInverse(); // [0.5, -0.014, -0.414, -0.5, -0.014,  0.586, 0.5, 0.186, -0.614]
+	 *	TODO
 	 */
 	getInverse: function () {
 		var determinant = this[0] * (this[4] * this[8] - this[5] * this[7]) -
-			this[1] * (this[3] * this[8] - this[5] * this[6]) +
-			this[2] * (this[3] * this[7] - this[4] * this[6]);
+			this[3] * (this[1] * this[8] - this[2] * this[7]) +
+			this[6] * (this[1] * this[5] - this[2] * this[4]);
 		return new OOGL.Matrix3([
 			(this[4] * this[8] - this[5] * this[7]) / determinant,
 			(this[2] * this[7] - this[1] * this[8]) / determinant,
@@ -371,13 +430,13 @@ OOGL.RotationMatrix3 = function (x, y, z, a) {
 	var c = Math.cos(a);
 	return new OOGL.Matrix3([
 		c + x * x * (1 - c),
-		y * x * (1 - c) + z * s,
-		z * x * (1 - c) - y * s,
 		x * y * (1 - c) - z * s,
-		c + y * y * (1 - c),
-		z * y * (1 - c) + x * s,
 		x * z * (1 - c) + y * s,
+		y * x * (1 - c) + z * s,
+		c + y * y * (1 - c),
 		y * z * (1 - c) - x * s,
+		z * x * (1 - c) - y * s,
+		z * y * (1 - c) + x * s,
 		c + z * z * (1 - c)
 	]);
 };

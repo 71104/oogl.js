@@ -8,7 +8,7 @@
  * @param {Number[]} data A 16-element array of the floating point values to be
  *	put into the matrix.
  *
- * Matrix elements are specified in row-major order.
+ * Matrix elements are specified in column-major order.
  *
  * The specified `data` array is duplicated into the matrix, changes to it will
  * not affect the content of the matrix.
@@ -22,7 +22,12 @@ OOGL.Matrix4 = function (data) {
 	if (data.length != 16) {
 		throw 'A 4x4 matrix must have exactly 16 elements.';
 	}
-	return data.slice(0);
+
+	// TODO documentare singoli elementi
+
+	for (var i = 0; i < 16; i++) {
+		this[i] = data[i];
+	}
 };
 
 OOGL.Matrix4.prototype = {
@@ -30,9 +35,9 @@ OOGL.Matrix4.prototype = {
 	 * Returns the element at the specified row and column in the matrix.
 	 *
 	 * Row and column indices are zero-based. This method is equivalent to
-	 * fetching the `i * 4 + j`-th element of the array:
+	 * fetching the `j * 4 + i`-th element of the array:
 	 *
-	 *	matrix.get(i, j) == matrix[i * 4 + j] // true
+	 *	matrix.get(i, j) == matrix[j * 4 + i] // true
 	 *
 	 * @method get
 	 * @param {Number} i The row index.
@@ -40,21 +45,21 @@ OOGL.Matrix4.prototype = {
 	 * @return {Number} The value at the specified row and column.
 	 * @example
 	 *	var m = new OOGL.Matrix4([1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8]);
-	 *	if (m.get(2, 3) == m[4]) { // true
+	 *	if (m.get(2, 3) == m[8]) { // true
 	 *		...
 	 */
 	get: function (i, j) {
-		return this[i * 4 + j];
+		return this[j * 4 + i];
 	},
 
 	/**
 	 * Changes the element at the specified row and column in the matrix.
 	 *
 	 * Row and column indices are zero-based. This method is equivalent to
-	 * setting the `i * 4 + j`-th element of the array:
+	 * setting the `j * 4 + i`-th element of the array:
 	 *
 	 *	matrix.put(i, j, x);
-	 *	matrix[i * 4 + j] = x; // same as previous
+	 *	matrix[j * 4 + i] = x; // same as previous
 	 *
 	 * @method put
 	 * @param {Number} i The row index.
@@ -65,7 +70,7 @@ OOGL.Matrix4.prototype = {
 	 *	matrix.put(0, 0, 3); // now matrix is [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]
 	 */
 	put: function (i, j, value) {
-		this[i * 4 + j] = value;
+		this[j * 4 + i] = value;
 		return this;
 	}
 };
@@ -84,7 +89,7 @@ OOGL.Matrix4.prototype = {
  *	var m = new OOGL.TranslationMatrix4(3, 4, 5);
  */
 OOGL.TranslationMatrix4 = function (x, y, z) {
-	return new OOGL.Matrix4([1, 0, 0, x, 0, 1, 0, y, 0, 0, 1, z, 0, 0, 0, 1]);
+	return new OOGL.Matrix4([1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, x, y, z, 1]);
 };
 
 /**
@@ -111,15 +116,15 @@ OOGL.RotationMatrix4 = function (x, y, z, a) {
 	var c = Math.cos(a);
 	return new OOGL.Matrix4([
 		c + x * x * (1 - c),
-		y * x * (1 - c) + z * s,
-		z * x * (1 - c) - y * s,
-		0,
 		x * y * (1 - c) - z * s,
-		c + y * y * (1 - c),
-		z * y * (1 - c) + x * s,
-		0,
 		x * z * (1 - c) + y * s,
+		0,
+		y * x * (1 - c) + z * s,
+		c + y * y * (1 - c),
 		y * z * (1 - c) - x * s,
+		0,
+		z * x * (1 - c) - y * s,
+		z * y * (1 - c) + x * s,
 		c + z * z * (1 - c),
 		0,
 		0,

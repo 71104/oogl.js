@@ -302,7 +302,7 @@ OOGL.Matrix2.prototype = {
 	 * @return {Number} The computed determinant.
 	 * @example
 	 *	var m = new OOGL.Matrix2([1, 2, 3, 4]);
-	 *	var d = m.determinant(); // -5
+	 *	var d = m.determinant(); // -2
 	 */
 	determinant: function () {
 		return this[0] * this[3] - this[1] * this[2];
@@ -315,7 +315,7 @@ OOGL.Matrix2.prototype = {
 	 * @chainable
 	 * @example
 	 *	var matrix = new OOGL.Matrix2([1, 2, 3, 4]);
-	 *	matrix.invert(); // matrix is now [-0.8, -0.6, -0.4, -0.2]
+	 *	matrix.invert(); // matrix is now [-0.5, -1, -1.5, -2]
 	 */
 	invert: function () {
 		var determinant = this[0] * this[3] - this[1] * this[2];
@@ -339,7 +339,7 @@ OOGL.Matrix2.prototype = {
 	 * @return {OOGL.Matrix2} The inverse matrix.
 	 * @example
 	 *	var m1 = new OOGL.Matrix2([1, 2, 3, 4]);
-	 *	var m2 = m1.getInverse(); // [-0.8, -0.6, -0.4, -0.2]
+	 *	var m2 = m1.getInverse(); // [-0.5, -1, -1.5, -2]
 	 */
 	getInverse: function () {
 		var determinant = this[0] * this[3] - this[1] * this[2];
