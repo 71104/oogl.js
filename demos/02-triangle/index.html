@@ -14,7 +14,7 @@ OOGL(function () {
 		alpha: false
 	});
 	var arrays = new oogl.AttributeArrays(3);
-	arrays.add2(0, 'float', [-1, 1, -1, -1, 1, -1]);
+	arrays.add2('float', [-1, 1, -1, -1, 1, -1]);
 	new OOGL.AjaxProgram('triangle', ['in_Vertex'], function () {
 		this.use();
 		arrays.drawTriangles();
