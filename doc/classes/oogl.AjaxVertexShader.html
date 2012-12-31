@@ -214,8 +214,11 @@ _gaq.push(['_trackPageview']);
     <p>A vertex shader which tries to load its GLSL source code using AJAX.</p>
 
 <p>The <code>AjaxVertexShader</code> constructor also tries to compile the shader using the
-provided <code>compileOrThrow</code> method. After the source code has been loaded and
-compiled successfully the specified callback function is invoked.</p>
+provided <code>compileOrThrow</code> method.</p>
+
+<p>After the source code has been loaded and compiled successfully the specified
+<code>callback</code> function is invoked using this <code>AjaxVertexShader</code> object as
+<code>this</code>.</p>
 </div>
 
 

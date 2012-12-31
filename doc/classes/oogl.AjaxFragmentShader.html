@@ -199,7 +199,7 @@ _gaq.push(['_trackPageview']);
 
     
         <div class="foundat">
-            Defined in: <a href="..&#x2F;files&#x2F;src_Shaders.js.html#l253"><code>src\Shaders.js:253</code></a>
+            Defined in: <a href="..&#x2F;files&#x2F;src_Shaders.js.html#l256"><code>src\Shaders.js:256</code></a>
         </div>
     
 
@@ -214,8 +214,11 @@ _gaq.push(['_trackPageview']);
     <p>A fragment shader which tries to load its GLSL source code using AJAX.</p>
 
 <p>The <code>AjaxFragmentShader</code> constructor also tries to compile the shader using
-the provided <code>compileOrThrow</code> method. After the source code has been loaded
-and compiled successfully the specified callback function is invoked.</p>
+the provided <code>compileOrThrow</code> method.</p>
+
+<p>After the source code has been loaded and compiled successfully the specified
+callback function is invoked using this <code>AjaxFragmentShader</code> object as
+<code>this</code>.</p>
 </div>
 
 
@@ -269,7 +272,7 @@ and compiled successfully the specified callback function is invoked.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Shaders.js.html#l253"><code>src\Shaders.js:253</code></a>
+        <a href="..&#x2F;files&#x2F;src_Shaders.js.html#l256"><code>src\Shaders.js:256</code></a>
         
         </p>
 
