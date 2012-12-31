@@ -16,6 +16,6 @@ void main() {
 		0, 1, 0, 0,
 		sin(Angle), 0, cos(Angle), 0,
 		0, 0, 0, 1
-	) * vec4(in_Vertex, 0, 2);
+	) * vec4(in_Vertex, 2, 1);
 	ex_Color = in_Color;
 }
