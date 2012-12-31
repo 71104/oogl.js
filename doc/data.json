@@ -1113,24 +1113,24 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "src\\Programs.js",
-            "line": 676,
-            "description": "TODO",
+            "line": 725,
+            "description": "A `Program` that automatically compiles and links using a pair of GLSL shader\nsources. The info log is thrown if the program fails to compile or link.\n\nBefore linking, the `AutoProgram` constructor also binds a specified set of\nattribute variables to their respective indices using `bindAttribLocation`.",
             "extends": "oogl.Program",
             "is_constructor": 1,
             "params": [
                 {
                     "name": "vertexSource",
-                    "description": "TODO",
+                    "description": "The GLSL source code for the vertex shader.",
                     "type": "String"
                 },
                 {
                     "name": "fragmentSource",
-                    "description": "TODO",
+                    "description": "The GLSL source code for the fragment shader.",
                     "type": "String"
                 },
                 {
                     "name": "attributes",
-                    "description": "TODO",
+                    "description": "An array of attribute variable names that are\n\tautomatically bound to their respective indices in the array before linking.",
                     "type": "String[]"
                 }
             ],
@@ -1147,24 +1147,24 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "src\\Programs.js",
-            "line": 698,
-            "description": "TODO",
+            "line": 780,
+            "description": "A `Program` that loads the sources of a pair of shaders via AJAX and\nautomatically tries to compile and link; the info log is thrown if the\nprogram fails to compile or link.\n\nThe URLs to the GLSL shader sources are specified as a single path without\nfile name extension; the `.vert` and `.frag` extensions are automatically\nappended to it.\n\nBefore linking, the `AjaxProgram` constructor also binds a specified set of\nattribute variables to their respective indices using `bindAttribLocation`.",
             "extends": "oogl.Program",
             "is_constructor": 1,
             "params": [
                 {
                     "name": "name",
-                    "description": "TODO",
+                    "description": "The URL to the shader sources excluding the file name\n\textension, which is automatically appended.",
                     "type": "String"
                 },
                 {
                     "name": "attributes",
-                    "description": "TODO",
+                    "description": "An array of attribute variable names that are\n\tautomatically bound to their respective indices in the array before linking.",
                     "type": "String[]"
                 },
                 {
                     "name": "callback",
-                    "description": "TODO",
+                    "description": "A user-defined callback function that is called\n\tafter the program has been successfully compiled and linked.",
                     "type": "Function"
                 }
             ],
@@ -3501,18 +3501,18 @@
         {
             "file": "src\\Programs.js",
             "line": 279,
-            "description": "TODO",
+            "description": "Returns information about the `index`-th active attribute array.\n\n`gl.getActiveAttrib` equivalent.",
             "itemtype": "method",
             "name": "getActiveAttrib",
             "params": [
                 {
                     "name": "index",
-                    "description": "TODO",
+                    "description": "The index of the attribute array.",
                     "type": "Number"
                 }
             ],
             "return": {
-                "description": "TODO",
+                "description": "The requested information.",
                 "type": "WebGLActiveInfo"
             },
             "example": [
@@ -3522,19 +3522,34 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 292,
-            "description": "TODO",
+            "line": 294,
+            "description": "Returns the number of active attribute variables.\n\nEquivalent to calling `gl.getProgramParameter` with `gl.ACTIVE_ATTRIBUTES`.",
+            "itemtype": "method",
+            "name": "getNumberOfActiveAttributes",
+            "return": {
+                "description": "The number of actie attribute variables.",
+                "type": "Number"
+            },
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "oogl.Program"
+        },
+        {
+            "file": "src\\Programs.js",
+            "line": 308,
+            "description": "Returns information about the `index`-th active uniform variable.\n\n`gl.getActiveUniform` equivalent.",
             "itemtype": "method",
             "name": "getActiveUniform",
             "params": [
                 {
                     "name": "index",
-                    "description": "TODO",
+                    "description": "The index of the uniform variable.",
                     "type": "Number"
                 }
             ],
             "return": {
-                "description": "TODO",
+                "description": "The requested information.",
                 "type": "WebGLActiveInfo"
             },
             "example": [
@@ -3544,7 +3559,22 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 305,
+            "line": 323,
+            "description": "Returns the number of active uniform variables.\n\nEquivalent to calling `gl.getProgramParameter` with `gl.ACTIVE_UNIFORMS`.",
+            "itemtype": "method",
+            "name": "getNumberOfActiveUniforms",
+            "return": {
+                "description": "The number of actie uniform variables.",
+                "type": "Number"
+            },
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "oogl.Program"
+        },
+        {
+            "file": "src\\Programs.js",
+            "line": 337,
             "description": "TODO",
             "itemtype": "method",
             "name": "getAttribLocation",
@@ -3566,7 +3596,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 318,
+            "line": 350,
             "description": "TODO",
             "itemtype": "method",
             "name": "getUniform",
@@ -3588,7 +3618,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 340,
+            "line": 372,
             "description": "TODO",
             "itemtype": "method",
             "name": "getUniformLocation",
@@ -3610,7 +3640,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 351,
+            "line": 383,
             "description": "Specifies the value for a `float` uniform variable.\n\n`gl.uniform1f` equivalent.\n\n`Program` objects have an internal location cache used by `uniform`\nmethods to set uniform variables without retrieving their location each\ntime. The cache is invalidated every time the program is relinked using\nthe provided `link` method.",
             "itemtype": "method",
             "name": "uniform1f",
@@ -3633,7 +3663,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 371,
+            "line": 403,
             "description": "Specifies the value for a `vec2` uniform variable.\n\n`gl.uniform2f` equivalent.\n\n`Program` objects have an internal location cache used by `uniform`\nmethods to set uniform variables without retrieving their location each\ntime. The cache is invalidated every time the program is relinked using\nthe provided `link` method.",
             "itemtype": "method",
             "name": "uniform2f",
@@ -3661,7 +3691,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 392,
+            "line": 424,
             "description": "Specifies the value for a `vec3` uniform variable.\n\n`gl.uniform3f` equivalent.\n\n`Program` objects have an internal location cache used by `uniform`\nmethods to set uniform variables without retrieving their location each\ntime. The cache is invalidated every time the program is relinked using\nthe provided `link` method.",
             "itemtype": "method",
             "name": "uniform3f",
@@ -3694,7 +3724,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 415,
+            "line": 447,
             "description": "Specifies the value for a `vec4` uniform variable.\n\n`gl.uniform4f` equivalent.\n\n`Program` objects have an internal location cache used by `uniform`\nmethods to set uniform variables without retrieving their location each\ntime. The cache is invalidated every time the program is relinked using\nthe provided `link` method.",
             "itemtype": "method",
             "name": "uniform4f",
@@ -3732,7 +3762,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 438,
+            "line": 470,
             "description": "Specifies the value for a `float` uniform variable as an array.\n\n`gl.uniform1fv` equivalent.\n\n`Program` objects have an internal location cache used by `uniform`\nmethods to set uniform variables without retrieving their location each\ntime. The cache is invalidated every time the program is relinked using\nthe provided `link` method.",
             "itemtype": "method",
             "name": "uniform1fv",
@@ -3755,7 +3785,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 458,
+            "line": 490,
             "description": "Specifies the value for a `vec2` uniform variable as an array.\n\n`gl.uniform2fv` equivalent.\n\n`Program` objects have an internal location cache used by `uniform`\nmethods to set uniform variables without retrieving their location each\ntime. The cache is invalidated every time the program is relinked using\nthe provided `link` method.",
             "itemtype": "method",
             "name": "uniform2fv",
@@ -3778,7 +3808,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 478,
+            "line": 510,
             "description": "Specifies the value for a `vec3` uniform variable as an array.\n\n`gl.uniform3fv` equivalent.\n\n`Program` objects have an internal location cache used by `uniform`\nmethods to set uniform variables without retrieving their location each\ntime. The cache is invalidated every time the program is relinked using\nthe provided `link` method.",
             "itemtype": "method",
             "name": "uniform3fv",
@@ -3801,7 +3831,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 498,
+            "line": 530,
             "description": "Specifies the value for a `vec4` uniform variable as an array.\n\n`gl.uniform4fv` equivalent.\n\n`Program` objects have an internal location cache used by `uniform`\nmethods to set uniform variables without retrieving their location each\ntime. The cache is invalidated every time the program is relinked using\nthe provided `link` method.",
             "itemtype": "method",
             "name": "uniform4fv",
@@ -3824,7 +3854,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 518,
+            "line": 550,
             "description": "Specifies the value for an integer or boolean uniform variable.\n\n`gl.uniform1i` equivalent.\n\n`Program` objects have an internal location cache used by `uniform`\nmethods to set uniform variables without retrieving their location each\ntime. The cache is invalidated every time the program is relinked using\nthe provided `link` method.",
             "itemtype": "method",
             "name": "uniform1i",
@@ -3847,7 +3877,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 538,
+            "line": 570,
             "description": "Specifies the value for an `ivec2` or `bvec2` uniform variable.\n\n`gl.uniform2i` equivalent.\n\n`Program` objects have an internal location cache used by `uniform`\nmethods to set uniform variables without retrieving their location each\ntime. The cache is invalidated every time the program is relinked using\nthe provided `link` method.",
             "itemtype": "method",
             "name": "uniform2i",
@@ -3875,7 +3905,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 559,
+            "line": 591,
             "description": "Specifies the value for an `ivec3` or `bvec3` uniform variable.\n\n`gl.uniform3i` equivalent.\n\n`Program` objects have an internal location cache used by `uniform`\nmethods to set uniform variables without retrieving their location each\ntime. The cache is invalidated every time the program is relinked using\nthe provided `link` method.",
             "itemtype": "method",
             "name": "uniform3i",
@@ -3908,7 +3938,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 581,
+            "line": 613,
             "description": "Specifies the value for an `ivec4` or `bvec4` uniform variable.\n\n`gl.uniform4i` equivalent.\n\n`Program` objects have an internal location cache used by `uniform`\nmethods to set uniform variables without retrieving their location each\ntime. The cache is invalidated every time the program is relinked using\nthe provided `link` method.",
             "itemtype": "method",
             "name": "uniform4i",
@@ -3946,7 +3976,30 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 644,
+            "line": 636,
+            "description": "Specifies the value for an integer or boolean uniform variable as an\narray.\n\n`gl.uniform1iv` equivalent.\n\n`Program` objects have an internal location cache used by `uniform`\nmethods to set uniform variables without retrieving their location each\ntime. The cache is invalidated every time the program is relinked using\nthe provided `link` method.",
+            "itemtype": "method",
+            "name": "uniform1iv",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "The name of the uniform variable.",
+                    "type": "String"
+                },
+                {
+                    "name": "values",
+                    "description": "An array containing the new value.",
+                    "type": "Number[]"
+                }
+            ],
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "oogl.Program"
+        },
+        {
+            "file": "src\\Programs.js",
+            "line": 693,
             "description": "Deletes this program.\n\n`gl.deleteProgram` equivalent.",
             "itemtype": "method",
             "name": "_delete",
@@ -3957,7 +4010,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 657,
+            "line": 706,
             "description": "Returns the delete status of this program.\n\nEquivalent to calling `gl.getProgramParameter` with `gl.DELETE_STATUS`.",
             "itemtype": "method",
             "name": "getDeleteStatus",
@@ -3969,6 +4022,66 @@
                 "\n\tif (program.getDeleteStatus()) {\n\t\t// the program has been deleted\n\t}"
             ],
             "class": "oogl.Program"
+        },
+        {
+            "file": "src\\Programs.js",
+            "line": 747,
+            "description": "Returns the vertex shader automatically generated by the constructor.",
+            "itemtype": "method",
+            "name": "getVertexShader",
+            "return": {
+                "description": "The vertex shader.",
+                "type": "oogl.VertexShader"
+            },
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "oogl.AutoProgram"
+        },
+        {
+            "file": "src\\Programs.js",
+            "line": 759,
+            "description": "Returns the fragment shader automatically generated by the constructor.",
+            "itemtype": "method",
+            "name": "getFragmentShader",
+            "return": {
+                "description": "The fragment shader.",
+                "type": "oogl.FragmentShader"
+            },
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "oogl.AutoProgram"
+        },
+        {
+            "file": "src\\Programs.js",
+            "line": 821,
+            "description": "Returns the vertex shader automatically generated by the\nconstructor.",
+            "itemtype": "method",
+            "name": "getVertexShader",
+            "return": {
+                "description": "The vertex shader.",
+                "type": "oogl.VertexShader"
+            },
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "oogl.AjaxProgram"
+        },
+        {
+            "file": "src\\Programs.js",
+            "line": 834,
+            "description": "Returns the fragment shader automatically generated by the\nconstructor.",
+            "itemtype": "method",
+            "name": "getFragmentShader",
+            "return": {
+                "description": "The fragment shader.",
+                "type": "oogl.FragmentShader"
+            },
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "oogl.AjaxProgram"
         },
         {
             "file": "src\\RenderLoop.js",
