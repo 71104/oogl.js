@@ -4,7 +4,7 @@
 <title>oogl.js Test 01</title>
 <script type="text/javascript" src="../oogl-1.0.0.min.js"></script>
 </head>
-<body>
+<body style="text-align:center">
 	<canvas id="canvas" width="800" height="600">
 		<p>Sorry, no browser support. See <a href="http://get.webgl.org/">here</a> please.</p>
 	</canvas>
@@ -15,6 +15,7 @@ OOGL(function () {
 	});
 	var arrays = new oogl.AttributeArrays(3);
 	arrays.add2('float', [-1, 1, -1, -1, 1, -1]);
+	arrays.bindAndPointer();
 	new oogl.AjaxProgram('triangle', ['in_Vertex'], function () {
 		this.use();
 		arrays.drawTriangles();
