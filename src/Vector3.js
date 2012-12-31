@@ -39,6 +39,18 @@ OOGL.Vector3 = function (x, y, z) {
 
 OOGL.Vector3.prototype = {
 	/**
+	 * Clones this vector and returns the new one.
+	 *
+	 * @method clone
+	 * @return {OOGL.Vector3} The new vector.
+	 * @example
+	 *	var position = OOGL.Vector3.NULL.clone();
+	 */
+	clone: function () {
+		return new OOGL.Vector3(this.x, this.y, this.z);
+	},
+
+	/**
 	 * Returns this vector as an array of three elements.
 	 *
 	 * @method toArray

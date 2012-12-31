@@ -49,6 +49,18 @@ OOGL.Vector4 = function (x, y, z, w) {
 
 OOGL.Vector4.prototype = {
 	/**
+	 * Clones this vector and returns the new one.
+	 *
+	 * @method clone
+	 * @return {OOGL.Vector4} The new vector.
+	 * @example
+	 *	var w = v.clone();
+	 */
+	clone: function () {
+		return new OOGL.Vector4(this.x, this.y, this.z, this.w);
+	},
+
+	/**
 	 * Returns this vector as an array of four elements.
 	 *
 	 * @method toArray

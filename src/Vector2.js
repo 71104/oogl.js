@@ -30,6 +30,18 @@ OOGL.Vector2 = function (x, y) {
 
 OOGL.Vector2.prototype = {
 	/**
+	 * Clones this vector and returns the new one.
+	 *
+	 * @method clone
+	 * @return {OOGL.Vector2} The new vector.
+	 * @example
+	 *	var position = OOGL.Vector2.NULL.clone();
+	 */
+	clone: function () {
+		return new OOGL.Vector2(this.x, this.y);
+	},
+
+	/**
 	 * Returns this vector as an array of two elements.
 	 *
 	 * @method toArray
@@ -323,6 +335,8 @@ OOGL.Vector2.prototype = {
  * @property NULL
  * @static
  * @type OOGL.Vector2
+ * @example
+ *	var position = OOGL.Vector2.NULL.clone();
  */
 OOGL.Vector2.NULL = new OOGL.Vector2(0, 0);
 
@@ -332,6 +346,8 @@ OOGL.Vector2.NULL = new OOGL.Vector2(0, 0);
  * @property I
  * @static
  * @type OOGL.Vector2
+ * @example
+ *	TODO
  */
 OOGL.Vector2.I = new OOGL.Vector2(1, 0);
 
@@ -341,5 +357,7 @@ OOGL.Vector2.I = new OOGL.Vector2(1, 0);
  * @property J
  * @static
  * @type OOGL.Vector2
+ * @example
+ *	TODO
  */
 OOGL.Vector2.J = new OOGL.Vector2(0, 1);
