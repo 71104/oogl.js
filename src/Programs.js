@@ -789,6 +789,9 @@ context.AutoProgram = function (vertexSource, fragmentSource, attributes) {
  * Before linking, the `AjaxProgram` constructor also binds a specified set of
  * attribute variables to their respective indices using `bindAttribLocation`.
  *
+ * If the program is compiled and linked successfully, the specified `callback`
+ * function is invoked using this `AjaxProgram` object as `this`.
+ *
  * @class oogl.AjaxProgram
  * @extends oogl.Program
  * @constructor
@@ -846,7 +849,7 @@ context.AjaxProgram = function (name, attributes, callback) {
 
 			program.bindAttribLocations(attributes);
 			program.linkOrThrow();
-			callback && callback();
+			callback && callback.call(program);
 		});
 	});
 	return program;

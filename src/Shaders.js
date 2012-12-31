@@ -226,8 +226,11 @@ context.FragmentShader = function (source) {
  * A vertex shader which tries to load its GLSL source code using AJAX.
  *
  * The `AjaxVertexShader` constructor also tries to compile the shader using the
- * provided `compileOrThrow` method. After the source code has been loaded and
- * compiled successfully the specified callback function is invoked.
+ * provided `compileOrThrow` method.
+ *
+ * After the source code has been loaded and compiled successfully the specified
+ * `callback` function is invoked using this `AjaxVertexShader` object as
+ * `this`.
  *
  * @class oogl.AjaxVertexShader
  * @extends oogl.Shader
@@ -245,7 +248,7 @@ context.AjaxVertexShader = function (url, callback) {
 	OOGL.Ajax.get(url, function (source) {
 		shader.source(source);
 		shader.compileOrThrow();
-		callback && callback();
+		callback && callback.call(shader);
 	});
 	return shader;
 };
@@ -254,8 +257,11 @@ context.AjaxVertexShader = function (url, callback) {
  * A fragment shader which tries to load its GLSL source code using AJAX.
  *
  * The `AjaxFragmentShader` constructor also tries to compile the shader using
- * the provided `compileOrThrow` method. After the source code has been loaded
- * and compiled successfully the specified callback function is invoked.
+ * the provided `compileOrThrow` method.
+ *
+ * After the source code has been loaded and compiled successfully the specified
+ * callback function is invoked using this `AjaxFragmentShader` object as
+ * `this`.
  *
  * @class oogl.AjaxFragmentShader
  * @extends oogl.Shader
@@ -273,7 +279,7 @@ context.AjaxFragmentShader = function (url, callback) {
 	OOGL.Ajax.get(url, function (source) {
 		shader.source(source);
 		shader.compileOrThrow();
-		callback && callback();
+		callback && callback.call(shader);
 	});
 	return shader;
 };

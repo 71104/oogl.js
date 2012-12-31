@@ -5,7 +5,9 @@
 
 var OOGL = function (callback) {
 	if (typeof callback === 'function') {
-		document.addEventListener('DOMContentLoaded', callback, false);
+		document.addEventListener('DOMContentLoaded', function () {
+			callback.call(OOGL, OOGL);
+		}, false);
 	}
 };
 
@@ -3666,8 +3668,11 @@ context.FragmentShader = function (source) {
  * A vertex shader which tries to load its GLSL source code using AJAX.
  *
  * The `AjaxVertexShader` constructor also tries to compile the shader using the
- * provided `compileOrThrow` method. After the source code has been loaded and
- * compiled successfully the specified callback function is invoked.
+ * provided `compileOrThrow` method.
+ *
+ * After the source code has been loaded and compiled successfully the specified
+ * `callback` function is invoked using this `AjaxVertexShader` object as
+ * `this`.
  *
  * @class oogl.AjaxVertexShader
  * @extends oogl.Shader
@@ -3685,7 +3690,7 @@ context.AjaxVertexShader = function (url, callback) {
 	OOGL.Ajax.get(url, function (source) {
 		shader.source(source);
 		shader.compileOrThrow();
-		callback && callback();
+		callback && callback.call(shader);
 	});
 	return shader;
 };
@@ -3694,8 +3699,11 @@ context.AjaxVertexShader = function (url, callback) {
  * A fragment shader which tries to load its GLSL source code using AJAX.
  *
  * The `AjaxFragmentShader` constructor also tries to compile the shader using
- * the provided `compileOrThrow` method. After the source code has been loaded
- * and compiled successfully the specified callback function is invoked.
+ * the provided `compileOrThrow` method.
+ *
+ * After the source code has been loaded and compiled successfully the specified
+ * callback function is invoked using this `AjaxFragmentShader` object as
+ * `this`.
  *
  * @class oogl.AjaxFragmentShader
  * @extends oogl.Shader
@@ -3713,7 +3721,7 @@ context.AjaxFragmentShader = function (url, callback) {
 	OOGL.Ajax.get(url, function (source) {
 		shader.source(source);
 		shader.compileOrThrow();
-		callback && callback();
+		callback && callback.call(shader);
 	});
 	return shader;
 };
@@ -4509,6 +4517,9 @@ context.AutoProgram = function (vertexSource, fragmentSource, attributes) {
  * Before linking, the `AjaxProgram` constructor also binds a specified set of
  * attribute variables to their respective indices using `bindAttribLocation`.
  *
+ * If the program is compiled and linked successfully, the specified `callback`
+ * function is invoked using this `AjaxProgram` object as `this`.
+ *
  * @class oogl.AjaxProgram
  * @extends oogl.Program
  * @constructor
@@ -4566,7 +4577,7 @@ context.AjaxProgram = function (name, attributes, callback) {
 
 			program.bindAttribLocations(attributes);
 			program.linkOrThrow();
-			callback && callback();
+			callback && callback.call(program);
 		});
 	});
 	return program;
@@ -5037,7 +5048,8 @@ OOGL.RenderLoop = (function () {
 			};
 
 			/**
-			 * The period of this loop, in milliseconds. It is computed using the formula:
+			 * The period of this loop, in milliseconds. It is computed using
+			 * the formula:
 			 *
 			 *	period = Math.floor(1000 / rate);
 			 *

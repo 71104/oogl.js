@@ -135,7 +135,8 @@ OOGL.RenderLoop = (function () {
 			};
 
 			/**
-			 * The period of this loop, in milliseconds. It is computed using the formula:
+			 * The period of this loop, in milliseconds. It is computed using
+			 * the formula:
 			 *
 			 *	period = Math.floor(1000 / rate);
 			 *
