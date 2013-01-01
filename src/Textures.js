@@ -65,12 +65,12 @@ context.Texture = function (target) {
 	};
 
 	/**
-	 * Queries the "min filter" parameter of this texture.
+	 * Queries the minifying filter setting for this texture.
 	 *
 	 * Equivalent to calling `gl.getTexParameter` with `gl.TEXTURE_MIN_FILTER`.
 	 *
 	 * @method getMinFilter
-	 * @return {Number} The "min filter" parameter; one of `gl.NEAREST`,
+	 * @return {Number} The minifying filter setting; one of `gl.NEAREST`,
 	 *	`gl.LINEAR`, `gl.NEAREST_MIPMAP_NEAREST`, `gl.LINEAR_MIPMAP_NEAREST`,
 	 *	`gl.NEAREST_MIPMAP_LINEAR` or `gl.LINEAR_MIPMAP_LINEAR`.
 	 * @example
@@ -81,12 +81,12 @@ context.Texture = function (target) {
 	};
 
 	/**
-	 * Queries the "mag filter" parameter of this texture.
+	 * Queries the magnifying filter setting for this texture.
 	 *
 	 * Equivalent to calling `gl.getTexParameter` with `gl.TEXTURE_MAG_FILTER`.
 	 *
 	 * @method getMagFilter
-	 * @return {Number} The "mag filter" parameter; one of `gl.NEAREST`,
+	 * @return {Number} The magnifying filter setting; one of `gl.NEAREST`,
 	 *	`gl.LINEAR`.
 	 * @example
 	 *	var magFilter = texture.getMagFilter();
@@ -127,26 +127,28 @@ context.Texture = function (target) {
 	};
 
 	/**
-	 * TODO
+	 * Sets the specified floating point parameter for this texture.
+	 *
+	 * `gl.texParameterf` equivalent.
 	 *
 	 * @method parameterf
-	 * @param {Number} name TODO
-	 * @param {Number} value TODO
-	 * @example
-	 *	TODO
+	 * @param {Number} name The parameter's name.
+	 * @param {Number} value The new value.
 	 */
 	texture.parameterf = function (name, value) {
 		context.texParameterf(target, name, value);
 	};
 
 	/**
-	 * TODO
+	 * Sets the specified integer parameter for this texture.
+	 *
+	 * `gl.texParameteri` equivalent.
 	 *
 	 * @method parameteri
-	 * @param {Number} name TODO
-	 * @param {Number} value TODO
+	 * @param {Number} name The parameter's name.
+	 * @param {Number} value The new value.
 	 * @example
-	 *	TODO
+	 *	texture.parameteri(oogl.TEXTURE_MAG_FILTER, oogl.LINEAR);
 	 */
 	texture.parameteri = function (name, value) {
 		context.texParameteri(target, name, value);
@@ -220,7 +222,7 @@ context.Texture = function (target) {
 	 *
 	 * @method generateMipmap
 	 * @example
-	 *	TODO
+	 *	texture.generateMipmap();
 	 */
 	texture.generateMipmap = function () {
 		context.generateMipmap(target);
@@ -254,8 +256,8 @@ context.Texture = function (target) {
 	 * @example
 	 *	TODO
 	 */
-	texture.subImage2D = function () {
-		// TODO
+	texture.subImage2D = function (level, xoffset, yoffset, format, type, object) {
+		context.texSubImage2D(target, level, xoffset, yoffset, format, type, object);
 	};
 
 	/**
@@ -275,7 +277,7 @@ context.Texture = function (target) {
 	 *	TODO
 	 */
 	texture.copyImage2D = function (level, internalFormat, x, y, width, height, border) {
-		context.copyTexImage2D(target, level, internalFormat, x, y, width, height, border || 0);
+		context.copyTexImage2D(target, level, internalFormat, x, y, width, height, border);
 	};
 
 	/**
