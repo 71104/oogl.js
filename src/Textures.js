@@ -244,18 +244,60 @@ context.Texture = function (target) {
 };
 
 /**
- * A texture whose type is `gl.TEXTURE_2D`.
- *
- * TODO
+ * A texture whose target is `gl.TEXTURE_2D`.
  *
  * @class oogl.Texture2D
  * @extends oogl.Texture
  * @constructor
  * @example
- *	TODO
+ *	var texture = new oogl.Texture2D();
+ *	texture.bind();
+ *	texture.setMagFilter(oogl.LINEAR);
+ *	texture.setMinFilter(oogl.LINEAR);
+ *	TODO image2d
  */
 context.Texture2D = function () {
 	return new context.Texture(context.TEXTURE_2D);
+};
+
+/**
+ * Creates a texture from a DOM image, canvas or video element.
+ *
+ * The `ImageTexture` constructor automatically binds the texture to the
+ * `gl.TEXTURE_2D` target, sets minifying and magnifying filters and passes the
+ * image to `gl.texImage2d`.
+ *
+ * @class oogl.ImageTexture
+ * @extends oogl.Texture2D
+ * @constructor
+ * @param {Mixed} object A DOM image, canvas or video element to use as the
+ *	texture image.
+ * @param {Number} [minFilter=gl.LINEAR] An optional value for the minifying
+ *	filter.
+ * @param {Number} [magFilter=gl.LINEAR] An optional value for the magnifying
+ *	filter.
+ * @example
+ *	var arrays = new oogl.AttributeArrays(vertices.length);
+ *	// ...
+ *	var texture = new oogl.ImageTexture(image);
+ *	arrays.drawTriangles();
+ *	oogl.flush();
+ */
+context.AutoTexture = function (object, magFilter, minFilter) {
+	var texture = new context.Texture2D();
+	texture.bind();
+	if (arguments.length > 1) {
+		texture.setMagFilter(magFilter);
+		if (argument.length > 2) {
+			texture.setMinFilter(minFilter);
+		} else {
+			texture.setMinFilter(context.LINEAR);
+		}
+	} else {
+		texture.setMagFilter(context.LINEAR);
+	}
+	// TODO image2d
+	return texture;
 };
 
 /**
