@@ -94,6 +94,8 @@ _gaq.push(['_trackPageview']);
             
                 <li><a href="..&#x2F;classes/oogl.Framebuffer.html">oogl.Framebuffer</a></li>
             
+                <li><a href="..&#x2F;classes/oogl.ImageTexture.html">oogl.ImageTexture</a></li>
+            
                 <li><a href="..&#x2F;classes/OOGL.Matrix2.html">OOGL.Matrix2</a></li>
             
                 <li><a href="..&#x2F;classes/OOGL.Matrix3.html">OOGL.Matrix3</a></li>
@@ -467,6 +469,23 @@ context.Program = function () {
 	 *&#x2F;
 	program.getValidateStatus = function () {
 		return context.getProgramParameter(program, context.VALIDATE_STATUS);
+	};
+
+	&#x2F;**
+	 * Validates the program and throws an exception if the validation fails.
+	 *
+	 * Equivalent to calling &#x60;gl.validateProgram&#x60; and &#x60;gl.getProgramParameter&#x60;
+	 * with &#x60;gl.VALIDATE_STATUS&#x60; subsequently.
+	 *
+	 * @method validateOrThrow
+	 * @example
+	 *	program.validateOrThrow();
+	 *&#x2F;
+	program.validateOrThrow = function () {
+		context.validateProgram(program);
+		if (!context.getProgramParameter(program, context.VALIDATE_STATUS)) {
+			throw &#x27;program validation failed.&#x27;;
+		}
 	};
 
 	&#x2F;**

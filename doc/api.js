@@ -36,6 +36,7 @@ YUI.add("yuidoc-meta", function(Y) {
         "oogl.ElementArrayBuffer",
         "oogl.FragmentShader",
         "oogl.Framebuffer",
+        "oogl.ImageTexture",
         "oogl.Program",
         "oogl.Renderbuffer",
         "oogl.Shader",

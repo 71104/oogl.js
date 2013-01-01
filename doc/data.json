@@ -149,6 +149,7 @@
             "classes": {
                 "oogl.Texture": 1,
                 "oogl.Texture2D": 1,
+                "oogl.ImageTexture": 1,
                 "oogl.CubeMap": 1,
                 "oogl.Textures": 1
             },
@@ -1113,7 +1114,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "src\\Programs.js",
-            "line": 725,
+            "line": 742,
             "description": "A `Program` that automatically compiles and links using a pair of GLSL shader\nsources. The info log is thrown if the program fails to compile or link.\n\nBefore linking, the `AutoProgram` constructor also binds a specified set of\nattribute variables to their respective indices using `bindAttribLocation`.",
             "extends": "oogl.Program",
             "is_constructor": 1,
@@ -1147,7 +1148,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "src\\Programs.js",
-            "line": 780,
+            "line": 797,
             "description": "A `Program` that loads the sources of a pair of shaders via AJAX and\nautomatically tries to compile and link; the info log is thrown if the\nprogram fails to compile or link.\n\nThe URLs to the GLSL shader sources are specified as a single path without\nfile name extension; the `.vert` and `.frag` extensions are automatically\nappended to it.\n\nBefore linking, the `AjaxProgram` constructor also binds a specified set of\nattribute variables to their respective indices using `bindAttribLocation`.\n\nIf the program is compiled and linked successfully, the specified `callback`\nfunction is invoked using this `AjaxProgram` object as `this`.",
             "extends": "oogl.Program",
             "is_constructor": 1,
@@ -1378,12 +1379,50 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "src\\Textures.js",
-            "line": 246,
-            "description": "A texture whose type is `gl.TEXTURE_2D`.\n\nTODO",
+            "line": 317,
+            "description": "A texture whose target is `gl.TEXTURE_2D`.",
             "extends": "oogl.Texture",
             "is_constructor": 1,
             "example": [
-                "\n\tTODO"
+                "\n\tvar texture = new oogl.Texture2D();\n\ttexture.bind();\n\ttexture.setMagFilter(oogl.LINEAR);\n\ttexture.setMinFilter(oogl.LINEAR);\n\ttexture.image2D(0, oogl.RGBA, oogl.UNSIGNED_BYTE, image);"
+            ]
+        },
+        "oogl.ImageTexture": {
+            "name": "oogl.ImageTexture",
+            "shortname": "oogl.ImageTexture",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src\\Textures.js",
+            "line": 334,
+            "description": "Creates a texture from a DOM image, canvas or video element.\n\nThe `ImageTexture` constructor automatically binds the texture to the\n`gl.TEXTURE_2D` target, sets minifying and magnifying filters and passes the\nimage to `gl.texImage2D`.",
+            "extends": "oogl.Texture2D",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "object",
+                    "description": "A DOM image, canvas or video element to use as the\n\ttexture image.",
+                    "type": "Mixed"
+                },
+                {
+                    "name": "magFilter",
+                    "description": "An optional value for the magnifying\n\tfilter.",
+                    "type": "Number",
+                    "optional": true,
+                    "optdefault": "gl.LINEAR"
+                },
+                {
+                    "name": "minFilter",
+                    "description": "An optional value for the minifying\n\tfilter.",
+                    "type": "Number",
+                    "optional": true,
+                    "optdefault": "gl.LINEAR"
+                }
+            ],
+            "example": [
+                "\n\tvar arrays = new oogl.AttributeArrays(vertices.length);\n\t// add arrays here\n\tvar texture = new oogl.ImageTexture(image);\n\tarrays.drawTriangles();\n\toogl.flush();"
             ]
         },
         "oogl.CubeMap": {
@@ -1395,7 +1434,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "src\\Textures.js",
-            "line": 261,
+            "line": 374,
             "description": "A texture whose type is `gl.TEXTURE_CUBE_MAP`.\n\nTODO",
             "extends": "oogl.Texture",
             "is_constructor": 1,
@@ -1412,7 +1451,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "src\\Textures.js",
-            "line": 276,
+            "line": 389,
             "description": "A utility class that aids in the management of multiple textures.\n\nOne `Textures` objects represents a set of textures that must be\nsimultaneously bound (to different texture units) for use by the same\nprogram. The `Textures` object automatically assigns textures to texture\nunits.\n\nA `Texture` object may also belong to several `Textures` sets at the same\ntime, so that it can be used by several programs.",
             "is_constructor": 1,
             "params": [
@@ -3501,6 +3540,17 @@
         {
             "file": "src\\Programs.js",
             "line": 279,
+            "description": "Validates the program and throws an exception if the validation fails.\n\nEquivalent to calling `gl.validateProgram` and `gl.getProgramParameter`\nwith `gl.VALIDATE_STATUS` subsequently.",
+            "itemtype": "method",
+            "name": "validateOrThrow",
+            "example": [
+                "\n\tprogram.validateOrThrow();"
+            ],
+            "class": "oogl.Program"
+        },
+        {
+            "file": "src\\Programs.js",
+            "line": 296,
             "description": "Returns information about the `index`-th active attribute array.\n\n`gl.getActiveAttrib` equivalent.",
             "itemtype": "method",
             "name": "getActiveAttrib",
@@ -3522,7 +3572,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 294,
+            "line": 311,
             "description": "Returns the number of active attribute variables.\n\nEquivalent to calling `gl.getProgramParameter` with `gl.ACTIVE_ATTRIBUTES`.",
             "itemtype": "method",
             "name": "getNumberOfActiveAttributes",
@@ -3537,7 +3587,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 308,
+            "line": 325,
             "description": "Returns information about the `index`-th active uniform variable.\n\n`gl.getActiveUniform` equivalent.",
             "itemtype": "method",
             "name": "getActiveUniform",
@@ -3559,7 +3609,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 323,
+            "line": 340,
             "description": "Returns the number of active uniform variables.\n\nEquivalent to calling `gl.getProgramParameter` with `gl.ACTIVE_UNIFORMS`.",
             "itemtype": "method",
             "name": "getNumberOfActiveUniforms",
@@ -3574,7 +3624,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 337,
+            "line": 354,
             "description": "TODO",
             "itemtype": "method",
             "name": "getAttribLocation",
@@ -3596,7 +3646,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 350,
+            "line": 367,
             "description": "TODO",
             "itemtype": "method",
             "name": "getUniform",
@@ -3618,7 +3668,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 372,
+            "line": 389,
             "description": "TODO",
             "itemtype": "method",
             "name": "getUniformLocation",
@@ -3640,7 +3690,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 383,
+            "line": 400,
             "description": "Specifies the value for a `float` uniform variable.\n\n`gl.uniform1f` equivalent.\n\n`Program` objects have an internal location cache used by `uniform`\nmethods to set uniform variables without retrieving their location each\ntime. The cache is invalidated every time the program is relinked using\nthe provided `link` method.",
             "itemtype": "method",
             "name": "uniform1f",
@@ -3663,7 +3713,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 403,
+            "line": 420,
             "description": "Specifies the value for a `vec2` uniform variable.\n\n`gl.uniform2f` equivalent.\n\n`Program` objects have an internal location cache used by `uniform`\nmethods to set uniform variables without retrieving their location each\ntime. The cache is invalidated every time the program is relinked using\nthe provided `link` method.",
             "itemtype": "method",
             "name": "uniform2f",
@@ -3691,7 +3741,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 424,
+            "line": 441,
             "description": "Specifies the value for a `vec3` uniform variable.\n\n`gl.uniform3f` equivalent.\n\n`Program` objects have an internal location cache used by `uniform`\nmethods to set uniform variables without retrieving their location each\ntime. The cache is invalidated every time the program is relinked using\nthe provided `link` method.",
             "itemtype": "method",
             "name": "uniform3f",
@@ -3724,7 +3774,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 447,
+            "line": 464,
             "description": "Specifies the value for a `vec4` uniform variable.\n\n`gl.uniform4f` equivalent.\n\n`Program` objects have an internal location cache used by `uniform`\nmethods to set uniform variables without retrieving their location each\ntime. The cache is invalidated every time the program is relinked using\nthe provided `link` method.",
             "itemtype": "method",
             "name": "uniform4f",
@@ -3762,7 +3812,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 470,
+            "line": 487,
             "description": "Specifies the value for a `float` uniform variable as an array.\n\n`gl.uniform1fv` equivalent.\n\n`Program` objects have an internal location cache used by `uniform`\nmethods to set uniform variables without retrieving their location each\ntime. The cache is invalidated every time the program is relinked using\nthe provided `link` method.",
             "itemtype": "method",
             "name": "uniform1fv",
@@ -3785,7 +3835,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 490,
+            "line": 507,
             "description": "Specifies the value for a `vec2` uniform variable as an array.\n\n`gl.uniform2fv` equivalent.\n\n`Program` objects have an internal location cache used by `uniform`\nmethods to set uniform variables without retrieving their location each\ntime. The cache is invalidated every time the program is relinked using\nthe provided `link` method.",
             "itemtype": "method",
             "name": "uniform2fv",
@@ -3808,7 +3858,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 510,
+            "line": 527,
             "description": "Specifies the value for a `vec3` uniform variable as an array.\n\n`gl.uniform3fv` equivalent.\n\n`Program` objects have an internal location cache used by `uniform`\nmethods to set uniform variables without retrieving their location each\ntime. The cache is invalidated every time the program is relinked using\nthe provided `link` method.",
             "itemtype": "method",
             "name": "uniform3fv",
@@ -3831,7 +3881,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 530,
+            "line": 547,
             "description": "Specifies the value for a `vec4` uniform variable as an array.\n\n`gl.uniform4fv` equivalent.\n\n`Program` objects have an internal location cache used by `uniform`\nmethods to set uniform variables without retrieving their location each\ntime. The cache is invalidated every time the program is relinked using\nthe provided `link` method.",
             "itemtype": "method",
             "name": "uniform4fv",
@@ -3854,7 +3904,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 550,
+            "line": 567,
             "description": "Specifies the value for an integer or boolean uniform variable.\n\n`gl.uniform1i` equivalent.\n\n`Program` objects have an internal location cache used by `uniform`\nmethods to set uniform variables without retrieving their location each\ntime. The cache is invalidated every time the program is relinked using\nthe provided `link` method.",
             "itemtype": "method",
             "name": "uniform1i",
@@ -3877,7 +3927,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 570,
+            "line": 587,
             "description": "Specifies the value for an `ivec2` or `bvec2` uniform variable.\n\n`gl.uniform2i` equivalent.\n\n`Program` objects have an internal location cache used by `uniform`\nmethods to set uniform variables without retrieving their location each\ntime. The cache is invalidated every time the program is relinked using\nthe provided `link` method.",
             "itemtype": "method",
             "name": "uniform2i",
@@ -3905,7 +3955,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 591,
+            "line": 608,
             "description": "Specifies the value for an `ivec3` or `bvec3` uniform variable.\n\n`gl.uniform3i` equivalent.\n\n`Program` objects have an internal location cache used by `uniform`\nmethods to set uniform variables without retrieving their location each\ntime. The cache is invalidated every time the program is relinked using\nthe provided `link` method.",
             "itemtype": "method",
             "name": "uniform3i",
@@ -3938,7 +3988,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 613,
+            "line": 630,
             "description": "Specifies the value for an `ivec4` or `bvec4` uniform variable.\n\n`gl.uniform4i` equivalent.\n\n`Program` objects have an internal location cache used by `uniform`\nmethods to set uniform variables without retrieving their location each\ntime. The cache is invalidated every time the program is relinked using\nthe provided `link` method.",
             "itemtype": "method",
             "name": "uniform4i",
@@ -3976,7 +4026,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 636,
+            "line": 653,
             "description": "Specifies the value for an integer or boolean uniform variable as an\narray.\n\n`gl.uniform1iv` equivalent.\n\n`Program` objects have an internal location cache used by `uniform`\nmethods to set uniform variables without retrieving their location each\ntime. The cache is invalidated every time the program is relinked using\nthe provided `link` method.",
             "itemtype": "method",
             "name": "uniform1iv",
@@ -3999,7 +4049,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 693,
+            "line": 710,
             "description": "Deletes this program.\n\n`gl.deleteProgram` equivalent.",
             "itemtype": "method",
             "name": "_delete",
@@ -4010,7 +4060,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 706,
+            "line": 723,
             "description": "Returns the delete status of this program.\n\nEquivalent to calling `gl.getProgramParameter` with `gl.DELETE_STATUS`.",
             "itemtype": "method",
             "name": "getDeleteStatus",
@@ -4025,7 +4075,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 747,
+            "line": 764,
             "description": "Returns the vertex shader automatically generated by the constructor.",
             "itemtype": "method",
             "name": "getVertexShader",
@@ -4040,7 +4090,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 759,
+            "line": 776,
             "description": "Returns the fragment shader automatically generated by the constructor.",
             "itemtype": "method",
             "name": "getFragmentShader",
@@ -4055,7 +4105,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 824,
+            "line": 841,
             "description": "Returns the vertex shader automatically generated by the\nconstructor.",
             "itemtype": "method",
             "name": "getVertexShader",
@@ -4070,7 +4120,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 837,
+            "line": 854,
             "description": "Returns the fragment shader automatically generated by the\nconstructor.",
             "itemtype": "method",
             "name": "getFragmentShader",
@@ -4816,6 +4866,78 @@
         {
             "file": "src\\Textures.js",
             "line": 155,
+            "description": "Sets the minifying filter for this texture.\n\nEquivalent to calling `gl.texParameteri` with `gl.TEXTURE_MIN_FILTER`.",
+            "itemtype": "method",
+            "name": "setMinFilter",
+            "params": [
+                {
+                    "name": "filter",
+                    "description": "The minifying filter; can be `gl.NEAREST`,\n\t`gl.LINEAR`, `gl.NEAREST_MIPMAP_NEAREST`, `gl.LINEAR_MIPMAP_NEAREST`,\n\t`gl.NEAREST_MIPMAP_LINEAR` or `gl.LINEAR_MIPMAP_LINEAR`.",
+                    "type": "Number"
+                }
+            ],
+            "example": [
+                "\n\ttexture.setMinFilter(oogl.LINEAR);"
+            ],
+            "class": "oogl.Texture"
+        },
+        {
+            "file": "src\\Textures.js",
+            "line": 171,
+            "description": "Sets the magnifying filter for this texture.\n\nEquivalent to calling `gl.texParameteri` with `gl.TEXTURE_MAG_FILTER`.",
+            "itemtype": "method",
+            "name": "setMagFilter",
+            "params": [
+                {
+                    "name": "filter",
+                    "description": "The magnifying filter; can be `gl.NEAREST` or\n\t`gl.LINEAR`.",
+                    "type": "Number"
+                }
+            ],
+            "example": [
+                "\n\ttexture.setMagFilter(oogl.LINEAR);"
+            ],
+            "class": "oogl.Texture"
+        },
+        {
+            "file": "src\\Textures.js",
+            "line": 186,
+            "description": "Sets the S wrapping setting for this texture.\n\nEquivalent to calling `gl.texParameteri` with `gl.TEXTURE_WRAP_S`.",
+            "itemtype": "method",
+            "name": "setWrapS",
+            "params": [
+                {
+                    "name": "wrap",
+                    "description": "The S wrapping setting; can be `gl.CLAMP_TO_EDGE`,\n\t`gl.MIRRORED_REPEAT` or `gl.REPEAT`.",
+                    "type": "Number"
+                }
+            ],
+            "example": [
+                "\n\ttexture.setWrapS(oogl.REPEAT);"
+            ],
+            "class": "oogl.Texture"
+        },
+        {
+            "file": "src\\Textures.js",
+            "line": 201,
+            "description": "Sets the T wrapping setting for this texture.\n\nEquivalent to calling `gl.texParameteri` with `gl.TEXTURE_WRAP_T`.",
+            "itemtype": "method",
+            "name": "setWrapT",
+            "params": [
+                {
+                    "name": "wrap",
+                    "description": "The T wrapping setting; can be `gl.CLAMP_TO_EDGE`,\n\t`gl.MIRRORED_REPEAT` or `gl.REPEAT`.",
+                    "type": "Number"
+                }
+            ],
+            "example": [
+                "\n\ttexture.setWrapT(oogl.REPEAT);"
+            ],
+            "class": "oogl.Texture"
+        },
+        {
+            "file": "src\\Textures.js",
+            "line": 216,
             "description": "TODO\n\n`gl.generateMipmap` equivalent.",
             "itemtype": "method",
             "name": "generateMipmap",
@@ -4826,18 +4948,40 @@
         },
         {
             "file": "src\\Textures.js",
-            "line": 168,
-            "description": "TODO",
+            "line": 229,
+            "description": "Specifies an image, canvas or video for this texture.\n\n`gl.texImage2D` equivalent.",
             "itemtype": "method",
             "name": "image2D",
+            "params": [
+                {
+                    "name": "level",
+                    "description": "The mipmap reduction level.",
+                    "type": "Number"
+                },
+                {
+                    "name": "format",
+                    "description": "The texel format; can be `gl.ALPHA`, `gl.RGB`,\n\t`gl.RGBA`, `gl.LUMINANCE` or `gl.LUMINANCE_ALPHA`.",
+                    "type": "Number"
+                },
+                {
+                    "name": "type",
+                    "description": "The binary data type; can be `gl.UNSIGNED_BYTE`,\n\t`gl.UNSIGNED_SHORT_5_6_5`, `gl.UNSIGNED_SHORT_4_4_4_4` or\n\t`gl.UNSIGNED_SHORT_5_5_5_1`.",
+                    "type": "Number"
+                },
+                {
+                    "name": "object",
+                    "description": "A DOM image, canvas or video element to use as\n\ttexture image.",
+                    "type": "Mixed"
+                }
+            ],
             "example": [
-                "\n\tTODO"
+                "\n\ttexture.image2D(0, oogl.RGBA, oogl.UNSIGNED_BYTE, image);"
             ],
             "class": "oogl.Texture"
         },
         {
             "file": "src\\Textures.js",
-            "line": 179,
+            "line": 250,
             "description": "TODO",
             "itemtype": "method",
             "name": "subImage2D",
@@ -4848,7 +4992,7 @@
         },
         {
             "file": "src\\Textures.js",
-            "line": 190,
+            "line": 261,
             "description": "TODO\n\n`gl.copyTexImage2D` equivalent.",
             "itemtype": "method",
             "name": "copyImage2D",
@@ -4896,7 +5040,7 @@
         },
         {
             "file": "src\\Textures.js",
-            "line": 210,
+            "line": 281,
             "description": "TODO\n\n`gl.copyTexSubImage2D` equivalent.",
             "itemtype": "method",
             "name": "copySubImage2D",
@@ -4944,7 +5088,7 @@
         },
         {
             "file": "src\\Textures.js",
-            "line": 230,
+            "line": 301,
             "description": "Deletes this texture.\n\n`gl.deleteTexture` equivalent.",
             "itemtype": "method",
             "name": "_delete",
@@ -4955,7 +5099,7 @@
         },
         {
             "file": "src\\Textures.js",
-            "line": 307,
+            "line": 420,
             "description": "Adds a `Texture` to this set.\n\nThe texture is automatically assigned a texture unit, but the set\nmust be re-bound (using the `bind` method) before its textures can be\nused in programs.",
             "itemtype": "method",
             "name": "add",
@@ -4973,7 +5117,7 @@
         },
         {
             "file": "src\\Textures.js",
-            "line": 330,
+            "line": 443,
             "description": "Binds all the textures in this sets to their target in their\nrespective texture unit.\n\nEquivalent to calling `gl.activeTexture` and `gl.bindTexture` for\neach texture.",
             "itemtype": "method",
             "name": "bind",
@@ -4984,7 +5128,7 @@
         },
         {
             "file": "src\\Textures.js",
-            "line": 348,
+            "line": 461,
             "description": "TODO",
             "itemtype": "method",
             "name": "uniform",
@@ -5007,7 +5151,7 @@
         },
         {
             "file": "src\\Textures.js",
-            "line": 368,
+            "line": 481,
             "description": "TODO",
             "itemtype": "method",
             "name": "bindAndUniform",
@@ -5025,7 +5169,7 @@
         },
         {
             "file": "src\\Textures.js",
-            "line": 388,
+            "line": 501,
             "description": "Deletes all the textures that have been added to this set and resets\nit to an empty set.\n\n`Textures` objects may be used again after deletion.",
             "itemtype": "method",
             "name": "_delete",
