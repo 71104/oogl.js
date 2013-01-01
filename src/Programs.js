@@ -695,16 +695,40 @@ context.Program = function () {
 		context.uniform2f(getUniformLocation(name), v.x, v.y, v.z, v.w);
 	};
 
-	program.uniformMatrix2fv = function (name, matrix) {
-		context.uniformMatrix2fv(getUniformLocation(name), matrix);
+	program.uniformMatrix2fv = function (name, values) {
+		context.uniformMatrix2fv(getUniformLocation(name), false, values);
 	};
 
-	program.uniformMatrix3fv = function (name, matrix) {
-		context.uniformMatrix3fv(getUniformLocation(name), matrix);
+	program.uniformMatrix3fv = function (name, values) {
+		context.uniformMatrix3fv(getUniformLocation(name), false, values);
 	};
 
-	program.uniformMatrix4fv = function (name, matrix) {
-		context.uniformMatrix4fv(getUniformLocation(name), matrix);
+	program.uniformMatrix4fv = function (name, values) {
+		context.uniformMatrix4fv(getUniformLocation(name), false, values);
+	};
+
+	program.uniformMat2 = function (name, matrix) {
+		context.uniformMatrix2fv(getUniformLocation(name), false, [
+			matrix[0], matrix[1],
+			matrix[2], matrix[3]
+		]);
+	};
+
+	program.uniformMat3 = function (name, matrix) {
+		context.uniformMatrix3fv(getUniformLocation(name), false, [
+			matrix[0], matrix[1], matrix[2],
+			matrix[3], matrix[4], matrix[5],
+			matrix[6], matrix[7], matrix[8]
+		]);
+	};
+
+	program.uniformMat4 = function (name, matrix) {
+		context.uniformMatrix4fv(getUniformLocation(name), false, [
+			matrix[0], matrix[1], matrix[2], matrix[3],
+			matrix[4], matrix[5], matrix[6], matrix[7],
+			matrix[8], matrix[9], matrix[10], matrix[11],
+			matrix[12], matrix[13], matrix[14], matrix[15]
+		]);
 	};
 
 	/**
