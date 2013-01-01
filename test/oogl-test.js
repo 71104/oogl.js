@@ -1,7 +1,7 @@
-/*! Object-Oriented Graphics Library - v1.0.0 - 2012-12-31
+/*! Object-Oriented Graphics Library - v1.0.0 - 2013-01-01
 * Released under the MIT License
 * http://oogljs.com/
-* Copyright (c) 2012 Alberto La Rocca */
+* Copyright (c) 2013 Alberto La Rocca */
 
 var OOGL = function (callback) {
 	if (typeof callback === 'function') {
@@ -224,6 +224,18 @@ OOGL.Vector2 = function (x, y) {
 };
 
 OOGL.Vector2.prototype = {
+	/**
+	 * Clones this vector and returns the new one.
+	 *
+	 * @method clone
+	 * @return {OOGL.Vector2} The new vector.
+	 * @example
+	 *	var position = OOGL.Vector2.NULL.clone();
+	 */
+	clone: function () {
+		return new OOGL.Vector2(this.x, this.y);
+	},
+
 	/**
 	 * Returns this vector as an array of two elements.
 	 *
@@ -518,6 +530,8 @@ OOGL.Vector2.prototype = {
  * @property NULL
  * @static
  * @type OOGL.Vector2
+ * @example
+ *	var position = OOGL.Vector2.NULL.clone();
  */
 OOGL.Vector2.NULL = new OOGL.Vector2(0, 0);
 
@@ -527,6 +541,8 @@ OOGL.Vector2.NULL = new OOGL.Vector2(0, 0);
  * @property I
  * @static
  * @type OOGL.Vector2
+ * @example
+ *	TODO
  */
 OOGL.Vector2.I = new OOGL.Vector2(1, 0);
 
@@ -536,6 +552,8 @@ OOGL.Vector2.I = new OOGL.Vector2(1, 0);
  * @property J
  * @static
  * @type OOGL.Vector2
+ * @example
+ *	TODO
  */
 OOGL.Vector2.J = new OOGL.Vector2(0, 1);
 
@@ -579,6 +597,18 @@ OOGL.Vector3 = function (x, y, z) {
 };
 
 OOGL.Vector3.prototype = {
+	/**
+	 * Clones this vector and returns the new one.
+	 *
+	 * @method clone
+	 * @return {OOGL.Vector3} The new vector.
+	 * @example
+	 *	var position = OOGL.Vector3.NULL.clone();
+	 */
+	clone: function () {
+		return new OOGL.Vector3(this.x, this.y, this.z);
+	},
+
 	/**
 	 * Returns this vector as an array of three elements.
 	 *
@@ -820,6 +850,18 @@ OOGL.Vector4 = function (x, y, z, w) {
 };
 
 OOGL.Vector4.prototype = {
+	/**
+	 * Clones this vector and returns the new one.
+	 *
+	 * @method clone
+	 * @return {OOGL.Vector4} The new vector.
+	 * @example
+	 *	var w = v.clone();
+	 */
+	clone: function () {
+		return new OOGL.Vector4(this.x, this.y, this.z, this.w);
+	},
+
 	/**
 	 * Returns this vector as an array of four elements.
 	 *
@@ -3188,6 +3230,67 @@ context.Texture = function (target) {
 	};
 
 	/**
+	 * Sets the minifying filter for this texture.
+	 *
+	 * Equivalent to calling `gl.texParameteri` with `gl.TEXTURE_MIN_FILTER`.
+	 *
+	 * @method setMinFilter
+	 * @param {Number} filter The minifying filter; can be `gl.NEAREST`,
+	 *	`gl.LINEAR`, `gl.NEAREST_MIPMAP_NEAREST`, `gl.LINEAR_MIPMAP_NEAREST`,
+	 *	`gl.NEAREST_MIPMAP_LINEAR` or `gl.LINEAR_MIPMAP_LINEAR`.
+	 * @example
+	 *	texture.setMinFilter(oogl.LINEAR);
+	 */
+	texture.setMinFilter = function (filter) {
+		context.texParameteri(target, context.TEXTURE_MIN_FILTER, filter);
+	};
+
+	/**
+	 * Sets the magnifying filter for this texture.
+	 *
+	 * Equivalent to calling `gl.texParameteri` with `gl.TEXTURE_MAG_FILTER`.
+	 *
+	 * @method setMagFilter
+	 * @param {Number} filter The magnifying filter; can be `gl.NEAREST` or
+	 *	`gl.LINEAR`.
+	 * @example
+	 *	texture.setMagFilter(oogl.LINEAR);
+	 */
+	texture.setMagFilter = function (filter) {
+		context.texParameteri(target, context.TEXTURE_MAG_FILTER, filter);
+	};
+
+	/**
+	 * Sets the S wrapping setting for this texture.
+	 *
+	 * Equivalent to calling `gl.texParameteri` with `gl.TEXTURE_WRAP_S`.
+	 *
+	 * @method setWrapS
+	 * @param {Number} wrap The S wrapping setting; can be `gl.CLAMP_TO_EDGE`,
+	 *	`gl.MIRRORED_REPEAT` or `gl.REPEAT`.
+	 * @example
+	 *	texture.setWrapS(oogl.REPEAT);
+	 */
+	texture.setWrapS = function (wrap) {
+		context.texParameteri(target, context.TEXTURE_WRAP_S, wrap);
+	};
+
+	/**
+	 * Sets the T wrapping setting for this texture.
+	 *
+	 * Equivalent to calling `gl.texParameteri` with `gl.TEXTURE_WRAP_T`.
+	 *
+	 * @method setWrapT
+	 * @param {Number} wrap The T wrapping setting; can be `gl.CLAMP_TO_EDGE`,
+	 *	`gl.MIRRORED_REPEAT` or `gl.REPEAT`.
+	 * @example
+	 *	texture.setWrapT(oogl.REPEAT);
+	 */
+	texture.setWrapT = function (wrap) {
+		context.texParameteri(target, context.TEXTURE_WRAP_T, wrap);
+	};
+
+	/**
 	 * TODO
 	 *
 	 * `gl.generateMipmap` equivalent.
@@ -3201,14 +3304,24 @@ context.Texture = function (target) {
 	};
 
 	/**
-	 * TODO
+	 * Specifies an image, canvas or video for this texture.
+	 *
+	 * `gl.texImage2d` equivalent.
 	 *
 	 * @method image2D
+	 * @param {Number} level The mipmap reduction level.
+	 * @param {Number} format The texel format; can be `gl.ALPHA`, `gl.RGB`,
+	 *	`gl.RGBA`, `gl.LUMINANCE` or `gl.LUMINANCE_ALPHA`.
+	 * @param {Number} type The binary data type; can be `gl.UNSIGNED_BYTE`,
+	 *	`gl.UNSIGNED_SHORT_5_6_5`, `gl.UNSIGNED_SHORT_4_4_4_4` or
+	 *	`gl.UNSIGNED_SHORT_5_5_5_1`.
+	 * @param {Mixed} object A DOM image, canvas or video element to use as
+	 *	texture image.
 	 * @example
-	 *	TODO
+	 *	texture.image2d(0, oogl.RGBA, oogl.UNSIGNED_BYTE, image);
 	 */
-	texture.image2D = function () {
-		// TODO
+	texture.image2D = function (level, format, type, object) {
+		context.texImage2d(target, level, format, format, type, object);
 	};
 
 	/**
@@ -3279,18 +3392,60 @@ context.Texture = function (target) {
 };
 
 /**
- * A texture whose type is `gl.TEXTURE_2D`.
- *
- * TODO
+ * A texture whose target is `gl.TEXTURE_2D`.
  *
  * @class oogl.Texture2D
  * @extends oogl.Texture
  * @constructor
  * @example
- *	TODO
+ *	var texture = new oogl.Texture2D();
+ *	texture.bind();
+ *	texture.setMagFilter(oogl.LINEAR);
+ *	texture.setMinFilter(oogl.LINEAR);
+ *	texture.image2d(0, oogl.RGBA, oogl.UNSIGNED_BYTE, image);
  */
 context.Texture2D = function () {
 	return new context.Texture(context.TEXTURE_2D);
+};
+
+/**
+ * Creates a texture from a DOM image, canvas or video element.
+ *
+ * The `ImageTexture` constructor automatically binds the texture to the
+ * `gl.TEXTURE_2D` target, sets minifying and magnifying filters and passes the
+ * image to `gl.texImage2d`.
+ *
+ * @class oogl.ImageTexture
+ * @extends oogl.Texture2D
+ * @constructor
+ * @param {Mixed} object A DOM image, canvas or video element to use as the
+ *	texture image.
+ * @param {Number} [minFilter=gl.LINEAR] An optional value for the minifying
+ *	filter.
+ * @param {Number} [magFilter=gl.LINEAR] An optional value for the magnifying
+ *	filter.
+ * @example
+ *	var arrays = new oogl.AttributeArrays(vertices.length);
+ *	// ...
+ *	var texture = new oogl.ImageTexture(image);
+ *	arrays.drawTriangles();
+ *	oogl.flush();
+ */
+context.AutoTexture = function (object, magFilter, minFilter) {
+	var texture = new context.Texture2D();
+	texture.bind();
+	if (arguments.length > 1) {
+		texture.setMagFilter(magFilter);
+		if (arguments.length > 2) {
+			texture.setMinFilter(minFilter);
+		} else {
+			texture.setMinFilter(context.LINEAR);
+		}
+	} else {
+		texture.setMagFilter(context.LINEAR);
+	}
+	texture.image2d(0, context.RGBA, context.UNSIGNED_BYTE, object);
+	return texture;
 };
 
 /**

@@ -153,6 +153,67 @@ context.Texture = function (target) {
 	};
 
 	/**
+	 * Sets the minifying filter for this texture.
+	 *
+	 * Equivalent to calling `gl.texParameteri` with `gl.TEXTURE_MIN_FILTER`.
+	 *
+	 * @method setMinFilter
+	 * @param {Number} filter The minifying filter; can be `gl.NEAREST`,
+	 *	`gl.LINEAR`, `gl.NEAREST_MIPMAP_NEAREST`, `gl.LINEAR_MIPMAP_NEAREST`,
+	 *	`gl.NEAREST_MIPMAP_LINEAR` or `gl.LINEAR_MIPMAP_LINEAR`.
+	 * @example
+	 *	texture.setMinFilter(oogl.LINEAR);
+	 */
+	texture.setMinFilter = function (filter) {
+		context.texParameteri(target, context.TEXTURE_MIN_FILTER, filter);
+	};
+
+	/**
+	 * Sets the magnifying filter for this texture.
+	 *
+	 * Equivalent to calling `gl.texParameteri` with `gl.TEXTURE_MAG_FILTER`.
+	 *
+	 * @method setMagFilter
+	 * @param {Number} filter The magnifying filter; can be `gl.NEAREST` or
+	 *	`gl.LINEAR`.
+	 * @example
+	 *	texture.setMagFilter(oogl.LINEAR);
+	 */
+	texture.setMagFilter = function (filter) {
+		context.texParameteri(target, context.TEXTURE_MAG_FILTER, filter);
+	};
+
+	/**
+	 * Sets the S wrapping setting for this texture.
+	 *
+	 * Equivalent to calling `gl.texParameteri` with `gl.TEXTURE_WRAP_S`.
+	 *
+	 * @method setWrapS
+	 * @param {Number} wrap The S wrapping setting; can be `gl.CLAMP_TO_EDGE`,
+	 *	`gl.MIRRORED_REPEAT` or `gl.REPEAT`.
+	 * @example
+	 *	texture.setWrapS(oogl.REPEAT);
+	 */
+	texture.setWrapS = function (wrap) {
+		context.texParameteri(target, context.TEXTURE_WRAP_S, wrap);
+	};
+
+	/**
+	 * Sets the T wrapping setting for this texture.
+	 *
+	 * Equivalent to calling `gl.texParameteri` with `gl.TEXTURE_WRAP_T`.
+	 *
+	 * @method setWrapT
+	 * @param {Number} wrap The T wrapping setting; can be `gl.CLAMP_TO_EDGE`,
+	 *	`gl.MIRRORED_REPEAT` or `gl.REPEAT`.
+	 * @example
+	 *	texture.setWrapT(oogl.REPEAT);
+	 */
+	texture.setWrapT = function (wrap) {
+		context.texParameteri(target, context.TEXTURE_WRAP_T, wrap);
+	};
+
+	/**
 	 * TODO
 	 *
 	 * `gl.generateMipmap` equivalent.
@@ -166,14 +227,24 @@ context.Texture = function (target) {
 	};
 
 	/**
-	 * TODO
+	 * Specifies an image, canvas or video for this texture.
+	 *
+	 * `gl.texImage2d` equivalent.
 	 *
 	 * @method image2D
+	 * @param {Number} level The mipmap reduction level.
+	 * @param {Number} format The texel format; can be `gl.ALPHA`, `gl.RGB`,
+	 *	`gl.RGBA`, `gl.LUMINANCE` or `gl.LUMINANCE_ALPHA`.
+	 * @param {Number} type The binary data type; can be `gl.UNSIGNED_BYTE`,
+	 *	`gl.UNSIGNED_SHORT_5_6_5`, `gl.UNSIGNED_SHORT_4_4_4_4` or
+	 *	`gl.UNSIGNED_SHORT_5_5_5_1`.
+	 * @param {Mixed} object A DOM image, canvas or video element to use as
+	 *	texture image.
 	 * @example
-	 *	TODO
+	 *	texture.image2d(0, oogl.RGBA, oogl.UNSIGNED_BYTE, image);
 	 */
-	texture.image2D = function () {
-		// TODO
+	texture.image2D = function (level, format, type, object) {
+		context.texImage2d(target, level, format, format, type, object);
 	};
 
 	/**
@@ -254,7 +325,7 @@ context.Texture = function (target) {
  *	texture.bind();
  *	texture.setMagFilter(oogl.LINEAR);
  *	texture.setMinFilter(oogl.LINEAR);
- *	TODO image2d
+ *	texture.image2d(0, oogl.RGBA, oogl.UNSIGNED_BYTE, image);
  */
 context.Texture2D = function () {
 	return new context.Texture(context.TEXTURE_2D);
@@ -288,7 +359,7 @@ context.AutoTexture = function (object, magFilter, minFilter) {
 	texture.bind();
 	if (arguments.length > 1) {
 		texture.setMagFilter(magFilter);
-		if (argument.length > 2) {
+		if (arguments.length > 2) {
 			texture.setMinFilter(minFilter);
 		} else {
 			texture.setMinFilter(context.LINEAR);
@@ -296,7 +367,7 @@ context.AutoTexture = function (object, magFilter, minFilter) {
 	} else {
 		texture.setMagFilter(context.LINEAR);
 	}
-	// TODO image2d
+	texture.image2d(0, context.RGBA, context.UNSIGNED_BYTE, object);
 	return texture;
 };
 
