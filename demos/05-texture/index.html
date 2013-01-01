@@ -13,6 +13,7 @@ OOGL(function () {
 	var oogl = new OOGL.Context('canvas', {
 		alpha: false
 	});
+	oogl.clearColor(0.5, 0.5, 0.5, 1);
 	oogl.enable(oogl.CULL_FACE);
 	var arrays = new oogl.AttributeArrays(36);
 	arrays.add3('float', [
@@ -37,7 +38,6 @@ OOGL(function () {
 		new oogl.AutoTexture(image);
 		var program = new oogl.AjaxProgram('box', ['in_Vertex', 'in_TexCoord'], function () {
 			program.use();
-			program.uniform1i('Texture', 0);
 			var angleX = 0;
 			var angleY = 0;
 			(new OOGL.RenderLoop(function () {

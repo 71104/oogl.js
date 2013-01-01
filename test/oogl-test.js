@@ -3443,6 +3443,7 @@ context.AutoTexture = function (object, magFilter, minFilter) {
 		}
 	} else {
 		texture.setMagFilter(context.LINEAR);
+		texture.setMinFilter(context.LINEAR);
 	}
 	texture.image2D(0, context.RGBA, context.UNSIGNED_BYTE, object);
 	return texture;
