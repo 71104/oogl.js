@@ -7,6 +7,10 @@
     "demos.js",
     "demos"
   ],
+  "dependencies": {
+    "express": "",
+    "openurl": ""
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/71104/oogl.js.git"
