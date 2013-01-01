@@ -1,0 +1,27 @@
+{
+  "name": "oogl-demos",
+  "version": "1.0.0",
+  "description": "oogl.js Demos",
+  "main": "demos.js",
+  "files": [
+    "demos.js",
+    "demos"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/71104/oogl.js.git"
+  },
+  "keywords": [
+    "oogl",
+    "oogl.js",
+    "webgl",
+    "html5",
+    "demos",
+    "nehe",
+    "examples"
+  ],
+  "author": "Alberto La Rocca",
+  "license": "MIT",
+  "readmeFilename": "README.md",
+  "gitHead": "18136ebd7562cf46d31f492257bb754de9217bdf"
+}
