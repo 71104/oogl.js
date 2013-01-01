@@ -3306,7 +3306,7 @@ context.Texture = function (target) {
 	/**
 	 * Specifies an image, canvas or video for this texture.
 	 *
-	 * `gl.texImage2d` equivalent.
+	 * `gl.texImage2D` equivalent.
 	 *
 	 * @method image2D
 	 * @param {Number} level The mipmap reduction level.
@@ -3318,10 +3318,10 @@ context.Texture = function (target) {
 	 * @param {Mixed} object A DOM image, canvas or video element to use as
 	 *	texture image.
 	 * @example
-	 *	texture.image2d(0, oogl.RGBA, oogl.UNSIGNED_BYTE, image);
+	 *	texture.image2D(0, oogl.RGBA, oogl.UNSIGNED_BYTE, image);
 	 */
 	texture.image2D = function (level, format, type, object) {
-		context.texImage2d(target, level, format, format, type, object);
+		context.texImage2D(target, level, format, format, type, object);
 	};
 
 	/**
@@ -3402,7 +3402,7 @@ context.Texture = function (target) {
  *	texture.bind();
  *	texture.setMagFilter(oogl.LINEAR);
  *	texture.setMinFilter(oogl.LINEAR);
- *	texture.image2d(0, oogl.RGBA, oogl.UNSIGNED_BYTE, image);
+ *	texture.image2D(0, oogl.RGBA, oogl.UNSIGNED_BYTE, image);
  */
 context.Texture2D = function () {
 	return new context.Texture(context.TEXTURE_2D);
@@ -3413,20 +3413,20 @@ context.Texture2D = function () {
  *
  * The `ImageTexture` constructor automatically binds the texture to the
  * `gl.TEXTURE_2D` target, sets minifying and magnifying filters and passes the
- * image to `gl.texImage2d`.
+ * image to `gl.texImage2D`.
  *
  * @class oogl.ImageTexture
  * @extends oogl.Texture2D
  * @constructor
  * @param {Mixed} object A DOM image, canvas or video element to use as the
  *	texture image.
- * @param {Number} [minFilter=gl.LINEAR] An optional value for the minifying
- *	filter.
  * @param {Number} [magFilter=gl.LINEAR] An optional value for the magnifying
+ *	filter.
+ * @param {Number} [minFilter=gl.LINEAR] An optional value for the minifying
  *	filter.
  * @example
  *	var arrays = new oogl.AttributeArrays(vertices.length);
- *	// ...
+ *	// add arrays here
  *	var texture = new oogl.ImageTexture(image);
  *	arrays.drawTriangles();
  *	oogl.flush();
@@ -3444,7 +3444,7 @@ context.AutoTexture = function (object, magFilter, minFilter) {
 	} else {
 		texture.setMagFilter(context.LINEAR);
 	}
-	texture.image2d(0, context.RGBA, context.UNSIGNED_BYTE, object);
+	texture.image2D(0, context.RGBA, context.UNSIGNED_BYTE, object);
 	return texture;
 };
 
@@ -4157,6 +4157,23 @@ context.Program = function () {
 	 */
 	program.getValidateStatus = function () {
 		return context.getProgramParameter(program, context.VALIDATE_STATUS);
+	};
+
+	/**
+	 * Validates the program and throws an exception if the validation fails.
+	 *
+	 * Equivalent to calling `gl.validateProgram` and `gl.getProgramParameter`
+	 * with `gl.VALIDATE_STATUS` subsequently.
+	 *
+	 * @method validateOrThrow
+	 * @example
+	 *	program.validateOrThrow();
+	 */
+	program.validateOrThrow = function () {
+		context.validateProgram(program);
+		if (!context.getProgramParameter(program, context.VALIDATE_STATUS)) {
+			throw 'program validation failed.';
+		}
 	};
 
 	/**
