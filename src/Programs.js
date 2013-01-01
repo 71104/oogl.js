@@ -277,6 +277,23 @@ context.Program = function () {
 	};
 
 	/**
+	 * Validates the program and throws an exception if the validation fails.
+	 *
+	 * Equivalent to calling `gl.validateProgram` and `gl.getProgramParameter`
+	 * with `gl.VALIDATE_STATUS` subsequently.
+	 *
+	 * @method validateOrThrow
+	 * @example
+	 *	program.validateOrThrow();
+	 */
+	program.validateOrThrow = function () {
+		context.validateProgram(program);
+		if (!context.getProgramParameter(program, context.VALIDATE_STATUS)) {
+			throw 'program validation failed.';
+		}
+	};
+
+	/**
 	 * Returns information about the `index`-th active attribute array.
 	 *
 	 * `gl.getActiveAttrib` equivalent.
