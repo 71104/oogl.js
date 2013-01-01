@@ -1,0 +1,4816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>oogl.AutoProgram - OOGL.js 1.0</title>
+    <link rel="stylesheet" href="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;3.8.0pr2&#x2F;build&#x2F;cssgrids&#x2F;cssgrids-min.css">
+    <link rel="stylesheet" href="..&#x2F;assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="..&#x2F;assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="..&#x2F;assets/favicon.png">
+    <script src="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;combo?3.8.0pr2&#x2F;build&#x2F;yui&#x2F;yui-min.js"></script>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-36961344-2']);
+_gaq.push(['_setDomainName', 'github.com']);
+_gaq.push(['_trackPageview']);
+(function() {
+	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            
+                <h1><img src="..&#x2F;assets/css/logo.png" title="OOGL.js 1.0"></h1>
+            
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: 1.0.0</em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+    <h2 class="off-left">APIs</h2>
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a href="..&#x2F;classes/OOGL.Ajax.html">OOGL.Ajax</a></li>
+            
+                <li><a href="..&#x2F;classes/oogl.AjaxFragmentShader.html">oogl.AjaxFragmentShader</a></li>
+            
+                <li><a href="..&#x2F;classes/oogl.AjaxProgram.html">oogl.AjaxProgram</a></li>
+            
+                <li><a href="..&#x2F;classes/oogl.AjaxVertexShader.html">oogl.AjaxVertexShader</a></li>
+            
+                <li><a href="..&#x2F;classes/oogl.ArrayBuffer.html">oogl.ArrayBuffer</a></li>
+            
+                <li><a href="..&#x2F;classes/oogl.AttributeArray1.html">oogl.AttributeArray1</a></li>
+            
+                <li><a href="..&#x2F;classes/oogl.AttributeArray2.html">oogl.AttributeArray2</a></li>
+            
+                <li><a href="..&#x2F;classes/oogl.AttributeArray3.html">oogl.AttributeArray3</a></li>
+            
+                <li><a href="..&#x2F;classes/oogl.AttributeArray4.html">oogl.AttributeArray4</a></li>
+            
+                <li><a href="..&#x2F;classes/oogl.AttributeArrays.html">oogl.AttributeArrays</a></li>
+            
+                <li><a href="..&#x2F;classes/oogl.AutoProgram.html">oogl.AutoProgram</a></li>
+            
+                <li><a href="..&#x2F;classes/oogl.Buffer.html">oogl.Buffer</a></li>
+            
+                <li><a href="..&#x2F;classes/OOGL.Context.html">OOGL.Context</a></li>
+            
+                <li><a href="..&#x2F;classes/oogl.CubeMap.html">oogl.CubeMap</a></li>
+            
+                <li><a href="..&#x2F;classes/oogl.DynamicArrayBuffer.html">oogl.DynamicArrayBuffer</a></li>
+            
+                <li><a href="..&#x2F;classes/oogl.DynamicBuffer.html">oogl.DynamicBuffer</a></li>
+            
+                <li><a href="..&#x2F;classes/oogl.DynamicElementArrayBuffer.html">oogl.DynamicElementArrayBuffer</a></li>
+            
+                <li><a href="..&#x2F;classes/oogl.ElementArray.html">oogl.ElementArray</a></li>
+            
+                <li><a href="..&#x2F;classes/oogl.ElementArrayBuffer.html">oogl.ElementArrayBuffer</a></li>
+            
+                <li><a href="..&#x2F;classes/oogl.FragmentShader.html">oogl.FragmentShader</a></li>
+            
+                <li><a href="..&#x2F;classes/oogl.Framebuffer.html">oogl.Framebuffer</a></li>
+            
+                <li><a href="..&#x2F;classes/oogl.ImageTexture.html">oogl.ImageTexture</a></li>
+            
+                <li><a href="..&#x2F;classes/OOGL.Matrix2.html">OOGL.Matrix2</a></li>
+            
+                <li><a href="..&#x2F;classes/OOGL.Matrix3.html">OOGL.Matrix3</a></li>
+            
+                <li><a href="..&#x2F;classes/OOGL.Matrix4.html">OOGL.Matrix4</a></li>
+            
+                <li><a href="..&#x2F;classes/oogl.Program.html">oogl.Program</a></li>
+            
+                <li><a href="..&#x2F;classes/oogl.Renderbuffer.html">oogl.Renderbuffer</a></li>
+            
+                <li><a href="..&#x2F;classes/OOGL.RenderLoop.html">OOGL.RenderLoop</a></li>
+            
+                <li><a href="..&#x2F;classes/OOGL.RotationMatrix2.html">OOGL.RotationMatrix2</a></li>
+            
+                <li><a href="..&#x2F;classes/OOGL.RotationMatrix3.html">OOGL.RotationMatrix3</a></li>
+            
+                <li><a href="..&#x2F;classes/OOGL.RotationMatrix4.html">OOGL.RotationMatrix4</a></li>
+            
+                <li><a href="..&#x2F;classes/OOGL.ScalingMatrix2.html">OOGL.ScalingMatrix2</a></li>
+            
+                <li><a href="..&#x2F;classes/OOGL.ScalingMatrix3.html">OOGL.ScalingMatrix3</a></li>
+            
+                <li><a href="..&#x2F;classes/OOGL.ScalingMatrix4.html">OOGL.ScalingMatrix4</a></li>
+            
+                <li><a href="..&#x2F;classes/oogl.Shader.html">oogl.Shader</a></li>
+            
+                <li><a href="..&#x2F;classes/oogl.StaticArrayBuffer.html">oogl.StaticArrayBuffer</a></li>
+            
+                <li><a href="..&#x2F;classes/oogl.StaticBuffer.html">oogl.StaticBuffer</a></li>
+            
+                <li><a href="..&#x2F;classes/oogl.StaticElementArrayBuffer.html">oogl.StaticElementArrayBuffer</a></li>
+            
+                <li><a href="..&#x2F;classes/oogl.StreamArrayBuffer.html">oogl.StreamArrayBuffer</a></li>
+            
+                <li><a href="..&#x2F;classes/oogl.StreamBuffer.html">oogl.StreamBuffer</a></li>
+            
+                <li><a href="..&#x2F;classes/oogl.StreamElementArrayBuffer.html">oogl.StreamElementArrayBuffer</a></li>
+            
+                <li><a href="..&#x2F;classes/oogl.Texture.html">oogl.Texture</a></li>
+            
+                <li><a href="..&#x2F;classes/oogl.Texture2D.html">oogl.Texture2D</a></li>
+            
+                <li><a href="..&#x2F;classes/oogl.Textures.html">oogl.Textures</a></li>
+            
+                <li><a href="..&#x2F;classes/OOGL.TranslationMatrix4.html">OOGL.TranslationMatrix4</a></li>
+            
+                <li><a href="..&#x2F;classes/OOGL.Vector2.html">OOGL.Vector2</a></li>
+            
+                <li><a href="..&#x2F;classes/OOGL.Vector3.html">OOGL.Vector3</a></li>
+            
+                <li><a href="..&#x2F;classes/OOGL.Vector4.html">OOGL.Vector4</a></li>
+            
+                <li><a href="..&#x2F;classes/oogl.VertexShader.html">oogl.VertexShader</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1>oogl.AutoProgram Class</h1>
+<div class="box meta">
+    
+
+    
+        <div class="extends">
+            Extends <a href="..\classes\oogl.Program.html" class="crosslink">oogl.Program</a>
+        </div>
+    
+
+    
+        <div class="foundat">
+            Defined in: <a href="..&#x2F;files&#x2F;src_Programs.js.html#l742"><code>src\Programs.js:742</code></a>
+        </div>
+    
+
+    
+
+    
+</div>
+
+
+
+<div class="box intro">
+    <p>A <code>Program</code> that automatically compiles and links using a pair of GLSL shader
+sources. The info log is thrown if the program fails to compile or link.</p>
+
+<p>Before linking, the <code>AutoProgram</code> constructor also binds a specified set of
+attribute variables to their respective indices using <code>bindAttribLocation</code>.</p>
+</div>
+
+
+    <div class="constructor">
+        <h2>Constructor</h2>
+        <div id="method_oogl.AutoProgram" class="method item">
+    <h3 class="name"><code>oogl.AutoProgram</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>vertexSource</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>fragmentSource</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>attributes</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l742"><code>src\Programs.js:742</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">vertexSource</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The GLSL source code for the vertex shader.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">fragmentSource</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The GLSL source code for the fragment shader.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">attributes</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String[]</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>An array of attribute variable names that are
+    automatically bound to their respective indices in the array before linking.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>var program = new oogl.AutoProgram(vertexSource, fragmentSource, ['in_Vertex', 'in_Color', 'in_TexCoords']);
+</code></pre>
+            </div>
+        </div>
+    
+</div>
+
+    </div>
+
+
+<div id="classdocs" class="tabview">
+    <ul class="api-class-tabs">
+        <li class="api-class-tab index"><a href="#index">Index</a></li>
+
+        
+            <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
+        
+        
+        
+        
+    </ul>
+
+    <div>
+        <div id="index" class="api-class-tabpanel index">
+            <h2 class="off-left">Item Index</h2>
+
+            
+                <div class="index-section methods">
+                    <h3>Methods</h3>
+
+                    <ul class="index-list methods extends">
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method__delete">_delete</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_attachShader">attachShader</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_bindAttribLocation">bindAttribLocation</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_bindAttribLocations">bindAttribLocations</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_detachShader">detachShader</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_getActiveAttrib">getActiveAttrib</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_getActiveUniform">getActiveUniform</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_getAttachedShaders">getAttachedShaders</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_getAttribLocation">getAttribLocation</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_getDeleteStatus">getDeleteStatus</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_getFragmentShader">getFragmentShader</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_getInfoLog">getInfoLog</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_getLinkStatus">getLinkStatus</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_getNumberOfActiveAttributes">getNumberOfActiveAttributes</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_getNumberOfActiveUniforms">getNumberOfActiveUniforms</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_getNumberOfAttachedShaders">getNumberOfAttachedShaders</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_getParameter">getParameter</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_getUniform">getUniform</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_getUniformLocation">getUniformLocation</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_getValidateStatus">getValidateStatus</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_getVertexShader">getVertexShader</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_link">link</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_linkOrThrow">linkOrThrow</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_uniform1f">uniform1f</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_uniform1fv">uniform1fv</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_uniform1i">uniform1i</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_uniform1iv">uniform1iv</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_uniform2f">uniform2f</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_uniform2fv">uniform2fv</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_uniform2i">uniform2i</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_uniform3f">uniform3f</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_uniform3fv">uniform3fv</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_uniform3i">uniform3i</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_uniform4f">uniform4f</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_uniform4fv">uniform4fv</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_uniform4i">uniform4i</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_use">use</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_validate">validate</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_validateOrThrow">validateOrThrow</a>
+
+                                
+                                
+                            </li>
+                        
+                    </ul>
+                </div>
+            
+
+            
+
+            
+
+            
+        </div>
+
+        
+            <div id="methods" class="api-class-tabpanel">
+                <h2 class="off-left">Methods</h2>
+
+                
+                    <div id="method__delete" class="method item inherited">
+    <h3 class="name"><code>_delete</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="..\classes\oogl.Program.html#method__delete">oogl.Program</a>:
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l710"><code>src\Programs.js:710</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Deletes this program.</p>
+
+<p><code>gl.deleteProgram</code> equivalent.</p>
+    </div>
+
+    
+
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>program._delete();
+</code></pre>
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_attachShader" class="method item inherited">
+    <h3 class="name"><code>attachShader</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>shader</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="..\classes\oogl.Program.html#method_attachShader">oogl.Program</a>:
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l45"><code>src\Programs.js:45</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Attaches the specified shader to this program.</p>
+
+<p><code>gl.attachShader</code> equivalent.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">shader</code>
+                        <span class="type">WebGLShader</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The shader to attach. Can also be an OOGL
+    <code>Shader</code>.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>var program = new oogl.Program();
+program.attachShader(new oogl.VertexShader(vertexSource));
+program.attachShader(new oogl.FragmentShader(fragmentSource));
+program.linkOrThrow();
+</code></pre>
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_bindAttribLocation" class="method item inherited">
+    <h3 class="name"><code>bindAttribLocation</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>index</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>name</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="..\classes\oogl.Program.html#method_bindAttribLocation">oogl.Program</a>:
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l117"><code>src\Programs.js:117</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Binds the specified shader attribute variable <code>name</code> to the attribute
+array whose <code>index</code> is specified.</p>
+
+<p><code>gl.bindAttribLocation</code> equivalent.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">index</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The index of the attribute array.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">name</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The name of the shader attribute variable.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>program.bindAttribLocation(0, 'in_Vertex');
+program.bindAttribLocation(1, 'in_Color');
+program.bindAttribLocation(2, 'in_TexCoords');
+</code></pre>
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_bindAttribLocations" class="method item inherited">
+    <h3 class="name"><code>bindAttribLocations</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>attributes</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="..\classes\oogl.Program.html#method_bindAttribLocations">oogl.Program</a>:
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l135"><code>src\Programs.js:135</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Iterates over the specified <code>attributes</code> array of strings and binds each
+string to its index. For example, these calls:</p>
+
+<pre class="code prettyprint"><code>program.bindAttribLocation(0, 'in_Vertex');
+program.bindAttribLocation(1, 'in_Color');
+program.bindAttribLocation(2, 'in_TexCoords');
+</code></pre>
+
+<p>Can be made only once using <code>bindAttribLocations</code> like this:</p>
+
+<pre class="code prettyprint"><code>program.bindAttribLocations(['in_Vertex', 'in_Color', 'in_TexCoords']);
+</code></pre>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">attributes</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String[]</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The array, or index-to-string map,
+    specifying the names to bind and their respective indices.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>program.bindAttribLocations(['in_Vertex', 'in_Color', 'in_TexCoords']);
+</code></pre>
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_detachShader" class="method item inherited">
+    <h3 class="name"><code>detachShader</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>shader</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="..\classes\oogl.Program.html#method_detachShader">oogl.Program</a>:
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l63"><code>src\Programs.js:63</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Detaches the specified shader from this program.</p>
+
+<p><code>gl.detachShader</code> equivalent.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">shader</code>
+                        <span class="type">WebGLShader</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The shader to detach. Can also be an OOGL
+    <code>Shader</code>.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>var vertexShader = new oogl.Shader(oogl.VERTEX_SHADER);
+var program = new oogl.Program();
+program.attachShader(vertexShader);
+program.detachShader(vertexShader);
+</code></pre>
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_getActiveAttrib" class="method item inherited">
+    <h3 class="name"><code>getActiveAttrib</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>index</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">WebGLActiveInfo</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="..\classes\oogl.Program.html#method_getActiveAttrib">oogl.Program</a>:
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l296"><code>src\Programs.js:296</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Returns information about the <code>index</code>-th active attribute array.</p>
+
+<p><code>gl.getActiveAttrib</code> equivalent.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">index</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The index of the attribute array.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">WebGLActiveInfo</span>:
+                    
+                    The requested information.
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>TODO
+</code></pre>
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_getActiveUniform" class="method item inherited">
+    <h3 class="name"><code>getActiveUniform</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>index</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">WebGLActiveInfo</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="..\classes\oogl.Program.html#method_getActiveUniform">oogl.Program</a>:
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l325"><code>src\Programs.js:325</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Returns information about the <code>index</code>-th active uniform variable.</p>
+
+<p><code>gl.getActiveUniform</code> equivalent.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">index</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The index of the uniform variable.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">WebGLActiveInfo</span>:
+                    
+                    The requested information.
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>TODO
+</code></pre>
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_getAttachedShaders" class="method item inherited">
+    <h3 class="name"><code>getAttachedShaders</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">WebGLShader</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="..\classes\oogl.Program.html#method_getAttachedShaders">oogl.Program</a>:
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l81"><code>src\Programs.js:81</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Returns an array of <code>WebGLShader</code> representing the shaders currently
+attached to this program.</p>
+
+<p><code>gl.getAttachedShaders</code> equivalent.</p>
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">WebGLShader</span>:
+                    
+                    An array of the currently attached shaders.
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>var program = new oogl.Program();
+program.attachShader(new oogl.VertexShader(vertexSource));
+program.attachShader(new oogl.FragmentShader(fragmentSource));
+var shaders = program.getAttachedShaders(); // shaders now contains two elements
+</code></pre>
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_getAttribLocation" class="method item inherited">
+    <h3 class="name"><code>getAttribLocation</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>name</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="..\classes\oogl.Program.html#method_getAttribLocation">oogl.Program</a>:
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l354"><code>src\Programs.js:354</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>TODO</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">name</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>TODO</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>:
+                    
+                    TODO
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>TODO
+</code></pre>
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_getDeleteStatus" class="method item inherited">
+    <h3 class="name"><code>getDeleteStatus</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="..\classes\oogl.Program.html#method_getDeleteStatus">oogl.Program</a>:
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l723"><code>src\Programs.js:723</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Returns the delete status of this program.</p>
+
+<p>Equivalent to calling <code>gl.getProgramParameter</code> with <code>gl.DELETE_STATUS</code>.</p>
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
+                    
+                    The delete status.
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>if (program.getDeleteStatus()) {
+    // the program has been deleted
+}
+</code></pre>
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_getFragmentShader" class="method item">
+    <h3 class="name"><code>getFragmentShader</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="..\classes\oogl.FragmentShader.html" class="crosslink">oogl.FragmentShader</a></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l776"><code>src\Programs.js:776</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Returns the fragment shader automatically generated by the constructor.</p>
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="..\classes\oogl.FragmentShader.html" class="crosslink">oogl.FragmentShader</a></span>:
+                    
+                    The fragment shader.
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>TODO
+</code></pre>
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_getInfoLog" class="method item inherited">
+    <h3 class="name"><code>getInfoLog</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="..\classes\oogl.Program.html#method_getInfoLog">oogl.Program</a>:
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l195"><code>src\Programs.js:195</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Returns the info log generated by the last link operation for this
+program.</p>
+
+<p><code>gl.getProgramInfoLog</code> equivalent.</p>
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>:
+                    
+                    The info log.
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>program.link();
+if (!program.getLinkStatus()) {
+    throw program.getInfoLog();
+}
+</code></pre>
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_getLinkStatus" class="method item inherited">
+    <h3 class="name"><code>getLinkStatus</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="..\classes\oogl.Program.html#method_getLinkStatus">oogl.Program</a>:
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l177"><code>src\Programs.js:177</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Returns the link status of this program.</p>
+
+<p>Equivalent to calling <code>gl.getProgramParameter</code> with <code>gl.LINK_STATUS</code>.</p>
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
+                    
+                    <code>true</code> if the program has been successuflly linked,
+    <code>false</code> otherwise.
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>program.link();
+if (!program.getLinkStatus()) {
+    throw program.getInfoLog();
+}
+</code></pre>
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_getNumberOfActiveAttributes" class="method item inherited">
+    <h3 class="name"><code>getNumberOfActiveAttributes</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="..\classes\oogl.Program.html#method_getNumberOfActiveAttributes">oogl.Program</a>:
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l311"><code>src\Programs.js:311</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Returns the number of active attribute variables.</p>
+
+<p>Equivalent to calling <code>gl.getProgramParameter</code> with <code>gl.ACTIVE_ATTRIBUTES</code>.</p>
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>:
+                    
+                    The number of actie attribute variables.
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>TODO
+</code></pre>
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_getNumberOfActiveUniforms" class="method item inherited">
+    <h3 class="name"><code>getNumberOfActiveUniforms</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="..\classes\oogl.Program.html#method_getNumberOfActiveUniforms">oogl.Program</a>:
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l340"><code>src\Programs.js:340</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Returns the number of active uniform variables.</p>
+
+<p>Equivalent to calling <code>gl.getProgramParameter</code> with <code>gl.ACTIVE_UNIFORMS</code>.</p>
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>:
+                    
+                    The number of actie uniform variables.
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>TODO
+</code></pre>
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_getNumberOfAttachedShaders" class="method item inherited">
+    <h3 class="name"><code>getNumberOfAttachedShaders</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="..\classes\oogl.Program.html#method_getNumberOfAttachedShaders">oogl.Program</a>:
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l99"><code>src\Programs.js:99</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Returns the number of currently attached shaders.</p>
+
+<p>Equivalent to calling <code>gl.getProgramParameter</code> with
+<code>gl.ATTACHED_SHADERS</code>.</p>
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>:
+                    
+                    The number of currently attached shaders.
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>var program = new oogl.Program();
+program.attachShader(new oogl.VertexShader(vertexSource));
+program.attachShader(new oogl.FragmentShader(fragmentSource));
+var count = program.getNumberOfAttachedShaders(); // 2
+</code></pre>
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_getParameter" class="method item inherited">
+    <h3 class="name"><code>getParameter</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>name</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Mixed</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="..\classes\oogl.Program.html#method_getParameter">oogl.Program</a>:
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l28"><code>src\Programs.js:28</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Queries a program-related parameter.</p>
+
+<p><code>gl.getProgramParameter</code> equivalent.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">name</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The name of the parameter to query.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Mixed</span>:
+                    
+                    The queried value.
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>if (!program.getParameter(oogl.LINK_STATUS)) {
+    throw program.getInfoLog();
+}
+</code></pre>
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_getUniform" class="method item inherited">
+    <h3 class="name"><code>getUniform</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>locationOrName</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Mixed</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="..\classes\oogl.Program.html#method_getUniform">oogl.Program</a>:
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l367"><code>src\Programs.js:367</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>TODO</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">locationOrName</code>
+                        <span class="type">Mixed</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>TODO</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Mixed</span>:
+                    
+                    TODO
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>TODO
+</code></pre>
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_getUniformLocation" class="method item inherited">
+    <h3 class="name"><code>getUniformLocation</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>name</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="..\classes\oogl.Program.html#method_getUniformLocation">oogl.Program</a>:
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l389"><code>src\Programs.js:389</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>TODO</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">name</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>TODO</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>:
+                    
+                    TODO
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>TODO
+</code></pre>
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_getValidateStatus" class="method item inherited">
+    <h3 class="name"><code>getValidateStatus</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="..\classes\oogl.Program.html#method_getValidateStatus">oogl.Program</a>:
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l261"><code>src\Programs.js:261</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Returns the validation status produced by the last validation operation
+for this program.</p>
+
+<p>Equivalent to calling <code>gl.getProgramParameter</code> with <code>gl.VALIDATE_STATUS</code>.</p>
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
+                    
+                    The validation status.
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>program.validate();
+if (!program.getValidateStatus()) {
+    throw 'program validation error';
+}
+</code></pre>
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_getVertexShader" class="method item">
+    <h3 class="name"><code>getVertexShader</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="..\classes\oogl.VertexShader.html" class="crosslink">oogl.VertexShader</a></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l764"><code>src\Programs.js:764</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Returns the vertex shader automatically generated by the constructor.</p>
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="..\classes\oogl.VertexShader.html" class="crosslink">oogl.VertexShader</a></span>:
+                    
+                    The vertex shader.
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>TODO
+</code></pre>
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_link" class="method item inherited">
+    <h3 class="name"><code>link</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="..\classes\oogl.Program.html#method_link">oogl.Program</a>:
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l159"><code>src\Programs.js:159</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Links the program and invalidates the uniform location cache used to
+speed up uniform operations.</p>
+
+<p><code>gl.linkProgram</code> equivalent.</p>
+    </div>
+
+    
+
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>program.link();
+if (!program.getLinkStatus()) {
+    throw program.getInfoLog();
+}
+</code></pre>
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_linkOrThrow" class="method item inherited">
+    <h3 class="name"><code>linkOrThrow</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="..\classes\oogl.Program.html#method_linkOrThrow">oogl.Program</a>:
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l213"><code>src\Programs.js:213</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Links the program, invalidates the uniform location cache used to speed
+up uniform operations and checks the link status; throws the info log if
+the program did not link successfully.</p>
+    </div>
+
+    
+
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>program.attachShader(new oogl.VertexShader(vertexSource));
+program.attachShader(new oogl.FragmentShader(fragmentSource));
+program.linkOrThrow();
+</code></pre>
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_uniform1f" class="method item inherited">
+    <h3 class="name"><code>uniform1f</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>name</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>x</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="..\classes\oogl.Program.html#method_uniform1f">oogl.Program</a>:
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l400"><code>src\Programs.js:400</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Specifies the value for a <code>float</code> uniform variable.</p>
+
+<p><code>gl.uniform1f</code> equivalent.</p>
+
+<p><code>Program</code> objects have an internal location cache used by <code>uniform</code>
+methods to set uniform variables without retrieving their location each
+time. The cache is invalidated every time the program is relinked using
+the provided <code>link</code> method.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">name</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The name of the uniform variable.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">x</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The new value.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>TODO
+</code></pre>
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_uniform1fv" class="method item inherited">
+    <h3 class="name"><code>uniform1fv</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>name</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>values</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="..\classes\oogl.Program.html#method_uniform1fv">oogl.Program</a>:
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l487"><code>src\Programs.js:487</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Specifies the value for a <code>float</code> uniform variable as an array.</p>
+
+<p><code>gl.uniform1fv</code> equivalent.</p>
+
+<p><code>Program</code> objects have an internal location cache used by <code>uniform</code>
+methods to set uniform variables without retrieving their location each
+time. The cache is invalidated every time the program is relinked using
+the provided <code>link</code> method.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">name</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The name of the uniform variable.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">values</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number[]</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>An array containing the new value.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>TODO
+</code></pre>
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_uniform1i" class="method item inherited">
+    <h3 class="name"><code>uniform1i</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>name</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>x</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="..\classes\oogl.Program.html#method_uniform1i">oogl.Program</a>:
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l567"><code>src\Programs.js:567</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Specifies the value for an integer or boolean uniform variable.</p>
+
+<p><code>gl.uniform1i</code> equivalent.</p>
+
+<p><code>Program</code> objects have an internal location cache used by <code>uniform</code>
+methods to set uniform variables without retrieving their location each
+time. The cache is invalidated every time the program is relinked using
+the provided <code>link</code> method.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">name</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The name of the uniform variable.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">x</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The new value.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>TODO
+</code></pre>
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_uniform1iv" class="method item inherited">
+    <h3 class="name"><code>uniform1iv</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>name</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>values</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="..\classes\oogl.Program.html#method_uniform1iv">oogl.Program</a>:
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l653"><code>src\Programs.js:653</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Specifies the value for an integer or boolean uniform variable as an
+array.</p>
+
+<p><code>gl.uniform1iv</code> equivalent.</p>
+
+<p><code>Program</code> objects have an internal location cache used by <code>uniform</code>
+methods to set uniform variables without retrieving their location each
+time. The cache is invalidated every time the program is relinked using
+the provided <code>link</code> method.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">name</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The name of the uniform variable.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">values</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number[]</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>An array containing the new value.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>TODO
+</code></pre>
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_uniform2f" class="method item inherited">
+    <h3 class="name"><code>uniform2f</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>name</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>x</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>y</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="..\classes\oogl.Program.html#method_uniform2f">oogl.Program</a>:
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l420"><code>src\Programs.js:420</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Specifies the value for a <code>vec2</code> uniform variable.</p>
+
+<p><code>gl.uniform2f</code> equivalent.</p>
+
+<p><code>Program</code> objects have an internal location cache used by <code>uniform</code>
+methods to set uniform variables without retrieving their location each
+time. The cache is invalidated every time the program is relinked using
+the provided <code>link</code> method.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">name</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The name of the uniform variable.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">x</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The new value for the first component.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">y</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The new value for the second component.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>TODO
+</code></pre>
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_uniform2fv" class="method item inherited">
+    <h3 class="name"><code>uniform2fv</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>name</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>values</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="..\classes\oogl.Program.html#method_uniform2fv">oogl.Program</a>:
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l507"><code>src\Programs.js:507</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Specifies the value for a <code>vec2</code> uniform variable as an array.</p>
+
+<p><code>gl.uniform2fv</code> equivalent.</p>
+
+<p><code>Program</code> objects have an internal location cache used by <code>uniform</code>
+methods to set uniform variables without retrieving their location each
+time. The cache is invalidated every time the program is relinked using
+the provided <code>link</code> method.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">name</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The name of the uniform variable.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">values</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number[]</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>An array containing the new values.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>TODO
+</code></pre>
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_uniform2i" class="method item inherited">
+    <h3 class="name"><code>uniform2i</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>name</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>x</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>y</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="..\classes\oogl.Program.html#method_uniform2i">oogl.Program</a>:
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l587"><code>src\Programs.js:587</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Specifies the value for an <code>ivec2</code> or <code>bvec2</code> uniform variable.</p>
+
+<p><code>gl.uniform2i</code> equivalent.</p>
+
+<p><code>Program</code> objects have an internal location cache used by <code>uniform</code>
+methods to set uniform variables without retrieving their location each
+time. The cache is invalidated every time the program is relinked using
+the provided <code>link</code> method.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">name</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The name of the uniform variable.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">x</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The new value for the first component.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">y</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The new value for the second component.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>TODO
+</code></pre>
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_uniform3f" class="method item inherited">
+    <h3 class="name"><code>uniform3f</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>name</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>x</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>y</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>z</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="..\classes\oogl.Program.html#method_uniform3f">oogl.Program</a>:
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l441"><code>src\Programs.js:441</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Specifies the value for a <code>vec3</code> uniform variable.</p>
+
+<p><code>gl.uniform3f</code> equivalent.</p>
+
+<p><code>Program</code> objects have an internal location cache used by <code>uniform</code>
+methods to set uniform variables without retrieving their location each
+time. The cache is invalidated every time the program is relinked using
+the provided <code>link</code> method.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">name</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The name of the uniform variable.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">x</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The new value for the first component.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">y</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The new value for the second component.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">z</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The new value for the third component.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>TODO
+</code></pre>
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_uniform3fv" class="method item inherited">
+    <h3 class="name"><code>uniform3fv</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>name</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>values</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="..\classes\oogl.Program.html#method_uniform3fv">oogl.Program</a>:
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l527"><code>src\Programs.js:527</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Specifies the value for a <code>vec3</code> uniform variable as an array.</p>
+
+<p><code>gl.uniform3fv</code> equivalent.</p>
+
+<p><code>Program</code> objects have an internal location cache used by <code>uniform</code>
+methods to set uniform variables without retrieving their location each
+time. The cache is invalidated every time the program is relinked using
+the provided <code>link</code> method.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">name</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The name of the uniform variable.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">values</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number[]</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>An array containing the new values.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>TODO
+</code></pre>
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_uniform3i" class="method item inherited">
+    <h3 class="name"><code>uniform3i</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>name</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>x</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>y</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>z</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="..\classes\oogl.Program.html#method_uniform3i">oogl.Program</a>:
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l608"><code>src\Programs.js:608</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Specifies the value for an <code>ivec3</code> or <code>bvec3</code> uniform variable.</p>
+
+<p><code>gl.uniform3i</code> equivalent.</p>
+
+<p><code>Program</code> objects have an internal location cache used by <code>uniform</code>
+methods to set uniform variables without retrieving their location each
+time. The cache is invalidated every time the program is relinked using
+the provided <code>link</code> method.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">name</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The name of the uniform variable.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">x</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The new value for the first component.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">y</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The new value for the second component.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">z</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The new value for the third component.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>TODO
+</code></pre>
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_uniform4f" class="method item inherited">
+    <h3 class="name"><code>uniform4f</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>name</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>x</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>y</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>z</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>w</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="..\classes\oogl.Program.html#method_uniform4f">oogl.Program</a>:
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l464"><code>src\Programs.js:464</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Specifies the value for a <code>vec4</code> uniform variable.</p>
+
+<p><code>gl.uniform4f</code> equivalent.</p>
+
+<p><code>Program</code> objects have an internal location cache used by <code>uniform</code>
+methods to set uniform variables without retrieving their location each
+time. The cache is invalidated every time the program is relinked using
+the provided <code>link</code> method.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">name</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The name of the uniform variable.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">x</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The new value for the first component.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">y</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The new value for the second component.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">z</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The new value for the third component.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">w</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The new value for the fourth component.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>TODO
+</code></pre>
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_uniform4fv" class="method item inherited">
+    <h3 class="name"><code>uniform4fv</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>name</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>values</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="..\classes\oogl.Program.html#method_uniform4fv">oogl.Program</a>:
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l547"><code>src\Programs.js:547</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Specifies the value for a <code>vec4</code> uniform variable as an array.</p>
+
+<p><code>gl.uniform4fv</code> equivalent.</p>
+
+<p><code>Program</code> objects have an internal location cache used by <code>uniform</code>
+methods to set uniform variables without retrieving their location each
+time. The cache is invalidated every time the program is relinked using
+the provided <code>link</code> method.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">name</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The name of the uniform variable.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">values</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number[]</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>An array containing the new values.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>TODO
+</code></pre>
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_uniform4i" class="method item inherited">
+    <h3 class="name"><code>uniform4i</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>name</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>x</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>y</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>z</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>w</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="..\classes\oogl.Program.html#method_uniform4i">oogl.Program</a>:
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l630"><code>src\Programs.js:630</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Specifies the value for an <code>ivec4</code> or <code>bvec4</code> uniform variable.</p>
+
+<p><code>gl.uniform4i</code> equivalent.</p>
+
+<p><code>Program</code> objects have an internal location cache used by <code>uniform</code>
+methods to set uniform variables without retrieving their location each
+time. The cache is invalidated every time the program is relinked using
+the provided <code>link</code> method.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">name</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The name of the uniform variable.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">x</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The new value for the first component.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">y</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The new value for the second component.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">z</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The new value for the third component.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">w</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The new value for the fourth component.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>TODO
+</code></pre>
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_use" class="method item inherited">
+    <h3 class="name"><code>use</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="..\classes\oogl.Program.html#method_use">oogl.Program</a>:
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l232"><code>src\Programs.js:232</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Uses the program in the GL pipeline.</p>
+
+<p><code>gl.useProgram</code> equivalent.</p>
+    </div>
+
+    
+
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>program.use();
+</code></pre>
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_validate" class="method item inherited">
+    <h3 class="name"><code>validate</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="..\classes\oogl.Program.html#method_validate">oogl.Program</a>:
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l245"><code>src\Programs.js:245</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Validates the program.</p>
+
+<p><code>gl.validateProgram</code> equivalent.</p>
+    </div>
+
+    
+
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>program.validate();
+if (!program.getValidateStatus()) {
+    throw 'program validation error';
+}
+</code></pre>
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_validateOrThrow" class="method item inherited">
+    <h3 class="name"><code>validateOrThrow</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="..\classes\oogl.Program.html#method_validateOrThrow">oogl.Program</a>:
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l279"><code>src\Programs.js:279</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Validates the program and throws an exception if the validation fails.</p>
+
+<p>Equivalent to calling <code>gl.validateProgram</code> and <code>gl.getProgramParameter</code>
+with <code>gl.VALIDATE_STATUS</code> subsequently.</p>
+    </div>
+
+    
+
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>program.validateOrThrow();
+</code></pre>
+            </div>
+        </div>
+    
+</div>
+
+                
+            </div>
+        
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="..&#x2F;assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="..&#x2F;assets/js/yui-prettify.js"></script>
+<script src="..&#x2F;assets/../api.js"></script>
+<script src="..&#x2F;assets/js/api-filter.js"></script>
+<script src="..&#x2F;assets/js/api-list.js"></script>
+<script src="..&#x2F;assets/js/api-search.js"></script>
+<script src="..&#x2F;assets/js/apidocs.js"></script>
+</body>
+</html>
