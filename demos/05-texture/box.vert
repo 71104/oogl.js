@@ -6,16 +6,16 @@ attribute vec2 in_TexCoord;
 varying vec2 ex_TexCoord;
 
 void main() {
-	gl_Position = mat(
-		1, 0, 0, 0,
-		0, 1, 0, 0,
+	gl_Position = mat4(
+		2, 0, 0, 0,
+		0, 2, 0, 0,
 		0, 0, 0, 1,
-		0, 0, 1, 0
+		0, 0, 1, 2
 	) * mat4(
 		1, 0, 0, 0,
 		0, 1, 0, 0,
 		0, 0, 1, 0,
-		0, 0, 2, 1
+		0, 0, 3, 1
 	) * mat4(
 		1, 0, 0, 0,
 		0, cos(Angle.x), -sin(Angle.x), 0,
