@@ -13,7 +13,6 @@ OOGL(function () {
 	var oogl = new OOGL.Context('canvas', {
 		alpha: false
 	});
-	oogl.clearColor(0.5, 0.5, 0.5, 1);
 	oogl.enable(oogl.CULL_FACE);
 	var arrays = new oogl.AttributeArrays(36);
 	arrays.add3('float', [
@@ -48,7 +47,7 @@ OOGL(function () {
 			})).start();
 		});
 	};
-	image.src = 'nehe.gif';
+	image.src = 'crate.gif';
 });
 	</script>
 </body>

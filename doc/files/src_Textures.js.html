@@ -260,12 +260,12 @@ context.Texture = function (target) {
 	};
 
 	&#x2F;**
-	 * Queries the &quot;min filter&quot; parameter of this texture.
+	 * Queries the minifying filter setting for this texture.
 	 *
 	 * Equivalent to calling &#x60;gl.getTexParameter&#x60; with &#x60;gl.TEXTURE_MIN_FILTER&#x60;.
 	 *
 	 * @method getMinFilter
-	 * @return {Number} The &quot;min filter&quot; parameter; one of &#x60;gl.NEAREST&#x60;,
+	 * @return {Number} The minifying filter setting; one of &#x60;gl.NEAREST&#x60;,
 	 *	&#x60;gl.LINEAR&#x60;, &#x60;gl.NEAREST_MIPMAP_NEAREST&#x60;, &#x60;gl.LINEAR_MIPMAP_NEAREST&#x60;,
 	 *	&#x60;gl.NEAREST_MIPMAP_LINEAR&#x60; or &#x60;gl.LINEAR_MIPMAP_LINEAR&#x60;.
 	 * @example
@@ -276,12 +276,12 @@ context.Texture = function (target) {
 	};
 
 	&#x2F;**
-	 * Queries the &quot;mag filter&quot; parameter of this texture.
+	 * Queries the magnifying filter setting for this texture.
 	 *
 	 * Equivalent to calling &#x60;gl.getTexParameter&#x60; with &#x60;gl.TEXTURE_MAG_FILTER&#x60;.
 	 *
 	 * @method getMagFilter
-	 * @return {Number} The &quot;mag filter&quot; parameter; one of &#x60;gl.NEAREST&#x60;,
+	 * @return {Number} The magnifying filter setting; one of &#x60;gl.NEAREST&#x60;,
 	 *	&#x60;gl.LINEAR&#x60;.
 	 * @example
 	 *	var magFilter = texture.getMagFilter();
@@ -322,26 +322,28 @@ context.Texture = function (target) {
 	};
 
 	&#x2F;**
-	 * TODO
+	 * Sets the specified floating point parameter for this texture.
+	 *
+	 * &#x60;gl.texParameterf&#x60; equivalent.
 	 *
 	 * @method parameterf
-	 * @param {Number} name TODO
-	 * @param {Number} value TODO
-	 * @example
-	 *	TODO
+	 * @param {Number} name The parameter&#x27;s name.
+	 * @param {Number} value The new value.
 	 *&#x2F;
 	texture.parameterf = function (name, value) {
 		context.texParameterf(target, name, value);
 	};
 
 	&#x2F;**
-	 * TODO
+	 * Sets the specified integer parameter for this texture.
+	 *
+	 * &#x60;gl.texParameteri&#x60; equivalent.
 	 *
 	 * @method parameteri
-	 * @param {Number} name TODO
-	 * @param {Number} value TODO
+	 * @param {Number} name The parameter&#x27;s name.
+	 * @param {Number} value The new value.
 	 * @example
-	 *	TODO
+	 *	texture.parameteri(oogl.TEXTURE_MAG_FILTER, oogl.LINEAR);
 	 *&#x2F;
 	texture.parameteri = function (name, value) {
 		context.texParameteri(target, name, value);
@@ -415,7 +417,7 @@ context.Texture = function (target) {
 	 *
 	 * @method generateMipmap
 	 * @example
-	 *	TODO
+	 *	texture.generateMipmap();
 	 *&#x2F;
 	texture.generateMipmap = function () {
 		context.generateMipmap(target);
@@ -449,8 +451,8 @@ context.Texture = function (target) {
 	 * @example
 	 *	TODO
 	 *&#x2F;
-	texture.subImage2D = function () {
-		&#x2F;&#x2F; TODO
+	texture.subImage2D = function (level, xoffset, yoffset, format, type, object) {
+		context.texSubImage2D(target, level, xoffset, yoffset, format, type, object);
 	};
 
 	&#x2F;**
@@ -470,7 +472,7 @@ context.Texture = function (target) {
 	 *	TODO
 	 *&#x2F;
 	texture.copyImage2D = function (level, internalFormat, x, y, width, height, border) {
-		context.copyTexImage2D(target, level, internalFormat, x, y, width, height, border || 0);
+		context.copyTexImage2D(target, level, internalFormat, x, y, width, height, border);
 	};
 
 	&#x2F;**
@@ -561,6 +563,7 @@ context.AutoTexture = function (object, magFilter, minFilter) {
 		}
 	} else {
 		texture.setMagFilter(context.LINEAR);
+		texture.setMinFilter(context.LINEAR);
 	}
 	texture.image2D(0, context.RGBA, context.UNSIGNED_BYTE, object);
 	return texture;
