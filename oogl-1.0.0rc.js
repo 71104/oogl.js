@@ -3413,11 +3413,11 @@ context.Texture2D = function () {
 /**
  * Creates a texture from a DOM image, canvas or video element.
  *
- * The `ImageTexture` constructor automatically binds the texture to the
+ * The `AutoTexture` constructor automatically binds the texture to the
  * `gl.TEXTURE_2D` target, sets minifying and magnifying filters and passes the
  * image to `gl.texImage2D`.
  *
- * @class oogl.ImageTexture
+ * @class oogl.AutoTexture
  * @extends oogl.Texture2D
  * @constructor
  * @param {Mixed} object A DOM image, canvas or video element to use as the
@@ -3429,7 +3429,7 @@ context.Texture2D = function () {
  * @example
  *	var arrays = new oogl.AttributeArrays(vertices.length);
  *	// add arrays here
- *	var texture = new oogl.ImageTexture(image);
+ *	var texture = new oogl.AutoTexture(image);
  *	arrays.drawTriangles();
  *	oogl.flush();
  */
