@@ -149,7 +149,7 @@
             "classes": {
                 "oogl.Texture": 1,
                 "oogl.Texture2D": 1,
-                "oogl.ImageTexture": 1,
+                "oogl.AutoTexture": 1,
                 "oogl.CubeMap": 1,
                 "oogl.Textures": 1
             },
@@ -1387,9 +1387,9 @@
                 "\n\tvar texture = new oogl.Texture2D();\n\ttexture.bind();\n\ttexture.setMagFilter(oogl.LINEAR);\n\ttexture.setMinFilter(oogl.LINEAR);\n\ttexture.image2D(0, oogl.RGBA, oogl.UNSIGNED_BYTE, image);"
             ]
         },
-        "oogl.ImageTexture": {
-            "name": "oogl.ImageTexture",
-            "shortname": "oogl.ImageTexture",
+        "oogl.AutoTexture": {
+            "name": "oogl.AutoTexture",
+            "shortname": "oogl.AutoTexture",
             "classitems": [],
             "plugins": [],
             "extensions": [],
@@ -1397,7 +1397,7 @@
             "extension_for": [],
             "file": "src\\Textures.js",
             "line": 336,
-            "description": "Creates a texture from a DOM image, canvas or video element.\n\nThe `ImageTexture` constructor automatically binds the texture to the\n`gl.TEXTURE_2D` target, sets minifying and magnifying filters and passes the\nimage to `gl.texImage2D`.",
+            "description": "Creates a texture from a DOM image, canvas or video element.\n\nThe `AutoTexture` constructor automatically binds the texture to the\n`gl.TEXTURE_2D` target, sets minifying and magnifying filters and passes the\nimage to `gl.texImage2D`.",
             "extends": "oogl.Texture2D",
             "is_constructor": 1,
             "params": [
@@ -1422,7 +1422,7 @@
                 }
             ],
             "example": [
-                "\n\tvar arrays = new oogl.AttributeArrays(vertices.length);\n\t// add arrays here\n\tvar texture = new oogl.ImageTexture(image);\n\tarrays.drawTriangles();\n\toogl.flush();"
+                "\n\tvar arrays = new oogl.AttributeArrays(vertices.length);\n\t// add arrays here\n\tvar texture = new oogl.AutoTexture(image);\n\tarrays.drawTriangles();\n\toogl.flush();"
             ]
         },
         "oogl.CubeMap": {

@@ -74,6 +74,8 @@ _gaq.push(['_trackPageview']);
             
                 <li><a href="..&#x2F;classes/oogl.AutoProgram.html">oogl.AutoProgram</a></li>
             
+                <li><a href="..&#x2F;classes/oogl.AutoTexture.html">oogl.AutoTexture</a></li>
+            
                 <li><a href="..&#x2F;classes/oogl.Buffer.html">oogl.Buffer</a></li>
             
                 <li><a href="..&#x2F;classes/OOGL.Context.html">OOGL.Context</a></li>
@@ -93,8 +95,6 @@ _gaq.push(['_trackPageview']);
                 <li><a href="..&#x2F;classes/oogl.FragmentShader.html">oogl.FragmentShader</a></li>
             
                 <li><a href="..&#x2F;classes/oogl.Framebuffer.html">oogl.Framebuffer</a></li>
-            
-                <li><a href="..&#x2F;classes/oogl.ImageTexture.html">oogl.ImageTexture</a></li>
             
                 <li><a href="..&#x2F;classes/OOGL.Matrix2.html">OOGL.Matrix2</a></li>
             
@@ -531,11 +531,11 @@ context.Texture2D = function () {
 &#x2F;**
  * Creates a texture from a DOM image, canvas or video element.
  *
- * The &#x60;ImageTexture&#x60; constructor automatically binds the texture to the
+ * The &#x60;AutoTexture&#x60; constructor automatically binds the texture to the
  * &#x60;gl.TEXTURE_2D&#x60; target, sets minifying and magnifying filters and passes the
  * image to &#x60;gl.texImage2D&#x60;.
  *
- * @class oogl.ImageTexture
+ * @class oogl.AutoTexture
  * @extends oogl.Texture2D
  * @constructor
  * @param {Mixed} object A DOM image, canvas or video element to use as the
@@ -547,7 +547,7 @@ context.Texture2D = function () {
  * @example
  *	var arrays = new oogl.AttributeArrays(vertices.length);
  *	&#x2F;&#x2F; add arrays here
- *	var texture = new oogl.ImageTexture(image);
+ *	var texture = new oogl.AutoTexture(image);
  *	arrays.drawTriangles();
  *	oogl.flush();
  *&#x2F;
