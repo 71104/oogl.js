@@ -9,6 +9,14 @@ OOGL is not another scene graph library: OOGL strongly focuses on performance an
 
 See the [OOGL API Reference](http://71104.github.com/oogl.js/doc/) and the [Demos](http://71104.github.com/oogl.js/demos/).
 
+Download
+========
+
+Current version
+---------------
+
+The latest version is [1.0.0rc](https://github.com/71104/oogl.js/tree/1.0.0rc) ([zip](https://github.com/71104/oogl.js/archive/1.0.0rc.zip)), [tar](https://github.com/71104/oogl.js/archive/1.0.0rc.tar.gz)).
+
 Getting started
 ===============
 
