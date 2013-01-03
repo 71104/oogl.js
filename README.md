@@ -15,7 +15,7 @@ Download
 Current version
 ---------------
 
-The latest version is [1.0.0rc](https://github.com/71104/oogl.js/tree/1.0.0rc) ([zip](https://github.com/71104/oogl.js/archive/1.0.0rc.zip)), [tar](https://github.com/71104/oogl.js/archive/1.0.0rc.tar.gz)).
+The latest version is [1.0.0rc](https://github.com/71104/oogl.js/tree/1.0.0rc) ([zip](https://github.com/71104/oogl.js/archive/1.0.0rc.zip), [tar](https://github.com/71104/oogl.js/archive/1.0.0rc.tar.gz)).
 
 Getting started
 ===============
