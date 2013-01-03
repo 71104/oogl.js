@@ -43,14 +43,53 @@ OOGL(function () {
 			var vy = 0;
 			var ax = 0;
 			var ay = 0;
-			addEventListener('keydown', function (event) {
-				switch (event.which) {
-				}
-			});
-			addEventListener('keyup', function (event) {
-				switch (event.which) {
-				}
-			});
+			(function () {
+				var d = Math.PI / 10000;
+				var keys = {
+					'37': false, // left arrow
+					'38': false, // up arrow
+					'39': false, // right arrow
+					'40': false  // down arrow
+				};
+				addEventListener('keydown', function (event) {
+					if (keys[event.keyCode] === false) {
+						keys[event.keyCode] = true;
+						switch (event.keyCode) {
+						case 37:
+							ay -= d;
+							break;
+						case 38:
+							ax -= d;
+							break;
+						case 39:
+							ay += d;
+							break;
+						case 40:
+							ax += d;
+							break;
+						}
+					}
+				});
+				addEventListener('keyup', function (event) {
+					if (keys[event.keyCode]) {
+						keys[event.keyCode] = false;
+						switch (event.keyCode) {
+						case 37:
+							ay += d;
+							break;
+						case 38:
+							ax += d;
+							break;
+						case 39:
+							ay -= d;
+							break;
+						case 40:
+							ax -= d;
+							break;
+						}
+					}
+				});
+			})();
 			(new OOGL.RenderLoop(function () {
 				oogl.clear(oogl.COLOR_BUFFER_BIT);
 				program.uniform2f('Angle', angleX += vx, angleY += vy);
