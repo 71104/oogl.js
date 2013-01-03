@@ -173,7 +173,7 @@
 <p>Similarly, you can specify a <code>mat4</code> uniform like this:</p>
 
 <div class="highlight"><pre><span class="kd">var</span> <span class="nx">m</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">OOGL</span><span class="p">.</span><span class="nx">Matrix3</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]);</span>
-<span class="nx">program</span><span class="p">.</span><span class="nx">uniformMat3</span><span class="p">(</span><span class="nx">m</span><span class="p">);</span>
+<span class="nx">program</span><span class="p">.</span><span class="nx">uniformMat3</span><span class="p">(</span><span class="s1">'Matrix'</span><span class="p">,</span> <span class="nx">m</span><span class="p">);</span>
 </pre></div>
 
 <p>OOGL provides classes to handle 2-, 3- and 4-component vectors and 2x2, 3x3 and 4x4 matrices.</p>
