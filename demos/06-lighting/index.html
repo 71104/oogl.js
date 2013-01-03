@@ -39,11 +39,23 @@ OOGL(function () {
 			program.use();
 			var angleX = 0;
 			var angleY = 0;
+			var vx = 0;
+			var vy = 0;
+			var ax = 0;
+			var ay = 0;
+			addEventListener('keydown', function (event) {
+				// TODO
+			});
+			addEventListener('keyup', function (event) {
+				// TODO
+			});
 			(new OOGL.RenderLoop(function () {
 				oogl.clear(oogl.COLOR_BUFFER_BIT);
-				program.uniform2f('Angle', angleX += Math.PI / 60, angleY += Math.PI / 60);
+				program.uniform2f('Angle', angleX += vx, angleY += vy);
 				arrays.drawTriangles();
 				oogl.flush();
+				vx += ax;
+				vy += ay;
 			})).start();
 		});
 	};
