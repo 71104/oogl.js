@@ -147,7 +147,7 @@ Similarly, you can specify a `mat4` uniform like this:
 
 ```javascript
 var m = new OOGL.Matrix3([1, 2, 3, 4, 5, 6, 7, 8, 9]);
-program.uniformMat3(m);
+program.uniformMat3('Matrix', m);
 ```
 
 OOGL provides classes to handle 2-, 3- and 4-component vectors and 2x2, 3x3 and 4x4 matrices.
