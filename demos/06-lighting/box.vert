@@ -1,3 +1,4 @@
+uniform float Zoom;
 uniform vec2 Angle;
 
 attribute vec3 in_Vertex;
@@ -24,8 +25,8 @@ void main() {
 		0, 0, 0, 1
 	) * vec4(in_Vertex, 1);
 	gl_Position = mat4(
-		2, 0, 0, 0,
-		0, 2.66, 0, 0,
+		2.0 * Zoom, 0, 0, 0,
+		0, 2.66 * Zoom, 0, 0,
 		0, 0, 0, 1,
 		0, 0, 1, 2
 	) * ex_Vertex;
