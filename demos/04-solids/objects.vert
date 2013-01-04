@@ -9,14 +9,14 @@ varying vec3 ex_Color;
 void main() {
 	gl_Position = mat4(
 		1, 0, 0, 0,
-		0, 1, 0, 0,
+		0, 1.33, 0, 0,
 		0, 0, 0, 1,
-		0, 0, 1, 0
+		0, 0, 1, 1
 	) * mat4(
 		1, 0, 0, 0,
 		0, 1, 0, 0,
 		0, 0, 1, 0,
-		Offset, 0, 4, 1
+		Offset, 0, 3, 1
 	) * mat4(
 		1, 0, 0, 0,
 		0, cos(Angle.x), -sin(Angle.x), 0,

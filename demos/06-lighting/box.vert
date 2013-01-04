@@ -3,15 +3,11 @@ uniform vec2 Angle;
 attribute vec3 in_Vertex;
 attribute vec2 in_TexCoord;
 
+varying vec4 ex_Vertex;
 varying vec2 ex_TexCoord;
 
 void main() {
-	gl_Position = mat4(
-		2, 0, 0, 0,
-		0, 2, 0, 0,
-		0, 0, 0, 1,
-		0, 0, 1, 2
-	) * mat4(
+	ex_Vertex = mat4(
 		1, 0, 0, 0,
 		0, 1, 0, 0,
 		0, 0, 1, 0,
@@ -27,5 +23,11 @@ void main() {
 		-sin(Angle.y), 0, cos(Angle.y), 0,
 		0, 0, 0, 1
 	) * vec4(in_Vertex, 1);
+	gl_Position = mat4(
+		2, 0, 0, 0,
+		0, 2.66, 0, 0,
+		0, 0, 0, 1,
+		0, 0, 1, 2
+	) * ex_Vertex;
 	ex_TexCoord = in_TexCoord;
 }
