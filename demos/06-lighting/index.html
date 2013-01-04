@@ -13,7 +13,9 @@ OOGL(function () {
 	var oogl = new OOGL.Context('canvas', {
 		alpha: false
 	});
-	oogl.enable(oogl.CULL_FACE);
+	oogl.enable(oogl.DEPTH_TEST);
+	oogl.clearDepth(0);
+	oogl.depthFunc(oogl.GREATER);
 	var arrays = new oogl.AttributeArrays(36);
 	arrays.add3('float', [
 		-1, 1, -1, -1, -1, -1, 1, -1, -1, -1, 1, -1, 1, -1, -1, 1, 1, -1,	// front
@@ -43,16 +45,61 @@ OOGL(function () {
 			var vy = 0;
 			var ax = 0;
 			var ay = 0;
-			addEventListener('keydown', function (event) {
-				switch (event.which) {
-				}
-			});
-			addEventListener('keyup', function (event) {
-				switch (event.which) {
-				}
-			});
+			var zoom = 1;
+			program.uniform1f('Zoom', zoom);
+			(function () {
+				var d = Math.PI / 10000;
+				var keys = {
+					'37': false, // left arrow
+					'38': false, // up arrow
+					'39': false, // right arrow
+					'40': false  // down arrow
+				};
+				addEventListener('keydown', function (event) {
+					if (event.keyCode == 33) {
+						program.uniform1f('Zoom', zoom += 0.1);
+					} else if (event.keyCode == 34) {
+						program.uniform1f('Zoom', zoom -= 0.1);
+					} else if (keys[event.keyCode] === false) {
+						keys[event.keyCode] = true;
+						switch (event.keyCode) {
+						case 37:
+							ay -= d;
+							break;
+						case 38:
+							ax -= d;
+							break;
+						case 39:
+							ay += d;
+							break;
+						case 40:
+							ax += d;
+							break;
+						}
+					}
+				});
+				addEventListener('keyup', function (event) {
+					if (keys[event.keyCode]) {
+						keys[event.keyCode] = false;
+						switch (event.keyCode) {
+						case 37:
+							ay += d;
+							break;
+						case 38:
+							ax += d;
+							break;
+						case 39:
+							ay -= d;
+							break;
+						case 40:
+							ax -= d;
+							break;
+						}
+					}
+				});
+			})();
 			(new OOGL.RenderLoop(function () {
-				oogl.clear(oogl.COLOR_BUFFER_BIT);
+				oogl.clear(oogl.COLOR_BUFFER_BIT | oogl.DEPTH_BUFFER_BIT);
 				program.uniform2f('Angle', angleX += vx, angleY += vy);
 				arrays.drawTriangles();
 				oogl.flush();
