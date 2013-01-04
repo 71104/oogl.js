@@ -13,9 +13,8 @@ OOGL(function () {
 	var oogl = new OOGL.Context('canvas', {
 		alpha: false
 	});
-	oogl.enable(oogl.DEPTH_TEST);
-	oogl.clearDepth(0);
-	oogl.depthFunc(oogl.GREATER);
+	oogl.enable(oogl.BLEND);
+	oogl.blendFunc(oogl.SRC_ALPHA, oogl.ONE);
 	var arrays = new oogl.AttributeArrays(36);
 	arrays.add3('float', [
 		-1, 1, -1, -1, -1, -1, 1, -1, -1, -1, 1, -1, 1, -1, -1, 1, 1, -1,	// front
@@ -99,7 +98,7 @@ OOGL(function () {
 				});
 			})();
 			(new OOGL.RenderLoop(function () {
-				oogl.clear(oogl.COLOR_BUFFER_BIT | oogl.DEPTH_BUFFER_BIT);
+				oogl.clear(oogl.COLOR_BUFFER_BIT);
 				program.uniform2f('Angle', angleX += vx, angleY += vy);
 				arrays.drawTriangles();
 				oogl.flush();
