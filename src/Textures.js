@@ -375,6 +375,52 @@ context.AutoTexture = function (object, magFilter, minFilter) {
 };
 
 /**
+ * TODO
+ *
+ * @class AsyncTexture
+ * @constructor
+ * @param {String} url TODO
+ * @param {Function} callback TODO
+ * @param {Number} [magFilter=gl.LINEAR] TODO
+ * @param {Number} [minFilter=gl.LINEAR] TODO
+ * @example
+ *	TODO
+ */
+context.AsyncTexture = function (url, callback, magFilter, minFilter) {
+	var texture = new context.Texture2D();
+
+	texture.bind();
+	if (arguments.length > 1) {
+		texture.setMagFilter(magFilter);
+		if (arguments.length > 2) {
+			texture.setMinFilter(minFilter);
+		} else {
+			texture.setMinFilter(context.LINEAR);
+		}
+	} else {
+		texture.setMagFilter(context.LINEAR);
+		texture.setMinFilter(context.LINEAR);
+	}
+
+	/**
+	 * TODO
+	 *
+	 * @property image
+	 * @type Image
+	 * @example
+	 *	TODO
+	 */
+	texture.image = new Image();
+	texture.image.onload = function () {
+		texture.image2D(0, context.RGBA, context.UNSIGNED_BYTE, texture.image);
+		callback && callback.call(texture);
+	};
+	texture.image.src = url;
+
+	return texture;
+};
+
+/**
  * A texture whose type is `gl.TEXTURE_CUBE_MAP`.
  *
  * TODO
