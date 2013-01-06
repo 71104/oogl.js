@@ -33,9 +33,7 @@ OOGL(function () {
 		0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0,
 		]);
 	arrays.bindAndPointer();
-	var image = new Image();
-	image.onload = function () {
-		new oogl.AutoTexture(image);
+	new oogl.AsyncTexture('glass.gif', function () {
 		var program = new oogl.AjaxProgram('box', ['in_Vertex', 'in_TexCoord'], function () {
 			program.use();
 			var angleX = 0;
@@ -106,8 +104,7 @@ OOGL(function () {
 				vy += ay;
 			})).start();
 		});
-	};
-	image.src = 'glass.gif';
+	});
 });
 	</script>
 </body>

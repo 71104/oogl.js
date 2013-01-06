@@ -15,8 +15,8 @@ OOGL(function () {
 	});
 	oogl.enable(oogl.BLEND);
 	oogl.blendFunc(oogl.SRC_ALPHA, oogl.ONE);
-	var program = new oogl.AjaxProgram('star', ['in_Vertex', 'in_Color', 'in_TexCoord'], function () {
-		new oogl.AsyncTexture('star.gif', function () {
+	new oogl.AsyncTexture('star.gif', function () {
+		var program = new oogl.AjaxProgram('star', ['in_Vertex', 'in_Color', 'in_TexCoord'], function () {
 			(new OOGL.RenderLoop(function () {
 				oogl.clear(oogl.COLOR_BUFFER_BIT);
 				// TODO

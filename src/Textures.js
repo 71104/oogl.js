@@ -390,9 +390,9 @@ context.AsyncTexture = function (url, callback, magFilter, minFilter) {
 	var texture = new context.Texture2D();
 
 	texture.bind();
-	if (arguments.length > 1) {
+	if (arguments.length > 2) {
 		texture.setMagFilter(magFilter);
-		if (arguments.length > 2) {
+		if (arguments.length > 3) {
 			texture.setMinFilter(minFilter);
 		} else {
 			texture.setMinFilter(context.LINEAR);
