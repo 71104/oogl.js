@@ -375,16 +375,31 @@ context.AutoTexture = function (object, magFilter, minFilter) {
 };
 
 /**
- * TODO
+ * Creates a texture from an asynchronously loaded image.
  *
- * @class AsyncTexture
+ * The `AsyncTexture` constructor automatically binds the texture to the
+ * `gl.TEXTURE_2D` target, sets minifying and magnifying filters and passes the
+ * image to `gl.texImage2D`.
+ *
+ * If the texture image is loaded successfully, the specified `callback`
+ * function is invoked using this `AsyncTexture` object as `this`.
+ *
+ * @class oogl.AsyncTexture
  * @constructor
- * @param {String} url TODO
- * @param {Function} callback TODO
- * @param {Number} [magFilter=gl.LINEAR] TODO
- * @param {Number} [minFilter=gl.LINEAR] TODO
+ * @param {String} url The URL of the texture image.
+ * @param {Function} callback A user-defined callback function that is called
+ *	after the texture has been loaded and configured.
+ * @param {Number} [magFilter=gl.LINEAR] An optional value for the magnifying
+ *	filter.
+ * @param {Number} [minFilter=gl.LINEAR] An optional value for the minifying
+ *	filter.
  * @example
- *	TODO
+ *	var arrays = new oogl.AttributeArrays(vertices.length);
+ *	// add arrays here
+ *	var texture = new oogl.AsyncTexture('texture.png', function () {
+ *		arrays.drawTriangles();
+ *		oogl.flush();
+ *	});
  */
 context.AsyncTexture = function (url, callback, magFilter, minFilter) {
 	var texture = new context.Texture2D();
