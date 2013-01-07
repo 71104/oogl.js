@@ -126,8 +126,8 @@ OOGL(function () {
 	oogl.clearColor(0, 0, 0, 1);
 	oogl.clear(oogl.COLOR_BUFFER_BIT);
 	var arrays = new oogl.AttributeArrays(3);
-	arrays.add2('float', [-1, 1, -1, -1, 1, -1]);
-	arrays.add3('float', [0, 1, 0, 1, 0, 0, 0, 0, 1]);
+	arrays.add2f([-1, 1, -1, -1, 1, -1]);
+	arrays.add3f([0, 1, 0, 1, 0, 0, 0, 0, 1]);
 	arrays.bindAndPointer();
 	var program = new oogl.AjaxProgram('test', ['in_Vertex', 'in_Color'], function () {
 		program.use();
