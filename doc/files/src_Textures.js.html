@@ -52,8 +52,6 @@ _gaq.push(['_trackPageview']);
         <div id="api-tabview-panel">
             <ul id="api-classes" class="apis classes">
             
-                <li><a href="..&#x2F;classes/AsyncTexture.html">AsyncTexture</a></li>
-            
                 <li><a href="..&#x2F;classes/OOGL.Ajax.html">OOGL.Ajax</a></li>
             
                 <li><a href="..&#x2F;classes/oogl.AjaxFragmentShader.html">oogl.AjaxFragmentShader</a></li>
@@ -63,6 +61,8 @@ _gaq.push(['_trackPageview']);
                 <li><a href="..&#x2F;classes/oogl.AjaxVertexShader.html">oogl.AjaxVertexShader</a></li>
             
                 <li><a href="..&#x2F;classes/oogl.ArrayBuffer.html">oogl.ArrayBuffer</a></li>
+            
+                <li><a href="..&#x2F;classes/oogl.AsyncTexture.html">oogl.AsyncTexture</a></li>
             
                 <li><a href="..&#x2F;classes/oogl.AttributeArray1.html">oogl.AttributeArray1</a></li>
             
@@ -572,16 +572,31 @@ context.AutoTexture = function (object, magFilter, minFilter) {
 };
 
 &#x2F;**
- * TODO
+ * Creates a texture from an asynchronously loaded image.
  *
- * @class AsyncTexture
+ * The &#x60;AsyncTexture&#x60; constructor automatically binds the texture to the
+ * &#x60;gl.TEXTURE_2D&#x60; target, sets minifying and magnifying filters and passes the
+ * image to &#x60;gl.texImage2D&#x60;.
+ *
+ * If the texture image is loaded successfully, the specified &#x60;callback&#x60;
+ * function is invoked using this &#x60;AsyncTexture&#x60; object as &#x60;this&#x60;.
+ *
+ * @class oogl.AsyncTexture
  * @constructor
- * @param {String} url TODO
- * @param {Function} callback TODO
- * @param {Number} [magFilter=gl.LINEAR] TODO
- * @param {Number} [minFilter=gl.LINEAR] TODO
+ * @param {String} url The URL of the texture image.
+ * @param {Function} callback A user-defined callback function that is called
+ *	after the texture has been loaded and configured.
+ * @param {Number} [magFilter=gl.LINEAR] An optional value for the magnifying
+ *	filter.
+ * @param {Number} [minFilter=gl.LINEAR] An optional value for the minifying
+ *	filter.
  * @example
- *	TODO
+ *	var arrays = new oogl.AttributeArrays(vertices.length);
+ *	&#x2F;&#x2F; add arrays here
+ *	var texture = new oogl.AsyncTexture(&#x27;texture.png&#x27;, function () {
+ *		arrays.drawTriangles();
+ *		oogl.flush();
+ *	});
  *&#x2F;
 context.AsyncTexture = function (url, callback, magFilter, minFilter) {
 	var texture = new context.Texture2D();

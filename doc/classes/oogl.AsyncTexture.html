@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>AsyncTexture - OOGL.js 1.0</title>
+    <title>oogl.AsyncTexture - OOGL.js 1.0</title>
     <link rel="stylesheet" href="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;3.8.0pr2&#x2F;build&#x2F;cssgrids&#x2F;cssgrids-min.css">
     <link rel="stylesheet" href="..&#x2F;assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="..&#x2F;assets/css/main.css" id="site_styles">
@@ -52,8 +52,6 @@ _gaq.push(['_trackPageview']);
         <div id="api-tabview-panel">
             <ul id="api-classes" class="apis classes">
             
-                <li><a href="..&#x2F;classes/AsyncTexture.html">AsyncTexture</a></li>
-            
                 <li><a href="..&#x2F;classes/OOGL.Ajax.html">OOGL.Ajax</a></li>
             
                 <li><a href="..&#x2F;classes/oogl.AjaxFragmentShader.html">oogl.AjaxFragmentShader</a></li>
@@ -63,6 +61,8 @@ _gaq.push(['_trackPageview']);
                 <li><a href="..&#x2F;classes/oogl.AjaxVertexShader.html">oogl.AjaxVertexShader</a></li>
             
                 <li><a href="..&#x2F;classes/oogl.ArrayBuffer.html">oogl.ArrayBuffer</a></li>
+            
+                <li><a href="..&#x2F;classes/oogl.AsyncTexture.html">oogl.AsyncTexture</a></li>
             
                 <li><a href="..&#x2F;classes/oogl.AttributeArray1.html">oogl.AttributeArray1</a></li>
             
@@ -191,7 +191,7 @@ _gaq.push(['_trackPageview']);
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>AsyncTexture Class</h1>
+                        <h1>oogl.AsyncTexture Class</h1>
 <div class="box meta">
     
 
@@ -211,14 +211,21 @@ _gaq.push(['_trackPageview']);
 
 
 <div class="box intro">
-    <p>TODO</p>
+    <p>Creates a texture from an asynchronously loaded image.</p>
+
+<p>The <code>AsyncTexture</code> constructor automatically binds the texture to the
+<code>gl.TEXTURE_2D</code> target, sets minifying and magnifying filters and passes the
+image to <code>gl.texImage2D</code>.</p>
+
+<p>If the texture image is loaded successfully, the specified <code>callback</code>
+function is invoked using this <code>AsyncTexture</code> object as <code>this</code>.</p>
 </div>
 
 
     <div class="constructor">
         <h2>Constructor</h2>
-        <div id="method_AsyncTexture" class="method item">
-    <h3 class="name"><code>AsyncTexture</code></h3>
+        <div id="method_oogl.AsyncTexture" class="method item">
+    <h3 class="name"><code>oogl.AsyncTexture</code></h3>
 
     
         <div class="args">
@@ -306,7 +313,7 @@ _gaq.push(['_trackPageview']);
                     
 
                     <div class="param-description">
-                        <p>TODO</p>
+                        <p>The URL of the texture image.</p>
                     </div>
 
                     
@@ -321,7 +328,8 @@ _gaq.push(['_trackPageview']);
                     
 
                     <div class="param-description">
-                        <p>TODO</p>
+                        <p>A user-defined callback function that is called
+    after the texture has been loaded and configured.</p>
                     </div>
 
                     
@@ -337,7 +345,8 @@ _gaq.push(['_trackPageview']);
                     
 
                     <div class="param-description">
-                        <p>TODO</p>
+                        <p>An optional value for the magnifying
+    filter.</p>
                     </div>
 
                     
@@ -353,7 +362,8 @@ _gaq.push(['_trackPageview']);
                     
 
                     <div class="param-description">
-                        <p>TODO</p>
+                        <p>An optional value for the minifying
+    filter.</p>
                     </div>
 
                     
@@ -370,7 +380,12 @@ _gaq.push(['_trackPageview']);
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>TODO
+                <pre class="code prettyprint"><code>var arrays = new oogl.AttributeArrays(vertices.length);
+// add arrays here
+var texture = new oogl.AsyncTexture('texture.png', function () {
+    arrays.drawTriangles();
+    oogl.flush();
+});
 </code></pre>
             </div>
         </div>
@@ -450,7 +465,7 @@ _gaq.push(['_trackPageview']);
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Textures.js.html#l405"><code>src\Textures.js:405</code></a>
+        <a href="..&#x2F;files&#x2F;src_Textures.js.html#l420"><code>src\Textures.js:420</code></a>
         
         </p>
 
