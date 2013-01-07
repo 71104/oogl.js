@@ -396,7 +396,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "src\\Arrays.js",
-            "line": 583,
+            "line": 843,
             "description": "Represents an element array.\n\nThis class inherits `StaticElementArrayBuffer` and introduces utility\nmethods.",
             "extends": "oogl.StaticElementArrayBuffer",
             "is_constructor": 1,
@@ -1437,6 +1437,7 @@
             "file": "src\\Textures.js",
             "line": 377,
             "description": "Creates a texture from an asynchronously loaded image.\n\nThe `AsyncTexture` constructor automatically binds the texture to the\n`gl.TEXTURE_2D` target, sets minifying and magnifying filters and passes the\nimage to `gl.texImage2D`.\n\nIf the texture image is loaded successfully, the specified `callback`\nfunction is invoked using this `AsyncTexture` object as `this`.",
+            "extends": "oogl.Texture2D",
             "is_constructor": 1,
             "params": [
                 {
@@ -1477,7 +1478,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "src\\Textures.js",
-            "line": 438,
+            "line": 439,
             "description": "A texture whose type is `gl.TEXTURE_CUBE_MAP`.\n\nTODO",
             "extends": "oogl.Texture",
             "is_constructor": 1,
@@ -1494,7 +1495,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "src\\Textures.js",
-            "line": 453,
+            "line": 454,
             "description": "A utility class that aids in the management of multiple textures.\n\nOne `Textures` objects represents a set of textures that must be\nsimultaneously bound (to different texture units) for use by the same\nprogram. The `Textures` object automatically assigns textures to texture\nunits.\n\nA `Texture` object may also belong to several `Textures` sets at the same\ntime, so that it can be used by several programs.",
             "is_constructor": 1,
             "params": [
@@ -2025,7 +2026,7 @@
                 {
                     "name": "data",
                     "description": "A standard JavaScript array containing the\n\tattribute data.",
-                    "type": "Array"
+                    "type": "Number[]"
                 },
                 {
                     "name": "normalize",
@@ -2043,6 +2044,131 @@
         {
             "file": "src\\Arrays.js",
             "line": 403,
+            "description": "TODO",
+            "itemtype": "method",
+            "name": "add1b",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "TODO",
+                    "type": "Number[]"
+                },
+                {
+                    "name": "normalize",
+                    "description": "TODO",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "false"
+                }
+            ],
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "oogl.AttributeArrays"
+        },
+        {
+            "file": "src\\Arrays.js",
+            "line": 416,
+            "description": "TODO",
+            "itemtype": "method",
+            "name": "add1ub",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "TODO",
+                    "type": "Number[]"
+                },
+                {
+                    "name": "normalize",
+                    "description": "TODO",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "false"
+                }
+            ],
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "oogl.AttributeArrays"
+        },
+        {
+            "file": "src\\Arrays.js",
+            "line": 429,
+            "description": "TODO",
+            "itemtype": "method",
+            "name": "add1s",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "TODO",
+                    "type": "Number[]"
+                },
+                {
+                    "name": "normalize",
+                    "description": "TODO",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "false"
+                }
+            ],
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "oogl.AttributeArrays"
+        },
+        {
+            "file": "src\\Arrays.js",
+            "line": 442,
+            "description": "TODO",
+            "itemtype": "method",
+            "name": "add1us",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "TODO",
+                    "type": "Number[]"
+                },
+                {
+                    "name": "normalize",
+                    "description": "TODO",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "false"
+                }
+            ],
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "oogl.AttributeArrays"
+        },
+        {
+            "file": "src\\Arrays.js",
+            "line": 455,
+            "description": "TODO",
+            "itemtype": "method",
+            "name": "add1f",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "TODO",
+                    "type": "Number[]"
+                },
+                {
+                    "name": "normalize",
+                    "description": "TODO",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "false"
+                }
+            ],
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "oogl.AttributeArrays"
+        },
+        {
+            "file": "src\\Arrays.js",
+            "line": 468,
             "description": "Adds a 2-component vertex attribute array to the set.",
             "itemtype": "method",
             "name": "add2",
@@ -2072,7 +2198,132 @@
         },
         {
             "file": "src\\Arrays.js",
-            "line": 420,
+            "line": 485,
+            "description": "TODO",
+            "itemtype": "method",
+            "name": "add2b",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "TODO",
+                    "type": "Number[]"
+                },
+                {
+                    "name": "normalize",
+                    "description": "TODO",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "false"
+                }
+            ],
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "oogl.AttributeArrays"
+        },
+        {
+            "file": "src\\Arrays.js",
+            "line": 498,
+            "description": "TODO",
+            "itemtype": "method",
+            "name": "add2ub",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "TODO",
+                    "type": "Number[]"
+                },
+                {
+                    "name": "normalize",
+                    "description": "TODO",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "false"
+                }
+            ],
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "oogl.AttributeArrays"
+        },
+        {
+            "file": "src\\Arrays.js",
+            "line": 511,
+            "description": "TODO",
+            "itemtype": "method",
+            "name": "add2s",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "TODO",
+                    "type": "Number[]"
+                },
+                {
+                    "name": "normalize",
+                    "description": "TODO",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "false"
+                }
+            ],
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "oogl.AttributeArrays"
+        },
+        {
+            "file": "src\\Arrays.js",
+            "line": 524,
+            "description": "TODO",
+            "itemtype": "method",
+            "name": "add2us",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "TODO",
+                    "type": "Number[]"
+                },
+                {
+                    "name": "normalize",
+                    "description": "TODO",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "false"
+                }
+            ],
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "oogl.AttributeArrays"
+        },
+        {
+            "file": "src\\Arrays.js",
+            "line": 537,
+            "description": "TODO",
+            "itemtype": "method",
+            "name": "add2f",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "TODO",
+                    "type": "Number[]"
+                },
+                {
+                    "name": "normalize",
+                    "description": "TODO",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "false"
+                }
+            ],
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "oogl.AttributeArrays"
+        },
+        {
+            "file": "src\\Arrays.js",
+            "line": 550,
             "description": "Adds a 3-component vertex attribute array to the set.",
             "itemtype": "method",
             "name": "add3",
@@ -2102,7 +2353,132 @@
         },
         {
             "file": "src\\Arrays.js",
-            "line": 437,
+            "line": 567,
+            "description": "TODO",
+            "itemtype": "method",
+            "name": "add3b",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "TODO",
+                    "type": "Number[]"
+                },
+                {
+                    "name": "normalize",
+                    "description": "TODO",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "false"
+                }
+            ],
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "oogl.AttributeArrays"
+        },
+        {
+            "file": "src\\Arrays.js",
+            "line": 580,
+            "description": "TODO",
+            "itemtype": "method",
+            "name": "add3ub",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "TODO",
+                    "type": "Number[]"
+                },
+                {
+                    "name": "normalize",
+                    "description": "TODO",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "false"
+                }
+            ],
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "oogl.AttributeArrays"
+        },
+        {
+            "file": "src\\Arrays.js",
+            "line": 593,
+            "description": "TODO",
+            "itemtype": "method",
+            "name": "add3s",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "TODO",
+                    "type": "Number[]"
+                },
+                {
+                    "name": "normalize",
+                    "description": "TODO",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "false"
+                }
+            ],
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "oogl.AttributeArrays"
+        },
+        {
+            "file": "src\\Arrays.js",
+            "line": 606,
+            "description": "TODO",
+            "itemtype": "method",
+            "name": "add3us",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "TODO",
+                    "type": "Number[]"
+                },
+                {
+                    "name": "normalize",
+                    "description": "TODO",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "false"
+                }
+            ],
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "oogl.AttributeArrays"
+        },
+        {
+            "file": "src\\Arrays.js",
+            "line": 619,
+            "description": "TODO",
+            "itemtype": "method",
+            "name": "add3f",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "TODO",
+                    "type": "Number[]"
+                },
+                {
+                    "name": "normalize",
+                    "description": "TODO",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "false"
+                }
+            ],
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "oogl.AttributeArrays"
+        },
+        {
+            "file": "src\\Arrays.js",
+            "line": 632,
             "description": "Adds a 4-component vertex attribute array to the set.",
             "itemtype": "method",
             "name": "add4",
@@ -2132,7 +2508,132 @@
         },
         {
             "file": "src\\Arrays.js",
-            "line": 454,
+            "line": 649,
+            "description": "TODO",
+            "itemtype": "method",
+            "name": "add4b",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "TODO",
+                    "type": "Number[]"
+                },
+                {
+                    "name": "normalize",
+                    "description": "TODO",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "false"
+                }
+            ],
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "oogl.AttributeArrays"
+        },
+        {
+            "file": "src\\Arrays.js",
+            "line": 662,
+            "description": "TODO",
+            "itemtype": "method",
+            "name": "add4ub",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "TODO",
+                    "type": "Number[]"
+                },
+                {
+                    "name": "normalize",
+                    "description": "TODO",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "false"
+                }
+            ],
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "oogl.AttributeArrays"
+        },
+        {
+            "file": "src\\Arrays.js",
+            "line": 675,
+            "description": "TODO",
+            "itemtype": "method",
+            "name": "add4s",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "TODO",
+                    "type": "Number[]"
+                },
+                {
+                    "name": "normalize",
+                    "description": "TODO",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "false"
+                }
+            ],
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "oogl.AttributeArrays"
+        },
+        {
+            "file": "src\\Arrays.js",
+            "line": 688,
+            "description": "TODO",
+            "itemtype": "method",
+            "name": "add4us",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "TODO",
+                    "type": "Number[]"
+                },
+                {
+                    "name": "normalize",
+                    "description": "TODO",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "false"
+                }
+            ],
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "oogl.AttributeArrays"
+        },
+        {
+            "file": "src\\Arrays.js",
+            "line": 701,
+            "description": "TODO",
+            "itemtype": "method",
+            "name": "add4f",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "TODO",
+                    "type": "Number[]"
+                },
+                {
+                    "name": "normalize",
+                    "description": "TODO",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "false"
+                }
+            ],
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "oogl.AttributeArrays"
+        },
+        {
+            "file": "src\\Arrays.js",
+            "line": 714,
             "description": "Binds each array in the set to its buffer target (which is always\n`gl.ARRAY_BUFFER`) and specifies its pointer for the attribute array\nassociated to its index. This is typically used to prepare all the\narrays used by a program with just one call.\n\nYou may optionally specify `stride` and `offset` parameters.",
             "itemtype": "method",
             "name": "bindAndPointer",
@@ -2159,7 +2660,7 @@
         },
         {
             "file": "src\\Arrays.js",
-            "line": 481,
+            "line": 741,
             "description": "Draws the arrays in `gl.TRIANGLES` mode.\n\nEquivalent to calling `gl.drawArrays` with `gl.TRIANGLES`.\n\nYou may optionally specify `offset` and `count` parameters.",
             "itemtype": "method",
             "name": "drawTriangles",
@@ -2185,7 +2686,7 @@
         },
         {
             "file": "src\\Arrays.js",
-            "line": 510,
+            "line": 770,
             "description": "Draws the arrays in `gl.TRIANGLE_FAN` mode.\n\nEquivalent to calling `gl.drawArrays` with `gl.TRIANGLE_FAN`.\n\nYou may optionally specify `offset` and `count` parameters.",
             "itemtype": "method",
             "name": "drawTriangles",
@@ -2211,7 +2712,7 @@
         },
         {
             "file": "src\\Arrays.js",
-            "line": 539,
+            "line": 799,
             "description": "Draws the arrays in `gl.TRIANGLE_STRIP` mode.\n\nEquivalent to calling `gl.drawArrays` with `gl.TRIANGLE_STRIP`.\n\nYou may optionally specify `offset` and `count` parameters.",
             "itemtype": "method",
             "name": "drawTriangles",
@@ -2237,7 +2738,7 @@
         },
         {
             "file": "src\\Arrays.js",
-            "line": 568,
+            "line": 828,
             "description": "Deletes all the arrays in the set.",
             "itemtype": "method",
             "name": "_delete",
@@ -2248,7 +2749,7 @@
         },
         {
             "file": "src\\Arrays.js",
-            "line": 620,
+            "line": 880,
             "description": "Draws the elements in `gl.TRIANGLES` mode.\n\nEquivalent to calling `gl.drawElements` with `gl.TRIANGLES`.",
             "itemtype": "method",
             "name": "drawTriangles",
@@ -2274,7 +2775,7 @@
         },
         {
             "file": "src\\Arrays.js",
-            "line": 644,
+            "line": 904,
             "description": "Draws the elements in `gl.TRIANGLE_FAN` mode.\n\nEquivalent to calling `gl.drawElements` with `gl.TRIANGLE_FAN`.",
             "itemtype": "method",
             "name": "drawTriangles",
@@ -2300,7 +2801,7 @@
         },
         {
             "file": "src\\Arrays.js",
-            "line": 668,
+            "line": 928,
             "description": "Draws the elements in `gl.TRIANGLE_STRIP` mode.\n\nEquivalent to calling `gl.drawElements` with `gl.TRIANGLE_STRIP`.",
             "itemtype": "method",
             "name": "drawTriangleStrip",
@@ -5139,7 +5640,7 @@
         },
         {
             "file": "src\\Textures.js",
-            "line": 420,
+            "line": 421,
             "description": "TODO",
             "itemtype": "property",
             "name": "image",
@@ -5151,7 +5652,7 @@
         },
         {
             "file": "src\\Textures.js",
-            "line": 484,
+            "line": 485,
             "description": "Adds a `Texture` to this set.\n\nThe texture is automatically assigned a texture unit, but the set\nmust be re-bound (using the `bind` method) before its textures can be\nused in programs.",
             "itemtype": "method",
             "name": "add",
@@ -5169,7 +5670,7 @@
         },
         {
             "file": "src\\Textures.js",
-            "line": 507,
+            "line": 508,
             "description": "Binds all the textures in this sets to their target in their\nrespective texture unit.\n\nEquivalent to calling `gl.activeTexture` and `gl.bindTexture` for\neach texture.",
             "itemtype": "method",
             "name": "bind",
@@ -5180,7 +5681,7 @@
         },
         {
             "file": "src\\Textures.js",
-            "line": 525,
+            "line": 526,
             "description": "TODO",
             "itemtype": "method",
             "name": "uniform",
@@ -5203,7 +5704,7 @@
         },
         {
             "file": "src\\Textures.js",
-            "line": 545,
+            "line": 546,
             "description": "TODO",
             "itemtype": "method",
             "name": "bindAndUniform",
@@ -5221,7 +5722,7 @@
         },
         {
             "file": "src\\Textures.js",
-            "line": 565,
+            "line": 566,
             "description": "Deletes all the textures that have been added to this set and resets\nit to an empty set.\n\n`Textures` objects may be used again after deletion.",
             "itemtype": "method",
             "name": "_delete",

@@ -15,10 +15,10 @@ OOGL(function () {
 	});
 	oogl.enable(oogl.CULL_FACE);
 	var pyramidArrays = new oogl.AttributeArrays(6);
-	pyramidArrays.add3('float', [0, 1, 0, -1, -1, 1, -1, -1, -1, 1, -1, -1, 1, -1, 1, -1, -1, 1]);
-	pyramidArrays.add3('float', [1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0]);
+	pyramidArrays.add3f([0, 1, 0, -1, -1, 1, -1, -1, -1, 1, -1, -1, 1, -1, 1, -1, -1, 1]);
+	pyramidArrays.add3f([1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0]);
 	var boxArrays = new oogl.AttributeArrays(36);
-	boxArrays.add3('float', [
+	boxArrays.add3f([
 		-1, 1, -1, -1, -1, -1, 1, -1, -1, -1, 1, -1, 1, -1, -1, 1, 1, -1,	// front
 		1, 1, -1, 1, -1, -1, 1, -1, 1, 1, 1, -1, 1, -1, 1, 1, 1, 1,			// right
 		-1, 1, 1, -1, 1, -1, 1, 1, -1, -1, 1, 1, 1, 1, -1, 1, 1, 1,			// up
@@ -26,7 +26,7 @@ OOGL(function () {
 		-1, -1, -1, -1, -1, 1, 1, -1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1,	// down
 		1, 1, 1, 1, -1, 1, -1, -1, 1, 1, 1, 1, -1, -1, 1, -1, 1, 1			// back
 		]);
-	boxArrays.add3('float', [
+	boxArrays.add3f([
 		1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0,
 		0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0,
 		0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1,

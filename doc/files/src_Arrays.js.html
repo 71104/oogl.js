@@ -586,7 +586,7 @@ context.AttributeArrays = function (count) {
 		 * @method add1
 		 * @param {String} type The type of the data in the array. Must be one
 		 *	of &#x60;byte&#x60;, &#x60;ubyte&#x60;, &#x60;short&#x60;, &#x60;ushort&#x60; and &#x60;float&#x60;.
-		 * @param {Array} data A standard JavaScript array containing the
+		 * @param {Number[]} data A standard JavaScript array containing the
 		 *	attribute data.
 		 * @param {Boolean} [normalize=false] Indicates whether attribute data
 		 *	must be normalized by the GL.
@@ -595,6 +595,71 @@ context.AttributeArrays = function (count) {
 		 *&#x2F;
 		add1: function (type, data, normalize) {
 			arrays.push(new context.AttributeArray1(arrays.length, type, data, normalize));
+		},
+
+		&#x2F;**
+		 * TODO
+		 *
+		 * @method add1b
+		 * @param {Number[]} data TODO
+		 * @param {Boolean} [normalize=false] TODO
+		 * @example
+		 *	TODO
+		 *&#x2F;
+		add1b: function (data, normalize) {
+			arrays.push(new context.AttributeArray1(arrays.length, &#x27;byte&#x27;, data, normalize));
+		},
+
+		&#x2F;**
+		 * TODO
+		 *
+		 * @method add1ub
+		 * @param {Number[]} data TODO
+		 * @param {Boolean} [normalize=false] TODO
+		 * @example
+		 *	TODO
+		 *&#x2F;
+		add1ub: function (data, normalize) {
+			arrays.push(new context.AttributeArray1(arrays.length, &#x27;ubyte&#x27;, data, normalize));
+		},
+
+		&#x2F;**
+		 * TODO
+		 *
+		 * @method add1s
+		 * @param {Number[]} data TODO
+		 * @param {Boolean} [normalize=false] TODO
+		 * @example
+		 *	TODO
+		 *&#x2F;
+		add1s: function (data, normalize) {
+			arrays.push(new context.AttributeArray1(arrays.length, &#x27;short&#x27;, data, normalize));
+		},
+
+		&#x2F;**
+		 * TODO
+		 *
+		 * @method add1us
+		 * @param {Number[]} data TODO
+		 * @param {Boolean} [normalize=false] TODO
+		 * @example
+		 *	TODO
+		 *&#x2F;
+		add1us: function (data, normalize) {
+			arrays.push(new context.AttributeArray1(arrays.length, &#x27;ushort&#x27;, data, normalize));
+		},
+
+		&#x2F;**
+		 * TODO
+		 *
+		 * @method add1f
+		 * @param {Number[]} data TODO
+		 * @param {Boolean} [normalize=false] TODO
+		 * @example
+		 *	TODO
+		 *&#x2F;
+		add1f: function (data, normalize) {
+			arrays.push(new context.AttributeArray1(arrays.length, &#x27;float&#x27;, data, normalize));
 		},
 
 		&#x2F;**
@@ -615,6 +680,71 @@ context.AttributeArrays = function (count) {
 		},
 
 		&#x2F;**
+		 * TODO
+		 *
+		 * @method add2b
+		 * @param {Number[]} data TODO
+		 * @param {Boolean} [normalize=false] TODO
+		 * @example
+		 *	TODO
+		 *&#x2F;
+		add2b: function (data, normalize) {
+			arrays.push(new context.AttributeArray2(arrays.length, &#x27;byte&#x27;, data, normalize));
+		},
+
+		&#x2F;**
+		 * TODO
+		 *
+		 * @method add2ub
+		 * @param {Number[]} data TODO
+		 * @param {Boolean} [normalize=false] TODO
+		 * @example
+		 *	TODO
+		 *&#x2F;
+		add2ub: function (data, normalize) {
+			arrays.push(new context.AttributeArray2(arrays.length, &#x27;ubyte&#x27;, data, normalize));
+		},
+
+		&#x2F;**
+		 * TODO
+		 *
+		 * @method add2s
+		 * @param {Number[]} data TODO
+		 * @param {Boolean} [normalize=false] TODO
+		 * @example
+		 *	TODO
+		 *&#x2F;
+		add2s: function (data, normalize) {
+			arrays.push(new context.AttributeArray2(arrays.length, &#x27;short&#x27;, data, normalize));
+		},
+
+		&#x2F;**
+		 * TODO
+		 *
+		 * @method add2us
+		 * @param {Number[]} data TODO
+		 * @param {Boolean} [normalize=false] TODO
+		 * @example
+		 *	TODO
+		 *&#x2F;
+		add2us: function (data, normalize) {
+			arrays.push(new context.AttributeArray2(arrays.length, &#x27;ushort&#x27;, data, normalize));
+		},
+
+		&#x2F;**
+		 * TODO
+		 *
+		 * @method add2f
+		 * @param {Number[]} data TODO
+		 * @param {Boolean} [normalize=false] TODO
+		 * @example
+		 *	TODO
+		 *&#x2F;
+		add2f: function (data, normalize) {
+			arrays.push(new context.AttributeArray2(arrays.length, &#x27;float&#x27;, data, normalize));
+		},
+
+		&#x2F;**
 		 * Adds a 3-component vertex attribute array to the set.
 		 *
 		 * @method add3
@@ -632,6 +762,71 @@ context.AttributeArrays = function (count) {
 		},
 
 		&#x2F;**
+		 * TODO
+		 *
+		 * @method add3b
+		 * @param {Number[]} data TODO
+		 * @param {Boolean} [normalize=false] TODO
+		 * @example
+		 *	TODO
+		 *&#x2F;
+		add3b: function (data, normalize) {
+			arrays.push(new context.AttributeArray3(arrays.length, &#x27;byte&#x27;, data, normalize));
+		},
+
+		&#x2F;**
+		 * TODO
+		 *
+		 * @method add3ub
+		 * @param {Number[]} data TODO
+		 * @param {Boolean} [normalize=false] TODO
+		 * @example
+		 *	TODO
+		 *&#x2F;
+		add3ub: function (data, normalize) {
+			arrays.push(new context.AttributeArray3(arrays.length, &#x27;ubyte&#x27;, data, normalize));
+		},
+
+		&#x2F;**
+		 * TODO
+		 *
+		 * @method add3s
+		 * @param {Number[]} data TODO
+		 * @param {Boolean} [normalize=false] TODO
+		 * @example
+		 *	TODO
+		 *&#x2F;
+		add3s: function (data, normalize) {
+			arrays.push(new context.AttributeArray3(arrays.length, &#x27;short&#x27;, data, normalize));
+		},
+
+		&#x2F;**
+		 * TODO
+		 *
+		 * @method add3us
+		 * @param {Number[]} data TODO
+		 * @param {Boolean} [normalize=false] TODO
+		 * @example
+		 *	TODO
+		 *&#x2F;
+		add3us: function (data, normalize) {
+			arrays.push(new context.AttributeArray3(arrays.length, &#x27;ushort&#x27;, data, normalize));
+		},
+
+		&#x2F;**
+		 * TODO
+		 *
+		 * @method add3f
+		 * @param {Number[]} data TODO
+		 * @param {Boolean} [normalize=false] TODO
+		 * @example
+		 *	TODO
+		 *&#x2F;
+		add3f: function (data, normalize) {
+			arrays.push(new context.AttributeArray3(arrays.length, &#x27;float&#x27;, data, normalize));
+		},
+
+		&#x2F;**
 		 * Adds a 4-component vertex attribute array to the set.
 		 *
 		 * @method add4
@@ -646,6 +841,71 @@ context.AttributeArrays = function (count) {
 		 *&#x2F;
 		add4: function (type, data, normalize) {
 			arrays.push(new context.AttributeArray4(arrays.length, type, data, normalize));
+		},
+
+		&#x2F;**
+		 * TODO
+		 *
+		 * @method add4b
+		 * @param {Number[]} data TODO
+		 * @param {Boolean} [normalize=false] TODO
+		 * @example
+		 *	TODO
+		 *&#x2F;
+		add4b: function (data, normalize) {
+			arrays.push(new context.AttributeArray3(arrays.length, &#x27;byte&#x27;, data, normalize));
+		},
+
+		&#x2F;**
+		 * TODO
+		 *
+		 * @method add4ub
+		 * @param {Number[]} data TODO
+		 * @param {Boolean} [normalize=false] TODO
+		 * @example
+		 *	TODO
+		 *&#x2F;
+		add4ub: function (data, normalize) {
+			arrays.push(new context.AttributeArray3(arrays.length, &#x27;ubyte&#x27;, data, normalize));
+		},
+
+		&#x2F;**
+		 * TODO
+		 *
+		 * @method add4s
+		 * @param {Number[]} data TODO
+		 * @param {Boolean} [normalize=false] TODO
+		 * @example
+		 *	TODO
+		 *&#x2F;
+		add4s: function (data, normalize) {
+			arrays.push(new context.AttributeArray3(arrays.length, &#x27;short&#x27;, data, normalize));
+		},
+
+		&#x2F;**
+		 * TODO
+		 *
+		 * @method add4us
+		 * @param {Number[]} data TODO
+		 * @param {Boolean} [normalize=false] TODO
+		 * @example
+		 *	TODO
+		 *&#x2F;
+		add4us: function (data, normalize) {
+			arrays.push(new context.AttributeArray3(arrays.length, &#x27;ushort&#x27;, data, normalize));
+		},
+
+		&#x2F;**
+		 * TODO
+		 *
+		 * @method add4f
+		 * @param {Number[]} data TODO
+		 * @param {Boolean} [normalize=false] TODO
+		 * @example
+		 *	TODO
+		 *&#x2F;
+		add4f: function (data, normalize) {
+			arrays.push(new context.AttributeArray3(arrays.length, &#x27;float&#x27;, data, normalize));
 		},
 
 		&#x2F;**
