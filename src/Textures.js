@@ -385,6 +385,7 @@ context.AutoTexture = function (object, magFilter, minFilter) {
  * function is invoked using this `AsyncTexture` object as `this`.
  *
  * @class oogl.AsyncTexture
+ * @extends oogl.Texture2D
  * @constructor
  * @param {String} url The URL of the texture image.
  * @param {Function} callback A user-defined callback function that is called
