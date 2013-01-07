@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>oogl.js Test 04</title>
+<title>oogl.js Test 05</title>
 <script type="text/javascript" src="../oogl-1.0.0.min.js"></script>
 </head>
 <body style="text-align:center">
@@ -32,9 +32,7 @@ OOGL(function () {
 		0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0,
 		]);
 	arrays.bindAndPointer();
-	var image = new Image();
-	image.onload = function () {
-		new oogl.AutoTexture(image);
+	new oogl.AsyncTexture('nehe.gif', function () {
 		var program = new oogl.AjaxProgram('box', ['in_Vertex', 'in_TexCoord'], function () {
 			program.use();
 			var angleX = 0;
@@ -46,8 +44,7 @@ OOGL(function () {
 				oogl.flush();
 			})).start();
 		});
-	};
-	image.src = 'nehe.gif';
+	});
 });
 	</script>
 </body>

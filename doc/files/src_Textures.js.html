@@ -52,6 +52,8 @@ _gaq.push(['_trackPageview']);
         <div id="api-tabview-panel">
             <ul id="api-classes" class="apis classes">
             
+                <li><a href="..&#x2F;classes/AsyncTexture.html">AsyncTexture</a></li>
+            
                 <li><a href="..&#x2F;classes/OOGL.Ajax.html">OOGL.Ajax</a></li>
             
                 <li><a href="..&#x2F;classes/oogl.AjaxFragmentShader.html">oogl.AjaxFragmentShader</a></li>
@@ -566,6 +568,52 @@ context.AutoTexture = function (object, magFilter, minFilter) {
 		texture.setMinFilter(context.LINEAR);
 	}
 	texture.image2D(0, context.RGBA, context.UNSIGNED_BYTE, object);
+	return texture;
+};
+
+&#x2F;**
+ * TODO
+ *
+ * @class AsyncTexture
+ * @constructor
+ * @param {String} url TODO
+ * @param {Function} callback TODO
+ * @param {Number} [magFilter=gl.LINEAR] TODO
+ * @param {Number} [minFilter=gl.LINEAR] TODO
+ * @example
+ *	TODO
+ *&#x2F;
+context.AsyncTexture = function (url, callback, magFilter, minFilter) {
+	var texture = new context.Texture2D();
+
+	texture.bind();
+	if (arguments.length &gt; 2) {
+		texture.setMagFilter(magFilter);
+		if (arguments.length &gt; 3) {
+			texture.setMinFilter(minFilter);
+		} else {
+			texture.setMinFilter(context.LINEAR);
+		}
+	} else {
+		texture.setMagFilter(context.LINEAR);
+		texture.setMinFilter(context.LINEAR);
+	}
+
+	&#x2F;**
+	 * TODO
+	 *
+	 * @property image
+	 * @type Image
+	 * @example
+	 *	TODO
+	 *&#x2F;
+	texture.image = new Image();
+	texture.image.onload = function () {
+		texture.image2D(0, context.RGBA, context.UNSIGNED_BYTE, texture.image);
+		callback &amp;&amp; callback.call(texture);
+	};
+	texture.image.src = url;
+
 	return texture;
 };
 

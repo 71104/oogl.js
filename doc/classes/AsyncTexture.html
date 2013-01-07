@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>src\ContextBegin.js - OOGL.js 1.0</title>
+    <title>AsyncTexture - OOGL.js 1.0</title>
     <link rel="stylesheet" href="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;3.8.0pr2&#x2F;build&#x2F;cssgrids&#x2F;cssgrids-min.css">
     <link rel="stylesheet" href="..&#x2F;assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="..&#x2F;assets/css/main.css" id="site_styles">
@@ -191,84 +191,302 @@ _gaq.push(['_trackPageview']);
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1 class="file-heading">File: src\ContextBegin.js</h1>
+                        <h1>AsyncTexture Class</h1>
+<div class="box meta">
+    
 
-<div class="file">
-    <pre class="code prettyprint linenums">
-&#x2F;**
- * Requests a new WebGL context on the specified canvas and wraps it in a new
- * OOGL object. An exception is thrown if WebGL is not supported or the GPU is
- * blacklisted.
- *
- * The constructed OOGL object extends a normal WebGL rendering context, so you
- * can use all the GL properties and functions just like you were using a normal
- * &#x60;gl&#x60; object returned by &#x60;canvas.getContext(&#x27;webgl&#x27;)&#x60;:
- *
- *	var oogl = new OOGL.Context(&#x27;canvas&#x27;);
- *	oogl.clearColor(0, 0, 0, 1);
- *	oogl.clear(oogl.COLOR_BUFFER_BIT);
- *	oogl.flush();
- *
- * Furthermore the OOGL object includes OOGL-specific subclasses like &#x60;Program&#x60;
- * and &#x60;Shader&#x60;, so that you can say, for example:
- *
- *	var fragmentShader = new oogl.Shader(oogl.FRAGMENT_SHADER);
- *	fragmentShader.source(fragmentSource);
- *	fragmentShader.compile();
- *	if (!fragmentShader.getParameter(oogl.COMPILE_STATUS)) {
- *		throw fragmentShader.getInfoLog();
- *	}
- *	var vertexShader = new oogl.Shader(oogl.VERTEX_SHADER);
- *	vertexShader.source(vertexSource);
- *	vertexShader.compile();
- *	if (!vertexShader.getParameter(oogl.COMPILE_STATUS)) {
- *		throw vertexShader.getInfoLog();
- *	}
- *	var program = new oogl.Program();
- *	program.attachShader(fragmentShader);
- *	program.attachShader(vertexShader);
- *	program.bindAttribLocation(0, &#x27;in_Vertex&#x27;);
- *	program.bindAttribLocation(1, &#x27;in_TexCoord&#x27;);
- *	program.link();
- *	if (!program.getParameter(oogl.LINK_STATUS)) {
- *		throw program.getInfoLog();
- *	}
- *	program.use();
- *
- * Or, simpler:
- *
- *	&#x2F;&#x2F; automatically compiles and links, throws if an error occurs
- *	var program = new oogl.AutoProgram(fragmentSource, vertexSource, [&#x27;in_Vertex, in_TexCoord&#x27;]);
- *	program.use();
- *
- * @class OOGL.Context
- * @extends WebGLRenderingContext
- * @constructor
- * @param {Mixed} canvasOrId An HTMLCanvasElement DOM object, or a string
- *	containing its &#x60;id&#x60; attribute, representing the canvas whose WebGL context
- *	has to be wrapped.
- * @param {Object} [attributes] WebGL attributes to pass to &#x60;canvas.getContext&#x60;.
- * @example
- *	var oogl = new OOGL.Context(&#x27;canvas&#x27;, {
- *		stencil: true
- *	});
- *&#x2F;
-OOGL.Context = function (canvasOrId, attributes) {
-	var canvas;
-	if (typeof canvasOrId !== &#x27;string&#x27;) {
-		canvas = canvasOrId;
-	} else {
-		canvas = document.getElementById(canvasOrId);
-	}
-	var context = canvas.getContext(&#x27;webgl&#x27;, attributes);
-	if (!context) {
-		context = canvas.getContext(&#x27;experimental-webgl&#x27;, attributes);
-	}
-	if (!context) {
-		throw &#x27;WebGL not supported.&#x27;;
-	}
+    
 
-    </pre>
+    
+        <div class="foundat">
+            Defined in: <a href="..&#x2F;files&#x2F;src_Textures.js.html#l377"><code>src\Textures.js:377</code></a>
+        </div>
+    
+
+    
+
+    
+</div>
+
+
+
+<div class="box intro">
+    <p>TODO</p>
+</div>
+
+
+    <div class="constructor">
+        <h2>Constructor</h2>
+        <div id="method_AsyncTexture" class="method item">
+    <h3 class="name"><code>AsyncTexture</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>url</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>callback</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code class="optional">[magFilter=gl.LINEAR]</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code class="optional">[minFilter=gl.LINEAR]</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_Textures.js.html#l377"><code>src\Textures.js:377</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">url</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>TODO</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">callback</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>TODO</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name optional">[magFilter=gl.LINEAR]</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>TODO</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name optional">[minFilter=gl.LINEAR]</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>TODO</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>TODO
+</code></pre>
+            </div>
+        </div>
+    
+</div>
+
+    </div>
+
+
+<div id="classdocs" class="tabview">
+    <ul class="api-class-tabs">
+        <li class="api-class-tab index"><a href="#index">Index</a></li>
+
+        
+        
+            <li class="api-class-tab properties"><a href="#properties">Properties</a></li>
+        
+        
+        
+    </ul>
+
+    <div>
+        <div id="index" class="api-class-tabpanel index">
+            <h2 class="off-left">Item Index</h2>
+
+            
+
+            
+                <div class="index-section properties">
+                    <h3>Properties</h3>
+
+                    <ul class="index-list properties">
+                        
+                            <li class="index-item property">
+                                <a href="#property_image">image</a>
+
+                                
+                                
+                            </li>
+                        
+                    </ul>
+                </div>
+            
+
+            
+
+            
+        </div>
+
+        
+
+        
+            <div id="properties" class="api-class-tabpanel">
+                <h2 class="off-left">Properties</h2>
+
+                
+                    <div id="property_image" class="property item">
+    <h3 class="name"><code>image</code></h3>
+    <span class="type">Image</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_Textures.js.html#l405"><code>src\Textures.js:405</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>TODO</p>
+    </div>
+
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>TODO
+</code></pre>
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+            </div>
+        
+
+        
+
+        
+    </div>
 </div>
 
                     </div>

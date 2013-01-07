@@ -150,6 +150,7 @@
                 "oogl.Texture": 1,
                 "oogl.Texture2D": 1,
                 "oogl.AutoTexture": 1,
+                "AsyncTexture": 1,
                 "oogl.CubeMap": 1,
                 "oogl.Textures": 1
             },
@@ -1425,6 +1426,48 @@
                 "\n\tvar arrays = new oogl.AttributeArrays(vertices.length);\n\t// add arrays here\n\tvar texture = new oogl.AutoTexture(image);\n\tarrays.drawTriangles();\n\toogl.flush();"
             ]
         },
+        "AsyncTexture": {
+            "name": "AsyncTexture",
+            "shortname": "AsyncTexture",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src\\Textures.js",
+            "line": 377,
+            "description": "TODO",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "url",
+                    "description": "TODO",
+                    "type": "String"
+                },
+                {
+                    "name": "callback",
+                    "description": "TODO",
+                    "type": "Function"
+                },
+                {
+                    "name": "magFilter",
+                    "description": "TODO",
+                    "type": "Number",
+                    "optional": true,
+                    "optdefault": "gl.LINEAR"
+                },
+                {
+                    "name": "minFilter",
+                    "description": "TODO",
+                    "type": "Number",
+                    "optional": true,
+                    "optdefault": "gl.LINEAR"
+                }
+            ],
+            "example": [
+                "\n\tTODO"
+            ]
+        },
         "oogl.CubeMap": {
             "name": "oogl.CubeMap",
             "shortname": "oogl.CubeMap",
@@ -1434,7 +1477,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "src\\Textures.js",
-            "line": 377,
+            "line": 423,
             "description": "A texture whose type is `gl.TEXTURE_CUBE_MAP`.\n\nTODO",
             "extends": "oogl.Texture",
             "is_constructor": 1,
@@ -1451,7 +1494,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "src\\Textures.js",
-            "line": 392,
+            "line": 438,
             "description": "A utility class that aids in the management of multiple textures.\n\nOne `Textures` objects represents a set of textures that must be\nsimultaneously bound (to different texture units) for use by the same\nprogram. The `Textures` object automatically assigns textures to texture\nunits.\n\nA `Texture` object may also belong to several `Textures` sets at the same\ntime, so that it can be used by several programs.",
             "is_constructor": 1,
             "params": [
@@ -5096,7 +5139,19 @@
         },
         {
             "file": "src\\Textures.js",
-            "line": 423,
+            "line": 405,
+            "description": "TODO",
+            "itemtype": "property",
+            "name": "image",
+            "type": "Image",
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "AsyncTexture"
+        },
+        {
+            "file": "src\\Textures.js",
+            "line": 469,
             "description": "Adds a `Texture` to this set.\n\nThe texture is automatically assigned a texture unit, but the set\nmust be re-bound (using the `bind` method) before its textures can be\nused in programs.",
             "itemtype": "method",
             "name": "add",
@@ -5114,7 +5169,7 @@
         },
         {
             "file": "src\\Textures.js",
-            "line": 446,
+            "line": 492,
             "description": "Binds all the textures in this sets to their target in their\nrespective texture unit.\n\nEquivalent to calling `gl.activeTexture` and `gl.bindTexture` for\neach texture.",
             "itemtype": "method",
             "name": "bind",
@@ -5125,7 +5180,7 @@
         },
         {
             "file": "src\\Textures.js",
-            "line": 464,
+            "line": 510,
             "description": "TODO",
             "itemtype": "method",
             "name": "uniform",
@@ -5148,7 +5203,7 @@
         },
         {
             "file": "src\\Textures.js",
-            "line": 484,
+            "line": 530,
             "description": "TODO",
             "itemtype": "method",
             "name": "bindAndUniform",
@@ -5166,7 +5221,7 @@
         },
         {
             "file": "src\\Textures.js",
-            "line": 504,
+            "line": 550,
             "description": "Deletes all the textures that have been added to this set and resets\nit to an empty set.\n\n`Textures` objects may be used again after deletion.",
             "itemtype": "method",
             "name": "_delete",

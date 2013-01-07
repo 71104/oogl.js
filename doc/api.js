@@ -1,6 +1,7 @@
 YUI.add("yuidoc-meta", function(Y) {
    Y.YUIDoc = { meta: {
     "classes": [
+        "AsyncTexture",
         "OOGL.Ajax",
         "OOGL.Context",
         "OOGL.Matrix2",
