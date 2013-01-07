@@ -16,7 +16,7 @@ OOGL(function () {
 	oogl.enable(oogl.BLEND);
 	oogl.blendFunc(oogl.SRC_ALPHA, oogl.ONE);
 	var arrays = new oogl.AttributeArrays(36);
-	arrays.add3('float', [
+	arrays.add3f([
 		-1, 1, -1, -1, -1, -1, 1, -1, -1, -1, 1, -1, 1, -1, -1, 1, 1, -1,	// front
 		1, 1, -1, 1, -1, -1, 1, -1, 1, 1, 1, -1, 1, -1, 1, 1, 1, 1,			// right
 		-1, 1, 1, -1, 1, -1, 1, 1, -1, -1, 1, 1, 1, 1, -1, 1, 1, 1,			// up
@@ -24,7 +24,7 @@ OOGL(function () {
 		-1, -1, -1, -1, -1, 1, 1, -1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1,	// down
 		1, 1, 1, 1, -1, 1, -1, -1, 1, 1, 1, 1, -1, -1, 1, -1, 1, 1,			// back
 		]);
-	arrays.add2('float', [
+	arrays.add2f([
 		0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0,
 		0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0,
 		0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0,

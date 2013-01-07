@@ -40,11 +40,11 @@ OOGL(function () {
 		textureCoordinates.push(0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0);
 	}
 	var arrays = new oogl.AttributeArrays(300);
-	arrays.add2('float', vertices);
-	arrays.add2('float', centers);
-	arrays.add1('float', angles);
-	arrays.add3('float', colors);
-	arrays.add2('float', textureCoordinates);
+	arrays.add2f(vertices);
+	arrays.add2f(centers);
+	arrays.add1f(angles);
+	arrays.add3f(colors);
+	arrays.add2f(textureCoordinates);
 	arrays.bindAndPointer();
 	var pitch = 0;
 	new oogl.AsyncTexture('star.gif', function () {
