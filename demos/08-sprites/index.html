@@ -21,17 +21,23 @@ OOGL(function () {
 	var colors = [];
 	var textureCoordinates = [];
 	for (var i = 0; i < 50; i++) {
-		vertices.push.apply(vertices, [-1, 1, -1, -1, 1, -1, -1, 1, 1, -1, 1, 1]);
+		vertices.push(-1, 1, -1, -1, 1, -1, -1, 1, 1, -1, 1, 1);
+		var center = {
+			x: Math.random() * 2 - 1,
+			y: Math.random() * 2 - 1
+		};
 		var angle = Math.random() * Math.PI * 2;
+		var color = {
+			r: Math.random(),
+			g: Math.random(),
+			b: Math.random()
+		};
 		for (var j = 0; j < 6; j++) {
-			centers.push(Math.random() * 2 - 1);
-			centers.push(Math.random() * 2 - 1);
+			centers.push(center.x, center.y);
 			angles.push(angle);
-			colors.push(Math.random());
-			colors.push(Math.random());
-			colors.push(Math.random());
+			colors.push(color.r, color.g, color.b);
 		}
-		textureCoordinates.push.apply(textureCoordinates, [0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0]);
+		textureCoordinates.push(0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0);
 	}
 	var arrays = new oogl.AttributeArrays(300);
 	arrays.add2('float', vertices);

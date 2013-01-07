@@ -14,23 +14,28 @@ void main() {
 		1, 0, 0, 0,
 		0, 1.33, 0, 0,
 		0, 0, 0, 1,
-		0, 0, 1, 0
+		0, 0, 1, 1
 	) * mat4(
-		cos(Angle.y), sin(Angle.y), 0, 0,
-		-sin(Angle.y), cos(Angle.y), 0, 0,
+		1, 0, 0, 0,
+		0, 1, 0, 0,
 		0, 0, 1, 0,
+		0, 0, 1, 1
+	) * mat4(
+		1, 0, 0, 0,
+		0, cos(Angle.y), sin(Angle.y), 0,
+		0, -sin(Angle.y), cos(Angle.y), 0,
 		0, 0, 0, 1
 	) * mat4(
 		1, 0, 0, 0,
 		0, 1, 0, 0,
 		0, 0, 1, 0,
-		in_Center, 3, 1
+		in_Center, 0, 1
 	) * mat4(
-		1, 0, 0, 0,
-		0, cos(in_Angle + Angle.x), sin(in_Angle + Angle.x), 0,
-		0, -sin(in_Angle + Angle.x), cos(in_Angle + Angle.x), 0,
+		cos(in_Angle + Angle.x), sin(in_Angle + Angle.x), 0, 0,
+		-sin(in_Angle + Angle.x), cos(in_Angle + Angle.x), 0, 0,
+		0, 0, 1, 0,
 		0, 0, 0, 1
-	) * vec4(in_Vertex / 10.0, 0, 1);
+	) * vec4(in_Vertex / 5.0, 0, 1);
 	ex_Color = in_Color;
 	ex_TexCoord = in_TexCoord;
 }
