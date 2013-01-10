@@ -153,8 +153,8 @@
     <span class="nx">oogl</span><span class="p">.</span><span class="nx">clearColor</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
     <span class="nx">oogl</span><span class="p">.</span><span class="nx">clear</span><span class="p">(</span><span class="nx">oogl</span><span class="p">.</span><span class="nx">COLOR_BUFFER_BIT</span><span class="p">);</span>
     <span class="kd">var</span> <span class="nx">arrays</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">oogl</span><span class="p">.</span><span class="nx">AttributeArrays</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
-    <span class="nx">arrays</span><span class="p">.</span><span class="nx">add2</span><span class="p">(</span><span class="s1">'float'</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]);</span>
-    <span class="nx">arrays</span><span class="p">.</span><span class="nx">add3</span><span class="p">(</span><span class="s1">'float'</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]);</span>
+    <span class="nx">arrays</span><span class="p">.</span><span class="nx">add2f</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]);</span>
+    <span class="nx">arrays</span><span class="p">.</span><span class="nx">add3f</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]);</span>
     <span class="nx">arrays</span><span class="p">.</span><span class="nx">bindAndPointer</span><span class="p">();</span>
     <span class="kd">var</span> <span class="nx">program</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">oogl</span><span class="p">.</span><span class="nx">AjaxProgram</span><span class="p">(</span><span class="s1">'test'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'in_Vertex'</span><span class="p">,</span> <span class="s1">'in_Color'</span><span class="p">],</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
         <span class="nx">program</span><span class="p">.</span><span class="nx">use</span><span class="p">();</span>
@@ -176,7 +176,7 @@
 <span class="nx">program</span><span class="p">.</span><span class="nx">uniformVec3</span><span class="p">(</span><span class="s1">'Vector'</span><span class="p">,</span> <span class="nx">v</span><span class="p">);</span>
 </pre></div>
 
-<p>Similarly, you can specify a <code>mat4</code> uniform like this:</p>
+<p>Similarly, you can specify a <code>mat3</code> uniform like this:</p>
 
 <div class="highlight"><pre><span class="kd">var</span> <span class="nx">m</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">OOGL</span><span class="p">.</span><span class="nx">Matrix3</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]);</span>
 <span class="nx">program</span><span class="p">.</span><span class="nx">uniformMat3</span><span class="p">(</span><span class="s1">'Matrix'</span><span class="p">,</span> <span class="nx">m</span><span class="p">);</span>
@@ -188,7 +188,7 @@
 
 <h1>Credits</h1>
 
-<p>OOGL was created by Alberto La Rocca and is licensed under the MIT License.</p>
+<p>OOGL was created by <a href="https://github.com/71104">Alberto La Rocca</a> and is licensed under the MIT License.</p>
       </section>
 
     </div>
