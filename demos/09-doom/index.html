@@ -17,22 +17,26 @@ OOGL(function () {
 	oogl.enable(oogl.DEPTH_TEST);
 	oogl.depthFunc(oogl.LESS);
 	oogl.clearDepth(1);
-	// TODO create arrays
-	new oogl.AsyncTexture('mud.gif', function () {
-		new oogl.AjaxProgram('walls', ['in_Vertex', 'in_TexCoord'], function () {
-			this.use();
-			var keys = {};
-			addEventListener('keydown', function (event) {
-				// TODO
+	OOGL.Ajax.getJSON('walls.json', function (walls) {
+		var arrays = new oogl.AttributeArrays(walls.vertices.length / 3);
+		arrays.add3f(walls.vertices);
+		arrays.add2f(walls.textureCoordinates);
+		new oogl.AsyncTexture('mud.gif', function () {
+			new oogl.AjaxProgram('walls', ['in_Vertex', 'in_TexCoord'], function () {
+				this.use();
+				var keys = {};
+				addEventListener('keydown', function (event) {
+					// TODO
+				});
+				addEventListener('keyup', function (event) {
+					// TODO
+				});
+				(new OOGL.RenderLoop(function () {
+					oogl.clear(oogl.COLOR_BUFFER_BIT | oogl.DEPTH_BUFFER_BIT);
+					arrays.drawTriangles();
+					oogl.flush();
+				})).start();
 			});
-			addEventListener('keyup', function (event) {
-				// TODO
-			});
-			(new OOGL.RenderLoop(function () {
-				oogl.clear(oogl.COLOR_BUFFER_BIT | oogl.DEPTH_BUFFER_BIT);
-				// TODO arrays.drawTriangles();
-				oogl.flush();
-			})).start();
 		});
 	});
 });
