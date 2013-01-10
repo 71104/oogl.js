@@ -13,10 +13,9 @@ OOGL(function () {
 	var oogl = new OOGL.Context('canvas', {
 		alpha: false
 	});
-	oogl.enable(oogl.CULL_FACE);
 	oogl.enable(oogl.DEPTH_TEST);
-	oogl.depthFunc(oogl.LESS);
-	oogl.clearDepth(1);
+	oogl.depthFunc(oogl.GREATER);
+	oogl.clearDepth(0);
 	OOGL.Ajax.getJSON('walls.json', function (walls) {
 		var arrays = new oogl.AttributeArrays(walls.vertices.length / 3);
 		arrays.add3f(walls.vertices);
@@ -32,29 +31,30 @@ OOGL(function () {
 				addEventListener('keyup', function (event) {
 					delete keys[event.charCode || event.keyCode];
 				});
-				var angle = 0;
+				var yaw = 0;
+				var pitch = 0;
 				var position = new OOGL.Vector2(0, 0);
 				(new OOGL.RenderLoop(function () {
 					oogl.clear(oogl.COLOR_BUFFER_BIT | oogl.DEPTH_BUFFER_BIT);
 					if (keys[37]) { // left
-						angle += Math.PI / 60;
+						yaw += Math.PI / 60;
 					}
 					if (keys[38] || keys[87]) { // up or W
-						position.add((new OOGL.RotationMatrix2(angle)).by(OOGL.Vector2.J).by(0.1));
+						position.add((new OOGL.RotationMatrix2(yaw)).by(OOGL.Vector2.J).by(0.05));
 					}
 					if (keys[39]) { // right
-						angle -= Math.PI / 60;
+						yaw -= Math.PI / 60;
 					}
 					if (keys[40] || keys[83]) { // down or S
-						position.subtract((new OOGL.RotationMatrix2(angle)).by(OOGL.Vector2.J).by(0.1));
+						position.subtract((new OOGL.RotationMatrix2(yaw)).by(OOGL.Vector2.J).by(0.05));
 					}
 					if (keys[65]) { // A
-						position.subtract((new OOGL.RotationMatrix2(angle)).by(OOGL.Vector2.I).by(0.1));
+						position.subtract((new OOGL.RotationMatrix2(yaw)).by(OOGL.Vector2.I).by(0.05));
 					}
 					if (keys[68]) { // D
-						position.add((new OOGL.RotationMatrix2(angle)).by(OOGL.Vector2.I).by(0.1));
+						position.add((new OOGL.RotationMatrix2(yaw)).by(OOGL.Vector2.I).by(0.05));
 					}
-					program.uniform1f('Camera.Angle', angle);
+					program.uniform2f('Camera.Angle', yaw, pitch);
 					program.uniformVec2('Camera.Position', position);
 					arrays.drawTriangles();
 					oogl.flush();
