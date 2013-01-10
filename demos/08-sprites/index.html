@@ -46,14 +46,16 @@ OOGL(function () {
 	arrays.add3f(colors);
 	arrays.add2f(textureCoordinates);
 	arrays.bindAndPointer();
-	var pitch = 0;
 	new oogl.AsyncTexture('star.gif', function () {
 		var program = new oogl.AjaxProgram('star', ['in_Vertex', 'in_Center', 'in_Angle', 'in_Color', 'in_TexCoord'], function () {
 			program.use();
+			var spin = 0;
 			var roll = 0;
+			var pitch = 0;
 			(new OOGL.RenderLoop(function () {
 				oogl.clear(oogl.COLOR_BUFFER_BIT);
-				program.uniform2f('Angle', roll += Math.PI / 60, pitch);
+				program.uniform1f('Spin', spin += Math.PI / 200);
+				program.uniform2f('Angle', roll += Math.PI / 200, pitch);
 				arrays.drawTriangles();
 				oogl.flush();
 			})).start();

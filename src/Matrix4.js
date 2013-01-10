@@ -153,3 +153,85 @@ OOGL.RotationMatrix4 = function (x, y, z, a) {
 OOGL.ScalingMatrix4 = function (x, y, z) {
 	return new OOGL.Matrix4([x, 0, 0, 0, 0, y, 0, 0, 0, 0, z, 0, 0, 0, 0, 1]);
 };
+
+/**
+ * Creates an orthographic projection matrix using the specified screen ratio.
+ *
+ * The created matrix has the following form, in row-major order:
+ *
+ *	1	0	0	0
+ *	0	r	0	0
+ *	0	0	1	0
+ *	0	0	0	1
+ *
+ * where `r` is the screen ratio.
+ *
+ * @class OOGL.OrthogonalProjection
+ * @extends OOGL.Matrix4
+ * @constructor
+ * @param {Number} [screenRatio=1] The screen ratio, e.g. the screen width
+ *	divided by the screen height. Defaults to 1:1.
+ * @example
+ *	program.uniformMat4(new OOGL.OrthogonalProjection(4 / 3));
+ */
+OOGL.OrthogonalProjection = function (screenRatio) {
+	if (arguments.length < 1) {
+		screenRatio = 1;
+	}
+	return new OOGL.Matrix4([1, 0, 0, 0, 0, screenRatio, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]);
+};
+
+/**
+ * Creates an isometric projection matrix using the specified span parameter and
+ * screen ratio.
+ *
+ * TODO
+ *
+ * @class OOGL.IsometricProjection
+ * @extends OOGL.Matrix4
+ * @constructor
+ * @param {Number} span TODO
+ * @param {Number} [screenRatio=1] The screen ratio, e.g. the screen width
+ *	divided by the screen height. Defaults to 1:1.
+ * @example
+ *	program.uniformMat4('Projection', new OOGL.IsometricProjection(50));
+ */
+OOGL.IsometricProjection = function () {
+	// TODO
+};
+
+/**
+ * Creates a perspective projection matrix with the specified focal angle and
+ * screen ratio.
+ *
+ * The created matrix has the following form, in row-major order:
+ *
+ *	h	0		0	0
+ *	0	h * r	0	0
+ *	0	0		0	1
+ *	0	0		1	h
+ *
+ * where `r` is the screen ratio and `h` is defined by:
+ *
+ *	h = Math.cos(focus / 2);
+ *
+ * @class OOGL.PerspectiveProjection
+ * @extends OOGL.Matrix4
+ * @constructor
+ * @param {Number} [screenRatio=1] The screen ratio, e.g. the screen width
+ *	divided by the screen height. Defaults to 1:1.
+ * @param {Number} [focus=Math.PI / 2] The focal angle, in radians; defaults to
+ *	PI / 2 radians (90 degrees).
+ * @example
+ *	program.uniformMat4('Projection', new OOGL.PerspectiveProjection(4 / 3, Math.PI / 3));
+ */
+OOGL.PerspectiveProjection = function (screenRatio, focus) {
+	if (arguments.length < 2) {
+		focus = Math.PI / 2;
+		if (arguments.length < 1) {
+			screenRatio = 1;
+		}
+	}
+	var h = Math.cos(focus / 2);
+	return new OOGL.Matrix4([h, 0, 0, 0, 0, h * screenRatio, 0, 0, 0, 0, 0, 1, 0, 0, 1, h]);
+};

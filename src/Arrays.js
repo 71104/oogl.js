@@ -13,9 +13,13 @@
  * @extends oogl.StaticArrayBuffer
  * @constructor
  * @param {Number} index The attribute array index.
- * @param {String} type TODO
- * @param {Array} data TODO
- * @param {Boolean} [normalize=false] TODO
+ * @param {String} type One of `byte`, `ubyte`, `short`, `ushort` or `float`;
+ *	indicates the type of the data that will be put in the buffer.
+ * @param {Number[]} data A JavaScript `Array` containing the array data; it
+ *	will be automatically converted to a typed array.
+ * @param {Boolean} [normalize=false] Indicates whether the elements of the
+ *	array must be automatically normalized by the GL (see the explanation for
+ *	the equivalent argument in `gl.vertexAttribPointer`).
  * @example
  *	var array = new oogl.AttributeArray1(0, 'float', [1, 2, 3, 4, 5, 6, 7, 8]);
  */
@@ -57,10 +61,16 @@ context.AttributeArray1 = function (index, type, data, normalize) {
 	 * `gl.vertexAttribPointer` equivalent.
 	 *
 	 * @method pointer
-	 * @param {Number} [stride=0] TODO
-	 * @param {Number} [offset=0] TODO
+	 * @param {Number} [stride=0] The stride between consecutive elements in the
+	 *	array (see the explanation for the equivalent argument in
+	 *	`gl.vertexAttribPointer`).
+	 * @param {Number} [offset=0] The index of the first element of the
+	 *	underlying buffer to be used for the attribute array.
+	 *
+	 * This value is multiplied by the data type size and used as the `pointer`
+	 * parameter in the `gl.vertexAttribPointer` call.
 	 * @example
-	 *	var array = new oogl.AttributeArray(0, 'float', [1, 2, 3, 4, 5, 6, 7, 8]);
+	 *	var array = new oogl.AttributeArray1(0, 'float', [1, 2, 3, 4, 5, 6, 7, 8]);
 	 *	array.bind();
 	 *	array.pointer();
 	 */
@@ -77,8 +87,14 @@ context.AttributeArray1 = function (index, type, data, normalize) {
 	 * Equivalent to calling `bind` and `pointer` subsequently.
 	 *
 	 * @method bindAndPointer
-	 * @param {Number} [stride=0] TODO
-	 * @param {Number} [offset=0] TODO
+	 * @param {Number} [stride=0] The stride between consecutive elements in the
+	 *	array (see the explanation for the equivalent argument in
+	 *	`gl.vertexAttribPointer`).
+	 * @param {Number} [offset=0] The index of the first element of the
+	 *	underlying buffer to be used for the attribute array.
+	 *
+	 * This value is multiplied by the data type size and used as the `pointer`
+	 * parameter in the `gl.vertexAttribPointer` call.
 	 * @example
 	 *	buffer.bindAndPointer();
 	 */
@@ -103,9 +119,13 @@ context.AttributeArray1 = function (index, type, data, normalize) {
  * @extends oogl.StaticArrayBuffer
  * @constructor
  * @param {Number} index The attribute array index.
- * @param {String} type TODO
- * @param {Array} data TODO
- * @param {Boolean} [normalize=false] TODO
+ * @param {String} type One of `byte`, `ubyte`, `short`, `ushort` or `float`;
+ *	indicates the type of the data that will be put in the buffer.
+ * @param {Number[]} data A JavaScript `Array` containing the array data; it
+ *	will be automatically converted to a typed array.
+ * @param {Boolean} [normalize=false] Indicates whether the elements of the
+ *	array must be automatically normalized by the GL (see the explanation for
+ *	the equivalent argument in `gl.vertexAttribPointer`).
  * @example
  *	var array = new oogl.AttributeArray2(0, 'float', [1, 2, 3, 4, 5, 6, 7, 8]);
  */
@@ -147,10 +167,16 @@ context.AttributeArray2 = function (index, type, data, normalize) {
 	 * `gl.vertexAttribPointer` equivalent.
 	 *
 	 * @method pointer
-	 * @param {Number} [stride=0] TODO
-	 * @param {Number} [offset=0] TODO
+	 * @param {Number} [stride=0] The stride between consecutive elements in the
+	 *	array (see the explanation for the equivalent argument in
+	 *	`gl.vertexAttribPointer`).
+	 * @param {Number} [offset=0] The index of the first element of the
+	 *	underlying buffer to be used for the attribute array.
+	 *
+	 * This value is multiplied by the data type size and used as the `pointer`
+	 * parameter in the `gl.vertexAttribPointer` call.
 	 * @example
-	 *	var array = new oogl.AttributeArray(0, 'float', [1, 2, 3, 4, 5, 6, 7, 8]);
+	 *	var array = new oogl.AttributeArray2(0, 'float', [1, 2, 3, 4, 5, 6, 7, 8]);
 	 *	array.bind();
 	 *	array.pointer();
 	 */
@@ -167,8 +193,14 @@ context.AttributeArray2 = function (index, type, data, normalize) {
 	 * Equivalent to calling `bind` and `pointer` subsequently.
 	 *
 	 * @method bindAndPointer
-	 * @param {Number} [stride=0] TODO
-	 * @param {Number} [offset=0] TODO
+	 * @param {Number} [stride=0] The stride between consecutive elements in the
+	 *	array (see the explanation for the equivalent argument in
+	 *	`gl.vertexAttribPointer`).
+	 * @param {Number} [offset=0] The index of the first element of the
+	 *	underlying buffer to be used for the attribute array.
+	 *
+	 * This value is multiplied by the data type size and used as the `pointer`
+	 * parameter in the `gl.vertexAttribPointer` call.
 	 * @example
 	 *	buffer.bindAndPointer();
 	 */
@@ -193,11 +225,15 @@ context.AttributeArray2 = function (index, type, data, normalize) {
  * @extends oogl.StaticArrayBuffer
  * @constructor
  * @param {Number} index The attribute array index.
- * @param {String} type TODO
- * @param {Array} data TODO
- * @param {Boolean} [normalize=false] TODO
+ * @param {String} type One of `byte`, `ubyte`, `short`, `ushort` or `float`;
+ *	indicates the type of the data that will be put in the buffer.
+ * @param {Number[]} data A JavaScript `Array` containing the array data; it
+ *	will be automatically converted to a typed array.
+ * @param {Boolean} [normalize=false] Indicates whether the elements of the
+ *	array must be automatically normalized by the GL (see the explanation for
+ *	the equivalent argument in `gl.vertexAttribPointer`).
  * @example
- *	var array = new oogl.AttributeArray(0, 'float', [1, 2, 3, 4, 5, 6, 7, 8]);
+ *	var array = new oogl.AttributeArray3(0, 'float', [1, 2, 3, 4, 5, 6, 7, 8]);
  */
 context.AttributeArray3 = function (index, type, data, normalize) {
 	var types = {
@@ -237,8 +273,14 @@ context.AttributeArray3 = function (index, type, data, normalize) {
 	 * `gl.vertexAttribPointer` equivalent.
 	 *
 	 * @method pointer
-	 * @param {Number} [stride=0] TODO
-	 * @param {Number} [offset=0] TODO
+	 * @param {Number} [stride=0] The stride between consecutive elements in the
+	 *	array (see the explanation for the equivalent argument in
+	 *	`gl.vertexAttribPointer`).
+	 * @param {Number} [offset=0] The index of the first element of the
+	 *	underlying buffer to be used for the attribute array.
+	 *
+	 * This value is multiplied by the data type size and used as the `pointer`
+	 * parameter in the `gl.vertexAttribPointer` call.
 	 * @example
 	 *	var array = new oogl.AttributeArray3(0, 'float', [1, 2, 3, 4, 5, 6, 7, 8]);
 	 *	array.bind();
@@ -257,8 +299,14 @@ context.AttributeArray3 = function (index, type, data, normalize) {
 	 * Equivalent to calling `bind` and `pointer` subsequently.
 	 *
 	 * @method bindAndPointer
-	 * @param {Number} [stride=0] TODO
-	 * @param {Number} [offset=0] TODO
+	 * @param {Number} [stride=0] The stride between consecutive elements in the
+	 *	array (see the explanation for the equivalent argument in
+	 *	`gl.vertexAttribPointer`).
+	 * @param {Number} [offset=0] The index of the first element of the
+	 *	underlying buffer to be used for the attribute array.
+	 *
+	 * This value is multiplied by the data type size and used as the `pointer`
+	 * parameter in the `gl.vertexAttribPointer` call.
 	 * @example
 	 *	buffer.bindAndPointer();
 	 */
@@ -283,9 +331,13 @@ context.AttributeArray3 = function (index, type, data, normalize) {
  * @extends oogl.StaticArrayBuffer
  * @constructor
  * @param {Number} index The attribute array index.
- * @param {String} type TODO
- * @param {Array} data TODO
- * @param {Boolean} [normalize=false] TODO
+ * @param {String} type One of `byte`, `ubyte`, `short`, `ushort` or `float`;
+ *	indicates the type of the data that will be put in the buffer.
+ * @param {Number[]} data A JavaScript `Array` containing the array data; it
+ *	will be automatically converted to a typed array.
+ * @param {Boolean} [normalize=false] Indicates whether the elements of the
+ *	array must be automatically normalized by the GL (see the explanation for
+ *	the equivalent argument in `gl.vertexAttribPointer`).
  * @example
  *	var array = new oogl.AttributeArray4(0, 'float', [1, 2, 3, 4, 5, 6, 7, 8]);
  */
@@ -329,8 +381,14 @@ context.AttributeArray4 = function (index, type, data, normalize) {
 	 * `gl.vertexAttribPointer` equivalent.
 	 *
 	 * @method pointer
-	 * @param {Number} [stride=0] TODO
-	 * @param {Number} [offset=0] TODO
+	 * @param {Number} [stride=0] The stride between consecutive elements in the
+	 *	array (see the explanation for the equivalent argument in
+	 *	`gl.vertexAttribPointer`).
+	 * @param {Number} [offset=0] The index of the first element of the
+	 *	underlying buffer to be used for the attribute array.
+	 *
+	 * This value is multiplied by the data type size and used as the `pointer`
+	 * parameter in the `gl.vertexAttribPointer` call.
 	 * @example
 	 *	var array = new oogl.AttributeArray4(0, 'float', [1, 2, 3, 4, 5, 6, 7, 8]);
 	 *	array.bind();
@@ -349,8 +407,14 @@ context.AttributeArray4 = function (index, type, data, normalize) {
 	 * Equivalent to calling `bind` and `pointer` subsequently.
 	 *
 	 * @method bindAndPointer
-	 * @param {Number} [stride=0] TODO
-	 * @param {Number} [offset=0] TODO
+	 * @param {Number} [stride=0] The stride between consecutive elements in the
+	 *	array (see the explanation for the equivalent argument in
+	 *	`gl.vertexAttribPointer`).
+	 * @param {Number} [offset=0] The index of the first element of the
+	 *	underlying buffer to be used for the attribute array.
+	 *
+	 * This value is multiplied by the data type size and used as the `pointer`
+	 * parameter in the `gl.vertexAttribPointer` call.
 	 * @example
 	 *	buffer.bindAndPointer();
 	 */
@@ -401,11 +465,14 @@ context.AttributeArrays = function (count) {
 		},
 
 		/**
-		 * TODO
+		 * Adds a single signed byte component vertex attribute array to the
+		 * set.
 		 *
 		 * @method add1b
-		 * @param {Number[]} data TODO
-		 * @param {Boolean} [normalize=false] TODO
+		 * @param {Number[]} data A standard JavaScript array containing the
+		 *	attribute data.
+		 * @param {Boolean} [normalize=false] Indicates whether attribute data
+		 *	must be normalized by the GL.
 		 * @example
 		 *	TODO
 		 */
@@ -414,11 +481,14 @@ context.AttributeArrays = function (count) {
 		},
 
 		/**
-		 * TODO
+		 * Adds a single unsigned byte component vertex attribute array to the
+		 * set.
 		 *
 		 * @method add1ub
-		 * @param {Number[]} data TODO
-		 * @param {Boolean} [normalize=false] TODO
+		 * @param {Number[]} data A standard JavaScript array containing the
+		 *	attribute data.
+		 * @param {Boolean} [normalize=false] Indicates whether attribute data
+		 *	must be normalized by the GL.
 		 * @example
 		 *	TODO
 		 */
@@ -427,11 +497,14 @@ context.AttributeArrays = function (count) {
 		},
 
 		/**
-		 * TODO
+		 * Adds a single signed short integer component vertex attribute array
+		 * to the set.
 		 *
 		 * @method add1s
-		 * @param {Number[]} data TODO
-		 * @param {Boolean} [normalize=false] TODO
+		 * @param {Number[]} data A standard JavaScript array containing the
+		 *	attribute data.
+		 * @param {Boolean} [normalize=false] Indicates whether attribute data
+		 *	must be normalized by the GL.
 		 * @example
 		 *	TODO
 		 */
@@ -440,11 +513,14 @@ context.AttributeArrays = function (count) {
 		},
 
 		/**
-		 * TODO
+		 * Adds a single unsigned short integer component vertex attribute array
+		 * to the set.
 		 *
 		 * @method add1us
-		 * @param {Number[]} data TODO
-		 * @param {Boolean} [normalize=false] TODO
+		 * @param {Number[]} data A standard JavaScript array containing the
+		 *	attribute data.
+		 * @param {Boolean} [normalize=false] Indicates whether attribute data
+		 *	must be normalized by the GL.
 		 * @example
 		 *	TODO
 		 */
@@ -453,11 +529,14 @@ context.AttributeArrays = function (count) {
 		},
 
 		/**
-		 * TODO
+		 * Adds a single floating point component vertex attribute array to the
+		 * set.
 		 *
 		 * @method add1f
-		 * @param {Number[]} data TODO
-		 * @param {Boolean} [normalize=false] TODO
+		 * @param {Number[]} data A standard JavaScript array containing the
+		 *	attribute data.
+		 * @param {Boolean} [normalize=false] Indicates whether attribute data
+		 *	must be normalized by the GL.
 		 * @example
 		 *	TODO
 		 */
@@ -471,7 +550,7 @@ context.AttributeArrays = function (count) {
 		 * @method add2
 		 * @param {String} type The type of the data in the array. Must be one
 		 *	of `byte`, `ubyte`, `short`, `ushort` and `float`.
-		 * @param {Array} data A standard JavaScript array containing the
+		 * @param {Number[]} data A standard JavaScript array containing the
 		 *	attribute data.
 		 * @param {Boolean} [normalize=false] Indicates whether attribute data
 		 *	must be normalized by the GL.
@@ -483,11 +562,13 @@ context.AttributeArrays = function (count) {
 		},
 
 		/**
-		 * TODO
+		 * Adds a two signed byte component vertex attribute array to the set.
 		 *
 		 * @method add2b
-		 * @param {Number[]} data TODO
-		 * @param {Boolean} [normalize=false] TODO
+		 * @param {Number[]} data A standard JavaScript array containing the
+		 *	attribute data.
+		 * @param {Boolean} [normalize=false] Indicates whether attribute data
+		 *	must be normalized by the GL.
 		 * @example
 		 *	TODO
 		 */
@@ -496,11 +577,13 @@ context.AttributeArrays = function (count) {
 		},
 
 		/**
-		 * TODO
+		 * Adds a two unsigned byte component vertex attribute array to the set.
 		 *
 		 * @method add2ub
-		 * @param {Number[]} data TODO
-		 * @param {Boolean} [normalize=false] TODO
+		 * @param {Number[]} data A standard JavaScript array containing the
+		 *	attribute data.
+		 * @param {Boolean} [normalize=false] Indicates whether attribute data
+		 *	must be normalized by the GL.
 		 * @example
 		 *	TODO
 		 */
@@ -509,11 +592,14 @@ context.AttributeArrays = function (count) {
 		},
 
 		/**
-		 * TODO
+		 * Adds a two signed short integer component vertex attribute array to
+		 * the set.
 		 *
 		 * @method add2s
-		 * @param {Number[]} data TODO
-		 * @param {Boolean} [normalize=false] TODO
+		 * @param {Number[]} data A standard JavaScript array containing the
+		 *	attribute data.
+		 * @param {Boolean} [normalize=false] Indicates whether attribute data
+		 *	must be normalized by the GL.
 		 * @example
 		 *	TODO
 		 */
@@ -522,11 +608,14 @@ context.AttributeArrays = function (count) {
 		},
 
 		/**
-		 * TODO
+		 * Adds a two unsigned short integer component vertex attribute array to
+		 * the set.
 		 *
 		 * @method add2us
-		 * @param {Number[]} data TODO
-		 * @param {Boolean} [normalize=false] TODO
+		 * @param {Number[]} data A standard JavaScript array containing the
+		 *	attribute data.
+		 * @param {Boolean} [normalize=false] Indicates whether attribute data
+		 *	must be normalized by the GL.
 		 * @example
 		 *	TODO
 		 */
@@ -535,11 +624,14 @@ context.AttributeArrays = function (count) {
 		},
 
 		/**
-		 * TODO
+		 * Adds a two floating point component vertex attribute array to the
+		 * set.
 		 *
 		 * @method add2f
-		 * @param {Number[]} data TODO
-		 * @param {Boolean} [normalize=false] TODO
+		 * @param {Number[]} data A standard JavaScript array containing the
+		 *	attribute data.
+		 * @param {Boolean} [normalize=false] Indicates whether attribute data
+		 *	must be normalized by the GL.
 		 * @example
 		 *	TODO
 		 */
@@ -553,7 +645,7 @@ context.AttributeArrays = function (count) {
 		 * @method add3
 		 * @param {String} type The type of the data in the array. Must be one
 		 *	of `byte`, `ubyte`, `short`, `ushort` and `float`.
-		 * @param {Array} data A standard JavaScript array containing the
+		 * @param {Number[]} data A standard JavaScript array containing the
 		 *	attribute data.
 		 * @param {Boolean} [normalize=false] Indicates whether attribute data
 		 *	must be normalized by the GL.
@@ -565,11 +657,13 @@ context.AttributeArrays = function (count) {
 		},
 
 		/**
-		 * TODO
+		 * Adds a three signed byte component vertex attribute array to the set.
 		 *
 		 * @method add3b
-		 * @param {Number[]} data TODO
-		 * @param {Boolean} [normalize=false] TODO
+		 * @param {Number[]} data A standard JavaScript array containing the
+		 *	attribute data.
+		 * @param {Boolean} [normalize=false] Indicates whether attribute data
+		 *	must be normalized by the GL.
 		 * @example
 		 *	TODO
 		 */
@@ -578,11 +672,14 @@ context.AttributeArrays = function (count) {
 		},
 
 		/**
-		 * TODO
+		 * Adds a three unsigned byte component vertex attribute array to the
+		 * set.
 		 *
 		 * @method add3ub
-		 * @param {Number[]} data TODO
-		 * @param {Boolean} [normalize=false] TODO
+		 * @param {Number[]} data A standard JavaScript array containing the
+		 *	attribute data.
+		 * @param {Boolean} [normalize=false] Indicates whether attribute data
+		 *	must be normalized by the GL.
 		 * @example
 		 *	TODO
 		 */
@@ -591,11 +688,14 @@ context.AttributeArrays = function (count) {
 		},
 
 		/**
-		 * TODO
+		 * Adds a three signed short integer component vertex attribute array to
+		 * the set.
 		 *
 		 * @method add3s
-		 * @param {Number[]} data TODO
-		 * @param {Boolean} [normalize=false] TODO
+		 * @param {Number[]} data A standard JavaScript array containing the
+		 *	attribute data.
+		 * @param {Boolean} [normalize=false] Indicates whether attribute data
+		 *	must be normalized by the GL.
 		 * @example
 		 *	TODO
 		 */
@@ -604,11 +704,14 @@ context.AttributeArrays = function (count) {
 		},
 
 		/**
-		 * TODO
+		 * Adds a three unsigned short integer component vertex attribute array
+		 * to the set.
 		 *
 		 * @method add3us
-		 * @param {Number[]} data TODO
-		 * @param {Boolean} [normalize=false] TODO
+		 * @param {Number[]} data A standard JavaScript array containing the
+		 *	attribute data.
+		 * @param {Boolean} [normalize=false] Indicates whether attribute data
+		 *	must be normalized by the GL.
 		 * @example
 		 *	TODO
 		 */
@@ -617,11 +720,14 @@ context.AttributeArrays = function (count) {
 		},
 
 		/**
-		 * TODO
+		 * Adds a three floating point component vertex attribute array to the
+		 * set.
 		 *
 		 * @method add3f
-		 * @param {Number[]} data TODO
-		 * @param {Boolean} [normalize=false] TODO
+		 * @param {Number[]} data A standard JavaScript array containing the
+		 *	attribute data.
+		 * @param {Boolean} [normalize=false] Indicates whether attribute data
+		 *	must be normalized by the GL.
 		 * @example
 		 *	TODO
 		 */
@@ -647,11 +753,13 @@ context.AttributeArrays = function (count) {
 		},
 
 		/**
-		 * TODO
+		 * Adds a four signed byte component vertex attribute array to the set.
 		 *
 		 * @method add4b
-		 * @param {Number[]} data TODO
-		 * @param {Boolean} [normalize=false] TODO
+		 * @param {Number[]} data A standard JavaScript array containing the
+		 *	attribute data.
+		 * @param {Boolean} [normalize=false] Indicates whether attribute data
+		 *	must be normalized by the GL.
 		 * @example
 		 *	TODO
 		 */
@@ -660,11 +768,13 @@ context.AttributeArrays = function (count) {
 		},
 
 		/**
-		 * TODO
+		 * Adds a four unsigned byte component vertex attribute array to the set.
 		 *
 		 * @method add4ub
-		 * @param {Number[]} data TODO
-		 * @param {Boolean} [normalize=false] TODO
+		 * @param {Number[]} data A standard JavaScript array containing the
+		 *	attribute data.
+		 * @param {Boolean} [normalize=false] Indicates whether attribute data
+		 *	must be normalized by the GL.
 		 * @example
 		 *	TODO
 		 */
@@ -673,11 +783,14 @@ context.AttributeArrays = function (count) {
 		},
 
 		/**
-		 * TODO
+		 * Adds a four signed short integer component vertex attribute array to
+		 * the set.
 		 *
 		 * @method add4s
-		 * @param {Number[]} data TODO
-		 * @param {Boolean} [normalize=false] TODO
+		 * @param {Number[]} data A standard JavaScript array containing the
+		 *	attribute data.
+		 * @param {Boolean} [normalize=false] Indicates whether attribute data
+		 *	must be normalized by the GL.
 		 * @example
 		 *	TODO
 		 */
@@ -686,11 +799,14 @@ context.AttributeArrays = function (count) {
 		},
 
 		/**
-		 * TODO
+		 * Adds a four unsigned short integer component vertex attribute array
+		 * to the set.
 		 *
 		 * @method add4us
-		 * @param {Number[]} data TODO
-		 * @param {Boolean} [normalize=false] TODO
+		 * @param {Number[]} data A standard JavaScript array containing the
+		 *	attribute data.
+		 * @param {Boolean} [normalize=false] Indicates whether attribute data
+		 *	must be normalized by the GL.
 		 * @example
 		 *	TODO
 		 */
@@ -699,11 +815,14 @@ context.AttributeArrays = function (count) {
 		},
 
 		/**
-		 * TODO
+		 * Adds a four floating point component vertex attribute array to the
+		 * set.
 		 *
 		 * @method add4f
-		 * @param {Number[]} data TODO
-		 * @param {Boolean} [normalize=false] TODO
+		 * @param {Number[]} data A standard JavaScript array containing the
+		 *	attribute data.
+		 * @param {Boolean} [normalize=false] Indicates whether attribute data
+		 *	must be normalized by the GL.
 		 * @example
 		 *	TODO
 		 */

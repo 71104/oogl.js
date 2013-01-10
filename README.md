@@ -151,7 +151,7 @@ var v = new OOGL.Vector3(x, y, z);
 program.uniformVec3('Vector', v);
 ```
 
-Similarly, you can specify a `mat4` uniform like this:
+Similarly, you can specify a `mat3` uniform like this:
 
 ```javascript
 var m = new OOGL.Matrix3([1, 2, 3, 4, 5, 6, 7, 8, 9]);
@@ -165,4 +165,4 @@ OOGL math classes are developed with a strong focus on performances and can be u
 Credits
 =======
 
-OOGL was created by Alberto La Rocca and is licensed under the MIT License.
+OOGL was created by [Alberto La Rocca](https://github.com/71104) and is licensed under the MIT License.

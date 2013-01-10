@@ -1,3 +1,4 @@
+uniform float Spin;
 uniform vec2 Angle;
 
 attribute vec2 in_Vertex;
@@ -20,6 +21,11 @@ void main() {
 		0, 1, 0, 0,
 		0, 0, 1, 0,
 		0, 0, 1, 1
+	) * mat4(
+		cos(Spin), sin(Spin), 0, 0,
+		-sin(Spin), cos(Spin), 0, 0,
+		0, 0, 1, 0,
+		0, 0, 0, 1
 	) * mat4(
 		1, 0, 0, 0,
 		0, cos(Angle.y), sin(Angle.y), 0,
