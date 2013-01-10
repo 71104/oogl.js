@@ -20,9 +20,9 @@ void main() {
 		sin(Camera.Angle), 0, cos(Camera.Angle), 0,
 		0, 0, 0, 1
 	) * mat4(
-		1, 0, 0, 0,
+		2, 0, 0, 0,
 		0, 1, 0, 0,
-		0, 0, 1, 0,
+		0, 0, 2, 0,
 		-Camera.Position.x, 0, -Camera.Position.y, 1
 	) * vec4(in_Vertex, 1);
 	ex_TexCoord = in_TexCoord;
