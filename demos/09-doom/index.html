@@ -13,7 +13,28 @@ OOGL(function () {
 	var oogl = new OOGL.Context('canvas', {
 		alpha: false
 	});
-	// TODO
+	oogl.enable(oogl.CULL_FACE);
+	oogl.enable(oogl.DEPTH_TEST);
+	oogl.depthFunc(oogl.LESS);
+	oogl.clearDepth(1);
+	// TODO create arrays
+	new oogl.AsyncTexture('mud.gif', function () {
+		new oogl.AjaxProgram('walls', ['in_Vertex', 'in_TexCoord'], function () {
+			this.use();
+			var keys = {};
+			addEventListener('keydown', function (event) {
+				// TODO
+			});
+			addEventListener('keyup', function (event) {
+				// TODO
+			});
+			(new OOGL.RenderLoop(function () {
+				oogl.clear(oogl.COLOR_BUFFER_BIT | oogl.DEPTH_BUFFER_BIT);
+				// TODO arrays.drawTriangles();
+				oogl.flush();
+			})).start();
+		});
+	});
 });
 	</script>
 </body>
