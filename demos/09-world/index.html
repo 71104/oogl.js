@@ -21,18 +21,35 @@ OOGL(function () {
 		var arrays = new oogl.AttributeArrays(walls.vertices.length / 3);
 		arrays.add3f(walls.vertices);
 		arrays.add2f(walls.textureCoordinates);
+		arrays.bindAndPointer();
 		new oogl.AsyncTexture('mud.gif', function () {
-			new oogl.AjaxProgram('walls', ['in_Vertex', 'in_TexCoord'], function () {
-				this.use();
+			var program = new oogl.AjaxProgram('walls', ['in_Vertex', 'in_TexCoord'], function () {
+				program.use();
 				var keys = {};
 				addEventListener('keydown', function (event) {
-					// TODO
+					keys[event.charCode || event.keyCode] = true;
 				});
 				addEventListener('keyup', function (event) {
-					// TODO
+					delete keys[event.charCode || event.keyCode];
 				});
+				var angle = 0;
+				var position = new OOGL.Vector2(0, 0);
 				(new OOGL.RenderLoop(function () {
 					oogl.clear(oogl.COLOR_BUFFER_BIT | oogl.DEPTH_BUFFER_BIT);
+					if (keys[37]) {
+						angle += Math.PI / 60;
+					}
+					if (keys[38]) {
+						position.add((new OOGL.RotationMatrix2(angle)).by(OOGL.Vector2.J).by(0.1));
+					}
+					if (keys[39]) {
+						angle -= Math.PI / 60;
+					}
+					if (keys[40]) {
+						position.subtract((new OOGL.RotationMatrix2(angle)).by(OOGL.Vector2.J).by(0.1));
+					}
+					program.uniform1f('Camera.Angle', angle);
+					program.uniformVec2('Camera.Position', position);
 					arrays.drawTriangles();
 					oogl.flush();
 				})).start();
