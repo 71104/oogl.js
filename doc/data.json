@@ -399,7 +399,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "src\\Arrays.js",
-            "line": 962,
+            "line": 968,
             "description": "Represents an element array.\n\nThis class inherits `StaticElementArrayBuffer` and introduces utility\nmethods.",
             "extends": "oogl.StaticElementArrayBuffer",
             "is_constructor": 1,
@@ -2153,7 +2153,7 @@
                 }
             ],
             "example": [
-                "\n\tTODO"
+                "\n\tarrays.add1b([1, 2, 3, 4, -1, -2, -3, -4]);"
             ],
             "class": "oogl.AttributeArrays"
         },
@@ -2178,7 +2178,7 @@
                 }
             ],
             "example": [
-                "\n\tTODO"
+                "\n\tarrays.add1ub([1, 2, 3, 4, 5, 6, 7, 8]);"
             ],
             "class": "oogl.AttributeArrays"
         },
@@ -2203,7 +2203,7 @@
                 }
             ],
             "example": [
-                "\n\tTODO"
+                "\n\tarrays.add1s([1, 2, 3, 4, -1, -2, -3, -4]);"
             ],
             "class": "oogl.AttributeArrays"
         },
@@ -2228,7 +2228,7 @@
                 }
             ],
             "example": [
-                "\n\tTODO"
+                "\n\tarrays.add1us([1, 2, 3, 4, 5, 6, 7, 8]);"
             ],
             "class": "oogl.AttributeArrays"
         },
@@ -2253,7 +2253,7 @@
                 }
             ],
             "example": [
-                "\n\tTODO"
+                "\n\tarrays.add1f([1, 2, 3, 4, 5, 6, 7, 8]);"
             ],
             "class": "oogl.AttributeArrays"
         },
@@ -2308,7 +2308,7 @@
                 }
             ],
             "example": [
-                "\n\tTODO"
+                "\n\tarrays.add2b([1, 2, 3, 4, -1, -2, -3, -4]);"
             ],
             "class": "oogl.AttributeArrays"
         },
@@ -2333,7 +2333,7 @@
                 }
             ],
             "example": [
-                "\n\tTODO"
+                "\n\tarrays.add2ub([1, 2, 3, 4, 5, 6, 7, 8]);"
             ],
             "class": "oogl.AttributeArrays"
         },
@@ -2358,7 +2358,7 @@
                 }
             ],
             "example": [
-                "\n\tTODO"
+                "\n\tarrays.add2s([1, 2, 3, 4, -1, -2, -3, -4]);"
             ],
             "class": "oogl.AttributeArrays"
         },
@@ -2383,7 +2383,7 @@
                 }
             ],
             "example": [
-                "\n\tTODO"
+                "\n\tarrays.add2us([1, 2, 3, 4, 5, 6, 7, 8]);"
             ],
             "class": "oogl.AttributeArrays"
         },
@@ -2408,7 +2408,7 @@
                 }
             ],
             "example": [
-                "\n\tTODO"
+                "\n\tarrays.add2f([1, 2, 3, 4, 5, 6, 7, 8]);"
             ],
             "class": "oogl.AttributeArrays"
         },
@@ -2463,7 +2463,7 @@
                 }
             ],
             "example": [
-                "\n\tTODO"
+                "\n\tarrays.add3b([1, 2, 3, -1, -2, -3]);"
             ],
             "class": "oogl.AttributeArrays"
         },
@@ -2488,7 +2488,7 @@
                 }
             ],
             "example": [
-                "\n\tTODO"
+                "\n\tarrays.add3ub([1, 2, 3, 4, 5, 6]);"
             ],
             "class": "oogl.AttributeArrays"
         },
@@ -2513,7 +2513,7 @@
                 }
             ],
             "example": [
-                "\n\tTODO"
+                "\n\tarrays.add3s([1, 2, 3, -1, -2, -3]);"
             ],
             "class": "oogl.AttributeArrays"
         },
@@ -2538,7 +2538,7 @@
                 }
             ],
             "example": [
-                "\n\tTODO"
+                "\n\tarrays.add3us([1, 2, 3, 4, 5, 6]);"
             ],
             "class": "oogl.AttributeArrays"
         },
@@ -2563,7 +2563,7 @@
                 }
             ],
             "example": [
-                "\n\tTODO"
+                "\n\tarrays.add3f([1, 2, 3, 4, 5, 6]);"
             ],
             "class": "oogl.AttributeArrays"
         },
@@ -2618,7 +2618,7 @@
                 }
             ],
             "example": [
-                "\n\tTODO"
+                "\n\tarrays.add4b([1, 2, 3, 4, -1, -2, -3, -4]);"
             ],
             "class": "oogl.AttributeArrays"
         },
@@ -2643,7 +2643,7 @@
                 }
             ],
             "example": [
-                "\n\tTODO"
+                "\n\tarrays.add4ub([1, 2, 3, 4, 5, 6, 7, 8]);"
             ],
             "class": "oogl.AttributeArrays"
         },
@@ -2668,7 +2668,7 @@
                 }
             ],
             "example": [
-                "\n\tTODO"
+                "\n\tarrays.add4s([1, 2, 3, 4, -5, -6, -7, -8]);"
             ],
             "class": "oogl.AttributeArrays"
         },
@@ -2693,7 +2693,7 @@
                 }
             ],
             "example": [
-                "\n\tTODO"
+                "\n\tarrays.add4us([1, 2, 3, 4, 5, 6, 7, 8]);"
             ],
             "class": "oogl.AttributeArrays"
         },
@@ -2718,7 +2718,7 @@
                 }
             ],
             "example": [
-                "\n\tTODO"
+                "\n\tarrays.add4f([1, 2, 3, 4, 5, 6, 7, 8]);"
             ],
             "class": "oogl.AttributeArrays"
         },
@@ -2731,14 +2731,14 @@
             "params": [
                 {
                     "name": "stride",
-                    "description": "TODO",
+                    "description": "The stride between consecutive elements in\n\tthe array (see the explanation for the equivalent argument in\n\t`gl.vertexAttribPointer`).",
                     "type": "Number",
                     "optional": true,
                     "optdefault": "0"
                 },
                 {
                     "name": "offset",
-                    "description": "TODO",
+                    "description": "The index of the first element of the\n\tunderlying buffer to be used for the attribute array.\n\nThis value is multiplied by the data type size and used as the\n`pointer` parameter in the `gl.vertexAttribPointer` call.",
                     "type": "Number",
                     "optional": true,
                     "optdefault": "0"
@@ -2751,7 +2751,7 @@
         },
         {
             "file": "src\\Arrays.js",
-            "line": 860,
+            "line": 866,
             "description": "Draws the arrays in `gl.TRIANGLES` mode.\n\nEquivalent to calling `gl.drawArrays` with `gl.TRIANGLES`.\n\nYou may optionally specify `offset` and `count` parameters.",
             "itemtype": "method",
             "name": "drawTriangles",
@@ -2777,7 +2777,7 @@
         },
         {
             "file": "src\\Arrays.js",
-            "line": 889,
+            "line": 895,
             "description": "Draws the arrays in `gl.TRIANGLE_FAN` mode.\n\nEquivalent to calling `gl.drawArrays` with `gl.TRIANGLE_FAN`.\n\nYou may optionally specify `offset` and `count` parameters.",
             "itemtype": "method",
             "name": "drawTriangles",
@@ -2803,7 +2803,7 @@
         },
         {
             "file": "src\\Arrays.js",
-            "line": 918,
+            "line": 924,
             "description": "Draws the arrays in `gl.TRIANGLE_STRIP` mode.\n\nEquivalent to calling `gl.drawArrays` with `gl.TRIANGLE_STRIP`.\n\nYou may optionally specify `offset` and `count` parameters.",
             "itemtype": "method",
             "name": "drawTriangles",
@@ -2829,7 +2829,7 @@
         },
         {
             "file": "src\\Arrays.js",
-            "line": 947,
+            "line": 953,
             "description": "Deletes all the arrays in the set.",
             "itemtype": "method",
             "name": "_delete",
@@ -2840,7 +2840,7 @@
         },
         {
             "file": "src\\Arrays.js",
-            "line": 999,
+            "line": 1005,
             "description": "Draws the elements in `gl.TRIANGLES` mode.\n\nEquivalent to calling `gl.drawElements` with `gl.TRIANGLES`.",
             "itemtype": "method",
             "name": "drawTriangles",
@@ -2866,7 +2866,7 @@
         },
         {
             "file": "src\\Arrays.js",
-            "line": 1023,
+            "line": 1029,
             "description": "Draws the elements in `gl.TRIANGLE_FAN` mode.\n\nEquivalent to calling `gl.drawElements` with `gl.TRIANGLE_FAN`.",
             "itemtype": "method",
             "name": "drawTriangles",
@@ -2892,7 +2892,7 @@
         },
         {
             "file": "src\\Arrays.js",
-            "line": 1047,
+            "line": 1053,
             "description": "Draws the elements in `gl.TRIANGLE_STRIP` mode.\n\nEquivalent to calling `gl.drawElements` with `gl.TRIANGLE_STRIP`.",
             "itemtype": "method",
             "name": "drawTriangleStrip",
@@ -4926,12 +4926,12 @@
         {
             "file": "src\\RenderLoop.js",
             "line": 330,
-            "description": "TODO",
+            "description": "Returns the frame rate associated to the `RenderLoop` class. This frame\nrate is associated to every constructed `RenderLoop` object.",
             "itemtype": "method",
             "name": "getRate",
             "static": 1,
             "return": {
-                "description": "TODO",
+                "description": "The frame rate associated to the `RenderLoop` class.",
                 "type": "Number"
             },
             "example": [
@@ -4941,13 +4941,13 @@
         },
         {
             "file": "src\\RenderLoop.js",
-            "line": 343,
-            "description": "TODO",
+            "line": 344,
+            "description": "Returns the period relative to the frame rate associated to the\n`RenderLoop` class. This is computed as:\n\n\tMath.floor(1000 / rate)\n\nwhere `rate` is the value returned by the _static_ `getRate` method.",
             "itemtype": "method",
             "name": "getPeriod",
             "static": 1,
             "return": {
-                "description": "TODO",
+                "description": "The period relative to the frame rate associated to the\n\t`RenderLoop` class.",
                 "type": "Number"
             },
             "example": [
@@ -4957,7 +4957,7 @@
         },
         {
             "file": "src\\RenderLoop.js",
-            "line": 357,
+            "line": 364,
             "description": "TODO",
             "itemtype": "method",
             "name": "setRate",

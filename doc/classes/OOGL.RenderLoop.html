@@ -703,7 +703,7 @@ var period = loop.getPeriod(); // 10
             
         
         
-        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l343"><code>src\RenderLoop.js:343</code></a>
+        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l344"><code>src\RenderLoop.js:344</code></a>
         
         </p>
 
@@ -714,7 +714,13 @@ var period = loop.getPeriod(); // 10
     </div>
 
     <div class="description">
-        <p>TODO</p>
+        <p>Returns the period relative to the frame rate associated to the
+<code>RenderLoop</code> class. This is computed as:</p>
+
+<pre class="code prettyprint"><code>Math.floor(1000 / rate)
+</code></pre>
+
+<p>where <code>rate</code> is the value returned by the <em>static</em> <code>getRate</code> method.</p>
     </div>
 
     
@@ -728,7 +734,8 @@ var period = loop.getPeriod(); // 10
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>:
                     
-                    TODO
+                    The period relative to the frame rate associated to the
+    <code>RenderLoop</code> class.
                 
             </div>
         </div>
@@ -797,7 +804,8 @@ var period = OOGL.RenderLoop.getPeriod(); // 10
     </div>
 
     <div class="description">
-        <p>TODO</p>
+        <p>Returns the frame rate associated to the <code>RenderLoop</code> class. This frame
+rate is associated to every constructed <code>RenderLoop</code> object.</p>
     </div>
 
     
@@ -811,7 +819,7 @@ var period = OOGL.RenderLoop.getPeriod(); // 10
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>:
                     
-                    TODO
+                    The frame rate associated to the <code>RenderLoop</code> class.
                 
             </div>
         </div>
@@ -1278,7 +1286,7 @@ has not been previously suspended by the <code>suspend</code> method.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l357"><code>src\RenderLoop.js:357</code></a>
+        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l364"><code>src\RenderLoop.js:364</code></a>
         
         </p>
 

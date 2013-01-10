@@ -531,11 +531,12 @@ OOGL.RenderLoop = (function () {
 	};
 
 	&#x2F;**
-	 * TODO
+	 * Returns the frame rate associated to the &#x60;RenderLoop&#x60; class. This frame
+	 * rate is associated to every constructed &#x60;RenderLoop&#x60; object.
 	 *
 	 * @method getRate
 	 * @static
-	 * @return {Number} TODO
+	 * @return {Number} The frame rate associated to the &#x60;RenderLoop&#x60; class.
 	 * @example
 	 *	var currentRate = RenderLoop.getRate();
 	 *&#x2F;
@@ -544,11 +545,17 @@ OOGL.RenderLoop = (function () {
 	};
 
 	&#x2F;**
-	 * TODO
+	 * Returns the period relative to the frame rate associated to the
+	 * &#x60;RenderLoop&#x60; class. This is computed as:
+	 *
+	 *	Math.floor(1000 &#x2F; rate)
+	 *
+	 * where &#x60;rate&#x60; is the value returned by the _static_ &#x60;getRate&#x60; method.
 	 *
 	 * @method getPeriod
 	 * @static
-	 * @return {Number} TODO
+	 * @return {Number} The period relative to the frame rate associated to the
+	 *	&#x60;RenderLoop&#x60; class.
 	 * @example
 	 *	OOGL.RenderLoop.setRate(100);
 	 *	var period = OOGL.RenderLoop.getPeriod(); &#x2F;&#x2F; 10
