@@ -474,7 +474,7 @@ context.AttributeArrays = function (count) {
 		 * @param {Boolean} [normalize=false] Indicates whether attribute data
 		 *	must be normalized by the GL.
 		 * @example
-		 *	TODO
+		 *	arrays.add1b([1, 2, 3, 4, -1, -2, -3, -4]);
 		 */
 		add1b: function (data, normalize) {
 			arrays.push(new context.AttributeArray1(arrays.length, 'byte', data, normalize));
@@ -490,7 +490,7 @@ context.AttributeArrays = function (count) {
 		 * @param {Boolean} [normalize=false] Indicates whether attribute data
 		 *	must be normalized by the GL.
 		 * @example
-		 *	TODO
+		 *	arrays.add1ub([1, 2, 3, 4, 5, 6, 7, 8]);
 		 */
 		add1ub: function (data, normalize) {
 			arrays.push(new context.AttributeArray1(arrays.length, 'ubyte', data, normalize));
@@ -506,7 +506,7 @@ context.AttributeArrays = function (count) {
 		 * @param {Boolean} [normalize=false] Indicates whether attribute data
 		 *	must be normalized by the GL.
 		 * @example
-		 *	TODO
+		 *	arrays.add1s([1, 2, 3, 4, -1, -2, -3, -4]);
 		 */
 		add1s: function (data, normalize) {
 			arrays.push(new context.AttributeArray1(arrays.length, 'short', data, normalize));
@@ -522,7 +522,7 @@ context.AttributeArrays = function (count) {
 		 * @param {Boolean} [normalize=false] Indicates whether attribute data
 		 *	must be normalized by the GL.
 		 * @example
-		 *	TODO
+		 *	arrays.add1us([1, 2, 3, 4, 5, 6, 7, 8]);
 		 */
 		add1us: function (data, normalize) {
 			arrays.push(new context.AttributeArray1(arrays.length, 'ushort', data, normalize));
@@ -538,7 +538,7 @@ context.AttributeArrays = function (count) {
 		 * @param {Boolean} [normalize=false] Indicates whether attribute data
 		 *	must be normalized by the GL.
 		 * @example
-		 *	TODO
+		 *	arrays.add1f([1, 2, 3, 4, 5, 6, 7, 8]);
 		 */
 		add1f: function (data, normalize) {
 			arrays.push(new context.AttributeArray1(arrays.length, 'float', data, normalize));
@@ -570,7 +570,7 @@ context.AttributeArrays = function (count) {
 		 * @param {Boolean} [normalize=false] Indicates whether attribute data
 		 *	must be normalized by the GL.
 		 * @example
-		 *	TODO
+		 *	arrays.add2b([1, 2, 3, 4, -1, -2, -3, -4]);
 		 */
 		add2b: function (data, normalize) {
 			arrays.push(new context.AttributeArray2(arrays.length, 'byte', data, normalize));
@@ -585,7 +585,7 @@ context.AttributeArrays = function (count) {
 		 * @param {Boolean} [normalize=false] Indicates whether attribute data
 		 *	must be normalized by the GL.
 		 * @example
-		 *	TODO
+		 *	arrays.add2ub([1, 2, 3, 4, 5, 6, 7, 8]);
 		 */
 		add2ub: function (data, normalize) {
 			arrays.push(new context.AttributeArray2(arrays.length, 'ubyte', data, normalize));
@@ -601,7 +601,7 @@ context.AttributeArrays = function (count) {
 		 * @param {Boolean} [normalize=false] Indicates whether attribute data
 		 *	must be normalized by the GL.
 		 * @example
-		 *	TODO
+		 *	arrays.add2s([1, 2, 3, 4, -1, -2, -3, -4]);
 		 */
 		add2s: function (data, normalize) {
 			arrays.push(new context.AttributeArray2(arrays.length, 'short', data, normalize));
@@ -617,7 +617,7 @@ context.AttributeArrays = function (count) {
 		 * @param {Boolean} [normalize=false] Indicates whether attribute data
 		 *	must be normalized by the GL.
 		 * @example
-		 *	TODO
+		 *	arrays.add2us([1, 2, 3, 4, 5, 6, 7, 8]);
 		 */
 		add2us: function (data, normalize) {
 			arrays.push(new context.AttributeArray2(arrays.length, 'ushort', data, normalize));
@@ -633,7 +633,7 @@ context.AttributeArrays = function (count) {
 		 * @param {Boolean} [normalize=false] Indicates whether attribute data
 		 *	must be normalized by the GL.
 		 * @example
-		 *	TODO
+		 *	arrays.add2f([1, 2, 3, 4, 5, 6, 7, 8]);
 		 */
 		add2f: function (data, normalize) {
 			arrays.push(new context.AttributeArray2(arrays.length, 'float', data, normalize));
@@ -665,7 +665,7 @@ context.AttributeArrays = function (count) {
 		 * @param {Boolean} [normalize=false] Indicates whether attribute data
 		 *	must be normalized by the GL.
 		 * @example
-		 *	TODO
+		 *	arrays.add3b([1, 2, 3, -1, -2, -3]);
 		 */
 		add3b: function (data, normalize) {
 			arrays.push(new context.AttributeArray3(arrays.length, 'byte', data, normalize));
@@ -681,7 +681,7 @@ context.AttributeArrays = function (count) {
 		 * @param {Boolean} [normalize=false] Indicates whether attribute data
 		 *	must be normalized by the GL.
 		 * @example
-		 *	TODO
+		 *	arrays.add3ub([1, 2, 3, 4, 5, 6]);
 		 */
 		add3ub: function (data, normalize) {
 			arrays.push(new context.AttributeArray3(arrays.length, 'ubyte', data, normalize));
@@ -697,7 +697,7 @@ context.AttributeArrays = function (count) {
 		 * @param {Boolean} [normalize=false] Indicates whether attribute data
 		 *	must be normalized by the GL.
 		 * @example
-		 *	TODO
+		 *	arrays.add3s([1, 2, 3, -1, -2, -3]);
 		 */
 		add3s: function (data, normalize) {
 			arrays.push(new context.AttributeArray3(arrays.length, 'short', data, normalize));
@@ -713,7 +713,7 @@ context.AttributeArrays = function (count) {
 		 * @param {Boolean} [normalize=false] Indicates whether attribute data
 		 *	must be normalized by the GL.
 		 * @example
-		 *	TODO
+		 *	arrays.add3us([1, 2, 3, 4, 5, 6]);
 		 */
 		add3us: function (data, normalize) {
 			arrays.push(new context.AttributeArray3(arrays.length, 'ushort', data, normalize));
@@ -729,7 +729,7 @@ context.AttributeArrays = function (count) {
 		 * @param {Boolean} [normalize=false] Indicates whether attribute data
 		 *	must be normalized by the GL.
 		 * @example
-		 *	TODO
+		 *	arrays.add3f([1, 2, 3, 4, 5, 6]);
 		 */
 		add3f: function (data, normalize) {
 			arrays.push(new context.AttributeArray3(arrays.length, 'float', data, normalize));
@@ -761,7 +761,7 @@ context.AttributeArrays = function (count) {
 		 * @param {Boolean} [normalize=false] Indicates whether attribute data
 		 *	must be normalized by the GL.
 		 * @example
-		 *	TODO
+		 *	arrays.add4b([1, 2, 3, 4, -1, -2, -3, -4]);
 		 */
 		add4b: function (data, normalize) {
 			arrays.push(new context.AttributeArray3(arrays.length, 'byte', data, normalize));
@@ -776,7 +776,7 @@ context.AttributeArrays = function (count) {
 		 * @param {Boolean} [normalize=false] Indicates whether attribute data
 		 *	must be normalized by the GL.
 		 * @example
-		 *	TODO
+		 *	arrays.add4ub([1, 2, 3, 4, 5, 6, 7, 8]);
 		 */
 		add4ub: function (data, normalize) {
 			arrays.push(new context.AttributeArray3(arrays.length, 'ubyte', data, normalize));
@@ -792,7 +792,7 @@ context.AttributeArrays = function (count) {
 		 * @param {Boolean} [normalize=false] Indicates whether attribute data
 		 *	must be normalized by the GL.
 		 * @example
-		 *	TODO
+		 *	arrays.add4s([1, 2, 3, 4, -5, -6, -7, -8]);
 		 */
 		add4s: function (data, normalize) {
 			arrays.push(new context.AttributeArray3(arrays.length, 'short', data, normalize));
@@ -808,7 +808,7 @@ context.AttributeArrays = function (count) {
 		 * @param {Boolean} [normalize=false] Indicates whether attribute data
 		 *	must be normalized by the GL.
 		 * @example
-		 *	TODO
+		 *	arrays.add4us([1, 2, 3, 4, 5, 6, 7, 8]);
 		 */
 		add4us: function (data, normalize) {
 			arrays.push(new context.AttributeArray3(arrays.length, 'ushort', data, normalize));
@@ -824,7 +824,7 @@ context.AttributeArrays = function (count) {
 		 * @param {Boolean} [normalize=false] Indicates whether attribute data
 		 *	must be normalized by the GL.
 		 * @example
-		 *	TODO
+		 *	arrays.add4f([1, 2, 3, 4, 5, 6, 7, 8]);
 		 */
 		add4f: function (data, normalize) {
 			arrays.push(new context.AttributeArray3(arrays.length, 'float', data, normalize));
@@ -839,8 +839,14 @@ context.AttributeArrays = function (count) {
 		 * You may optionally specify `stride` and `offset` parameters.
 		 *
 		 * @method bindAndPointer
-		 * @param {Number} [stride=0] TODO
-		 * @param {Number} [offset=0] TODO
+		 * @param {Number} [stride=0] The stride between consecutive elements in
+		 *	the array (see the explanation for the equivalent argument in
+		 *	`gl.vertexAttribPointer`).
+		 * @param {Number} [offset=0] The index of the first element of the
+		 *	underlying buffer to be used for the attribute array.
+		 *
+		 * This value is multiplied by the data type size and used as the
+		 * `pointer` parameter in the `gl.vertexAttribPointer` call.
 		 * @example
 		 *	var program = new oogl.AutoProgram(vertexSource, fragmentSource, ['in_Vertex', 'in_Color', 'in_TexCoord']);
 		 *	var arrays = new oogl.AttributeArrays();
