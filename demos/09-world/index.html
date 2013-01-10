@@ -36,17 +36,23 @@ OOGL(function () {
 				var position = new OOGL.Vector2(0, 0);
 				(new OOGL.RenderLoop(function () {
 					oogl.clear(oogl.COLOR_BUFFER_BIT | oogl.DEPTH_BUFFER_BIT);
-					if (keys[37]) {
+					if (keys[37]) { // left
 						angle += Math.PI / 60;
 					}
-					if (keys[38]) {
+					if (keys[38] || keys[87]) { // up or W
 						position.add((new OOGL.RotationMatrix2(angle)).by(OOGL.Vector2.J).by(0.1));
 					}
-					if (keys[39]) {
+					if (keys[39]) { // right
 						angle -= Math.PI / 60;
 					}
-					if (keys[40]) {
+					if (keys[40] || keys[83]) { // down or S
 						position.subtract((new OOGL.RotationMatrix2(angle)).by(OOGL.Vector2.J).by(0.1));
+					}
+					if (keys[65]) { // A
+						position.subtract((new OOGL.RotationMatrix2(angle)).by(OOGL.Vector2.I).by(0.1));
+					}
+					if (keys[68]) { // D
+						position.add((new OOGL.RotationMatrix2(angle)).by(OOGL.Vector2.I).by(0.1));
 					}
 					program.uniform1f('Camera.Angle', angle);
 					program.uniformVec2('Camera.Position', position);
