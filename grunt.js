@@ -68,6 +68,7 @@ module.exports = function (grunt) {
 				expr: true,
 				loopfunc: true,
 				multistr: true,
+				smarttabs: true,
 				supernew: true,
 				browser: true
 			},
