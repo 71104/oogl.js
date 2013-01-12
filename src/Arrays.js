@@ -975,7 +975,9 @@ context.AttributeArrays = function (count) {
  * @extends oogl.StaticElementArrayBuffer
  * @constructor
  * @param {Number[]} indices The element indices.
- * @param {String} [type='ushort'] TODO
+ * @param {String} [type='ushort'] The type of each index. It can be either
+ * `'ubyte'` or `'ushort'` and defaults to `'ushort'` so that indices greater
+ *	than `255` are not wrapped to the `0-255` range.
  * @example
  *	var program = new oogl.AutoProgram(vertexSource, fragmentSource, ['in_Vertex', 'in_Color', 'in_TexCoord']);
  *	var arrays = new oogl.AttributeArrays();

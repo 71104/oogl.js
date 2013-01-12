@@ -156,7 +156,7 @@ OOGL.Vector2.prototype = {
 	 * @param {OOGL.Vector2} v The vector to subtract.
 	 * @return {OOGL.Vector2} The difference vector.
 	 * @example
-	 *	var v1 = new OOGL.Vector(3, 4);
+	 *	var v1 = new OOGL.Vector2(3, 4);
 	 *	var v2 = new OOGL.Vector2(1, 2);
 	 *	var v3 = v1.minus(v2); // (2, 2)
 	 */
@@ -171,7 +171,7 @@ OOGL.Vector2.prototype = {
 	 * @param {Number} f The constant factor.
 	 * @chainable
 	 * @example
-	 *	var v = new OOGL.Vector(3, 4);
+	 *	var v = new OOGL.Vector2(3, 4);
 	 *	v.multiply(2); // v is now (6, 8)
 	 */
 	multiply: function (f) {
@@ -187,7 +187,7 @@ OOGL.Vector2.prototype = {
 	 * @param {Number} f The constant factor.
 	 * @chainable
 	 * @example
-	 *	var v = new OOGL.Vector(6, 8);
+	 *	var v = new OOGL.Vector2(6, 8);
 	 *	v.multiply(2); // v is now (3, 4)
 	 */
 	divide: function (f) {
