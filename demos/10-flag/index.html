@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>oogl.js Test 10</title>
+<script type="text/javascript" src="../oogl-1.0.0.min.js"></script>
+</head>
+<body style="text-align:center">
+	<canvas id="canvas" width="800" height="600">
+		<p>Sorry, no browser support. See <a href="http://get.webgl.org/">here</a> please.</p>
+	</canvas>
+	<script type="text/javascript">
+OOGL(function () {
+	var oogl = new OOGL.Context('canvas', {
+		alpha: false
+	});
+	oogl.enable(oogl.DEPTH_TEST);
+	oogl.depthFunc(oogl.GREATER);
+	oogl.clearDepth(0);
+	// TODO make arrays
+	new oogl.AsyncTexture('Tim.png', function () {
+		var program = new oogl.AjaxProgram('flag', ['in_Vertex', 'in_TexCoord'], function () {
+			program.use();
+			(new OOGL.RenderLoop(function () {
+				oogl.clear(oogl.COLOR_BUFFER_BIT | oogl.DEPTH_BUFFER_BIT);
+				// TODO draw arrays
+				oogl.flush();
+			})).start();
+		});
+	});
+});
+	</script>
+</body>
+</html>
