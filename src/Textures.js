@@ -216,7 +216,7 @@ context.Texture = function (target) {
 	};
 
 	/**
-	 * TODO
+	 * Generates mipmaps for this texture.
 	 *
 	 * `gl.generateMipmap` equivalent.
 	 *
@@ -250,51 +250,64 @@ context.Texture = function (target) {
 	};
 
 	/**
-	 * TODO
+	 * Specifies an image, canvas or video for a region of this texture.
 	 *
 	 * @method subImage2D
+	 * @param {Number} level The mipmap reduction level.
+	 * @param {Number} xoffset The X offset within this texture.
+	 * @param {Number} xoffset The Y offset within this texture.
+	 * @param {Number} width The width of the region within this texture.
+	 * @param {Number} width The height of the region within this texture.
+	 * @param {Number} format The texel format; can be `gl.ALPHA`, `gl.RGB`,
+	 *	`gl.RGBA`, `gl.LUMINANCE` or `gl.LUMINANCE_ALPHA`.
+	 * @param {Number} type The binary data type; can be `gl.UNSIGNED_BYTE`,
+	 *	`gl.UNSIGNED_SHORT_5_6_5`, `gl.UNSIGNED_SHORT_4_4_4_4` or
+	 *	`gl.UNSIGNED_SHORT_5_5_5_1`.
+	 * @param {Mixed} object A DOM image, canvas or video element to use as
+	 *	texture image.
 	 * @example
-	 *	TODO
+	 *	texture.image2D(0, 200, 150, 400, 300, oogl.RGBA, oogl.UNSIGNED_BYTE, image);
 	 */
-	texture.subImage2D = function (level, xoffset, yoffset, format, type, object) {
-		context.texSubImage2D(target, level, xoffset, yoffset, format, type, object);
+	texture.subImage2D = function (level, xoffset, yoffset, width, height, format, type, object) {
+		context.texSubImage2D(target, level, xoffset, yoffset, width, height, format, type, object);
 	};
 
 	/**
-	 * TODO
+	 * Copies framebuffer pixels to this texture.
 	 *
 	 * `gl.copyTexImage2D` equivalent.
 	 *
 	 * @method copyImage2D
-	 * @param {Number} level TODO
-	 * @param {Number} internalFormat TODO
-	 * @param {Number} x TODO
-	 * @param {Number} y TODO
-	 * @param {Number} width TODO
-	 * @param {Number} height TODO
-	 * @param {Number} border TODO
+	 * @param {Number} level The mipmap reduction level.
+	 * @param {Number} internalFormat The texel format; can be `gl.ALPHA`,
+	 *	`gl.RGB`, `gl.RGBA`, `gl.LUMINANCE` or `gl.LUMINANCE_ALPHA`.
+	 * @param {Number} x The X window coordinate of the region to be copied.
+	 * @param {Number} y The Y window coordinate of the region to be copied.
+	 * @param {Number} width The width of the region to be copied.
+	 * @param {Number} height The height of the region to be copied.
 	 * @example
-	 *	TODO
+	 *	// copies an 800x600 pixel window
+	 *	texture.copyImage2D(0, oogl.RGBA, 0, 0, 800, 600);
 	 */
-	texture.copyImage2D = function (level, internalFormat, x, y, width, height, border) {
-		context.copyTexImage2D(target, level, internalFormat, x, y, width, height, border);
+	texture.copyImage2D = function (level, internalFormat, x, y, width, height) {
+		context.copyTexImage2D(target, level, internalFormat, x, y, width, height, 0);
 	};
 
 	/**
-	 * TODO
+	 * Copies framebuffer pixels to a region of this texture.
 	 *
 	 * `gl.copyTexSubImage2D` equivalent.
 	 *
 	 * @method copySubImage2D
-	 * @param {Number} level TODO
-	 * @param {Number} xoffset TODO
-	 * @param {Number} yoffset TODO
-	 * @param {Number} x TODO
-	 * @param {Number} y TODO
-	 * @param {Number} width TODO
-	 * @param {Number} height TODO
+	 * @param {Number} level The mipmap reduction level.
+	 * @param {Number} xoffset The X offset within this texture.
+	 * @param {Number} xoffset The Y offset within this texture.
+	 * @param {Number} x The X offset within the framebuffer.
+	 * @param {Number} y The Y offset within the framebuffer.
+	 * @param {Number} width The width of the region to copy.
+	 * @param {Number} width The height of the region to copy.
 	 * @example
-	 *	TODO
+	 *	texture.copySubImage2D(0, 0, 0, 200, 150, 400, 300);
 	 */
 	texture.copySubImage2D = function (level, xoffset, yoffset, x, y, width, height) {
 		context.copyTexSubImage2D(target, level, xoffset, yoffset, x, y, width, height);
@@ -317,7 +330,7 @@ context.Texture = function (target) {
 };
 
 /**
- * A texture whose target is `gl.TEXTURE_2D`.
+ * An `oogl.Texture` whose target is `gl.TEXTURE_2D`.
  *
  * @class oogl.Texture2D
  * @extends oogl.Texture
@@ -419,12 +432,15 @@ context.AsyncTexture = function (url, callback, magFilter, minFilter) {
 	}
 
 	/**
-	 * TODO
+	 * The DOM `Image` object used for this texture.
 	 *
 	 * @property image
 	 * @type Image
 	 * @example
-	 *	TODO
+	 *	new oogl.AsyncTexture('texture.png', function () {
+	 *		// insert the loaded image into a DOM element
+	 *		querySelector('span#texture-image').appendChild(this.image);
+	 *	});
 	 */
 	texture.image = new Image();
 	texture.image.onload = function () {
@@ -437,15 +453,13 @@ context.AsyncTexture = function (url, callback, magFilter, minFilter) {
 };
 
 /**
- * A texture whose type is `gl.TEXTURE_CUBE_MAP`.
- *
- * TODO
+ * An `oogl.Texture` whose target is `gl.TEXTURE_CUBE_MAP`.
  *
  * @class oogl.CubeMap
  * @extends oogl.Texture
  * @constructor
  * @example
- *	TODO
+ *	var cubeMap = new oogl.CubeMap();
  */
 context.CubeMap = function () {
 	return new context.Texture(context.TEXTURE_CUBE_MAP);
@@ -459,12 +473,17 @@ context.CubeMap = function () {
  * program. The `Textures` object automatically assigns textures to texture
  * units.
  *
- * A `Texture` object may also belong to several `Textures` sets at the same
+ * Contained textures are assigned unique names which are then used as uniform
+ * variable names when specifying uniforms with the provided `uniform` method.
+ *
+ * A `Texture` object may belong to several `Textures` sets at the same
  * time, so that it can be used by several programs.
  *
  * @class oogl.Textures
  * @constructor
- * @param {Object[]} [textures] TODO
+ * @param {Object} [textures={}] An optional object that map names to
+ *	`oogl.Texture` objects. Names are used when specifying uniform variables
+ *	using the provided `uniform` method.
  * @example
  *	var textures = new oogl.Textures({
  *		'Texture': texture,
@@ -483,21 +502,34 @@ context.Textures = function (textures) {
 	}
 	return {
 		/**
-		 * Adds a `Texture` to this set.
+		 * Adds a `Texture` to this set associating it a unique uniform variable
+		 * name.
+		 *
+		 * If the specified name is already in use by another texture in this
+		 * set, the current texture is replaced by the specified one.
 		 *
 		 * The texture is automatically assigned a texture unit, but the set
 		 * must be re-bound (using the `bind` method) before its textures can be
 		 * used in programs.
 		 *
 		 * @method add
+		 * @param {String} name The name of the associated uniform variable.
 		 * @param {oogl.Texture} texture The OOGL texture to add.
 		 * @example
-		 *	TODO
+		 *	var textures = new oogl.Textures();
+		 *	textures.add('Texture', texture);
+		 *	textures.add('BumpMap', bumpMap);
 		 */
 		add: function (name, texture) {
 			if (names.hasOwnProperty(name)) {
-				throw 'the specified name is already in use.';
+				for (var i in entries) {
+					if (entries[i].name == name) {
+						entries[i].texture = texture;
+						return;
+					}
+				}
 			} else {
+				names[name] = true;
 				entries.push({
 					name: name,
 					texture: texture
@@ -524,11 +556,11 @@ context.Textures = function (textures) {
 		},
 
 		/**
-		 * TODO
+		 * Specifies uniform variable names for the specified program using the
+		 * automatically assigned texture units.
 		 *
 		 * @method uniform
-		 * @param {oogl.Program} program TODO
-		 * @param {String[]} names TODO
+		 * @param {oogl.Program} program An `oogl.Program`.
 		 * @example
 		 *	var textures = new oogl.Textures({
 		 *		'Texture': texture,
@@ -544,10 +576,14 @@ context.Textures = function (textures) {
 		},
 
 		/**
-		 * TODO
+		 * Binds all the textures in this sets to their target in their
+		 * respective texture unit and then specifies uniform variable names for
+		 * the specified program using the automatically assigned texture units.
+		 *
+		 * Equivalent to calling `bind` and `uniform` subsequently.
 		 *
 		 * @method bindAndUniform
-		 * @param {oogl.Program} program TODO
+		 * @param {oogl.Program} program An `oogl.Program`.
 		 * @example
 		 *	var textures = new oogl.Textures({
 		 *		'Texture': texture,

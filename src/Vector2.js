@@ -347,7 +347,10 @@ OOGL.Vector2.NULL = new OOGL.Vector2(0, 0);
  * @static
  * @type OOGL.Vector2
  * @example
- *	TODO
+ *	var position = new OOGL.Vector2(0, 0);
+ *	var heading = new OOGL.RotationMatrix2(yaw);
+ *
+ *	position.add(heading.by(OOGL.Vector2.I));
  */
 OOGL.Vector2.I = new OOGL.Vector2(1, 0);
 
@@ -358,6 +361,9 @@ OOGL.Vector2.I = new OOGL.Vector2(1, 0);
  * @static
  * @type OOGL.Vector2
  * @example
- *	TODO
+ *	var position = new OOGL.Vector2(0, 0);
+ *	var heading = new OOGL.RotationMatrix2(yaw);
+ *
+ *	position.add(heading.by(OOGL.Vector2.J));
  */
 OOGL.Vector2.J = new OOGL.Vector2(0, 1);
