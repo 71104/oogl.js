@@ -36,6 +36,12 @@ OOGL(function () {
 				var position = new OOGL.Vector2(0, 0);
 				(new OOGL.RenderLoop(function () {
 					oogl.clear(oogl.COLOR_BUFFER_BIT | oogl.DEPTH_BUFFER_BIT);
+					if (keys[33]) { // page up
+						pitch += Math.PI / 60;
+					}
+					if (keys[34]) { // page down
+						pitch -= Math.PI / 60;
+					}
 					if (keys[37]) { // left
 						yaw += Math.PI / 60;
 					}

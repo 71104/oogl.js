@@ -16,8 +16,8 @@ void main() {
 		0, 0, 0.1, 0
 	) * mat4(
 		1, 0, 0, 0,
-		0, cos(Camera.Angle.y), -sin(Camera.Angle.y), 0,
-		0, sin(Camera.Angle.y), cos(Camera.Angle.y), 0,
+		0, cos(Camera.Angle.y), sin(Camera.Angle.y), 0,
+		0, -sin(Camera.Angle.y), cos(Camera.Angle.y), 0,
 		0, 0, 0, 1
 	) * mat4(
 		cos(Camera.Angle.x), 0, -sin(Camera.Angle.x), 0,
