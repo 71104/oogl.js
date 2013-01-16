@@ -209,7 +209,7 @@ _gaq.push(['_trackPageview']);
 
     
         <div class="foundat">
-            Defined in: <a href="..&#x2F;files&#x2F;src_Programs.js.html#l821"><code>src\Programs.js:821</code></a>
+            Defined in: <a href="..&#x2F;files&#x2F;src_Programs.js.html#l884"><code>src\Programs.js:884</code></a>
         </div>
     
 
@@ -293,7 +293,7 @@ function is invoked using this <code>AjaxProgram</code> object as <code>this</co
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l821"><code>src\Programs.js:821</code></a>
+        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l884"><code>src\Programs.js:884</code></a>
         
         </p>
 
@@ -623,6 +623,13 @@ var program = new oogl.AjaxProgram('box', ['in_Vertex', 'in_Color', 'in_TexCoord
                             </li>
                         
                             <li class="index-item method inherited">
+                                <a href="#method_uniform2iv">uniform2iv</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
                                 <a href="#method_uniform3f">uniform3f</a>
 
                                 
@@ -644,6 +651,13 @@ var program = new oogl.AjaxProgram('box', ['in_Vertex', 'in_Color', 'in_TexCoord
                             </li>
                         
                             <li class="index-item method inherited">
+                                <a href="#method_uniform3iv">uniform3iv</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
                                 <a href="#method_uniform4f">uniform4f</a>
 
                                 
@@ -659,6 +673,13 @@ var program = new oogl.AjaxProgram('box', ['in_Vertex', 'in_Color', 'in_TexCoord
                         
                             <li class="index-item method inherited">
                                 <a href="#method_uniform4i">uniform4i</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_uniform4iv">uniform4iv</a>
 
                                 
                                 
@@ -730,7 +751,7 @@ var program = new oogl.AjaxProgram('box', ['in_Vertex', 'in_Color', 'in_TexCoord
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l734"><code>src\Programs.js:734</code></a>
+        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l797"><code>src\Programs.js:797</code></a>
         
         </p>
 
@@ -1289,7 +1310,7 @@ program.detachShader(vertexShader);
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>TODO
+                <pre class="code prettyprint"><code>console.dir(program.getActiveAttrib(0));
 </code></pre>
             </div>
         </div>
@@ -1340,7 +1361,7 @@ program.detachShader(vertexShader);
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l325"><code>src\Programs.js:325</code></a>
+        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l326"><code>src\Programs.js:326</code></a>
         
         </p>
 
@@ -1401,7 +1422,7 @@ program.detachShader(vertexShader);
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>TODO
+                <pre class="code prettyprint"><code>console.dir(program.getActiveUniform(0));
 </code></pre>
             </div>
         </div>
@@ -1535,7 +1556,7 @@ var shaders = program.getAttachedShaders(); // shaders now contains two elements
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l354"><code>src\Programs.js:354</code></a>
+        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l355"><code>src\Programs.js:355</code></a>
         
         </p>
 
@@ -1546,7 +1567,9 @@ var shaders = program.getAttachedShaders(); // shaders now contains two elements
     </div>
 
     <div class="description">
-        <p>TODO</p>
+        <p>Returns the location of the named attribute.</p>
+
+<p><code>gl.getAttribLocation</code> equivalent.</p>
     </div>
 
     
@@ -1564,7 +1587,7 @@ var shaders = program.getAttachedShaders(); // shaders now contains two elements
                     
 
                     <div class="param-description">
-                        <p>TODO</p>
+                        <p>The name of the attribute.</p>
                     </div>
 
                     
@@ -1583,7 +1606,7 @@ var shaders = program.getAttachedShaders(); // shaders now contains two elements
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>:
                     
-                    TODO
+                    The location of the named attribute.
                 
             </div>
         </div>
@@ -1594,7 +1617,7 @@ var shaders = program.getAttachedShaders(); // shaders now contains two elements
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>TODO
+                <pre class="code prettyprint"><code>console.log(program.getAttribLocation('in_Vertex'));
 </code></pre>
             </div>
         </div>
@@ -1635,7 +1658,7 @@ var shaders = program.getAttachedShaders(); // shaders now contains two elements
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l747"><code>src\Programs.js:747</code></a>
+        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l810"><code>src\Programs.js:810</code></a>
         
         </p>
 
@@ -1719,7 +1742,7 @@ var shaders = program.getAttachedShaders(); // shaders now contains two elements
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l878"><code>src\Programs.js:878</code></a>
+        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l941"><code>src\Programs.js:941</code></a>
         
         </p>
 
@@ -1976,7 +1999,8 @@ if (!program.getLinkStatus()) {
     <div class="description">
         <p>Returns the number of active attribute variables.</p>
 
-<p>Equivalent to calling <code>gl.getProgramParameter</code> with <code>gl.ACTIVE_ATTRIBUTES</code>.</p>
+<p>Equivalent to calling <code>gl.getProgramParameter</code> with
+<code>gl.ACTIVE_ATTRIBUTES</code>.</p>
     </div>
 
     
@@ -2001,7 +2025,7 @@ if (!program.getLinkStatus()) {
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>TODO
+                <pre class="code prettyprint"><code>console.log(program.getNumberOfActiveAttributes());
 </code></pre>
             </div>
         </div>
@@ -2042,7 +2066,7 @@ if (!program.getLinkStatus()) {
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l340"><code>src\Programs.js:340</code></a>
+        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l341"><code>src\Programs.js:341</code></a>
         
         </p>
 
@@ -2080,7 +2104,7 @@ if (!program.getLinkStatus()) {
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>TODO
+                <pre class="code prettyprint"><code>console.log(program.getNumberOfActiveUniforms());
 </code></pre>
             </div>
         </div>
@@ -2328,7 +2352,7 @@ var count = program.getNumberOfAttachedShaders(); // 2
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l367"><code>src\Programs.js:367</code></a>
+        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l370"><code>src\Programs.js:370</code></a>
         
         </p>
 
@@ -2339,7 +2363,15 @@ var count = program.getNumberOfAttachedShaders(); // 2
     </div>
 
     <div class="description">
-        <p>TODO</p>
+        <p>Returns the current value of the specified uniform variable.</p>
+
+<p><code>gl.getUniform</code> equivalent.</p>
+
+<p>The uniform variable can be identified either by name or location. When a
+name is specified, the location is automatically looked up in a location
+cache maintained by the <code>Program</code> class. This cache is automatically
+invalidated every time the program is linked using the provided <code>link</code>
+method.</p>
     </div>
 
     
@@ -2357,7 +2389,8 @@ var count = program.getNumberOfAttachedShaders(); // 2
                     
 
                     <div class="param-description">
-                        <p>TODO</p>
+                        <p>Either the location or the name of the
+    uniform variable.</p>
                     </div>
 
                     
@@ -2376,7 +2409,7 @@ var count = program.getNumberOfAttachedShaders(); // 2
                     
                         <span class="type">Mixed</span>:
                     
-                    TODO
+                    The value of the uniform variable.
                 
             </div>
         </div>
@@ -2387,7 +2420,7 @@ var count = program.getNumberOfAttachedShaders(); // 2
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>TODO
+                <pre class="code prettyprint"><code>var angle = program.getUniform('Angle');
 </code></pre>
             </div>
         </div>
@@ -2438,7 +2471,7 @@ var count = program.getNumberOfAttachedShaders(); // 2
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l389"><code>src\Programs.js:389</code></a>
+        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l401"><code>src\Programs.js:401</code></a>
         
         </p>
 
@@ -2449,7 +2482,9 @@ var count = program.getNumberOfAttachedShaders(); // 2
     </div>
 
     <div class="description">
-        <p>TODO</p>
+        <p>Returns the location of the named uniform variable.</p>
+
+<p><code>gl.getUniformLocation</code> equivalent.</p>
     </div>
 
     
@@ -2467,7 +2502,7 @@ var count = program.getNumberOfAttachedShaders(); // 2
                     
 
                     <div class="param-description">
-                        <p>TODO</p>
+                        <p>The name of the uniform variable.</p>
                     </div>
 
                     
@@ -2486,7 +2521,7 @@ var count = program.getNumberOfAttachedShaders(); // 2
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>:
                     
-                    TODO
+                    The location of the uniform variable.
                 
             </div>
         </div>
@@ -2497,7 +2532,8 @@ var count = program.getNumberOfAttachedShaders(); // 2
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>TODO
+                <pre class="code prettyprint"><code>var location = program.getUniformLocation('Angle');
+var angle = program.getUniform(location);
 </code></pre>
             </div>
         </div>
@@ -2624,7 +2660,7 @@ if (!program.getValidateStatus()) {
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l865"><code>src\Programs.js:865</code></a>
+        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l928"><code>src\Programs.js:928</code></a>
         
         </p>
 
@@ -2844,7 +2880,7 @@ program.linkOrThrow();
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l400"><code>src\Programs.js:400</code></a>
+        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l415"><code>src\Programs.js:415</code></a>
         
         </p>
 
@@ -2912,7 +2948,7 @@ the provided <code>link</code> method.</p>
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>TODO
+                <pre class="code prettyprint"><code>program.uniform1f('Angle', 0);
 </code></pre>
             </div>
         </div>
@@ -2965,7 +3001,7 @@ the provided <code>link</code> method.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l487"><code>src\Programs.js:487</code></a>
+        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l502"><code>src\Programs.js:502</code></a>
         
         </p>
 
@@ -3086,7 +3122,7 @@ the provided <code>link</code> method.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l567"><code>src\Programs.js:567</code></a>
+        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l582"><code>src\Programs.js:582</code></a>
         
         </p>
 
@@ -3207,7 +3243,7 @@ the provided <code>link</code> method.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l653"><code>src\Programs.js:653</code></a>
+        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l668"><code>src\Programs.js:668</code></a>
         
         </p>
 
@@ -3335,7 +3371,7 @@ the provided <code>link</code> method.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l420"><code>src\Programs.js:420</code></a>
+        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l435"><code>src\Programs.js:435</code></a>
         
         </p>
 
@@ -3471,7 +3507,7 @@ the provided <code>link</code> method.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l507"><code>src\Programs.js:507</code></a>
+        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l522"><code>src\Programs.js:522</code></a>
         
         </p>
 
@@ -3598,7 +3634,7 @@ the provided <code>link</code> method.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l587"><code>src\Programs.js:587</code></a>
+        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l602"><code>src\Programs.js:602</code></a>
         
         </p>
 
@@ -3689,6 +3725,127 @@ the provided <code>link</code> method.</p>
 </div>
 
                 
+                    <div id="method_uniform2iv" class="method item inherited">
+    <h3 class="name"><code>uniform2iv</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>name</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>values</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="..\classes\oogl.Program.html#method_uniform2iv">oogl.Program</a>:
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l689"><code>src\Programs.js:689</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Specifies the value for an <code>ivec2</code> uniform variable as an array.</p>
+
+<p><code>gl.uniform2iv</code> equivalent.</p>
+
+<p><code>Program</code> objects have an internal location cache used by <code>uniform</code>
+methods to set uniform variables without retrieving their location each
+time. The cache is invalidated every time the program is relinked using
+the provided <code>link</code> method.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">name</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The name of the uniform variable.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">values</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number[]</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>An array containing the new values.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>TODO
+</code></pre>
+            </div>
+        </div>
+    
+</div>
+
+                
                     <div id="method_uniform3f" class="method item inherited">
     <h3 class="name"><code>uniform3f</code></h3>
 
@@ -3746,7 +3903,7 @@ the provided <code>link</code> method.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l441"><code>src\Programs.js:441</code></a>
+        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l456"><code>src\Programs.js:456</code></a>
         
         </p>
 
@@ -3897,7 +4054,7 @@ the provided <code>link</code> method.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l527"><code>src\Programs.js:527</code></a>
+        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l542"><code>src\Programs.js:542</code></a>
         
         </p>
 
@@ -4030,7 +4187,7 @@ the provided <code>link</code> method.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l608"><code>src\Programs.js:608</code></a>
+        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l623"><code>src\Programs.js:623</code></a>
         
         </p>
 
@@ -4136,6 +4293,127 @@ the provided <code>link</code> method.</p>
 </div>
 
                 
+                    <div id="method_uniform3iv" class="method item inherited">
+    <h3 class="name"><code>uniform3iv</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>name</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>values</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="..\classes\oogl.Program.html#method_uniform3iv">oogl.Program</a>:
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l709"><code>src\Programs.js:709</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Specifies the value for an <code>ivec3</code> uniform variable as an array.</p>
+
+<p><code>gl.uniform3iv</code> equivalent.</p>
+
+<p><code>Program</code> objects have an internal location cache used by <code>uniform</code>
+methods to set uniform variables without retrieving their location each
+time. The cache is invalidated every time the program is relinked using
+the provided <code>link</code> method.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">name</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The name of the uniform variable.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">values</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number[]</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>An array containing the new values.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>TODO
+</code></pre>
+            </div>
+        </div>
+    
+</div>
+
+                
                     <div id="method_uniform4f" class="method item inherited">
     <h3 class="name"><code>uniform4f</code></h3>
 
@@ -4199,7 +4477,7 @@ the provided <code>link</code> method.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l464"><code>src\Programs.js:464</code></a>
+        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l479"><code>src\Programs.js:479</code></a>
         
         </p>
 
@@ -4365,7 +4643,7 @@ the provided <code>link</code> method.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l547"><code>src\Programs.js:547</code></a>
+        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l562"><code>src\Programs.js:562</code></a>
         
         </p>
 
@@ -4504,7 +4782,7 @@ the provided <code>link</code> method.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l630"><code>src\Programs.js:630</code></a>
+        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l645"><code>src\Programs.js:645</code></a>
         
         </p>
 
@@ -4601,6 +4879,127 @@ the provided <code>link</code> method.</p>
 
                     <div class="param-description">
                         <p>The new value for the fourth component.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>TODO
+</code></pre>
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_uniform4iv" class="method item inherited">
+    <h3 class="name"><code>uniform4iv</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>name</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>values</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="..\classes\oogl.Program.html#method_uniform4iv">oogl.Program</a>:
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_Programs.js.html#l729"><code>src\Programs.js:729</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Specifies the value for an <code>ivec4</code> uniform variable as an array.</p>
+
+<p><code>gl.uniform4iv</code> equivalent.</p>
+
+<p><code>Program</code> objects have an internal location cache used by <code>uniform</code>
+methods to set uniform variables without retrieving their location each
+time. The cache is invalidated every time the program is relinked using
+the provided <code>link</code> method.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">name</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The name of the uniform variable.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">values</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number[]</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>An array containing the new values.</p>
                     </div>
 
                     
