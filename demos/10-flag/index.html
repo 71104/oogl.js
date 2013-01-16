@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>oogl.js Test 10</title>
+<script type="text/javascript" src="../oogl-1.0.0.min.js"></script>
+</head>
+<body style="text-align:center">
+	<canvas id="canvas" width="800" height="600">
+		<p>Sorry, no browser support. See <a href="http://get.webgl.org/">here</a> please.</p>
+	</canvas>
+	<script type="text/javascript">
+OOGL(function () {
+	var oogl = new OOGL.Context('canvas', {
+		alpha: false
+	});
+	oogl.enable(oogl.CULL_FACE);
+	oogl.enable(oogl.DEPTH_TEST);
+	oogl.depthFunc(oogl.GREATER);
+	oogl.clearDepth(0);
+	var frontArray = (function () {
+		var vertices = [];
+		for (var i = 0; i < 45; i++) {
+			for (var j = 0; j < 45; j++) {
+				var x0 = j / 45;
+				var x1 = (j + 1) / 45;
+				var y0 = (i + 1) / 45;
+				var y1 = i / 45;
+				vertices.push(x0, y0, x0, y1, x1, y1, x0, y0, x1, y1, x1, y0);
+			}
+		}
+		return new oogl.AttributeArray2(0, 'float', vertices);
+	})();
+	var backArray = (function () {
+		var vertices = [];
+		for (var i = 0; i < 45; i++) {
+			var j = i / 45;
+			vertices.push(0, j, 1, j, j, 0, j, 1);
+		}
+		return new oogl.AttributeArray2(0, 'float', vertices);
+	})();
+	var roll = 0;
+	var pitch = 0;
+	var yaw = 0;
+	new oogl.AsyncTexture('Tim.png', function () {
+		var program = new oogl.AjaxProgram('flag', ['in_Vertex'], function () {
+			program.use();
+			(new OOGL.RenderLoop(function () {
+				oogl.clear(oogl.COLOR_BUFFER_BIT | oogl.DEPTH_BUFFER_BIT);
+				program.uniform3f('Angle', pitch, yaw, roll);
+				backArray.bindAndPointer();
+				oogl.drawArrays(oogl.LINES, 0, 92);
+				frontArray.bindAndPointer();
+				oogl.drawArrays(oogl.TRIANGLES, 0, 12150);
+				oogl.flush();
+			})).start();
+		});
+	});
+});
+	</script>
+</body>
+</html>
