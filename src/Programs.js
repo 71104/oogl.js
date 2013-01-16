@@ -302,7 +302,7 @@ context.Program = function () {
 	 * @param {Number} index The index of the attribute array.
 	 * @return {WebGLActiveInfo} The requested information.
 	 * @example
-	 *	TODO
+	 *	console.dir(program.getActiveAttrib(0));
 	 */
 	program.getActiveAttrib = function (index) {
 		return context.getActiveAttrib(program, index);
@@ -311,12 +311,13 @@ context.Program = function () {
 	/**
 	 * Returns the number of active attribute variables.
 	 *
-	 * Equivalent to calling `gl.getProgramParameter` with `gl.ACTIVE_ATTRIBUTES`.
+	 * Equivalent to calling `gl.getProgramParameter` with
+	 * `gl.ACTIVE_ATTRIBUTES`.
 	 *
 	 * @method getNumberOfActiveAttributes
 	 * @return {Number} The number of actie attribute variables.
 	 * @example
-	 *	TODO
+	 *	console.log(program.getNumberOfActiveAttributes());
 	 */
 	program.getNumberOfActiveAttributes = function () {
 		return context.getProgramParameter(program, context.ACTIVE_ATTRIBUTES);
@@ -331,7 +332,7 @@ context.Program = function () {
 	 * @param {Number} index The index of the uniform variable.
 	 * @return {WebGLActiveInfo} The requested information.
 	 * @example
-	 *	TODO
+	 *	console.dir(program.getActiveUniform(0));
 	 */
 	program.getActiveUniform = function (index) {
 		return context.getActiveUniform(program, index);
@@ -345,33 +346,44 @@ context.Program = function () {
 	 * @method getNumberOfActiveUniforms
 	 * @return {Number} The number of actie uniform variables.
 	 * @example
-	 *	TODO
+	 *	console.log(program.getNumberOfActiveUniforms());
 	 */
 	program.getNumberOfActiveUniforms = function () {
 		return context.getProgramParameter(program, context.ACTIVE_UNIFORMS);
 	};
 
 	/**
-	 * TODO
+	 * Returns the location of the named attribute.
+	 *
+	 * `gl.getAttribLocation` equivalent.
 	 *
 	 * @method getAttribLocation
-	 * @param {String} name TODO
-	 * @return {Number} TODO
+	 * @param {String} name The name of the attribute.
+	 * @return {Number} The location of the named attribute.
 	 * @example
-	 *	TODO
+	 *	console.log(program.getAttribLocation('in_Vertex'));
 	 */
 	program.getAttribLocation = function (name) {
 		return context.getAttribLocation(program, name);
 	};
 
 	/**
-	 * TODO
+	 * Returns the current value of the specified uniform variable.
+	 *
+	 * `gl.getUniform` equivalent.
+	 *
+	 * The uniform variable can be identified either by name or location. When a
+	 * name is specified, the location is automatically looked up in a location
+	 * cache maintained by the `Program` class. This cache is automatically
+	 * invalidated every time the program is linked using the provided `link`
+	 * method.
 	 *
 	 * @method getUniform
-	 * @param {Mixed} locationOrName TODO
-	 * @return {Mixed} TODO
+	 * @param {Mixed} locationOrName Either the location or the name of the
+	 *	uniform variable.
+	 * @return {Mixed} The value of the uniform variable.
 	 * @example
-	 *	TODO
+	 *	var angle = program.getUniform('Angle');
 	 */
 	program.getUniform = function (locationOrName) {
 		if (typeof locationOrName !== 'string') {
@@ -387,13 +399,16 @@ context.Program = function () {
 	}
 
 	/**
-	 * TODO
+	 * Returns the location of the named uniform variable.
+	 *
+	 * `gl.getUniformLocation` equivalent.
 	 *
 	 * @method getUniformLocation
-	 * @param {String} name TODO
-	 * @return {Number} TODO
+	 * @param {String} name The name of the uniform variable.
+	 * @return {Number} The location of the uniform variable.
 	 * @example
-	 *	TODO
+	 *	var location = program.getUniformLocation('Angle');
+	 *	var angle = program.getUniform(location);
 	 */
 	program.getUniformLocation = getUniformLocation;
 
@@ -411,7 +426,7 @@ context.Program = function () {
 	 * @param {String} name The name of the uniform variable.
 	 * @param {Number} x The new value.
 	 * @example
-	 *	TODO
+	 *	program.uniform1f('Angle', 0);
 	 */
 	program.uniform1f = function (name, x) {
 		context.uniform1f(getUniformLocation(name), x);
@@ -671,14 +686,62 @@ context.Program = function () {
 		context.uniform1iv(getUniformLocation(name), values);
 	};
 
+	/**
+	 * Specifies the value for an `ivec2` uniform variable as an array.
+	 *
+	 * `gl.uniform2iv` equivalent.
+	 *
+	 * `Program` objects have an internal location cache used by `uniform`
+	 * methods to set uniform variables without retrieving their location each
+	 * time. The cache is invalidated every time the program is relinked using
+	 * the provided `link` method.
+	 *
+	 * @method uniform2iv
+	 * @param {String} name The name of the uniform variable.
+	 * @param {Number[]} values An array containing the new values.
+	 * @example
+	 *	TODO
+	 */
 	program.uniform2iv = function (name, values) {
 		context.uniform2iv(getUniformLocation(name), values);
 	};
 
+	/**
+	 * Specifies the value for an `ivec3` uniform variable as an array.
+	 *
+	 * `gl.uniform3iv` equivalent.
+	 *
+	 * `Program` objects have an internal location cache used by `uniform`
+	 * methods to set uniform variables without retrieving their location each
+	 * time. The cache is invalidated every time the program is relinked using
+	 * the provided `link` method.
+	 *
+	 * @method uniform3iv
+	 * @param {String} name The name of the uniform variable.
+	 * @param {Number[]} values An array containing the new values.
+	 * @example
+	 *	TODO
+	 */
 	program.uniform3iv = function (name, values) {
 		context.uniform3iv(getUniformLocation(name), values);
 	};
 
+	/**
+	 * Specifies the value for an `ivec4` uniform variable as an array.
+	 *
+	 * `gl.uniform4iv` equivalent.
+	 *
+	 * `Program` objects have an internal location cache used by `uniform`
+	 * methods to set uniform variables without retrieving their location each
+	 * time. The cache is invalidated every time the program is relinked using
+	 * the provided `link` method.
+	 *
+	 * @method uniform4iv
+	 * @param {String} name The name of the uniform variable.
+	 * @param {Number[]} values An array containing the new values.
+	 * @example
+	 *	TODO
+	 */
 	program.uniform4iv = function (name, values) {
 		context.uniform4iv(getUniformLocation(name), values);
 	};
