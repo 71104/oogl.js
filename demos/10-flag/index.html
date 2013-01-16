@@ -2,12 +2,23 @@
 <html>
 <head>
 <title>oogl.js Test 10</title>
+<style type="text/css">
+body {
+	font-size: small;
+	font-family: sans-serif;
+}
+</style>
 <script type="text/javascript" src="../oogl-1.0.0.min.js"></script>
 </head>
-<body style="text-align:center">
-	<canvas id="canvas" width="800" height="600">
-		<p>Sorry, no browser support. See <a href="http://get.webgl.org/">here</a> please.</p>
-	</canvas>
+<body>
+	<div style="text-align:center">
+		<div style="display:inline-block;margin:auto">
+			<canvas id="canvas" width="800" height="600">
+				<p>Sorry, no browser support. See <a href="http://get.webgl.org/">here</a> please.</p>
+			</canvas>
+			<p style="text-align:right">made with <a href="http://oogljs.com/">oogl.js</a> - <a href="http://oogljs.com/demos/">demo index</a></p>
+		</div>
+	</div>
 	<script type="text/javascript">
 OOGL(function () {
 	var oogl = new OOGL.Context('canvas', {
@@ -42,15 +53,17 @@ OOGL(function () {
 		}
 		return new oogl.AttributeArray2(0, 'float', vertices);
 	})();
-	var roll = 0;
-	var pitch = 0;
-	var yaw = 0;
 	new oogl.AsyncTexture('Tim.png', function () {
 		var program = new oogl.AjaxProgram('flag', ['in_Vertex'], function () {
 			program.use();
+			var roll = 0;
+			var pitch = 0;
+			var yaw = 0;
+			var step = 0;
 			(new OOGL.RenderLoop(function () {
 				oogl.clear(oogl.COLOR_BUFFER_BIT | oogl.DEPTH_BUFFER_BIT);
-				program.uniform3f('Angle', pitch += 0.03, yaw += 0.02, roll += 0.04);
+				program.uniform3f('Angle', pitch += 0.015, yaw += 0.01, roll += 0.02);
+				program.uniform1f('Step', step = ++step % 45);
 				backArray.bindAndPointer();
 				oogl.drawArrays(oogl.LINES, 0, 8280);
 				frontArray.bindAndPointer();
