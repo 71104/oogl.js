@@ -59,9 +59,11 @@ OOGL(function () {
 			var roll = 0;
 			var pitch = 0;
 			var yaw = 0;
+			var step = 0;
 			(new OOGL.RenderLoop(function () {
 				oogl.clear(oogl.COLOR_BUFFER_BIT | oogl.DEPTH_BUFFER_BIT);
 				program.uniform3f('Angle', pitch += 0.015, yaw += 0.01, roll += 0.02);
+				program.uniform1f('Step', step = ++step % 45);
 				backArray.bindAndPointer();
 				oogl.drawArrays(oogl.LINES, 0, 8280);
 				frontArray.bindAndPointer();
