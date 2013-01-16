@@ -32,9 +32,13 @@ OOGL(function () {
 	})();
 	var backArray = (function () {
 		var vertices = [];
-		for (var i = 0; i < 45; i++) {
-			var j = i / 45;
-			vertices.push(0, j, 1, j, j, 0, j, 1);
+		for (var m = 0; m <= 45; m++) {
+			for (var n = 0; n < 45; n++) {
+				var i = m / 45;
+				var j0 = n / 45;
+				var j1 = (n + 1) / 45;
+				vertices.push(j0, i, j1, i, i, j0, i, j1);
+			}
 		}
 		return new oogl.AttributeArray2(0, 'float', vertices);
 	})();
@@ -46,9 +50,9 @@ OOGL(function () {
 			program.use();
 			(new OOGL.RenderLoop(function () {
 				oogl.clear(oogl.COLOR_BUFFER_BIT | oogl.DEPTH_BUFFER_BIT);
-				program.uniform3f('Angle', pitch, yaw, roll);
+				program.uniform3f('Angle', pitch += 0.03, yaw += 0.02, roll += 0.04);
 				backArray.bindAndPointer();
-				oogl.drawArrays(oogl.LINES, 0, 92);
+				oogl.drawArrays(oogl.LINES, 0, 8280);
 				frontArray.bindAndPointer();
 				oogl.drawArrays(oogl.TRIANGLES, 0, 12150);
 				oogl.flush();
