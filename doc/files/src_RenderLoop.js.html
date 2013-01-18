@@ -531,8 +531,8 @@ OOGL.RenderLoop = (function () {
 	};
 
 	&#x2F;**
-	 * Returns the frame rate associated to the &#x60;RenderLoop&#x60; class. This frame
-	 * rate is associated to every constructed &#x60;RenderLoop&#x60; object.
+	 * Returns the global frame rate setting. This frame rate is used to
+	 * configure every constructed &#x60;RenderLoop&#x60; object.
 	 *
 	 * @method getRate
 	 * @static
@@ -565,11 +565,12 @@ OOGL.RenderLoop = (function () {
 	};
 
 	&#x2F;**
-	 * TODO
+	 * Changes the global frame rate setting. This setting is used to configure
+	 * every constructed &#x60;RenderLoop&#x60;.
 	 *
 	 * @method setRate
 	 * @static
-	 * @param {Number} newRate TODO
+	 * @param {Number} newRate The new frame rate value.
 	 * @example
 	 *	RenderLoop.setRate(100);
 	 *&#x2F;

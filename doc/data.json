@@ -4996,7 +4996,7 @@
         {
             "file": "src\\RenderLoop.js",
             "line": 330,
-            "description": "Returns the frame rate associated to the `RenderLoop` class. This frame\nrate is associated to every constructed `RenderLoop` object.",
+            "description": "Returns the global frame rate setting. This frame rate is used to\nconfigure every constructed `RenderLoop` object.",
             "itemtype": "method",
             "name": "getRate",
             "static": 1,
@@ -5028,14 +5028,14 @@
         {
             "file": "src\\RenderLoop.js",
             "line": 364,
-            "description": "TODO",
+            "description": "Changes the global frame rate setting. This setting is used to configure\nevery constructed `RenderLoop`.",
             "itemtype": "method",
             "name": "setRate",
             "static": 1,
             "params": [
                 {
                     "name": "newRate",
-                    "description": "TODO",
+                    "description": "The new frame rate value.",
                     "type": "Number"
                 }
             ],
@@ -6593,47 +6593,47 @@
         {
             "file": "src\\Vector3.js",
             "line": 258,
-            "description": "TODO",
+            "description": "Cross multiplies this vector by the specified one.",
             "itemtype": "method",
             "name": "cross",
             "chainable": 1,
             "params": [
                 {
                     "name": "v",
-                    "description": "TODO",
+                    "description": "The vector to cross-multiply.",
                     "type": "OOGL.Vector3"
                 }
             ],
             "example": [
-                "\n\tTODO"
+                "\n\tvar v = new OOGL.Vector3(1, 2, 3);\n\tv.cross(new OOGL.Vector3(4, 5, 6)); // v is now (-3, 6, -3)"
             ],
             "class": "OOGL.Vector3"
         },
         {
             "file": "src\\Vector3.js",
-            "line": 277,
-            "description": "TODO",
+            "line": 278,
+            "description": "Computes the cross product between this vector and the specified one and\nreturns it as a new `Vector3` object. This vector is not changed.",
             "itemtype": "method",
             "name": "getCrossProduct",
             "params": [
                 {
                     "name": "v",
-                    "description": "TODO",
+                    "description": "The vector to cros-multiply.",
                     "type": "OOGL.Vector3"
                 }
             ],
             "return": {
-                "description": "TODO",
+                "description": "The cross product.",
                 "type": "OOGL.Vector3"
             },
             "example": [
-                "\n\tTODO"
+                "\n\tvar u = new OOGL.Vector3(1, 2, 3);\n\tvar v = new OOGL.Vector3(4, 5, 6);\n\tvar w = u.getCrossProduct(w); // (-3, 6, -3)"
             ],
             "class": "OOGL.Vector3"
         },
         {
             "file": "src\\Vector3.js",
-            "line": 290,
+            "line": 294,
             "description": "Reflects this vector against a line whose normal vector is specified. The\nreflection of a vector `v` is computed as:\n\n\tv - 2 * (v.n) * n\n\nwhere `v.n` is the dot product between the vector and the normal.\n\nThis method modifies the original object.",
             "itemtype": "method",
             "name": "reflect",
@@ -6652,7 +6652,7 @@
         },
         {
             "file": "src\\Vector3.js",
-            "line": 315,
+            "line": 319,
             "description": "Computes the reflection of this vector against a line whose normal vector\nis specified. The reflection of a vector `v` is computed as:\n\n\tv - 2 * (v.n) * n\n\nwhere `v.n` is the dot product between the vector and the normal.\n\nThe computed vector is returned as a new `Vector3` object, this vector is\nnot changed.",
             "itemtype": "method",
             "name": "getReflected",
@@ -6674,7 +6674,7 @@
         },
         {
             "file": "src\\Vector3.js",
-            "line": 338,
+            "line": 342,
             "description": "Refracts this vector given a surface normal `n` and the `eta` ratio\nbetween refraction indices.\n\nThis method modifies the original object.",
             "itemtype": "method",
             "name": "refract",
@@ -6698,7 +6698,7 @@
         },
         {
             "file": "src\\Vector3.js",
-            "line": 368,
+            "line": 372,
             "description": "Refracts this vector given a surface normal `n` and the `eta` ratio\nbetween refraction indices; the computed vector is returned as a new\n`OOGL.Vector3` object, this object is not changed.",
             "itemtype": "method",
             "name": "getRefracted",
@@ -6725,7 +6725,7 @@
         },
         {
             "file": "src\\Vector3.js",
-            "line": 397,
+            "line": 401,
             "description": "The null vector `(0, 0, 0)`.",
             "itemtype": "property",
             "name": "NULL",
@@ -6738,7 +6738,7 @@
         },
         {
             "file": "src\\Vector3.js",
-            "line": 408,
+            "line": 412,
             "description": "The `(1, 0, 0)` vector.",
             "itemtype": "property",
             "name": "I",
@@ -6751,7 +6751,7 @@
         },
         {
             "file": "src\\Vector3.js",
-            "line": 422,
+            "line": 426,
             "description": "The `(0, 1, 0)` vector.",
             "itemtype": "property",
             "name": "J",
@@ -6764,7 +6764,7 @@
         },
         {
             "file": "src\\Vector3.js",
-            "line": 436,
+            "line": 440,
             "description": "The `(0, 0, 1)` vector.",
             "itemtype": "property",
             "name": "K",

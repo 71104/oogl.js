@@ -957,7 +957,7 @@ var v2 = v1.by(2); // (6, 8, 10)
     </div>
 
     <div class="description">
-        <p>TODO</p>
+        <p>Cross multiplies this vector by the specified one.</p>
     </div>
 
     
@@ -975,7 +975,7 @@ var v2 = v1.by(2); // (6, 8, 10)
                     
 
                     <div class="param-description">
-                        <p>TODO</p>
+                        <p>The vector to cross-multiply.</p>
                     </div>
 
                     
@@ -992,7 +992,8 @@ var v2 = v1.by(2); // (6, 8, 10)
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>TODO
+                <pre class="code prettyprint"><code>var v = new OOGL.Vector3(1, 2, 3);
+v.cross(new OOGL.Vector3(4, 5, 6)); // v is now (-3, 6, -3)
 </code></pre>
             </div>
         </div>
@@ -1260,7 +1261,7 @@ var dot = v1.dot(v2); // 32
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Vector3.js.html#l277"><code>src\Vector3.js:277</code></a>
+        <a href="..&#x2F;files&#x2F;src_Vector3.js.html#l278"><code>src\Vector3.js:278</code></a>
         
         </p>
 
@@ -1271,7 +1272,8 @@ var dot = v1.dot(v2); // 32
     </div>
 
     <div class="description">
-        <p>TODO</p>
+        <p>Computes the cross product between this vector and the specified one and
+returns it as a new <code>Vector3</code> object. This vector is not changed.</p>
     </div>
 
     
@@ -1289,7 +1291,7 @@ var dot = v1.dot(v2); // 32
                     
 
                     <div class="param-description">
-                        <p>TODO</p>
+                        <p>The vector to cros-multiply.</p>
                     </div>
 
                     
@@ -1308,7 +1310,7 @@ var dot = v1.dot(v2); // 32
                     
                         <span class="type"><a href="..\classes\OOGL.Vector3.html" class="crosslink">OOGL.Vector3</a></span>:
                     
-                    TODO
+                    The cross product.
                 
             </div>
         </div>
@@ -1319,7 +1321,9 @@ var dot = v1.dot(v2); // 32
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>TODO
+                <pre class="code prettyprint"><code>var u = new OOGL.Vector3(1, 2, 3);
+var v = new OOGL.Vector3(4, 5, 6);
+var w = u.getCrossProduct(w); // (-3, 6, -3)
 </code></pre>
             </div>
         </div>
@@ -1453,7 +1457,7 @@ var v2 = v1.getNormalized(); // (0.33, 0.66, 0.66)
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Vector3.js.html#l315"><code>src\Vector3.js:315</code></a>
+        <a href="..&#x2F;files&#x2F;src_Vector3.js.html#l319"><code>src\Vector3.js:319</code></a>
         
         </p>
 
@@ -1582,7 +1586,7 @@ var newVelocity = velocity.getReflected(new OOGL.Vector3(0, 1, 0));
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Vector3.js.html#l368"><code>src\Vector3.js:368</code></a>
+        <a href="..&#x2F;files&#x2F;src_Vector3.js.html#l372"><code>src\Vector3.js:372</code></a>
         
         </p>
 
@@ -2191,7 +2195,7 @@ var v3 = v1.plus(v2); // (5, 7, 9)
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Vector3.js.html#l290"><code>src\Vector3.js:290</code></a>
+        <a href="..&#x2F;files&#x2F;src_Vector3.js.html#l294"><code>src\Vector3.js:294</code></a>
         
         </p>
 
@@ -2304,7 +2308,7 @@ velocity.reflect(new OOGL.Vector3(0, 1, 0));
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Vector3.js.html#l338"><code>src\Vector3.js:338</code></a>
+        <a href="..&#x2F;files&#x2F;src_Vector3.js.html#l342"><code>src\Vector3.js:342</code></a>
         
         </p>
 
@@ -2675,7 +2679,7 @@ var w = v.toHomogeneous(); // (1, 2, 3, 1)
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Vector3.js.html#l408"><code>src\Vector3.js:408</code></a>
+        <a href="..&#x2F;files&#x2F;src_Vector3.js.html#l412"><code>src\Vector3.js:412</code></a>
         
         </p>
 
@@ -2733,7 +2737,7 @@ position.add(heading.by(OOGL.Vector3.I));
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Vector3.js.html#l422"><code>src\Vector3.js:422</code></a>
+        <a href="..&#x2F;files&#x2F;src_Vector3.js.html#l426"><code>src\Vector3.js:426</code></a>
         
         </p>
 
@@ -2791,7 +2795,7 @@ position.add(heading.by(OOGL.Vector3.J));
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Vector3.js.html#l436"><code>src\Vector3.js:436</code></a>
+        <a href="..&#x2F;files&#x2F;src_Vector3.js.html#l440"><code>src\Vector3.js:440</code></a>
         
         </p>
 
@@ -2849,7 +2853,7 @@ position.add(heading.by(OOGL.Vector3.K));
             
         
         
-        <a href="..&#x2F;files&#x2F;src_Vector3.js.html#l397"><code>src\Vector3.js:397</code></a>
+        <a href="..&#x2F;files&#x2F;src_Vector3.js.html#l401"><code>src\Vector3.js:401</code></a>
         
         </p>
 
