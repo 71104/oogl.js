@@ -256,13 +256,14 @@ OOGL.Vector3.prototype = {
 	},
 
 	/**
-	 * TODO
+	 * Cross multiplies this vector by the specified one.
 	 *
 	 * @method cross
 	 * @chainable
-	 * @param {OOGL.Vector3} v TODO
+	 * @param {OOGL.Vector3} v The vector to cross-multiply.
 	 * @example
-	 *	TODO
+	 *	var v = new OOGL.Vector3(1, 2, 3);
+	 *	v.cross(new OOGL.Vector3(4, 5, 6)); // v is now (-3, 6, -3)
 	 */
 	cross: function (v) {
 		var x = this.y * v.z - this.z * v.y;
@@ -275,13 +276,16 @@ OOGL.Vector3.prototype = {
 	},
 
 	/**
-	 * TODO
+	 * Computes the cross product between this vector and the specified one and
+	 * returns it as a new `Vector3` object. This vector is not changed.
 	 *
 	 * @method getCrossProduct
-	 * @param {OOGL.Vector3} v TODO
-	 * @return {OOGL.Vector3} TODO
+	 * @param {OOGL.Vector3} v The vector to cros-multiply.
+	 * @return {OOGL.Vector3} The cross product.
 	 * @example
-	 *	TODO
+	 *	var u = new OOGL.Vector3(1, 2, 3);
+	 *	var v = new OOGL.Vector3(4, 5, 6);
+	 *	var w = u.getCrossProduct(w); // (-3, 6, -3)
 	 */
 	getCrossProduct: function (v) {
 		return new OOGL.Vector3(this.y * v.z - this.z * v.y, this.z * v.x - this.x * v.z, this.x * v.y - this.y * v.x);
