@@ -2,6 +2,7 @@ module.exports = function (grunt) {
 	var files = [
 		'<banner>',
 		'src/OOGL.js',
+		'src/Timing.js',
 		'src/Ajax.js',
 		'src/Vector2.js',
 		'src/Vector3.js',
@@ -47,6 +48,7 @@ module.exports = function (grunt) {
 				'src/Framebuffer.js',
 				'src/Renderbuffer.js',
 				'src/RenderLoop.js',
+				'src/Timing.js',
 				]
 		},
 		jshint: {
