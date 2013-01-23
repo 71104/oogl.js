@@ -137,7 +137,7 @@ OOGL(function () {
 });
 ```
 
-For further experimenting, please refer to the [OOGL API Reference](http://71104.github.com/oogl.js/doc/) and the [Demos](http://71104.github.com/oogl.js/demos/).
+For further experimenting, please refer to the [OOGL API Reference](http://71104.github.com/oogl.js/doc/), [Tutorials](https://github.com/71104/oogl.js/wiki/Getting-Started-with-OOGL) and [Demos](http://71104.github.com/oogl.js/demos/).
 
 Math stuff
 ==========
