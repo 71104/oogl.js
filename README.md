@@ -165,4 +165,4 @@ OOGL math classes are developed with a strong focus on performances and can be u
 Credits
 =======
 
-OOGL was created by [Alberto La Rocca](https://github.com/71104) [<a71104@gmail.com>](mailto:a71104@gmail.com) and is licensed under the MIT License.
+OOGL was created by [Alberto La Rocca](https://github.com/71104) <a71104@gmail.com> and is licensed under the MIT License.
