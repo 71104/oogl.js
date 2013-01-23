@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>oogl.js Test 04</title>
+<style type="text/css">
+body {
+	font-size: small;
+	font-family: sans-serif;
+}
+</style>
+<script type="text/javascript" src="../oogl-1.0.0.min.js"></script>
+</head>
+<body>
+	<div style="text-align:center">
+		<div style="display:inline-block;margin:auto">
+			<canvas id="canvas" width="800" height="600">
+				<p>Sorry, no browser support. See <a href="http://get.webgl.org/">here</a> please.</p>
+			</canvas>
+			<p style="text-align:right">made with <a href="http://oogljs.com/">oogl.js</a> - <a href="https://github.com/71104/oogl.js/tree/master/demos/04-solids">source code</a> - <a href="http://oogljs.com/demos/">demo index</a></p>
+		</div>
+	</div>
+	<script type="text/javascript">
+OOGL(function () {
+	var oogl = new OOGL.Context('canvas', {
+		alpha: false
+	});
+	oogl.enable(oogl.CULL_FACE);
+	var pyramidArrays = new oogl.AttributeArrays(6);
+	pyramidArrays.add3f([0, 1, 0, -1, -1, 1, -1, -1, -1, 1, -1, -1, 1, -1, 1, -1, -1, 1]);
+	pyramidArrays.add3f([1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0]);
+	var boxArrays = new oogl.AttributeArrays(36);
+	boxArrays.add3f([
+		-1, 1, -1, -1, -1, -1, 1, -1, -1, -1, 1, -1, 1, -1, -1, 1, 1, -1,	// front
+		1, 1, -1, 1, -1, -1, 1, -1, 1, 1, 1, -1, 1, -1, 1, 1, 1, 1,			// right
+		-1, 1, 1, -1, 1, -1, 1, 1, -1, -1, 1, 1, 1, 1, -1, 1, 1, 1,			// up
+		-1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, 1, -1, -1, -1, -1, 1, -1,	// left
+		-1, -1, -1, -1, -1, 1, 1, -1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1,	// down
+		1, 1, 1, 1, -1, 1, -1, -1, 1, 1, 1, 1, -1, -1, 1, -1, 1, 1			// back
+		]);
+	boxArrays.add3f([
+		1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0,
+		0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0,
+		0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1,
+		0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1,
+		1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1,
+		1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0,
+		]);
+	var program = new oogl.AjaxProgram('objects', ['in_Vertex', 'in_Color'], function () {
+		program.use();
+		var pyramidAngle = 0;
+		var boxAngleX = 0;
+		var boxAngleY = 0;
+		(new OOGL.RenderLoop(function () {
+			oogl.clear(oogl.COLOR_BUFFER_BIT);
+			program.uniform1f('Offset', -1.5);
+			program.uniform2f('Angle', 0, pyramidAngle += Math.PI / 60);
+			pyramidArrays.bindAndPointer();
+			pyramidArrays.drawTriangleFan();
+			program.uniform1f('Offset', 1.5);
+			program.uniform2f('Angle', boxAngleX += Math.PI / 60, boxAngleY += Math.PI / 60);
+			boxArrays.bindAndPointer();
+			boxArrays.drawTriangles();
+			oogl.flush();
+		})).start();
+	});
+});
+	</script>
+</body>
+</html>
