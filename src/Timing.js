@@ -1,7 +1,7 @@
 /*global OOGL: false */
 
 /**
- * TODO
+ * Static class providing timing-related functions.
  *
  * @class OOGL.Timing
  * @module OOGL
@@ -11,11 +11,14 @@
  */
 OOGL.Timing = {
 	/**
-	 * TODO
+	 * Returns the current timestamp in milliseconds since the Epoch.
+	 *
+	 * This method relies on `window.performance.now` where available and
+	 * transparently falls back to `Date.now`.
 	 *
 	 * @method now
 	 * @static
-	 * @return {Number} TODO
+	 * @return {Number} The current timestamp in milliseconds.
 	 * @example
 	 *	TODO
 	 */
