@@ -750,30 +750,93 @@ context.Program = function () {
 		context.uniform4iv(getUniformLocation(name), values);
 	};
 
+	/**
+	 * TODO
+	 *
+	 * @method uniformVec2
+	 * @param {String} name TODO
+	 * @param {OOGL.Vector2} v TODO
+	 * @example
+	 *	TODO
+	 */
 	program.uniformVec2 = function (name, v) {
 		context.uniform2f(getUniformLocation(name), v.x, v.y);
 	};
 
+	/**
+	 * TODO
+	 *
+	 * @method uniformVec3
+	 * @param {String} name TODO
+	 * @param {OOGL.Vector3} v TODO
+	 * @example
+	 *	TODO
+	 */
 	program.uniformVec3 = function (name, v) {
 		context.uniform3f(getUniformLocation(name), v.x, v.y, v.z);
 	};
 
+	/**
+	 * TODO
+	 *
+	 * @method uniformVec4
+	 * @param {String} name TODO
+	 * @param {OOGL.Vector4} v TODO
+	 * @example
+	 *	TODO
+	 */
 	program.uniformVec4 = function (name, v) {
 		context.uniform2f(getUniformLocation(name), v.x, v.y, v.z, v.w);
 	};
 
+	/**
+	 * TODO
+	 *
+	 * @method uniformMatrix2fv
+	 * @param {String} name TODO
+	 * @param {Number[]} values TODO
+	 * @example
+	 *	TODO
+	 */
 	program.uniformMatrix2fv = function (name, values) {
 		context.uniformMatrix2fv(getUniformLocation(name), false, values);
 	};
 
+	/**
+	 * TODO
+	 *
+	 * @method uniformMatrix3fv
+	 * @param {String} name TODO
+	 * @param {Number[]} values TODO
+	 * @example
+	 *	TODO
+	 */
 	program.uniformMatrix3fv = function (name, values) {
 		context.uniformMatrix3fv(getUniformLocation(name), false, values);
 	};
 
+	/**
+	 * TODO
+	 *
+	 * @method uniformMatrix4fv
+	 * @param {String} name TODO
+	 * @param {Number[]} values TODO
+	 * @example
+	 *	TODO
+	 */
 	program.uniformMatrix4fv = function (name, values) {
 		context.uniformMatrix4fv(getUniformLocation(name), false, values);
 	};
 
+	/**
+	 * TODO
+	 *
+	 * @method uniformMat2
+	 * @param {String} name TODO
+	 * @param {OOGL.Matrix2} matrix TODO
+	 * @example
+	 *	TODO
+	 */
 	program.uniformMat2 = function (name, matrix) {
 		context.uniformMatrix2fv(getUniformLocation(name), false, [
 			matrix[0], matrix[1],
@@ -781,6 +844,15 @@ context.Program = function () {
 		]);
 	};
 
+	/**
+	 * TODO
+	 *
+	 * @method uniformMat3
+	 * @param {String} name TODO
+	 * @param {OOGL.Matrix3} matrix TODO
+	 * @example
+	 *	TODO
+	 */
 	program.uniformMat3 = function (name, matrix) {
 		context.uniformMatrix3fv(getUniformLocation(name), false, [
 			matrix[0], matrix[1], matrix[2],
@@ -789,6 +861,15 @@ context.Program = function () {
 		]);
 	};
 
+	/**
+	 * TODO
+	 *
+	 * @method uniformMat4
+	 * @param {String} name TODO
+	 * @param {OOGL.Matrix4} matrix TODO
+	 * @example
+	 *	TODO
+	 */
 	program.uniformMat4 = function (name, matrix) {
 		context.uniformMatrix4fv(getUniformLocation(name), false, [
 			matrix[0], matrix[1], matrix[2], matrix[3],
