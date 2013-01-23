@@ -1,7 +1,7 @@
 /**
  * This is OOGL's main namespace object and contains all the OOGL classes.
  *
- * All OOGL-specific class constructors are contained in this object. For
+ * Some OOGL-specific class constructors are contained in this object. For
  * example, to create an `OOGL.RenderLoop` object you construct it in this way:
  *
  *	var loop = new OOGL.RenderLoop( ... );
@@ -48,7 +48,22 @@ if (typeof $ === 'undefined') {
 }
 
 /**
- * TODO
+ * This is actually a _pseudo_-module used to document OOGL classes whose
+ * namespace is a WebGL/OOGL context instance.
+ *
+ * You can get a `context` object by invoking the `OOGL.Context` constructor:
+ *
+ *	var context = new OOGL.Context(canvas);
+ *
+ * You can then use that object to construct context-specific objects, such as
+ * `Texture2D` objects:
+ *
+ *	var texture = new context.Texture2D();
+ *
+ * The `context` object is sometimes referred to with the `oogl` name because it
+ * is a normal `WebGLContext` object containing all the standard WebGL features,
+ * such as `createTexture`, `createShader`, `flush` and so on, plus
+ * OOGL-specific features such as `Texture2D`.
  *
  * @module context
  * @main context
