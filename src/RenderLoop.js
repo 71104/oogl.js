@@ -166,8 +166,8 @@ OOGL.RenderLoop = (function () {
 			 * the rate manually set using the static `setRate` method.
 			 *
 			 * The actual frame rate is measured as the number of loop
-			 * iterations since the last time `getActualFrameRate` was called
-			 * divided by the timespan.
+			 * iterations since the last time `getActualRate` was called divided
+			 * by the timespan.
 			 *
 			 * The measuring system automatically discards time spans during
 			 * which the loop was suspended.
