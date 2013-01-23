@@ -7,7 +7,7 @@
  * `createTexture`. The returned `WebGLTexture` object is extended by
  * OOGL-specific features and returned by the `Texture` constructor.
  *
- * @class oogl.Texture
+ * @class context.Texture
  * @extends WebGLTexture
  * @constructor
  * @param {Number} target The target against which this texture will be bound
@@ -332,8 +332,8 @@ context.Texture = function (target) {
 /**
  * An `oogl.Texture` whose target is `gl.TEXTURE_2D`.
  *
- * @class oogl.Texture2D
- * @extends oogl.Texture
+ * @class context.Texture2D
+ * @extends context.Texture
  * @constructor
  * @example
  *	var texture = new oogl.Texture2D();
@@ -353,8 +353,8 @@ context.Texture2D = function () {
  * `gl.TEXTURE_2D` target, sets minifying and magnifying filters and passes the
  * image to `gl.texImage2D`.
  *
- * @class oogl.AutoTexture
- * @extends oogl.Texture2D
+ * @class context.AutoTexture
+ * @extends context.Texture2D
  * @constructor
  * @param {Mixed} object A DOM image, canvas or video element to use as the
  *	texture image.
@@ -397,8 +397,8 @@ context.AutoTexture = function (object, magFilter, minFilter) {
  * If the texture image is loaded successfully, the specified `callback`
  * function is invoked using this `AsyncTexture` object as `this`.
  *
- * @class oogl.AsyncTexture
- * @extends oogl.Texture2D
+ * @class context.AsyncTexture
+ * @extends context.Texture2D
  * @constructor
  * @param {String} url The URL of the texture image.
  * @param {Function} callback A user-defined callback function that is called
@@ -455,8 +455,8 @@ context.AsyncTexture = function (url, callback, magFilter, minFilter) {
 /**
  * An `oogl.Texture` whose target is `gl.TEXTURE_CUBE_MAP`.
  *
- * @class oogl.CubeMap
- * @extends oogl.Texture
+ * @class context.CubeMap
+ * @extends context.Texture
  * @constructor
  * @example
  *	var cubeMap = new oogl.CubeMap();
@@ -479,7 +479,7 @@ context.CubeMap = function () {
  * A `Texture` object may belong to several `Textures` sets at the same
  * time, so that it can be used by several programs.
  *
- * @class oogl.Textures
+ * @class context.Textures
  * @constructor
  * @param {Object} [textures={}] An optional object that map names to
  *	`oogl.Texture` objects. Names are used when specifying uniform variables
@@ -514,7 +514,7 @@ context.Textures = function (textures) {
 		 *
 		 * @method add
 		 * @param {String} name The name of the associated uniform variable.
-		 * @param {oogl.Texture} texture The OOGL texture to add.
+		 * @param {context.Texture} texture The OOGL texture to add.
 		 * @example
 		 *	var textures = new oogl.Textures();
 		 *	textures.add('Texture', texture);
@@ -560,7 +560,7 @@ context.Textures = function (textures) {
 		 * automatically assigned texture units.
 		 *
 		 * @method uniform
-		 * @param {oogl.Program} program An `oogl.Program`.
+		 * @param {context.Program} program A `context.Program`.
 		 * @example
 		 *	var textures = new oogl.Textures({
 		 *		'Texture': texture,
@@ -583,7 +583,7 @@ context.Textures = function (textures) {
 		 * Equivalent to calling `bind` and `uniform` subsequently.
 		 *
 		 * @method bindAndUniform
-		 * @param {oogl.Program} program An `oogl.Program`.
+		 * @param {context.Program} program A `context.Program`.
 		 * @example
 		 *	var textures = new oogl.Textures({
 		 *		'Texture': texture,

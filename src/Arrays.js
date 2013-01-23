@@ -9,8 +9,8 @@
  * `gl.enableVertexAttribArray` and the provided `pointer` method invokes
  * `gl.vertexAttribPointer` with the specified `index` and `type`.
  *
- * @class oogl.AttributeArray1
- * @extends oogl.StaticArrayBuffer
+ * @class context.AttributeArray1
+ * @extends context.StaticArrayBuffer
  * @constructor
  * @param {Number} index The attribute array index.
  * @param {String} type One of `byte`, `ubyte`, `short`, `ushort` or `float`;
@@ -115,8 +115,8 @@ context.AttributeArray1 = function (index, type, data, normalize) {
  * `gl.enableVertexAttribArray` and the provided `pointer` method invokes
  * `gl.vertexAttribPointer` with the specified `index` and `type`.
  *
- * @class oogl.AttributeArray2
- * @extends oogl.StaticArrayBuffer
+ * @class context.AttributeArray2
+ * @extends context.StaticArrayBuffer
  * @constructor
  * @param {Number} index The attribute array index.
  * @param {String} type One of `byte`, `ubyte`, `short`, `ushort` or `float`;
@@ -221,8 +221,8 @@ context.AttributeArray2 = function (index, type, data, normalize) {
  * `gl.enableVertexAttribArray` and the provided `pointer` method invokes
  * `gl.vertexAttribPointer` with the specified `index` and `type`.
  *
- * @class oogl.AttributeArray3
- * @extends oogl.StaticArrayBuffer
+ * @class context.AttributeArray3
+ * @extends context.StaticArrayBuffer
  * @constructor
  * @param {Number} index The attribute array index.
  * @param {String} type One of `byte`, `ubyte`, `short`, `ushort` or `float`;
@@ -327,8 +327,8 @@ context.AttributeArray3 = function (index, type, data, normalize) {
  * `gl.enableVertexAttribArray` and the provided `pointer` method invokes
  * `gl.vertexAttribPointer` with the specified `index` and `type`.
  *
- * @class oogl.AttributeArray4
- * @extends oogl.StaticArrayBuffer
+ * @class context.AttributeArray4
+ * @extends context.StaticArrayBuffer
  * @constructor
  * @param {Number} index The attribute array index.
  * @param {String} type One of `byte`, `ubyte`, `short`, `ushort` or `float`;
@@ -430,7 +430,7 @@ context.AttributeArray4 = function (index, type, data, normalize) {
  * Represents a set of vertex attribute arrays; simplifies the management of
  * multiple arrays.
  *
- * @class oogl.AttributeArrays
+ * @class context.AttributeArrays
  * @constructor
  * @param {Number} count The number of vertex attributes each array will
  *	contain.
@@ -971,8 +971,8 @@ context.AttributeArrays = function (count) {
  * This class inherits `StaticElementArrayBuffer` and introduces utility
  * methods.
  *
- * @class oogl.ElementArray
- * @extends oogl.StaticElementArrayBuffer
+ * @class context.ElementArray
+ * @extends context.StaticElementArrayBuffer
  * @constructor
  * @param {Number[]} indices The element indices.
  * @param {String} [type='ushort'] The type of each index. It can be either

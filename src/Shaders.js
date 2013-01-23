@@ -3,7 +3,7 @@
 /**
  * Wraps a GL shader.
  *
- * @class oogl.Shader
+ * @class context.Shader
  * @extends WebGLShader
  * @constructor
  * @param {Number} type The type of shader. Either `oogl.VERTEX_SHADER` or
@@ -183,8 +183,8 @@ context.Shader = function (type) {
  * the GLSL source code for the shader and tries to compile it through the
  * provided `compileOrThrow` method.
  *
- * @class oogl.VertexShader
- * @extends oogl.Shader
+ * @class context.VertexShader
+ * @extends context.Shader
  * @constructor
  * @param {String} [source] The optional GLSL source code for the shader.
  * @example
@@ -206,8 +206,8 @@ context.VertexShader = function (source) {
  * containing the GLSL source code for the shader and tries to compile it
  * through the provided `compileOrThrow` method.
  *
- * @class oogl.FragmentShader
- * @extends oogl.Shader
+ * @class context.FragmentShader
+ * @extends context.Shader
  * @constructor
  * @param {String} [source] The optional GLSL source code for the shader.
  * @example
@@ -232,8 +232,8 @@ context.FragmentShader = function (source) {
  * `callback` function is invoked using this `AjaxVertexShader` object as
  * `this`.
  *
- * @class oogl.AjaxVertexShader
- * @extends oogl.Shader
+ * @class context.AjaxVertexShader
+ * @extends context.Shader
  * @constructor
  * @param {String} url A URL referring to the GLSL source code.
  * @param {Function} [callback] The callback function.
@@ -263,8 +263,8 @@ context.AjaxVertexShader = function (url, callback) {
  * callback function is invoked using this `AjaxFragmentShader` object as
  * `this`.
  *
- * @class oogl.AjaxFragmentShader
- * @extends oogl.Shader
+ * @class context.AjaxFragmentShader
+ * @extends context.Shader
  * @constructor
  * @param {String} url A URL referring to the GLSL source code.
  * @param {Function} [callback] The callback function.
