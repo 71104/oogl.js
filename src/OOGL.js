@@ -19,6 +19,8 @@
  * as GLSL shader and other asset loading code, as well as GLSL program
  * compilation and linking.
  *
+ * TODO explain the `oogl` pseudo-module
+ *
  * @module OOGL
  * @example
  *	OOGL(function () {
@@ -45,9 +47,3 @@ if (typeof $ === 'undefined') {
 	/*jshint undef: false */
 	$ = OOGL;
 }
-
-/**
- * TODO
- *
- * @module oogl
- */

@@ -342,7 +342,8 @@ OOGL.Matrix3.prototype = {
 	 * @method invert
 	 * @chainable
 	 * @example
-	 *	TODO
+	 *	var matrix = new OOGL.Matrix3([1, 0, 0, 0, 0, 1, 0, 1, 1]);
+	 *	matrix.invert(); // matrix is now [1, 0, 0, 0, -1, 1, 0, 1, 0]
 	 */
 	invert: function () {
 		var determinant = this[0] * (this[4] * this[8] - this[5] * this[7]) -
@@ -371,7 +372,8 @@ OOGL.Matrix3.prototype = {
 	 *
 	 * @method getInverse
 	 * @example
-	 *	TODO
+	 *	var m1 = new OOGL.Matrix3([1, 0, 0, 0, 0, 1, 0, 1, 1]);
+	 *	var m2 = m1.getInverse(); // [1, 0, 0, 0, -1, 1, 0, 1, 0]
 	 */
 	getInverse: function () {
 		var determinant = this[0] * (this[4] * this[8] - this[5] * this[7]) -
