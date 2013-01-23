@@ -22,6 +22,7 @@
  * TODO explain the `oogl` pseudo-module
  *
  * @module OOGL
+ * @main OOGL
  * @example
  *	OOGL(function () {
  *		var oogl = new OOGL.Context('canvas'); // suppose our canvas element's id is "canvas"
@@ -47,3 +48,10 @@ if (typeof $ === 'undefined') {
 	/*jshint undef: false */
 	$ = OOGL;
 }
+
+/**
+ * TODO
+ *
+ * @module context
+ * @main context
+ */

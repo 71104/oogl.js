@@ -1,6 +1,10 @@
 /*global OOGL: false */
 
 /**
+ * @module OOGL
+ */
+
+/**
  * Provides methods for performing AJAX requests. Useful for loading assets such
  * as shaders.
  *

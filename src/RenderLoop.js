@@ -1,6 +1,10 @@
 /*global OOGL: false */
 
 /**
+ * @module OOGL
+ */
+
+/**
  * Efficient render loop implementation that uses `requestAnimationFrame` where
  * available and transparently falls back on `setInterval`.
  *

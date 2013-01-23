@@ -1,6 +1,10 @@
 /*global context: false */
 
 /**
+ * @module context
+ */
+
+/**
  * Creates an array buffer with static draw usage representing a single
  * component vertex attribute array.
  *

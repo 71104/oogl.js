@@ -1,6 +1,10 @@
 /*global OOGL: false */
 
 /**
+ * @module OOGL
+ */
+
+/**
  * A mutable 3-component vector.
  *
  * @class OOGL.Vector3

@@ -1,4 +1,8 @@
 /**
+ * @module OOGL
+ */
+
+/**
  * Requests a new WebGL context on the specified canvas and wraps it in a new
  * OOGL object. An exception is thrown if WebGL is not supported or the GPU is
  * blacklisted.

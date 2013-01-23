@@ -1,6 +1,10 @@
 /*global OOGL: false, context: false */
 
 /**
+ * @module context
+ */
+
+/**
  * Wraps a GL program.
  *
  * Instancing an object of this class is equivalent to calling the GL function

@@ -1,6 +1,10 @@
 /*global OOGL: false */
 
 /**
+ * @module OOGL
+ */
+
+/**
  * A mutable 4-component vector. This is usually the homogeneous version of a
  * 3-component vector.
  *

@@ -1,6 +1,10 @@
 /*global context: false */
 
 /**
+ * @module context
+ */
+
+/**
  * Wraps a GL buffer with a specified target, data type and usage settings.
  *
  * Instancing an object of this class is equivalent to calling the GL function
@@ -249,6 +253,7 @@ context.StreamBuffer = function (target, type) {
  * Wraps a GL buffer whose usage is set to `gl.DYNAMIC_DRAW`.
  *
  * @class context.DynamicBuffer
+ * @module context
  * @extends context.Buffer
  * @constructor
  * @param {Number} target The target against which this buffer will be bound

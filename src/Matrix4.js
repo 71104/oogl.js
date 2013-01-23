@@ -1,6 +1,10 @@
 /*global OOGL: false */
 
 /**
+ * @module OOGL
+ */
+
+/**
  * A mutable 4x4 matrix.
  *
  * @class OOGL.Matrix4

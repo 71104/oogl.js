@@ -1,6 +1,10 @@
 /*global context: false */
 
 /**
+ * @module context
+ */
+
+/**
  * Wraps a GL renderbuffer.
  *
  * Instancing an object of this class is equivalent to calling the GL function

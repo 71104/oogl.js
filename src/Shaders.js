@@ -1,6 +1,10 @@
 /*global OOGL: false, context: false */
 
 /**
+ * @module context
+ */
+
+/**
  * Wraps a GL shader.
  *
  * @class context.Shader
