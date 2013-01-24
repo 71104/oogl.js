@@ -417,6 +417,24 @@ context.Program = function () {
 	program.getUniformLocation = getUniformLocation;
 
 	/**
+	 * TODO
+	 *
+	 * @method uniform
+	 * @param {Object} map TODO
+	 * @param {String} map[key].type TODO
+	 * @param {Mixed} map[key].value TODO
+	 * @example
+	 *	TODO
+	 */
+	program.uniform = function (map) {
+		for (var name in map) {
+			if (map.hasOwnProperty(name)) {
+				context['uniform' + map[name].type](getUniformLocation(name), map[name].value);
+			}
+		}
+	};
+
+	/**
 	 * Specifies the value for a `float` uniform variable.
 	 *
 	 * `gl.uniform1f` equivalent.
