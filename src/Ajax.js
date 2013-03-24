@@ -40,7 +40,7 @@ OOGL.Ajax = new (function () {
 		var xhr = new XHR(function () {
 			if (xhr.readyState === 4) {
 				if (xhr.status === 200) {
-					callback(xhr.responseText);
+					callback && callback(xhr.responseText);
 				} else {
 					errorCallback();
 				}
@@ -53,7 +53,7 @@ OOGL.Ajax = new (function () {
 		var xhr = new XHR(function () {
 			if (xhr.readyState === 4) {
 				if (xhr.status === 200) {
-					callback(JSON.parse(xhr.responseText));
+					callback && callback(JSON.parse(xhr.responseText));
 				} else {
 					errorCallback();
 				}
@@ -69,8 +69,9 @@ OOGL.Ajax = new (function () {
 	 *
 	 * @method get
 	 * @param {String} url The URL to request.
-	 * @param {Function} callback A one-argument user-defined callback function
-	 *	that is invoked when the request completes successfully.
+	 * @param {Function} [callback] An optional one-argument user-defined
+	 *	callback function that is invoked when the request completes
+	 *	successfully.
 	 * @example
 	 *	OOGL.Ajax.get('shaders/frag/box.frag', function (source) {
 	 *		fragmentShader = new oogl.FragmentShader(source);
@@ -87,8 +88,9 @@ OOGL.Ajax = new (function () {
 	 *
 	 * @method getJSON
 	 * @param {String} url The URL to request.
-	 * @param {Function} callback A one-argument user-defined callback function
-	 *	that is invoked when the request completes successfully.
+	 * @param {Function} [callback] An optional one-argument user-defined
+	 *	callback function that is invoked when the request completes
+	 *	successfully.
 	 * @example
 	 *	OOGL.Ajax.getJSON('meshes/box.json', function (box) {
 	 *		vertices = new oogl.VertexArray(0, 3, box.vertices);
@@ -106,8 +108,9 @@ OOGL.Ajax = new (function () {
 	 *
 	 * @method post
 	 * @param {String} url The URL to request.
-	 * @param {Function} callback A one-argument user-defined callback function
-	 *	that is invoked when the request completes successfully.
+	 * @param {Function} [callback] An optional one-argument user-defined
+	 *	callback function that is invoked when the request completes
+	 *	successfully.
 	 */
 	this.post = function (url, callback) {
 		makeRequest('POST', url, callback);
@@ -119,8 +122,9 @@ OOGL.Ajax = new (function () {
 	 *
 	 * @method postJSON
 	 * @param {String} url The URL to request.
-	 * @param {Function} callback A one-argument user-defined callback function
-	 *	that is invoked when the request completes successfully.
+	 * @param {Function} [callback] An optional one-argument user-defined
+	 *	callback function that is invoked when the request completes
+	 *	successfully.
 	 */
 	this.postJSON = function (url, callback) {
 		makeJSONRequest('POST', url, callback);
@@ -132,8 +136,9 @@ OOGL.Ajax = new (function () {
 	 *
 	 * @method put
 	 * @param {String} url The URL to request.
-	 * @param {Function} callback A one-argument user-defined callback function
-	 *	that is invoked when the request completes successfully.
+	 * @param {Function} [callback] An optional one-argument user-defined
+	 *	callback function that is invoked when the request completes
+	 *	successfully.
 	 */
 	this.put = function (url, callback) {
 		makeRequest('PUT', url, callback);
@@ -145,8 +150,9 @@ OOGL.Ajax = new (function () {
 	 *
 	 * @method putJSON
 	 * @param {String} url The URL to request.
-	 * @param {Function} callback A one-argument user-defined callback function
-	 *	that is invoked when the request completes successfully.
+	 * @param {Function} [callback] An optional one-argument user-defined
+	 *	callback function that is invoked when the request completes
+	 *	successfully.
 	 */
 	this.putJSON = function (url, callback) {
 		makeJSONRequest('PUT', url, callback);
@@ -158,8 +164,9 @@ OOGL.Ajax = new (function () {
 	 *
 	 * @method _delete
 	 * @param {String} url The URL to request.
-	 * @param {Function} callback A one-argument user-defined callback function
-	 *	that is invoked when the request completes successfully.
+	 * @param {Function} [callback] An optional one-argument user-defined
+	 *	callback function that is invoked when the request completes
+	 *	successfully.
 	 */
 	this._delete = function (url, callback) {
 		makeRequest('DELETE', url, callback);
@@ -171,8 +178,9 @@ OOGL.Ajax = new (function () {
 	 *
 	 * @method deleteJSON
 	 * @param {String} url The URL to request.
-	 * @param {Function} callback A one-argument user-defined callback function
-	 *	that is invoked when the request completes successfully.
+	 * @param {Function} [callback] An optional one-argument user-defined
+	 *	callback function that is invoked when the request completes
+	 *	successfully.
 	 */
 	this.deleteJSON = function (url, callback) {
 		makeJSONRequest('DELETE', url, callback);
