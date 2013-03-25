@@ -1008,7 +1008,7 @@ context.ElementArray = function (indices, type) {
 		throw 'Invalid element type, must be either "ubyte" or "ushort".';
 	}
 
-	var buffer = new context.StaticElementArrayBuffer(types[type]);
+	var buffer = new context.StaticElementArrayBuffer(type);
 	buffer.bindAndData(indices);
 
 	/**
