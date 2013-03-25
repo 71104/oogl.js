@@ -995,7 +995,9 @@ context.AttributeArrays = function (count) {
  *	elements.drawTriangles();
  */
 context.ElementArray = function (indices, type) {
-	type |= 'ushort';
+	if (!type) {
+		type = 'ushort';
+	}
 	var count = indices.length;
 
 	var types = {
@@ -1003,7 +1005,7 @@ context.ElementArray = function (indices, type) {
 		'ushort': context.UNSIGNED_SHORT
 	};
 	if (!types.hasOwnProperty(type)) {
-		throw 'Invalid element type, must be either "ubyte" or "ubyte".';
+		throw 'Invalid element type, must be either "ubyte" or "ushort".';
 	}
 
 	var buffer = new context.StaticElementArrayBuffer(types[type]);
