@@ -903,7 +903,7 @@ context.AttributeArrays = function (count) {
 		 *
 		 * You may optionally specify `offset` and `count` parameters.
 		 *
-		 * @method drawTriangles
+		 * @method drawTriangleFan
 		 * @param {Number} [offset=0] The index of the first vertex attribute to
 		 *	draw.
 		 * @param {Number} [count] The number of vertex attributes to draw. When
@@ -932,7 +932,7 @@ context.AttributeArrays = function (count) {
 		 *
 		 * You may optionally specify `offset` and `count` parameters.
 		 *
-		 * @method drawTriangles
+		 * @method drawTriangleStrip
 		 * @param {Number} [offset=0] The index of the first vertex attribute to
 		 *	draw.
 		 * @param {Number} [count] The number of vertex attributes to draw. When
