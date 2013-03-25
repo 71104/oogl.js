@@ -995,13 +995,14 @@ context.AttributeArrays = function (count) {
  *	elements.drawTriangles();
  */
 context.ElementArray = function (indices, type) {
+	type |= 'ushort';
 	var count = indices.length;
 
 	var types = {
 		'ubyte': context.UNSIGNED_BYTE,
 		'ushort': context.UNSIGNED_SHORT
 	};
-	if (!types.hasOwnProperty(type || 'ushort')) {
+	if (!types.hasOwnProperty(type)) {
 		throw 'Invalid element type, must be either "ubyte" or "ubyte".';
 	}
 
