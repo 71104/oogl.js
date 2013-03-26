@@ -8,10 +8,11 @@
  * Creates an array buffer with static draw usage representing a single
  * component vertex attribute array.
  *
- * The attribute array is associated to the specified `index`: the
- * `AttributeArray` constructor enables the `index`-th attribute array calling
- * `gl.enableVertexAttribArray` and the provided `pointer` method invokes
- * `gl.vertexAttribPointer` with the specified `index` and `type`.
+ * The attribute array is associated to the specified `index`: the provided
+ * `enable` and `disable` methods enable and disable the `index`-th attribute
+ * array calling `gl.enableVertexAttribArray` and `gl.disableVertexAttribArray`
+ * and the provided `pointer` method invokes `gl.vertexAttribPointer` with the
+ * specified `index` and `type`.
  *
  * @class context.AttributeArray1
  * @extends context.StaticArrayBuffer
@@ -56,7 +57,32 @@ context.AttributeArray1 = function (index, type, data, normalize) {
 
 	var buffer = new context.StaticArrayBuffer(type);
 	buffer.bindAndData(data);
-	context.enableVertexAttribArray(index);
+
+	/**
+	 * Enables the `index`-th vertex attribute array.
+	 *
+	 * `gl.enableVertexAttribArray` equivalent.
+	 *
+	 * @method enable
+	 * @example
+	 *	TODO
+	 */
+	buffer.enable = function () {
+		context.enableVertexAttribArray(index);
+	};
+
+	/**
+	 * Disables the `index`-th vertex attribute array.
+	 *
+	 * `gl.disableVertexAttribArray` equivalent.
+	 *
+	 * @method disable
+	 * @example
+	 *	TODO
+	 */
+	buffer.disable = function () {
+		context.disableVertexAttribArray(index);
+	};
 
 	/**
 	 * Specifies a pointer to this buffer for the `index`-th vertex attribute
@@ -107,6 +133,27 @@ context.AttributeArray1 = function (index, type, data, normalize) {
 		context.vertexAttribPointer(index, 1, types[type].glType, !!normalize, (stride || 0) * types[type].size, (offset || 0) * types[type].size);
 	};
 
+	/**
+	 * TODO
+	 *
+	 * @method enableBindAndPointer
+	 * @param {Number} [stride=0] The stride between consecutive elements in the
+	 *	array (see the explanation for the equivalent argument in
+	 *	`gl.vertexAttribPointer`).
+	 * @param {Number} [offset=0] The index of the first element of the
+	 *	underlying buffer to be used for the attribute array.
+	 *
+	 * This value is multiplied by the data type size and used as the `pointer`
+	 * parameter in the `gl.vertexAttribPointer` call.
+	 * @example
+	 *	TODO
+	 */
+	buffer.enableBindAndPointer = function (stride, offset) {
+		context.enableVertexAttribArray(index);
+		context.bindBuffer(context.ARRAY_BUFFER, buffer);
+		context.vertexAttribPointer(index, 1, types[type].glType, !!normalize, (stride || 0) * types[type].size, (offset || 0) * types[type].size);
+	};
+
 	return buffer;
 };
 
@@ -114,10 +161,11 @@ context.AttributeArray1 = function (index, type, data, normalize) {
  * Creates an array buffer with static draw usage representing a 2-component
  * vertex attribute array.
  *
- * The attribute array is associated to the specified `index`: the
- * `AttributeArray` constructor enables the `index`-th attribute array calling
- * `gl.enableVertexAttribArray` and the provided `pointer` method invokes
- * `gl.vertexAttribPointer` with the specified `index` and `type`.
+ * The attribute array is associated to the specified `index`: the provided
+ * `enable` and `disable` methods enable and disable the `index`-th attribute
+ * array calling `gl.enableVertexAttribArray` and `gl.disableVertexAttribArray`
+ * and the provided `pointer` method invokes `gl.vertexAttribPointer` with the
+ * specified `index` and `type`.
  *
  * @class context.AttributeArray2
  * @extends context.StaticArrayBuffer
@@ -162,7 +210,32 @@ context.AttributeArray2 = function (index, type, data, normalize) {
 
 	var buffer = new context.StaticArrayBuffer(type);
 	buffer.bindAndData(data);
-	context.enableVertexAttribArray(index);
+
+	/**
+	 * Enables the `index`-th vertex attribute array.
+	 *
+	 * `gl.enableVertexAttribArray` equivalent.
+	 *
+	 * @method enable
+	 * @example
+	 *	TODO
+	 */
+	buffer.enable = function () {
+		context.enableVertexAttribArray(index);
+	};
+
+	/**
+	 * Disables the `index`-th vertex attribute array.
+	 *
+	 * `gl.disableVertexAttribArray` equivalent.
+	 *
+	 * @method disable
+	 * @example
+	 *	TODO
+	 */
+	buffer.disable = function () {
+		context.disableVertexAttribArray(index);
+	};
 
 	/**
 	 * Specifies a pointer to this buffer for the `index`-th vertex attribute
@@ -213,6 +286,27 @@ context.AttributeArray2 = function (index, type, data, normalize) {
 		context.vertexAttribPointer(index, 2, types[type].glType, !!normalize, (stride || 0) * types[type].size, (offset || 0) * types[type].size);
 	};
 
+	/**
+	 * TODO
+	 *
+	 * @method enableBindAndPointer
+	 * @param {Number} [stride=0] The stride between consecutive elements in the
+	 *	array (see the explanation for the equivalent argument in
+	 *	`gl.vertexAttribPointer`).
+	 * @param {Number} [offset=0] The index of the first element of the
+	 *	underlying buffer to be used for the attribute array.
+	 *
+	 * This value is multiplied by the data type size and used as the `pointer`
+	 * parameter in the `gl.vertexAttribPointer` call.
+	 * @example
+	 *	TODO
+	 */
+	buffer.enableBindAndPointer = function (stride, offset) {
+		context.enableVertexAttribArray(index);
+		context.bindBuffer(context.ARRAY_BUFFER, buffer);
+		context.vertexAttribPointer(index, 2, types[type].glType, !!normalize, (stride || 0) * types[type].size, (offset || 0) * types[type].size);
+	};
+
 	return buffer;
 };
 
@@ -220,10 +314,11 @@ context.AttributeArray2 = function (index, type, data, normalize) {
  * Creates an array buffer with static draw usage representing a 3-component
  * vertex attribute array.
  *
- * The attribute array is associated to the specified `index`: the
- * `AttributeArray` constructor enables the `index`-th attribute array calling
- * `gl.enableVertexAttribArray` and the provided `pointer` method invokes
- * `gl.vertexAttribPointer` with the specified `index` and `type`.
+ * The attribute array is associated to the specified `index`: the provided
+ * `enable` and `disable` methods enable and disable the `index`-th attribute
+ * array calling `gl.enableVertexAttribArray` and `gl.disableVertexAttribArray`
+ * and the provided `pointer` method invokes `gl.vertexAttribPointer` with the
+ * specified `index` and `type`.
  *
  * @class context.AttributeArray3
  * @extends context.StaticArrayBuffer
@@ -268,7 +363,32 @@ context.AttributeArray3 = function (index, type, data, normalize) {
 
 	var buffer = new context.StaticArrayBuffer(type);
 	buffer.bindAndData(data);
-	context.enableVertexAttribArray(index);
+
+	/**
+	 * Enables the `index`-th vertex attribute array.
+	 *
+	 * `gl.enableVertexAttribArray` equivalent.
+	 *
+	 * @method enable
+	 * @example
+	 *	TODO
+	 */
+	buffer.enable = function () {
+		context.enableVertexAttribArray(index);
+	};
+
+	/**
+	 * Disables the `index`-th vertex attribute array.
+	 *
+	 * `gl.disableVertexAttribArray` equivalent.
+	 *
+	 * @method disable
+	 * @example
+	 *	TODO
+	 */
+	buffer.disable = function () {
+		context.disableVertexAttribArray(index);
+	};
 
 	/**
 	 * Specifies a pointer to this buffer for the `index`-th vertex attribute
@@ -319,6 +439,27 @@ context.AttributeArray3 = function (index, type, data, normalize) {
 		context.vertexAttribPointer(index, 3, types[type].glType, !!normalize, (stride || 0) * types[type].size, (offset || 0) * types[type].size);
 	};
 
+	/**
+	 * TODO
+	 *
+	 * @method enableBindAndPointer
+	 * @param {Number} [stride=0] The stride between consecutive elements in the
+	 *	array (see the explanation for the equivalent argument in
+	 *	`gl.vertexAttribPointer`).
+	 * @param {Number} [offset=0] The index of the first element of the
+	 *	underlying buffer to be used for the attribute array.
+	 *
+	 * This value is multiplied by the data type size and used as the `pointer`
+	 * parameter in the `gl.vertexAttribPointer` call.
+	 * @example
+	 *	TODO
+	 */
+	buffer.enableBindAndPointer = function (stride, offset) {
+		context.enableVertexAttribArray(index);
+		context.bindBuffer(context.ARRAY_BUFFER, buffer);
+		context.vertexAttribPointer(index, 3, types[type].glType, !!normalize, (stride || 0) * types[type].size, (offset || 0) * types[type].size);
+	};
+
 	return buffer;
 };
 
@@ -326,10 +467,11 @@ context.AttributeArray3 = function (index, type, data, normalize) {
  * Creates an array buffer with static draw usage representing a 4-component
  * vertex attribute array.
  *
- * The attribute array is associated to the specified `index`: the
- * `AttributeArray` constructor enables the `index`-th attribute array calling
- * `gl.enableVertexAttribArray` and the provided `pointer` method invokes
- * `gl.vertexAttribPointer` with the specified `index` and `type`.
+ * The attribute array is associated to the specified `index`: the provided
+ * `enable` and `disable` methods enable and disable the `index`-th attribute
+ * array calling `gl.enableVertexAttribArray` and `gl.disableVertexAttribArray`
+ * and the provided `pointer` method invokes `gl.vertexAttribPointer` with the
+ * specified `index` and `type`.
  *
  * @class context.AttributeArray4
  * @extends context.StaticArrayBuffer
@@ -374,7 +516,32 @@ context.AttributeArray4 = function (index, type, data, normalize) {
 
 	var buffer = new context.StaticArrayBuffer(type);
 	buffer.bindAndData(data);
-	context.enableVertexAttribArray(index);
+
+	/**
+	 * Enables the `index`-th vertex attribute array.
+	 *
+	 * `gl.enableVertexAttribArray` equivalent.
+	 *
+	 * @method enable
+	 * @example
+	 *	TODO
+	 */
+	buffer.enable = function () {
+		context.enableVertexAttribArray(index);
+	};
+
+	/**
+	 * Disables the `index`-th vertex attribute array.
+	 *
+	 * `gl.disableVertexAttribArray` equivalent.
+	 *
+	 * @method disable
+	 * @example
+	 *	TODO
+	 */
+	buffer.disable = function () {
+		context.disableVertexAttribArray(index);
+	};
 
 	/**
 	 * Specifies a pointer to this buffer for the `index`-th vertex attribute
@@ -423,6 +590,27 @@ context.AttributeArray4 = function (index, type, data, normalize) {
 	 *	buffer.bindAndPointer();
 	 */
 	buffer.bindAndPointer = function (stride, offset) {
+		context.bindBuffer(context.ARRAY_BUFFER, buffer);
+		context.vertexAttribPointer(index, 4, types[type].glType, !!normalize, (stride || 0) * types[type].size, (offset || 0) * types[type].size);
+	};
+
+	/**
+	 * TODO
+	 *
+	 * @method enableBindAndPointer
+	 * @param {Number} [stride=0] The stride between consecutive elements in the
+	 *	array (see the explanation for the equivalent argument in
+	 *	`gl.vertexAttribPointer`).
+	 * @param {Number} [offset=0] The index of the first element of the
+	 *	underlying buffer to be used for the attribute array.
+	 *
+	 * This value is multiplied by the data type size and used as the `pointer`
+	 * parameter in the `gl.vertexAttribPointer` call.
+	 * @example
+	 *	TODO
+	 */
+	buffer.enableBindAndPointer = function (stride, offset) {
+		context.enableVertexAttribArray(index);
 		context.bindBuffer(context.ARRAY_BUFFER, buffer);
 		context.vertexAttribPointer(index, 4, types[type].glType, !!normalize, (stride || 0) * types[type].size, (offset || 0) * types[type].size);
 	};
@@ -835,6 +1023,32 @@ context.AttributeArrays = function (count) {
 		},
 
 		/**
+		 * TODO
+		 *
+		 * @method enable
+		 * @example
+		 *	TODO
+		 */
+		enable: function () {
+			for (var i = 0; i < arrays.length; i++) {
+				context.enableVertexAttribArray(i);
+			}
+		},
+
+		/**
+		 * TODO
+		 *
+		 * @method disable
+		 * @example
+		 *	TODO
+		 */
+		disable: function () {
+			for (var i = 0; i < arrays.length; i++) {
+				context.disableVertexAttribArray(i);
+			}
+		},
+
+		/**
 		 * Binds each array in the set to its buffer target (which is always
 		 * `gl.ARRAY_BUFFER`) and specifies its pointer for the attribute array
 		 * associated to its index. This is typically used to prepare all the
@@ -857,12 +1071,27 @@ context.AttributeArrays = function (count) {
 		 *	arrays.add3('float', vertices);
 		 *	arrays.add3('float', colors);
 		 *	arrays.add2('float', textureCoordinates);
+		 *	arrays.enable();
 		 *	arrays.bindAndPointer();
 		 *	program.use();
 		 *	arrays.drawTriangles();
 		 */
 		bindAndPointer: function (stride, offset) {
 			for (var i in arrays) {
+				arrays[i].bindAndPointer(stride, offset);
+			}
+		},
+
+		/**
+		 * TODO
+		 *
+		 * @method enableBindAndPointer
+		 * @example
+		 *	TODO
+		 */
+		enableBindAndPointer: function (stride, offset) {
+			for (var i = 0; i < arrays.length; i++) {
+				context.enableVertexAttribArray(i);
 				arrays[i].bindAndPointer(stride, offset);
 			}
 		},
