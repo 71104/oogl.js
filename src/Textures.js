@@ -476,11 +476,28 @@ context.CubeMap = function () {
  * @constructor
  * @param {String} name TODO
  * @param {Function} callback TODO
+ * @param {Number} [magFilter=gl.LINEAR] An optional value for the magnifying
+ *	filter.
+ * @param {Number} [minFilter=gl.LINEAR] An optional value for the minifying
+ *	filter.
  * @example
  *	TODO
  */
-context.AsyncCubeMap = function (namePattern, callback) {
+context.AsyncCubeMap = function (namePattern, callback, magFilter, minFilter) {
 	var cubeMap = new context.CubeMap();
+
+	cubeMap.bind();
+	if (arguments.length > 2) {
+		cubeMap.setMagFilter(magFilter);
+		if (arguments.length > 3) {
+			cubeMap.setMinFilter(minFilter);
+		} else {
+			cubeMap.setMinFilter(context.LINEAR);
+		}
+	} else {
+		cubeMap.setMagFilter(context.LINEAR);
+		cubeMap.setMinFilter(context.LINEAR);
+	}
 
 	function bindLoadFace(id, target) {
 		return function (callback) {
