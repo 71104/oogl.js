@@ -1,4 +1,4 @@
-/*global context: false */
+/*global OOGL: false, context: false */
 
 /**
  * @module context
@@ -447,10 +447,10 @@ context.AsyncTexture = function (url, callback, magFilter, minFilter) {
 	 *	});
 	 */
 	texture.image = new Image();
-	texture.image.onload = function () {
+	texture.image.addEventListener('load', function () {
 		texture.image2D(0, context.RGBA, context.UNSIGNED_BYTE, texture.image);
 		callback && callback.call(texture);
-	};
+	}, false);
 	texture.image.src = url;
 
 	return texture;
@@ -467,6 +467,42 @@ context.AsyncTexture = function (url, callback, magFilter, minFilter) {
  */
 context.CubeMap = function () {
 	return new context.Texture(context.TEXTURE_CUBE_MAP);
+};
+
+/**
+ * TODO
+ *
+ * @class context.AsyncCubeMap
+ * @constructor
+ * @param {String} name TODO
+ * @param {Function} callback TODO
+ * @example
+ *	TODO
+ */
+context.AsyncCubeMap = function (name, callback) {
+	var cubeMap = new context.CubeMap();
+
+	function bindLoadFace(suffix, target) {
+		return function (callback) {
+			var image = new Image();
+			image.addEventListener('load', function () {
+				context.texImage2D(target, 0, context.RGBA, context.RGBA, context.UNSIGNED_BYTE, image);
+				callback();
+			}, false);
+			image.src = name + suffix;
+		};
+	}
+
+	new OOGL.Loader(
+		bindLoadFace('+X', context.TEXTURE_CUBE_MAP_POSITIVE_X),
+		bindLoadFace('+Y', context.TEXTURE_CUBE_MAP_POSITIVE_Y),
+		bindLoadFace('+Z', context.TEXTURE_CUBE_MAP_POSITIVE_Z),
+		bindLoadFace('-X', context.TEXTURE_CUBE_MAP_NEGATIVE_X),
+		bindLoadFace('-Y', context.TEXTURE_CUBE_MAP_NEGATIVE_Y),
+		bindLoadFace('-Z', context.TEXTURE_CUBE_MAP_NEGATIVE_Z)
+	).start(callback);
+
+	return cubeMap;
 };
 
 /**
