@@ -479,17 +479,17 @@ context.CubeMap = function () {
  * @example
  *	TODO
  */
-context.AsyncCubeMap = function (name, callback) {
+context.AsyncCubeMap = function (namePattern, callback) {
 	var cubeMap = new context.CubeMap();
 
-	function bindLoadFace(suffix, target) {
+	function bindLoadFace(id, target) {
 		return function (callback) {
 			var image = new Image();
 			image.addEventListener('load', function () {
 				context.texImage2D(target, 0, context.RGBA, context.RGBA, context.UNSIGNED_BYTE, image);
 				callback();
 			}, false);
-			image.src = name + suffix;
+			image.src = namePattern.replace('%1', id);
 		};
 	}
 
