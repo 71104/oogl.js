@@ -35,6 +35,22 @@ OOGL.Matrix3 = function (data) {
 
 OOGL.Matrix3.prototype = {
 	/**
+	 * TODO
+	 *
+	 * @method clone
+	 * @return {OOGL.Matrix3} TODO
+	 * @example
+	 *	TODO
+	 */
+	clone: function () {
+		return new OOGL.Matrix3([
+			this[0], this[1], this[2],
+			this[3], this[4], this[5],
+			this[6], this[7], this[8]
+		]);
+	},
+
+	/**
 	 * Yields a new `Matrix4` object corresponding to a homogeneous 4x4 matrix
 	 * equivalent to this matrix.
 	 *

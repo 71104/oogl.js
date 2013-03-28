@@ -68,6 +68,21 @@ OOGL.Matrix2 = function (data) {
 
 OOGL.Matrix2.prototype = {
 	/**
+	 * TODO
+	 *
+	 * @method clone
+	 * @return {OOGL.Matrix2} TODO
+	 * @example
+	 *	TODO
+	 */
+	clone: function () {
+		return new OOGL.Matrix2([
+			this[0], this[1],
+			this[2], this[3]
+		]);
+	},
+
+	/**
 	 * Returns the element at the specified row and column in the matrix.
 	 *
 	 * Row and column indices are zero-based. This method is equivalent to
