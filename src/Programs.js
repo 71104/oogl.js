@@ -156,7 +156,9 @@ context.Program = function () {
 	 */
 	program.bindAttribLocations = function (attributes) {
 		for (var i in attributes) {
-			context.bindAttribLocation(program, parseInt(i, 10), attributes[i]);
+			if (attributes.hasOwnProperty(i)) {
+				context.bindAttribLocation(program, parseInt(i, 10), attributes[i]);
+			}
 		}
 	};
 

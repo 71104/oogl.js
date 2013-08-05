@@ -1078,7 +1078,9 @@ context.AttributeArrays = function (count) {
 		 */
 		bindAndPointer: function (stride, offset) {
 			for (var i in arrays) {
-				arrays[i].bindAndPointer(stride, offset);
+				if (arrays.hasOwnProperty(i)) {
+					arrays[i].bindAndPointer(stride, offset);
+				}
 			}
 		},
 
@@ -1192,7 +1194,9 @@ context.AttributeArrays = function (count) {
 		 */
 		_delete: function () {
 			for (var i in arrays) {
-				arrays[i]._delete();
+				if (arrays.hasOwnProperty(i)) {
+					arrays[i]._delete();
+				}
 			}
 		}
 	};

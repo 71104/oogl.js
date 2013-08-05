@@ -551,11 +551,13 @@ context.Textures = function (textures) {
 	var names = {};
 	var entries = [];
 	for (var name in textures) {
-		names[name] = true;
-		entries.push({
-			name: name,
-			texture: textures[name]
-		});
+		if (textures.hasOwnProperty(name)) {
+			names[name] = true;
+			entries.push({
+				name: name,
+				texture: textures[name]
+			});
+		}
 	}
 	return {
 		/**
@@ -580,9 +582,11 @@ context.Textures = function (textures) {
 		add: function (name, texture) {
 			if (names.hasOwnProperty(name)) {
 				for (var i in entries) {
-					if (entries[i].name == name) {
-						entries[i].texture = texture;
-						return;
+					if (entries.hasOwnProperty(i)) {
+						if (entries[i].name == name) {
+							entries[i].texture = texture;
+							return;
+						}
 					}
 				}
 			} else {
@@ -668,7 +672,9 @@ context.Textures = function (textures) {
 		 */
 		_delete: function () {
 			for (var i in entries) {
-				entries[i].texture._delete();
+				if (entries.hasOwnProperty(i)) {
+					entries[i].texture._delete();
+				}
 			}
 			names = {};
 			entries = [];

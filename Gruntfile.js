@@ -25,6 +25,7 @@ module.exports = function (grunt) {
 
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
+
 		meta: {
 			banner: '/*! Object-Oriented Graphics Library - v<%= pkg.version %> - ' +
 				'<%= grunt.template.today("yyyy-mm-dd") %>\n' +
@@ -32,6 +33,7 @@ module.exports = function (grunt) {
 				'* http://oogljs.com/\n' +
 				'* Copyright (c) <%= grunt.template.today("yyyy") %> Alberto La Rocca */'
 		},
+
 		jshint: {
 			options: {
 				camelcase: true,
@@ -45,16 +47,19 @@ module.exports = function (grunt) {
 				quotmark: 'single',
 				undef: true,
 				unused: true,
-				strict: true,
+				strict: false,
 				trailing: true,
 				boss: true,
 				debug: true,
 				expr: true,
-				// loopfunc: true,
+				loopfunc: true,
 				multistr: true,
 				smarttabs: true,
 				supernew: true,
-				browser: true
+				browser: true,
+				globals: {
+					ActiveXObject: false
+				}
 			},
 			dist: [
 				'src/OOGL.js',
@@ -75,21 +80,35 @@ module.exports = function (grunt) {
 				'src/Renderbuffer.js',
 				'src/RenderLoop.js',
 				'src/Timing.js',
-			]
+				]
 		},
+
 		concat: {
 			dist: {
-				src: files,
-				dest: 'bin/oogl-<%= pkg.version %>.js'
+				'bin/oogl-<%= pkg.version %>.js': files
 			}
 		},
+
 		uglify: {
 			options: {
 				wrap: 'OOGL',
 			},
 			dist: {
-				src: files,
-				dest: 'bin/oogl-<%= pkg.version %>.min.js'
+				'bin/oogl-<%= pkg.version %>.min.js': files
+			}
+		},
+
+		yuidoc: {
+			compile: {
+				name: 'OOGL.js',
+				description: 'A thin object oriented layer above WebGL.',
+				version: '<%= pkg.version %>',
+				url: '<%= pkg.homepage %>',
+				options: {
+					paths: 'src/',
+					outdir: 'doc/',
+					linkNatives: 'true'
+				}
 			}
 		}
 	});
