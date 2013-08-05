@@ -1,31 +1,42 @@
 {
-  "name": "oogl-demos",
-  "version": "1.0.0",
-  "description": "oogl.js Demos",
-  "main": "demos.js",
-  "files": [
-    "demos.js",
-    "demos"
-  ],
-  "dependencies": {
-    "express": "",
-    "openurl": ""
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/71104/oogl.js.git"
-  },
-  "keywords": [
-    "oogl",
-    "oogl.js",
-    "webgl",
-    "html5",
-    "demos",
-    "nehe",
-    "examples"
-  ],
-  "author": "Alberto La Rocca",
-  "license": "MIT",
-  "readmeFilename": "README.md",
-  "gitHead": "18136ebd7562cf46d31f492257bb754de9217bdf"
+	"name": "oogl",
+	"version": "1.0.0",
+	"description": "oogl.js",
+	"keywords": [
+		"oogl",
+		"oogl.js",
+		"webgl",
+		"html5",
+		"demos",
+		"nehe",
+		"examples"
+	],
+	"homepage": "http://www.oogljs.com/",
+	"bugs": "https://github.com/71104/oogl.js/issues",
+	"license": "MIT",
+	"author": "Alberto La Rocca <a71104@gmail.com> (https://github.com/71104)",
+	"files": [
+		"demos.js",
+		"demos"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/71104/oogl.js.git"
+	},
+	"scripts": {
+		"start": "node demos.js"
+	},
+	"dependencies": {
+		"express": "",
+		"openurl": ""
+	},
+	"devDependencies": {
+		"grunt": "~0.4.1",
+		"grunt-contrib-jshint": "~0.6.2",
+		"grunt-contrib-uglify": "~0.2.2",
+		"grunt-contrib-concat": "~0.3.0",
+		"grunt-contrib-yuidoc": "~0.4.0"
+	},
+	"readmeFilename": "README.md",
+	"private": true
 }
