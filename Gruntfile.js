@@ -1,6 +1,5 @@
 module.exports = function (grunt) {
 	var files = [
-		'<banner>',
 		'src/OOGL.js',
 		'src/Timing.js',
 		'src/Ajax.js',
@@ -31,7 +30,7 @@ module.exports = function (grunt) {
 				'<%= grunt.template.today("yyyy-mm-dd") %>\n' +
 				'* Released under the MIT License\n' +
 				'* http://oogljs.com/\n' +
-				'* Copyright (c) <%= grunt.template.today("yyyy") %> Alberto La Rocca */'
+				'* Copyright (c) <%= grunt.template.today("yyyy") %> Alberto La Rocca */\n'
 		},
 
 		jshint: {
@@ -84,17 +83,26 @@ module.exports = function (grunt) {
 		},
 
 		concat: {
+			options: {
+				banner: '<%= meta.banner %>\n'
+			},
 			dist: {
-				'bin/oogl-<%= pkg.version %>.js': files
+				files: {
+					'bin/oogl-<%= pkg.version %>.js': files
+				}
 			}
 		},
 
 		uglify: {
 			options: {
+				banner: '<%= meta.banner %>',
 				wrap: 'OOGL',
+				report: 'min'
 			},
 			dist: {
-				'bin/oogl-<%= pkg.version %>.min.js': files
+				files: {
+					'bin/oogl-<%= pkg.version %>.min.js': files
+				}
 			}
 		},
 
