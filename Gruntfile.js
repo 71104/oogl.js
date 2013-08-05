@@ -99,13 +99,12 @@ module.exports = function (grunt) {
 
 		uglify: {
 			options: {
-				banner: '<%= meta.banner %>',
 				wrap: 'OOGL',
 				report: 'min'
 			},
 			dist: {
 				files: {
-					'bin/oogl-<%= pkg.version %>.min.js': files
+					'bin/oogl-<%= pkg.version %>.min.js': ['bin/oogl-<%= pkg.version %>.js']
 				}
 			}
 		},
@@ -131,6 +130,6 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-yuidoc');
 
-	grunt.registerTask('default', ['uglify']);
+	grunt.registerTask('default', ['jshint', 'concat', 'uglify']);
 	grunt.registerTask('debug', ['jshint', 'concat']);
 };
