@@ -99,7 +99,7 @@ module.exports = function (grunt) {
 
 		uglify: {
 			options: {
-				wrap: 'OOGL',
+				preserveComments: 'some',
 				report: 'min'
 			},
 			dist: {
