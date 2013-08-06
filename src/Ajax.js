@@ -19,7 +19,7 @@ OOGL.Ajax = new (function () {
 	 * related to an AJAX request occurs.
 	 *
 	 * @method onError
-	 * @param {Function} callback A user-defined callback function that gets
+	 * @param callback {Function} A user-defined callback function that gets
 	 *	called in case of an error in an AJAX request.
 	 * @example
 	 *	OOGL.Ajax.onError(function () {
@@ -36,31 +36,173 @@ OOGL.Ajax = new (function () {
 		return xhr;
 	}
 
-	function makeRequest(method, url, callback) {
+	function makeRequest(method, settings) {
 		var xhr = new XHR(function () {
 			if (xhr.readyState === 4) {
 				if (xhr.status === 200) {
-					callback && callback(xhr.responseText);
+					if (settings.hasOwnProperty('callback')) {
+						settings.callback(xhr.response);
+					}
 				} else {
 					errorCallback();
 				}
 			}
 		});
-		xhr.open(method, url);
-		xhr.send();
+		if (settings.hasOwnProperty('type')) {
+			xhr.responseType = settings.type;
+		}
+		var async = true;
+		if (settings.hasOwnProperty('async')) {
+			async = settings.async;
+		}
+		if (settings.hasOwnProperty('data')) {
+			var encodedData = (function () {
+				var parameters = {};
+				(function encode(prefix, object) {
+					if (typeof object !== 'object') {
+						parameters[prefix] = '' + object;
+					} else if (Array.isArray(object)) {
+						if (object.length) {
+							for (var i in object) {
+								if (object.hasOwnProperty(i)) {
+									encode(prefix + '[' + i + ']', object[i]);
+								}
+							}
+						} else {
+							parameters[prefix] = '[]';
+						}
+					} else if (object !== null) {
+						if (Object.keys(object).length) {
+							for (var key in object) {
+								if (object.hasOwnProperty(key)) {
+									if (/^\w+$/.test(key)) {
+										encode(prefix + '.' + key, object[key]);
+									} else {
+										encode(prefix + '[\"' + key.replace('\"', '\\\"') + '\"]', object[key]);
+									}
+								}
+							}
+						} else {
+							parameters[prefix] = '{}';
+						}
+					} else {
+						parameters[prefix] = 'null';
+					}
+				})('', settings.data);
+				return (function (first) {
+					var query = '';
+					for (var name in parameters) {
+						if (parameters.hasOwnProperty(name)) {
+							if (first) {
+								first = false;
+							} else {
+								query += '&';
+							}
+							query += encodeURIComponent(name) + '=' + encodeURIComponent(parameters[name]);
+						}
+					}
+					return query;
+				})(true);
+			})();
+			if (/^get$/i.test(method)) {
+				var url = settings.url + '?' + encodedData;
+				if (settings.hasOwnProperty('user')) {
+					if (settings.hasOwnProperty('password')) {
+						xhr.open(method, url, async, settings.user, settings.password);
+					} else {
+						xhr.open(method, url, async, settings.user);
+					}
+				} else {
+					xhr.open(method, url, async);
+				}
+				xhr.send();
+			} else {
+				if (settings.hasOwnProperty('user')) {
+					if (settings.hasOwnProperty('password')) {
+						xhr.open(method, settings.url, async, settings.user, settings.password);
+					} else {
+						xhr.open(method, settings.url, async, settings.user);
+					}
+				} else {
+					xhr.open(method, settings.url, async);
+				}
+				xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+				xhr.send(encodedData);
+			}
+		} else {
+			if (settings.hasOwnProperty('user')) {
+				if (settings.hasOwnProperty('password')) {
+					xhr.open(method, settings.url, async, settings.user, settings.password);
+				} else {
+					xhr.open(method, settings.url, async, settings.user);
+				}
+			} else {
+				xhr.open(method, settings.url, async);
+			}
+			xhr.send();
+		}
 	}
-	function makeJSONRequest(method, url, callback) {
-		var xhr = new XHR(function () {
-			if (xhr.readyState === 4) {
-				if (xhr.status === 200) {
-					callback && callback(JSON.parse(xhr.responseText));
+
+	function bindRequest(method) {
+		function invalidArguments() {
+			throw 'invalid arguments for ' + method + ' AJAX request';
+		}
+		return function (url, data, callback, type) {
+			if (typeof url !== 'object') {
+				var settings = {
+					url: '' + url
+				};
+				if (typeof data !== 'object') {
+					if (typeof data !== 'function') {
+						invalidArguments();
+					} else {
+						settings.callback = data;
+						settings.type = '' + callback;
+						makeRequest(method, settings);
+					}
 				} else {
-					errorCallback();
+					settings.data = data;
+					if (typeof callback !== 'function') {
+						settings.type = '' + callback;
+						makeRequest(method, settings);
+					} else {
+						settings.callback = callback;
+						if (arguments.length > 3) {
+							settings.type = '' + type;
+						}
+						makeRequest(method, settings);
+					}
 				}
+			} else {
+				makeRequest(method, url);
 			}
-		});
-		xhr.open(method, url);
-		xhr.send();
+		};
+	}
+
+	function bindJSONRequest(method) {
+		function invalidArguments() {
+			throw 'invalid arguments for ' + method + ' AJAX request';
+		}
+		return function (url, data, callback) {
+			var settings = {
+				url: '' + url,
+				type: 'json'
+			};
+			if (typeof data !== 'object') {
+				if (typeof data !== 'function') {
+					invalidArguments();
+				} else {
+					settings.callback = data;
+					makeRequest(method, settings);
+				}
+			} else {
+				settings.data = data;
+				if (arguments.length > 2) {
+					settings.callback = callback;
+				}
+				makeRequest(method, settings);
+			}
+		};
 	}
 
 	/**
@@ -68,27 +210,27 @@ OOGL.Ajax = new (function () {
 	 * to a user-defined callback function.
 	 *
 	 * @method get
-	 * @param {String} url The URL to request.
-	 * @param {Function} [callback] An optional one-argument user-defined
+	 * @param url {String} The URL to request.
+	 * @param [data] {Object} TODO
+	 * @param [callback] {Function} An optional one-argument user-defined
 	 *	callback function that is invoked when the request completes
 	 *	successfully.
+	 * @param [type] {String} TODO
 	 * @example
 	 *	OOGL.Ajax.get('shaders/frag/box.frag', function (source) {
 	 *		fragmentShader = new oogl.FragmentShader(source);
 	 *		// ...
 	 *	});
 	 */
-	this.get = function (url, callback) {
-		makeRequest('GET', url, callback);
-	};
+	this.get = bindRequest('GET');
 
 	/**
 	 * Performs a GET AJAX request. The data returned from the server is parsed
 	 * as JSON and passed to a user-defined callback function.
 	 *
 	 * @method getJSON
-	 * @param {String} url The URL to request.
-	 * @param {Function} [callback] An optional one-argument user-defined
+	 * @param url {String} url The URL to request.
+	 * @param [callback] {Function} An optional one-argument user-defined
 	 *	callback function that is invoked when the request completes
 	 *	successfully.
 	 * @example
@@ -98,91 +240,77 @@ OOGL.Ajax = new (function () {
 	 *		// ...
 	 *	});
 	 */
-	this.getJSON = function (url, callback) {
-		makeJSONRequest('GET', url, callback);
-	};
+	this.getJSON = bindJSONRequest('GET');
 
 	/**
 	 * Performs a POST AJAX request. The data returned from the server is passed
 	 * to a user-defined callback function.
 	 *
 	 * @method post
-	 * @param {String} url The URL to request.
-	 * @param {Function} [callback] An optional one-argument user-defined
+	 * @param url {String} The URL to request.
+	 * @param [callback] {Function} An optional one-argument user-defined
 	 *	callback function that is invoked when the request completes
 	 *	successfully.
 	 */
-	this.post = function (url, callback) {
-		makeRequest('POST', url, callback);
-	};
+	this.post = bindRequest('POST');
 
 	/**
 	 * Performs a POST AJAX request. The data returned from the server is parsed
 	 * as JSON and passed to a user-defined callback function.
 	 *
 	 * @method postJSON
-	 * @param {String} url The URL to request.
-	 * @param {Function} [callback] An optional one-argument user-defined
+	 * @param url {String} The URL to request.
+	 * @param [callback] {Function} An optional one-argument user-defined
 	 *	callback function that is invoked when the request completes
 	 *	successfully.
 	 */
-	this.postJSON = function (url, callback) {
-		makeJSONRequest('POST', url, callback);
-	};
+	this.postJSON = bindJSONRequest('POST');
 
 	/**
 	 * Performs a PUT AJAX request. The data returned from the server is passed
 	 * to a user-defined callback function.
 	 *
 	 * @method put
-	 * @param {String} url The URL to request.
-	 * @param {Function} [callback] An optional one-argument user-defined
+	 * @param url {String} The URL to request.
+	 * @param [callback] {Function} An optional one-argument user-defined
 	 *	callback function that is invoked when the request completes
 	 *	successfully.
 	 */
-	this.put = function (url, callback) {
-		makeRequest('PUT', url, callback);
-	};
+	this.put = bindRequest('PUT');
 
 	/**
 	 * Performs a PUT AJAX request. The data returned from the server is parsed
 	 * as JSON and passed to a user-defined callback function.
 	 *
 	 * @method putJSON
-	 * @param {String} url The URL to request.
-	 * @param {Function} [callback] An optional one-argument user-defined
+	 * @param url {String} The URL to request.
+	 * @param [callback] {Function} An optional one-argument user-defined
 	 *	callback function that is invoked when the request completes
 	 *	successfully.
 	 */
-	this.putJSON = function (url, callback) {
-		makeJSONRequest('PUT', url, callback);
-	};
+	this.putJSON = bindJSONRequest('PUT');
 
 	/**
 	 * Performs a DELETE AJAX request. The data returned from the server is
 	 * passed to a user-defined callback function.
 	 *
 	 * @method _delete
-	 * @param {String} url The URL to request.
-	 * @param {Function} [callback] An optional one-argument user-defined
+	 * @param url {String} The URL to request.
+	 * @param [callback] {Function} An optional one-argument user-defined
 	 *	callback function that is invoked when the request completes
 	 *	successfully.
 	 */
-	this._delete = function (url, callback) {
-		makeRequest('DELETE', url, callback);
-	};
+	this._delete = bindRequest('DELETE');
 
 	/**
 	 * Performs a DELETE AJAX request. The data returned from the server is
 	 * parsed as JSON and passed to a user-defined callback function.
 	 *
 	 * @method deleteJSON
-	 * @param {String} url The URL to request.
-	 * @param {Function} [callback] An optional one-argument user-defined
+	 * @param url {String} The URL to request.
+	 * @param [callback] {Function} An optional one-argument user-defined
 	 *	callback function that is invoked when the request completes
 	 *	successfully.
 	 */
-	this.deleteJSON = function (url, callback) {
-		makeJSONRequest('DELETE', url, callback);
-	};
+	this.deleteJSON = bindJSONRequest('DELETE');
 })();
