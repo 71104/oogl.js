@@ -1273,7 +1273,7 @@ context.ElementArray = function (indices, type) {
 	 *
 	 * Equivalent to calling `gl.drawElements` with `gl.TRIANGLE_FAN`.
 	 *
-	 * @method drawTriangles
+	 * @method drawTriangleFan
 	 * @param [offset=0] {Number} The index of the first element to draw.
 	 * @param [count] {Number} The number of elements to draw. When not
 	 *	specified defaults to the `count` parameter passed to the `ElementArray`
