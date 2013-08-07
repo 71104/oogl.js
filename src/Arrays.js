@@ -1252,8 +1252,8 @@ context.ElementArray = function (indices, type) {
 	 * @method drawTriangles
 	 * @param [offset=0] {Number} The index of the first element to draw.
 	 * @param [count] {Number} The number of elements to draw. When not
-	 *	specified defaults to the `count` parameter passed to the `ElementArray`
-	 *	constructor.
+	 *	specified defaults to the length of the `indices` array passed to the
+	 *	`ElementArray` constructor.
 	 * @example
 	 */
 	buffer.drawTriangles = (function (all) {
@@ -1276,8 +1276,8 @@ context.ElementArray = function (indices, type) {
 	 * @method drawTriangleFan
 	 * @param [offset=0] {Number} The index of the first element to draw.
 	 * @param [count] {Number} The number of elements to draw. When not
-	 *	specified defaults to the `count` parameter passed to the `ElementArray`
-	 *	constructor.
+	 *	specified defaults to the length of the `indices` array passed to the
+	 *	`ElementArray` constructor.
 	 * @example
 	 */
 	buffer.drawTriangleFan = (function (all) {
@@ -1300,8 +1300,8 @@ context.ElementArray = function (indices, type) {
 	 * @method drawTriangleStrip
 	 * @param [offset=0] {Number} The index of the first element to draw.
 	 * @param [count] {Number} The number of elements to draw. When not
-	 *	specified defaults to the `count` parameter passed to the `ElementArray`
-	 *	constructor.
+	 *	specified defaults to the length of the `indices` array passed to the
+	 *	`ElementArray` constructor.
 	 * @example
 	 */
 	buffer.drawTriangleStrip = (function (all) {
