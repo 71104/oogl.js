@@ -48,12 +48,6 @@ OOGL.Ajax = new (function () {
 				}
 			}
 		});
-		if (settings.hasOwnProperty('type')) {
-			xhr.responseType = settings.type;
-			if ((settings.type === 'document') && xhr.overrideMimeType) {
-				xhr.overrideMimeType('text/xml');
-			}
-		}
 		var async = true;
 		if (settings.hasOwnProperty('async')) {
 			async = settings.async;
@@ -118,6 +112,12 @@ OOGL.Ajax = new (function () {
 				} else {
 					xhr.open(method, url, async);
 				}
+				if (settings.hasOwnProperty('type')) {
+					xhr.responseType = settings.type;
+					if ((settings.type === 'document') && xhr.overrideMimeType) {
+						xhr.overrideMimeType('text/xml');
+					}
+				}
 				xhr.send();
 			} else {
 				if (settings.hasOwnProperty('user')) {
@@ -128,6 +128,12 @@ OOGL.Ajax = new (function () {
 					}
 				} else {
 					xhr.open(method, settings.url, async);
+				}
+				if (settings.hasOwnProperty('type')) {
+					xhr.responseType = settings.type;
+					if ((settings.type === 'document') && xhr.overrideMimeType) {
+						xhr.overrideMimeType('text/xml');
+					}
 				}
 				xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 				xhr.send(encodedData);
@@ -141,6 +147,12 @@ OOGL.Ajax = new (function () {
 				}
 			} else {
 				xhr.open(method, settings.url, async);
+			}
+			if (settings.hasOwnProperty('type')) {
+				xhr.responseType = settings.type;
+				if ((settings.type === 'document') && xhr.overrideMimeType) {
+					xhr.overrideMimeType('text/xml');
+				}
 			}
 			xhr.send();
 		}
