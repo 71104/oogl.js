@@ -50,6 +50,9 @@ OOGL.Ajax = new (function () {
 		});
 		if (settings.hasOwnProperty('type')) {
 			xhr.responseType = settings.type;
+			if ((settings.type === 'document') && xhr.overrideMimeType) {
+				xhr.overrideMimeType('text/xml');
+			}
 		}
 		var async = true;
 		if (settings.hasOwnProperty('async')) {
