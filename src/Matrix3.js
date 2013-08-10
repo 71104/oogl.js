@@ -451,15 +451,15 @@ OOGL.RotationMatrix3 = function (x, y, z, a) {
 	var s = Math.sin(a);
 	var c = Math.cos(a);
 	return new OOGL.Matrix3([
-		c + x * x * (1 - c),
-		x * y * (1 - c) - z * s,
-		x * z * (1 - c) + y * s,
-		y * x * (1 - c) + z * s,
-		c + y * y * (1 - c),
-		y * z * (1 - c) - x * s,
-		z * x * (1 - c) - y * s,
-		z * y * (1 - c) + x * s,
-		c + z * z * (1 - c)
+		x * x * (1 - c) + c,
+		x * y * (1 - c) + z * s,
+		x * z * (1 - c) - y * s,
+		y * x * (1 - c) - z * s,
+		y * y * (1 - c) + c,
+		y * z * (1 - c) + x * s,
+		z * x * (1 - c) + y * s,
+		z * y * (1 - c) - x * s,
+		z * z * (1 - c) + c
 	]);
 };
 
