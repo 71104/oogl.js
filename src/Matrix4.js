@@ -112,7 +112,7 @@ OOGL.Matrix4.NULL = new OOGL.Matrix4([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
  * @static
  * @type OOGL.Matrix4
  */
-OOGL.Matrix4.IDENTITY = new OOGL.Matrix3([1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]);
+OOGL.Matrix4.IDENTITY = new OOGL.Matrix4([1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]);
 
 /**
  * Creates a 3D translation matrix.
