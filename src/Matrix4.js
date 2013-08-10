@@ -93,6 +93,242 @@ OOGL.Matrix4.prototype = {
 	put: function (i, j, value) {
 		this[j * 4 + i] = value;
 		return this;
+	},
+
+	/**
+	 * Transposes this matrix.
+	 *
+	 * @method transpose
+	 * @chainable
+	 * @example
+	 *	TODO
+	 */
+	transpose: function () {
+		var newArray = [
+			this[0], this[4], this[8], this[12],
+			this[1], this[5], this[9], this[13],
+			this[2], this[6], this[10], this[14],
+			this[3], this[7], this[11], this[15]
+		];
+		for (var i = 0; i < 16; i++) {
+			this[i] = newArray[i];
+		}
+		return this;
+	},
+
+	/**
+	 * Computes the transposed matrix and returns it as a new `Matrix4` object.
+	 * This matrix is not changed.
+	 *
+	 * @method getTransposed
+	 * @return {OOGL.Matrix4} The transposed matrix.
+	 * @example
+	 *	TODO
+	 */
+	getTransposed: function () {
+		return new OOGL.Matrix4([
+			this[0], this[4], this[8], this[12],
+			this[1], this[5], this[9], this[13],
+			this[2], this[6], this[10], this[14],
+			this[3], this[7], this[11], this[15]
+		]);
+	},
+
+	/**
+	 * Adds the specified matrix to this one.
+	 *
+	 * Each element of the specified matrix is added up to the respective
+	 * element in this matrix. The specified `m` matrix is not changed.
+	 *
+	 * @method add
+	 * @param {OOGL.Matrix4} m The matrix to add.
+	 * @chainable
+	 * @example
+	 *	TODO
+	 */
+	add: function (m) {
+		for (var i = 0; i < 16; i++) {
+			this[i] += m[i];
+		}
+		return this;
+	},
+
+	/**
+	 * Adds the specified matrix to this one and returns the sum as a new
+	 * `Matrix3` object. This matrix is not changed.
+	 *
+	 * @method plus
+	 * @param {OOGL.Matrix4} m The matrix to add.
+	 * @return {OOGL.Matrix4} The sum matrix.
+	 * @example
+	 *	TODO
+	 */
+	plus: function (m) {
+		var newArray = [];
+		for (var i = 0; i < 16; i++) {
+			newArray.push(this[i] + m[i]);
+		}
+		return new OOGL.Matrix4(newArray);
+	},
+
+	/**
+	 * Subtracts the specified matrix to this one.
+	 *
+	 * Each element of the specified matrix is subtracted to the respective
+	 * element in this matrix. The specified `m` matrix is not changed.
+	 *
+	 * @method subtract
+	 * @param {OOGL.Matrix4} m The matrix to subtract.
+	 * @chainable
+	 * @example
+	 *	TODO
+	 */
+	subtract: function (m) {
+		for (var i = 0; i < 16; i++) {
+			this[i] -= m[i];
+		}
+		return this;
+	},
+
+	/**
+	 * Subtracts the specified matrix to this one and returns the difference as
+	 * a new `Matrix4` object. This matrix is not changed.
+	 *
+	 * @method minus
+	 * @param {OOGL.Matrix4} m The matrix to subtract.
+	 * @return {OOGL.Matrix4} The difference matrix.
+	 * @example
+	 *	TODO
+	 */
+	minus: function (m) {
+		var newArray = [];
+		for (var i = 0; i < 16; i++) {
+			newArray.push(this[i] - m[i]);
+		}
+		return new OOGL.Matrix4(newArray);
+	},
+
+	/**
+	 * Multiplies this matrix by the specified constant factor. This method
+	 * changes the original matrix.
+	 *
+	 * @method multiply
+	 * @param {Number} x The multiplying factor.
+	 * @chainable
+	 * @example
+	 *	TODO
+	 */
+
+	/**
+	 * Multiplies this matrix by the specified `Matrix4` object. This method
+	 * changes the original matrix.
+	 *
+	 * @method multiply
+	 * @param {OOGL.Matrix4} x The multiplying matrix.
+	 * @chainable
+	 * @example
+	 *	TODO
+	 */
+	multiply: function (x) {
+		var i;
+		if (x instanceof OOGL.Matrix4) {
+			var newArray = [
+				this[0] * x[0] + this[4] * x[1] + this[8] * x[2] + this[12] + x[3],
+				this[1] * x[0] + this[5] * x[1] + this[9] * x[2] + this[13] + x[3],
+				this[2] * x[0] + this[6] * x[1] + this[10] * x[2] + this[14] + x[3],
+				this[3] * x[0] + this[7] * x[1] + this[11] * x[2] + this[15] + x[3],
+				this[0] * x[4] + this[4] * x[5] + this[8] * x[6] + this[12] + x[7],
+				this[1] * x[4] + this[5] * x[5] + this[9] * x[6] + this[13] + x[7],
+				this[2] * x[4] + this[6] * x[5] + this[10] * x[6] + this[14] + x[7],
+				this[3] * x[4] + this[7] * x[5] + this[11] * x[6] + this[15] + x[7],
+				this[0] * x[8] + this[4] * x[9] + this[8] * x[10] + this[12] + x[11],
+				this[1] * x[8] + this[5] * x[9] + this[9] * x[10] + this[13] + x[11],
+				this[2] * x[8] + this[6] * x[9] + this[10] * x[10] + this[14] + x[11],
+				this[3] * x[8] + this[7] * x[9] + this[11] * x[10] + this[15] + x[11],
+				this[0] * x[12] + this[4] * x[13] + this[8] * x[14] + this[12] + x[15],
+				this[1] * x[12] + this[5] * x[13] + this[9] * x[14] + this[13] + x[15],
+				this[2] * x[12] + this[6] * x[13] + this[10] * x[14] + this[14] + x[15],
+				this[3] * x[12] + this[7] * x[13] + this[11] * x[14] + this[15] + x[15]
+			];
+			for (i = 0; i < 16; i++) {
+				this[i] = newArray[i];
+			}
+		} else {
+			for (i = 0; i < 16; i++) {
+				this[i] *= x;
+			}
+		}
+		return this;
+	},
+
+	/**
+	 * Multiplies this matrix by the specified constant factor and returns the
+	 * product as a new `Matrix4` object. This matrix is not changed.
+	 *
+	 * @method by
+	 * @param {Number} x The multiplying factor.
+	 * @return {OOGL.Matrix4} The product matrix.
+	 * @example
+	 *	TODO
+	 */
+
+	/**
+	 * Left-multiplies this matrix by the specified `Vector4` object and returns
+	 * the product as a new `Vector4` object. Neither this matrix nor the
+	 * specified vector are changed.
+	 *
+	 * @method by
+	 * @param {OOGL.Vector4} v The vector to multiply.
+	 * @return {OOGL.Vector4} The product vector.
+	 * @example
+	 *	TODO
+	 */
+
+	/**
+	 * Left-multiplies this matrix by the specified `Matrix4` object and returns
+	 * the product as a new `Matrix4` object. Neither this matrix nor the
+	 * specified one are changed.
+	 *
+	 * @method by
+	 * @param {OOGL.Matrix4} v The matrix to multiply.
+	 * @return {OOGL.Matrix4} The product matrix.
+	 * @example
+	 *	TODO
+	 */
+	by: function (x) {
+		if (x instanceof OOGL.Matrix4) {
+			return new OOGL.Matrix4([
+				this[0] * x[0] + this[4] * x[1] + this[8] * x[2] + this[12] + x[3],
+				this[1] * x[0] + this[5] * x[1] + this[9] * x[2] + this[13] + x[3],
+				this[2] * x[0] + this[6] * x[1] + this[10] * x[2] + this[14] + x[3],
+				this[3] * x[0] + this[7] * x[1] + this[11] * x[2] + this[15] + x[3],
+				this[0] * x[4] + this[4] * x[5] + this[8] * x[6] + this[12] + x[7],
+				this[1] * x[4] + this[5] * x[5] + this[9] * x[6] + this[13] + x[7],
+				this[2] * x[4] + this[6] * x[5] + this[10] * x[6] + this[14] + x[7],
+				this[3] * x[4] + this[7] * x[5] + this[11] * x[6] + this[15] + x[7],
+				this[0] * x[8] + this[4] * x[9] + this[8] * x[10] + this[12] + x[11],
+				this[1] * x[8] + this[5] * x[9] + this[9] * x[10] + this[13] + x[11],
+				this[2] * x[8] + this[6] * x[9] + this[10] * x[10] + this[14] + x[11],
+				this[3] * x[8] + this[7] * x[9] + this[11] * x[10] + this[15] + x[11],
+				this[0] * x[12] + this[4] * x[13] + this[8] * x[14] + this[12] + x[15],
+				this[1] * x[12] + this[5] * x[13] + this[9] * x[14] + this[13] + x[15],
+				this[2] * x[12] + this[6] * x[13] + this[10] * x[14] + this[14] + x[15],
+				this[3] * x[12] + this[7] * x[13] + this[11] * x[14] + this[15] + x[15]
+			]);
+		} else if (x instanceof OOGL.Vector4) {
+			return new OOGL.Vector4(
+				this[0] * x.x + this[4] * x.y + this[8] * x.z + this[12] * x.w,
+				this[1] * x.x + this[5] * x.y + this[9] * x.z + this[13] * x.w,
+				this[2] * x.x + this[6] * x.y + this[10] * x.z + this[14] * x.w,
+				this[3] * x.x + this[7] * x.y + this[11] * x.z + this[15] * x.w
+				);
+		} else {
+			var newArray = [];
+			for (var i = 0; i < 16; i++) {
+				newArray.push(this[i] * x);
+			}
+			return new OOGL.Matrix4(newArray);
+		}
 	}
 };
 
