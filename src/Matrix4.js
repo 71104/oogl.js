@@ -97,6 +97,24 @@ OOGL.Matrix4.prototype = {
 };
 
 /**
+ * The null 4x4 matrix.
+ *
+ * @property NULL
+ * @static
+ * @type OOGL.Matrix4
+ */
+OOGL.Matrix4.NULL = new OOGL.Matrix4([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+
+/**
+ * The 4x4 identity matrix.
+ *
+ * @property IDENTITY
+ * @static
+ * @type OOGL.Matrix4
+ */
+OOGL.Matrix4.IDENTITY = new OOGL.Matrix3([1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]);
+
+/**
  * Creates a 3D translation matrix.
  *
  * @class OOGL.TranslationMatrix4
