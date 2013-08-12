@@ -432,7 +432,7 @@ OOGL.Matrix3.NULL = new OOGL.Matrix3([0, 0, 0, 0, 0, 0, 0, 0, 0]);
 OOGL.Matrix3.IDENTITY = new OOGL.Matrix3([1, 0, 0, 0, 1, 0, 0, 0, 1]);
 
 /**
- * Creates a 3D rotation matrix that rotates everything counterclockwise about
+ * Creates a 3D rotation matrix that rotates everything counterclockwise around
  * the specified `(x, y, z)` axis by the specified `a` angle.
  *
  * The specified `x`, `y` and `z` components must form a unit-length vector.
@@ -460,6 +460,69 @@ OOGL.RotationMatrix3 = function (x, y, z, a) {
 		z * x * (1 - c) + y * s,
 		z * y * (1 - c) - x * s,
 		z * z * (1 - c) + c
+	]);
+};
+
+/**
+ * Creates a 3D rotation matrix that rotates everything counterclockwise around
+ * the X axis by the specified `angle`.
+ *
+ * @class OOGL.XRotationMatrix3
+ * @extends OOGL.Matrix3
+ * @constructor
+ * @param {Number} angle The rotation angle, in radians.
+ * @example
+ *	var m = new OOGL.XRotationMatrix3(Math.PI / 2); // 90 degrees rotation around the X axis
+ */
+OOGL.XRotationMatrix3 = function (angle) {
+	var s = Math.sin(angle);
+	var c = Math.cos(angle);
+	return new OOGL.Matrix3([
+		1, 0, 0,
+		0, c, s,
+		0, -s, c
+	]);
+};
+
+/**
+ * Creates a 3D rotation matrix that rotates everything counterclockwise around
+ * the Y axis by the specified `angle`.
+ *
+ * @class OOGL.YRotationMatrix3
+ * @extends OOGL.Matrix3
+ * @constructor
+ * @param {Number} angle The rotation angle, in radians.
+ * @example
+ *	var m = new OOGL.XRotationMatrix3(Math.PI / 2); // 90 degrees rotation around the Y axis
+ */
+OOGL.YRotationMatrix3 = function (angle) {
+	var s = Math.sin(angle);
+	var c = Math.cos(angle);
+	return new OOGL.Matrix3([
+		c, 0, -s,
+		0, 1, 0,
+		s, 0, c
+	]);
+};
+
+/**
+ * Creates a 3D rotation matrix that rotates everything counterclockwise around
+ * the Z axis by the specified `angle`.
+ *
+ * @class OOGL.ZRotationMatrix3
+ * @extends OOGL.Matrix3
+ * @constructor
+ * @param {Number} angle The rotation angle, in radians.
+ * @example
+ *	var m = new OOGL.XRotationMatrix3(Math.PI / 2); // 90 degrees rotation around the Z axis
+ */
+OOGL.ZRotationMatrix3 = function (angle) {
+	var s = Math.sin(angle);
+	var c = Math.cos(angle);
+	return new OOGL.Matrix3([
+		c, s, 0,
+		-s, c, 0,
+		0, 0, 1
 	]);
 };
 

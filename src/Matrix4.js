@@ -368,7 +368,7 @@ OOGL.TranslationMatrix4 = function (x, y, z) {
 };
 
 /**
- * Creates a 3D rotation matrix that rotates everything counterclockwise about
+ * Creates a 3D rotation matrix that rotates everything counterclockwise around
  * the specified `(x, y, z)` axis by the specified `a` angle.
  *
  * The specified `x`, `y` and `z` components must form a unit-length vector.
@@ -406,6 +406,81 @@ OOGL.RotationMatrix4 = function (x, y, z, a) {
 		0,
 		0,
 		1
+	]);
+};
+
+/**
+ * Creates a 3D rotation matrix that rotates everything counterclockwise around
+ * the X axis by the specified `angle`.
+ *
+ * The created matrix is identical to a rotation matrix created by using
+ * `OOGL.XRotationMatrix3` and converted using its `toHomogeneous` method.
+ *
+ * @class OOGL.XRotationMatrix4
+ * @extends OOGL.Matrix4
+ * @constructor
+ * @param {Number} angle The rotation angle, in radians.
+ * @example
+ *	var m = new OOGL.XRotationMatrix4(Math.PI / 2); // 90 degrees rotation around the X axis
+ */
+OOGL.XRotationMatrix4 = function (angle) {
+	var s = Math.sin(angle);
+	var c = Math.cos(angle);
+	return new OOGL.Matrix4([
+		1, 0, 0, 0,
+		0, c, s, 0,
+		0, -s, c, 0,
+		0, 0, 0, 1
+	]);
+};
+
+/**
+ * Creates a 3D rotation matrix that rotates everything counterclockwise around
+ * the Y axis by the specified `angle`.
+ *
+ * The created matrix is identical to a rotation matrix created by using
+ * `OOGL.YRotationMatrix3` and converted using its `toHomogeneous` method.
+ *
+ * @class OOGL.YRotationMatrix4
+ * @extends OOGL.Matrix4
+ * @constructor
+ * @param {Number} angle The rotation angle, in radians.
+ * @example
+ *	var m = new OOGL.XRotationMatrix4(Math.PI / 2); // 90 degrees rotation around the Y axis
+ */
+OOGL.YRotationMatrix4 = function (angle) {
+	var s = Math.sin(angle);
+	var c = Math.cos(angle);
+	return new OOGL.Matrix4([
+		c, 0, -s, 0,
+		0, 1, 0, 0,
+		s, 0, c, 0,
+		0, 0, 0, 1
+	]);
+};
+
+/**
+ * Creates a 3D rotation matrix that rotates everything counterclockwise around
+ * the Z axis by the specified `angle`.
+ *
+ * The created matrix is identical to a rotation matrix created by using
+ * `OOGL.ZRotationMatrix3` and converted using its `toHomogeneous` method.
+ *
+ * @class OOGL.ZRotationMatrix4
+ * @extends OOGL.Matrix4
+ * @constructor
+ * @param {Number} angle The rotation angle, in radians.
+ * @example
+ *	var m = new OOGL.XRotationMatrix4(Math.PI / 2); // 90 degrees rotation around the Z axis
+ */
+OOGL.ZRotationMatrix4 = function (angle) {
+	var s = Math.sin(angle);
+	var c = Math.cos(angle);
+	return new OOGL.Matrix4([
+		c, s, 0, 0,
+		-s, c, 0, 0,
+		0, 0, 1, 0,
+		0, 0, 0, 1
 	]);
 };
 
