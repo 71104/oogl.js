@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>context - OOGL.js</title>
+    <title>OOGL.Timing - OOGL.js</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -208,16 +208,22 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>context Module</h1>
-<div class="box clearfix meta">
+                        <h1>OOGL.Timing Class</h1>
+<div class="box meta">
     
 
     
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_Textures.js.html#l525"><code>src\Textures.js:525</code></a>
+            Defined in: <a href="../files/src_Timing.js.html#l3"><code>src\Timing.js:3</code></a>
         </div>
+    
+
+    
+        
+            Module: <a href="../modules/OOGL.html">OOGL</a>
+        
     
 
     
@@ -226,250 +232,152 @@
 
 
 <div class="box intro">
-    <p>This is actually a <em>pseudo</em>-module used to document OOGL classes whose
-namespace is a WebGL/OOGL context instance.</p>
-<p>You can get a <code>context</code> object by invoking the <code>OOGL.Context</code> constructor:</p>
-<pre class="code prettyprint"><code>var context = new OOGL.Context(canvas);</code></pre>
-<p>You can then use that object to construct context-specific objects, such as
-<code>Texture2D</code> objects:</p>
-<pre class="code prettyprint"><code>var texture = new context.Texture2D();</code></pre>
-<p>The <code>context</code> object is sometimes referred to with the <code>oogl</code> name because it
-is a normal <code>WebGLContext</code> object containing all the standard WebGL features,
-such as <code>createTexture</code>, <code>createShader</code>, <code>flush</code> and so on, plus
-OOGL-specific features such as <code>Texture2D</code>.</p>
+    <p>Static class providing timing-related functions.</p>
 
 </div>
 
 
 
-<div class="yui3-g">
-    <div class="yui3-u-1-2">
-        
-            <p>This module provides the following classes:</p>
+<div id="classdocs" class="tabview">
+    <ul class="api-class-tabs">
+        <li class="api-class-tab index"><a href="#index">Index</a></li>
 
-            <ul class="module-classes">
+        
+            <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
+        
+        
+        
+        
+    </ul>
+
+    <div>
+        <div id="index" class="api-class-tabpanel index">
+            <h2 class="off-left">Item Index</h2>
+
             
-                <li class="module-class">
-                    <a href="../classes/context.AjaxFragmentShader.html">
-                        context.AjaxFragmentShader
-                    </a>
-                </li>
+                <div class="index-section methods">
+                    <h3>Methods</h3>
+
+                    <ul class="index-list methods">
+                        
+                            <li class="index-item method">
+                                <a href="#method_now">now</a>
+
+                                
+                                    <span class="flag static">static</span>
+                                
+                                
+                            </li>
+                        
+                    </ul>
+                </div>
             
-                <li class="module-class">
-                    <a href="../classes/context.AjaxProgram.html">
-                        context.AjaxProgram
-                    </a>
-                </li>
+
             
-                <li class="module-class">
-                    <a href="../classes/context.AjaxVertexShader.html">
-                        context.AjaxVertexShader
-                    </a>
-                </li>
+
             
-                <li class="module-class">
-                    <a href="../classes/context.ArrayBuffer.html">
-                        context.ArrayBuffer
-                    </a>
-                </li>
+
             
-                <li class="module-class">
-                    <a href="../classes/context.AsyncCubeMap.html">
-                        context.AsyncCubeMap
-                    </a>
-                </li>
+        </div>
+
+        
+            <div id="methods" class="api-class-tabpanel">
+                <h2 class="off-left">Methods</h2>
+
+                
+                    <div id="method_now" class="method item">
+    <h3 class="name"><code>now</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+        <span class="flag static">static</span>
+    
+
+    
+
+    
+
+    <div class="meta">
+        
             
-                <li class="module-class">
-                    <a href="../classes/context.AsyncTexture.html">
-                        context.AsyncTexture
-                    </a>
-                </li>
+                
+                <p>
+                
+                Defined in
+                
             
-                <li class="module-class">
-                    <a href="../classes/context.AttributeArray1.html">
-                        context.AttributeArray1
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/context.AttributeArray2.html">
-                        context.AttributeArray2
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/context.AttributeArray3.html">
-                        context.AttributeArray3
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/context.AttributeArray4.html">
-                        context.AttributeArray4
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/context.AttributeArrays.html">
-                        context.AttributeArrays
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/context.AutoProgram.html">
-                        context.AutoProgram
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/context.AutoTexture.html">
-                        context.AutoTexture
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/context.Buffer.html">
-                        context.Buffer
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/context.CubeMap.html">
-                        context.CubeMap
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/context.DynamicArrayBuffer.html">
-                        context.DynamicArrayBuffer
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/context.DynamicBuffer.html">
-                        context.DynamicBuffer
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/context.DynamicElementArrayBuffer.html">
-                        context.DynamicElementArrayBuffer
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/context.ElementArray.html">
-                        context.ElementArray
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/context.ElementArrayBuffer.html">
-                        context.ElementArrayBuffer
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/context.FragmentShader.html">
-                        context.FragmentShader
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/context.Framebuffer.html">
-                        context.Framebuffer
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/context.Program.html">
-                        context.Program
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/context.Renderbuffer.html">
-                        context.Renderbuffer
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/context.Shader.html">
-                        context.Shader
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/context.StaticArrayBuffer.html">
-                        context.StaticArrayBuffer
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/context.StaticBuffer.html">
-                        context.StaticBuffer
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/context.StaticElementArrayBuffer.html">
-                        context.StaticElementArrayBuffer
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/context.StreamArrayBuffer.html">
-                        context.StreamArrayBuffer
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/context.StreamBuffer.html">
-                        context.StreamBuffer
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/context.StreamElementArrayBuffer.html">
-                        context.StreamElementArrayBuffer
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/context.Texture.html">
-                        context.Texture
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/context.Texture2D.html">
-                        context.Texture2D
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/context.Textures.html">
-                        context.Textures
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/context.VertexShader.html">
-                        context.VertexShader
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/OOGL.Loader.html">
-                        OOGL.Loader
-                    </a>
-                </li>
-            
-            </ul>
+        
+        
+        <a href="../files/src_Timing.js.html#l13"><code>src\Timing.js:13</code></a>
+        
+        </p>
+
+
+        
+
         
     </div>
 
-    <div class="yui3-u-1-2">
+    <div class="description">
+        <p>Returns the current timestamp in milliseconds since the Epoch.</p>
+<p>This method relies on <code>window.performance.now</code> where available and
+transparently falls back to <code>Date.now</code>.</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>:
+                    
+                    <p>The current timestamp in milliseconds.</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>TODO</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+            </div>
+        
+
+        
+
+        
+
         
     </div>
 </div>

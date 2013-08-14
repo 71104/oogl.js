@@ -2,23 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>src\Renderbuffer.js - OOGL.js 1.0</title>
-    <link rel="stylesheet" href="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;3.8.0pr2&#x2F;build&#x2F;cssgrids&#x2F;cssgrids-min.css">
-    <link rel="stylesheet" href="..&#x2F;assets/vendor/prettify/prettify-min.css">
-    <link rel="stylesheet" href="..&#x2F;assets/css/main.css" id="site_styles">
-    <link rel="shortcut icon" type="image/png" href="..&#x2F;assets/favicon.png">
-    <script src="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;combo?3.8.0pr2&#x2F;build&#x2F;yui&#x2F;yui-min.js"></script>
-    <script type="text/javascript">
-var _gaq = _gaq || [];
-_gaq.push(['_setAccount', 'UA-36961344-2']);
-_gaq.push(['_setDomainName', 'github.com']);
-_gaq.push(['_trackPageview']);
-(function() {
-	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-})();
-    </script>
+    <title>src\Renderbuffer.js - OOGL.js</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
 </head>
 <body class="yui3-skin-sam">
 
@@ -26,7 +15,7 @@ _gaq.push(['_trackPageview']);
     <div id="hd" class="yui3-g header">
         <div class="yui3-u-3-4">
             
-                <h1><img src="..&#x2F;assets/css/logo.png" title="OOGL.js 1.0"></h1>
+                <h1><img src="../assets/css/logo.png" title="OOGL.js"></h1>
             
         </div>
         <div class="yui3-u-1-4 version">
@@ -52,119 +41,137 @@ _gaq.push(['_trackPageview']);
         <div id="api-tabview-panel">
             <ul id="api-classes" class="apis classes">
             
-                <li><a href="..&#x2F;classes/context.AjaxFragmentShader.html">context.AjaxFragmentShader</a></li>
+                <li><a href="../classes/context.AjaxFragmentShader.html">context.AjaxFragmentShader</a></li>
             
-                <li><a href="..&#x2F;classes/context.AjaxProgram.html">context.AjaxProgram</a></li>
+                <li><a href="../classes/context.AjaxProgram.html">context.AjaxProgram</a></li>
             
-                <li><a href="..&#x2F;classes/context.AjaxVertexShader.html">context.AjaxVertexShader</a></li>
+                <li><a href="../classes/context.AjaxVertexShader.html">context.AjaxVertexShader</a></li>
             
-                <li><a href="..&#x2F;classes/context.ArrayBuffer.html">context.ArrayBuffer</a></li>
+                <li><a href="../classes/context.ArrayBuffer.html">context.ArrayBuffer</a></li>
             
-                <li><a href="..&#x2F;classes/context.AsyncTexture.html">context.AsyncTexture</a></li>
+                <li><a href="../classes/context.AsyncCubeMap.html">context.AsyncCubeMap</a></li>
             
-                <li><a href="..&#x2F;classes/context.AttributeArray1.html">context.AttributeArray1</a></li>
+                <li><a href="../classes/context.AsyncTexture.html">context.AsyncTexture</a></li>
             
-                <li><a href="..&#x2F;classes/context.AttributeArray2.html">context.AttributeArray2</a></li>
+                <li><a href="../classes/context.AttributeArray1.html">context.AttributeArray1</a></li>
             
-                <li><a href="..&#x2F;classes/context.AttributeArray3.html">context.AttributeArray3</a></li>
+                <li><a href="../classes/context.AttributeArray2.html">context.AttributeArray2</a></li>
             
-                <li><a href="..&#x2F;classes/context.AttributeArray4.html">context.AttributeArray4</a></li>
+                <li><a href="../classes/context.AttributeArray3.html">context.AttributeArray3</a></li>
             
-                <li><a href="..&#x2F;classes/context.AttributeArrays.html">context.AttributeArrays</a></li>
+                <li><a href="../classes/context.AttributeArray4.html">context.AttributeArray4</a></li>
             
-                <li><a href="..&#x2F;classes/context.AutoProgram.html">context.AutoProgram</a></li>
+                <li><a href="../classes/context.AttributeArrays.html">context.AttributeArrays</a></li>
             
-                <li><a href="..&#x2F;classes/context.AutoTexture.html">context.AutoTexture</a></li>
+                <li><a href="../classes/context.AutoProgram.html">context.AutoProgram</a></li>
             
-                <li><a href="..&#x2F;classes/context.Buffer.html">context.Buffer</a></li>
+                <li><a href="../classes/context.AutoTexture.html">context.AutoTexture</a></li>
             
-                <li><a href="..&#x2F;classes/context.CubeMap.html">context.CubeMap</a></li>
+                <li><a href="../classes/context.Buffer.html">context.Buffer</a></li>
             
-                <li><a href="..&#x2F;classes/context.DynamicArrayBuffer.html">context.DynamicArrayBuffer</a></li>
+                <li><a href="../classes/context.CubeMap.html">context.CubeMap</a></li>
             
-                <li><a href="..&#x2F;classes/context.DynamicBuffer.html">context.DynamicBuffer</a></li>
+                <li><a href="../classes/context.DynamicArrayBuffer.html">context.DynamicArrayBuffer</a></li>
             
-                <li><a href="..&#x2F;classes/context.DynamicElementArrayBuffer.html">context.DynamicElementArrayBuffer</a></li>
+                <li><a href="../classes/context.DynamicBuffer.html">context.DynamicBuffer</a></li>
             
-                <li><a href="..&#x2F;classes/context.ElementArray.html">context.ElementArray</a></li>
+                <li><a href="../classes/context.DynamicElementArrayBuffer.html">context.DynamicElementArrayBuffer</a></li>
             
-                <li><a href="..&#x2F;classes/context.ElementArrayBuffer.html">context.ElementArrayBuffer</a></li>
+                <li><a href="../classes/context.ElementArray.html">context.ElementArray</a></li>
             
-                <li><a href="..&#x2F;classes/context.FragmentShader.html">context.FragmentShader</a></li>
+                <li><a href="../classes/context.ElementArrayBuffer.html">context.ElementArrayBuffer</a></li>
             
-                <li><a href="..&#x2F;classes/context.Framebuffer.html">context.Framebuffer</a></li>
+                <li><a href="../classes/context.FragmentShader.html">context.FragmentShader</a></li>
             
-                <li><a href="..&#x2F;classes/context.Program.html">context.Program</a></li>
+                <li><a href="../classes/context.Framebuffer.html">context.Framebuffer</a></li>
             
-                <li><a href="..&#x2F;classes/context.Renderbuffer.html">context.Renderbuffer</a></li>
+                <li><a href="../classes/context.Program.html">context.Program</a></li>
             
-                <li><a href="..&#x2F;classes/context.Shader.html">context.Shader</a></li>
+                <li><a href="../classes/context.Renderbuffer.html">context.Renderbuffer</a></li>
             
-                <li><a href="..&#x2F;classes/context.StaticArrayBuffer.html">context.StaticArrayBuffer</a></li>
+                <li><a href="../classes/context.Shader.html">context.Shader</a></li>
             
-                <li><a href="..&#x2F;classes/context.StaticBuffer.html">context.StaticBuffer</a></li>
+                <li><a href="../classes/context.StaticArrayBuffer.html">context.StaticArrayBuffer</a></li>
             
-                <li><a href="..&#x2F;classes/context.StaticElementArrayBuffer.html">context.StaticElementArrayBuffer</a></li>
+                <li><a href="../classes/context.StaticBuffer.html">context.StaticBuffer</a></li>
             
-                <li><a href="..&#x2F;classes/context.StreamArrayBuffer.html">context.StreamArrayBuffer</a></li>
+                <li><a href="../classes/context.StaticElementArrayBuffer.html">context.StaticElementArrayBuffer</a></li>
             
-                <li><a href="..&#x2F;classes/context.StreamBuffer.html">context.StreamBuffer</a></li>
+                <li><a href="../classes/context.StreamArrayBuffer.html">context.StreamArrayBuffer</a></li>
             
-                <li><a href="..&#x2F;classes/context.StreamElementArrayBuffer.html">context.StreamElementArrayBuffer</a></li>
+                <li><a href="../classes/context.StreamBuffer.html">context.StreamBuffer</a></li>
             
-                <li><a href="..&#x2F;classes/context.Texture.html">context.Texture</a></li>
+                <li><a href="../classes/context.StreamElementArrayBuffer.html">context.StreamElementArrayBuffer</a></li>
             
-                <li><a href="..&#x2F;classes/context.Texture2D.html">context.Texture2D</a></li>
+                <li><a href="../classes/context.Texture.html">context.Texture</a></li>
             
-                <li><a href="..&#x2F;classes/context.Textures.html">context.Textures</a></li>
+                <li><a href="../classes/context.Texture2D.html">context.Texture2D</a></li>
             
-                <li><a href="..&#x2F;classes/context.VertexShader.html">context.VertexShader</a></li>
+                <li><a href="../classes/context.Textures.html">context.Textures</a></li>
             
-                <li><a href="..&#x2F;classes/OOGL.Ajax.html">OOGL.Ajax</a></li>
+                <li><a href="../classes/context.VertexShader.html">context.VertexShader</a></li>
             
-                <li><a href="..&#x2F;classes/OOGL.Context.html">OOGL.Context</a></li>
+                <li><a href="../classes/OOGL.Ajax.html">OOGL.Ajax</a></li>
             
-                <li><a href="..&#x2F;classes/OOGL.IsometricProjection.html">OOGL.IsometricProjection</a></li>
+                <li><a href="../classes/OOGL.Context.html">OOGL.Context</a></li>
             
-                <li><a href="..&#x2F;classes/OOGL.Matrix2.html">OOGL.Matrix2</a></li>
+                <li><a href="../classes/OOGL.IsometricProjection.html">OOGL.IsometricProjection</a></li>
             
-                <li><a href="..&#x2F;classes/OOGL.Matrix3.html">OOGL.Matrix3</a></li>
+                <li><a href="../classes/OOGL.Loader.html">OOGL.Loader</a></li>
             
-                <li><a href="..&#x2F;classes/OOGL.Matrix4.html">OOGL.Matrix4</a></li>
+                <li><a href="../classes/OOGL.Matrix2.html">OOGL.Matrix2</a></li>
             
-                <li><a href="..&#x2F;classes/OOGL.OrthogonalProjection.html">OOGL.OrthogonalProjection</a></li>
+                <li><a href="../classes/OOGL.Matrix3.html">OOGL.Matrix3</a></li>
             
-                <li><a href="..&#x2F;classes/OOGL.PerspectiveProjection.html">OOGL.PerspectiveProjection</a></li>
+                <li><a href="../classes/OOGL.Matrix4.html">OOGL.Matrix4</a></li>
             
-                <li><a href="..&#x2F;classes/OOGL.RenderLoop.html">OOGL.RenderLoop</a></li>
+                <li><a href="../classes/OOGL.OrthogonalProjection.html">OOGL.OrthogonalProjection</a></li>
             
-                <li><a href="..&#x2F;classes/OOGL.RotationMatrix2.html">OOGL.RotationMatrix2</a></li>
+                <li><a href="../classes/OOGL.PerspectiveProjection.html">OOGL.PerspectiveProjection</a></li>
             
-                <li><a href="..&#x2F;classes/OOGL.RotationMatrix3.html">OOGL.RotationMatrix3</a></li>
+                <li><a href="../classes/OOGL.RenderLoop.html">OOGL.RenderLoop</a></li>
             
-                <li><a href="..&#x2F;classes/OOGL.RotationMatrix4.html">OOGL.RotationMatrix4</a></li>
+                <li><a href="../classes/OOGL.RotationMatrix2.html">OOGL.RotationMatrix2</a></li>
             
-                <li><a href="..&#x2F;classes/OOGL.ScalingMatrix2.html">OOGL.ScalingMatrix2</a></li>
+                <li><a href="../classes/OOGL.RotationMatrix3.html">OOGL.RotationMatrix3</a></li>
             
-                <li><a href="..&#x2F;classes/OOGL.ScalingMatrix3.html">OOGL.ScalingMatrix3</a></li>
+                <li><a href="../classes/OOGL.RotationMatrix4.html">OOGL.RotationMatrix4</a></li>
             
-                <li><a href="..&#x2F;classes/OOGL.ScalingMatrix4.html">OOGL.ScalingMatrix4</a></li>
+                <li><a href="../classes/OOGL.ScalingMatrix2.html">OOGL.ScalingMatrix2</a></li>
             
-                <li><a href="..&#x2F;classes/OOGL.TranslationMatrix4.html">OOGL.TranslationMatrix4</a></li>
+                <li><a href="../classes/OOGL.ScalingMatrix3.html">OOGL.ScalingMatrix3</a></li>
             
-                <li><a href="..&#x2F;classes/OOGL.Vector2.html">OOGL.Vector2</a></li>
+                <li><a href="../classes/OOGL.ScalingMatrix4.html">OOGL.ScalingMatrix4</a></li>
             
-                <li><a href="..&#x2F;classes/OOGL.Vector3.html">OOGL.Vector3</a></li>
+                <li><a href="../classes/OOGL.Timing.html">OOGL.Timing</a></li>
             
-                <li><a href="..&#x2F;classes/OOGL.Vector4.html">OOGL.Vector4</a></li>
+                <li><a href="../classes/OOGL.TranslationMatrix4.html">OOGL.TranslationMatrix4</a></li>
+            
+                <li><a href="../classes/OOGL.Vector2.html">OOGL.Vector2</a></li>
+            
+                <li><a href="../classes/OOGL.Vector3.html">OOGL.Vector3</a></li>
+            
+                <li><a href="../classes/OOGL.Vector4.html">OOGL.Vector4</a></li>
+            
+                <li><a href="../classes/OOGL.XRotationMatrix3.html">OOGL.XRotationMatrix3</a></li>
+            
+                <li><a href="../classes/OOGL.XRotationMatrix4.html">OOGL.XRotationMatrix4</a></li>
+            
+                <li><a href="../classes/OOGL.YRotationMatrix3.html">OOGL.YRotationMatrix3</a></li>
+            
+                <li><a href="../classes/OOGL.YRotationMatrix4.html">OOGL.YRotationMatrix4</a></li>
+            
+                <li><a href="../classes/OOGL.ZRotationMatrix3.html">OOGL.ZRotationMatrix3</a></li>
+            
+                <li><a href="../classes/OOGL.ZRotationMatrix4.html">OOGL.ZRotationMatrix4</a></li>
             
             </ul>
 
             <ul id="api-modules" class="apis modules">
             
-                <li><a href="..&#x2F;modules/context.html">context</a></li>
+                <li><a href="../modules/context.html">context</a></li>
             
-                <li><a href="..&#x2F;modules/OOGL.html">OOGL</a></li>
+                <li><a href="../modules/OOGL.html">OOGL</a></li>
             
             </ul>
         </div>
@@ -205,13 +212,13 @@ _gaq.push(['_trackPageview']);
 
 <div class="file">
     <pre class="code prettyprint linenums">
-&#x2F;*global context: false *&#x2F;
+/*global context: false */
 
-&#x2F;**
+/**
  * @module context
- *&#x2F;
+ */
 
-&#x2F;**
+/**
  * Wraps a GL renderbuffer.
  *
  * Instancing an object of this class is equivalent to calling the GL function
@@ -223,11 +230,11 @@ _gaq.push(['_trackPageview']);
  * @example
  *	var oogl = new OOGL.Context(&#x27;canvas&#x27;);
  *	var renderbuffer = new oogl.Renderbuffer();
- *&#x2F;
+ */
 context.Renderbuffer = function () {
 	var renderbuffer = context.createRenderbuffer();
 
-	&#x2F;**
+	/**
 	 * Indicates whether this is a valid GL renderbuffer.
 	 *
 	 * &#x60;gl.isRenderbuffer&#x60; equivalent.
@@ -237,13 +244,13 @@ context.Renderbuffer = function () {
 	 *	otherwise.
 	 * @example
 	 *	if (renderbuffer.is()) {
-	 *		&#x2F;&#x2F; ...
-	 *&#x2F;
+	 *		// ...
+	 */
 	renderbuffer.is = function () {
 		return context.isRenderbuffer(renderbuffer);
 	};
 
-	&#x2F;**
+	/**
 	 * Queries a renderbuffer-related parameter.
 	 *
 	 * &#x60;gl.getRenderbufferParameter&#x60; equivalent.
@@ -253,120 +260,120 @@ context.Renderbuffer = function () {
 	 * @return {Mixed} TODO
 	 * @example
 	 *	TODO
-	 *&#x2F;
+	 */
 	renderbuffer.getParameter = function (name) {
 		return context.getRenderbufferParameter(context.RENDERBUFFER, name);
 	};
 
-	&#x2F;**
+	/**
 	 * TODO
 	 *
 	 * @method getWidth
 	 * @return {Number} TODO
 	 * @example
 	 *	TODO
-	 *&#x2F;
+	 */
 	renderbuffer.getWidth = function () {
 		return context.getRenderbufferParameter(context.RENDERBUFFER, context.RENDERBUFFER_WIDTH);
 	};
 
-	&#x2F;**
+	/**
 	 * TODO
 	 *
 	 * @method getHeight
 	 * @return {Number} TODO
 	 * @example
 	 *	TODO
-	 *&#x2F;
+	 */
 	renderbuffer.getHeight = function () {
 		return context.getRenderbufferParameter(context.RENDERBUFFER, context.RENDERBUFFER_HEIGHT);
 	};
 
-	&#x2F;**
+	/**
 	 * TODO
 	 *
 	 * @method getInternalFormat
 	 * @return {Number} TODO
 	 * @example
 	 *	TODO
-	 *&#x2F;
+	 */
 	renderbuffer.getInternalFormat = function () {
 		return context.getRenderbufferParameter(context.RENDERBUFFER, context.RENDERBUFFER_INTERNAL_FORMAT);
 	};
 
-	&#x2F;**
+	/**
 	 * TODO
 	 *
 	 * @method getRedSize
 	 * @return {Number} TODO
 	 * @example
 	 *	TODO
-	 *&#x2F;
+	 */
 	renderbuffer.getRedSize = function () {
 		return context.getRenderbufferParameter(context.RENDERBUFFER, context.RENDERBUFFER_RED_SIZE);
 	};
 
-	&#x2F;**
+	/**
 	 * TODO
 	 *
 	 * @method getGreenSize
 	 * @return {Number} TODO
 	 * @example
 	 *	TODO
-	 *&#x2F;
+	 */
 	renderbuffer.getGreenSize = function () {
 		return context.getRenderbufferParameter(context.RENDERBUFFER, context.RENDERBUFFER_GREEN_SIZE);
 	};
 
-	&#x2F;**
+	/**
 	 * TODO
 	 *
 	 * @method getBlueSize
 	 * @return {Number} TODO
 	 * @example
 	 *	TODO
-	 *&#x2F;
+	 */
 	renderbuffer.getBlueSize = function () {
 		return context.getRenderbufferParameter(context.RENDERBUFFER, context.RENDERBUFFER_BLUE_SIZE);
 	};
 
-	&#x2F;**
+	/**
 	 * TODO
 	 *
 	 * @method getAlphaSize
 	 * @return {Number} TODO
 	 * @example
 	 *	TODO
-	 *&#x2F;
+	 */
 	renderbuffer.getAlphaSize = function () {
 		return context.getRenderbufferParameter(context.RENDERBUFFER, context.RENDERBUFFER_ALPHA_SIZE);
 	};
 
-	&#x2F;**
+	/**
 	 * TODO
 	 *
 	 * @method getDepthSize
 	 * @return {Number} TODO
 	 * @example
 	 *	TODO
-	 *&#x2F;
+	 */
 	renderbuffer.getDepthSize = function () {
 		return context.getRenderbufferParameter(context.RENDERBUFFER, context.RENDERBUFFER_DEPTH_SIZE);
 	};
 
-	&#x2F;**
+	/**
 	 * TODO
 	 *
 	 * @method getStencilSize
 	 * @return {Number} TODO
 	 * @example
 	 *	TODO
-	 *&#x2F;
+	 */
 	renderbuffer.getStencilSize = function () {
 		return context.getRenderbufferParameter(context.RENDERBUFFER, context.RENDERBUFFER_STENCIL_SIZE);
 	};
 
-	&#x2F;**
+	/**
 	 * Binds this renderbuffer.
 	 *
 	 * &#x60;gl.bindRenderbuffer&#x60; equivalent.
@@ -374,12 +381,12 @@ context.Renderbuffer = function () {
 	 * @method bind
 	 * @example
 	 *	renderbuffer.bind();
-	 *&#x2F;
+	 */
 	renderbuffer.bind = function () {
 		context.bindRenderbuffer(context.RENDERBUFFER, renderbuffer);
 	};
 
-	&#x2F;**
+	/**
 	 * TODO
 	 *
 	 * @method storage
@@ -388,12 +395,12 @@ context.Renderbuffer = function () {
 	 * @param {Number} height TODO
 	 * @example
 	 *	TODO
-	 *&#x2F;
+	 */
 	renderbuffer.storage = function (internalFormat, width, height) {
 		context.renderbufferStorage(context.RENDERBUFFER, internalFormat, width, height);
 	};
 
-	&#x2F;**
+	/**
 	 * Deletes this renderbuffer.
 	 *
 	 * &#x60;gl.deleteRenderbuffer&#x60; equivalent.
@@ -401,7 +408,7 @@ context.Renderbuffer = function () {
 	 * @method _delete
 	 * @example
 	 *	renderbuffer._delete();
-	 *&#x2F;
+	 */
 	renderbuffer._delete = function () {
 		context.deleteRenderbuffer(renderbuffer);
 	};
@@ -418,13 +425,13 @@ context.Renderbuffer = function () {
         </div>
     </div>
 </div>
-<script src="..&#x2F;assets/vendor/prettify/prettify-min.js"></script>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
 <script>prettyPrint();</script>
-<script src="..&#x2F;assets/js/yui-prettify.js"></script>
-<script src="..&#x2F;assets/../api.js"></script>
-<script src="..&#x2F;assets/js/api-filter.js"></script>
-<script src="..&#x2F;assets/js/api-list.js"></script>
-<script src="..&#x2F;assets/js/api-search.js"></script>
-<script src="..&#x2F;assets/js/apidocs.js"></script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
 </body>
 </html>

@@ -1,9 +1,9 @@
 {
     "project": {
-        "name": "OOGL.js 1.0",
+        "name": "OOGL.js",
         "description": "A thin object oriented layer above WebGL.",
         "version": "1.0.0",
-        "url": "http://oogljs.com/"
+        "url": "http://www.oogljs.com/"
     },
     "files": {
         "src\\Ajax.js": {
@@ -67,6 +67,15 @@
             "fors": {},
             "namespaces": {}
         },
+        "src\\Loader.js": {
+            "name": "src\\Loader.js",
+            "modules": {},
+            "classes": {
+                "OOGL.Loader": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
         "src\\Matrix2.js": {
             "name": "src\\Matrix2.js",
             "modules": {},
@@ -84,6 +93,9 @@
             "classes": {
                 "OOGL.Matrix3": 1,
                 "OOGL.RotationMatrix3": 1,
+                "OOGL.XRotationMatrix3": 1,
+                "OOGL.YRotationMatrix3": 1,
+                "OOGL.ZRotationMatrix3": 1,
                 "OOGL.ScalingMatrix3": 1
             },
             "fors": {},
@@ -96,6 +108,9 @@
                 "OOGL.Matrix4": 1,
                 "OOGL.TranslationMatrix4": 1,
                 "OOGL.RotationMatrix4": 1,
+                "OOGL.XRotationMatrix4": 1,
+                "OOGL.YRotationMatrix4": 1,
+                "OOGL.ZRotationMatrix4": 1,
                 "OOGL.ScalingMatrix4": 1,
                 "OOGL.OrthogonalProjection": 1,
                 "OOGL.IsometricProjection": 1,
@@ -165,7 +180,17 @@
                 "context.AutoTexture": 1,
                 "context.AsyncTexture": 1,
                 "context.CubeMap": 1,
+                "context.AsyncCubeMap": 1,
                 "context.Textures": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src\\Timing.js": {
+            "name": "src\\Timing.js",
+            "modules": {},
+            "classes": {
+                "OOGL.Timing": 1
             },
             "fors": {},
             "namespaces": {}
@@ -201,8 +226,11 @@
     "modules": {
         "OOGL": {
             "name": "OOGL",
-            "submodules": {},
+            "submodules": {
+                "undefined": 1
+            },
             "classes": {
+                "OOGL.Timing": 1,
                 "OOGL.Ajax": 1,
                 "OOGL.Context": 1,
                 "OOGL.Matrix2": 1,
@@ -210,10 +238,16 @@
                 "OOGL.ScalingMatrix2": 1,
                 "OOGL.Matrix3": 1,
                 "OOGL.RotationMatrix3": 1,
+                "OOGL.XRotationMatrix3": 1,
+                "OOGL.YRotationMatrix3": 1,
+                "OOGL.ZRotationMatrix3": 1,
                 "OOGL.ScalingMatrix3": 1,
                 "OOGL.Matrix4": 1,
                 "OOGL.TranslationMatrix4": 1,
                 "OOGL.RotationMatrix4": 1,
+                "OOGL.XRotationMatrix4": 1,
+                "OOGL.YRotationMatrix4": 1,
+                "OOGL.ZRotationMatrix4": 1,
                 "OOGL.ScalingMatrix4": 1,
                 "OOGL.OrthogonalProjection": 1,
                 "OOGL.IsometricProjection": 1,
@@ -228,7 +262,7 @@
             "tag": "main",
             "file": "src\\Vector4.js",
             "line": 7,
-            "description": "This is OOGL's main namespace object and contains all the OOGL classes.\n\nAll OOGL-specific class constructors are contained in this object. For\nexample, to create an `OOGL.RenderLoop` object you construct it in this way:\n\n\tvar loop = new OOGL.RenderLoop( ... );\n\nThe `OOGL` object may also be invoked as a function, in which it expectes\nexactly one function argument which is a user-defined callback function that\ngets invoked as soon as the DOM of the page has loaded (this is accomplished\nusing the `DOMCOntentLoaded` JavaScript event):\n\n\tOOGL(function () {\n\t\t// here the DOM has fully loaded\n\t});\n\nThis is typically the right place to put WebGL/OOGL initialization code, such\nas GLSL shader and other asset loading code, as well as GLSL program\ncompilation and linking.",
+            "description": "This is OOGL's main namespace object and contains all the OOGL classes.\n\nSome OOGL-specific class constructors are contained in this object. For\nexample, to create an `OOGL.RenderLoop` object you construct it in this way:\n\n\tvar loop = new OOGL.RenderLoop( ... );\n\nThe `OOGL` object may also be invoked as a function, in which it expectes\nexactly one function argument which is a user-defined callback function that\ngets invoked as soon as the DOM of the page has loaded (this is accomplished\nusing the `DOMCOntentLoaded` JavaScript event):\n\n\tOOGL(function () {\n\t\t// here the DOM has fully loaded\n\t});\n\nThis is typically the right place to put WebGL/OOGL initialization code, such\nas GLSL shader and other asset loading code, as well as GLSL program\ncompilation and linking.",
             "itemtype": "main"
         },
         "context": {
@@ -254,6 +288,7 @@
                 "context.DynamicArrayBuffer": 1,
                 "context.DynamicElementArrayBuffer": 1,
                 "context.Framebuffer": 1,
+                "OOGL.Loader": 1,
                 "context.Program": 1,
                 "context.AutoProgram": 1,
                 "context.AjaxProgram": 1,
@@ -268,14 +303,15 @@
                 "context.AutoTexture": 1,
                 "context.AsyncTexture": 1,
                 "context.CubeMap": 1,
+                "context.AsyncCubeMap": 1,
                 "context.Textures": 1
             },
             "fors": {},
             "namespaces": {},
             "tag": "main",
             "file": "src\\Textures.js",
-            "line": 472,
-            "description": "TODO",
+            "line": 525,
+            "description": "This is actually a _pseudo_-module used to document OOGL classes whose\nnamespace is a WebGL/OOGL context instance.\n\nYou can get a `context` object by invoking the `OOGL.Context` constructor:\n\n\tvar context = new OOGL.Context(canvas);\n\nYou can then use that object to construct context-specific objects, such as\n`Texture2D` objects:\n\n\tvar texture = new context.Texture2D();\n\nThe `context` object is sometimes referred to with the `oogl` name because it\nis a normal `WebGLContext` object containing all the standard WebGL features,\nsuch as `createTexture`, `createShader`, `flush` and so on, plus\nOOGL-specific features such as `Texture2D`.",
             "itemtype": "main"
         }
     },
@@ -307,7 +343,7 @@
             "namespace": "",
             "file": "src\\Arrays.js",
             "line": 7,
-            "description": "Creates an array buffer with static draw usage representing a single\ncomponent vertex attribute array.\n\nThe attribute array is associated to the specified `index`: the\n`AttributeArray` constructor enables the `index`-th attribute array calling\n`gl.enableVertexAttribArray` and the provided `pointer` method invokes\n`gl.vertexAttribPointer` with the specified `index` and `type`.",
+            "description": "Creates an array buffer with static draw usage representing a single\ncomponent vertex attribute array.\n\nThe attribute array is associated to the specified `index`: the provided\n`enable` and `disable` methods enable and disable the `index`-th attribute\narray calling `gl.enableVertexAttribArray` and `gl.disableVertexAttribArray`\nand the provided `pointer` method invokes `gl.vertexAttribPointer` with the\nspecified `index` and `type`.",
             "extends": "context.StaticArrayBuffer",
             "is_constructor": 1,
             "params": [
@@ -349,8 +385,8 @@
             "module": "context",
             "namespace": "",
             "file": "src\\Arrays.js",
-            "line": 113,
-            "description": "Creates an array buffer with static draw usage representing a 2-component\nvertex attribute array.\n\nThe attribute array is associated to the specified `index`: the\n`AttributeArray` constructor enables the `index`-th attribute array calling\n`gl.enableVertexAttribArray` and the provided `pointer` method invokes\n`gl.vertexAttribPointer` with the specified `index` and `type`.",
+            "line": 160,
+            "description": "Creates an array buffer with static draw usage representing a 2-component\nvertex attribute array.\n\nThe attribute array is associated to the specified `index`: the provided\n`enable` and `disable` methods enable and disable the `index`-th attribute\narray calling `gl.enableVertexAttribArray` and `gl.disableVertexAttribArray`\nand the provided `pointer` method invokes `gl.vertexAttribPointer` with the\nspecified `index` and `type`.",
             "extends": "context.StaticArrayBuffer",
             "is_constructor": 1,
             "params": [
@@ -392,8 +428,8 @@
             "module": "context",
             "namespace": "",
             "file": "src\\Arrays.js",
-            "line": 219,
-            "description": "Creates an array buffer with static draw usage representing a 3-component\nvertex attribute array.\n\nThe attribute array is associated to the specified `index`: the\n`AttributeArray` constructor enables the `index`-th attribute array calling\n`gl.enableVertexAttribArray` and the provided `pointer` method invokes\n`gl.vertexAttribPointer` with the specified `index` and `type`.",
+            "line": 313,
+            "description": "Creates an array buffer with static draw usage representing a 3-component\nvertex attribute array.\n\nThe attribute array is associated to the specified `index`: the provided\n`enable` and `disable` methods enable and disable the `index`-th attribute\narray calling `gl.enableVertexAttribArray` and `gl.disableVertexAttribArray`\nand the provided `pointer` method invokes `gl.vertexAttribPointer` with the\nspecified `index` and `type`.",
             "extends": "context.StaticArrayBuffer",
             "is_constructor": 1,
             "params": [
@@ -435,8 +471,8 @@
             "module": "context",
             "namespace": "",
             "file": "src\\Arrays.js",
-            "line": 325,
-            "description": "Creates an array buffer with static draw usage representing a 4-component\nvertex attribute array.\n\nThe attribute array is associated to the specified `index`: the\n`AttributeArray` constructor enables the `index`-th attribute array calling\n`gl.enableVertexAttribArray` and the provided `pointer` method invokes\n`gl.vertexAttribPointer` with the specified `index` and `type`.",
+            "line": 466,
+            "description": "Creates an array buffer with static draw usage representing a 4-component\nvertex attribute array.\n\nThe attribute array is associated to the specified `index`: the provided\n`enable` and `disable` methods enable and disable the `index`-th attribute\narray calling `gl.enableVertexAttribArray` and `gl.disableVertexAttribArray`\nand the provided `pointer` method invokes `gl.vertexAttribPointer` with the\nspecified `index` and `type`.",
             "extends": "context.StaticArrayBuffer",
             "is_constructor": 1,
             "params": [
@@ -478,7 +514,7 @@
             "module": "context",
             "namespace": "",
             "file": "src\\Arrays.js",
-            "line": 433,
+            "line": 621,
             "description": "Represents a set of vertex attribute arrays; simplifies the management of\nmultiple arrays.",
             "is_constructor": 1,
             "params": [
@@ -489,7 +525,7 @@
                 }
             ],
             "example": [
-                "\n\tvar program = new oogl.AutoProgram(vertexSource, fragmentSource, ['in_Vertex', 'in_Color', 'in_TexCoord']);\n\tvar arrays = new oogl.AttributeArrays();\n\tarrays.add3('float', vertices);\n\tarrays.add3('float', colors);\n\tarrays.add2('float', textureCoordinates);\n\tarrays.bindAndPointer();\n\tprogram.use();\n\tarrays.drawTriangles();"
+                "\n\tvar program = new oogl.AutoProgram(vertexSource, fragmentSource, ['in_Vertex', 'in_Color', 'in_TexCoord']);\n\tvar arrays = new oogl.AttributeArrays(vertices.length / 3);\n\tarrays.add3('float', vertices);\n\tarrays.add3('float', colors);\n\tarrays.add2('float', textureCoordinates);\n\tarrays.bindAndPointer();\n\tprogram.use();\n\tarrays.drawTriangles();"
             ]
         },
         "context.ElementArray": {
@@ -503,7 +539,7 @@
             "module": "context",
             "namespace": "",
             "file": "src\\Arrays.js",
-            "line": 972,
+            "line": 1205,
             "description": "Represents an element array.\n\nThis class inherits `StaticElementArrayBuffer` and introduces utility\nmethods.",
             "extends": "context.StaticElementArrayBuffer",
             "is_constructor": 1,
@@ -922,6 +958,32 @@
                 "\n\tvar oogl = new OOGL.Context('canvas');\n\tvar framebuffer = new oogl.Framebuffer();"
             ]
         },
+        "OOGL.Loader": {
+            "name": "OOGL.Loader",
+            "shortname": "OOGL.Loader",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "context",
+            "namespace": "",
+            "file": "src\\Loader.js",
+            "line": 3,
+            "description": "TODO",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "tasks",
+                    "description": "TODO",
+                    "type": "Function",
+                    "multiple": true
+                }
+            ],
+            "example": [
+                "\n\tTODO"
+            ]
+        },
         "OOGL.Matrix2": {
             "name": "OOGL.Matrix2",
             "shortname": "OOGL.Matrix2",
@@ -958,7 +1020,7 @@
             "module": "OOGL",
             "namespace": "",
             "file": "src\\Matrix2.js",
-            "line": 377,
+            "line": 392,
             "description": "Creates a 2D rotation matrix with the specified angle.",
             "extends": "OOGL.Matrix2",
             "is_constructor": 1,
@@ -984,7 +1046,7 @@
             "module": "OOGL",
             "namespace": "",
             "file": "src\\Matrix2.js",
-            "line": 393,
+            "line": 408,
             "description": "Creates a 2D scaling matrix with the specified X and Y scaling factors.",
             "extends": "OOGL.Matrix2",
             "is_constructor": 1,
@@ -1040,8 +1102,8 @@
             "module": "OOGL",
             "namespace": "",
             "file": "src\\Matrix3.js",
-            "line": 418,
-            "description": "Creates a 3D rotation matrix that rotates everything counterclockwise about\nthe specified `(x, y, z)` axis by the specified `a` angle.\n\nThe specified `x`, `y` and `z` components must form a unit-length vector.",
+            "line": 434,
+            "description": "Creates a 3D rotation matrix that rotates everything counterclockwise around\nthe specified `(x, y, z)` axis by the specified `a` angle.\n\nThe specified `x`, `y` and `z` components must form a unit-length vector.",
             "extends": "OOGL.Matrix3",
             "is_constructor": 1,
             "params": [
@@ -1062,12 +1124,90 @@
                 },
                 {
                     "name": "a",
-                    "description": "The rotation angle.",
+                    "description": "The rotation angle, in radians.",
                     "type": "Number"
                 }
             ],
             "example": [
                 "\n\tvar m = new OOGL.RotationMatrix3(0, 1, 0, Math.PI / 2); // 90 degrees horizontal rotation"
+            ]
+        },
+        "OOGL.XRotationMatrix3": {
+            "name": "OOGL.XRotationMatrix3",
+            "shortname": "OOGL.XRotationMatrix3",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "OOGL",
+            "namespace": "",
+            "file": "src\\Matrix3.js",
+            "line": 466,
+            "description": "Creates a 3D rotation matrix that rotates everything counterclockwise around\nthe X axis by the specified `angle`.",
+            "extends": "OOGL.Matrix3",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "angle",
+                    "description": "The rotation angle, in radians.",
+                    "type": "Number"
+                }
+            ],
+            "example": [
+                "\n\tvar m = new OOGL.XRotationMatrix3(Math.PI / 2); // 90 degrees rotation around the X axis"
+            ]
+        },
+        "OOGL.YRotationMatrix3": {
+            "name": "OOGL.YRotationMatrix3",
+            "shortname": "OOGL.YRotationMatrix3",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "OOGL",
+            "namespace": "",
+            "file": "src\\Matrix3.js",
+            "line": 487,
+            "description": "Creates a 3D rotation matrix that rotates everything counterclockwise around\nthe Y axis by the specified `angle`.",
+            "extends": "OOGL.Matrix3",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "angle",
+                    "description": "The rotation angle, in radians.",
+                    "type": "Number"
+                }
+            ],
+            "example": [
+                "\n\tvar m = new OOGL.XRotationMatrix3(Math.PI / 2); // 90 degrees rotation around the Y axis"
+            ]
+        },
+        "OOGL.ZRotationMatrix3": {
+            "name": "OOGL.ZRotationMatrix3",
+            "shortname": "OOGL.ZRotationMatrix3",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "OOGL",
+            "namespace": "",
+            "file": "src\\Matrix3.js",
+            "line": 508,
+            "description": "Creates a 3D rotation matrix that rotates everything counterclockwise around\nthe Z axis by the specified `angle`.",
+            "extends": "OOGL.Matrix3",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "angle",
+                    "description": "The rotation angle, in radians.",
+                    "type": "Number"
+                }
+            ],
+            "example": [
+                "\n\tvar m = new OOGL.XRotationMatrix3(Math.PI / 2); // 90 degrees rotation around the Z axis"
             ]
         },
         "OOGL.ScalingMatrix3": {
@@ -1081,7 +1221,7 @@
             "module": "OOGL",
             "namespace": "",
             "file": "src\\Matrix3.js",
-            "line": 450,
+            "line": 529,
             "description": "Creates a 3D scaling matrix using the specified `x`, `y` and `z` scaling\nfactors.",
             "extends": "OOGL.Matrix3",
             "is_constructor": 1,
@@ -1142,7 +1282,7 @@
             "module": "OOGL",
             "namespace": "",
             "file": "src\\Matrix4.js",
-            "line": 82,
+            "line": 353,
             "description": "Creates a 3D translation matrix.",
             "extends": "OOGL.Matrix4",
             "is_constructor": 1,
@@ -1178,8 +1318,8 @@
             "module": "OOGL",
             "namespace": "",
             "file": "src\\Matrix4.js",
-            "line": 99,
-            "description": "Creates a 3D rotation matrix that rotates everything counterclockwise about\nthe specified `(x, y, z)` axis by the specified `a` angle.\n\nThe specified `x`, `y` and `z` components must form a unit-length vector.\n\nThe created matrix is identical to a rotation matrix created by using\n`OOGL.RotationMatrix3` and converted using its `toHomogeneous` method.",
+            "line": 370,
+            "description": "Creates a 3D rotation matrix that rotates everything counterclockwise around\nthe specified `(x, y, z)` axis by the specified `a` angle.\n\nThe specified `x`, `y` and `z` components must form a unit-length vector.\n\nThe created matrix is identical to a rotation matrix created by using\n`OOGL.RotationMatrix3` and converted using its `toHomogeneous` method.",
             "extends": "OOGL.Matrix4",
             "is_constructor": 1,
             "params": [
@@ -1200,12 +1340,90 @@
                 },
                 {
                     "name": "a",
-                    "description": "The rotation angle.",
+                    "description": "The rotation angle, in radians.",
                     "type": "Number"
                 }
             ],
             "example": [
                 "\n\tvar m = new OOGL.RotationMatrix4(0, 1, 0, Math.PI / 2); // 90 degrees horizontal rotation"
+            ]
+        },
+        "OOGL.XRotationMatrix4": {
+            "name": "OOGL.XRotationMatrix4",
+            "shortname": "OOGL.XRotationMatrix4",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "OOGL",
+            "namespace": "",
+            "file": "src\\Matrix4.js",
+            "line": 412,
+            "description": "Creates a 3D rotation matrix that rotates everything counterclockwise around\nthe X axis by the specified `angle`.\n\nThe created matrix is identical to a rotation matrix created by using\n`OOGL.XRotationMatrix3` and converted using its `toHomogeneous` method.",
+            "extends": "OOGL.Matrix4",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "angle",
+                    "description": "The rotation angle, in radians.",
+                    "type": "Number"
+                }
+            ],
+            "example": [
+                "\n\tvar m = new OOGL.XRotationMatrix4(Math.PI / 2); // 90 degrees rotation around the X axis"
+            ]
+        },
+        "OOGL.YRotationMatrix4": {
+            "name": "OOGL.YRotationMatrix4",
+            "shortname": "OOGL.YRotationMatrix4",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "OOGL",
+            "namespace": "",
+            "file": "src\\Matrix4.js",
+            "line": 437,
+            "description": "Creates a 3D rotation matrix that rotates everything counterclockwise around\nthe Y axis by the specified `angle`.\n\nThe created matrix is identical to a rotation matrix created by using\n`OOGL.YRotationMatrix3` and converted using its `toHomogeneous` method.",
+            "extends": "OOGL.Matrix4",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "angle",
+                    "description": "The rotation angle, in radians.",
+                    "type": "Number"
+                }
+            ],
+            "example": [
+                "\n\tvar m = new OOGL.XRotationMatrix4(Math.PI / 2); // 90 degrees rotation around the Y axis"
+            ]
+        },
+        "OOGL.ZRotationMatrix4": {
+            "name": "OOGL.ZRotationMatrix4",
+            "shortname": "OOGL.ZRotationMatrix4",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "OOGL",
+            "namespace": "",
+            "file": "src\\Matrix4.js",
+            "line": 462,
+            "description": "Creates a 3D rotation matrix that rotates everything counterclockwise around\nthe Z axis by the specified `angle`.\n\nThe created matrix is identical to a rotation matrix created by using\n`OOGL.ZRotationMatrix3` and converted using its `toHomogeneous` method.",
+            "extends": "OOGL.Matrix4",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "angle",
+                    "description": "The rotation angle, in radians.",
+                    "type": "Number"
+                }
+            ],
+            "example": [
+                "\n\tvar m = new OOGL.XRotationMatrix4(Math.PI / 2); // 90 degrees rotation around the Z axis"
             ]
         },
         "OOGL.ScalingMatrix4": {
@@ -1219,7 +1437,7 @@
             "module": "OOGL",
             "namespace": "",
             "file": "src\\Matrix4.js",
-            "line": 141,
+            "line": 487,
             "description": "Creates a 3D scaling matrix using the specified `x`, `y` and `z` scaling\nfactors.\n\nThe created matrix is identical to a scaling matrix created by using\n`OOGL.ScalingMatrix3` and converted using its `toHomogeneous` method.",
             "extends": "OOGL.Matrix4",
             "is_constructor": 1,
@@ -1255,7 +1473,7 @@
             "module": "OOGL",
             "namespace": "",
             "file": "src\\Matrix4.js",
-            "line": 161,
+            "line": 507,
             "description": "Creates an orthographic projection matrix using the specified screen ratio.\n\nThe created matrix has the following form, in row-major order:\n\n\t1\t0\t0\t0\n\t0\tr\t0\t0\n\t0\t0\t1\t0\n\t0\t0\t0\t1\n\nwhere `r` is the screen ratio.",
             "extends": "OOGL.Matrix4",
             "is_constructor": 1,
@@ -1283,7 +1501,7 @@
             "module": "OOGL",
             "namespace": "",
             "file": "src\\Matrix4.js",
-            "line": 188,
+            "line": 534,
             "description": "Creates an isometric projection matrix using the specified span parameter and\nscreen ratio.\n\nTODO",
             "extends": "OOGL.Matrix4",
             "is_constructor": 1,
@@ -1316,7 +1534,7 @@
             "module": "OOGL",
             "namespace": "",
             "file": "src\\Matrix4.js",
-            "line": 207,
+            "line": 553,
             "description": "Creates a perspective projection matrix with the specified focal angle and\nscreen ratio.\n\nThe created matrix has the following form, in row-major order:\n\n\th\t0\t\t0\t0\n\t0\th * r\t0\t0\n\t0\t0\t\t0\t1\n\t0\t0\t\t1\th\n\nwhere `r` is the screen ratio and `h` is defined by:\n\n\th = Math.cos(focus / 2);",
             "extends": "OOGL.Matrix4",
             "is_constructor": 1,
@@ -1368,7 +1586,7 @@
             "module": "context",
             "namespace": "",
             "file": "src\\Programs.js",
-            "line": 833,
+            "line": 934,
             "description": "A `Program` that automatically compiles and links using a pair of GLSL shader\nsources. The info log is thrown if the program fails to compile or link.\n\nBefore linking, the `AutoProgram` constructor also binds a specified set of\nattribute variables to their respective indices using `bindAttribLocation`.",
             "extends": "context.Program",
             "is_constructor": 1,
@@ -1404,7 +1622,7 @@
             "module": "context",
             "namespace": "",
             "file": "src\\Programs.js",
-            "line": 888,
+            "line": 989,
             "description": "A `Program` that loads the sources of a pair of shaders via AJAX and\nautomatically tries to compile and link; the info log is thrown if the\nprogram fails to compile or link.\n\nThe URLs to the GLSL shader sources are specified as a single path without\nfile name extension; the `.vert` and `.frag` extensions are automatically\nappended to it.\n\nBefore linking, the `AjaxProgram` constructor also binds a specified set of\nattribute variables to their respective indices using `bindAttribLocation`.\n\nIf the program is compiled and linked successfully, the specified `callback`\nfunction is invoked using this `AjaxProgram` object as `this`.",
             "extends": "context.Program",
             "is_constructor": 1,
@@ -1765,6 +1983,50 @@
                 "\n\tvar cubeMap = new oogl.CubeMap();"
             ]
         },
+        "context.AsyncCubeMap": {
+            "name": "context.AsyncCubeMap",
+            "shortname": "context.AsyncCubeMap",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "context",
+            "namespace": "",
+            "file": "src\\Textures.js",
+            "line": 472,
+            "description": "TODO",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "name",
+                    "description": "TODO",
+                    "type": "String"
+                },
+                {
+                    "name": "callback",
+                    "description": "TODO",
+                    "type": "Function"
+                },
+                {
+                    "name": "magFilter",
+                    "description": "An optional value for the magnifying\n\tfilter.",
+                    "type": "Number",
+                    "optional": true,
+                    "optdefault": "gl.LINEAR"
+                },
+                {
+                    "name": "minFilter",
+                    "description": "An optional value for the minifying\n\tfilter.",
+                    "type": "Number",
+                    "optional": true,
+                    "optdefault": "gl.LINEAR"
+                }
+            ],
+            "example": [
+                "\n\tTODO"
+            ]
+        },
         "context.Textures": {
             "name": "context.Textures",
             "shortname": "context.Textures",
@@ -1776,7 +2038,7 @@
             "module": "context",
             "namespace": "",
             "file": "src\\Textures.js",
-            "line": 472,
+            "line": 525,
             "description": "A utility class that aids in the management of multiple textures.\n\nOne `Textures` objects represents a set of textures that must be\nsimultaneously bound (to different texture units) for use by the same\nprogram. The `Textures` object automatically assigns textures to texture\nunits.\n\nContained textures are assigned unique names which are then used as uniform\nvariable names when specifying uniforms with the provided `uniform` method.\n\nA `Texture` object may belong to several `Textures` sets at the same\ntime, so that it can be used by several programs.",
             "is_constructor": 1,
             "params": [
@@ -1790,6 +2052,24 @@
             ],
             "example": [
                 "\n\tvar textures = new oogl.Textures({\n\t\t'Texture': texture,\n\t\t'BumpMap': bumpMap\n\t});"
+            ]
+        },
+        "OOGL.Timing": {
+            "name": "OOGL.Timing",
+            "shortname": "OOGL.Timing",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "OOGL",
+            "namespace": "",
+            "file": "src\\Timing.js",
+            "line": 3,
+            "description": "Static class providing timing-related functions.",
+            "static": 1,
+            "example": [
+                "\n\tTODO"
             ]
         },
         "OOGL.Vector2": {
@@ -1920,7 +2200,7 @@
         },
         {
             "file": "src\\Ajax.js",
-            "line": 66,
+            "line": 223,
             "description": "Performs a GET AJAX request. The data returned from the server is passed\nto a user-defined callback function.",
             "itemtype": "method",
             "name": "get",
@@ -1931,9 +2211,22 @@
                     "type": "String"
                 },
                 {
+                    "name": "data",
+                    "description": "TODO",
+                    "type": "Object",
+                    "optional": true
+                },
+                {
                     "name": "callback",
-                    "description": "A one-argument user-defined callback function\n\tthat is invoked when the request completes successfully.",
-                    "type": "Function"
+                    "description": "An optional one-argument user-defined\n\tcallback function that is invoked when the request completes\n\tsuccessfully.",
+                    "type": "Function",
+                    "optional": true
+                },
+                {
+                    "name": "type",
+                    "description": "TODO",
+                    "type": "String",
+                    "optional": true
                 }
             ],
             "example": [
@@ -1944,20 +2237,21 @@
         },
         {
             "file": "src\\Ajax.js",
-            "line": 84,
+            "line": 242,
             "description": "Performs a GET AJAX request. The data returned from the server is parsed\nas JSON and passed to a user-defined callback function.",
             "itemtype": "method",
             "name": "getJSON",
             "params": [
                 {
                     "name": "url",
-                    "description": "The URL to request.",
+                    "description": "url The URL to request.",
                     "type": "String"
                 },
                 {
                     "name": "callback",
-                    "description": "A one-argument user-defined callback function\n\tthat is invoked when the request completes successfully.",
-                    "type": "Function"
+                    "description": "An optional one-argument user-defined\n\tcallback function that is invoked when the request completes\n\tsuccessfully.",
+                    "type": "Function",
+                    "optional": true
                 }
             ],
             "example": [
@@ -1968,7 +2262,7 @@
         },
         {
             "file": "src\\Ajax.js",
-            "line": 103,
+            "line": 260,
             "description": "Performs a POST AJAX request. The data returned from the server is passed\nto a user-defined callback function.",
             "itemtype": "method",
             "name": "post",
@@ -1980,8 +2274,9 @@
                 },
                 {
                     "name": "callback",
-                    "description": "A one-argument user-defined callback function\n\tthat is invoked when the request completes successfully.",
-                    "type": "Function"
+                    "description": "An optional one-argument user-defined\n\tcallback function that is invoked when the request completes\n\tsuccessfully.",
+                    "type": "Function",
+                    "optional": true
                 }
             ],
             "class": "OOGL.Ajax",
@@ -1989,7 +2284,7 @@
         },
         {
             "file": "src\\Ajax.js",
-            "line": 116,
+            "line": 272,
             "description": "Performs a POST AJAX request. The data returned from the server is parsed\nas JSON and passed to a user-defined callback function.",
             "itemtype": "method",
             "name": "postJSON",
@@ -2001,8 +2296,9 @@
                 },
                 {
                     "name": "callback",
-                    "description": "A one-argument user-defined callback function\n\tthat is invoked when the request completes successfully.",
-                    "type": "Function"
+                    "description": "An optional one-argument user-defined\n\tcallback function that is invoked when the request completes\n\tsuccessfully.",
+                    "type": "Function",
+                    "optional": true
                 }
             ],
             "class": "OOGL.Ajax",
@@ -2010,7 +2306,7 @@
         },
         {
             "file": "src\\Ajax.js",
-            "line": 129,
+            "line": 284,
             "description": "Performs a PUT AJAX request. The data returned from the server is passed\nto a user-defined callback function.",
             "itemtype": "method",
             "name": "put",
@@ -2022,8 +2318,9 @@
                 },
                 {
                     "name": "callback",
-                    "description": "A one-argument user-defined callback function\n\tthat is invoked when the request completes successfully.",
-                    "type": "Function"
+                    "description": "An optional one-argument user-defined\n\tcallback function that is invoked when the request completes\n\tsuccessfully.",
+                    "type": "Function",
+                    "optional": true
                 }
             ],
             "class": "OOGL.Ajax",
@@ -2031,7 +2328,7 @@
         },
         {
             "file": "src\\Ajax.js",
-            "line": 142,
+            "line": 296,
             "description": "Performs a PUT AJAX request. The data returned from the server is parsed\nas JSON and passed to a user-defined callback function.",
             "itemtype": "method",
             "name": "putJSON",
@@ -2043,8 +2340,9 @@
                 },
                 {
                     "name": "callback",
-                    "description": "A one-argument user-defined callback function\n\tthat is invoked when the request completes successfully.",
-                    "type": "Function"
+                    "description": "An optional one-argument user-defined\n\tcallback function that is invoked when the request completes\n\tsuccessfully.",
+                    "type": "Function",
+                    "optional": true
                 }
             ],
             "class": "OOGL.Ajax",
@@ -2052,7 +2350,7 @@
         },
         {
             "file": "src\\Ajax.js",
-            "line": 155,
+            "line": 308,
             "description": "Performs a DELETE AJAX request. The data returned from the server is\npassed to a user-defined callback function.",
             "itemtype": "method",
             "name": "_delete",
@@ -2064,8 +2362,9 @@
                 },
                 {
                     "name": "callback",
-                    "description": "A one-argument user-defined callback function\n\tthat is invoked when the request completes successfully.",
-                    "type": "Function"
+                    "description": "An optional one-argument user-defined\n\tcallback function that is invoked when the request completes\n\tsuccessfully.",
+                    "type": "Function",
+                    "optional": true
                 }
             ],
             "class": "OOGL.Ajax",
@@ -2073,7 +2372,7 @@
         },
         {
             "file": "src\\Ajax.js",
-            "line": 168,
+            "line": 320,
             "description": "Performs a DELETE AJAX request. The data returned from the server is\nparsed as JSON and passed to a user-defined callback function.",
             "itemtype": "method",
             "name": "deleteJSON",
@@ -2085,8 +2384,9 @@
                 },
                 {
                     "name": "callback",
-                    "description": "A one-argument user-defined callback function\n\tthat is invoked when the request completes successfully.",
-                    "type": "Function"
+                    "description": "An optional one-argument user-defined\n\tcallback function that is invoked when the request completes\n\tsuccessfully.",
+                    "type": "Function",
+                    "optional": true
                 }
             ],
             "class": "OOGL.Ajax",
@@ -2095,6 +2395,30 @@
         {
             "file": "src\\Arrays.js",
             "line": 61,
+            "description": "Enables the `index`-th vertex attribute array.\n\n`gl.enableVertexAttribArray` equivalent.",
+            "itemtype": "method",
+            "name": "enable",
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "context.AttributeArray1",
+            "module": "context"
+        },
+        {
+            "file": "src\\Arrays.js",
+            "line": 74,
+            "description": "Disables the `index`-th vertex attribute array.\n\n`gl.disableVertexAttribArray` equivalent.",
+            "itemtype": "method",
+            "name": "disable",
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "context.AttributeArray1",
+            "module": "context"
+        },
+        {
+            "file": "src\\Arrays.js",
+            "line": 87,
             "description": "Specifies a pointer to this buffer for the `index`-th vertex attribute\narray.\n\n`gl.vertexAttribPointer` equivalent.",
             "itemtype": "method",
             "name": "pointer",
@@ -2122,7 +2446,7 @@
         },
         {
             "file": "src\\Arrays.js",
-            "line": 85,
+            "line": 111,
             "description": "Binds this buffer to its target and then specifies its pointer for the\n`index`-th vertex attribute array.\n\nYou may optionally specify `stride` and `offset` parameters.\n\nEquivalent to calling `bind` and `pointer` subsequently.",
             "itemtype": "method",
             "name": "bindAndPointer",
@@ -2150,7 +2474,59 @@
         },
         {
             "file": "src\\Arrays.js",
-            "line": 167,
+            "line": 136,
+            "description": "TODO",
+            "itemtype": "method",
+            "name": "enableBindAndPointer",
+            "params": [
+                {
+                    "name": "stride",
+                    "description": "The stride between consecutive elements in the\n\tarray (see the explanation for the equivalent argument in\n\t`gl.vertexAttribPointer`).",
+                    "type": "Number",
+                    "optional": true,
+                    "optdefault": "0"
+                },
+                {
+                    "name": "offset",
+                    "description": "The index of the first element of the\n\tunderlying buffer to be used for the attribute array.\n\nThis value is multiplied by the data type size and used as the `pointer`\nparameter in the `gl.vertexAttribPointer` call.",
+                    "type": "Number",
+                    "optional": true,
+                    "optdefault": "0"
+                }
+            ],
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "context.AttributeArray1",
+            "module": "context"
+        },
+        {
+            "file": "src\\Arrays.js",
+            "line": 214,
+            "description": "Enables the `index`-th vertex attribute array.\n\n`gl.enableVertexAttribArray` equivalent.",
+            "itemtype": "method",
+            "name": "enable",
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "context.AttributeArray2",
+            "module": "context"
+        },
+        {
+            "file": "src\\Arrays.js",
+            "line": 227,
+            "description": "Disables the `index`-th vertex attribute array.\n\n`gl.disableVertexAttribArray` equivalent.",
+            "itemtype": "method",
+            "name": "disable",
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "context.AttributeArray2",
+            "module": "context"
+        },
+        {
+            "file": "src\\Arrays.js",
+            "line": 240,
             "description": "Specifies a pointer to this buffer for the `index`-th vertex attribute\narray.\n\n`gl.vertexAttribPointer` equivalent.",
             "itemtype": "method",
             "name": "pointer",
@@ -2178,7 +2554,7 @@
         },
         {
             "file": "src\\Arrays.js",
-            "line": 191,
+            "line": 264,
             "description": "Binds this buffer to its target and then specifies its pointer for the\n`index`-th vertex attribute array.\n\nYou may optionally specify `stride` and `offset` parameters.\n\nEquivalent to calling `bind` and `pointer` subsequently.",
             "itemtype": "method",
             "name": "bindAndPointer",
@@ -2206,7 +2582,59 @@
         },
         {
             "file": "src\\Arrays.js",
-            "line": 273,
+            "line": 289,
+            "description": "TODO",
+            "itemtype": "method",
+            "name": "enableBindAndPointer",
+            "params": [
+                {
+                    "name": "stride",
+                    "description": "The stride between consecutive elements in the\n\tarray (see the explanation for the equivalent argument in\n\t`gl.vertexAttribPointer`).",
+                    "type": "Number",
+                    "optional": true,
+                    "optdefault": "0"
+                },
+                {
+                    "name": "offset",
+                    "description": "The index of the first element of the\n\tunderlying buffer to be used for the attribute array.\n\nThis value is multiplied by the data type size and used as the `pointer`\nparameter in the `gl.vertexAttribPointer` call.",
+                    "type": "Number",
+                    "optional": true,
+                    "optdefault": "0"
+                }
+            ],
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "context.AttributeArray2",
+            "module": "context"
+        },
+        {
+            "file": "src\\Arrays.js",
+            "line": 367,
+            "description": "Enables the `index`-th vertex attribute array.\n\n`gl.enableVertexAttribArray` equivalent.",
+            "itemtype": "method",
+            "name": "enable",
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "context.AttributeArray3",
+            "module": "context"
+        },
+        {
+            "file": "src\\Arrays.js",
+            "line": 380,
+            "description": "Disables the `index`-th vertex attribute array.\n\n`gl.disableVertexAttribArray` equivalent.",
+            "itemtype": "method",
+            "name": "disable",
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "context.AttributeArray3",
+            "module": "context"
+        },
+        {
+            "file": "src\\Arrays.js",
+            "line": 393,
             "description": "Specifies a pointer to this buffer for the `index`-th vertex attribute\narray.\n\n`gl.vertexAttribPointer` equivalent.",
             "itemtype": "method",
             "name": "pointer",
@@ -2234,7 +2662,7 @@
         },
         {
             "file": "src\\Arrays.js",
-            "line": 297,
+            "line": 417,
             "description": "Binds this buffer to its target and then specifies its pointer for the\n`index`-th vertex attribute array.\n\nYou may optionally specify `stride` and `offset` parameters.\n\nEquivalent to calling `bind` and `pointer` subsequently.",
             "itemtype": "method",
             "name": "bindAndPointer",
@@ -2262,7 +2690,59 @@
         },
         {
             "file": "src\\Arrays.js",
-            "line": 379,
+            "line": 442,
+            "description": "TODO",
+            "itemtype": "method",
+            "name": "enableBindAndPointer",
+            "params": [
+                {
+                    "name": "stride",
+                    "description": "The stride between consecutive elements in the\n\tarray (see the explanation for the equivalent argument in\n\t`gl.vertexAttribPointer`).",
+                    "type": "Number",
+                    "optional": true,
+                    "optdefault": "0"
+                },
+                {
+                    "name": "offset",
+                    "description": "The index of the first element of the\n\tunderlying buffer to be used for the attribute array.\n\nThis value is multiplied by the data type size and used as the `pointer`\nparameter in the `gl.vertexAttribPointer` call.",
+                    "type": "Number",
+                    "optional": true,
+                    "optdefault": "0"
+                }
+            ],
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "context.AttributeArray3",
+            "module": "context"
+        },
+        {
+            "file": "src\\Arrays.js",
+            "line": 520,
+            "description": "Enables the `index`-th vertex attribute array.\n\n`gl.enableVertexAttribArray` equivalent.",
+            "itemtype": "method",
+            "name": "enable",
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "context.AttributeArray4",
+            "module": "context"
+        },
+        {
+            "file": "src\\Arrays.js",
+            "line": 533,
+            "description": "Disables the `index`-th vertex attribute array.\n\n`gl.disableVertexAttribArray` equivalent.",
+            "itemtype": "method",
+            "name": "disable",
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "context.AttributeArray4",
+            "module": "context"
+        },
+        {
+            "file": "src\\Arrays.js",
+            "line": 546,
             "description": "Specifies a pointer to this buffer for the `index`-th vertex attribute\narray.\n\nYou may optionally specify `stride` and `offset` parameters.\n\n`gl.vertexAttribPointer` equivalent.",
             "itemtype": "method",
             "name": "pointer",
@@ -2290,7 +2770,7 @@
         },
         {
             "file": "src\\Arrays.js",
-            "line": 405,
+            "line": 572,
             "description": "Binds this buffer to its target and then specifies its pointer for the\n`index`-th vertex attribute array.\n\nYou may optionally specify `stride` and `offset` parameters.\n\nEquivalent to calling `bind` and `pointer` subsequently.",
             "itemtype": "method",
             "name": "bindAndPointer",
@@ -2318,7 +2798,35 @@
         },
         {
             "file": "src\\Arrays.js",
-            "line": 454,
+            "line": 597,
+            "description": "TODO",
+            "itemtype": "method",
+            "name": "enableBindAndPointer",
+            "params": [
+                {
+                    "name": "stride",
+                    "description": "The stride between consecutive elements in the\n\tarray (see the explanation for the equivalent argument in\n\t`gl.vertexAttribPointer`).",
+                    "type": "Number",
+                    "optional": true,
+                    "optdefault": "0"
+                },
+                {
+                    "name": "offset",
+                    "description": "The index of the first element of the\n\tunderlying buffer to be used for the attribute array.\n\nThis value is multiplied by the data type size and used as the `pointer`\nparameter in the `gl.vertexAttribPointer` call.",
+                    "type": "Number",
+                    "optional": true,
+                    "optdefault": "0"
+                }
+            ],
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "context.AttributeArray4",
+            "module": "context"
+        },
+        {
+            "file": "src\\Arrays.js",
+            "line": 642,
             "description": "Adds a single component vertex attribute array to the set.",
             "itemtype": "method",
             "name": "add1",
@@ -2349,7 +2857,7 @@
         },
         {
             "file": "src\\Arrays.js",
-            "line": 471,
+            "line": 659,
             "description": "Adds a single signed byte component vertex attribute array to the\nset.",
             "itemtype": "method",
             "name": "add1b",
@@ -2375,7 +2883,7 @@
         },
         {
             "file": "src\\Arrays.js",
-            "line": 487,
+            "line": 675,
             "description": "Adds a single unsigned byte component vertex attribute array to the\nset.",
             "itemtype": "method",
             "name": "add1ub",
@@ -2401,7 +2909,7 @@
         },
         {
             "file": "src\\Arrays.js",
-            "line": 503,
+            "line": 691,
             "description": "Adds a single signed short integer component vertex attribute array\nto the set.",
             "itemtype": "method",
             "name": "add1s",
@@ -2427,7 +2935,7 @@
         },
         {
             "file": "src\\Arrays.js",
-            "line": 519,
+            "line": 707,
             "description": "Adds a single unsigned short integer component vertex attribute array\nto the set.",
             "itemtype": "method",
             "name": "add1us",
@@ -2453,7 +2961,7 @@
         },
         {
             "file": "src\\Arrays.js",
-            "line": 535,
+            "line": 723,
             "description": "Adds a single floating point component vertex attribute array to the\nset.",
             "itemtype": "method",
             "name": "add1f",
@@ -2479,7 +2987,7 @@
         },
         {
             "file": "src\\Arrays.js",
-            "line": 551,
+            "line": 739,
             "description": "Adds a 2-component vertex attribute array to the set.",
             "itemtype": "method",
             "name": "add2",
@@ -2510,7 +3018,7 @@
         },
         {
             "file": "src\\Arrays.js",
-            "line": 568,
+            "line": 756,
             "description": "Adds a two signed byte component vertex attribute array to the set.",
             "itemtype": "method",
             "name": "add2b",
@@ -2536,7 +3044,7 @@
         },
         {
             "file": "src\\Arrays.js",
-            "line": 583,
+            "line": 771,
             "description": "Adds a two unsigned byte component vertex attribute array to the set.",
             "itemtype": "method",
             "name": "add2ub",
@@ -2562,7 +3070,7 @@
         },
         {
             "file": "src\\Arrays.js",
-            "line": 598,
+            "line": 786,
             "description": "Adds a two signed short integer component vertex attribute array to\nthe set.",
             "itemtype": "method",
             "name": "add2s",
@@ -2588,7 +3096,7 @@
         },
         {
             "file": "src\\Arrays.js",
-            "line": 614,
+            "line": 802,
             "description": "Adds a two unsigned short integer component vertex attribute array to\nthe set.",
             "itemtype": "method",
             "name": "add2us",
@@ -2614,7 +3122,7 @@
         },
         {
             "file": "src\\Arrays.js",
-            "line": 630,
+            "line": 818,
             "description": "Adds a two floating point component vertex attribute array to the\nset.",
             "itemtype": "method",
             "name": "add2f",
@@ -2640,7 +3148,7 @@
         },
         {
             "file": "src\\Arrays.js",
-            "line": 646,
+            "line": 834,
             "description": "Adds a 3-component vertex attribute array to the set.",
             "itemtype": "method",
             "name": "add3",
@@ -2671,7 +3179,7 @@
         },
         {
             "file": "src\\Arrays.js",
-            "line": 663,
+            "line": 851,
             "description": "Adds a three signed byte component vertex attribute array to the set.",
             "itemtype": "method",
             "name": "add3b",
@@ -2697,7 +3205,7 @@
         },
         {
             "file": "src\\Arrays.js",
-            "line": 678,
+            "line": 866,
             "description": "Adds a three unsigned byte component vertex attribute array to the\nset.",
             "itemtype": "method",
             "name": "add3ub",
@@ -2723,7 +3231,7 @@
         },
         {
             "file": "src\\Arrays.js",
-            "line": 694,
+            "line": 882,
             "description": "Adds a three signed short integer component vertex attribute array to\nthe set.",
             "itemtype": "method",
             "name": "add3s",
@@ -2749,7 +3257,7 @@
         },
         {
             "file": "src\\Arrays.js",
-            "line": 710,
+            "line": 898,
             "description": "Adds a three unsigned short integer component vertex attribute array\nto the set.",
             "itemtype": "method",
             "name": "add3us",
@@ -2775,7 +3283,7 @@
         },
         {
             "file": "src\\Arrays.js",
-            "line": 726,
+            "line": 914,
             "description": "Adds a three floating point component vertex attribute array to the\nset.",
             "itemtype": "method",
             "name": "add3f",
@@ -2801,7 +3309,7 @@
         },
         {
             "file": "src\\Arrays.js",
-            "line": 742,
+            "line": 930,
             "description": "Adds a 4-component vertex attribute array to the set.",
             "itemtype": "method",
             "name": "add4",
@@ -2832,7 +3340,7 @@
         },
         {
             "file": "src\\Arrays.js",
-            "line": 759,
+            "line": 947,
             "description": "Adds a four signed byte component vertex attribute array to the set.",
             "itemtype": "method",
             "name": "add4b",
@@ -2858,7 +3366,7 @@
         },
         {
             "file": "src\\Arrays.js",
-            "line": 774,
+            "line": 962,
             "description": "Adds a four unsigned byte component vertex attribute array to the set.",
             "itemtype": "method",
             "name": "add4ub",
@@ -2884,7 +3392,7 @@
         },
         {
             "file": "src\\Arrays.js",
-            "line": 789,
+            "line": 977,
             "description": "Adds a four signed short integer component vertex attribute array to\nthe set.",
             "itemtype": "method",
             "name": "add4s",
@@ -2910,7 +3418,7 @@
         },
         {
             "file": "src\\Arrays.js",
-            "line": 805,
+            "line": 993,
             "description": "Adds a four unsigned short integer component vertex attribute array\nto the set.",
             "itemtype": "method",
             "name": "add4us",
@@ -2936,7 +3444,7 @@
         },
         {
             "file": "src\\Arrays.js",
-            "line": 821,
+            "line": 1009,
             "description": "Adds a four floating point component vertex attribute array to the\nset.",
             "itemtype": "method",
             "name": "add4f",
@@ -2962,7 +3470,31 @@
         },
         {
             "file": "src\\Arrays.js",
-            "line": 837,
+            "line": 1025,
+            "description": "TODO",
+            "itemtype": "method",
+            "name": "enable",
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "context.AttributeArrays",
+            "module": "context"
+        },
+        {
+            "file": "src\\Arrays.js",
+            "line": 1038,
+            "description": "TODO",
+            "itemtype": "method",
+            "name": "disable",
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "context.AttributeArrays",
+            "module": "context"
+        },
+        {
+            "file": "src\\Arrays.js",
+            "line": 1051,
             "description": "Binds each array in the set to its buffer target (which is always\n`gl.ARRAY_BUFFER`) and specifies its pointer for the attribute array\nassociated to its index. This is typically used to prepare all the\narrays used by a program with just one call.\n\nYou may optionally specify `stride` and `offset` parameters.",
             "itemtype": "method",
             "name": "bindAndPointer",
@@ -2983,14 +3515,26 @@
                 }
             ],
             "example": [
-                "\n\tvar program = new oogl.AutoProgram(vertexSource, fragmentSource, ['in_Vertex', 'in_Color', 'in_TexCoord']);\n\tvar arrays = new oogl.AttributeArrays();\n\tarrays.add3('float', vertices);\n\tarrays.add3('float', colors);\n\tarrays.add2('float', textureCoordinates);\n\tarrays.bindAndPointer();\n\tprogram.use();\n\tarrays.drawTriangles();"
+                "\n\tvar program = new oogl.AutoProgram(vertexSource, fragmentSource, ['in_Vertex', 'in_Color', 'in_TexCoord']);\n\tvar arrays = new oogl.AttributeArrays();\n\tarrays.add3('float', vertices);\n\tarrays.add3('float', colors);\n\tarrays.add2('float', textureCoordinates);\n\tarrays.enable();\n\tarrays.bindAndPointer();\n\tprogram.use();\n\tarrays.drawTriangles();"
             ],
             "class": "context.AttributeArrays",
             "module": "context"
         },
         {
             "file": "src\\Arrays.js",
-            "line": 870,
+            "line": 1087,
+            "description": "TODO",
+            "itemtype": "method",
+            "name": "enableBindAndPointer",
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "context.AttributeArrays",
+            "module": "context"
+        },
+        {
+            "file": "src\\Arrays.js",
+            "line": 1101,
             "description": "Draws the arrays in `gl.TRIANGLES` mode.\n\nEquivalent to calling `gl.drawArrays` with `gl.TRIANGLES`.\n\nYou may optionally specify `offset` and `count` parameters.",
             "itemtype": "method",
             "name": "drawTriangles",
@@ -3017,10 +3561,10 @@
         },
         {
             "file": "src\\Arrays.js",
-            "line": 899,
+            "line": 1130,
             "description": "Draws the arrays in `gl.TRIANGLE_FAN` mode.\n\nEquivalent to calling `gl.drawArrays` with `gl.TRIANGLE_FAN`.\n\nYou may optionally specify `offset` and `count` parameters.",
             "itemtype": "method",
-            "name": "drawTriangles",
+            "name": "drawTriangleFan",
             "params": [
                 {
                     "name": "offset",
@@ -3044,10 +3588,10 @@
         },
         {
             "file": "src\\Arrays.js",
-            "line": 928,
+            "line": 1159,
             "description": "Draws the arrays in `gl.TRIANGLE_STRIP` mode.\n\nEquivalent to calling `gl.drawArrays` with `gl.TRIANGLE_STRIP`.\n\nYou may optionally specify `offset` and `count` parameters.",
             "itemtype": "method",
-            "name": "drawTriangles",
+            "name": "drawTriangleStrip",
             "params": [
                 {
                     "name": "offset",
@@ -3071,7 +3615,7 @@
         },
         {
             "file": "src\\Arrays.js",
-            "line": 957,
+            "line": 1188,
             "description": "Deletes all the arrays in the set.",
             "itemtype": "method",
             "name": "_delete",
@@ -3083,7 +3627,7 @@
         },
         {
             "file": "src\\Arrays.js",
-            "line": 1011,
+            "line": 1247,
             "description": "Draws the elements in `gl.TRIANGLES` mode.\n\nEquivalent to calling `gl.drawElements` with `gl.TRIANGLES`.",
             "itemtype": "method",
             "name": "drawTriangles",
@@ -3097,7 +3641,7 @@
                 },
                 {
                     "name": "count",
-                    "description": "The number of elements to draw. When not\n\tspecified defaults to the `count` parameter passed to the `ElementArray`\n\tconstructor.",
+                    "description": "The number of elements to draw. When not\n\tspecified defaults to the length of the `indices` array passed to the\n\t`ElementArray` constructor.",
                     "type": "Number",
                     "optional": true
                 }
@@ -3110,10 +3654,10 @@
         },
         {
             "file": "src\\Arrays.js",
-            "line": 1035,
+            "line": 1271,
             "description": "Draws the elements in `gl.TRIANGLE_FAN` mode.\n\nEquivalent to calling `gl.drawElements` with `gl.TRIANGLE_FAN`.",
             "itemtype": "method",
-            "name": "drawTriangles",
+            "name": "drawTriangleFan",
             "params": [
                 {
                     "name": "offset",
@@ -3124,7 +3668,7 @@
                 },
                 {
                     "name": "count",
-                    "description": "The number of elements to draw. When not\n\tspecified defaults to the `count` parameter passed to the `ElementArray`\n\tconstructor.",
+                    "description": "The number of elements to draw. When not\n\tspecified defaults to the length of the `indices` array passed to the\n\t`ElementArray` constructor.",
                     "type": "Number",
                     "optional": true
                 }
@@ -3137,7 +3681,7 @@
         },
         {
             "file": "src\\Arrays.js",
-            "line": 1059,
+            "line": 1295,
             "description": "Draws the elements in `gl.TRIANGLE_STRIP` mode.\n\nEquivalent to calling `gl.drawElements` with `gl.TRIANGLE_STRIP`.",
             "itemtype": "method",
             "name": "drawTriangleStrip",
@@ -3151,7 +3695,7 @@
                 },
                 {
                     "name": "count",
-                    "description": "The number of elements to draw. When not\n\tspecified defaults to the `count` parameter passed to the `ElementArray`\n\tconstructor.",
+                    "description": "The number of elements to draw. When not\n\tspecified defaults to the length of the `indices` array passed to the\n\t`ElementArray` constructor.",
                     "type": "Number",
                     "optional": true
                 }
@@ -3462,6 +4006,82 @@
             "module": "context"
         },
         {
+            "file": "src\\Loader.js",
+            "line": 18,
+            "description": "TODO",
+            "itemtype": "method",
+            "name": "queue",
+            "params": [
+                {
+                    "name": "tasks",
+                    "description": "TODO",
+                    "type": "Function",
+                    "multiple": true
+                }
+            ],
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "OOGL.Loader",
+            "module": "context"
+        },
+        {
+            "file": "src\\Loader.js",
+            "line": 30,
+            "description": "TODO",
+            "itemtype": "method",
+            "name": "queueSync",
+            "params": [
+                {
+                    "name": "tasks",
+                    "description": "TODO",
+                    "type": "Function",
+                    "multiple": true
+                }
+            ],
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "OOGL.Loader",
+            "module": "context"
+        },
+        {
+            "file": "src\\Loader.js",
+            "line": 49,
+            "description": "TODO",
+            "itemtype": "method",
+            "name": "count",
+            "return": {
+                "description": "TODO",
+                "type": "Number"
+            },
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "OOGL.Loader",
+            "module": "context"
+        },
+        {
+            "file": "src\\Loader.js",
+            "line": 61,
+            "description": "TODO",
+            "itemtype": "method",
+            "name": "start",
+            "params": [
+                {
+                    "name": "callback",
+                    "description": "TODO",
+                    "type": "Function",
+                    "optional": true
+                }
+            ],
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "OOGL.Loader",
+            "module": "context"
+        },
+        {
             "file": "src\\Matrix2.js",
             "line": 29,
             "description": "The element at cell (0, 0) of this matrix.",
@@ -3516,6 +4136,22 @@
         {
             "file": "src\\Matrix2.js",
             "line": 70,
+            "description": "TODO",
+            "itemtype": "method",
+            "name": "clone",
+            "return": {
+                "description": "TODO",
+                "type": "OOGL.Matrix2"
+            },
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "OOGL.Matrix2",
+            "module": "OOGL"
+        },
+        {
+            "file": "src\\Matrix2.js",
+            "line": 85,
             "description": "Returns the element at the specified row and column in the matrix.\n\nRow and column indices are zero-based. This method is equivalent to\nfetching the `j * 2 + i`-th element of the array:\n\n\tmatrix.get(i, j) == matrix[j * 2 + i] // true",
             "itemtype": "method",
             "name": "get",
@@ -3543,7 +4179,7 @@
         },
         {
             "file": "src\\Matrix2.js",
-            "line": 90,
+            "line": 105,
             "description": "Changes the element at the specified row and column in the matrix.\n\nRow and column indices are zero-based. This method is equivalent to\nsetting the `j * 2 + i`-th element of the array:\n\n\tmatrix.put(i, j, x);\n\tmatrix[j * 2 + i] = x; // same as previous",
             "itemtype": "method",
             "name": "put",
@@ -3572,7 +4208,7 @@
         },
         {
             "file": "src\\Matrix2.js",
-            "line": 112,
+            "line": 127,
             "description": "Transposes this matrix.",
             "itemtype": "method",
             "name": "transpose",
@@ -3585,7 +4221,7 @@
         },
         {
             "file": "src\\Matrix2.js",
-            "line": 129,
+            "line": 144,
             "description": "Computes the transposed matrix and returns it as a new `Matrix2` object.\nThis matrix is not changed.",
             "itemtype": "method",
             "name": "getTransposed",
@@ -3601,7 +4237,7 @@
         },
         {
             "file": "src\\Matrix2.js",
-            "line": 143,
+            "line": 158,
             "description": "Adds the specified matrix to this one.\n\nEach element of the specified matrix is added up to the respective\nelement in this matrix. The specified `m` matrix is not changed.",
             "itemtype": "method",
             "name": "add",
@@ -3621,7 +4257,7 @@
         },
         {
             "file": "src\\Matrix2.js",
-            "line": 163,
+            "line": 178,
             "description": "Adds the specified matrix to this one and returns the sum as a new\n`Matrix2` object. This matrix is not changed.",
             "itemtype": "method",
             "name": "plus",
@@ -3644,7 +4280,7 @@
         },
         {
             "file": "src\\Matrix2.js",
-            "line": 183,
+            "line": 198,
             "description": "Subtracts the specified matrix to this one.\n\nEach element of the specified matrix is subtracted to the respective\nelement in this matrix. The specified `m` matrix is not changed.",
             "itemtype": "method",
             "name": "subtract",
@@ -3664,7 +4300,7 @@
         },
         {
             "file": "src\\Matrix2.js",
-            "line": 203,
+            "line": 218,
             "description": "Subtracts the specified matrix to this one and returns the difference as\na new `Matrix2` object. This matrix is not changed.",
             "itemtype": "method",
             "name": "minus",
@@ -3687,7 +4323,7 @@
         },
         {
             "file": "src\\Matrix2.js",
-            "line": 223,
+            "line": 238,
             "description": "Multiplies this matrix by the specified constant factor. This method\nchanges the original matrix.",
             "itemtype": "method",
             "name": "multiply",
@@ -3707,7 +4343,7 @@
         },
         {
             "file": "src\\Matrix2.js",
-            "line": 241,
+            "line": 256,
             "description": "Multiplies this matrix by the specified constant factor and returns the\nproduct as a new `Matrix2` object. This matrix is not changed.",
             "itemtype": "method",
             "name": "by",
@@ -3730,7 +4366,7 @@
         },
         {
             "file": "src\\Matrix2.js",
-            "line": 253,
+            "line": 268,
             "description": "Left-multiplies this matrix by the specified `Vector2` object and returns\nthe product as a new `Vector2` object. Neither this matrix nor the\nspecified vector are changed.",
             "itemtype": "method",
             "name": "by",
@@ -3753,7 +4389,7 @@
         },
         {
             "file": "src\\Matrix2.js",
-            "line": 267,
+            "line": 282,
             "description": "Left-multiplies this matrix by the specified `Matrix2` object and returns\nthe product as a new `Matrix2` object. Neither this matrix nor the\nspecified one are changed.",
             "itemtype": "method",
             "name": "by",
@@ -3776,7 +4412,7 @@
         },
         {
             "file": "src\\Matrix2.js",
-            "line": 302,
+            "line": 317,
             "description": "Computes the determinant of this matrix.",
             "itemtype": "method",
             "name": "determinant",
@@ -3792,7 +4428,7 @@
         },
         {
             "file": "src\\Matrix2.js",
-            "line": 315,
+            "line": 330,
             "description": "Inverts this matrix.",
             "itemtype": "method",
             "name": "invert",
@@ -3805,7 +4441,7 @@
         },
         {
             "file": "src\\Matrix2.js",
-            "line": 338,
+            "line": 353,
             "description": "Computes the inverse matrix and returns it as a new `Matrix2` object.\nThis matrix is not changed.",
             "itemtype": "method",
             "name": "getInverse",
@@ -3821,7 +4457,7 @@
         },
         {
             "file": "src\\Matrix2.js",
-            "line": 359,
+            "line": 374,
             "description": "The 2x2 null matrix.",
             "itemtype": "property",
             "name": "OOGL.Matrix2.NULL",
@@ -3832,7 +4468,7 @@
         },
         {
             "file": "src\\Matrix2.js",
-            "line": 368,
+            "line": 383,
             "description": "The 2x2 identity matrix.",
             "itemtype": "property",
             "name": "OOGL.Matrix2.IDENTITY",
@@ -3844,6 +4480,22 @@
         {
             "file": "src\\Matrix3.js",
             "line": 37,
+            "description": "TODO",
+            "itemtype": "method",
+            "name": "clone",
+            "return": {
+                "description": "TODO",
+                "type": "OOGL.Matrix3"
+            },
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "OOGL.Matrix3",
+            "module": "OOGL"
+        },
+        {
+            "file": "src\\Matrix3.js",
+            "line": 53,
             "description": "Yields a new `Matrix4` object corresponding to a homogeneous 4x4 matrix\nequivalent to this matrix.\n\nThe upper left block of the new 4x4 matrix is set using the values from\nthis 3x3 matrix, while the lower right corner is set to 1 and the rest to\n0.",
             "itemtype": "method",
             "name": "toHomogeneous",
@@ -3859,7 +4511,7 @@
         },
         {
             "file": "src\\Matrix3.js",
-            "line": 59,
+            "line": 75,
             "description": "Returns the element at the specified row and column in the matrix.\n\nRow and column indices are zero-based. This method is equivalent to\nfetching the `j * 3 + i`-th element of the array:\n\n\tmatrix.get(i, j) == matrix[j * 3 + i] // true",
             "itemtype": "method",
             "name": "get",
@@ -3887,7 +4539,7 @@
         },
         {
             "file": "src\\Matrix3.js",
-            "line": 80,
+            "line": 96,
             "description": "Changes the element at the specified row and column in the matrix.\n\nRow and column indices are zero-based. This method is equivalent to\nsetting the `j * 3 + i`-th element of the array:\n\n\tmatrix.put(i, j, x);\n\tmatrix[j * 3 + i] = x; // same as previous",
             "itemtype": "method",
             "name": "put",
@@ -3916,7 +4568,7 @@
         },
         {
             "file": "src\\Matrix3.js",
-            "line": 102,
+            "line": 118,
             "description": "Transposes this matrix.",
             "itemtype": "method",
             "name": "transpose",
@@ -3929,7 +4581,7 @@
         },
         {
             "file": "src\\Matrix3.js",
-            "line": 119,
+            "line": 135,
             "description": "Computes the transposed matrix and returns it as a new `Matrix3` object.\nThis matrix is not changed.",
             "itemtype": "method",
             "name": "getTransposed",
@@ -3945,7 +4597,7 @@
         },
         {
             "file": "src\\Matrix3.js",
-            "line": 133,
+            "line": 149,
             "description": "Adds the specified matrix to this one.\n\nEach element of the specified matrix is added up to the respective\nelement in this matrix. The specified `m` matrix is not changed.",
             "itemtype": "method",
             "name": "add",
@@ -3965,7 +4617,7 @@
         },
         {
             "file": "src\\Matrix3.js",
-            "line": 153,
+            "line": 169,
             "description": "Adds the specified matrix to this one and returns the sum as a new\n`Matrix3` object. This matrix is not changed.",
             "itemtype": "method",
             "name": "plus",
@@ -3988,7 +4640,7 @@
         },
         {
             "file": "src\\Matrix3.js",
-            "line": 173,
+            "line": 189,
             "description": "Subtracts the specified matrix to this one.\n\nEach element of the specified matrix is subtracted to the respective\nelement in this matrix. The specified `m` matrix is not changed.",
             "itemtype": "method",
             "name": "subtract",
@@ -4008,7 +4660,7 @@
         },
         {
             "file": "src\\Matrix3.js",
-            "line": 193,
+            "line": 209,
             "description": "Subtracts the specified matrix to this one and returns the difference as\na new `Matrix3` object. This matrix is not changed.",
             "itemtype": "method",
             "name": "minus",
@@ -4031,7 +4683,7 @@
         },
         {
             "file": "src\\Matrix3.js",
-            "line": 213,
+            "line": 229,
             "description": "Multiplies this matrix by the specified constant factor. This method\nchanges the original matrix.",
             "itemtype": "method",
             "name": "multiply",
@@ -4051,7 +4703,7 @@
         },
         {
             "file": "src\\Matrix3.js",
-            "line": 225,
+            "line": 241,
             "description": "Multiplies this matrix by the specified `Matrix3` object. This method\nchanges the original matrix.",
             "itemtype": "method",
             "name": "multiply",
@@ -4071,7 +4723,7 @@
         },
         {
             "file": "src\\Matrix3.js",
-            "line": 261,
+            "line": 277,
             "description": "Multiplies this matrix by the specified constant factor and returns the\nproduct as a new `Matrix3` object. This matrix is not changed.",
             "itemtype": "method",
             "name": "by",
@@ -4094,7 +4746,7 @@
         },
         {
             "file": "src\\Matrix3.js",
-            "line": 273,
+            "line": 289,
             "description": "Left-multiplies this matrix by the specified `Vector3` object and returns\nthe product as a new `Vector3` object. Neither this matrix nor the\nspecified vector are changed.",
             "itemtype": "method",
             "name": "by",
@@ -4117,7 +4769,7 @@
         },
         {
             "file": "src\\Matrix3.js",
-            "line": 287,
+            "line": 303,
             "description": "Left-multiplies this matrix by the specified `Matrix3` object and returns\nthe product as a new `Matrix3` object. Neither this matrix nor the\nspecified one are changed.",
             "itemtype": "method",
             "name": "by",
@@ -4140,7 +4792,7 @@
         },
         {
             "file": "src\\Matrix3.js",
-            "line": 328,
+            "line": 344,
             "description": "Computes the determinant of this matrix.",
             "itemtype": "method",
             "name": "determinant",
@@ -4156,7 +4808,7 @@
         },
         {
             "file": "src\\Matrix3.js",
-            "line": 343,
+            "line": 359,
             "description": "Inverts this matrix.",
             "itemtype": "method",
             "name": "invert",
@@ -4169,7 +4821,7 @@
         },
         {
             "file": "src\\Matrix3.js",
-            "line": 373,
+            "line": 389,
             "description": "Computes the inverse of this matrix and returns it as a new `Matrix3`\nobject.",
             "itemtype": "method",
             "name": "getInverse",
@@ -4181,7 +4833,7 @@
         },
         {
             "file": "src\\Matrix3.js",
-            "line": 400,
+            "line": 416,
             "description": "The null 3x3 matrix.",
             "itemtype": "property",
             "name": "NULL",
@@ -4192,7 +4844,7 @@
         },
         {
             "file": "src\\Matrix3.js",
-            "line": 409,
+            "line": 425,
             "description": "The 3x3 identity matrix.",
             "itemtype": "property",
             "name": "IDENTITY",
@@ -4204,6 +4856,22 @@
         {
             "file": "src\\Matrix4.js",
             "line": 38,
+            "description": "TODO",
+            "itemtype": "method",
+            "name": "clone",
+            "return": {
+                "description": "TODO",
+                "type": "OOGL.Matrix4"
+            },
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "OOGL.Matrix4",
+            "module": "OOGL"
+        },
+        {
+            "file": "src\\Matrix4.js",
+            "line": 55,
             "description": "Returns the element at the specified row and column in the matrix.\n\nRow and column indices are zero-based. This method is equivalent to\nfetching the `j * 4 + i`-th element of the array:\n\n\tmatrix.get(i, j) == matrix[j * 4 + i] // true",
             "itemtype": "method",
             "name": "get",
@@ -4231,7 +4899,7 @@
         },
         {
             "file": "src\\Matrix4.js",
-            "line": 59,
+            "line": 76,
             "description": "Changes the element at the specified row and column in the matrix.\n\nRow and column indices are zero-based. This method is equivalent to\nsetting the `j * 4 + i`-th element of the array:\n\n\tmatrix.put(i, j, x);\n\tmatrix[j * 4 + i] = x; // same as previous",
             "itemtype": "method",
             "name": "put",
@@ -4255,6 +4923,252 @@
             "example": [
                 "\n\tvar matrix = new OOGL.Matrix4([0, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]);\n\tmatrix.put(0, 0, 3); // now matrix is [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]"
             ],
+            "class": "OOGL.Matrix4",
+            "module": "OOGL"
+        },
+        {
+            "file": "src\\Matrix4.js",
+            "line": 98,
+            "description": "Transposes this matrix.",
+            "itemtype": "method",
+            "name": "transpose",
+            "chainable": 1,
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "OOGL.Matrix4",
+            "module": "OOGL"
+        },
+        {
+            "file": "src\\Matrix4.js",
+            "line": 119,
+            "description": "Computes the transposed matrix and returns it as a new `Matrix4` object.\nThis matrix is not changed.",
+            "itemtype": "method",
+            "name": "getTransposed",
+            "return": {
+                "description": "The transposed matrix.",
+                "type": "OOGL.Matrix4"
+            },
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "OOGL.Matrix4",
+            "module": "OOGL"
+        },
+        {
+            "file": "src\\Matrix4.js",
+            "line": 137,
+            "description": "Adds the specified matrix to this one.\n\nEach element of the specified matrix is added up to the respective\nelement in this matrix. The specified `m` matrix is not changed.",
+            "itemtype": "method",
+            "name": "add",
+            "params": [
+                {
+                    "name": "m",
+                    "description": "The matrix to add.",
+                    "type": "OOGL.Matrix4"
+                }
+            ],
+            "chainable": 1,
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "OOGL.Matrix4",
+            "module": "OOGL"
+        },
+        {
+            "file": "src\\Matrix4.js",
+            "line": 156,
+            "description": "Adds the specified matrix to this one and returns the sum as a new\n`Matrix3` object. This matrix is not changed.",
+            "itemtype": "method",
+            "name": "plus",
+            "params": [
+                {
+                    "name": "m",
+                    "description": "The matrix to add.",
+                    "type": "OOGL.Matrix4"
+                }
+            ],
+            "return": {
+                "description": "The sum matrix.",
+                "type": "OOGL.Matrix4"
+            },
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "OOGL.Matrix4",
+            "module": "OOGL"
+        },
+        {
+            "file": "src\\Matrix4.js",
+            "line": 174,
+            "description": "Subtracts the specified matrix to this one.\n\nEach element of the specified matrix is subtracted to the respective\nelement in this matrix. The specified `m` matrix is not changed.",
+            "itemtype": "method",
+            "name": "subtract",
+            "params": [
+                {
+                    "name": "m",
+                    "description": "The matrix to subtract.",
+                    "type": "OOGL.Matrix4"
+                }
+            ],
+            "chainable": 1,
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "OOGL.Matrix4",
+            "module": "OOGL"
+        },
+        {
+            "file": "src\\Matrix4.js",
+            "line": 193,
+            "description": "Subtracts the specified matrix to this one and returns the difference as\na new `Matrix4` object. This matrix is not changed.",
+            "itemtype": "method",
+            "name": "minus",
+            "params": [
+                {
+                    "name": "m",
+                    "description": "The matrix to subtract.",
+                    "type": "OOGL.Matrix4"
+                }
+            ],
+            "return": {
+                "description": "The difference matrix.",
+                "type": "OOGL.Matrix4"
+            },
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "OOGL.Matrix4",
+            "module": "OOGL"
+        },
+        {
+            "file": "src\\Matrix4.js",
+            "line": 211,
+            "description": "Multiplies this matrix by the specified constant factor. This method\nchanges the original matrix.",
+            "itemtype": "method",
+            "name": "multiply",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "The multiplying factor.",
+                    "type": "Number"
+                }
+            ],
+            "chainable": 1,
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "OOGL.Matrix4",
+            "module": "OOGL"
+        },
+        {
+            "file": "src\\Matrix4.js",
+            "line": 222,
+            "description": "Multiplies this matrix by the specified `Matrix4` object. This method\nchanges the original matrix.",
+            "itemtype": "method",
+            "name": "multiply",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "The multiplying matrix.",
+                    "type": "OOGL.Matrix4"
+                }
+            ],
+            "chainable": 1,
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "OOGL.Matrix4",
+            "module": "OOGL"
+        },
+        {
+            "file": "src\\Matrix4.js",
+            "line": 264,
+            "description": "Multiplies this matrix by the specified constant factor and returns the\nproduct as a new `Matrix4` object. This matrix is not changed.",
+            "itemtype": "method",
+            "name": "by",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "The multiplying factor.",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "The product matrix.",
+                "type": "OOGL.Matrix4"
+            },
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "OOGL.Matrix4",
+            "module": "OOGL"
+        },
+        {
+            "file": "src\\Matrix4.js",
+            "line": 275,
+            "description": "Left-multiplies this matrix by the specified `Vector4` object and returns\nthe product as a new `Vector4` object. Neither this matrix nor the\nspecified vector are changed.",
+            "itemtype": "method",
+            "name": "by",
+            "params": [
+                {
+                    "name": "v",
+                    "description": "The vector to multiply.",
+                    "type": "OOGL.Vector4"
+                }
+            ],
+            "return": {
+                "description": "The product vector.",
+                "type": "OOGL.Vector4"
+            },
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "OOGL.Matrix4",
+            "module": "OOGL"
+        },
+        {
+            "file": "src\\Matrix4.js",
+            "line": 287,
+            "description": "Left-multiplies this matrix by the specified `Matrix4` object and returns\nthe product as a new `Matrix4` object. Neither this matrix nor the\nspecified one are changed.",
+            "itemtype": "method",
+            "name": "by",
+            "params": [
+                {
+                    "name": "v",
+                    "description": "The matrix to multiply.",
+                    "type": "OOGL.Matrix4"
+                }
+            ],
+            "return": {
+                "description": "The product matrix.",
+                "type": "OOGL.Matrix4"
+            },
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "OOGL.Matrix4",
+            "module": "OOGL"
+        },
+        {
+            "file": "src\\Matrix4.js",
+            "line": 335,
+            "description": "The null 4x4 matrix.",
+            "itemtype": "property",
+            "name": "NULL",
+            "static": 1,
+            "type": "OOGL.Matrix4",
+            "class": "OOGL.Matrix4",
+            "module": "OOGL"
+        },
+        {
+            "file": "src\\Matrix4.js",
+            "line": 344,
+            "description": "The 4x4 identity matrix.",
+            "itemtype": "property",
+            "name": "IDENTITY",
+            "static": 1,
+            "type": "OOGL.Matrix4",
             "class": "OOGL.Matrix4",
             "module": "OOGL"
         },
@@ -4396,7 +5310,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 163,
+            "line": 165,
             "description": "Links the program and invalidates the uniform location cache used to\nspeed up uniform operations.\n\n`gl.linkProgram` equivalent.",
             "itemtype": "method",
             "name": "link",
@@ -4408,7 +5322,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 181,
+            "line": 183,
             "description": "Returns the link status of this program.\n\nEquivalent to calling `gl.getProgramParameter` with `gl.LINK_STATUS`.",
             "itemtype": "method",
             "name": "getLinkStatus",
@@ -4424,7 +5338,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 199,
+            "line": 201,
             "description": "Returns the info log generated by the last link operation for this\nprogram.\n\n`gl.getProgramInfoLog` equivalent.",
             "itemtype": "method",
             "name": "getInfoLog",
@@ -4440,7 +5354,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 217,
+            "line": 219,
             "description": "Links the program, invalidates the uniform location cache used to speed\nup uniform operations and checks the link status; throws the info log if\nthe program did not link successfully.",
             "itemtype": "method",
             "name": "linkOrThrow",
@@ -4452,7 +5366,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 236,
+            "line": 238,
             "description": "Uses the program in the GL pipeline.\n\n`gl.useProgram` equivalent.",
             "itemtype": "method",
             "name": "use",
@@ -4464,7 +5378,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 249,
+            "line": 251,
             "description": "Validates the program.\n\n`gl.validateProgram` equivalent.",
             "itemtype": "method",
             "name": "validate",
@@ -4476,7 +5390,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 265,
+            "line": 267,
             "description": "Returns the validation status produced by the last validation operation\nfor this program.\n\nEquivalent to calling `gl.getProgramParameter` with `gl.VALIDATE_STATUS`.",
             "itemtype": "method",
             "name": "getValidateStatus",
@@ -4492,7 +5406,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 283,
+            "line": 285,
             "description": "Validates the program and throws an exception if the validation fails.\n\nEquivalent to calling `gl.validateProgram` and `gl.getProgramParameter`\nwith `gl.VALIDATE_STATUS` subsequently.",
             "itemtype": "method",
             "name": "validateOrThrow",
@@ -4504,7 +5418,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 300,
+            "line": 302,
             "description": "Returns information about the `index`-th active attribute array.\n\n`gl.getActiveAttrib` equivalent.",
             "itemtype": "method",
             "name": "getActiveAttrib",
@@ -4527,7 +5441,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 315,
+            "line": 317,
             "description": "Returns the number of active attribute variables.\n\nEquivalent to calling `gl.getProgramParameter` with\n`gl.ACTIVE_ATTRIBUTES`.",
             "itemtype": "method",
             "name": "getNumberOfActiveAttributes",
@@ -4543,7 +5457,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 330,
+            "line": 332,
             "description": "Returns information about the `index`-th active uniform variable.\n\n`gl.getActiveUniform` equivalent.",
             "itemtype": "method",
             "name": "getActiveUniform",
@@ -4566,7 +5480,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 345,
+            "line": 347,
             "description": "Returns the number of active uniform variables.\n\nEquivalent to calling `gl.getProgramParameter` with `gl.ACTIVE_UNIFORMS`.",
             "itemtype": "method",
             "name": "getNumberOfActiveUniforms",
@@ -4582,7 +5496,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 359,
+            "line": 361,
             "description": "Returns the location of the named attribute.\n\n`gl.getAttribLocation` equivalent.",
             "itemtype": "method",
             "name": "getAttribLocation",
@@ -4605,7 +5519,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 374,
+            "line": 376,
             "description": "Returns the current value of the specified uniform variable.\n\n`gl.getUniform` equivalent.\n\nThe uniform variable can be identified either by name or location. When a\nname is specified, the location is automatically looked up in a location\ncache maintained by the `Program` class. This cache is automatically\ninvalidated every time the program is linked using the provided `link`\nmethod.",
             "itemtype": "method",
             "name": "getUniform",
@@ -4628,7 +5542,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 405,
+            "line": 407,
             "description": "Returns the location of the named uniform variable.\n\n`gl.getUniformLocation` equivalent.",
             "itemtype": "method",
             "name": "getUniformLocation",
@@ -4651,7 +5565,38 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 419,
+            "line": 421,
+            "description": "TODO",
+            "itemtype": "method",
+            "name": "uniform",
+            "params": [
+                {
+                    "name": "map",
+                    "description": "TODO",
+                    "type": "Object"
+                },
+                {
+                    "name": "key",
+                    "description": "TODO",
+                    "type": "String",
+                    "optional": true
+                },
+                {
+                    "name": "key",
+                    "description": "TODO",
+                    "type": "Mixed",
+                    "optional": true
+                }
+            ],
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "context.Program",
+            "module": "context"
+        },
+        {
+            "file": "src\\Programs.js",
+            "line": 439,
             "description": "Specifies the value for a `float` uniform variable.\n\n`gl.uniform1f` equivalent.\n\n`Program` objects have an internal location cache used by `uniform`\nmethods to set uniform variables without retrieving their location each\ntime. The cache is invalidated every time the program is relinked using\nthe provided `link` method.",
             "itemtype": "method",
             "name": "uniform1f",
@@ -4675,7 +5620,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 439,
+            "line": 459,
             "description": "Specifies the value for a `vec2` uniform variable.\n\n`gl.uniform2f` equivalent.\n\n`Program` objects have an internal location cache used by `uniform`\nmethods to set uniform variables without retrieving their location each\ntime. The cache is invalidated every time the program is relinked using\nthe provided `link` method.",
             "itemtype": "method",
             "name": "uniform2f",
@@ -4704,7 +5649,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 460,
+            "line": 480,
             "description": "Specifies the value for a `vec3` uniform variable.\n\n`gl.uniform3f` equivalent.\n\n`Program` objects have an internal location cache used by `uniform`\nmethods to set uniform variables without retrieving their location each\ntime. The cache is invalidated every time the program is relinked using\nthe provided `link` method.",
             "itemtype": "method",
             "name": "uniform3f",
@@ -4738,7 +5683,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 483,
+            "line": 503,
             "description": "Specifies the value for a `vec4` uniform variable.\n\n`gl.uniform4f` equivalent.\n\n`Program` objects have an internal location cache used by `uniform`\nmethods to set uniform variables without retrieving their location each\ntime. The cache is invalidated every time the program is relinked using\nthe provided `link` method.",
             "itemtype": "method",
             "name": "uniform4f",
@@ -4777,7 +5722,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 506,
+            "line": 526,
             "description": "Specifies the value for a `float` uniform variable as an array.\n\n`gl.uniform1fv` equivalent.\n\n`Program` objects have an internal location cache used by `uniform`\nmethods to set uniform variables without retrieving their location each\ntime. The cache is invalidated every time the program is relinked using\nthe provided `link` method.",
             "itemtype": "method",
             "name": "uniform1fv",
@@ -4801,7 +5746,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 526,
+            "line": 546,
             "description": "Specifies the value for a `vec2` uniform variable as an array.\n\n`gl.uniform2fv` equivalent.\n\n`Program` objects have an internal location cache used by `uniform`\nmethods to set uniform variables without retrieving their location each\ntime. The cache is invalidated every time the program is relinked using\nthe provided `link` method.",
             "itemtype": "method",
             "name": "uniform2fv",
@@ -4825,7 +5770,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 546,
+            "line": 566,
             "description": "Specifies the value for a `vec3` uniform variable as an array.\n\n`gl.uniform3fv` equivalent.\n\n`Program` objects have an internal location cache used by `uniform`\nmethods to set uniform variables without retrieving their location each\ntime. The cache is invalidated every time the program is relinked using\nthe provided `link` method.",
             "itemtype": "method",
             "name": "uniform3fv",
@@ -4849,7 +5794,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 566,
+            "line": 586,
             "description": "Specifies the value for a `vec4` uniform variable as an array.\n\n`gl.uniform4fv` equivalent.\n\n`Program` objects have an internal location cache used by `uniform`\nmethods to set uniform variables without retrieving their location each\ntime. The cache is invalidated every time the program is relinked using\nthe provided `link` method.",
             "itemtype": "method",
             "name": "uniform4fv",
@@ -4873,7 +5818,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 586,
+            "line": 606,
             "description": "Specifies the value for an integer or boolean uniform variable.\n\n`gl.uniform1i` equivalent.\n\n`Program` objects have an internal location cache used by `uniform`\nmethods to set uniform variables without retrieving their location each\ntime. The cache is invalidated every time the program is relinked using\nthe provided `link` method.",
             "itemtype": "method",
             "name": "uniform1i",
@@ -4897,7 +5842,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 606,
+            "line": 626,
             "description": "Specifies the value for an `ivec2` or `bvec2` uniform variable.\n\n`gl.uniform2i` equivalent.\n\n`Program` objects have an internal location cache used by `uniform`\nmethods to set uniform variables without retrieving their location each\ntime. The cache is invalidated every time the program is relinked using\nthe provided `link` method.",
             "itemtype": "method",
             "name": "uniform2i",
@@ -4926,7 +5871,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 627,
+            "line": 647,
             "description": "Specifies the value for an `ivec3` or `bvec3` uniform variable.\n\n`gl.uniform3i` equivalent.\n\n`Program` objects have an internal location cache used by `uniform`\nmethods to set uniform variables without retrieving their location each\ntime. The cache is invalidated every time the program is relinked using\nthe provided `link` method.",
             "itemtype": "method",
             "name": "uniform3i",
@@ -4960,7 +5905,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 649,
+            "line": 669,
             "description": "Specifies the value for an `ivec4` or `bvec4` uniform variable.\n\n`gl.uniform4i` equivalent.\n\n`Program` objects have an internal location cache used by `uniform`\nmethods to set uniform variables without retrieving their location each\ntime. The cache is invalidated every time the program is relinked using\nthe provided `link` method.",
             "itemtype": "method",
             "name": "uniform4i",
@@ -4999,7 +5944,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 672,
+            "line": 692,
             "description": "Specifies the value for an integer or boolean uniform variable as an\narray.\n\n`gl.uniform1iv` equivalent.\n\n`Program` objects have an internal location cache used by `uniform`\nmethods to set uniform variables without retrieving their location each\ntime. The cache is invalidated every time the program is relinked using\nthe provided `link` method.",
             "itemtype": "method",
             "name": "uniform1iv",
@@ -5023,7 +5968,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 693,
+            "line": 713,
             "description": "Specifies the value for an `ivec2` uniform variable as an array.\n\n`gl.uniform2iv` equivalent.\n\n`Program` objects have an internal location cache used by `uniform`\nmethods to set uniform variables without retrieving their location each\ntime. The cache is invalidated every time the program is relinked using\nthe provided `link` method.",
             "itemtype": "method",
             "name": "uniform2iv",
@@ -5047,7 +5992,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 713,
+            "line": 733,
             "description": "Specifies the value for an `ivec3` uniform variable as an array.\n\n`gl.uniform3iv` equivalent.\n\n`Program` objects have an internal location cache used by `uniform`\nmethods to set uniform variables without retrieving their location each\ntime. The cache is invalidated every time the program is relinked using\nthe provided `link` method.",
             "itemtype": "method",
             "name": "uniform3iv",
@@ -5071,7 +6016,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 733,
+            "line": 753,
             "description": "Specifies the value for an `ivec4` uniform variable as an array.\n\n`gl.uniform4iv` equivalent.\n\n`Program` objects have an internal location cache used by `uniform`\nmethods to set uniform variables without retrieving their location each\ntime. The cache is invalidated every time the program is relinked using\nthe provided `link` method.",
             "itemtype": "method",
             "name": "uniform4iv",
@@ -5095,7 +6040,223 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 801,
+            "line": 773,
+            "description": "TODO",
+            "itemtype": "method",
+            "name": "uniformVec2",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "TODO",
+                    "type": "String"
+                },
+                {
+                    "name": "v",
+                    "description": "TODO",
+                    "type": "OOGL.Vector2"
+                }
+            ],
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "context.Program",
+            "module": "context"
+        },
+        {
+            "file": "src\\Programs.js",
+            "line": 786,
+            "description": "TODO",
+            "itemtype": "method",
+            "name": "uniformVec3",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "TODO",
+                    "type": "String"
+                },
+                {
+                    "name": "v",
+                    "description": "TODO",
+                    "type": "OOGL.Vector3"
+                }
+            ],
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "context.Program",
+            "module": "context"
+        },
+        {
+            "file": "src\\Programs.js",
+            "line": 799,
+            "description": "TODO",
+            "itemtype": "method",
+            "name": "uniformVec4",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "TODO",
+                    "type": "String"
+                },
+                {
+                    "name": "v",
+                    "description": "TODO",
+                    "type": "OOGL.Vector4"
+                }
+            ],
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "context.Program",
+            "module": "context"
+        },
+        {
+            "file": "src\\Programs.js",
+            "line": 812,
+            "description": "TODO",
+            "itemtype": "method",
+            "name": "uniformMatrix2fv",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "TODO",
+                    "type": "String"
+                },
+                {
+                    "name": "values",
+                    "description": "TODO",
+                    "type": "Number[]"
+                }
+            ],
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "context.Program",
+            "module": "context"
+        },
+        {
+            "file": "src\\Programs.js",
+            "line": 825,
+            "description": "TODO",
+            "itemtype": "method",
+            "name": "uniformMatrix3fv",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "TODO",
+                    "type": "String"
+                },
+                {
+                    "name": "values",
+                    "description": "TODO",
+                    "type": "Number[]"
+                }
+            ],
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "context.Program",
+            "module": "context"
+        },
+        {
+            "file": "src\\Programs.js",
+            "line": 838,
+            "description": "TODO",
+            "itemtype": "method",
+            "name": "uniformMatrix4fv",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "TODO",
+                    "type": "String"
+                },
+                {
+                    "name": "values",
+                    "description": "TODO",
+                    "type": "Number[]"
+                }
+            ],
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "context.Program",
+            "module": "context"
+        },
+        {
+            "file": "src\\Programs.js",
+            "line": 851,
+            "description": "TODO",
+            "itemtype": "method",
+            "name": "uniformMat2",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "TODO",
+                    "type": "String"
+                },
+                {
+                    "name": "matrix",
+                    "description": "TODO",
+                    "type": "OOGL.Matrix2"
+                }
+            ],
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "context.Program",
+            "module": "context"
+        },
+        {
+            "file": "src\\Programs.js",
+            "line": 867,
+            "description": "TODO",
+            "itemtype": "method",
+            "name": "uniformMat3",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "TODO",
+                    "type": "String"
+                },
+                {
+                    "name": "matrix",
+                    "description": "TODO",
+                    "type": "OOGL.Matrix3"
+                }
+            ],
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "context.Program",
+            "module": "context"
+        },
+        {
+            "file": "src\\Programs.js",
+            "line": 884,
+            "description": "TODO",
+            "itemtype": "method",
+            "name": "uniformMat4",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "TODO",
+                    "type": "String"
+                },
+                {
+                    "name": "matrix",
+                    "description": "TODO",
+                    "type": "OOGL.Matrix4"
+                }
+            ],
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "context.Program",
+            "module": "context"
+        },
+        {
+            "file": "src\\Programs.js",
+            "line": 902,
             "description": "Deletes this program.\n\n`gl.deleteProgram` equivalent.",
             "itemtype": "method",
             "name": "_delete",
@@ -5107,7 +6268,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 814,
+            "line": 915,
             "description": "Returns the delete status of this program.\n\nEquivalent to calling `gl.getProgramParameter` with `gl.DELETE_STATUS`.",
             "itemtype": "method",
             "name": "getDeleteStatus",
@@ -5123,7 +6284,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 855,
+            "line": 956,
             "description": "Returns the vertex shader automatically generated by the constructor.",
             "itemtype": "method",
             "name": "getVertexShader",
@@ -5139,7 +6300,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 867,
+            "line": 968,
             "description": "Returns the fragment shader automatically generated by the constructor.",
             "itemtype": "method",
             "name": "getFragmentShader",
@@ -5155,7 +6316,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 932,
+            "line": 1033,
             "description": "Returns the vertex shader automatically generated by the\nconstructor.",
             "itemtype": "method",
             "name": "getVertexShader",
@@ -5171,7 +6332,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 945,
+            "line": 1046,
             "description": "Returns the fragment shader automatically generated by the\nconstructor.",
             "itemtype": "method",
             "name": "getFragmentShader",
@@ -5236,7 +6397,7 @@
         {
             "file": "src\\RenderLoop.js",
             "line": 162,
-            "description": "Returns the _actual_ frame rate for this loop. This is\npotentially different from the value returned by `getRate`\nbecause the former is the measured frame rate while the latter is\nthe rate manually set using the static `setRate` method.\n\nThe actual frame rate is measured as the number of loop\niterations since the last time `getActualFrameRate` was called\ndivided by the timespan.\n\nThe measuring system automatically discards time spans during\nwhich the loop was suspended.",
+            "description": "Returns the _actual_ frame rate for this loop. This is\npotentially different from the value returned by `getRate`\nbecause the former is the measured frame rate while the latter is\nthe rate manually set using the static `setRate` method.\n\nThe actual frame rate is measured as the number of loop\niterations since the last time `getActualRate` was called divided\nby the timespan.\n\nThe measuring system automatically discards time spans during\nwhich the loop was suspended.",
             "itemtype": "method",
             "name": "getActualRate",
             "return": {
@@ -6255,7 +7416,7 @@
         },
         {
             "file": "src\\Textures.js",
-            "line": 508,
+            "line": 563,
             "description": "Adds a `Texture` to this set associating it a unique uniform variable\nname.\n\nIf the specified name is already in use by another texture in this\nset, the current texture is replaced by the specified one.\n\nThe texture is automatically assigned a texture unit, but the set\nmust be re-bound (using the `bind` method) before its textures can be\nused in programs.",
             "itemtype": "method",
             "name": "add",
@@ -6279,7 +7440,7 @@
         },
         {
             "file": "src\\Textures.js",
-            "line": 544,
+            "line": 601,
             "description": "Binds all the textures in this sets to their target in their\nrespective texture unit.\n\nEquivalent to calling `gl.activeTexture` and `gl.bindTexture` for\neach texture.",
             "itemtype": "method",
             "name": "bind",
@@ -6291,7 +7452,7 @@
         },
         {
             "file": "src\\Textures.js",
-            "line": 562,
+            "line": 619,
             "description": "Specifies uniform variable names for the specified program using the\nautomatically assigned texture units.",
             "itemtype": "method",
             "name": "uniform",
@@ -6310,7 +7471,7 @@
         },
         {
             "file": "src\\Textures.js",
-            "line": 582,
+            "line": 639,
             "description": "Binds all the textures in this sets to their target in their\nrespective texture unit and then specifies uniform variable names for\nthe specified program using the automatically assigned texture units.\n\nEquivalent to calling `bind` and `uniform` subsequently.",
             "itemtype": "method",
             "name": "bindAndUniform",
@@ -6329,7 +7490,7 @@
         },
         {
             "file": "src\\Textures.js",
-            "line": 606,
+            "line": 663,
             "description": "Deletes all the textures that have been added to this set and resets\nit to an empty set.\n\n`Textures` objects may be used again after deletion.",
             "itemtype": "method",
             "name": "_delete",
@@ -6338,6 +7499,23 @@
             ],
             "class": "context.Textures",
             "module": "context"
+        },
+        {
+            "file": "src\\Timing.js",
+            "line": 13,
+            "description": "Returns the current timestamp in milliseconds since the Epoch.\n\nThis method relies on `window.performance.now` where available and\ntransparently falls back to `Date.now`.",
+            "itemtype": "method",
+            "name": "now",
+            "static": 1,
+            "return": {
+                "description": "The current timestamp in milliseconds.",
+                "type": "Number"
+            },
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "OOGL.Timing",
+            "module": "OOGL"
         },
         {
             "file": "src\\Vector2.js",

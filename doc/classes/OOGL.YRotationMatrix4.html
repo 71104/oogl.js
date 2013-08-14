@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>context.VertexShader - OOGL.js</title>
+    <title>OOGL.YRotationMatrix4 - OOGL.js</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -208,25 +208,25 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>context.VertexShader Class</h1>
+                        <h1>OOGL.YRotationMatrix4 Class</h1>
 <div class="box meta">
     
 
     
         <div class="extends">
-            Extends <a href="..\classes\context.Shader.html" class="crosslink">context.Shader</a>
+            Extends <a href="..\classes\OOGL.Matrix4.html" class="crosslink">OOGL.Matrix4</a>
         </div>
     
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_Shaders.js.html#l183"><code>src\Shaders.js:183</code></a>
+            Defined in: <a href="../files/src_Matrix4.js.html#l437"><code>src\Matrix4.js:437</code></a>
         </div>
     
 
     
         
-            Module: <a href="../modules/context.html">context</a>
+            Module: <a href="../modules/OOGL.html">OOGL</a>
         
     
 
@@ -236,18 +236,18 @@
 
 
 <div class="box intro">
-    <p>A <code>Shader</code> whose type is <code>gl.VERTEX_SHADER</code>.</p>
-<p>The <code>VertexShader</code> constructor optionally takes a string argument containing
-the GLSL source code for the shader and tries to compile it through the
-provided <code>compileOrThrow</code> method.</p>
+    <p>Creates a 3D rotation matrix that rotates everything counterclockwise around
+the Y axis by the specified <code>angle</code>.</p>
+<p>The created matrix is identical to a rotation matrix created by using
+<code>OOGL.YRotationMatrix3</code> and converted using its <code>toHomogeneous</code> method.</p>
 
 </div>
 
 
     <div class="constructor">
         <h2>Constructor</h2>
-        <div id="method_context.VertexShader" class="method item">
-    <h3 class="name"><code>context.VertexShader</code></h3>
+        <div id="method_OOGL.YRotationMatrix4" class="method item">
+    <h3 class="name"><code>OOGL.YRotationMatrix4</code></h3>
 
     
         <div class="args">
@@ -255,7 +255,7 @@ provided <code>compileOrThrow</code> method.</p>
             
                 <li class="arg">
                     
-                        <code class="optional">[source]</code>
+                        <code>angle</code>
                     
                 </li>
             
@@ -288,7 +288,7 @@ provided <code>compileOrThrow</code> method.</p>
             
         
         
-        <a href="../files/src_Shaders.js.html#l183"><code>src\Shaders.js:183</code></a>
+        <a href="../files/src_Matrix4.js.html#l437"><code>src\Matrix4.js:437</code></a>
         
         </p>
 
@@ -310,15 +310,14 @@ provided <code>compileOrThrow</code> method.</p>
             
                 <li class="param">
                     
-                        <code class="param-name optional">[source]</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                        <code class="param-name">angle</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>The optional GLSL source code for the shader.</p>
+                        <p>The rotation angle, in radians.</p>
 
                     </div>
 
@@ -336,7 +335,7 @@ provided <code>compileOrThrow</code> method.</p>
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>var vertexShader = new oogl.VertexShader(vertexSource);</code></pre>
+                <pre class="code prettyprint"><code>var m = new OOGL.XRotationMatrix4(Math.PI / 2); // 90 degrees rotation around the Y axis</code></pre>
 
             </div>
         </div>
@@ -369,70 +368,77 @@ provided <code>compileOrThrow</code> method.</p>
                     <ul class="index-list methods extends">
                         
                             <li class="index-item method inherited">
-                                <a href="#method__delete">_delete</a>
+                                <a href="#method_add">add</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited inherited">
+                                <a href="#method_by">by</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method inherited">
-                                <a href="#method_compile">compile</a>
+                                <a href="#method_clone">clone</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method inherited">
-                                <a href="#method_compileOrThrow">compileOrThrow</a>
+                                <a href="#method_get">get</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method inherited">
-                                <a href="#method_getCompileStatus">getCompileStatus</a>
+                                <a href="#method_getTransposed">getTransposed</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method inherited">
-                                <a href="#method_getDeleteStatus">getDeleteStatus</a>
+                                <a href="#method_minus">minus</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited inherited">
+                                <a href="#method_multiply">multiply</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method inherited">
-                                <a href="#method_getInfoLog">getInfoLog</a>
+                                <a href="#method_plus">plus</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method inherited">
-                                <a href="#method_getParameter">getParameter</a>
+                                <a href="#method_put">put</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method inherited">
-                                <a href="#method_getSource">getSource</a>
+                                <a href="#method_subtract">subtract</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method inherited">
-                                <a href="#method_getType">getType</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method inherited">
-                                <a href="#method_source">source</a>
+                                <a href="#method_transpose">transpose</a>
 
                                 
                                 
@@ -454,451 +460,8 @@ provided <code>compileOrThrow</code> method.</p>
                 <h2 class="off-left">Methods</h2>
 
                 
-                    <div id="method__delete" class="method item inherited">
-    <h3 class="name"><code>_delete</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="..\classes\context.Shader.html#method__delete">context.Shader</a>:
-            
-        
-        
-        <a href="../files/src_Shaders.js.html#l154"><code>src\Shaders.js:154</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Deletes this shader.</p>
-
-    </div>
-
-    
-
-    
-
-    
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>shader._delete();</code></pre>
-
-            </div>
-        </div>
-    
-</div>
-
-                
-                    <div id="method_compile" class="method item inherited">
-    <h3 class="name"><code>compile</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="..\classes\context.Shader.html#method_compile">context.Shader</a>:
-            
-        
-        
-        <a href="../files/src_Shaders.js.html#l82"><code>src\Shaders.js:82</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Compiles this shader.</p>
-<p><code>gl.compileShader</code> equivalent.</p>
-
-    </div>
-
-    
-
-    
-
-    
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>shader.source(shaderSource);
-shader.compile();
-if (!shader.getCompileStatus()) {
-    throw shader.getInfoLog();
-}</code></pre>
-
-            </div>
-        </div>
-    
-</div>
-
-                
-                    <div id="method_compileOrThrow" class="method item inherited">
-    <h3 class="name"><code>compileOrThrow</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="..\classes\context.Shader.html#method_compileOrThrow">context.Shader</a>:
-            
-        
-        
-        <a href="../files/src_Shaders.js.html#l138"><code>src\Shaders.js:138</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Compiles this shader, throws the info log if the shader does not compile
-successfully.</p>
-
-    </div>
-
-    
-
-    
-
-    
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>shader.source(shaderSource);
-shader.compileOrThrow();</code></pre>
-
-            </div>
-        </div>
-    
-</div>
-
-                
-                    <div id="method_getCompileStatus" class="method item inherited">
-    <h3 class="name"><code>getCompileStatus</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="..\classes\context.Shader.html#method_getCompileStatus">context.Shader</a>:
-            
-        
-        
-        <a href="../files/src_Shaders.js.html#l99"><code>src\Shaders.js:99</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Returns the compile status produced by the last compile operation for
-this shader.</p>
-<p>Equivalent to calling <code>gl.getShaderParameter</code> with <code>gl.COMPILE_STATUS</code>.</p>
-
-    </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
-                    
-                    <p><code>true</code> if the shader was compiled successfully, <code>false</code>
-    otherwise.</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>shader.source(shaderSource);
-shader.compile();
-if (!shader.getCompileStatus()) {
-    throw shader.getInfoLog();
-}</code></pre>
-
-            </div>
-        </div>
-    
-</div>
-
-                
-                    <div id="method_getDeleteStatus" class="method item inherited">
-    <h3 class="name"><code>getDeleteStatus</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="..\classes\context.Shader.html#method_getDeleteStatus">context.Shader</a>:
-            
-        
-        
-        <a href="../files/src_Shaders.js.html#l165"><code>src\Shaders.js:165</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Returns the delete status for this shader.</p>
-
-    </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
-                    
-                    <p><code>true</code> if the shader has been deleted, <code>false</code>
-    otherwise.</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>if (shader.getDeleteStatus()) {
-    throw &#39;The shader has been deleted.&#39;;
-}</code></pre>
-
-            </div>
-        </div>
-    
-</div>
-
-                
-                    <div id="method_getInfoLog" class="method item inherited">
-    <h3 class="name"><code>getInfoLog</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="..\classes\context.Shader.html#method_getInfoLog">context.Shader</a>:
-            
-        
-        
-        <a href="../files/src_Shaders.js.html#l119"><code>src\Shaders.js:119</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Returns the info log produced by the last compile operation for this
-shader.</p>
-<p><code>gl.getShaderInfoLog</code> equivalent.</p>
-
-    </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>:
-                    
-                    <p>The info log.</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>shader.source(shaderSource);
-shader.compile();
-if (!shader.getCompileStatus()) {
-    throw shader.getInfoLog();
-}</code></pre>
-
-            </div>
-        </div>
-    
-</div>
-
-                
-                    <div id="method_getParameter" class="method item inherited">
-    <h3 class="name"><code>getParameter</code></h3>
+                    <div id="method_add" class="method item inherited">
+    <h3 class="name"><code>add</code></h3>
 
     
         <div class="args">
@@ -906,7 +469,7 @@ if (!shader.getCompileStatus()) {
             
                 <li class="arg">
                     
-                        <code>name</code>
+                        <code>m</code>
                     
                 </li>
             
@@ -915,10 +478,6 @@ if (!shader.getCompileStatus()) {
     
 
     
-        <span class="returns-inline">
-            <span class="type">Mixed</span>
-        </span>
-    
 
     
 
@@ -928,6 +487,8 @@ if (!shader.getCompileStatus()) {
 
     
 
+    
+        <span class="flag chainable">chainable</span>
     
 
     
@@ -936,11 +497,11 @@ if (!shader.getCompileStatus()) {
         
             
                 <p>Inherited from
-                <a href="..\classes\context.Shader.html#method_getParameter">context.Shader</a>:
+                <a href="..\classes\OOGL.Matrix4.html#method_add">OOGL.Matrix4</a>:
             
         
         
-        <a href="../files/src_Shaders.js.html#l23"><code>src\Shaders.js:23</code></a>
+        <a href="../files/src_Matrix4.js.html#l137"><code>src\Matrix4.js:137</code></a>
         
         </p>
 
@@ -951,8 +512,9 @@ if (!shader.getCompileStatus()) {
     </div>
 
     <div class="description">
-        <p>Queries a shader-related parameter.</p>
-<p><code>gl.getShaderParameter</code> equivalent.</p>
+        <p>Adds the specified matrix to this one.</p>
+<p>Each element of the specified matrix is added up to the respective
+element in this matrix. The specified <code>m</code> matrix is not changed.</p>
 
     </div>
 
@@ -964,14 +526,117 @@ if (!shader.getCompileStatus()) {
             
                 <li class="param">
                     
-                        <code class="param-name">name</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                        <code class="param-name">m</code>
+                        <span class="type"><a href="..\classes\OOGL.Matrix4.html" class="crosslink">OOGL.Matrix4</a></span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>The parameter name.</p>
+                        <p>The matrix to add.</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>TODO</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_by" class="method item inherited">
+    <h3 class="name"><code>by</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>x</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="..\classes\OOGL.Matrix4.html" class="crosslink">OOGL.Matrix4</a></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            <p>Inherited from
+            <a href="..\classes\OOGL.Matrix4.html#method_by">
+                OOGL.Matrix4
+            </a>
+            
+            but overwritten in
+            
+        
+        
+        <a href="../files/src_Matrix4.js.html#l264"><code>src\Matrix4.js:264</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Multiplies this matrix by the specified constant factor and returns the
+product as a new <code>Matrix4</code> object. This matrix is not changed.</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">x</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The multiplying factor.</p>
 
                     </div>
 
@@ -989,9 +654,9 @@ if (!shader.getCompileStatus()) {
             <div class="returns-description">
                 
                     
-                        <span class="type">Mixed</span>:
+                        <span class="type"><a href="..\classes\OOGL.Matrix4.html" class="crosslink">OOGL.Matrix4</a></span>:
                     
-                    <p>The queried value.</p>
+                    <p>The product matrix.</p>
 
                 
             </div>
@@ -1003,7 +668,7 @@ if (!shader.getCompileStatus()) {
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>var shaderType = shader.getParameter(oogl.SHADER_TYPE);</code></pre>
+                <pre class="code prettyprint"><code>TODO</code></pre>
 
             </div>
         </div>
@@ -1011,8 +676,8 @@ if (!shader.getCompileStatus()) {
 </div>
 
                 
-                    <div id="method_getSource" class="method item inherited">
-    <h3 class="name"><code>getSource</code></h3>
+                    <div id="method_clone" class="method item inherited">
+    <h3 class="name"><code>clone</code></h3>
 
     
         <span class="paren">()</span>
@@ -1020,7 +685,7 @@ if (!shader.getCompileStatus()) {
 
     
         <span class="returns-inline">
-            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+            <span class="type"><a href="..\classes\OOGL.Matrix4.html" class="crosslink">OOGL.Matrix4</a></span>
         </span>
     
 
@@ -1040,11 +705,11 @@ if (!shader.getCompileStatus()) {
         
             
                 <p>Inherited from
-                <a href="..\classes\context.Shader.html#method_getSource">context.Shader</a>:
+                <a href="..\classes\OOGL.Matrix4.html#method_clone">OOGL.Matrix4</a>:
             
         
         
-        <a href="../files/src_Shaders.js.html#l68"><code>src\Shaders.js:68</code></a>
+        <a href="../files/src_Matrix4.js.html#l38"><code>src\Matrix4.js:38</code></a>
         
         </p>
 
@@ -1055,8 +720,7 @@ if (!shader.getCompileStatus()) {
     </div>
 
     <div class="description">
-        <p>Returns the GLSL source code for this shader.</p>
-<p>Equivalent to calling <code>gl.getShaderParameter</code> with <code>gl.SHADER_SOURCE</code>.</p>
+        <p>TODO</p>
 
     </div>
 
@@ -1069,9 +733,9 @@ if (!shader.getCompileStatus()) {
             <div class="returns-description">
                 
                     
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>:
+                        <span class="type"><a href="..\classes\OOGL.Matrix4.html" class="crosslink">OOGL.Matrix4</a></span>:
                     
-                    <p>The GLSL source code.</p>
+                    <p>TODO</p>
 
                 
             </div>
@@ -1083,7 +747,7 @@ if (!shader.getCompileStatus()) {
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>var vertexSource = vertexShader.getSource();</code></pre>
+                <pre class="code prettyprint"><code>TODO</code></pre>
 
             </div>
         </div>
@@ -1091,11 +755,27 @@ if (!shader.getCompileStatus()) {
 </div>
 
                 
-                    <div id="method_getType" class="method item inherited">
-    <h3 class="name"><code>getType</code></h3>
+                    <div id="method_get" class="method item inherited">
+    <h3 class="name"><code>get</code></h3>
 
     
-        <span class="paren">()</span>
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>i</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>j</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
     
 
     
@@ -1120,11 +800,11 @@ if (!shader.getCompileStatus()) {
         
             
                 <p>Inherited from
-                <a href="..\classes\context.Shader.html#method_getType">context.Shader</a>:
+                <a href="..\classes\OOGL.Matrix4.html#method_get">OOGL.Matrix4</a>:
             
         
         
-        <a href="../files/src_Shaders.js.html#l38"><code>src\Shaders.js:38</code></a>
+        <a href="../files/src_Matrix4.js.html#l55"><code>src\Matrix4.js:55</code></a>
         
         </p>
 
@@ -1135,9 +815,132 @@ if (!shader.getCompileStatus()) {
     </div>
 
     <div class="description">
-        <p>Returns the type of this shader, which is either <code>gl.VERTEX_SHADER</code> or
-<code>gl.FRAGMENT_SHADER</code>.</p>
-<p>Equivalent to calling <code>gl.getShaderParameter</code> with <code>gl.SHADER_TYPE</code>.</p>
+        <p><p>Returns the element at the specified row and column in the matrix.</p></p>
+<p><p>Row and column indices are zero-based. This method is equivalent to
+fetching the <code>j * 4 + i</code>-th element of the array:</p></p>
+<pre class="code prettyprint"><code>matrix.get(i, j) == matrix[j * 4 + i] // true</code></pre>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">i</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The row index.</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">j</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The column index.</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>:
+                    
+                    <p>The value at the specified row and column.</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>var m = new OOGL.Matrix4([1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8]);
+if (m.get(2, 3) == m[8]) { // true
+    ...</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_getTransposed" class="method item inherited">
+    <h3 class="name"><code>getTransposed</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="..\classes\OOGL.Matrix4.html" class="crosslink">OOGL.Matrix4</a></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="..\classes\OOGL.Matrix4.html#method_getTransposed">OOGL.Matrix4</a>:
+            
+        
+        
+        <a href="../files/src_Matrix4.js.html#l119"><code>src\Matrix4.js:119</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Computes the transposed matrix and returns it as a new <code>Matrix4</code> object.
+This matrix is not changed.</p>
 
     </div>
 
@@ -1150,9 +953,9 @@ if (!shader.getCompileStatus()) {
             <div class="returns-description">
                 
                     
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>:
+                        <span class="type"><a href="..\classes\OOGL.Matrix4.html" class="crosslink">OOGL.Matrix4</a></span>:
                     
-                    <p>The type of this shader.</p>
+                    <p>The transposed matrix.</p>
 
                 
             </div>
@@ -1164,7 +967,7 @@ if (!shader.getCompileStatus()) {
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>var shaderType = shader.getType();</code></pre>
+                <pre class="code prettyprint"><code>TODO</code></pre>
 
             </div>
         </div>
@@ -1172,8 +975,8 @@ if (!shader.getCompileStatus()) {
 </div>
 
                 
-                    <div id="method_source" class="method item inherited">
-    <h3 class="name"><code>source</code></h3>
+                    <div id="method_minus" class="method item inherited">
+    <h3 class="name"><code>minus</code></h3>
 
     
         <div class="args">
@@ -1181,7 +984,348 @@ if (!shader.getCompileStatus()) {
             
                 <li class="arg">
                     
-                        <code>source</code>
+                        <code>m</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="..\classes\OOGL.Matrix4.html" class="crosslink">OOGL.Matrix4</a></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="..\classes\OOGL.Matrix4.html#method_minus">OOGL.Matrix4</a>:
+            
+        
+        
+        <a href="../files/src_Matrix4.js.html#l193"><code>src\Matrix4.js:193</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Subtracts the specified matrix to this one and returns the difference as
+a new <code>Matrix4</code> object. This matrix is not changed.</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">m</code>
+                        <span class="type"><a href="..\classes\OOGL.Matrix4.html" class="crosslink">OOGL.Matrix4</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The matrix to subtract.</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="..\classes\OOGL.Matrix4.html" class="crosslink">OOGL.Matrix4</a></span>:
+                    
+                    <p>The difference matrix.</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>TODO</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_multiply" class="method item inherited">
+    <h3 class="name"><code>multiply</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>x</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <span class="flag chainable">chainable</span>
+    
+
+    
+
+    <div class="meta">
+        
+            <p>Inherited from
+            <a href="..\classes\OOGL.Matrix4.html#method_multiply">
+                OOGL.Matrix4
+            </a>
+            
+            but overwritten in
+            
+        
+        
+        <a href="../files/src_Matrix4.js.html#l211"><code>src\Matrix4.js:211</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Multiplies this matrix by the specified constant factor. This method
+changes the original matrix.</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">x</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The multiplying factor.</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>TODO</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_plus" class="method item inherited">
+    <h3 class="name"><code>plus</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>m</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="..\classes\OOGL.Matrix4.html" class="crosslink">OOGL.Matrix4</a></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="..\classes\OOGL.Matrix4.html#method_plus">OOGL.Matrix4</a>:
+            
+        
+        
+        <a href="../files/src_Matrix4.js.html#l156"><code>src\Matrix4.js:156</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Adds the specified matrix to this one and returns the sum as a new
+<code>Matrix3</code> object. This matrix is not changed.</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">m</code>
+                        <span class="type"><a href="..\classes\OOGL.Matrix4.html" class="crosslink">OOGL.Matrix4</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The matrix to add.</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="..\classes\OOGL.Matrix4.html" class="crosslink">OOGL.Matrix4</a></span>:
+                    
+                    <p>The sum matrix.</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>TODO</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_put" class="method item inherited">
+    <h3 class="name"><code>put</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>i</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>j</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>value</code>
                     
                 </li>
             
@@ -1207,11 +1351,11 @@ if (!shader.getCompileStatus()) {
         
             
                 <p>Inherited from
-                <a href="..\classes\context.Shader.html#method_source">context.Shader</a>:
+                <a href="..\classes\OOGL.Matrix4.html#method_put">OOGL.Matrix4</a>:
             
         
         
-        <a href="../files/src_Shaders.js.html#l53"><code>src\Shaders.js:53</code></a>
+        <a href="../files/src_Matrix4.js.html#l76"><code>src\Matrix4.js:76</code></a>
         
         </p>
 
@@ -1222,8 +1366,11 @@ if (!shader.getCompileStatus()) {
     </div>
 
     <div class="description">
-        <p>Specifies the GLSL source code for this shader.</p>
-<p><code>gl.shaderSource</code> equivalent.</p>
+        <p><p>Changes the element at the specified row and column in the matrix.</p></p>
+<p><p>Row and column indices are zero-based. This method is equivalent to
+setting the <code>j * 4 + i</code>-th element of the array:</p></p>
+<pre class="code prettyprint"><code>matrix.put(i, j, x);
+matrix[j * 4 + i] = x; // same as previous</code></pre>
 
     </div>
 
@@ -1235,14 +1382,46 @@ if (!shader.getCompileStatus()) {
             
                 <li class="param">
                     
-                        <code class="param-name">source</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                        <code class="param-name">i</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>The GLSL source code.</p>
+                        <p>The row index.</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">j</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The column index.</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">value</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The value to put at the specified row and column.</p>
 
                     </div>
 
@@ -1260,8 +1439,170 @@ if (!shader.getCompileStatus()) {
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>var shader = new oogl.Shader(oogl.VERTEX_SHADER);
-shader.source(vertexSource);</code></pre>
+                <pre class="code prettyprint"><code>var matrix = new OOGL.Matrix4([0, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]);
+matrix.put(0, 0, 3); // now matrix is [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_subtract" class="method item inherited">
+    <h3 class="name"><code>subtract</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>m</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <span class="flag chainable">chainable</span>
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="..\classes\OOGL.Matrix4.html#method_subtract">OOGL.Matrix4</a>:
+            
+        
+        
+        <a href="../files/src_Matrix4.js.html#l174"><code>src\Matrix4.js:174</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Subtracts the specified matrix to this one.</p>
+<p>Each element of the specified matrix is subtracted to the respective
+element in this matrix. The specified <code>m</code> matrix is not changed.</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">m</code>
+                        <span class="type"><a href="..\classes\OOGL.Matrix4.html" class="crosslink">OOGL.Matrix4</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The matrix to subtract.</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>TODO</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_transpose" class="method item inherited">
+    <h3 class="name"><code>transpose</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <span class="flag chainable">chainable</span>
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="..\classes\OOGL.Matrix4.html#method_transpose">OOGL.Matrix4</a>:
+            
+        
+        
+        <a href="../files/src_Matrix4.js.html#l98"><code>src\Matrix4.js:98</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Transposes this matrix.</p>
+
+    </div>
+
+    
+
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>TODO</code></pre>
 
             </div>
         </div>

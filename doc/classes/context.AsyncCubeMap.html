@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>context.Textures - OOGL.js</title>
+    <title>context.AsyncCubeMap - OOGL.js</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -208,7 +208,7 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>context.Textures Class</h1>
+                        <h1>context.AsyncCubeMap Class</h1>
 <div class="box meta">
     
 
@@ -216,7 +216,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_Textures.js.html#l525"><code>src\Textures.js:525</code></a>
+            Defined in: <a href="../files/src_Textures.js.html#l472"><code>src\Textures.js:472</code></a>
         </div>
     
 
@@ -232,267 +232,15 @@
 
 
 <div class="box intro">
-    <p>A utility class that aids in the management of multiple textures.</p>
-<p>One <code>Textures</code> objects represents a set of textures that must be
-simultaneously bound (to different texture units) for use by the same
-program. The <code>Textures</code> object automatically assigns textures to texture
-units.</p>
-<p>Contained textures are assigned unique names which are then used as uniform
-variable names when specifying uniforms with the provided <code>uniform</code> method.</p>
-<p>A <code>Texture</code> object may belong to several <code>Textures</code> sets at the same
-time, so that it can be used by several programs.</p>
+    <p>TODO</p>
 
 </div>
 
 
     <div class="constructor">
         <h2>Constructor</h2>
-        <div id="method_context.Textures" class="method item">
-    <h3 class="name"><code>context.Textures</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code class="optional">[textures={}]</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_Textures.js.html#l525"><code>src\Textures.js:525</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name optional">[textures={}]</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
-                        <span class="flag optional" title="This parameter is optional.">optional</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>An optional object that map names to
-    <code>oogl.Texture</code> objects. Names are used when specifying uniform variables
-    using the provided <code>uniform</code> method.</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-
-    
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>var textures = new oogl.Textures({
-    &#39;Texture&#39;: texture,
-    &#39;BumpMap&#39;: bumpMap
-});</code></pre>
-
-            </div>
-        </div>
-    
-</div>
-
-    </div>
-
-
-<div id="classdocs" class="tabview">
-    <ul class="api-class-tabs">
-        <li class="api-class-tab index"><a href="#index">Index</a></li>
-
-        
-            <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
-        
-        
-        
-        
-    </ul>
-
-    <div>
-        <div id="index" class="api-class-tabpanel index">
-            <h2 class="off-left">Item Index</h2>
-
-            
-                <div class="index-section methods">
-                    <h3>Methods</h3>
-
-                    <ul class="index-list methods">
-                        
-                            <li class="index-item method">
-                                <a href="#method__delete">_delete</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_add">add</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_bind">bind</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_bindAndUniform">bindAndUniform</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_uniform">uniform</a>
-
-                                
-                                
-                            </li>
-                        
-                    </ul>
-                </div>
-            
-
-            
-
-            
-
-            
-        </div>
-
-        
-            <div id="methods" class="api-class-tabpanel">
-                <h2 class="off-left">Methods</h2>
-
-                
-                    <div id="method__delete" class="method item">
-    <h3 class="name"><code>_delete</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_Textures.js.html#l663"><code>src\Textures.js:663</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Deletes all the textures that have been added to this set and resets
-it to an empty set.</p>
-<p><code>Textures</code> objects may be used again after deletion.</p>
-
-    </div>
-
-    
-
-    
-
-    
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>textures._delete();</code></pre>
-
-            </div>
-        </div>
-    
-</div>
-
-                
-                    <div id="method_add" class="method item">
-    <h3 class="name"><code>add</code></h3>
+        <div id="method_context.AsyncCubeMap" class="method item">
+    <h3 class="name"><code>context.AsyncCubeMap</code></h3>
 
     
         <div class="args">
@@ -506,7 +254,19 @@ it to an empty set.</p>
             
                 <li class="arg">
                     
-                        <code>texture</code>
+                        <code>callback</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code class="optional">[magFilter=gl.LINEAR]</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code class="optional">[minFilter=gl.LINEAR]</code>
                     
                 </li>
             
@@ -539,7 +299,7 @@ it to an empty set.</p>
             
         
         
-        <a href="../files/src_Textures.js.html#l563"><code>src\Textures.js:563</code></a>
+        <a href="../files/src_Textures.js.html#l472"><code>src\Textures.js:472</code></a>
         
         </p>
 
@@ -550,14 +310,7 @@ it to an empty set.</p>
     </div>
 
     <div class="description">
-        <p>Adds a <code>Texture</code> to this set associating it a unique uniform variable
-name.</p>
-<p>If the specified name is already in use by another texture in this
-set, the current texture is replaced by the specified one.</p>
-<p>The texture is automatically assigned a texture unit, but the set
-must be re-bound (using the <code>bind</code> method) before its textures can be
-used in programs.</p>
-
+        
     </div>
 
     
@@ -575,7 +328,7 @@ used in programs.</p>
                     
 
                     <div class="param-description">
-                        <p>The name of the associated uniform variable.</p>
+                        <p>TODO</p>
 
                     </div>
 
@@ -584,14 +337,50 @@ used in programs.</p>
             
                 <li class="param">
                     
-                        <code class="param-name">texture</code>
-                        <span class="type"><a href="..\classes\context.Texture.html" class="crosslink">context.Texture</a></span>
+                        <code class="param-name">callback</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>The OOGL texture to add.</p>
+                        <p>TODO</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name optional">[magFilter=gl.LINEAR]</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>An optional value for the magnifying
+    filter.</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name optional">[minFilter=gl.LINEAR]</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>An optional value for the minifying
+    filter.</p>
 
                     </div>
 
@@ -609,293 +398,39 @@ used in programs.</p>
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>var textures = new oogl.Textures();
-textures.add(&#39;Texture&#39;, texture);
-textures.add(&#39;BumpMap&#39;, bumpMap);</code></pre>
+                <pre class="code prettyprint"><code>TODO</code></pre>
 
             </div>
         </div>
     
 </div>
 
-                
-                    <div id="method_bind" class="method item">
-    <h3 class="name"><code>bind</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_Textures.js.html#l601"><code>src\Textures.js:601</code></a>
-        
-        </p>
-
-
-        
-
-        
     </div>
 
-    <div class="description">
-        <p>Binds all the textures in this sets to their target in their
-respective texture unit.</p>
-<p>Equivalent to calling <code>gl.activeTexture</code> and <code>gl.bindTexture</code> for
-each texture.</p>
 
-    </div>
+<div id="classdocs" class="tabview">
+    <ul class="api-class-tabs">
+        <li class="api-class-tab index"><a href="#index">Index</a></li>
 
-    
+        
+        
+        
+        
+    </ul>
 
-    
+    <div>
+        <div id="index" class="api-class-tabpanel index">
+            <h2 class="off-left">Item Index</h2>
 
-    
-        <div class="example">
-            <h4>Example:</h4>
+            
 
-            <div class="example-content">
-                <pre class="code prettyprint"><code>textures.bind();</code></pre>
+            
 
-            </div>
+            
+
+            
         </div>
-    
-</div>
 
-                
-                    <div id="method_bindAndUniform" class="method item">
-    <h3 class="name"><code>bindAndUniform</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>program</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_Textures.js.html#l639"><code>src\Textures.js:639</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Binds all the textures in this sets to their target in their
-respective texture unit and then specifies uniform variable names for
-the specified program using the automatically assigned texture units.</p>
-<p>Equivalent to calling <code>bind</code> and <code>uniform</code> subsequently.</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">program</code>
-                        <span class="type"><a href="..\classes\context.Program.html" class="crosslink">context.Program</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>A <code>context.Program</code>.</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-
-    
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>var textures = new oogl.Textures({
-    &#39;Texture&#39;: texture,
-    &#39;BumpMap&#39;: bumpMap
-});
-textures.bindAnduniform(program);</code></pre>
-
-            </div>
-        </div>
-    
-</div>
-
-                
-                    <div id="method_uniform" class="method item">
-    <h3 class="name"><code>uniform</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>program</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_Textures.js.html#l619"><code>src\Textures.js:619</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Specifies uniform variable names for the specified program using the
-automatically assigned texture units.</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">program</code>
-                        <span class="type"><a href="..\classes\context.Program.html" class="crosslink">context.Program</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>A <code>context.Program</code>.</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-
-    
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>var textures = new oogl.Textures({
-    &#39;Texture&#39;: texture,
-    &#39;BumpMap&#39;: bumpMap
-});
-textures.bind();
-textures.uniform(program);</code></pre>
-
-            </div>
-        </div>
-    
-</div>
-
-                
-            </div>
         
 
         

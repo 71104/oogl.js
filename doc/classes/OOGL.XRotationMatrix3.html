@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>OOGL.TranslationMatrix4 - OOGL.js</title>
+    <title>OOGL.XRotationMatrix3 - OOGL.js</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -208,19 +208,19 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>OOGL.TranslationMatrix4 Class</h1>
+                        <h1>OOGL.XRotationMatrix3 Class</h1>
 <div class="box meta">
     
 
     
         <div class="extends">
-            Extends <a href="..\classes\OOGL.Matrix4.html" class="crosslink">OOGL.Matrix4</a>
+            Extends <a href="..\classes\OOGL.Matrix3.html" class="crosslink">OOGL.Matrix3</a>
         </div>
     
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_Matrix4.js.html#l353"><code>src\Matrix4.js:353</code></a>
+            Defined in: <a href="../files/src_Matrix3.js.html#l466"><code>src\Matrix3.js:466</code></a>
         </div>
     
 
@@ -236,15 +236,16 @@
 
 
 <div class="box intro">
-    <p>Creates a 3D translation matrix.</p>
+    <p>Creates a 3D rotation matrix that rotates everything counterclockwise around
+the X axis by the specified <code>angle</code>.</p>
 
 </div>
 
 
     <div class="constructor">
         <h2>Constructor</h2>
-        <div id="method_OOGL.TranslationMatrix4" class="method item">
-    <h3 class="name"><code>OOGL.TranslationMatrix4</code></h3>
+        <div id="method_OOGL.XRotationMatrix3" class="method item">
+    <h3 class="name"><code>OOGL.XRotationMatrix3</code></h3>
 
     
         <div class="args">
@@ -252,19 +253,7 @@
             
                 <li class="arg">
                     
-                        <code>x</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>y</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>z</code>
+                        <code>angle</code>
                     
                 </li>
             
@@ -297,7 +286,7 @@
             
         
         
-        <a href="../files/src_Matrix4.js.html#l353"><code>src\Matrix4.js:353</code></a>
+        <a href="../files/src_Matrix3.js.html#l466"><code>src\Matrix3.js:466</code></a>
         
         </p>
 
@@ -319,46 +308,14 @@
             
                 <li class="param">
                     
-                        <code class="param-name">x</code>
+                        <code class="param-name">angle</code>
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>The X component of the translation vector.</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">y</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>The Y component of the translation vector.</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">z</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>The Z component of the translation vector.</p>
+                        <p>The rotation angle, in radians.</p>
 
                     </div>
 
@@ -376,8 +333,7 @@
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>// translate by 3 units on the X axis, 4 on the Y axis and 5 on the Z axis
-var m = new OOGL.TranslationMatrix4(3, 4, 5);</code></pre>
+                <pre class="code prettyprint"><code>var m = new OOGL.XRotationMatrix3(Math.PI / 2); // 90 degrees rotation around the X axis</code></pre>
 
             </div>
         </div>
@@ -431,6 +387,13 @@ var m = new OOGL.TranslationMatrix4(3, 4, 5);</code></pre>
                             </li>
                         
                             <li class="index-item method inherited">
+                                <a href="#method_determinant">determinant</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
                                 <a href="#method_get">get</a>
 
                                 
@@ -438,7 +401,21 @@ var m = new OOGL.TranslationMatrix4(3, 4, 5);</code></pre>
                             </li>
                         
                             <li class="index-item method inherited">
+                                <a href="#method_getInverse">getInverse</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
                                 <a href="#method_getTransposed">getTransposed</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_invert">invert</a>
 
                                 
                                 
@@ -474,6 +451,13 @@ var m = new OOGL.TranslationMatrix4(3, 4, 5);</code></pre>
                         
                             <li class="index-item method inherited">
                                 <a href="#method_subtract">subtract</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_toHomogeneous">toHomogeneous</a>
 
                                 
                                 
@@ -539,11 +523,11 @@ var m = new OOGL.TranslationMatrix4(3, 4, 5);</code></pre>
         
             
                 <p>Inherited from
-                <a href="..\classes\OOGL.Matrix4.html#method_add">OOGL.Matrix4</a>:
+                <a href="..\classes\OOGL.Matrix3.html#method_add">OOGL.Matrix3</a>:
             
         
         
-        <a href="../files/src_Matrix4.js.html#l137"><code>src\Matrix4.js:137</code></a>
+        <a href="../files/src_Matrix3.js.html#l149"><code>src\Matrix3.js:149</code></a>
         
         </p>
 
@@ -569,7 +553,7 @@ element in this matrix. The specified <code>m</code> matrix is not changed.</p>
                 <li class="param">
                     
                         <code class="param-name">m</code>
-                        <span class="type"><a href="..\classes\OOGL.Matrix4.html" class="crosslink">OOGL.Matrix4</a></span>
+                        <span class="type"><a href="..\classes\OOGL.Matrix3.html" class="crosslink">OOGL.Matrix3</a></span>
                     
 
                     
@@ -593,7 +577,8 @@ element in this matrix. The specified <code>m</code> matrix is not changed.</p>
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>TODO</code></pre>
+                <pre class="code prettyprint"><code>var matrix = new OOGL.Matrix3([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+matrix.add(new OOGL.Matrix3([9, 8, 7, 6, 5, 4, 3, 2, 1])); // matrix is now [10, 10, 10, 10, 10, 10, 10, 10, 10]</code></pre>
 
             </div>
         </div>
@@ -620,7 +605,7 @@ element in this matrix. The specified <code>m</code> matrix is not changed.</p>
 
     
         <span class="returns-inline">
-            <span class="type"><a href="..\classes\OOGL.Matrix4.html" class="crosslink">OOGL.Matrix4</a></span>
+            <span class="type"><a href="..\classes\OOGL.Matrix3.html" class="crosslink">OOGL.Matrix3</a></span>
         </span>
     
 
@@ -639,15 +624,15 @@ element in this matrix. The specified <code>m</code> matrix is not changed.</p>
     <div class="meta">
         
             <p>Inherited from
-            <a href="..\classes\OOGL.Matrix4.html#method_by">
-                OOGL.Matrix4
+            <a href="..\classes\OOGL.Matrix3.html#method_by">
+                OOGL.Matrix3
             </a>
             
             but overwritten in
             
         
         
-        <a href="../files/src_Matrix4.js.html#l264"><code>src\Matrix4.js:264</code></a>
+        <a href="../files/src_Matrix3.js.html#l277"><code>src\Matrix3.js:277</code></a>
         
         </p>
 
@@ -659,7 +644,7 @@ element in this matrix. The specified <code>m</code> matrix is not changed.</p>
 
     <div class="description">
         <p>Multiplies this matrix by the specified constant factor and returns the
-product as a new <code>Matrix4</code> object. This matrix is not changed.</p>
+product as a new <code>Matrix3</code> object. This matrix is not changed.</p>
 
     </div>
 
@@ -696,7 +681,7 @@ product as a new <code>Matrix4</code> object. This matrix is not changed.</p>
             <div class="returns-description">
                 
                     
-                        <span class="type"><a href="..\classes\OOGL.Matrix4.html" class="crosslink">OOGL.Matrix4</a></span>:
+                        <span class="type"><a href="..\classes\OOGL.Matrix3.html" class="crosslink">OOGL.Matrix3</a></span>:
                     
                     <p>The product matrix.</p>
 
@@ -710,7 +695,8 @@ product as a new <code>Matrix4</code> object. This matrix is not changed.</p>
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>TODO</code></pre>
+                <pre class="code prettyprint"><code>var m1 = new OOGL.Matrix3([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+var m2 = m1.by(2); // [2, 4, 6, 8, 10, 12, 14, 16, 18]</code></pre>
 
             </div>
         </div>
@@ -727,7 +713,7 @@ product as a new <code>Matrix4</code> object. This matrix is not changed.</p>
 
     
         <span class="returns-inline">
-            <span class="type"><a href="..\classes\OOGL.Matrix4.html" class="crosslink">OOGL.Matrix4</a></span>
+            <span class="type"><a href="..\classes\OOGL.Matrix3.html" class="crosslink">OOGL.Matrix3</a></span>
         </span>
     
 
@@ -747,11 +733,11 @@ product as a new <code>Matrix4</code> object. This matrix is not changed.</p>
         
             
                 <p>Inherited from
-                <a href="..\classes\OOGL.Matrix4.html#method_clone">OOGL.Matrix4</a>:
+                <a href="..\classes\OOGL.Matrix3.html#method_clone">OOGL.Matrix3</a>:
             
         
         
-        <a href="../files/src_Matrix4.js.html#l38"><code>src\Matrix4.js:38</code></a>
+        <a href="../files/src_Matrix3.js.html#l37"><code>src\Matrix3.js:37</code></a>
         
         </p>
 
@@ -775,7 +761,7 @@ product as a new <code>Matrix4</code> object. This matrix is not changed.</p>
             <div class="returns-description">
                 
                     
-                        <span class="type"><a href="..\classes\OOGL.Matrix4.html" class="crosslink">OOGL.Matrix4</a></span>:
+                        <span class="type"><a href="..\classes\OOGL.Matrix3.html" class="crosslink">OOGL.Matrix3</a></span>:
                     
                     <p>TODO</p>
 
@@ -790,6 +776,86 @@ product as a new <code>Matrix4</code> object. This matrix is not changed.</p>
 
             <div class="example-content">
                 <pre class="code prettyprint"><code>TODO</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_determinant" class="method item inherited">
+    <h3 class="name"><code>determinant</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="..\classes\OOGL.Matrix3.html#method_determinant">OOGL.Matrix3</a>:
+            
+        
+        
+        <a href="../files/src_Matrix3.js.html#l344"><code>src\Matrix3.js:344</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Computes the determinant of this matrix.</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>:
+                    
+                    <p>The computed determinant.</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>var m = new OOGL.Matrix3([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+var d = m.determinant(); // 0</code></pre>
 
             </div>
         </div>
@@ -842,11 +908,11 @@ product as a new <code>Matrix4</code> object. This matrix is not changed.</p>
         
             
                 <p>Inherited from
-                <a href="..\classes\OOGL.Matrix4.html#method_get">OOGL.Matrix4</a>:
+                <a href="..\classes\OOGL.Matrix3.html#method_get">OOGL.Matrix3</a>:
             
         
         
-        <a href="../files/src_Matrix4.js.html#l55"><code>src\Matrix4.js:55</code></a>
+        <a href="../files/src_Matrix3.js.html#l75"><code>src\Matrix3.js:75</code></a>
         
         </p>
 
@@ -859,8 +925,8 @@ product as a new <code>Matrix4</code> object. This matrix is not changed.</p>
     <div class="description">
         <p><p>Returns the element at the specified row and column in the matrix.</p></p>
 <p><p>Row and column indices are zero-based. This method is equivalent to
-fetching the <code>j * 4 + i</code>-th element of the array:</p></p>
-<pre class="code prettyprint"><code>matrix.get(i, j) == matrix[j * 4 + i] // true</code></pre>
+fetching the <code>j * 3 + i</code>-th element of the array:</p></p>
+<pre class="code prettyprint"><code>matrix.get(i, j) == matrix[j * 3 + i] // true</code></pre>
 
     </div>
 
@@ -927,9 +993,72 @@ fetching the <code>j * 4 + i</code>-th element of the array:</p></p>
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>var m = new OOGL.Matrix4([1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8]);
-if (m.get(2, 3) == m[8]) { // true
+                <pre class="code prettyprint"><code>var m = new OOGL.Matrix3([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+if (m.get(2, 1) == m[6]) { // true
     ...</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_getInverse" class="method item inherited">
+    <h3 class="name"><code>getInverse</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="..\classes\OOGL.Matrix3.html#method_getInverse">OOGL.Matrix3</a>:
+            
+        
+        
+        <a href="../files/src_Matrix3.js.html#l389"><code>src\Matrix3.js:389</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Computes the inverse of this matrix and returns it as a new <code>Matrix3</code>
+object.</p>
+
+    </div>
+
+    
+
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>var m1 = new OOGL.Matrix3([1, 0, 0, 0, 0, 1, 0, 1, 1]);
+var m2 = m1.getInverse(); // [1, 0, 0, 0, -1, 1, 0, 1, 0]</code></pre>
 
             </div>
         </div>
@@ -946,7 +1075,7 @@ if (m.get(2, 3) == m[8]) { // true
 
     
         <span class="returns-inline">
-            <span class="type"><a href="..\classes\OOGL.Matrix4.html" class="crosslink">OOGL.Matrix4</a></span>
+            <span class="type"><a href="..\classes\OOGL.Matrix3.html" class="crosslink">OOGL.Matrix3</a></span>
         </span>
     
 
@@ -966,11 +1095,11 @@ if (m.get(2, 3) == m[8]) { // true
         
             
                 <p>Inherited from
-                <a href="..\classes\OOGL.Matrix4.html#method_getTransposed">OOGL.Matrix4</a>:
+                <a href="..\classes\OOGL.Matrix3.html#method_getTransposed">OOGL.Matrix3</a>:
             
         
         
-        <a href="../files/src_Matrix4.js.html#l119"><code>src\Matrix4.js:119</code></a>
+        <a href="../files/src_Matrix3.js.html#l135"><code>src\Matrix3.js:135</code></a>
         
         </p>
 
@@ -981,7 +1110,7 @@ if (m.get(2, 3) == m[8]) { // true
     </div>
 
     <div class="description">
-        <p>Computes the transposed matrix and returns it as a new <code>Matrix4</code> object.
+        <p>Computes the transposed matrix and returns it as a new <code>Matrix3</code> object.
 This matrix is not changed.</p>
 
     </div>
@@ -995,7 +1124,7 @@ This matrix is not changed.</p>
             <div class="returns-description">
                 
                     
-                        <span class="type"><a href="..\classes\OOGL.Matrix4.html" class="crosslink">OOGL.Matrix4</a></span>:
+                        <span class="type"><a href="..\classes\OOGL.Matrix3.html" class="crosslink">OOGL.Matrix3</a></span>:
                     
                     <p>The transposed matrix.</p>
 
@@ -1009,7 +1138,72 @@ This matrix is not changed.</p>
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>TODO</code></pre>
+                <pre class="code prettyprint"><code>var m1 = new OOGL.Matrix3([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+var m2 = m1.getTransposed(); // [1, 4, 7, 2, 5, 8, 3, 6, 9]</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_invert" class="method item inherited">
+    <h3 class="name"><code>invert</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <span class="flag chainable">chainable</span>
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="..\classes\OOGL.Matrix3.html#method_invert">OOGL.Matrix3</a>:
+            
+        
+        
+        <a href="../files/src_Matrix3.js.html#l359"><code>src\Matrix3.js:359</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Inverts this matrix.</p>
+
+    </div>
+
+    
+
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>var matrix = new OOGL.Matrix3([1, 0, 0, 0, 0, 1, 0, 1, 1]);
+matrix.invert(); // matrix is now [1, 0, 0, 0, -1, 1, 0, 1, 0]</code></pre>
 
             </div>
         </div>
@@ -1036,7 +1230,7 @@ This matrix is not changed.</p>
 
     
         <span class="returns-inline">
-            <span class="type"><a href="..\classes\OOGL.Matrix4.html" class="crosslink">OOGL.Matrix4</a></span>
+            <span class="type"><a href="..\classes\OOGL.Matrix3.html" class="crosslink">OOGL.Matrix3</a></span>
         </span>
     
 
@@ -1056,11 +1250,11 @@ This matrix is not changed.</p>
         
             
                 <p>Inherited from
-                <a href="..\classes\OOGL.Matrix4.html#method_minus">OOGL.Matrix4</a>:
+                <a href="..\classes\OOGL.Matrix3.html#method_minus">OOGL.Matrix3</a>:
             
         
         
-        <a href="../files/src_Matrix4.js.html#l193"><code>src\Matrix4.js:193</code></a>
+        <a href="../files/src_Matrix3.js.html#l209"><code>src\Matrix3.js:209</code></a>
         
         </p>
 
@@ -1072,7 +1266,7 @@ This matrix is not changed.</p>
 
     <div class="description">
         <p>Subtracts the specified matrix to this one and returns the difference as
-a new <code>Matrix4</code> object. This matrix is not changed.</p>
+a new <code>Matrix3</code> object. This matrix is not changed.</p>
 
     </div>
 
@@ -1085,7 +1279,7 @@ a new <code>Matrix4</code> object. This matrix is not changed.</p>
                 <li class="param">
                     
                         <code class="param-name">m</code>
-                        <span class="type"><a href="..\classes\OOGL.Matrix4.html" class="crosslink">OOGL.Matrix4</a></span>
+                        <span class="type"><a href="..\classes\OOGL.Matrix3.html" class="crosslink">OOGL.Matrix3</a></span>
                     
 
                     
@@ -1109,7 +1303,7 @@ a new <code>Matrix4</code> object. This matrix is not changed.</p>
             <div class="returns-description">
                 
                     
-                        <span class="type"><a href="..\classes\OOGL.Matrix4.html" class="crosslink">OOGL.Matrix4</a></span>:
+                        <span class="type"><a href="..\classes\OOGL.Matrix3.html" class="crosslink">OOGL.Matrix3</a></span>:
                     
                     <p>The difference matrix.</p>
 
@@ -1123,7 +1317,9 @@ a new <code>Matrix4</code> object. This matrix is not changed.</p>
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>TODO</code></pre>
+                <pre class="code prettyprint"><code>var m1 = new OOGL.Matrix3([10, 10, 10, 10, 10, 10, 10, 10, 10]);
+var m2 = new OOGL.Matrix3([9, 8, 7, 6, 5, 4, 3, 2, 1]);
+var m3 = m1.minus(m2); // [1, 2, 3, 4, 5, 6, 7, 8, 9]</code></pre>
 
             </div>
         </div>
@@ -1167,15 +1363,15 @@ a new <code>Matrix4</code> object. This matrix is not changed.</p>
     <div class="meta">
         
             <p>Inherited from
-            <a href="..\classes\OOGL.Matrix4.html#method_multiply">
-                OOGL.Matrix4
+            <a href="..\classes\OOGL.Matrix3.html#method_multiply">
+                OOGL.Matrix3
             </a>
             
             but overwritten in
             
         
         
-        <a href="../files/src_Matrix4.js.html#l211"><code>src\Matrix4.js:211</code></a>
+        <a href="../files/src_Matrix3.js.html#l229"><code>src\Matrix3.js:229</code></a>
         
         </p>
 
@@ -1224,7 +1420,8 @@ changes the original matrix.</p>
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>TODO</code></pre>
+                <pre class="code prettyprint"><code>var matrix = new OOGL.Matrix3([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+matrix.multiply(2); // matrix is now [2, 4, 6, 8, 10, 12, 14, 16, 18]</code></pre>
 
             </div>
         </div>
@@ -1251,7 +1448,7 @@ changes the original matrix.</p>
 
     
         <span class="returns-inline">
-            <span class="type"><a href="..\classes\OOGL.Matrix4.html" class="crosslink">OOGL.Matrix4</a></span>
+            <span class="type"><a href="..\classes\OOGL.Matrix3.html" class="crosslink">OOGL.Matrix3</a></span>
         </span>
     
 
@@ -1271,11 +1468,11 @@ changes the original matrix.</p>
         
             
                 <p>Inherited from
-                <a href="..\classes\OOGL.Matrix4.html#method_plus">OOGL.Matrix4</a>:
+                <a href="..\classes\OOGL.Matrix3.html#method_plus">OOGL.Matrix3</a>:
             
         
         
-        <a href="../files/src_Matrix4.js.html#l156"><code>src\Matrix4.js:156</code></a>
+        <a href="../files/src_Matrix3.js.html#l169"><code>src\Matrix3.js:169</code></a>
         
         </p>
 
@@ -1300,7 +1497,7 @@ changes the original matrix.</p>
                 <li class="param">
                     
                         <code class="param-name">m</code>
-                        <span class="type"><a href="..\classes\OOGL.Matrix4.html" class="crosslink">OOGL.Matrix4</a></span>
+                        <span class="type"><a href="..\classes\OOGL.Matrix3.html" class="crosslink">OOGL.Matrix3</a></span>
                     
 
                     
@@ -1324,7 +1521,7 @@ changes the original matrix.</p>
             <div class="returns-description">
                 
                     
-                        <span class="type"><a href="..\classes\OOGL.Matrix4.html" class="crosslink">OOGL.Matrix4</a></span>:
+                        <span class="type"><a href="..\classes\OOGL.Matrix3.html" class="crosslink">OOGL.Matrix3</a></span>:
                     
                     <p>The sum matrix.</p>
 
@@ -1338,7 +1535,9 @@ changes the original matrix.</p>
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>TODO</code></pre>
+                <pre class="code prettyprint"><code>var m1 = new OOGL.Matrix3([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+var m2 = new OOGL.Matrix3([9, 8, 7, 6, 5, 4, 3, 2, 1]);
+var m3 = m1.plus(m2); // [10, 10, 10, 10, 10, 10, 10, 10, 10]</code></pre>
 
             </div>
         </div>
@@ -1393,11 +1592,11 @@ changes the original matrix.</p>
         
             
                 <p>Inherited from
-                <a href="..\classes\OOGL.Matrix4.html#method_put">OOGL.Matrix4</a>:
+                <a href="..\classes\OOGL.Matrix3.html#method_put">OOGL.Matrix3</a>:
             
         
         
-        <a href="../files/src_Matrix4.js.html#l76"><code>src\Matrix4.js:76</code></a>
+        <a href="../files/src_Matrix3.js.html#l96"><code>src\Matrix3.js:96</code></a>
         
         </p>
 
@@ -1410,9 +1609,9 @@ changes the original matrix.</p>
     <div class="description">
         <p><p>Changes the element at the specified row and column in the matrix.</p></p>
 <p><p>Row and column indices are zero-based. This method is equivalent to
-setting the <code>j * 4 + i</code>-th element of the array:</p></p>
+setting the <code>j * 3 + i</code>-th element of the array:</p></p>
 <pre class="code prettyprint"><code>matrix.put(i, j, x);
-matrix[j * 4 + i] = x; // same as previous</code></pre>
+matrix[j * 3 + i] = x; // same as previous</code></pre>
 
     </div>
 
@@ -1481,8 +1680,8 @@ matrix[j * 4 + i] = x; // same as previous</code></pre>
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>var matrix = new OOGL.Matrix4([0, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]);
-matrix.put(0, 0, 3); // now matrix is [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]</code></pre>
+                <pre class="code prettyprint"><code>var matrix = new OOGL.Matrix3([3, 3, 0, 3, 3, 3, 3, 3, 3]);
+matrix.put(0, 1, 3); // now matrix is [3, 3, 3, 3, 3, 3, 3, 3, 3]</code></pre>
 
             </div>
         </div>
@@ -1527,11 +1726,11 @@ matrix.put(0, 0, 3); // now matrix is [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
         
             
                 <p>Inherited from
-                <a href="..\classes\OOGL.Matrix4.html#method_subtract">OOGL.Matrix4</a>:
+                <a href="..\classes\OOGL.Matrix3.html#method_subtract">OOGL.Matrix3</a>:
             
         
         
-        <a href="../files/src_Matrix4.js.html#l174"><code>src\Matrix4.js:174</code></a>
+        <a href="../files/src_Matrix3.js.html#l189"><code>src\Matrix3.js:189</code></a>
         
         </p>
 
@@ -1557,7 +1756,7 @@ element in this matrix. The specified <code>m</code> matrix is not changed.</p>
                 <li class="param">
                     
                         <code class="param-name">m</code>
-                        <span class="type"><a href="..\classes\OOGL.Matrix4.html" class="crosslink">OOGL.Matrix4</a></span>
+                        <span class="type"><a href="..\classes\OOGL.Matrix3.html" class="crosslink">OOGL.Matrix3</a></span>
                     
 
                     
@@ -1581,7 +1780,91 @@ element in this matrix. The specified <code>m</code> matrix is not changed.</p>
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>TODO</code></pre>
+                <pre class="code prettyprint"><code>var matrix = new OOGL.Matrix3([10, 10, 10, 10, 10, 10, 10, 10, 10]);
+matrix.subtract(new OOGL.Matrix3([9, 8, 7, 6, 5, 4, 3, 2, 1])); // matrix is now [1, 2, 3, 4, 5, 6, 7, 8, 9]</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_toHomogeneous" class="method item inherited">
+    <h3 class="name"><code>toHomogeneous</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="..\classes\OOGL.Matrix4.html" class="crosslink">OOGL.Matrix4</a></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="..\classes\OOGL.Matrix3.html#method_toHomogeneous">OOGL.Matrix3</a>:
+            
+        
+        
+        <a href="../files/src_Matrix3.js.html#l53"><code>src\Matrix3.js:53</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Yields a new <code>Matrix4</code> object corresponding to a homogeneous 4x4 matrix
+equivalent to this matrix.</p>
+<p>The upper left block of the new 4x4 matrix is set using the values from
+this 3x3 matrix, while the lower right corner is set to 1 and the rest to
+0.</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="..\classes\OOGL.Matrix4.html" class="crosslink">OOGL.Matrix4</a></span>:
+                    
+                    <p>The homogeneous matrix.</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>var m4 = m3.toHomogeneous();</code></pre>
 
             </div>
         </div>
@@ -1616,11 +1899,11 @@ element in this matrix. The specified <code>m</code> matrix is not changed.</p>
         
             
                 <p>Inherited from
-                <a href="..\classes\OOGL.Matrix4.html#method_transpose">OOGL.Matrix4</a>:
+                <a href="..\classes\OOGL.Matrix3.html#method_transpose">OOGL.Matrix3</a>:
             
         
         
-        <a href="../files/src_Matrix4.js.html#l98"><code>src\Matrix4.js:98</code></a>
+        <a href="../files/src_Matrix3.js.html#l118"><code>src\Matrix3.js:118</code></a>
         
         </p>
 
@@ -1644,7 +1927,8 @@ element in this matrix. The specified <code>m</code> matrix is not changed.</p>
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>TODO</code></pre>
+                <pre class="code prettyprint"><code>var matrix = new OOGL.Matrix3([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+matrix.transpose(); // matrix is now [1, 3, 2, 4, 5, 6, 7, 8, 9]</code></pre>
 
             </div>
         </div>

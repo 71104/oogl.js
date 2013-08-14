@@ -2,23 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>OOGL.RenderLoop - OOGL.js 1.0</title>
-    <link rel="stylesheet" href="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;3.8.0pr2&#x2F;build&#x2F;cssgrids&#x2F;cssgrids-min.css">
-    <link rel="stylesheet" href="..&#x2F;assets/vendor/prettify/prettify-min.css">
-    <link rel="stylesheet" href="..&#x2F;assets/css/main.css" id="site_styles">
-    <link rel="shortcut icon" type="image/png" href="..&#x2F;assets/favicon.png">
-    <script src="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;combo?3.8.0pr2&#x2F;build&#x2F;yui&#x2F;yui-min.js"></script>
-    <script type="text/javascript">
-var _gaq = _gaq || [];
-_gaq.push(['_setAccount', 'UA-36961344-2']);
-_gaq.push(['_setDomainName', 'github.com']);
-_gaq.push(['_trackPageview']);
-(function() {
-	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-})();
-    </script>
+    <title>OOGL.RenderLoop - OOGL.js</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
 </head>
 <body class="yui3-skin-sam">
 
@@ -26,7 +15,7 @@ _gaq.push(['_trackPageview']);
     <div id="hd" class="yui3-g header">
         <div class="yui3-u-3-4">
             
-                <h1><img src="..&#x2F;assets/css/logo.png" title="OOGL.js 1.0"></h1>
+                <h1><img src="../assets/css/logo.png" title="OOGL.js"></h1>
             
         </div>
         <div class="yui3-u-1-4 version">
@@ -52,119 +41,137 @@ _gaq.push(['_trackPageview']);
         <div id="api-tabview-panel">
             <ul id="api-classes" class="apis classes">
             
-                <li><a href="..&#x2F;classes/context.AjaxFragmentShader.html">context.AjaxFragmentShader</a></li>
+                <li><a href="../classes/context.AjaxFragmentShader.html">context.AjaxFragmentShader</a></li>
             
-                <li><a href="..&#x2F;classes/context.AjaxProgram.html">context.AjaxProgram</a></li>
+                <li><a href="../classes/context.AjaxProgram.html">context.AjaxProgram</a></li>
             
-                <li><a href="..&#x2F;classes/context.AjaxVertexShader.html">context.AjaxVertexShader</a></li>
+                <li><a href="../classes/context.AjaxVertexShader.html">context.AjaxVertexShader</a></li>
             
-                <li><a href="..&#x2F;classes/context.ArrayBuffer.html">context.ArrayBuffer</a></li>
+                <li><a href="../classes/context.ArrayBuffer.html">context.ArrayBuffer</a></li>
             
-                <li><a href="..&#x2F;classes/context.AsyncTexture.html">context.AsyncTexture</a></li>
+                <li><a href="../classes/context.AsyncCubeMap.html">context.AsyncCubeMap</a></li>
             
-                <li><a href="..&#x2F;classes/context.AttributeArray1.html">context.AttributeArray1</a></li>
+                <li><a href="../classes/context.AsyncTexture.html">context.AsyncTexture</a></li>
             
-                <li><a href="..&#x2F;classes/context.AttributeArray2.html">context.AttributeArray2</a></li>
+                <li><a href="../classes/context.AttributeArray1.html">context.AttributeArray1</a></li>
             
-                <li><a href="..&#x2F;classes/context.AttributeArray3.html">context.AttributeArray3</a></li>
+                <li><a href="../classes/context.AttributeArray2.html">context.AttributeArray2</a></li>
             
-                <li><a href="..&#x2F;classes/context.AttributeArray4.html">context.AttributeArray4</a></li>
+                <li><a href="../classes/context.AttributeArray3.html">context.AttributeArray3</a></li>
             
-                <li><a href="..&#x2F;classes/context.AttributeArrays.html">context.AttributeArrays</a></li>
+                <li><a href="../classes/context.AttributeArray4.html">context.AttributeArray4</a></li>
             
-                <li><a href="..&#x2F;classes/context.AutoProgram.html">context.AutoProgram</a></li>
+                <li><a href="../classes/context.AttributeArrays.html">context.AttributeArrays</a></li>
             
-                <li><a href="..&#x2F;classes/context.AutoTexture.html">context.AutoTexture</a></li>
+                <li><a href="../classes/context.AutoProgram.html">context.AutoProgram</a></li>
             
-                <li><a href="..&#x2F;classes/context.Buffer.html">context.Buffer</a></li>
+                <li><a href="../classes/context.AutoTexture.html">context.AutoTexture</a></li>
             
-                <li><a href="..&#x2F;classes/context.CubeMap.html">context.CubeMap</a></li>
+                <li><a href="../classes/context.Buffer.html">context.Buffer</a></li>
             
-                <li><a href="..&#x2F;classes/context.DynamicArrayBuffer.html">context.DynamicArrayBuffer</a></li>
+                <li><a href="../classes/context.CubeMap.html">context.CubeMap</a></li>
             
-                <li><a href="..&#x2F;classes/context.DynamicBuffer.html">context.DynamicBuffer</a></li>
+                <li><a href="../classes/context.DynamicArrayBuffer.html">context.DynamicArrayBuffer</a></li>
             
-                <li><a href="..&#x2F;classes/context.DynamicElementArrayBuffer.html">context.DynamicElementArrayBuffer</a></li>
+                <li><a href="../classes/context.DynamicBuffer.html">context.DynamicBuffer</a></li>
             
-                <li><a href="..&#x2F;classes/context.ElementArray.html">context.ElementArray</a></li>
+                <li><a href="../classes/context.DynamicElementArrayBuffer.html">context.DynamicElementArrayBuffer</a></li>
             
-                <li><a href="..&#x2F;classes/context.ElementArrayBuffer.html">context.ElementArrayBuffer</a></li>
+                <li><a href="../classes/context.ElementArray.html">context.ElementArray</a></li>
             
-                <li><a href="..&#x2F;classes/context.FragmentShader.html">context.FragmentShader</a></li>
+                <li><a href="../classes/context.ElementArrayBuffer.html">context.ElementArrayBuffer</a></li>
             
-                <li><a href="..&#x2F;classes/context.Framebuffer.html">context.Framebuffer</a></li>
+                <li><a href="../classes/context.FragmentShader.html">context.FragmentShader</a></li>
             
-                <li><a href="..&#x2F;classes/context.Program.html">context.Program</a></li>
+                <li><a href="../classes/context.Framebuffer.html">context.Framebuffer</a></li>
             
-                <li><a href="..&#x2F;classes/context.Renderbuffer.html">context.Renderbuffer</a></li>
+                <li><a href="../classes/context.Program.html">context.Program</a></li>
             
-                <li><a href="..&#x2F;classes/context.Shader.html">context.Shader</a></li>
+                <li><a href="../classes/context.Renderbuffer.html">context.Renderbuffer</a></li>
             
-                <li><a href="..&#x2F;classes/context.StaticArrayBuffer.html">context.StaticArrayBuffer</a></li>
+                <li><a href="../classes/context.Shader.html">context.Shader</a></li>
             
-                <li><a href="..&#x2F;classes/context.StaticBuffer.html">context.StaticBuffer</a></li>
+                <li><a href="../classes/context.StaticArrayBuffer.html">context.StaticArrayBuffer</a></li>
             
-                <li><a href="..&#x2F;classes/context.StaticElementArrayBuffer.html">context.StaticElementArrayBuffer</a></li>
+                <li><a href="../classes/context.StaticBuffer.html">context.StaticBuffer</a></li>
             
-                <li><a href="..&#x2F;classes/context.StreamArrayBuffer.html">context.StreamArrayBuffer</a></li>
+                <li><a href="../classes/context.StaticElementArrayBuffer.html">context.StaticElementArrayBuffer</a></li>
             
-                <li><a href="..&#x2F;classes/context.StreamBuffer.html">context.StreamBuffer</a></li>
+                <li><a href="../classes/context.StreamArrayBuffer.html">context.StreamArrayBuffer</a></li>
             
-                <li><a href="..&#x2F;classes/context.StreamElementArrayBuffer.html">context.StreamElementArrayBuffer</a></li>
+                <li><a href="../classes/context.StreamBuffer.html">context.StreamBuffer</a></li>
             
-                <li><a href="..&#x2F;classes/context.Texture.html">context.Texture</a></li>
+                <li><a href="../classes/context.StreamElementArrayBuffer.html">context.StreamElementArrayBuffer</a></li>
             
-                <li><a href="..&#x2F;classes/context.Texture2D.html">context.Texture2D</a></li>
+                <li><a href="../classes/context.Texture.html">context.Texture</a></li>
             
-                <li><a href="..&#x2F;classes/context.Textures.html">context.Textures</a></li>
+                <li><a href="../classes/context.Texture2D.html">context.Texture2D</a></li>
             
-                <li><a href="..&#x2F;classes/context.VertexShader.html">context.VertexShader</a></li>
+                <li><a href="../classes/context.Textures.html">context.Textures</a></li>
             
-                <li><a href="..&#x2F;classes/OOGL.Ajax.html">OOGL.Ajax</a></li>
+                <li><a href="../classes/context.VertexShader.html">context.VertexShader</a></li>
             
-                <li><a href="..&#x2F;classes/OOGL.Context.html">OOGL.Context</a></li>
+                <li><a href="../classes/OOGL.Ajax.html">OOGL.Ajax</a></li>
             
-                <li><a href="..&#x2F;classes/OOGL.IsometricProjection.html">OOGL.IsometricProjection</a></li>
+                <li><a href="../classes/OOGL.Context.html">OOGL.Context</a></li>
             
-                <li><a href="..&#x2F;classes/OOGL.Matrix2.html">OOGL.Matrix2</a></li>
+                <li><a href="../classes/OOGL.IsometricProjection.html">OOGL.IsometricProjection</a></li>
             
-                <li><a href="..&#x2F;classes/OOGL.Matrix3.html">OOGL.Matrix3</a></li>
+                <li><a href="../classes/OOGL.Loader.html">OOGL.Loader</a></li>
             
-                <li><a href="..&#x2F;classes/OOGL.Matrix4.html">OOGL.Matrix4</a></li>
+                <li><a href="../classes/OOGL.Matrix2.html">OOGL.Matrix2</a></li>
             
-                <li><a href="..&#x2F;classes/OOGL.OrthogonalProjection.html">OOGL.OrthogonalProjection</a></li>
+                <li><a href="../classes/OOGL.Matrix3.html">OOGL.Matrix3</a></li>
             
-                <li><a href="..&#x2F;classes/OOGL.PerspectiveProjection.html">OOGL.PerspectiveProjection</a></li>
+                <li><a href="../classes/OOGL.Matrix4.html">OOGL.Matrix4</a></li>
             
-                <li><a href="..&#x2F;classes/OOGL.RenderLoop.html">OOGL.RenderLoop</a></li>
+                <li><a href="../classes/OOGL.OrthogonalProjection.html">OOGL.OrthogonalProjection</a></li>
             
-                <li><a href="..&#x2F;classes/OOGL.RotationMatrix2.html">OOGL.RotationMatrix2</a></li>
+                <li><a href="../classes/OOGL.PerspectiveProjection.html">OOGL.PerspectiveProjection</a></li>
             
-                <li><a href="..&#x2F;classes/OOGL.RotationMatrix3.html">OOGL.RotationMatrix3</a></li>
+                <li><a href="../classes/OOGL.RenderLoop.html">OOGL.RenderLoop</a></li>
             
-                <li><a href="..&#x2F;classes/OOGL.RotationMatrix4.html">OOGL.RotationMatrix4</a></li>
+                <li><a href="../classes/OOGL.RotationMatrix2.html">OOGL.RotationMatrix2</a></li>
             
-                <li><a href="..&#x2F;classes/OOGL.ScalingMatrix2.html">OOGL.ScalingMatrix2</a></li>
+                <li><a href="../classes/OOGL.RotationMatrix3.html">OOGL.RotationMatrix3</a></li>
             
-                <li><a href="..&#x2F;classes/OOGL.ScalingMatrix3.html">OOGL.ScalingMatrix3</a></li>
+                <li><a href="../classes/OOGL.RotationMatrix4.html">OOGL.RotationMatrix4</a></li>
             
-                <li><a href="..&#x2F;classes/OOGL.ScalingMatrix4.html">OOGL.ScalingMatrix4</a></li>
+                <li><a href="../classes/OOGL.ScalingMatrix2.html">OOGL.ScalingMatrix2</a></li>
             
-                <li><a href="..&#x2F;classes/OOGL.TranslationMatrix4.html">OOGL.TranslationMatrix4</a></li>
+                <li><a href="../classes/OOGL.ScalingMatrix3.html">OOGL.ScalingMatrix3</a></li>
             
-                <li><a href="..&#x2F;classes/OOGL.Vector2.html">OOGL.Vector2</a></li>
+                <li><a href="../classes/OOGL.ScalingMatrix4.html">OOGL.ScalingMatrix4</a></li>
             
-                <li><a href="..&#x2F;classes/OOGL.Vector3.html">OOGL.Vector3</a></li>
+                <li><a href="../classes/OOGL.Timing.html">OOGL.Timing</a></li>
             
-                <li><a href="..&#x2F;classes/OOGL.Vector4.html">OOGL.Vector4</a></li>
+                <li><a href="../classes/OOGL.TranslationMatrix4.html">OOGL.TranslationMatrix4</a></li>
+            
+                <li><a href="../classes/OOGL.Vector2.html">OOGL.Vector2</a></li>
+            
+                <li><a href="../classes/OOGL.Vector3.html">OOGL.Vector3</a></li>
+            
+                <li><a href="../classes/OOGL.Vector4.html">OOGL.Vector4</a></li>
+            
+                <li><a href="../classes/OOGL.XRotationMatrix3.html">OOGL.XRotationMatrix3</a></li>
+            
+                <li><a href="../classes/OOGL.XRotationMatrix4.html">OOGL.XRotationMatrix4</a></li>
+            
+                <li><a href="../classes/OOGL.YRotationMatrix3.html">OOGL.YRotationMatrix3</a></li>
+            
+                <li><a href="../classes/OOGL.YRotationMatrix4.html">OOGL.YRotationMatrix4</a></li>
+            
+                <li><a href="../classes/OOGL.ZRotationMatrix3.html">OOGL.ZRotationMatrix3</a></li>
+            
+                <li><a href="../classes/OOGL.ZRotationMatrix4.html">OOGL.ZRotationMatrix4</a></li>
             
             </ul>
 
             <ul id="api-modules" class="apis modules">
             
-                <li><a href="..&#x2F;modules/context.html">context</a></li>
+                <li><a href="../modules/context.html">context</a></li>
             
-                <li><a href="..&#x2F;modules/OOGL.html">OOGL</a></li>
+                <li><a href="../modules/OOGL.html">OOGL</a></li>
             
             </ul>
         </div>
@@ -209,7 +216,7 @@ _gaq.push(['_trackPageview']);
 
     
         <div class="foundat">
-            Defined in: <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l7"><code>src\RenderLoop.js:7</code></a>
+            Defined in: <a href="../files/src_RenderLoop.js.html#l7"><code>src\RenderLoop.js:7</code></a>
         </div>
     
 
@@ -227,6 +234,7 @@ _gaq.push(['_trackPageview']);
 <div class="box intro">
     <p>Efficient render loop implementation that uses <code>requestAnimationFrame</code> where
 available and transparently falls back on <code>setInterval</code>.</p>
+
 </div>
 
 
@@ -274,7 +282,7 @@ available and transparently falls back on <code>setInterval</code>.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l7"><code>src\RenderLoop.js:7</code></a>
+        <a href="../files/src_RenderLoop.js.html#l7"><code>src\RenderLoop.js:7</code></a>
         
         </p>
 
@@ -306,6 +314,7 @@ available and transparently falls back on <code>setInterval</code>.</p>
                         <p>A user-defined callback function that is invoked at
     each iteration of the loop. It typically contains (OO)GL calls that render
     the full scene.</p>
+
                     </div>
 
                     
@@ -322,15 +331,15 @@ available and transparently falls back on <code>setInterval</code>.</p>
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>var oogl = new OOGL.Context('canvas');
+                <pre class="code prettyprint"><code>var oogl = new OOGL.Context(&#39;canvas&#39;);
 // setup the pipeline here, create programs and arrays
 var loop = new OOGL.RenderLoop(function () {
     oogl.clear(oogl.COLOR_BUFFER_BIT | oogl.DEPTH_BUFFER_BIT);
     arrays.drawTriangles();
     oogl.flush();
 });
-loop.start();
-</code></pre>
+loop.start();</code></pre>
+
             </div>
         </div>
     
@@ -523,7 +532,7 @@ loop.start();
             
         
         
-        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l162"><code>src\RenderLoop.js:162</code></a>
+        <a href="../files/src_RenderLoop.js.html#l162"><code>src\RenderLoop.js:162</code></a>
         
         </p>
 
@@ -538,13 +547,12 @@ loop.start();
 potentially different from the value returned by <code>getRate</code>
 because the former is the measured frame rate while the latter is
 the rate manually set using the static <code>setRate</code> method.</p>
-
 <p>The actual frame rate is measured as the number of loop
-iterations since the last time <code>getActualFrameRate</code> was called
-divided by the timespan.</p>
-
+iterations since the last time <code>getActualRate</code> was called divided
+by the timespan.</p>
 <p>The measuring system automatically discards time spans during
 which the loop was suspended.</p>
+
     </div>
 
     
@@ -558,7 +566,8 @@ which the loop was suspended.</p>
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>:
                     
-                    The measured actual frame rate.
+                    <p>The measured actual frame rate.</p>
+
                 
             </div>
         </div>
@@ -575,8 +584,8 @@ which the loop was suspended.</p>
 loop.start();
 setInterval(function () {
     rateDisplay.innerText = loop.getActualRate();
-}, 1000);
-</code></pre>
+}, 1000);</code></pre>
+
             </div>
         </div>
     
@@ -619,7 +628,7 @@ setInterval(function () {
             
         
         
-        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l141"><code>src\RenderLoop.js:141</code></a>
+        <a href="../files/src_RenderLoop.js.html#l141"><code>src\RenderLoop.js:141</code></a>
         
         </p>
 
@@ -632,11 +641,9 @@ setInterval(function () {
     <div class="description">
         <p>The period of this loop, in milliseconds. It is computed using
 the formula:</p>
-
-<pre class="code prettyprint"><code>period = Math.floor(1000 / rate);
-</code></pre>
-
+<pre class="code prettyprint"><code>period = Math.floor(1000 / rate);</code></pre>
 <p>This value is also used in <code>setInterval</code>-based loops.</p>
+
     </div>
 
     
@@ -650,7 +657,8 @@ the formula:</p>
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>:
                     
-                    The period of this loop, in milliseconds.
+                    <p>The period of this loop, in milliseconds.</p>
+
                 
             </div>
         </div>
@@ -665,8 +673,8 @@ the formula:</p>
 var loop = new OOGL.RenderLoop(function () {
     // ...
 });
-var period = loop.getPeriod(); // 10
-</code></pre>
+var period = loop.getPeriod(); // 10</code></pre>
+
             </div>
         </div>
     
@@ -711,7 +719,7 @@ var period = loop.getPeriod(); // 10
             
         
         
-        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l348"><code>src\RenderLoop.js:348</code></a>
+        <a href="../files/src_RenderLoop.js.html#l348"><code>src\RenderLoop.js:348</code></a>
         
         </p>
 
@@ -724,11 +732,9 @@ var period = loop.getPeriod(); // 10
     <div class="description">
         <p>Returns the period relative to the frame rate associated to the
 <code>RenderLoop</code> class. This is computed as:</p>
-
-<pre class="code prettyprint"><code>Math.floor(1000 / rate)
-</code></pre>
-
+<pre class="code prettyprint"><code>Math.floor(1000 / rate)</code></pre>
 <p>where <code>rate</code> is the value returned by the <em>static</em> <code>getRate</code> method.</p>
+
     </div>
 
     
@@ -742,8 +748,9 @@ var period = loop.getPeriod(); // 10
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>:
                     
-                    The period relative to the frame rate associated to the
-    <code>RenderLoop</code> class.
+                    <p>The period relative to the frame rate associated to the
+    <code>RenderLoop</code> class.</p>
+
                 
             </div>
         </div>
@@ -755,8 +762,8 @@ var period = loop.getPeriod(); // 10
 
             <div class="example-content">
                 <pre class="code prettyprint"><code>OOGL.RenderLoop.setRate(100);
-var period = OOGL.RenderLoop.getPeriod(); // 10
-</code></pre>
+var period = OOGL.RenderLoop.getPeriod(); // 10</code></pre>
+
             </div>
         </div>
     
@@ -801,7 +808,7 @@ var period = OOGL.RenderLoop.getPeriod(); // 10
             
         
         
-        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l334"><code>src\RenderLoop.js:334</code></a>
+        <a href="../files/src_RenderLoop.js.html#l334"><code>src\RenderLoop.js:334</code></a>
         
         </p>
 
@@ -814,6 +821,7 @@ var period = OOGL.RenderLoop.getPeriod(); // 10
     <div class="description">
         <p>Returns the global frame rate setting. This frame rate is used to
 configure every constructed <code>RenderLoop</code> object.</p>
+
     </div>
 
     
@@ -827,7 +835,8 @@ configure every constructed <code>RenderLoop</code> object.</p>
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>:
                     
-                    The frame rate associated to the <code>RenderLoop</code> class.
+                    <p>The frame rate associated to the <code>RenderLoop</code> class.</p>
+
                 
             </div>
         </div>
@@ -838,8 +847,8 @@ configure every constructed <code>RenderLoop</code> object.</p>
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>var currentRate = RenderLoop.getRate();
-</code></pre>
+                <pre class="code prettyprint"><code>var currentRate = RenderLoop.getRate();</code></pre>
+
             </div>
         </div>
     
@@ -882,7 +891,7 @@ configure every constructed <code>RenderLoop</code> object.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l126"><code>src\RenderLoop.js:126</code></a>
+        <a href="../files/src_RenderLoop.js.html#l126"><code>src\RenderLoop.js:126</code></a>
         
         </p>
 
@@ -894,9 +903,9 @@ configure every constructed <code>RenderLoop</code> object.</p>
 
     <div class="description">
         <p>The frame rate of this loop.</p>
-
 <p>Note that this value is meaningless if <code>requestAnimationFrame</code> is
 being used by this loop.</p>
+
     </div>
 
     
@@ -910,7 +919,8 @@ being used by this loop.</p>
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>:
                     
-                    The frame rate of this loop.
+                    <p>The frame rate of this loop.</p>
+
                 
             </div>
         </div>
@@ -921,8 +931,8 @@ being used by this loop.</p>
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>var rate = loop.getRate();
-</code></pre>
+                <pre class="code prettyprint"><code>var rate = loop.getRate();</code></pre>
+
             </div>
         </div>
     
@@ -965,7 +975,7 @@ being used by this loop.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l106"><code>src\RenderLoop.js:106</code></a>
+        <a href="../files/src_RenderLoop.js.html#l106"><code>src\RenderLoop.js:106</code></a>
         
         </p>
 
@@ -977,7 +987,8 @@ being used by this loop.</p>
 
     <div class="description">
         <p>Returns the type of this loop as a string; the return value can
-be either <code>'request'</code> or <code>'interval'</code>.</p>
+be either <code>&#39;request&#39;</code> or <code>&#39;interval&#39;</code>.</p>
+
     </div>
 
     
@@ -991,8 +1002,9 @@ be either <code>'request'</code> or <code>'interval'</code>.</p>
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>:
                     
-                    The type of this loop; either <code>'request'</code> or
-    <code>'interval'</code>.
+                    <p>The type of this loop; either <code>&#39;request&#39;</code> or
+    <code>&#39;interval&#39;</code>.</p>
+
                 
             </div>
         </div>
@@ -1003,14 +1015,14 @@ be either <code>'request'</code> or <code>'interval'</code>.</p>
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>OOGL.RenderLoop.setType('auto');
+                <pre class="code prettyprint"><code>OOGL.RenderLoop.setType(&#39;auto&#39;);
 var loop = new OOGL.RenderLoop(function () {
     // ...
 });
-if (loop.getType() === 'interval') {
+if (loop.getType() === &#39;interval&#39;) {
     // apparently rAF is not supported
-}
-</code></pre>
+}</code></pre>
+
             </div>
         </div>
     
@@ -1055,7 +1067,7 @@ if (loop.getType() === 'interval') {
             
         
         
-        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l289"><code>src\RenderLoop.js:289</code></a>
+        <a href="../files/src_RenderLoop.js.html#l289"><code>src\RenderLoop.js:289</code></a>
         
         </p>
 
@@ -1067,6 +1079,7 @@ if (loop.getType() === 'interval') {
 
     <div class="description">
         <p>Returns the currently configured loop type.</p>
+
     </div>
 
     
@@ -1080,7 +1093,8 @@ if (loop.getType() === 'interval') {
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>:
                     
-                    The loop type; can be <code>request</code>, <code>interval</code> or <code>auto</code>.
+                    <p>The loop type; can be <code>request</code>, <code>interval</code> or <code>auto</code>.</p>
+
                 
             </div>
         </div>
@@ -1091,8 +1105,8 @@ if (loop.getType() === 'interval') {
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>var currentType = RenderLoop.getType();
-</code></pre>
+                <pre class="code prettyprint"><code>var currentType = RenderLoop.getType();</code></pre>
+
             </div>
         </div>
     
@@ -1137,7 +1151,7 @@ if (loop.getType() === 'interval') {
             
         
         
-        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l271"><code>src\RenderLoop.js:271</code></a>
+        <a href="../files/src_RenderLoop.js.html#l271"><code>src\RenderLoop.js:271</code></a>
         
         </p>
 
@@ -1149,6 +1163,7 @@ if (loop.getType() === 'interval') {
 
     <div class="description">
         <p>Indicates whether <code>requestAnimationFrame</code> is supported.</p>
+
     </div>
 
     
@@ -1162,8 +1177,9 @@ if (loop.getType() === 'interval') {
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
                     
-                    <code>true</code> if <code>requestAnimationFrame</code> is supported, <code>false</code>
-    otherwise.
+                    <p><code>true</code> if <code>requestAnimationFrame</code> is supported, <code>false</code>
+    otherwise.</p>
+
                 
             </div>
         </div>
@@ -1175,11 +1191,11 @@ if (loop.getType() === 'interval') {
 
             <div class="example-content">
                 <pre class="code prettyprint"><code>if (OOGL.RenderLoop.isRequestAnimationFrameSupported()) {
-    OOGL.RenderLoop.setType('request');
+    OOGL.RenderLoop.setType(&#39;request&#39;);
 } else {
-    throw 'requestAnimationFrame not supported';
-}
-</code></pre>
+    throw &#39;requestAnimationFrame not supported&#39;;
+}</code></pre>
+
             </div>
         </div>
     
@@ -1218,7 +1234,7 @@ if (loop.getType() === 'interval') {
             
         
         
-        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l234"><code>src\RenderLoop.js:234</code></a>
+        <a href="../files/src_RenderLoop.js.html#l234"><code>src\RenderLoop.js:234</code></a>
         
         </p>
 
@@ -1231,6 +1247,7 @@ if (loop.getType() === 'interval') {
     <div class="description">
         <p>Resume the execution of the loop. There is no effect if the loop
 has not been previously suspended by the <code>suspend</code> method.</p>
+
     </div>
 
     
@@ -1242,8 +1259,8 @@ has not been previously suspended by the <code>suspend</code> method.</p>
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>loop.resume();
-</code></pre>
+                <pre class="code prettyprint"><code>loop.resume();</code></pre>
+
             </div>
         </div>
     
@@ -1294,7 +1311,7 @@ has not been previously suspended by the <code>suspend</code> method.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l368"><code>src\RenderLoop.js:368</code></a>
+        <a href="../files/src_RenderLoop.js.html#l368"><code>src\RenderLoop.js:368</code></a>
         
         </p>
 
@@ -1307,6 +1324,7 @@ has not been previously suspended by the <code>suspend</code> method.</p>
     <div class="description">
         <p>Changes the global frame rate setting. This setting is used to configure
 every constructed <code>RenderLoop</code>.</p>
+
     </div>
 
     
@@ -1325,6 +1343,7 @@ every constructed <code>RenderLoop</code>.</p>
 
                     <div class="param-description">
                         <p>The new frame rate value.</p>
+
                     </div>
 
                     
@@ -1341,8 +1360,8 @@ every constructed <code>RenderLoop</code>.</p>
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>RenderLoop.setRate(100);
-</code></pre>
+                <pre class="code prettyprint"><code>RenderLoop.setRate(100);</code></pre>
+
             </div>
         </div>
     
@@ -1393,7 +1412,7 @@ every constructed <code>RenderLoop</code>.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l302"><code>src\RenderLoop.js:302</code></a>
+        <a href="../files/src_RenderLoop.js.html#l302"><code>src\RenderLoop.js:302</code></a>
         
         </p>
 
@@ -1405,16 +1424,14 @@ every constructed <code>RenderLoop</code>.</p>
 
     <div class="description">
         <p>Sets the loop type; can be <code>request</code>, <code>interval</code> or <code>auto</code>.</p>
-
 <p>When the loop type is <code>request</code> the <code>RenderLoop</code> constructor constructs
 <code>requestAnimationFrame</code>-based loops.</p>
-
 <p>When the loop type is <code>interval</code> the <code>RenderLoop</code> constructor constructs
 <code>setInterval</code>-based loops.</p>
-
 <p>When the loop type is <code>auto</code> the <code>RenderLoop</code> constructor constructs
 <code>requestAnimationFrame</code>-based loops if the <code>requestAnimationFrame</code> API is
 supported, <code>setInterval</code>-based loops otherwise.</p>
+
     </div>
 
     
@@ -1434,6 +1451,7 @@ supported, <code>setInterval</code>-based loops otherwise.</p>
                     <div class="param-description">
                         <p>The loop type; can be <code>request</code>, <code>interval</code> or
     <code>auto</code>.</p>
+
                     </div>
 
                     
@@ -1450,8 +1468,8 @@ supported, <code>setInterval</code>-based loops otherwise.</p>
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>RenderLoop.setType('request');
-</code></pre>
+                <pre class="code prettyprint"><code>RenderLoop.setType(&#39;request&#39;);</code></pre>
+
             </div>
         </div>
     
@@ -1490,7 +1508,7 @@ supported, <code>setInterval</code>-based loops otherwise.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l200"><code>src\RenderLoop.js:200</code></a>
+        <a href="../files/src_RenderLoop.js.html#l200"><code>src\RenderLoop.js:200</code></a>
         
         </p>
 
@@ -1502,6 +1520,7 @@ supported, <code>setInterval</code>-based loops otherwise.</p>
 
     <div class="description">
         <p>Starts the loop.</p>
+
     </div>
 
     
@@ -1516,8 +1535,8 @@ supported, <code>setInterval</code>-based loops otherwise.</p>
                 <pre class="code prettyprint"><code>var loop = new OOGL.RenderLoop(function () {
     // ...
 });
-loop.start();
-</code></pre>
+loop.start();</code></pre>
+
             </div>
         </div>
     
@@ -1556,7 +1575,7 @@ loop.start();
             
         
         
-        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l250"><code>src\RenderLoop.js:250</code></a>
+        <a href="../files/src_RenderLoop.js.html#l250"><code>src\RenderLoop.js:250</code></a>
         
         </p>
 
@@ -1570,9 +1589,9 @@ loop.start();
         <p>Permanently stops the execution of the loop, whether it is
 suspended or not. There is no effect if the loop has not been
 started yet.</p>
-
 <p>The execution of this render loop cannot be restarted after it
 has been stopped.</p>
+
     </div>
 
     
@@ -1584,8 +1603,8 @@ has been stopped.</p>
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>loop.stop();
-</code></pre>
+                <pre class="code prettyprint"><code>loop.stop();</code></pre>
+
             </div>
         </div>
     
@@ -1624,7 +1643,7 @@ has been stopped.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_RenderLoop.js.html#l218"><code>src\RenderLoop.js:218</code></a>
+        <a href="../files/src_RenderLoop.js.html#l218"><code>src\RenderLoop.js:218</code></a>
         
         </p>
 
@@ -1637,6 +1656,7 @@ has been stopped.</p>
     <div class="description">
         <p>Suspends the execution of the loop. There is no effect if the
 loop is not running.</p>
+
     </div>
 
     
@@ -1648,8 +1668,8 @@ loop is not running.</p>
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>loop.suspend();
-</code></pre>
+                <pre class="code prettyprint"><code>loop.suspend();</code></pre>
+
             </div>
         </div>
     
@@ -1673,13 +1693,13 @@ loop is not running.</p>
         </div>
     </div>
 </div>
-<script src="..&#x2F;assets/vendor/prettify/prettify-min.js"></script>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
 <script>prettyPrint();</script>
-<script src="..&#x2F;assets/js/yui-prettify.js"></script>
-<script src="..&#x2F;assets/../api.js"></script>
-<script src="..&#x2F;assets/js/api-filter.js"></script>
-<script src="..&#x2F;assets/js/api-list.js"></script>
-<script src="..&#x2F;assets/js/api-search.js"></script>
-<script src="..&#x2F;assets/js/apidocs.js"></script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
 </body>
 </html>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>context - OOGL.js</title>
+    <title>src\Loader.js - OOGL.js</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -208,270 +208,92 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>context Module</h1>
-<div class="box clearfix meta">
-    
+                        <h1 class="file-heading">File: src\Loader.js</h1>
 
-    
+<div class="file">
+    <pre class="code prettyprint linenums">
+/*global OOGL: false */
 
-    
-        <div class="foundat">
-            Defined in: <a href="../files/src_Textures.js.html#l525"><code>src\Textures.js:525</code></a>
-        </div>
-    
+/**
+ * TODO
+ *
+ * @class OOGL.Loader
+ * @constructor
+ * @param {Function} tasks* TODO
+ * @example
+ *	TODO
+ */
+OOGL.Loader = function () {
+	var queue = [];
+	for (var i = 0; i &lt; arguments.length; i++) {
+		queue.push(arguments[i]);
+	}
 
-    
-</div>
+	/**
+	 * TODO
+	 *
+	 * @method queue
+	 * @param {Function} tasks* TODO
+	 * @example
+	 *	TODO
+	 */
+	this.queue = function () {
+		queue.push.apply(queue, arguments);
+	};
 
+	/**
+	 * TODO
+	 *
+	 * @method queueSync
+	 * @param {Function} tasks* TODO
+	 * @example
+	 *	TODO
+	 */
+	this.queueSync = function () {
+		for (var i = 0; i &lt; arguments.length; i++) {
+			(function (i) {
+				queue.push(function (next) {
+					arguments[i]();
+					next();
+				});
+			})(i);
+		}
+	};
 
+	/**
+	 * TODO
+	 *
+	 * @method count
+	 * @return {Number} TODO
+	 * @example
+	 *	TODO
+	 */
+	this.count = function () {
+		return queue.length;
+	};
 
-<div class="box intro">
-    <p>This is actually a <em>pseudo</em>-module used to document OOGL classes whose
-namespace is a WebGL/OOGL context instance.</p>
-<p>You can get a <code>context</code> object by invoking the <code>OOGL.Context</code> constructor:</p>
-<pre class="code prettyprint"><code>var context = new OOGL.Context(canvas);</code></pre>
-<p>You can then use that object to construct context-specific objects, such as
-<code>Texture2D</code> objects:</p>
-<pre class="code prettyprint"><code>var texture = new context.Texture2D();</code></pre>
-<p>The <code>context</code> object is sometimes referred to with the <code>oogl</code> name because it
-is a normal <code>WebGLContext</code> object containing all the standard WebGL features,
-such as <code>createTexture</code>, <code>createShader</code>, <code>flush</code> and so on, plus
-OOGL-specific features such as <code>Texture2D</code>.</p>
+	/**
+	 * TODO
+	 *
+	 * @method start
+	 * @param {Function} [callback] TODO
+	 * @example
+	 *	TODO
+	 */
+	this.start = function (callback) {
+		(function run(index) {
+			if (index &lt; queue.length) {
+				queue[index](function () {
+					run(index + 1);
+				});
+			} else {
+				callback &amp;&amp; callback();
+			}
+		})(0);
+	};
+};
 
-</div>
-
-
-
-<div class="yui3-g">
-    <div class="yui3-u-1-2">
-        
-            <p>This module provides the following classes:</p>
-
-            <ul class="module-classes">
-            
-                <li class="module-class">
-                    <a href="../classes/context.AjaxFragmentShader.html">
-                        context.AjaxFragmentShader
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/context.AjaxProgram.html">
-                        context.AjaxProgram
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/context.AjaxVertexShader.html">
-                        context.AjaxVertexShader
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/context.ArrayBuffer.html">
-                        context.ArrayBuffer
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/context.AsyncCubeMap.html">
-                        context.AsyncCubeMap
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/context.AsyncTexture.html">
-                        context.AsyncTexture
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/context.AttributeArray1.html">
-                        context.AttributeArray1
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/context.AttributeArray2.html">
-                        context.AttributeArray2
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/context.AttributeArray3.html">
-                        context.AttributeArray3
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/context.AttributeArray4.html">
-                        context.AttributeArray4
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/context.AttributeArrays.html">
-                        context.AttributeArrays
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/context.AutoProgram.html">
-                        context.AutoProgram
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/context.AutoTexture.html">
-                        context.AutoTexture
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/context.Buffer.html">
-                        context.Buffer
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/context.CubeMap.html">
-                        context.CubeMap
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/context.DynamicArrayBuffer.html">
-                        context.DynamicArrayBuffer
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/context.DynamicBuffer.html">
-                        context.DynamicBuffer
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/context.DynamicElementArrayBuffer.html">
-                        context.DynamicElementArrayBuffer
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/context.ElementArray.html">
-                        context.ElementArray
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/context.ElementArrayBuffer.html">
-                        context.ElementArrayBuffer
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/context.FragmentShader.html">
-                        context.FragmentShader
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/context.Framebuffer.html">
-                        context.Framebuffer
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/context.Program.html">
-                        context.Program
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/context.Renderbuffer.html">
-                        context.Renderbuffer
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/context.Shader.html">
-                        context.Shader
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/context.StaticArrayBuffer.html">
-                        context.StaticArrayBuffer
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/context.StaticBuffer.html">
-                        context.StaticBuffer
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/context.StaticElementArrayBuffer.html">
-                        context.StaticElementArrayBuffer
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/context.StreamArrayBuffer.html">
-                        context.StreamArrayBuffer
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/context.StreamBuffer.html">
-                        context.StreamBuffer
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/context.StreamElementArrayBuffer.html">
-                        context.StreamElementArrayBuffer
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/context.Texture.html">
-                        context.Texture
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/context.Texture2D.html">
-                        context.Texture2D
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/context.Textures.html">
-                        context.Textures
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/context.VertexShader.html">
-                        context.VertexShader
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/OOGL.Loader.html">
-                        OOGL.Loader
-                    </a>
-                </li>
-            
-            </ul>
-        
-    </div>
-
-    <div class="yui3-u-1-2">
-        
-    </div>
+    </pre>
 </div>
 
                     </div>
