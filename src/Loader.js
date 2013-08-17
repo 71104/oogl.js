@@ -18,7 +18,8 @@
  *	TODO
  */
 context.Loader = function () {
-	var thisObject = OOGL.TaskQueue.apply(this, arguments);
+	OOGL.TaskQueue.apply(this, arguments);
+	var thisObject = this;
 
 	var textures = {};
 	var programs = {};
