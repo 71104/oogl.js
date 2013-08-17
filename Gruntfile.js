@@ -3,7 +3,7 @@ module.exports = function (grunt) {
 		'src/OOGL.js',
 		'src/Timing.js',
 		'src/Ajax.js',
-		'src/Loader.js',
+		'src/TaskQueue.js',
 		'src/Vector2.js',
 		'src/Vector3.js',
 		'src/Vector4.js',
@@ -18,6 +18,7 @@ module.exports = function (grunt) {
 		'src/Programs.js',
 		'src/Framebuffer.js',
 		'src/Renderbuffer.js',
+		'src/Loader.js',
 		'src/ContextEnd.js',
 		'src/RenderLoop.js',
 		];
