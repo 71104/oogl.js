@@ -9,14 +9,19 @@
  * asynchronous asset loading and is inherited by
  * {{#crossLink "context.Loader"}}Loader{{/crossLink}}.
  *
+ * A task is a function that executes a job and can be either synchronous or
+ * asynchronous.
+ *
+ * A synchronous task runs synchronously and its job terminates as soon as the
+ * function returns.
+ *
+ * An asynchronous task, instead, runs asynchronously and always receives one
+ * single argument, a callback function that is invoked by the task as soon as
+ * it ends.
+ *
  * @class OOGL.TaskQueue
  * @constructor
- * @param tasks* {Function} Zero or more asynchronous tasks to queue. An
- * asynchronous task is a function that takes only one argument, a reference to
- * a callback function to be called by the task itself when it is accomplished.
- * @param tasks.next {Function} A reference to a callback function to be called
- * by the task as soon as it finished. The `next` callback is not user-defined,
- * it is passed to the task by the `TaskQueue` object.
+ * @param tasks* {Function} Zero or more asynchronous tasks to queue.
  * @example
  *	TODO
  */
@@ -33,13 +38,7 @@ OOGL.TaskQueue = function () {
 	 *
 	 * @method queue
 	 * @chainable
-	 * @param tasks* {Function} Zero or more asynchronous tasks to queue. An
-	 * asynchronous task is a function that takes only one argument, a reference
-	 * to a callback function to be called by the task itself when it is
-	 * accomplished.
-	 * @param tasks.next {Function} A reference to a callback function to be
-	 * called by the task as soon as it finished. The `next` callback is not
-	 * user-defined, it is passed to the task by the `TaskQueue` object.
+	 * @param tasks* {Function} Zero or more asynchronous tasks to queue.
 	 * @example
 	 *	TODO
 	 */
@@ -53,9 +52,7 @@ OOGL.TaskQueue = function () {
 	 *
 	 * @method queueSync
 	 * @chainable
-	 * @param tasks* {Function} Zero or more synchronous tasks. A synchronous
-	 * task is a function that executes synchronously. The next task in the
-	 * queue is executed as soon as the function returns.
+	 * @param tasks* {Function} Zero or more synchronous tasks to queue.
 	 * @example
 	 *	TODO
 	 */
@@ -90,7 +87,15 @@ OOGL.TaskQueue = function () {
 	 * @chainable
 	 * @param [callback] {Function} An optional user-defined callback function
 	 * that gets invoked as soon as all the tasks finish.
-	 * @param [progress] {Function} TODO
+	 * @param [progress] {Function} An optional user-defined callback function
+	 * that gets invoked every time a task ends.
+	 * @param progress.progress {Number} A percentage value indicating the
+	 * current progress, computed by the following formula:
+	 *
+	 *	i * 100 / c
+	 *
+	 * Where `i` indicates the zero-based index of the last executed task and
+	 * `c` indicates the total number of queued tasks.
 	 * @example
 	 *	TODO
 	 */

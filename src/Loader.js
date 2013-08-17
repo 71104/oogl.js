@@ -11,12 +11,9 @@
  * @class context.Loader
  * @extends OOGL.TaskQueue
  * @constructor
- * @param tasks* {Function} Zero or more asynchronous tasks to queue. An
- * asynchronous task is a function that takes only one argument, a reference to
- * a callback function to be called by the task itself when it is accomplished.
- * @param tasks.next {Function} A reference to a callback function to be called
- * by the task as soon as it finished. The `next` callback is not user-defined,
- * it is passed to the task by the `Loader` object.
+ * @param tasks* {Function} Zero or more asynchronous tasks to queue. See the
+ * {{#crossLink "OOGL.TaskQueue"}}TaskQueue{{/crossLink}} description for more
+ * information.
  * @example
  *	TODO
  */
@@ -30,15 +27,24 @@ context.Loader = function () {
 	 * Queues an asynchronous task that loads and creates a texture given its
 	 * URL.
 	 *
-	 * After being loaded the texture can be retrieved via the
+	 * Internally the `queueTexture` method uses the
+	 * {{#crossLink "context.AsyncTexture"}}AsyncTexture{{/crossLink}} class.
+	 *
+	 * After being loaded, the texture can be retrieved via the
 	 * {{#crossLink "OOGL.Loader/getTexture"}}getTexture{{/crossLink}} method as
 	 * a {{#crossLink "context.Texture2D"}}Texture2D{{/crossLink}} object.
 	 *
 	 * @method queueTexture
 	 * @chainable
 	 * @param id {String} The URL of the texture image to load.
-	 * @param [minFilter=gl.LINEAR] {Number} TODO
-	 * @param [magFilter=gl.LINEAR] {Number} TODO
+	 * @param [magFilter=gl.LINEAR] {Number} An optional value for the
+	 * magnifying filter. See
+	 * {{#crossLink "context.AsyncTexture"}}AsyncTexture{{/crossLink}} for more
+	 * information.
+	 * @param [minFilter=gl.LINEAR] {Number} An optional value for the minifying
+	 * filter. See
+	 * {{#crossLink "context.AsyncTexture"}}AsyncTexture{{/crossLink}} for more
+	 * information.
 	 * @example
 	 *	TODO
 	 */
@@ -50,15 +56,18 @@ context.Loader = function () {
 			minFilter = context.LINEAR;
 		}
 		return thisObject.queue(function (next) {
-			textures[id] = new context.AutoTexture(id, next, minFilter, magFilter);
+			textures[id] = new context.AsyncTexture(id, next, minFilter, magFilter);
 		});
 	};
 
 	/**
-	 * Queues an asynchronous task that loads and creates zero or more textures
+	 * Queues asynchronous tasks that load and create zero or more textures
 	 * given their URLs.
 	 *
-	 * After being loaded the textures can be retrieved via the
+	 * Internally the `queueTextures` method uses the
+	 * {{#crossLink "context.AsyncTexture"}}AsyncTexture{{/crossLink}} class.
+	 *
+	 * After being loaded, the textures can be retrieved via the
 	 * {{#crossLink "OOGL.Loader/getTexture"}}getTexture{{/crossLink}} method as
 	 * {{#crossLink "context.Texture2D"}}Texture2D{{/crossLink}} objects.
 	 *
@@ -71,7 +80,7 @@ context.Loader = function () {
 	this.queueTextures = function (ids) {
 		return thisObject.queue.apply(thisObject, ids.map(function (id) {
 			return function (next) {
-				textures[id] = new context.AutoTexture(id, next);
+				textures[id] = new context.AsyncTexture(id, next);
 			};
 		}));
 	};
@@ -95,12 +104,13 @@ context.Loader = function () {
 
 	/**
 	 * Queues an asynchronous task that loads, compiles and links the specified
-	 * shader pair.
+	 * shader pair, and returns it as a
+	 * {{#crossLink "context.Program"}}Program{{/crossLink}} object.
 	 *
 	 * Internally the `queueProgram` method uses the
 	 * {{#crossLink "context.AjaxProgram"}}AjaxProgram{{/crossLink}} class.
 	 *
-	 * The loaded programs can then be retrieved using the
+	 * The loaded program can then be retrieved using the
 	 * {{#crossLink "context.Loader/getProgram"}}getProgram{{/crossLink}}
 	 * method.
 	 *
@@ -123,8 +133,9 @@ context.Loader = function () {
 	};
 
 	/**
-	 * Queues an asynchronous task that loads, compiles and links zero or more
-	 * shader pairs.
+	 * Queues asynchronous tasks that load, compile and link zero or more shader
+	 * pairs, and return them as
+	 * {{#crossLink "context.Program"}}Program{{/crossLink}} objects.
 	 *
 	 * Internally the `queuePrograms` method uses the
 	 * {{#crossLink "context.AjaxProgram"}}AjaxProgram{{/crossLink}} class to
