@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>OOGL.Matrix4 - OOGL.js</title>
+    <title>context.Loader - OOGL.js</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -210,21 +210,25 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>OOGL.Matrix4 Class</h1>
+                        <h1>context.Loader Class</h1>
 <div class="box meta">
     
 
     
+        <div class="extends">
+            Extends <a href="..\classes\OOGL.TaskQueue.html" class="crosslink">OOGL.TaskQueue</a>
+        </div>
+    
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_Matrix4.js.html#l7"><code>src\Matrix4.js:7</code></a>
+            Defined in: <a href="../files/src_Loader.js.html#l4"><code>src\Loader.js:4</code></a>
         </div>
     
 
     
         
-            Module: <a href="../modules/OOGL.html">OOGL</a>
+            Module: <a href="../modules/context.html">context</a>
         
     
 
@@ -234,15 +238,15 @@
 
 
 <div class="box intro">
-    <p>A mutable 4x4 matrix.</p>
+    <p>Manages asynchronous asset loading with progress feedback.</p>
 
 </div>
 
 
     <div class="constructor">
         <h2>Constructor</h2>
-        <div id="method_OOGL.Matrix4" class="method item">
-    <h3 class="name"><code>OOGL.Matrix4</code></h3>
+        <div id="method_context.Loader" class="method item">
+    <h3 class="name"><code>context.Loader</code></h3>
 
     
         <div class="args">
@@ -250,7 +254,7 @@
             
                 <li class="arg">
                     
-                        <code>data</code>
+                        <code>tasks</code>
                     
                 </li>
             
@@ -283,7 +287,7 @@
             
         
         
-        <a href="../files/src_Matrix4.js.html#l7"><code>src\Matrix4.js:7</code></a>
+        <a href="../files/src_Loader.js.html#l4"><code>src\Loader.js:4</code></a>
         
         </p>
 
@@ -305,22 +309,41 @@
             
                 <li class="param">
                     
-                        <code class="param-name">data</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number[]</a></span>
+                        <code class="param-name">tasks</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
                     
 
+                    
+                        <span class="flag multiple" title="This argument may occur one or more times.">multiple</span>
                     
 
                     <div class="param-description">
-                        <p>A 16-element array of the floating point values to be
-    put into the matrix.</p>
-<p>Matrix elements are specified in column-major order.</p>
-<p>The specified <code>data</code> array is duplicated into the matrix, changes to it will
-not affect the content of the matrix.</p>
-<p>An exception is thrown if the length of the <code>data</code> array is not 16.</p>
+                        <p>Zero or more asynchronous tasks to queue. An
+asynchronous task is a function that takes only one argument, a reference to
+a callback function to be called by the task itself when it is accomplished.</p>
 
                     </div>
 
+                    
+                        <ul class="params-list">
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name">next</code>
+                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+                                
+
+                                <div class="param-description">
+                                    <p>A reference to a callback function to be called
+by the task as soon as it finished. The <code>next</code> callback is not user-defined,
+it is passed to the task by the <code>Loader</code> object.</p>
+
+                                </div>
+
+                                
+                            </li>
+                            
+                        </ul>
                     
                 </li>
             
@@ -335,8 +358,7 @@ not affect the content of the matrix.</p>
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>// create the 4x4 identity matrix
-var matrix = new OOGL.Matrix4([1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]);</code></pre>
+                <pre class="code prettyprint"><code>TODO</code></pre>
 
             </div>
         </div>
@@ -354,8 +376,6 @@ var matrix = new OOGL.Matrix4([1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]);
             <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
         
         
-            <li class="api-class-tab properties"><a href="#properties">Properties</a></li>
-        
         
         
     </ul>
@@ -368,101 +388,73 @@ var matrix = new OOGL.Matrix4([1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]);
                 <div class="index-section methods">
                     <h3>Methods</h3>
 
-                    <ul class="index-list methods">
+                    <ul class="index-list methods extends">
                         
-                            <li class="index-item method">
-                                <a href="#method_add">add</a>
+                            <li class="index-item method inherited">
+                                <a href="#method_count">count</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_by">by</a>
+                                <a href="#method_getProgram">getProgram</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_by">by</a>
+                                <a href="#method_getTexture">getTexture</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_queue">queue</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_by">by</a>
+                                <a href="#method_queueProgram">queueProgram</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_clone">clone</a>
+                                <a href="#method_queuePrograms">queuePrograms</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_queueSync">queueSync</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_get">get</a>
+                                <a href="#method_queueTexture">queueTexture</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_getTransposed">getTransposed</a>
+                                <a href="#method_queueTextures">queueTextures</a>
 
                                 
                                 
                             </li>
                         
-                            <li class="index-item method">
-                                <a href="#method_minus">minus</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_multiply">multiply</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_multiply">multiply</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_plus">plus</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_put">put</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_subtract">subtract</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_transpose">transpose</a>
+                            <li class="index-item method inherited">
+                                <a href="#method_start">start</a>
 
                                 
                                 
@@ -472,32 +464,6 @@ var matrix = new OOGL.Matrix4([1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]);
                 </div>
             
 
-            
-                <div class="index-section properties">
-                    <h3>Properties</h3>
-
-                    <ul class="index-list properties">
-                        
-                            <li class="index-item property">
-                                <a href="#property_IDENTITY">IDENTITY</a>
-
-                                
-                                    <span class="flag static">static</span>
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property">
-                                <a href="#property_NULL">NULL</a>
-
-                                
-                                    <span class="flag static">static</span>
-                                
-                                
-                            </li>
-                        
-                    </ul>
-                </div>
             
 
             
@@ -510,564 +476,11 @@ var matrix = new OOGL.Matrix4([1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]);
                 <h2 class="off-left">Methods</h2>
 
                 
-                    <div id="method_add" class="method item">
-    <h3 class="name"><code>add</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>m</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <span class="flag chainable">chainable</span>
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_Matrix4.js.html#l137"><code>src\Matrix4.js:137</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Adds the specified matrix to this one.</p>
-<p>Each element of the specified matrix is added up to the respective
-element in this matrix. The specified <code>m</code> matrix is not changed.</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">m</code>
-                        <span class="type"><a href="..\classes\OOGL.Matrix4.html" class="crosslink">OOGL.Matrix4</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>The matrix to add.</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-
-    
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>TODO</code></pre>
-
-            </div>
-        </div>
-    
-</div>
-
-                
-                    <div id="method_by" class="method item">
-    <h3 class="name"><code>by</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>v</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type"><a href="..\classes\OOGL.Matrix4.html" class="crosslink">OOGL.Matrix4</a></span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_Matrix4.js.html#l287"><code>src\Matrix4.js:287</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Left-multiplies this matrix by the specified <code>Matrix4</code> object and returns
-the product as a new <code>Matrix4</code> object. Neither this matrix nor the
-specified one are changed.</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">v</code>
-                        <span class="type"><a href="..\classes\OOGL.Matrix4.html" class="crosslink">OOGL.Matrix4</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>The matrix to multiply.</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type"><a href="..\classes\OOGL.Matrix4.html" class="crosslink">OOGL.Matrix4</a></span>:
-                    
-                    <p>The product matrix.</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>TODO</code></pre>
-
-            </div>
-        </div>
-    
-</div>
-
-                
-                    <div id="method_by" class="method item">
-    <h3 class="name"><code>by</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>v</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type"><a href="..\classes\OOGL.Vector4.html" class="crosslink">OOGL.Vector4</a></span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_Matrix4.js.html#l275"><code>src\Matrix4.js:275</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Left-multiplies this matrix by the specified <code>Vector4</code> object and returns
-the product as a new <code>Vector4</code> object. Neither this matrix nor the
-specified vector are changed.</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">v</code>
-                        <span class="type"><a href="..\classes\OOGL.Vector4.html" class="crosslink">OOGL.Vector4</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>The vector to multiply.</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type"><a href="..\classes\OOGL.Vector4.html" class="crosslink">OOGL.Vector4</a></span>:
-                    
-                    <p>The product vector.</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>TODO</code></pre>
-
-            </div>
-        </div>
-    
-</div>
-
-                
-                    <div id="method_by" class="method item">
-    <h3 class="name"><code>by</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>x</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type"><a href="..\classes\OOGL.Matrix4.html" class="crosslink">OOGL.Matrix4</a></span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_Matrix4.js.html#l264"><code>src\Matrix4.js:264</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Multiplies this matrix by the specified constant factor and returns the
-product as a new <code>Matrix4</code> object. This matrix is not changed.</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">x</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>The multiplying factor.</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type"><a href="..\classes\OOGL.Matrix4.html" class="crosslink">OOGL.Matrix4</a></span>:
-                    
-                    <p>The product matrix.</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>TODO</code></pre>
-
-            </div>
-        </div>
-    
-</div>
-
-                
-                    <div id="method_clone" class="method item">
-    <h3 class="name"><code>clone</code></h3>
+                    <div id="method_count" class="method item inherited">
+    <h3 class="name"><code>count</code></h3>
 
     
         <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type"><a href="..\classes\OOGL.Matrix4.html" class="crosslink">OOGL.Matrix4</a></span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_Matrix4.js.html#l38"><code>src\Matrix4.js:38</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>TODO</p>
-
-    </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type"><a href="..\classes\OOGL.Matrix4.html" class="crosslink">OOGL.Matrix4</a></span>:
-                    
-                    <p>TODO</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>TODO</code></pre>
-
-            </div>
-        </div>
-    
-</div>
-
-                
-                    <div id="method_get" class="method item">
-    <h3 class="name"><code>get</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>i</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>j</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
     
 
     
@@ -1091,15 +504,12 @@ product as a new <code>Matrix4</code> object. This matrix is not changed.</p>
     <div class="meta">
         
             
-                
-                <p>
-                
-                Defined in
-                
+                <p>Inherited from
+                <a href="..\classes\OOGL.TaskQueue.html#method_count">OOGL.TaskQueue</a>:
             
         
         
-        <a href="../files/src_Matrix4.js.html#l55"><code>src\Matrix4.js:55</code></a>
+        <a href="../files/src_TaskQueue.js.html#l67"><code>src\TaskQueue.js:67</code></a>
         
         </p>
 
@@ -1110,53 +520,10 @@ product as a new <code>Matrix4</code> object. This matrix is not changed.</p>
     </div>
 
     <div class="description">
-        <p>Returns the element at the specified row and column in the matrix.</p>
-<p>Row and column indices are zero-based. This method is equivalent to
-fetching the <code>j * 4 + i</code>-th element of the array:</p>
-<pre class="code prettyprint"><code>matrix.get(i, j) == matrix[j * 4 + i] // true</code></pre>
+        <p>Returns the number of tasks queued so far.</p>
 
     </div>
 
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">i</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>The row index.</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">j</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>The column index.</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
     
 
     
@@ -1168,7 +535,7 @@ fetching the <code>j * 4 + i</code>-th element of the array:</p>
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>:
                     
-                    <p>The value at the specified row and column.</p>
+                    <p>The number of tasks queued so far.</p>
 
                 
             </div>
@@ -1180,9 +547,7 @@ fetching the <code>j * 4 + i</code>-th element of the array:</p>
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>var m = new OOGL.Matrix4([1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8]);
-if (m.get(2, 3) == m[8]) { // true
-    ...</code></pre>
+                <pre class="code prettyprint"><code>TODO</code></pre>
 
             </div>
         </div>
@@ -1190,16 +555,26 @@ if (m.get(2, 3) == m[8]) { // true
 </div>
 
                 
-                    <div id="method_getTransposed" class="method item">
-    <h3 class="name"><code>getTransposed</code></h3>
+                    <div id="method_getProgram" class="method item">
+    <h3 class="name"><code>getProgram</code></h3>
 
     
-        <span class="paren">()</span>
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>id</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
     
 
     
         <span class="returns-inline">
-            <span class="type"><a href="..\classes\OOGL.Matrix4.html" class="crosslink">OOGL.Matrix4</a></span>
+            <span class="type"><a href="..\classes\context.Program.html" class="crosslink">context.Program</a></span>
         </span>
     
 
@@ -1226,7 +601,7 @@ if (m.get(2, 3) == m[8]) { // true
             
         
         
-        <a href="../files/src_Matrix4.js.html#l119"><code>src\Matrix4.js:119</code></a>
+        <a href="../files/src_Loader.js.html#l164"><code>src\Loader.js:164</code></a>
         
         </p>
 
@@ -1237,11 +612,36 @@ if (m.get(2, 3) == m[8]) { // true
     </div>
 
     <div class="description">
-        <p>Computes the transposed matrix and returns it as a new <code>Matrix4</code> object.
-This matrix is not changed.</p>
+        <p>Retrieves a <a href="..\classes\context.Program.html" class="crosslink">Program</a> object
+loaded from the shader pair identified by the specified URL.</p>
 
     </div>
 
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">id</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The URL of a previously loaded shader pair, not
+including the filename extension.</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
     
 
     
@@ -1251,9 +651,9 @@ This matrix is not changed.</p>
             <div class="returns-description">
                 
                     
-                        <span class="type"><a href="..\classes\OOGL.Matrix4.html" class="crosslink">OOGL.Matrix4</a></span>:
+                        <span class="type"><a href="..\classes\context.Program.html" class="crosslink">context.Program</a></span>:
                     
-                    <p>The transposed matrix.</p>
+                    <p>A <code>Program</code> object representing the GL program.</p>
 
                 
             </div>
@@ -1273,8 +673,8 @@ This matrix is not changed.</p>
 </div>
 
                 
-                    <div id="method_minus" class="method item">
-    <h3 class="name"><code>minus</code></h3>
+                    <div id="method_getTexture" class="method item">
+    <h3 class="name"><code>getTexture</code></h3>
 
     
         <div class="args">
@@ -1282,7 +682,7 @@ This matrix is not changed.</p>
             
                 <li class="arg">
                     
-                        <code>m</code>
+                        <code>id</code>
                     
                 </li>
             
@@ -1292,7 +692,7 @@ This matrix is not changed.</p>
 
     
         <span class="returns-inline">
-            <span class="type"><a href="..\classes\OOGL.Matrix4.html" class="crosslink">OOGL.Matrix4</a></span>
+            <span class="type"><a href="..\classes\context.Texture2D.html" class="crosslink">context.Texture2D</a></span>
         </span>
     
 
@@ -1319,7 +719,7 @@ This matrix is not changed.</p>
             
         
         
-        <a href="../files/src_Matrix4.js.html#l193"><code>src\Matrix4.js:193</code></a>
+        <a href="../files/src_Loader.js.html#l75"><code>src\Loader.js:75</code></a>
         
         </p>
 
@@ -1330,8 +730,8 @@ This matrix is not changed.</p>
     </div>
 
     <div class="description">
-        <p>Subtracts the specified matrix to this one and returns the difference as
-a new <code>Matrix4</code> object. This matrix is not changed.</p>
+        <p>Retrieves a <a href="..\classes\context.Texture2D.html" class="crosslink">Texture2D</a>
+object loaded from the image identified by the specified URL.</p>
 
     </div>
 
@@ -1343,14 +743,14 @@ a new <code>Matrix4</code> object. This matrix is not changed.</p>
             
                 <li class="param">
                     
-                        <code class="param-name">m</code>
-                        <span class="type"><a href="..\classes\OOGL.Matrix4.html" class="crosslink">OOGL.Matrix4</a></span>
+                        <code class="param-name">id</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>The matrix to subtract.</p>
+                        <p>The URL of a previously loaded texture image.</p>
 
                     </div>
 
@@ -1368,9 +768,10 @@ a new <code>Matrix4</code> object. This matrix is not changed.</p>
             <div class="returns-description">
                 
                     
-                        <span class="type"><a href="..\classes\OOGL.Matrix4.html" class="crosslink">OOGL.Matrix4</a></span>:
+                        <span class="type"><a href="..\classes\context.Texture2D.html" class="crosslink">context.Texture2D</a></span>:
                     
-                    <p>The difference matrix.</p>
+                    <p>A <code>Texture2D</code> object representing the GL
+texture.</p>
 
                 
             </div>
@@ -1390,8 +791,8 @@ a new <code>Matrix4</code> object. This matrix is not changed.</p>
 </div>
 
                 
-                    <div id="method_multiply" class="method item">
-    <h3 class="name"><code>multiply</code></h3>
+                    <div id="method_queue" class="method item inherited">
+    <h3 class="name"><code>queue</code></h3>
 
     
         <div class="args">
@@ -1399,7 +800,135 @@ a new <code>Matrix4</code> object. This matrix is not changed.</p>
             
                 <li class="arg">
                     
-                        <code>x</code>
+                        <code>tasks</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <span class="flag chainable">chainable</span>
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="..\classes\OOGL.TaskQueue.html#method_queue">OOGL.TaskQueue</a>:
+            
+        
+        
+        <a href="../files/src_TaskQueue.js.html#l27"><code>src\TaskQueue.js:27</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Queues zero or more asynchronous tasks.</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">tasks</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+                    
+
+                    
+                        <span class="flag multiple" title="This argument may occur one or more times.">multiple</span>
+                    
+
+                    <div class="param-description">
+                        <p>Zero or more asynchronous tasks to queue. An
+asynchronous task is a function that takes only one argument, a reference
+to a callback function to be called by the task itself when it is
+accomplished.</p>
+
+                    </div>
+
+                    
+                        <ul class="params-list">
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name">next</code>
+                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+                                
+
+                                <div class="param-description">
+                                    <p>A reference to a callback function to be
+called by the task as soon as it finished. The <code>next</code> callback is not
+user-defined, it is passed to the task by the <code>TaskQueue</code> object.</p>
+
+                                </div>
+
+                                
+                            </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>TODO</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_queueProgram" class="method item">
+    <h3 class="name"><code>queueProgram</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>id</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>attributes</code>
                     
                 </li>
             
@@ -1434,7 +963,7 @@ a new <code>Matrix4</code> object. This matrix is not changed.</p>
             
         
         
-        <a href="../files/src_Matrix4.js.html#l211"><code>src\Matrix4.js:211</code></a>
+        <a href="../files/src_Loader.js.html#l92"><code>src\Loader.js:92</code></a>
         
         </p>
 
@@ -1445,8 +974,13 @@ a new <code>Matrix4</code> object. This matrix is not changed.</p>
     </div>
 
     <div class="description">
-        <p>Multiplies this matrix by the specified constant factor. This method
-changes the original matrix.</p>
+        <p>Queues an asynchronous task that loads, compiles and links the specified
+shader pair.</p>
+<p>Internally the <code>queueProgram</code> method uses the
+<a href="..\classes\context.AjaxProgram.html" class="crosslink">AjaxProgram</a> class.</p>
+<p>The loaded programs can then be retrieved using the
+<a href="..\classes\context.Loader.html#method_getProgram" class="crosslink">getProgram</a>
+method.</p>
 
     </div>
 
@@ -1458,14 +992,35 @@ changes the original matrix.</p>
             
                 <li class="param">
                     
-                        <code class="param-name">x</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                        <code class="param-name">id</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>The multiplying factor.</p>
+                        <p>The URL of the GLSL shaders to load, excluding the
+filename extension which is automatically appended (<code>.frag</code> for fragment
+shaders and <code>.vert</code> for vertex shaders).</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">attributes</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String[]</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>An array of attribute array variable names
+to associate to array indices. See the
+<a href="..\classes\context.AjaxProgram.html" class="crosslink">AjaxProgam</a> class for
+more information.</p>
 
                     </div>
 
@@ -1491,8 +1046,8 @@ changes the original matrix.</p>
 </div>
 
                 
-                    <div id="method_multiply" class="method item">
-    <h3 class="name"><code>multiply</code></h3>
+                    <div id="method_queuePrograms" class="method item">
+    <h3 class="name"><code>queuePrograms</code></h3>
 
     
         <div class="args">
@@ -1500,7 +1055,7 @@ changes the original matrix.</p>
             
                 <li class="arg">
                     
-                        <code>x</code>
+                        <code>map</code>
                     
                 </li>
             
@@ -1535,7 +1090,7 @@ changes the original matrix.</p>
             
         
         
-        <a href="../files/src_Matrix4.js.html#l222"><code>src\Matrix4.js:222</code></a>
+        <a href="../files/src_Loader.js.html#l121"><code>src\Loader.js:121</code></a>
         
         </p>
 
@@ -1546,8 +1101,14 @@ changes the original matrix.</p>
     </div>
 
     <div class="description">
-        <p>Multiplies this matrix by the specified <code>Matrix4</code> object. This method
-changes the original matrix.</p>
+        <p>Queues an asynchronous task that loads, compiles and links zero or more
+shader pairs.</p>
+<p>Internally the <code>queuePrograms</code> method uses the
+<a href="..\classes\context.AjaxProgram.html" class="crosslink">AjaxProgram</a> class to
+load each shader pair.</p>
+<p>The loaded programs can then be retrieved using the
+<a href="..\classes\context.Loader.html#method_getProgram" class="crosslink">getProgram</a>
+method.</p>
 
     </div>
 
@@ -1559,14 +1120,24 @@ changes the original matrix.</p>
             
                 <li class="param">
                     
-                        <code class="param-name">x</code>
-                        <span class="type"><a href="..\classes\OOGL.Matrix4.html" class="crosslink">OOGL.Matrix4</a></span>
+                        <code class="param-name">map</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>The multiplying matrix.</p>
+                        <p>A dictionary object that associates shader pair URLs
+to attribute arrays. For example:</p>
+<pre><code>{
+    &quot;glsl/box&quot;: [&quot;in_Vertex&quot;, &quot;in_TexCoord&quot;]
+    &quot;glsl/sphere&quot;: [&quot;in_Vertex&quot;, &quot;in_Normal&quot;, &quot;in_TexCoord&quot;]
+}</code></pre>
+<p>In this example we assumed there is a <code>glsl</code> directory containing two
+shaders pairs: <code>box.vert</code>, <code>box.frag</code>, <code>sphere.vert</code> and <code>sphere.frag</code>.
+Besides, the <code>box</code> shaders use two attribute arrays which are <code>in_Vertex</code>
+and <code>in_TexCoord</code>, while the <code>sphere</code> shaders use three attribute arrays
+which are <code>in_Vertex</code>, <code>in_Normal</code> and <code>in_TexCoord</code>.</p>
 
                     </div>
 
@@ -1592,8 +1163,8 @@ changes the original matrix.</p>
 </div>
 
                 
-                    <div id="method_plus" class="method item">
-    <h3 class="name"><code>plus</code></h3>
+                    <div id="method_queueSync" class="method item inherited">
+    <h3 class="name"><code>queueSync</code></h3>
 
     
         <div class="args">
@@ -1601,7 +1172,7 @@ changes the original matrix.</p>
             
                 <li class="arg">
                     
-                        <code>m</code>
+                        <code>tasks</code>
                     
                 </li>
             
@@ -1610,10 +1181,6 @@ changes the original matrix.</p>
     
 
     
-        <span class="returns-inline">
-            <span class="type"><a href="..\classes\OOGL.Matrix4.html" class="crosslink">OOGL.Matrix4</a></span>
-        </span>
-    
 
     
 
@@ -1623,6 +1190,8 @@ changes the original matrix.</p>
 
     
 
+    
+        <span class="flag chainable">chainable</span>
     
 
     
@@ -1630,15 +1199,12 @@ changes the original matrix.</p>
     <div class="meta">
         
             
-                
-                <p>
-                
-                Defined in
-                
+                <p>Inherited from
+                <a href="..\classes\OOGL.TaskQueue.html#method_queueSync">OOGL.TaskQueue</a>:
             
         
         
-        <a href="../files/src_Matrix4.js.html#l156"><code>src\Matrix4.js:156</code></a>
+        <a href="../files/src_TaskQueue.js.html#l44"><code>src\TaskQueue.js:44</code></a>
         
         </p>
 
@@ -1649,8 +1215,7 @@ changes the original matrix.</p>
     </div>
 
     <div class="description">
-        <p>Adds the specified matrix to this one and returns the sum as a new
-<code>Matrix3</code> object. This matrix is not changed.</p>
+        <p>Queues zero or more synchronous tasks.</p>
 
     </div>
 
@@ -1662,14 +1227,18 @@ changes the original matrix.</p>
             
                 <li class="param">
                     
-                        <code class="param-name">m</code>
-                        <span class="type"><a href="..\classes\OOGL.Matrix4.html" class="crosslink">OOGL.Matrix4</a></span>
+                        <code class="param-name">tasks</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
                     
 
+                    
+                        <span class="flag multiple" title="This argument may occur one or more times.">multiple</span>
                     
 
                     <div class="param-description">
-                        <p>The matrix to add.</p>
+                        <p>Zero or more synchronous tasks. A synchronous
+task is a function that executes synchronously. The next task in the
+queue is executed as soon as the function returns.</p>
 
                     </div>
 
@@ -1680,20 +1249,6 @@ changes the original matrix.</p>
         </div>
     
 
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type"><a href="..\classes\OOGL.Matrix4.html" class="crosslink">OOGL.Matrix4</a></span>:
-                    
-                    <p>The sum matrix.</p>
-
-                
-            </div>
-        </div>
     
 
     
@@ -1709,8 +1264,8 @@ changes the original matrix.</p>
 </div>
 
                 
-                    <div id="method_put" class="method item">
-    <h3 class="name"><code>put</code></h3>
+                    <div id="method_queueTexture" class="method item">
+    <h3 class="name"><code>queueTexture</code></h3>
 
     
         <div class="args">
@@ -1718,154 +1273,19 @@ changes the original matrix.</p>
             
                 <li class="arg">
                     
-                        <code>i</code>
+                        <code>id</code>
                     
                 </li>
             
                 <li class="arg">
                     
-                        <code>j</code>
+                        <code class="optional">[minFilter=gl.LINEAR]</code>
                     
                 </li>
             
                 <li class="arg">
                     
-                        <code>value</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_Matrix4.js.html#l76"><code>src\Matrix4.js:76</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Changes the element at the specified row and column in the matrix.</p>
-<p>Row and column indices are zero-based. This method is equivalent to
-setting the <code>j * 4 + i</code>-th element of the array:</p>
-<pre class="code prettyprint"><code>matrix.put(i, j, x);
-matrix[j * 4 + i] = x; // same as previous</code></pre>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">i</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>The row index.</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">j</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>The column index.</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">value</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>The value to put at the specified row and column.</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-
-    
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>var matrix = new OOGL.Matrix4([0, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]);
-matrix.put(0, 0, 3); // now matrix is [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]</code></pre>
-
-            </div>
-        </div>
-    
-</div>
-
-                
-                    <div id="method_subtract" class="method item">
-    <h3 class="name"><code>subtract</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>m</code>
+                        <code class="optional">[magFilter=gl.LINEAR]</code>
                     
                 </li>
             
@@ -1900,7 +1320,7 @@ matrix.put(0, 0, 3); // now matrix is [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
             
         
         
-        <a href="../files/src_Matrix4.js.html#l174"><code>src\Matrix4.js:174</code></a>
+        <a href="../files/src_Loader.js.html#l25"><code>src\Loader.js:25</code></a>
         
         </p>
 
@@ -1911,9 +1331,11 @@ matrix.put(0, 0, 3); // now matrix is [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
     </div>
 
     <div class="description">
-        <p>Subtracts the specified matrix to this one.</p>
-<p>Each element of the specified matrix is subtracted to the respective
-element in this matrix. The specified <code>m</code> matrix is not changed.</p>
+        <p>Queues an asynchronous task that loads and creates a texture given its
+URL.</p>
+<p>After being loaded the texture can be retrieved via the
+OOGL.Loader/getTexture method as
+a <a href="..\classes\context.Texture2D.html" class="crosslink">Texture2D</a> object.</p>
 
     </div>
 
@@ -1925,14 +1347,48 @@ element in this matrix. The specified <code>m</code> matrix is not changed.</p>
             
                 <li class="param">
                     
-                        <code class="param-name">m</code>
-                        <span class="type"><a href="..\classes\OOGL.Matrix4.html" class="crosslink">OOGL.Matrix4</a></span>
+                        <code class="param-name">id</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>The matrix to subtract.</p>
+                        <p>The URL of the texture image to load.</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name optional">[minFilter=gl.LINEAR]</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>TODO</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name optional">[magFilter=gl.LINEAR]</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>TODO</p>
 
                     </div>
 
@@ -1958,11 +1414,21 @@ element in this matrix. The specified <code>m</code> matrix is not changed.</p>
 </div>
 
                 
-                    <div id="method_transpose" class="method item">
-    <h3 class="name"><code>transpose</code></h3>
+                    <div id="method_queueTextures" class="method item">
+    <h3 class="name"><code>queueTextures</code></h3>
 
     
-        <span class="paren">()</span>
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>ids</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
     
 
     
@@ -1992,7 +1458,7 @@ element in this matrix. The specified <code>m</code> matrix is not changed.</p>
             
         
         
-        <a href="../files/src_Matrix4.js.html#l98"><code>src\Matrix4.js:98</code></a>
+        <a href="../files/src_Loader.js.html#l53"><code>src\Loader.js:53</code></a>
         
         </p>
 
@@ -2003,10 +1469,160 @@ element in this matrix. The specified <code>m</code> matrix is not changed.</p>
     </div>
 
     <div class="description">
-        <p>Transposes this matrix.</p>
+        <p>Queues an asynchronous task that loads and creates zero or more textures
+given their URLs.</p>
+<p>After being loaded the textures can be retrieved via the
+OOGL.Loader/getTexture method as
+<a href="..\classes\context.Texture2D.html" class="crosslink">Texture2D</a> objects.</p>
 
     </div>
 
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">ids</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String[]</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>An array of image URLs.</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>TODO</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_start" class="method item inherited">
+    <h3 class="name"><code>start</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code class="optional">[callback]</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code class="optional">[progress]</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <span class="flag chainable">chainable</span>
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="..\classes\OOGL.TaskQueue.html#method_start">OOGL.TaskQueue</a>:
+            
+        
+        
+        <a href="../files/src_TaskQueue.js.html#l79"><code>src\TaskQueue.js:79</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Starts executing the queued tasks in queuing order.</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name optional">[callback]</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>An optional user-defined callback function
+that gets invoked as soon as all the tasks finish.</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name optional">[progress]</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>TODO</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
     
 
     
@@ -2027,106 +1643,6 @@ element in this matrix. The specified <code>m</code> matrix is not changed.</p>
             </div>
         
 
-        
-            <div id="properties" class="api-class-tabpanel">
-                <h2 class="off-left">Properties</h2>
-
-                
-                    <div id="property_IDENTITY" class="property item">
-    <h3 class="name"><code>IDENTITY</code></h3>
-    <span class="type"><a href="..\classes\OOGL.Matrix4.html" class="crosslink">OOGL.Matrix4</a></span>
-
-    
-
-    
-
-    
-
-    
-        <span class="flag static">static</span>
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_Matrix4.js.html#l344"><code>src\Matrix4.js:344</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>The 4x4 identity matrix.</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property_NULL" class="property item">
-    <h3 class="name"><code>NULL</code></h3>
-    <span class="type"><a href="..\classes\OOGL.Matrix4.html" class="crosslink">OOGL.Matrix4</a></span>
-
-    
-
-    
-
-    
-
-    
-        <span class="flag static">static</span>
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_Matrix4.js.html#l335"><code>src\Matrix4.js:335</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>The null 4x4 matrix.</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-            </div>
         
 
         

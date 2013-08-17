@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>src\Timing.js - OOGL.js</title>
+    <title>src\TaskQueue.js - OOGL.js</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -210,45 +210,112 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1 class="file-heading">File: src\Timing.js</h1>
+                        <h1 class="file-heading">File: src\TaskQueue.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
 /*global OOGL: false */
 
 /**
- * Static class providing timing-related functions.
+ * Represents a queue of asynchronous tasks. This is mainly used to manage
+ * asynchronous asset loading and is inherited by
+ * {{#crossLink &quot;context.Loader&quot;}}Loader{{/crossLink}}.
  *
- * @class OOGL.Timing
- * @module OOGL
- * @static
+ * @class OOGL.TaskQueue
+ * @constructor
+ * @param tasks* {Function} Zero or more asynchronous tasks to queue. An
+ * asynchronous task is a function that takes only one argument, a reference to
+ * a callback function to be called by the task itself when it is accomplished.
+ * @param tasks.next {Function} A reference to a callback function to be called
+ * by the task as soon as it finished. The &#x60;next&#x60; callback is not user-defined,
+ * it is passed to the task by the &#x60;TaskQueue&#x60; object.
  * @example
  *	TODO
  */
-OOGL.Timing = {
+OOGL.TaskQueue = function () {
+	var thisObject = this;
+
+	var queue = [];
+	for (var i = 0; i &lt; arguments.length; i++) {
+		queue.push(arguments[i]);
+	}
+
 	/**
-	 * Returns the current timestamp in milliseconds since the Epoch.
+	 * Queues zero or more asynchronous tasks.
 	 *
-	 * This method relies on &#x60;window.performance.now&#x60; where available and
-	 * transparently falls back to &#x60;Date.now&#x60;.
-	 *
-	 * @method now
-	 * @static
-	 * @return {Number} The current timestamp in milliseconds.
+	 * @method queue
+	 * @chainable
+	 * @param tasks* {Function} Zero or more asynchronous tasks to queue. An
+	 * asynchronous task is a function that takes only one argument, a reference
+	 * to a callback function to be called by the task itself when it is
+	 * accomplished.
+	 * @param tasks.next {Function} A reference to a callback function to be
+	 * called by the task as soon as it finished. The &#x60;next&#x60; callback is not
+	 * user-defined, it is passed to the task by the &#x60;TaskQueue&#x60; object.
 	 * @example
 	 *	TODO
 	 */
-	now: (function () {
-		if ((&#x27;performance&#x27; in window) &amp;&amp; (&#x27;now&#x27; in window.performance)) {
-			return function () {
-				return window.performance.now();
-			};
-		} else {
-			return function () {
-				return Date.now();
-			};
+	this.queue = enqueue;
+
+	/**
+	 * Queues zero or more synchronous tasks.
+	 *
+	 * @method queueSync
+	 * @chainable
+	 * @param tasks* {Function} Zero or more synchronous tasks. A synchronous
+	 * task is a function that executes synchronously. The next task in the
+	 * queue is executed as soon as the function returns.
+	 * @example
+	 *	TODO
+	 */
+	this.queueSync = function () {
+		for (var i = 0; i &lt; arguments.length; i++) {
+			(function (task) {
+				queue.push(function (next) {
+					task();
+					next();
+				});
+			})(arguments[i]);
 		}
-	})()
+		return thisObject;
+	};
+
+	/**
+	 * Returns the number of tasks queued so far.
+	 *
+	 * @method count
+	 * @return {Number} The number of tasks queued so far.
+	 * @example
+	 *	TODO
+	 */
+	this.count = function () {
+		return queue.length;
+	};
+
+	/**
+	 * Starts executing the queued tasks in queuing order.
+	 *
+	 * @method start
+	 * @chainable
+	 * @param [callback] {Function} An optional user-defined callback function
+	 * that gets invoked as soon as all the tasks finish.
+	 * @param [progress] {Function} TODO
+	 * @example
+	 *	TODO
+	 */
+	this.start = function (callback, progress) {
+		(function run(index) {
+			if (index &lt; queue.length) {
+				queue[index](function () {
+					progress &amp;&amp; progress(index * 100 / queue.length);
+					run(index + 1);
+				});
+			} else {
+				callback &amp;&amp; callback();
+			}
+		})(0);
+		return thisObject;
+	};
 };
 
     </pre>

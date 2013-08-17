@@ -85,6 +85,8 @@
             
                 <li><a href="../classes/context.Framebuffer.html">context.Framebuffer</a></li>
             
+                <li><a href="../classes/context.Loader.html">context.Loader</a></li>
+            
                 <li><a href="../classes/context.Program.html">context.Program</a></li>
             
                 <li><a href="../classes/context.Renderbuffer.html">context.Renderbuffer</a></li>
@@ -117,8 +119,6 @@
             
                 <li><a href="../classes/OOGL.IsometricProjection.html">OOGL.IsometricProjection</a></li>
             
-                <li><a href="../classes/OOGL.Loader.html">OOGL.Loader</a></li>
-            
                 <li><a href="../classes/OOGL.Matrix2.html">OOGL.Matrix2</a></li>
             
                 <li><a href="../classes/OOGL.Matrix3.html">OOGL.Matrix3</a></li>
@@ -142,6 +142,8 @@
                 <li><a href="../classes/OOGL.ScalingMatrix3.html">OOGL.ScalingMatrix3</a></li>
             
                 <li><a href="../classes/OOGL.ScalingMatrix4.html">OOGL.ScalingMatrix4</a></li>
+            
+                <li><a href="../classes/OOGL.TaskQueue.html">OOGL.TaskQueue</a></li>
             
                 <li><a href="../classes/OOGL.Timing.html">OOGL.Timing</a></li>
             
@@ -213,83 +215,183 @@
 <div class="file">
     <pre class="code prettyprint linenums">
 /*global OOGL: false */
+/*global context: false */
 
 /**
- * TODO
+ * Manages asynchronous asset loading with progress feedback.
  *
- * @class OOGL.Loader
+ * @class context.Loader
+ * @extends OOGL.TaskQueue
  * @constructor
- * @param {Function} tasks* TODO
+ * @param tasks* {Function} Zero or more asynchronous tasks to queue. An
+ * asynchronous task is a function that takes only one argument, a reference to
+ * a callback function to be called by the task itself when it is accomplished.
+ * @param tasks.next {Function} A reference to a callback function to be called
+ * by the task as soon as it finished. The &#x60;next&#x60; callback is not user-defined,
+ * it is passed to the task by the &#x60;Loader&#x60; object.
  * @example
  *	TODO
  */
-OOGL.Loader = function () {
-	var queue = [];
-	for (var i = 0; i &lt; arguments.length; i++) {
-		queue.push(arguments[i]);
-	}
+context.Loader = function () {
+	var thisObject = OOGL.TaskQueue.apply(this, arguments);
+
+	var textures = {};
+	var programs = {};
 
 	/**
-	 * TODO
+	 * Queues an asynchronous task that loads and creates a texture given its
+	 * URL.
 	 *
-	 * @method queue
-	 * @param {Function} tasks* TODO
+	 * After being loaded the texture can be retrieved via the
+	 * {{#crossLink &quot;OOGL.Loader/getTexture&quot;}}getTexture{{/crossLink}} method as
+	 * a {{#crossLink &quot;context.Texture2D&quot;}}Texture2D{{/crossLink}} object.
+	 *
+	 * @method queueTexture
+	 * @chainable
+	 * @param id {String} The URL of the texture image to load.
+	 * @param [minFilter=gl.LINEAR] {Number} TODO
+	 * @param [magFilter=gl.LINEAR] {Number} TODO
 	 * @example
 	 *	TODO
 	 */
-	this.queue = function () {
-		queue.push.apply(queue, arguments);
+	this.queueTexture = function (id, minFilter, magFilter) {
+		if (arguments.length &lt; 2) {
+			magFilter = context.LINEAR;
+			minFilter = context.LINEAR;
+		} else if (arguments.length &lt; 3) {
+			minFilter = context.LINEAR;
+		}
+		return thisObject.queue(function (next) {
+			textures[id] = new context.AutoTexture(id, next, minFilter, magFilter);
+		});
 	};
 
 	/**
-	 * TODO
+	 * Queues an asynchronous task that loads and creates zero or more textures
+	 * given their URLs.
 	 *
-	 * @method queueSync
-	 * @param {Function} tasks* TODO
+	 * After being loaded the textures can be retrieved via the
+	 * {{#crossLink &quot;OOGL.Loader/getTexture&quot;}}getTexture{{/crossLink}} method as
+	 * {{#crossLink &quot;context.Texture2D&quot;}}Texture2D{{/crossLink}} objects.
+	 *
+	 * @method queueTextures
+	 * @chainable
+	 * @param ids {String[]} An array of image URLs.
 	 * @example
 	 *	TODO
 	 */
-	this.queueSync = function () {
-		for (var i = 0; i &lt; arguments.length; i++) {
-			(function (i) {
-				queue.push(function (next) {
-					arguments[i]();
-					next();
-				});
-			})(i);
+	this.queueTextures = function (ids) {
+		return thisObject.queue.apply(thisObject, ids.map(function (id) {
+			return function (next) {
+				textures[id] = new context.AutoTexture(id, next);
+			};
+		}));
+	};
+
+	/**
+	 * Retrieves a {{#crossLink &quot;context.Texture2D&quot;}}Texture2D{{/crossLink}}
+	 * object loaded from the image identified by the specified URL.
+	 *
+	 * @method getTexture
+	 * @param id {String} The URL of a previously loaded texture image.
+	 * @return {context.Texture2D} A &#x60;Texture2D&#x60; object representing the GL
+	 * texture.
+	 * @example
+	 *	TODO
+	 */
+	this.getTexture = function (id) {
+		if (textures.hasOwnProperty(id)) {
+			return textures[id];
 		}
 	};
 
 	/**
-	 * TODO
+	 * Queues an asynchronous task that loads, compiles and links the specified
+	 * shader pair.
 	 *
-	 * @method count
-	 * @return {Number} TODO
+	 * Internally the &#x60;queueProgram&#x60; method uses the
+	 * {{#crossLink &quot;context.AjaxProgram&quot;}}AjaxProgram{{/crossLink}} class.
+	 *
+	 * The loaded programs can then be retrieved using the
+	 * {{#crossLink &quot;context.Loader/getProgram&quot;}}getProgram{{/crossLink}}
+	 * method.
+	 *
+	 * @method queueProgram
+	 * @chainable
+	 * @param id {String} The URL of the GLSL shaders to load, excluding the
+	 * filename extension which is automatically appended (&#x60;.frag&#x60; for fragment
+	 * shaders and &#x60;.vert&#x60; for vertex shaders).
+	 * @param attributes {String[]} An array of attribute array variable names
+	 * to associate to array indices. See the
+	 * {{#crossLink &quot;context.AjaxProgram&quot;}}AjaxProgam{{/crossLink}} class for
+	 * more information.
 	 * @example
 	 *	TODO
 	 */
-	this.count = function () {
-		return queue.length;
+	this.queueProgram = function (id, attributes) {
+		return thisObject.queue(function (next) {
+			programs[id] = new context.AjaxProgram(id, attributes, next);
+		});
 	};
 
 	/**
-	 * TODO
+	 * Queues an asynchronous task that loads, compiles and links zero or more
+	 * shader pairs.
 	 *
-	 * @method start
-	 * @param {Function} [callback] TODO
+	 * Internally the &#x60;queuePrograms&#x60; method uses the
+	 * {{#crossLink &quot;context.AjaxProgram&quot;}}AjaxProgram{{/crossLink}} class to
+	 * load each shader pair.
+	 *
+	 * The loaded programs can then be retrieved using the
+	 * {{#crossLink &quot;context.Loader/getProgram&quot;}}getProgram{{/crossLink}}
+	 * method.
+	 *
+	 * @method queuePrograms
+	 * @chainable
+	 * @param map {Object} A dictionary object that associates shader pair URLs
+	 * to attribute arrays. For example:
+	 *
+	 *	{
+	 *		&quot;glsl/box&quot;: [&quot;in_Vertex&quot;, &quot;in_TexCoord&quot;]
+	 *		&quot;glsl/sphere&quot;: [&quot;in_Vertex&quot;, &quot;in_Normal&quot;, &quot;in_TexCoord&quot;]
+	 *	}
+	 *
+	 * In this example we assumed there is a &#x60;glsl&#x60; directory containing two
+	 * shaders pairs: &#x60;box.vert&#x60;, &#x60;box.frag&#x60;, &#x60;sphere.vert&#x60; and &#x60;sphere.frag&#x60;.
+	 * Besides, the &#x60;box&#x60; shaders use two attribute arrays which are &#x60;in_Vertex&#x60;
+	 * and &#x60;in_TexCoord&#x60;, while the &#x60;sphere&#x60; shaders use three attribute arrays
+	 * which are &#x60;in_Vertex&#x60;, &#x60;in_Normal&#x60; and &#x60;in_TexCoord&#x60;.
 	 * @example
 	 *	TODO
 	 */
-	this.start = function (callback) {
-		(function run(index) {
-			if (index &lt; queue.length) {
-				queue[index](function () {
-					run(index + 1);
-				});
-			} else {
-				callback &amp;&amp; callback();
+	this.queuePrograms = function (map) {
+		for (var id in map) {
+			if (map.hasOwnProperty(id)) {
+				thisObject.queue((function (id, attributes) {
+					return function (next) {
+						programs[id] = new context.AjaxProgram(id, attributes, next);
+					};
+				})(id, map[id]));
 			}
-		})(0);
+		}
+		return thisObject;
+	};
+
+	/**
+	 * Retrieves a {{#crossLink &quot;context.Program&quot;}}Program{{/crossLink}} object
+	 * loaded from the shader pair identified by the specified URL.
+	 *
+	 * @method getProgram
+	 * @param id {String} The URL of a previously loaded shader pair, not
+	 * including the filename extension.
+	 * @return {context.Program} A &#x60;Program&#x60; object representing the GL program.
+	 * @example
+	 *	TODO
+	 */
+	this.getProgram = function (id) {
+		if (programs.hasOwnProperty(id)) {
+			return programs[id];
+		}
 	};
 };
 

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>OOGL.Loader - OOGL.js</title>
+    <title>OOGL.TaskQueue - OOGL.js</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -85,6 +85,8 @@
             
                 <li><a href="../classes/context.Framebuffer.html">context.Framebuffer</a></li>
             
+                <li><a href="../classes/context.Loader.html">context.Loader</a></li>
+            
                 <li><a href="../classes/context.Program.html">context.Program</a></li>
             
                 <li><a href="../classes/context.Renderbuffer.html">context.Renderbuffer</a></li>
@@ -117,8 +119,6 @@
             
                 <li><a href="../classes/OOGL.IsometricProjection.html">OOGL.IsometricProjection</a></li>
             
-                <li><a href="../classes/OOGL.Loader.html">OOGL.Loader</a></li>
-            
                 <li><a href="../classes/OOGL.Matrix2.html">OOGL.Matrix2</a></li>
             
                 <li><a href="../classes/OOGL.Matrix3.html">OOGL.Matrix3</a></li>
@@ -142,6 +142,8 @@
                 <li><a href="../classes/OOGL.ScalingMatrix3.html">OOGL.ScalingMatrix3</a></li>
             
                 <li><a href="../classes/OOGL.ScalingMatrix4.html">OOGL.ScalingMatrix4</a></li>
+            
+                <li><a href="../classes/OOGL.TaskQueue.html">OOGL.TaskQueue</a></li>
             
                 <li><a href="../classes/OOGL.Timing.html">OOGL.Timing</a></li>
             
@@ -208,7 +210,7 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>OOGL.Loader Class</h1>
+                        <h1>OOGL.TaskQueue Class</h1>
 <div class="box meta">
     
 
@@ -216,7 +218,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_Loader.js.html#l3"><code>src\Loader.js:3</code></a>
+            Defined in: <a href="../files/src_TaskQueue.js.html#l3"><code>src\TaskQueue.js:3</code></a>
         </div>
     
 
@@ -232,15 +234,17 @@
 
 
 <div class="box intro">
-    <p>TODO</p>
+    <p>Represents a queue of asynchronous tasks. This is mainly used to manage
+asynchronous asset loading and is inherited by
+<a href="..\classes\context.Loader.html" class="crosslink">Loader</a>.</p>
 
 </div>
 
 
     <div class="constructor">
         <h2>Constructor</h2>
-        <div id="method_OOGL.Loader" class="method item">
-    <h3 class="name"><code>OOGL.Loader</code></h3>
+        <div id="method_OOGL.TaskQueue" class="method item">
+    <h3 class="name"><code>OOGL.TaskQueue</code></h3>
 
     
         <div class="args">
@@ -281,7 +285,7 @@
             
         
         
-        <a href="../files/src_Loader.js.html#l3"><code>src\Loader.js:3</code></a>
+        <a href="../files/src_TaskQueue.js.html#l3"><code>src\TaskQueue.js:3</code></a>
         
         </p>
 
@@ -312,10 +316,32 @@
                     
 
                     <div class="param-description">
-                        <p>TODO</p>
+                        <p>Zero or more asynchronous tasks to queue. An
+asynchronous task is a function that takes only one argument, a reference to
+a callback function to be called by the task itself when it is accomplished.</p>
 
                     </div>
 
+                    
+                        <ul class="params-list">
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name">next</code>
+                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+                                
+
+                                <div class="param-description">
+                                    <p>A reference to a callback function to be called
+by the task as soon as it finished. The <code>next</code> callback is not user-defined,
+it is passed to the task by the <code>TaskQueue</code> object.</p>
+
+                                </div>
+
+                                
+                            </li>
+                            
+                        </ul>
                     
                 </li>
             
@@ -442,7 +468,7 @@
             
         
         
-        <a href="../files/src_Loader.js.html#l49"><code>src\Loader.js:49</code></a>
+        <a href="../files/src_TaskQueue.js.html#l67"><code>src\TaskQueue.js:67</code></a>
         
         </p>
 
@@ -453,7 +479,7 @@
     </div>
 
     <div class="description">
-        <p>TODO</p>
+        <p>Returns the number of tasks queued so far.</p>
 
     </div>
 
@@ -468,7 +494,7 @@
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>:
                     
-                    <p>TODO</p>
+                    <p>The number of tasks queued so far.</p>
 
                 
             </div>
@@ -516,6 +542,8 @@
     
 
     
+        <span class="flag chainable">chainable</span>
+    
 
     
 
@@ -530,7 +558,7 @@
             
         
         
-        <a href="../files/src_Loader.js.html#l18"><code>src\Loader.js:18</code></a>
+        <a href="../files/src_TaskQueue.js.html#l27"><code>src\TaskQueue.js:27</code></a>
         
         </p>
 
@@ -541,7 +569,7 @@
     </div>
 
     <div class="description">
-        <p>TODO</p>
+        <p>Queues zero or more asynchronous tasks.</p>
 
     </div>
 
@@ -562,10 +590,33 @@
                     
 
                     <div class="param-description">
-                        <p>TODO</p>
+                        <p>Zero or more asynchronous tasks to queue. An
+asynchronous task is a function that takes only one argument, a reference
+to a callback function to be called by the task itself when it is
+accomplished.</p>
 
                     </div>
 
+                    
+                        <ul class="params-list">
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name">next</code>
+                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+                                
+
+                                <div class="param-description">
+                                    <p>A reference to a callback function to be
+called by the task as soon as it finished. The <code>next</code> callback is not
+user-defined, it is passed to the task by the <code>TaskQueue</code> object.</p>
+
+                                </div>
+
+                                
+                            </li>
+                            
+                        </ul>
                     
                 </li>
             
@@ -616,6 +667,8 @@
     
 
     
+        <span class="flag chainable">chainable</span>
+    
 
     
 
@@ -630,7 +683,7 @@
             
         
         
-        <a href="../files/src_Loader.js.html#l30"><code>src\Loader.js:30</code></a>
+        <a href="../files/src_TaskQueue.js.html#l44"><code>src\TaskQueue.js:44</code></a>
         
         </p>
 
@@ -641,7 +694,7 @@
     </div>
 
     <div class="description">
-        <p>TODO</p>
+        <p>Queues zero or more synchronous tasks.</p>
 
     </div>
 
@@ -662,7 +715,9 @@
                     
 
                     <div class="param-description">
-                        <p>TODO</p>
+                        <p>Zero or more synchronous tasks. A synchronous
+task is a function that executes synchronously. The next task in the
+queue is executed as soon as the function returns.</p>
 
                     </div>
 
@@ -701,6 +756,12 @@
                     
                 </li>
             
+                <li class="arg">
+                    
+                        <code class="optional">[progress]</code>
+                    
+                </li>
+            
             </ul><span class="paren">)</span>
         </div>
     
@@ -716,6 +777,8 @@
     
 
     
+        <span class="flag chainable">chainable</span>
+    
 
     
 
@@ -730,7 +793,7 @@
             
         
         
-        <a href="../files/src_Loader.js.html#l61"><code>src\Loader.js:61</code></a>
+        <a href="../files/src_TaskQueue.js.html#l79"><code>src\TaskQueue.js:79</code></a>
         
         </p>
 
@@ -741,7 +804,7 @@
     </div>
 
     <div class="description">
-        <p>TODO</p>
+        <p>Starts executing the queued tasks in queuing order.</p>
 
     </div>
 
@@ -754,6 +817,24 @@
                 <li class="param">
                     
                         <code class="param-name optional">[callback]</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>An optional user-defined callback function
+that gets invoked as soon as all the tasks finish.</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name optional">[progress]</code>
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
                         <span class="flag optional" title="This parameter is optional.">optional</span>
                     

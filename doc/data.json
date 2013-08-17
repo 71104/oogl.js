@@ -71,7 +71,7 @@
             "name": "src\\Loader.js",
             "modules": {},
             "classes": {
-                "OOGL.Loader": 1
+                "context.Loader": 1
             },
             "fors": {},
             "namespaces": {}
@@ -167,6 +167,15 @@
                 "context.FragmentShader": 1,
                 "context.AjaxVertexShader": 1,
                 "context.AjaxFragmentShader": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src\\TaskQueue.js": {
+            "name": "src\\TaskQueue.js",
+            "modules": {},
+            "classes": {
+                "OOGL.TaskQueue": 1
             },
             "fors": {},
             "namespaces": {}
@@ -288,7 +297,7 @@
                 "context.DynamicArrayBuffer": 1,
                 "context.DynamicElementArrayBuffer": 1,
                 "context.Framebuffer": 1,
-                "OOGL.Loader": 1,
+                "context.Loader": 1,
                 "context.Program": 1,
                 "context.AutoProgram": 1,
                 "context.AjaxProgram": 1,
@@ -298,6 +307,7 @@
                 "context.FragmentShader": 1,
                 "context.AjaxVertexShader": 1,
                 "context.AjaxFragmentShader": 1,
+                "OOGL.TaskQueue": 1,
                 "context.Texture": 1,
                 "context.Texture2D": 1,
                 "context.AutoTexture": 1,
@@ -958,9 +968,9 @@
                 "\n\tvar oogl = new OOGL.Context('canvas');\n\tvar framebuffer = new oogl.Framebuffer();"
             ]
         },
-        "OOGL.Loader": {
-            "name": "OOGL.Loader",
-            "shortname": "OOGL.Loader",
+        "context.Loader": {
+            "name": "context.Loader",
+            "shortname": "context.Loader",
             "classitems": [],
             "plugins": [],
             "extensions": [],
@@ -969,15 +979,23 @@
             "module": "context",
             "namespace": "",
             "file": "src\\Loader.js",
-            "line": 3,
-            "description": "TODO",
+            "line": 4,
+            "description": "Manages asynchronous asset loading with progress feedback.",
+            "extends": "OOGL.TaskQueue",
             "is_constructor": 1,
             "params": [
                 {
                     "name": "tasks",
-                    "description": "TODO",
+                    "description": "Zero or more asynchronous tasks to queue. An\nasynchronous task is a function that takes only one argument, a reference to\na callback function to be called by the task itself when it is accomplished.",
                     "type": "Function",
-                    "multiple": true
+                    "multiple": true,
+                    "props": [
+                        {
+                            "name": "next",
+                            "description": "A reference to a callback function to be called\nby the task as soon as it finished. The `next` callback is not user-defined,\nit is passed to the task by the `Loader` object.",
+                            "type": "Function"
+                        }
+                    ]
                 }
             ],
             "example": [
@@ -1832,6 +1850,39 @@
             ],
             "example": [
                 "\n\tvar program = new oogl.Program();\n\tvar fragmentShader = new oogl.AjaxFragmentShader('frag/box.frag', function () {\n\t\tprogram.attachShader(fragmentShader);\n\t});"
+            ]
+        },
+        "OOGL.TaskQueue": {
+            "name": "OOGL.TaskQueue",
+            "shortname": "OOGL.TaskQueue",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "context",
+            "namespace": "",
+            "file": "src\\TaskQueue.js",
+            "line": 3,
+            "description": "Represents a queue of asynchronous tasks. This is mainly used to manage\nasynchronous asset loading and is inherited by\n{{#crossLink \"context.Loader\"}}Loader{{/crossLink}}.",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "tasks",
+                    "description": "Zero or more asynchronous tasks to queue. An\nasynchronous task is a function that takes only one argument, a reference to\na callback function to be called by the task itself when it is accomplished.",
+                    "type": "Function",
+                    "multiple": true,
+                    "props": [
+                        {
+                            "name": "next",
+                            "description": "A reference to a callback function to be called\nby the task as soon as it finished. The `next` callback is not user-defined,\nit is passed to the task by the `TaskQueue` object.",
+                            "type": "Function"
+                        }
+                    ]
+                }
+            ],
+            "example": [
+                "\n\tTODO"
             ]
         },
         "context.Texture": {
@@ -4007,78 +4058,147 @@
         },
         {
             "file": "src\\Loader.js",
-            "line": 18,
-            "description": "TODO",
+            "line": 25,
+            "description": "Queues an asynchronous task that loads and creates a texture given its\nURL.\n\nAfter being loaded the texture can be retrieved via the\n{{#crossLink \"OOGL.Loader/getTexture\"}}getTexture{{/crossLink}} method as\na {{#crossLink \"context.Texture2D\"}}Texture2D{{/crossLink}} object.",
             "itemtype": "method",
-            "name": "queue",
+            "name": "queueTexture",
+            "chainable": 1,
             "params": [
                 {
-                    "name": "tasks",
+                    "name": "id",
+                    "description": "The URL of the texture image to load.",
+                    "type": "String"
+                },
+                {
+                    "name": "minFilter",
                     "description": "TODO",
-                    "type": "Function",
-                    "multiple": true
+                    "type": "Number",
+                    "optional": true,
+                    "optdefault": "gl.LINEAR"
+                },
+                {
+                    "name": "magFilter",
+                    "description": "TODO",
+                    "type": "Number",
+                    "optional": true,
+                    "optdefault": "gl.LINEAR"
                 }
             ],
             "example": [
                 "\n\tTODO"
             ],
-            "class": "OOGL.Loader",
+            "class": "context.Loader",
             "module": "context"
         },
         {
             "file": "src\\Loader.js",
-            "line": 30,
-            "description": "TODO",
+            "line": 53,
+            "description": "Queues an asynchronous task that loads and creates zero or more textures\ngiven their URLs.\n\nAfter being loaded the textures can be retrieved via the\n{{#crossLink \"OOGL.Loader/getTexture\"}}getTexture{{/crossLink}} method as\n{{#crossLink \"context.Texture2D\"}}Texture2D{{/crossLink}} objects.",
             "itemtype": "method",
-            "name": "queueSync",
+            "name": "queueTextures",
+            "chainable": 1,
             "params": [
                 {
-                    "name": "tasks",
-                    "description": "TODO",
-                    "type": "Function",
-                    "multiple": true
+                    "name": "ids",
+                    "description": "An array of image URLs.",
+                    "type": "String[]"
                 }
             ],
             "example": [
                 "\n\tTODO"
             ],
-            "class": "OOGL.Loader",
+            "class": "context.Loader",
             "module": "context"
         },
         {
             "file": "src\\Loader.js",
-            "line": 49,
-            "description": "TODO",
+            "line": 75,
+            "description": "Retrieves a {{#crossLink \"context.Texture2D\"}}Texture2D{{/crossLink}}\nobject loaded from the image identified by the specified URL.",
             "itemtype": "method",
-            "name": "count",
+            "name": "getTexture",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "The URL of a previously loaded texture image.",
+                    "type": "String"
+                }
+            ],
             "return": {
-                "description": "TODO",
-                "type": "Number"
+                "description": "A `Texture2D` object representing the GL\ntexture.",
+                "type": "context.Texture2D"
             },
             "example": [
                 "\n\tTODO"
             ],
-            "class": "OOGL.Loader",
+            "class": "context.Loader",
             "module": "context"
         },
         {
             "file": "src\\Loader.js",
-            "line": 61,
-            "description": "TODO",
+            "line": 92,
+            "description": "Queues an asynchronous task that loads, compiles and links the specified\nshader pair.\n\nInternally the `queueProgram` method uses the\n{{#crossLink \"context.AjaxProgram\"}}AjaxProgram{{/crossLink}} class.\n\nThe loaded programs can then be retrieved using the\n{{#crossLink \"context.Loader/getProgram\"}}getProgram{{/crossLink}}\nmethod.",
             "itemtype": "method",
-            "name": "start",
+            "name": "queueProgram",
+            "chainable": 1,
             "params": [
                 {
-                    "name": "callback",
-                    "description": "TODO",
-                    "type": "Function",
-                    "optional": true
+                    "name": "id",
+                    "description": "The URL of the GLSL shaders to load, excluding the\nfilename extension which is automatically appended (`.frag` for fragment\nshaders and `.vert` for vertex shaders).",
+                    "type": "String"
+                },
+                {
+                    "name": "attributes",
+                    "description": "An array of attribute array variable names\nto associate to array indices. See the\n{{#crossLink \"context.AjaxProgram\"}}AjaxProgam{{/crossLink}} class for\nmore information.",
+                    "type": "String[]"
                 }
             ],
             "example": [
                 "\n\tTODO"
             ],
-            "class": "OOGL.Loader",
+            "class": "context.Loader",
+            "module": "context"
+        },
+        {
+            "file": "src\\Loader.js",
+            "line": 121,
+            "description": "Queues an asynchronous task that loads, compiles and links zero or more\nshader pairs.\n\nInternally the `queuePrograms` method uses the\n{{#crossLink \"context.AjaxProgram\"}}AjaxProgram{{/crossLink}} class to\nload each shader pair.\n\nThe loaded programs can then be retrieved using the\n{{#crossLink \"context.Loader/getProgram\"}}getProgram{{/crossLink}}\nmethod.",
+            "itemtype": "method",
+            "name": "queuePrograms",
+            "chainable": 1,
+            "params": [
+                {
+                    "name": "map",
+                    "description": "A dictionary object that associates shader pair URLs\nto attribute arrays. For example:\n\n\t{\n\t\t\"glsl/box\": [\"in_Vertex\", \"in_TexCoord\"]\n\t\t\"glsl/sphere\": [\"in_Vertex\", \"in_Normal\", \"in_TexCoord\"]\n\t}\n\nIn this example we assumed there is a `glsl` directory containing two\nshaders pairs: `box.vert`, `box.frag`, `sphere.vert` and `sphere.frag`.\nBesides, the `box` shaders use two attribute arrays which are `in_Vertex`\nand `in_TexCoord`, while the `sphere` shaders use three attribute arrays\nwhich are `in_Vertex`, `in_Normal` and `in_TexCoord`.",
+                    "type": "Object"
+                }
+            ],
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "context.Loader",
+            "module": "context"
+        },
+        {
+            "file": "src\\Loader.js",
+            "line": 164,
+            "description": "Retrieves a {{#crossLink \"context.Program\"}}Program{{/crossLink}} object\nloaded from the shader pair identified by the specified URL.",
+            "itemtype": "method",
+            "name": "getProgram",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "The URL of a previously loaded shader pair, not\nincluding the filename extension.",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "A `Program` object representing the GL program.",
+                "type": "context.Program"
+            },
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "context.Loader",
             "module": "context"
         },
         {
@@ -6958,6 +7078,98 @@
                 "\n\tif (shader.getDeleteStatus()) {\n\t\tthrow 'The shader has been deleted.';\n\t}"
             ],
             "class": "context.Shader",
+            "module": "context"
+        },
+        {
+            "file": "src\\TaskQueue.js",
+            "line": 27,
+            "description": "Queues zero or more asynchronous tasks.",
+            "itemtype": "method",
+            "name": "queue",
+            "chainable": 1,
+            "params": [
+                {
+                    "name": "tasks",
+                    "description": "Zero or more asynchronous tasks to queue. An\nasynchronous task is a function that takes only one argument, a reference\nto a callback function to be called by the task itself when it is\naccomplished.",
+                    "type": "Function",
+                    "multiple": true,
+                    "props": [
+                        {
+                            "name": "next",
+                            "description": "A reference to a callback function to be\ncalled by the task as soon as it finished. The `next` callback is not\nuser-defined, it is passed to the task by the `TaskQueue` object.",
+                            "type": "Function"
+                        }
+                    ]
+                }
+            ],
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "OOGL.TaskQueue",
+            "module": "context"
+        },
+        {
+            "file": "src\\TaskQueue.js",
+            "line": 44,
+            "description": "Queues zero or more synchronous tasks.",
+            "itemtype": "method",
+            "name": "queueSync",
+            "chainable": 1,
+            "params": [
+                {
+                    "name": "tasks",
+                    "description": "Zero or more synchronous tasks. A synchronous\ntask is a function that executes synchronously. The next task in the\nqueue is executed as soon as the function returns.",
+                    "type": "Function",
+                    "multiple": true
+                }
+            ],
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "OOGL.TaskQueue",
+            "module": "context"
+        },
+        {
+            "file": "src\\TaskQueue.js",
+            "line": 67,
+            "description": "Returns the number of tasks queued so far.",
+            "itemtype": "method",
+            "name": "count",
+            "return": {
+                "description": "The number of tasks queued so far.",
+                "type": "Number"
+            },
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "OOGL.TaskQueue",
+            "module": "context"
+        },
+        {
+            "file": "src\\TaskQueue.js",
+            "line": 79,
+            "description": "Starts executing the queued tasks in queuing order.",
+            "itemtype": "method",
+            "name": "start",
+            "chainable": 1,
+            "params": [
+                {
+                    "name": "callback",
+                    "description": "An optional user-defined callback function\nthat gets invoked as soon as all the tasks finish.",
+                    "type": "Function",
+                    "optional": true
+                },
+                {
+                    "name": "progress",
+                    "description": "TODO",
+                    "type": "Function",
+                    "optional": true
+                }
+            ],
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "OOGL.TaskQueue",
             "module": "context"
         },
         {
