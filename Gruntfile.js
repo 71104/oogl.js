@@ -35,7 +35,7 @@ module.exports = function (grunt) {
 		},
 
 		clean: {
-			dist: ['bin']
+			dist: ['bin', 'doc']
 		},
 
 		jshint: {
@@ -71,7 +71,7 @@ module.exports = function (grunt) {
 				'src/Vector2.js',
 				'src/Vector3.js',
 				'src/Vector4.js',
-				'src/Loader.js',
+				'src/TaskQueue.js',
 				'src/Matrix2.js',
 				'src/Matrix3.js',
 				'src/Matrix4.js',
@@ -82,6 +82,7 @@ module.exports = function (grunt) {
 				'src/Programs.js',
 				'src/Framebuffer.js',
 				'src/Renderbuffer.js',
+				'src/Loader.js',
 				'src/RenderLoop.js',
 				'src/Timing.js',
 				]

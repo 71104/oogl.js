@@ -43,7 +43,10 @@ OOGL.TaskQueue = function () {
 	 * @example
 	 *	TODO
 	 */
-	this.queue = enqueue;
+	this.queue = function () {
+		queue.push.apply(queue, arguments);
+		return thisObject;
+	};
 
 	/**
 	 * Queues zero or more synchronous tasks.
