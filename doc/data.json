@@ -2118,7 +2118,7 @@
             "description": "Static class providing timing-related functions.",
             "static": 1,
             "example": [
-                "\n\tTODO"
+                "\n\tvar loop = new OOGL.RenderLoop(function () {\n\t\tconsole.log(OOGL.Timing.now());\n\t});\n\tloop.start();"
             ]
         },
         "OOGL.Vector2": {
@@ -7712,7 +7712,7 @@
         },
         {
             "file": "src\\Timing.js",
-            "line": 17,
+            "line": 20,
             "description": "Returns the current timestamp in milliseconds since the Epoch.\n\nThis method relies on `window.performance.now` where available and\ntransparently falls back to `Date.now`.",
             "itemtype": "method",
             "name": "now",
@@ -7722,7 +7722,7 @@
                 "type": "Number"
             },
             "example": [
-                "\n\tTODO"
+                "\n\tvar loop = new OOGL.RenderLoop(function () {\n\t\tconsole.log(OOGL.Timing.now());\n\t});\n\tloop.start();"
             ],
             "class": "OOGL.Timing",
             "module": "OOGL"

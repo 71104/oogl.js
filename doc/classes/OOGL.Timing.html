@@ -325,7 +325,7 @@
             
         
         
-        <a href="../files/src_Timing.js.html#l17"><code>src\Timing.js:17</code></a>
+        <a href="../files/src_Timing.js.html#l20"><code>src\Timing.js:20</code></a>
         
         </p>
 
@@ -365,7 +365,10 @@ transparently falls back to <code>Date.now</code>.</p>
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>TODO</code></pre>
+                <pre class="code prettyprint"><code>var loop = new OOGL.RenderLoop(function () {
+    console.log(OOGL.Timing.now());
+});
+loop.start();</code></pre>
 
             </div>
         </div>
