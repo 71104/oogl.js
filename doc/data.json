@@ -1829,7 +1829,7 @@
             "module": "context",
             "namespace": "",
             "file": "src\\Shaders.js",
-            "line": 260,
+            "line": 262,
             "description": "A fragment shader which tries to load its GLSL source code using AJAX.\n\nThe `AjaxFragmentShader` constructor also tries to compile the shader using\nthe provided `compileOrThrow` method.\n\nAfter the source code has been loaded and compiled successfully the specified\ncallback function is invoked using this `AjaxFragmentShader` object as\n`this`.",
             "extends": "context.Shader",
             "is_constructor": 1,
@@ -7108,7 +7108,7 @@
         },
         {
             "file": "src\\TaskQueue.js",
-            "line": 48,
+            "line": 51,
             "description": "Queues zero or more synchronous tasks.",
             "itemtype": "method",
             "name": "queueSync",
@@ -7129,7 +7129,7 @@
         },
         {
             "file": "src\\TaskQueue.js",
-            "line": 71,
+            "line": 74,
             "description": "Returns the number of tasks queued so far.",
             "itemtype": "method",
             "name": "count",
@@ -7145,7 +7145,7 @@
         },
         {
             "file": "src\\TaskQueue.js",
-            "line": 83,
+            "line": 86,
             "description": "Starts executing the queued tasks in queuing order.",
             "itemtype": "method",
             "name": "start",
