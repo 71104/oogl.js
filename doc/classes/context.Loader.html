@@ -378,6 +378,13 @@ information.</p>
                             </li>
                         
                             <li class="index-item method">
+                                <a href="#method_getData">getData</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
                                 <a href="#method_getProgram">getProgram</a>
 
                                 
@@ -393,6 +400,20 @@ information.</p>
                         
                             <li class="index-item method inherited">
                                 <a href="#method_queue">queue</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_queueData">queueData</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_queueJSON">queueJSON</a>
 
                                 
                                 
@@ -535,6 +556,124 @@ information.</p>
 </div>
 
                 
+                    <div id="method_getData" class="method item">
+    <h3 class="name"><code>getData</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>id</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_Loader.js.html#l255"><code>src\Loader.js:255</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Retrieves data previously loaded via the
+<a href="..\classes\context.Loader.html#method_queueData" class="crosslink">queueData</a> or
+<a href="..\classes\context.Loader.html#method_queueJSON" class="crosslink">queueJSON</a> method.</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">id</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The URL of the requested data.</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>:
+                    
+                    <p>The requested data.</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>TODO</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
                     <div id="method_getProgram" class="method item">
     <h3 class="name"><code>getProgram</code></h3>
 
@@ -581,7 +720,7 @@ information.</p>
             
         
         
-        <a href="../files/src_Loader.js.html#l179"><code>src\Loader.js:179</code></a>
+        <a href="../files/src_Loader.js.html#l181"><code>src\Loader.js:181</code></a>
         
         </p>
 
@@ -699,7 +838,7 @@ including the filename extension.</p>
             
         
         
-        <a href="../files/src_Loader.js.html#l88"><code>src\Loader.js:88</code></a>
+        <a href="../files/src_Loader.js.html#l90"><code>src\Loader.js:90</code></a>
         
         </p>
 
@@ -870,6 +1009,275 @@ texture.</p>
 </div>
 
                 
+                    <div id="method_queueData" class="method item">
+    <h3 class="name"><code>queueData</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>id</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code class="optional">[data]</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>type</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_Loader.js.html#l198"><code>src\Loader.js:198</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Queues a task that loads a file of the specified type via AJAX.</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">id</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The URL of the file.</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name optional">[data]</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>An optional object containing parameters to be
+passed to the server in the AJAX request. It specified directly to the
+<a href="..\classes\OOGL.Ajax.html#method_get" class="crosslink">OOGL.Ajax.get</a> method.</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">type</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The data type, specified directly to the
+<a href="..\classes\OOGL.Ajax.html#method_get" class="crosslink">OOGL.Ajax.get</a> method.</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>TODO</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_queueJSON" class="method item">
+    <h3 class="name"><code>queueJSON</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>id</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code class="optional">[data]</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_Loader.js.html#l228"><code>src\Loader.js:228</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Queues a task that loads JSON data via AJAX.</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">id</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The URL of the JSON data.</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name optional">[data]</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>An optional object containing parameters to be
+passed to the server in the AJAX request. It specified directly to the
+<a href="..\classes\OOGL.Ajax.html#method_get" class="crosslink">OOGL.Ajax.getJSON</a> method.</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>TODO</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
                     <div id="method_queueProgram" class="method item">
     <h3 class="name"><code>queueProgram</code></h3>
 
@@ -920,7 +1328,7 @@ texture.</p>
             
         
         
-        <a href="../files/src_Loader.js.html#l105"><code>src\Loader.js:105</code></a>
+        <a href="../files/src_Loader.js.html#l107"><code>src\Loader.js:107</code></a>
         
         </p>
 
@@ -1048,7 +1456,7 @@ more information.</p>
             
         
         
-        <a href="../files/src_Loader.js.html#l135"><code>src\Loader.js:135</code></a>
+        <a href="../files/src_Loader.js.html#l137"><code>src\Loader.js:137</code></a>
         
         </p>
 
@@ -1277,7 +1685,7 @@ which are <code>in_Vertex</code>, <code>in_Normal</code> and <code>in_TexCoord</
             
         
         
-        <a href="../files/src_Loader.js.html#l26"><code>src\Loader.js:26</code></a>
+        <a href="../files/src_Loader.js.html#l28"><code>src\Loader.js:28</code></a>
         
         </p>
 
@@ -1423,7 +1831,7 @@ information.</p>
             
         
         
-        <a href="../files/src_Loader.js.html#l63"><code>src\Loader.js:63</code></a>
+        <a href="../files/src_Loader.js.html#l65"><code>src\Loader.js:65</code></a>
         
         </p>
 
@@ -1564,7 +1972,8 @@ OOGL.Loader/getTexture method as
 
                     <div class="param-description">
                         <p>An optional user-defined callback function
-that gets invoked as soon as all the tasks finish.</p>
+that gets invoked as soon as all the tasks finish. The <code>TaskQueue</code> object
+is used as <code>this</code> when calling the function.</p>
 
                     </div>
 
@@ -1582,7 +1991,8 @@ that gets invoked as soon as all the tasks finish.</p>
 
                     <div class="param-description">
                         <p>An optional user-defined callback function
-that gets invoked every time a task ends.</p>
+that gets invoked every time a task ends. The <code>TaskQueue</code> object is used
+as <code>this</code> when calling the function.</p>
 
                     </div>
 

@@ -1631,7 +1631,7 @@
             "module": "context",
             "namespace": "",
             "file": "src\\Programs.js",
-            "line": 989,
+            "line": 1015,
             "description": "A `Program` that loads the sources of a pair of shaders via AJAX and\nautomatically tries to compile and link; the info log is thrown if the\nprogram fails to compile or link.\n\nThe URLs to the GLSL shader sources are specified as a single path without\nfile name extension; the `.vert` and `.frag` extensions are automatically\nappended to it.\n\nBefore linking, the `AjaxProgram` constructor also binds a specified set of\nattribute variables to their respective indices using `bindAttribLocation`.\n\nIf the program is compiled and linked successfully, the specified `callback`\nfunction is invoked using this `AjaxProgram` object as `this`.",
             "extends": "context.Program",
             "is_constructor": 1,
@@ -1822,7 +1822,7 @@
             "module": "context",
             "namespace": "",
             "file": "src\\Shaders.js",
-            "line": 262,
+            "line": 263,
             "description": "A fragment shader which tries to load its GLSL source code using AJAX.\n\nThe `AjaxFragmentShader` constructor also tries to compile the shader using\nthe provided `compileOrThrow` method.\n\nAfter the source code has been loaded and compiled successfully the specified\ncallback function is invoked using this `AjaxFragmentShader` object as\n`this`.",
             "extends": "context.Shader",
             "is_constructor": 1,
@@ -4042,7 +4042,7 @@
         },
         {
             "file": "src\\Loader.js",
-            "line": 26,
+            "line": 28,
             "description": "Queues an asynchronous task that loads and creates a texture given its\nURL.\n\nInternally the `queueTexture` method uses the\n{{#crossLink \"context.AsyncTexture\"}}AsyncTexture{{/crossLink}} class.\n\nAfter being loaded, the texture can be retrieved via the\n{{#crossLink \"OOGL.Loader/getTexture\"}}getTexture{{/crossLink}} method as\na {{#crossLink \"context.Texture2D\"}}Texture2D{{/crossLink}} object.",
             "itemtype": "method",
             "name": "queueTexture",
@@ -4076,7 +4076,7 @@
         },
         {
             "file": "src\\Loader.js",
-            "line": 63,
+            "line": 65,
             "description": "Queues asynchronous tasks that load and create zero or more textures\ngiven their URLs.\n\nInternally the `queueTextures` method uses the\n{{#crossLink \"context.AsyncTexture\"}}AsyncTexture{{/crossLink}} class.\n\nAfter being loaded, the textures can be retrieved via the\n{{#crossLink \"OOGL.Loader/getTexture\"}}getTexture{{/crossLink}} method as\n{{#crossLink \"context.Texture2D\"}}Texture2D{{/crossLink}} objects.",
             "itemtype": "method",
             "name": "queueTextures",
@@ -4096,7 +4096,7 @@
         },
         {
             "file": "src\\Loader.js",
-            "line": 88,
+            "line": 90,
             "description": "Retrieves a {{#crossLink \"context.Texture2D\"}}Texture2D{{/crossLink}}\nobject loaded from the image identified by the specified URL.",
             "itemtype": "method",
             "name": "getTexture",
@@ -4119,7 +4119,7 @@
         },
         {
             "file": "src\\Loader.js",
-            "line": 105,
+            "line": 107,
             "description": "Queues an asynchronous task that loads, compiles and links the specified\nshader pair, and returns it as a\n{{#crossLink \"context.Program\"}}Program{{/crossLink}} object.\n\nInternally the `queueProgram` method uses the\n{{#crossLink \"context.AjaxProgram\"}}AjaxProgram{{/crossLink}} class.\n\nThe loaded program can then be retrieved using the\n{{#crossLink \"context.Loader/getProgram\"}}getProgram{{/crossLink}}\nmethod.",
             "itemtype": "method",
             "name": "queueProgram",
@@ -4144,7 +4144,7 @@
         },
         {
             "file": "src\\Loader.js",
-            "line": 135,
+            "line": 137,
             "description": "Queues asynchronous tasks that load, compile and link zero or more shader\npairs, and return them as\n{{#crossLink \"context.Program\"}}Program{{/crossLink}} objects.\n\nInternally the `queuePrograms` method uses the\n{{#crossLink \"context.AjaxProgram\"}}AjaxProgram{{/crossLink}} class to\nload each shader pair.\n\nThe loaded programs can then be retrieved using the\n{{#crossLink \"context.Loader/getProgram\"}}getProgram{{/crossLink}}\nmethod.",
             "itemtype": "method",
             "name": "queuePrograms",
@@ -4164,7 +4164,7 @@
         },
         {
             "file": "src\\Loader.js",
-            "line": 179,
+            "line": 181,
             "description": "Retrieves a {{#crossLink \"context.Program\"}}Program{{/crossLink}} object\nloaded from the shader pair identified by the specified URL.",
             "itemtype": "method",
             "name": "getProgram",
@@ -4178,6 +4178,84 @@
             "return": {
                 "description": "A `Program` object representing the GL program.",
                 "type": "context.Program"
+            },
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "context.Loader",
+            "module": "context"
+        },
+        {
+            "file": "src\\Loader.js",
+            "line": 198,
+            "description": "Queues a task that loads a file of the specified type via AJAX.",
+            "itemtype": "method",
+            "name": "queueData",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "The URL of the file.",
+                    "type": "String"
+                },
+                {
+                    "name": "data",
+                    "description": "An optional object containing parameters to be\npassed to the server in the AJAX request. It specified directly to the\n{{#crossLink \"OOGL.Ajax/get\"}}OOGL.Ajax.get{{/crossLink}} method.",
+                    "type": "Object",
+                    "optional": true
+                },
+                {
+                    "name": "type",
+                    "description": "The data type, specified directly to the\n{{#crossLink \"OOGL.Ajax/get\"}}OOGL.Ajax.get{{/crossLink}} method.",
+                    "type": "String"
+                }
+            ],
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "context.Loader",
+            "module": "context"
+        },
+        {
+            "file": "src\\Loader.js",
+            "line": 228,
+            "description": "Queues a task that loads JSON data via AJAX.",
+            "itemtype": "method",
+            "name": "queueJSON",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "The URL of the JSON data.",
+                    "type": "String"
+                },
+                {
+                    "name": "data",
+                    "description": "An optional object containing parameters to be\npassed to the server in the AJAX request. It specified directly to the\n{{#crossLink \"OOGL.Ajax/get\"}}OOGL.Ajax.getJSON{{/crossLink}} method.",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "context.Loader",
+            "module": "context"
+        },
+        {
+            "file": "src\\Loader.js",
+            "line": 255,
+            "description": "Retrieves data previously loaded via the\n{{#crossLink \"context.Loader/queueData\"}}queueData{{/crossLink}} or\n{{#crossLink \"context.Loader/queueJSON\"}}queueJSON{{/crossLink}} method.",
+            "itemtype": "method",
+            "name": "getData",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "The URL of the requested data.",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "The requested data.",
+                "type": "Object"
             },
             "example": [
                 "\n\tTODO"
@@ -6420,8 +6498,32 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 1033,
-            "description": "Returns the vertex shader automatically generated by the\nconstructor.",
+            "line": 980,
+            "description": "TODO",
+            "itemtype": "method",
+            "name": "enableVertexAttribArrays",
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "context.AutoProgram",
+            "module": "context"
+        },
+        {
+            "file": "src\\Programs.js",
+            "line": 993,
+            "description": "TODO",
+            "itemtype": "method",
+            "name": "disableVertexAttribArrays",
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "context.AutoProgram",
+            "module": "context"
+        },
+        {
+            "file": "src\\Programs.js",
+            "line": 1062,
+            "description": "Returns the vertex shader automatically generated by the constructor.",
             "itemtype": "method",
             "name": "getVertexShader",
             "return": {
@@ -6436,7 +6538,7 @@
         },
         {
             "file": "src\\Programs.js",
-            "line": 1046,
+            "line": 1074,
             "description": "Returns the fragment shader automatically generated by the\nconstructor.",
             "itemtype": "method",
             "name": "getFragmentShader",
@@ -6444,6 +6546,30 @@
                 "description": "The fragment shader.",
                 "type": "context.FragmentShader"
             },
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "context.AjaxProgram",
+            "module": "context"
+        },
+        {
+            "file": "src\\Programs.js",
+            "line": 1087,
+            "description": "TODO",
+            "itemtype": "method",
+            "name": "enableVertexAttribArrays",
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "context.AjaxProgram",
+            "module": "context"
+        },
+        {
+            "file": "src\\Programs.js",
+            "line": 1100,
+            "description": "TODO",
+            "itemtype": "method",
+            "name": "disableVertexAttribArrays",
             "example": [
                 "\n\tTODO"
             ],
@@ -7132,13 +7258,13 @@
             "params": [
                 {
                     "name": "callback",
-                    "description": "An optional user-defined callback function\nthat gets invoked as soon as all the tasks finish.",
+                    "description": "An optional user-defined callback function\nthat gets invoked as soon as all the tasks finish. The `TaskQueue` object\nis used as `this` when calling the function.",
                     "type": "Function",
                     "optional": true
                 },
                 {
                     "name": "progress",
-                    "description": "An optional user-defined callback function\nthat gets invoked every time a task ends.",
+                    "description": "An optional user-defined callback function\nthat gets invoked every time a task ends. The `TaskQueue` object is used\nas `this` when calling the function.",
                     "type": "Function",
                     "optional": true,
                     "props": [
