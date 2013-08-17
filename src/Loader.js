@@ -200,25 +200,27 @@ context.Loader = function () {
 	 *
 	 * @method queueData
 	 * @param id {String} The URL of the file.
-	 * @param [data] {Object} An optional object containing parameters to be
-	 * passed to the server in the AJAX request. It specified directly to the
+	 * @param [parameters] {Object} An optional object containing parameters to
+	 * be passed to the server in the AJAX request. It specified directly to the
 	 * {{#crossLink "OOGL.Ajax/get"}}OOGL.Ajax.get{{/crossLink}} method.
 	 * @param type {String} The data type, specified directly to the
 	 * {{#crossLink "OOGL.Ajax/get"}}OOGL.Ajax.get{{/crossLink}} method.
 	 * @example
 	 *	TODO
 	 */
-	this.queueData = function (id, data, type) {
+	this.queueData = function (id, parameters, type) {
 		if (arguments.length > 2) {
 			return thisObject.queue(function (next) {
-				OOGL.Ajax.get(id, data, function () {
+				OOGL.Ajax.get(id, parameters, function (response) {
+					data[id] = response;
 					next();
 				}, type);
 			});
 		} else {
 			type = data;
 			return thisObject.queue(function (next) {
-				OOGL.Ajax.get(id, function () {
+				OOGL.Ajax.get(id, function (response) {
+					data[id] = response;
 					next();
 				}, type);
 			});
@@ -230,22 +232,24 @@ context.Loader = function () {
 	 *
 	 * @method queueJSON
 	 * @param id {String} The URL of the JSON data.
-	 * @param [data] {Object} An optional object containing parameters to be
-	 * passed to the server in the AJAX request. It specified directly to the
+	 * @param [parameters] {Object} An optional object containing parameters to
+	 * be passed to the server in the AJAX request. It specified directly to the
 	 * {{#crossLink "OOGL.Ajax/get"}}OOGL.Ajax.getJSON{{/crossLink}} method.
 	 * @example
 	 *	TODO
 	 */
-	this.queueJSON = function (id, data) {
+	this.queueJSON = function (id, parameters) {
 		if (arguments.length > 1) {
 			return thisObject.queue(function (next) {
-				OOGL.Ajax.getJSON(id, data, function () {
+				OOGL.Ajax.getJSON(id, parameters, function (response) {
+					data[id] = response;
 					next();
 				});
 			});
 		} else {
 			return thisObject.queue(function (next) {
-				OOGL.Ajax.getJSON(id, function () {
+				OOGL.Ajax.getJSON(id, function (response) {
+					data[id] = response;
 					next();
 				});
 			});
