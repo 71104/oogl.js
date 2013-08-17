@@ -984,16 +984,9 @@
             "params": [
                 {
                     "name": "tasks",
-                    "description": "Zero or more asynchronous tasks to queue. An\nasynchronous task is a function that takes only one argument, a reference to\na callback function to be called by the task itself when it is accomplished.",
+                    "description": "Zero or more asynchronous tasks to queue. See the\n{{#crossLink \"OOGL.TaskQueue\"}}TaskQueue{{/crossLink}} description for more\ninformation.",
                     "type": "Function",
-                    "multiple": true,
-                    "props": [
-                        {
-                            "name": "next",
-                            "description": "A reference to a callback function to be called\nby the task as soon as it finished. The `next` callback is not user-defined,\nit is passed to the task by the `Loader` object.",
-                            "type": "Function"
-                        }
-                    ]
+                    "multiple": true
                 }
             ],
             "example": [
@@ -1862,21 +1855,14 @@
             "namespace": "",
             "file": "src\\TaskQueue.js",
             "line": 7,
-            "description": "Represents a queue of asynchronous tasks. This is mainly used to manage\nasynchronous asset loading and is inherited by\n{{#crossLink \"context.Loader\"}}Loader{{/crossLink}}.",
+            "description": "Represents a queue of asynchronous tasks. This is mainly used to manage\nasynchronous asset loading and is inherited by\n{{#crossLink \"context.Loader\"}}Loader{{/crossLink}}.\n\nA task is a function that executes a job and can be either synchronous or\nasynchronous.\n\nA synchronous task runs synchronously and its job terminates as soon as the\nfunction returns.\n\nAn asynchronous task, instead, runs asynchronously and always receives one\nsingle argument, a callback function that is invoked by the task as soon as\nit ends.",
             "is_constructor": 1,
             "params": [
                 {
                     "name": "tasks",
-                    "description": "Zero or more asynchronous tasks to queue. An\nasynchronous task is a function that takes only one argument, a reference to\na callback function to be called by the task itself when it is accomplished.",
+                    "description": "Zero or more asynchronous tasks to queue.",
                     "type": "Function",
-                    "multiple": true,
-                    "props": [
-                        {
-                            "name": "next",
-                            "description": "A reference to a callback function to be called\nby the task as soon as it finished. The `next` callback is not user-defined,\nit is passed to the task by the `TaskQueue` object.",
-                            "type": "Function"
-                        }
-                    ]
+                    "multiple": true
                 }
             ],
             "example": [
@@ -4056,8 +4042,8 @@
         },
         {
             "file": "src\\Loader.js",
-            "line": 29,
-            "description": "Queues an asynchronous task that loads and creates a texture given its\nURL.\n\nAfter being loaded the texture can be retrieved via the\n{{#crossLink \"OOGL.Loader/getTexture\"}}getTexture{{/crossLink}} method as\na {{#crossLink \"context.Texture2D\"}}Texture2D{{/crossLink}} object.",
+            "line": 26,
+            "description": "Queues an asynchronous task that loads and creates a texture given its\nURL.\n\nInternally the `queueTexture` method uses the\n{{#crossLink \"context.AsyncTexture\"}}AsyncTexture{{/crossLink}} class.\n\nAfter being loaded, the texture can be retrieved via the\n{{#crossLink \"OOGL.Loader/getTexture\"}}getTexture{{/crossLink}} method as\na {{#crossLink \"context.Texture2D\"}}Texture2D{{/crossLink}} object.",
             "itemtype": "method",
             "name": "queueTexture",
             "chainable": 1,
@@ -4068,15 +4054,15 @@
                     "type": "String"
                 },
                 {
-                    "name": "minFilter",
-                    "description": "TODO",
+                    "name": "magFilter",
+                    "description": "An optional value for the\nmagnifying filter. See\n{{#crossLink \"context.AsyncTexture\"}}AsyncTexture{{/crossLink}} for more\ninformation.",
                     "type": "Number",
                     "optional": true,
                     "optdefault": "gl.LINEAR"
                 },
                 {
-                    "name": "magFilter",
-                    "description": "TODO",
+                    "name": "minFilter",
+                    "description": "An optional value for the minifying\nfilter. See\n{{#crossLink \"context.AsyncTexture\"}}AsyncTexture{{/crossLink}} for more\ninformation.",
                     "type": "Number",
                     "optional": true,
                     "optdefault": "gl.LINEAR"
@@ -4090,8 +4076,8 @@
         },
         {
             "file": "src\\Loader.js",
-            "line": 57,
-            "description": "Queues an asynchronous task that loads and creates zero or more textures\ngiven their URLs.\n\nAfter being loaded the textures can be retrieved via the\n{{#crossLink \"OOGL.Loader/getTexture\"}}getTexture{{/crossLink}} method as\n{{#crossLink \"context.Texture2D\"}}Texture2D{{/crossLink}} objects.",
+            "line": 63,
+            "description": "Queues asynchronous tasks that load and create zero or more textures\ngiven their URLs.\n\nInternally the `queueTextures` method uses the\n{{#crossLink \"context.AsyncTexture\"}}AsyncTexture{{/crossLink}} class.\n\nAfter being loaded, the textures can be retrieved via the\n{{#crossLink \"OOGL.Loader/getTexture\"}}getTexture{{/crossLink}} method as\n{{#crossLink \"context.Texture2D\"}}Texture2D{{/crossLink}} objects.",
             "itemtype": "method",
             "name": "queueTextures",
             "chainable": 1,
@@ -4110,7 +4096,7 @@
         },
         {
             "file": "src\\Loader.js",
-            "line": 79,
+            "line": 88,
             "description": "Retrieves a {{#crossLink \"context.Texture2D\"}}Texture2D{{/crossLink}}\nobject loaded from the image identified by the specified URL.",
             "itemtype": "method",
             "name": "getTexture",
@@ -4133,8 +4119,8 @@
         },
         {
             "file": "src\\Loader.js",
-            "line": 96,
-            "description": "Queues an asynchronous task that loads, compiles and links the specified\nshader pair.\n\nInternally the `queueProgram` method uses the\n{{#crossLink \"context.AjaxProgram\"}}AjaxProgram{{/crossLink}} class.\n\nThe loaded programs can then be retrieved using the\n{{#crossLink \"context.Loader/getProgram\"}}getProgram{{/crossLink}}\nmethod.",
+            "line": 105,
+            "description": "Queues an asynchronous task that loads, compiles and links the specified\nshader pair, and returns it as a\n{{#crossLink \"context.Program\"}}Program{{/crossLink}} object.\n\nInternally the `queueProgram` method uses the\n{{#crossLink \"context.AjaxProgram\"}}AjaxProgram{{/crossLink}} class.\n\nThe loaded program can then be retrieved using the\n{{#crossLink \"context.Loader/getProgram\"}}getProgram{{/crossLink}}\nmethod.",
             "itemtype": "method",
             "name": "queueProgram",
             "chainable": 1,
@@ -4158,8 +4144,8 @@
         },
         {
             "file": "src\\Loader.js",
-            "line": 125,
-            "description": "Queues an asynchronous task that loads, compiles and links zero or more\nshader pairs.\n\nInternally the `queuePrograms` method uses the\n{{#crossLink \"context.AjaxProgram\"}}AjaxProgram{{/crossLink}} class to\nload each shader pair.\n\nThe loaded programs can then be retrieved using the\n{{#crossLink \"context.Loader/getProgram\"}}getProgram{{/crossLink}}\nmethod.",
+            "line": 135,
+            "description": "Queues asynchronous tasks that load, compile and link zero or more shader\npairs, and return them as\n{{#crossLink \"context.Program\"}}Program{{/crossLink}} objects.\n\nInternally the `queuePrograms` method uses the\n{{#crossLink \"context.AjaxProgram\"}}AjaxProgram{{/crossLink}} class to\nload each shader pair.\n\nThe loaded programs can then be retrieved using the\n{{#crossLink \"context.Loader/getProgram\"}}getProgram{{/crossLink}}\nmethod.",
             "itemtype": "method",
             "name": "queuePrograms",
             "chainable": 1,
@@ -4178,7 +4164,7 @@
         },
         {
             "file": "src\\Loader.js",
-            "line": 168,
+            "line": 179,
             "description": "Retrieves a {{#crossLink \"context.Program\"}}Program{{/crossLink}} object\nloaded from the shader pair identified by the specified URL.",
             "itemtype": "method",
             "name": "getProgram",
@@ -7080,7 +7066,7 @@
         },
         {
             "file": "src\\TaskQueue.js",
-            "line": 31,
+            "line": 36,
             "description": "Queues zero or more asynchronous tasks.",
             "itemtype": "method",
             "name": "queue",
@@ -7088,35 +7074,7 @@
             "params": [
                 {
                     "name": "tasks",
-                    "description": "Zero or more asynchronous tasks to queue. An\nasynchronous task is a function that takes only one argument, a reference\nto a callback function to be called by the task itself when it is\naccomplished.",
-                    "type": "Function",
-                    "multiple": true,
-                    "props": [
-                        {
-                            "name": "next",
-                            "description": "A reference to a callback function to be\ncalled by the task as soon as it finished. The `next` callback is not\nuser-defined, it is passed to the task by the `TaskQueue` object.",
-                            "type": "Function"
-                        }
-                    ]
-                }
-            ],
-            "example": [
-                "\n\tTODO"
-            ],
-            "class": "OOGL.TaskQueue",
-            "module": "OOGL"
-        },
-        {
-            "file": "src\\TaskQueue.js",
-            "line": 51,
-            "description": "Queues zero or more synchronous tasks.",
-            "itemtype": "method",
-            "name": "queueSync",
-            "chainable": 1,
-            "params": [
-                {
-                    "name": "tasks",
-                    "description": "Zero or more synchronous tasks. A synchronous\ntask is a function that executes synchronously. The next task in the\nqueue is executed as soon as the function returns.",
+                    "description": "Zero or more asynchronous tasks to queue.",
                     "type": "Function",
                     "multiple": true
                 }
@@ -7129,7 +7087,28 @@
         },
         {
             "file": "src\\TaskQueue.js",
-            "line": 74,
+            "line": 50,
+            "description": "Queues zero or more synchronous tasks.",
+            "itemtype": "method",
+            "name": "queueSync",
+            "chainable": 1,
+            "params": [
+                {
+                    "name": "tasks",
+                    "description": "Zero or more synchronous tasks to queue.",
+                    "type": "Function",
+                    "multiple": true
+                }
+            ],
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "OOGL.TaskQueue",
+            "module": "OOGL"
+        },
+        {
+            "file": "src\\TaskQueue.js",
+            "line": 71,
             "description": "Returns the number of tasks queued so far.",
             "itemtype": "method",
             "name": "count",
@@ -7145,7 +7124,7 @@
         },
         {
             "file": "src\\TaskQueue.js",
-            "line": 86,
+            "line": 83,
             "description": "Starts executing the queued tasks in queuing order.",
             "itemtype": "method",
             "name": "start",
@@ -7159,9 +7138,16 @@
                 },
                 {
                     "name": "progress",
-                    "description": "TODO",
+                    "description": "An optional user-defined callback function\nthat gets invoked every time a task ends.",
                     "type": "Function",
-                    "optional": true
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "progress",
+                            "description": "A percentage value indicating the\ncurrent progress, computed by the following formula:\n\n\ti * 100 / c\n\nWhere `i` indicates the zero-based index of the last executed task and\n`c` indicates the total number of queued tasks.",
+                            "type": "Number"
+                        }
+                    ]
                 }
             ],
             "example": [

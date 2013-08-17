@@ -318,32 +318,12 @@
                     
 
                     <div class="param-description">
-                        <p>Zero or more asynchronous tasks to queue. An
-asynchronous task is a function that takes only one argument, a reference to
-a callback function to be called by the task itself when it is accomplished.</p>
+                        <p>Zero or more asynchronous tasks to queue. See the
+<a href="..\classes\OOGL.TaskQueue.html" class="crosslink">TaskQueue</a> description for more
+information.</p>
 
                     </div>
 
-                    
-                        <ul class="params-list">
-                            
-                            <li class="param">
-                                
-                                    <code class="param-name">next</code>
-                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
-                                
-
-                                <div class="param-description">
-                                    <p>A reference to a callback function to be called
-by the task as soon as it finished. The <code>next</code> callback is not user-defined,
-it is passed to the task by the <code>Loader</code> object.</p>
-
-                                </div>
-
-                                
-                            </li>
-                            
-                        </ul>
                     
                 </li>
             
@@ -509,7 +489,7 @@ it is passed to the task by the <code>Loader</code> object.</p>
             
         
         
-        <a href="../files/src_TaskQueue.js.html#l74"><code>src\TaskQueue.js:74</code></a>
+        <a href="../files/src_TaskQueue.js.html#l71"><code>src\TaskQueue.js:71</code></a>
         
         </p>
 
@@ -601,7 +581,7 @@ it is passed to the task by the <code>Loader</code> object.</p>
             
         
         
-        <a href="../files/src_Loader.js.html#l168"><code>src\Loader.js:168</code></a>
+        <a href="../files/src_Loader.js.html#l179"><code>src\Loader.js:179</code></a>
         
         </p>
 
@@ -719,7 +699,7 @@ including the filename extension.</p>
             
         
         
-        <a href="../files/src_Loader.js.html#l79"><code>src\Loader.js:79</code></a>
+        <a href="../files/src_Loader.js.html#l88"><code>src\Loader.js:88</code></a>
         
         </p>
 
@@ -832,7 +812,7 @@ texture.</p>
             
         
         
-        <a href="../files/src_TaskQueue.js.html#l31"><code>src\TaskQueue.js:31</code></a>
+        <a href="../files/src_TaskQueue.js.html#l36"><code>src\TaskQueue.js:36</code></a>
         
         </p>
 
@@ -864,33 +844,10 @@ texture.</p>
                     
 
                     <div class="param-description">
-                        <p>Zero or more asynchronous tasks to queue. An
-asynchronous task is a function that takes only one argument, a reference
-to a callback function to be called by the task itself when it is
-accomplished.</p>
+                        <p>Zero or more asynchronous tasks to queue.</p>
 
                     </div>
 
-                    
-                        <ul class="params-list">
-                            
-                            <li class="param">
-                                
-                                    <code class="param-name">next</code>
-                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
-                                
-
-                                <div class="param-description">
-                                    <p>A reference to a callback function to be
-called by the task as soon as it finished. The <code>next</code> callback is not
-user-defined, it is passed to the task by the <code>TaskQueue</code> object.</p>
-
-                                </div>
-
-                                
-                            </li>
-                            
-                        </ul>
                     
                 </li>
             
@@ -963,7 +920,7 @@ user-defined, it is passed to the task by the <code>TaskQueue</code> object.</p>
             
         
         
-        <a href="../files/src_Loader.js.html#l96"><code>src\Loader.js:96</code></a>
+        <a href="../files/src_Loader.js.html#l105"><code>src\Loader.js:105</code></a>
         
         </p>
 
@@ -975,10 +932,11 @@ user-defined, it is passed to the task by the <code>TaskQueue</code> object.</p>
 
     <div class="description">
         <p>Queues an asynchronous task that loads, compiles and links the specified
-shader pair.</p>
+shader pair, and returns it as a
+<a href="..\classes\context.Program.html" class="crosslink">Program</a> object.</p>
 <p>Internally the <code>queueProgram</code> method uses the
 <a href="..\classes\context.AjaxProgram.html" class="crosslink">AjaxProgram</a> class.</p>
-<p>The loaded programs can then be retrieved using the
+<p>The loaded program can then be retrieved using the
 <a href="..\classes\context.Loader.html#method_getProgram" class="crosslink">getProgram</a>
 method.</p>
 
@@ -1090,7 +1048,7 @@ more information.</p>
             
         
         
-        <a href="../files/src_Loader.js.html#l125"><code>src\Loader.js:125</code></a>
+        <a href="../files/src_Loader.js.html#l135"><code>src\Loader.js:135</code></a>
         
         </p>
 
@@ -1101,8 +1059,9 @@ more information.</p>
     </div>
 
     <div class="description">
-        <p>Queues an asynchronous task that loads, compiles and links zero or more
-shader pairs.</p>
+        <p>Queues asynchronous tasks that load, compile and link zero or more shader
+pairs, and return them as
+<a href="..\classes\context.Program.html" class="crosslink">Program</a> objects.</p>
 <p>Internally the <code>queuePrograms</code> method uses the
 <a href="..\classes\context.AjaxProgram.html" class="crosslink">AjaxProgram</a> class to
 load each shader pair.</p>
@@ -1204,7 +1163,7 @@ which are <code>in_Vertex</code>, <code>in_Normal</code> and <code>in_TexCoord</
             
         
         
-        <a href="../files/src_TaskQueue.js.html#l51"><code>src\TaskQueue.js:51</code></a>
+        <a href="../files/src_TaskQueue.js.html#l50"><code>src\TaskQueue.js:50</code></a>
         
         </p>
 
@@ -1236,9 +1195,7 @@ which are <code>in_Vertex</code>, <code>in_Normal</code> and <code>in_TexCoord</
                     
 
                     <div class="param-description">
-                        <p>Zero or more synchronous tasks. A synchronous
-task is a function that executes synchronously. The next task in the
-queue is executed as soon as the function returns.</p>
+                        <p>Zero or more synchronous tasks to queue.</p>
 
                     </div>
 
@@ -1279,13 +1236,13 @@ queue is executed as soon as the function returns.</p>
             
                 <li class="arg">
                     
-                        <code class="optional">[minFilter=gl.LINEAR]</code>
+                        <code class="optional">[magFilter=gl.LINEAR]</code>
                     
                 </li>
             
                 <li class="arg">
                     
-                        <code class="optional">[magFilter=gl.LINEAR]</code>
+                        <code class="optional">[minFilter=gl.LINEAR]</code>
                     
                 </li>
             
@@ -1320,7 +1277,7 @@ queue is executed as soon as the function returns.</p>
             
         
         
-        <a href="../files/src_Loader.js.html#l29"><code>src\Loader.js:29</code></a>
+        <a href="../files/src_Loader.js.html#l26"><code>src\Loader.js:26</code></a>
         
         </p>
 
@@ -1333,7 +1290,9 @@ queue is executed as soon as the function returns.</p>
     <div class="description">
         <p>Queues an asynchronous task that loads and creates a texture given its
 URL.</p>
-<p>After being loaded the texture can be retrieved via the
+<p>Internally the <code>queueTexture</code> method uses the
+<a href="..\classes\context.AsyncTexture.html" class="crosslink">AsyncTexture</a> class.</p>
+<p>After being loaded, the texture can be retrieved via the
 OOGL.Loader/getTexture method as
 a <a href="..\classes\context.Texture2D.html" class="crosslink">Texture2D</a> object.</p>
 
@@ -1363,23 +1322,6 @@ a <a href="..\classes\context.Texture2D.html" class="crosslink">Texture2D</a> ob
             
                 <li class="param">
                     
-                        <code class="param-name optional">[minFilter=gl.LINEAR]</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
-                        <span class="flag optional" title="This parameter is optional.">optional</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>TODO</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
                         <code class="param-name optional">[magFilter=gl.LINEAR]</code>
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
                         <span class="flag optional" title="This parameter is optional.">optional</span>
@@ -1388,7 +1330,30 @@ a <a href="..\classes\context.Texture2D.html" class="crosslink">Texture2D</a> ob
                     
 
                     <div class="param-description">
-                        <p>TODO</p>
+                        <p>An optional value for the
+magnifying filter. See
+<a href="..\classes\context.AsyncTexture.html" class="crosslink">AsyncTexture</a> for more
+information.</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name optional">[minFilter=gl.LINEAR]</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>An optional value for the minifying
+filter. See
+<a href="..\classes\context.AsyncTexture.html" class="crosslink">AsyncTexture</a> for more
+information.</p>
 
                     </div>
 
@@ -1458,7 +1423,7 @@ a <a href="..\classes\context.Texture2D.html" class="crosslink">Texture2D</a> ob
             
         
         
-        <a href="../files/src_Loader.js.html#l57"><code>src\Loader.js:57</code></a>
+        <a href="../files/src_Loader.js.html#l63"><code>src\Loader.js:63</code></a>
         
         </p>
 
@@ -1469,9 +1434,11 @@ a <a href="..\classes\context.Texture2D.html" class="crosslink">Texture2D</a> ob
     </div>
 
     <div class="description">
-        <p>Queues an asynchronous task that loads and creates zero or more textures
+        <p>Queues asynchronous tasks that load and create zero or more textures
 given their URLs.</p>
-<p>After being loaded the textures can be retrieved via the
+<p>Internally the <code>queueTextures</code> method uses the
+<a href="..\classes\context.AsyncTexture.html" class="crosslink">AsyncTexture</a> class.</p>
+<p>After being loaded, the textures can be retrieved via the
 OOGL.Loader/getTexture method as
 <a href="..\classes\context.Texture2D.html" class="crosslink">Texture2D</a> objects.</p>
 
@@ -1565,7 +1532,7 @@ OOGL.Loader/getTexture method as
             
         
         
-        <a href="../files/src_TaskQueue.js.html#l86"><code>src\TaskQueue.js:86</code></a>
+        <a href="../files/src_TaskQueue.js.html#l83"><code>src\TaskQueue.js:83</code></a>
         
         </p>
 
@@ -1614,10 +1581,33 @@ that gets invoked as soon as all the tasks finish.</p>
                     
 
                     <div class="param-description">
-                        <p>TODO</p>
+                        <p>An optional user-defined callback function
+that gets invoked every time a task ends.</p>
 
                     </div>
 
+                    
+                        <ul class="params-list">
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name">progress</code>
+                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                                
+
+                                <div class="param-description">
+                                    <p>A percentage value indicating the
+current progress, computed by the following formula:</p>
+<pre><code>i * 100 / c</code></pre>
+<p>Where <code>i</code> indicates the zero-based index of the last executed task and
+<code>c</code> indicates the total number of queued tasks.</p>
+
+                                </div>
+
+                                
+                            </li>
+                            
+                        </ul>
                     
                 </li>
             

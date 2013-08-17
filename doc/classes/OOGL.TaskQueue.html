@@ -237,6 +237,13 @@
     <p>Represents a queue of asynchronous tasks. This is mainly used to manage
 asynchronous asset loading and is inherited by
 <a href="..\classes\context.Loader.html" class="crosslink">Loader</a>.</p>
+<p>A task is a function that executes a job and can be either synchronous or
+asynchronous.</p>
+<p>A synchronous task runs synchronously and its job terminates as soon as the
+function returns.</p>
+<p>An asynchronous task, instead, runs asynchronously and always receives one
+single argument, a callback function that is invoked by the task as soon as
+it ends.</p>
 
 </div>
 
@@ -316,32 +323,10 @@ asynchronous asset loading and is inherited by
                     
 
                     <div class="param-description">
-                        <p>Zero or more asynchronous tasks to queue. An
-asynchronous task is a function that takes only one argument, a reference to
-a callback function to be called by the task itself when it is accomplished.</p>
+                        <p>Zero or more asynchronous tasks to queue.</p>
 
                     </div>
 
-                    
-                        <ul class="params-list">
-                            
-                            <li class="param">
-                                
-                                    <code class="param-name">next</code>
-                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
-                                
-
-                                <div class="param-description">
-                                    <p>A reference to a callback function to be called
-by the task as soon as it finished. The <code>next</code> callback is not user-defined,
-it is passed to the task by the <code>TaskQueue</code> object.</p>
-
-                                </div>
-
-                                
-                            </li>
-                            
-                        </ul>
                     
                 </li>
             
@@ -468,7 +453,7 @@ it is passed to the task by the <code>TaskQueue</code> object.</p>
             
         
         
-        <a href="../files/src_TaskQueue.js.html#l74"><code>src\TaskQueue.js:74</code></a>
+        <a href="../files/src_TaskQueue.js.html#l71"><code>src\TaskQueue.js:71</code></a>
         
         </p>
 
@@ -558,7 +543,7 @@ it is passed to the task by the <code>TaskQueue</code> object.</p>
             
         
         
-        <a href="../files/src_TaskQueue.js.html#l31"><code>src\TaskQueue.js:31</code></a>
+        <a href="../files/src_TaskQueue.js.html#l36"><code>src\TaskQueue.js:36</code></a>
         
         </p>
 
@@ -590,33 +575,10 @@ it is passed to the task by the <code>TaskQueue</code> object.</p>
                     
 
                     <div class="param-description">
-                        <p>Zero or more asynchronous tasks to queue. An
-asynchronous task is a function that takes only one argument, a reference
-to a callback function to be called by the task itself when it is
-accomplished.</p>
+                        <p>Zero or more asynchronous tasks to queue.</p>
 
                     </div>
 
-                    
-                        <ul class="params-list">
-                            
-                            <li class="param">
-                                
-                                    <code class="param-name">next</code>
-                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
-                                
-
-                                <div class="param-description">
-                                    <p>A reference to a callback function to be
-called by the task as soon as it finished. The <code>next</code> callback is not
-user-defined, it is passed to the task by the <code>TaskQueue</code> object.</p>
-
-                                </div>
-
-                                
-                            </li>
-                            
-                        </ul>
                     
                 </li>
             
@@ -683,7 +645,7 @@ user-defined, it is passed to the task by the <code>TaskQueue</code> object.</p>
             
         
         
-        <a href="../files/src_TaskQueue.js.html#l51"><code>src\TaskQueue.js:51</code></a>
+        <a href="../files/src_TaskQueue.js.html#l50"><code>src\TaskQueue.js:50</code></a>
         
         </p>
 
@@ -715,9 +677,7 @@ user-defined, it is passed to the task by the <code>TaskQueue</code> object.</p>
                     
 
                     <div class="param-description">
-                        <p>Zero or more synchronous tasks. A synchronous
-task is a function that executes synchronously. The next task in the
-queue is executed as soon as the function returns.</p>
+                        <p>Zero or more synchronous tasks to queue.</p>
 
                     </div>
 
@@ -793,7 +753,7 @@ queue is executed as soon as the function returns.</p>
             
         
         
-        <a href="../files/src_TaskQueue.js.html#l86"><code>src\TaskQueue.js:86</code></a>
+        <a href="../files/src_TaskQueue.js.html#l83"><code>src\TaskQueue.js:83</code></a>
         
         </p>
 
@@ -842,10 +802,33 @@ that gets invoked as soon as all the tasks finish.</p>
                     
 
                     <div class="param-description">
-                        <p>TODO</p>
+                        <p>An optional user-defined callback function
+that gets invoked every time a task ends.</p>
 
                     </div>
 
+                    
+                        <ul class="params-list">
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name">progress</code>
+                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                                
+
+                                <div class="param-description">
+                                    <p>A percentage value indicating the
+current progress, computed by the following formula:</p>
+<pre><code>i * 100 / c</code></pre>
+<p>Where <code>i</code> indicates the zero-based index of the last executed task and
+<code>c</code> indicates the total number of queued tasks.</p>
+
+                                </div>
+
+                                
+                            </li>
+                            
+                        </ul>
                     
                 </li>
             

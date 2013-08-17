@@ -227,12 +227,9 @@
  * @class context.Loader
  * @extends OOGL.TaskQueue
  * @constructor
- * @param tasks* {Function} Zero or more asynchronous tasks to queue. An
- * asynchronous task is a function that takes only one argument, a reference to
- * a callback function to be called by the task itself when it is accomplished.
- * @param tasks.next {Function} A reference to a callback function to be called
- * by the task as soon as it finished. The &#x60;next&#x60; callback is not user-defined,
- * it is passed to the task by the &#x60;Loader&#x60; object.
+ * @param tasks* {Function} Zero or more asynchronous tasks to queue. See the
+ * {{#crossLink &quot;OOGL.TaskQueue&quot;}}TaskQueue{{/crossLink}} description for more
+ * information.
  * @example
  *	TODO
  */
@@ -246,15 +243,24 @@ context.Loader = function () {
 	 * Queues an asynchronous task that loads and creates a texture given its
 	 * URL.
 	 *
-	 * After being loaded the texture can be retrieved via the
+	 * Internally the &#x60;queueTexture&#x60; method uses the
+	 * {{#crossLink &quot;context.AsyncTexture&quot;}}AsyncTexture{{/crossLink}} class.
+	 *
+	 * After being loaded, the texture can be retrieved via the
 	 * {{#crossLink &quot;OOGL.Loader/getTexture&quot;}}getTexture{{/crossLink}} method as
 	 * a {{#crossLink &quot;context.Texture2D&quot;}}Texture2D{{/crossLink}} object.
 	 *
 	 * @method queueTexture
 	 * @chainable
 	 * @param id {String} The URL of the texture image to load.
-	 * @param [minFilter=gl.LINEAR] {Number} TODO
-	 * @param [magFilter=gl.LINEAR] {Number} TODO
+	 * @param [magFilter=gl.LINEAR] {Number} An optional value for the
+	 * magnifying filter. See
+	 * {{#crossLink &quot;context.AsyncTexture&quot;}}AsyncTexture{{/crossLink}} for more
+	 * information.
+	 * @param [minFilter=gl.LINEAR] {Number} An optional value for the minifying
+	 * filter. See
+	 * {{#crossLink &quot;context.AsyncTexture&quot;}}AsyncTexture{{/crossLink}} for more
+	 * information.
 	 * @example
 	 *	TODO
 	 */
@@ -266,15 +272,18 @@ context.Loader = function () {
 			minFilter = context.LINEAR;
 		}
 		return thisObject.queue(function (next) {
-			textures[id] = new context.AutoTexture(id, next, minFilter, magFilter);
+			textures[id] = new context.AsyncTexture(id, next, minFilter, magFilter);
 		});
 	};
 
 	/**
-	 * Queues an asynchronous task that loads and creates zero or more textures
+	 * Queues asynchronous tasks that load and create zero or more textures
 	 * given their URLs.
 	 *
-	 * After being loaded the textures can be retrieved via the
+	 * Internally the &#x60;queueTextures&#x60; method uses the
+	 * {{#crossLink &quot;context.AsyncTexture&quot;}}AsyncTexture{{/crossLink}} class.
+	 *
+	 * After being loaded, the textures can be retrieved via the
 	 * {{#crossLink &quot;OOGL.Loader/getTexture&quot;}}getTexture{{/crossLink}} method as
 	 * {{#crossLink &quot;context.Texture2D&quot;}}Texture2D{{/crossLink}} objects.
 	 *
@@ -287,7 +296,7 @@ context.Loader = function () {
 	this.queueTextures = function (ids) {
 		return thisObject.queue.apply(thisObject, ids.map(function (id) {
 			return function (next) {
-				textures[id] = new context.AutoTexture(id, next);
+				textures[id] = new context.AsyncTexture(id, next);
 			};
 		}));
 	};
@@ -311,12 +320,13 @@ context.Loader = function () {
 
 	/**
 	 * Queues an asynchronous task that loads, compiles and links the specified
-	 * shader pair.
+	 * shader pair, and returns it as a
+	 * {{#crossLink &quot;context.Program&quot;}}Program{{/crossLink}} object.
 	 *
 	 * Internally the &#x60;queueProgram&#x60; method uses the
 	 * {{#crossLink &quot;context.AjaxProgram&quot;}}AjaxProgram{{/crossLink}} class.
 	 *
-	 * The loaded programs can then be retrieved using the
+	 * The loaded program can then be retrieved using the
 	 * {{#crossLink &quot;context.Loader/getProgram&quot;}}getProgram{{/crossLink}}
 	 * method.
 	 *
@@ -339,8 +349,9 @@ context.Loader = function () {
 	};
 
 	/**
-	 * Queues an asynchronous task that loads, compiles and links zero or more
-	 * shader pairs.
+	 * Queues asynchronous tasks that load, compile and link zero or more shader
+	 * pairs, and return them as
+	 * {{#crossLink &quot;context.Program&quot;}}Program{{/crossLink}} objects.
 	 *
 	 * Internally the &#x60;queuePrograms&#x60; method uses the
 	 * {{#crossLink &quot;context.AjaxProgram&quot;}}AjaxProgram{{/crossLink}} class to
