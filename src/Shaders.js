@@ -251,6 +251,7 @@ context.AjaxVertexShader = function (url, callback) {
 	var shader = new context.Shader(context.VERTEX_SHADER);
 	OOGL.Ajax.get(url, function (source) {
 		shader.source(source);
+		shader.compile();
 		if (!context.getShaderParameter(shader, context.COMPILE_STATUS)) {
 			throw 'Failed to compile <' + url + '>, info log follows.\n' + context.getShaderInfoLog(shader);
 		}
@@ -284,6 +285,7 @@ context.AjaxFragmentShader = function (url, callback) {
 	var shader = new context.Shader(context.FRAGMENT_SHADER);
 	OOGL.Ajax.get(url, function (source) {
 		shader.source(source);
+		shader.compile();
 		if (!context.getShaderParameter(shader, context.COMPILE_STATUS)) {
 			throw 'Failed to compile <' + url + '>, info log follows.\n' + context.getShaderInfoLog(shader);
 		}
