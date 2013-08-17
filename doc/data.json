@@ -235,11 +235,8 @@
     "modules": {
         "OOGL": {
             "name": "OOGL",
-            "submodules": {
-                "undefined": 1
-            },
+            "submodules": {},
             "classes": {
-                "OOGL.Timing": 1,
                 "OOGL.Ajax": 1,
                 "OOGL.Context": 1,
                 "OOGL.Matrix2": 1,
@@ -262,6 +259,8 @@
                 "OOGL.IsometricProjection": 1,
                 "OOGL.PerspectiveProjection": 1,
                 "OOGL.RenderLoop": 1,
+                "OOGL.TaskQueue": 1,
+                "OOGL.Timing": 1,
                 "OOGL.Vector2": 1,
                 "OOGL.Vector3": 1,
                 "OOGL.Vector4": 1
@@ -307,7 +306,6 @@
                 "context.FragmentShader": 1,
                 "context.AjaxVertexShader": 1,
                 "context.AjaxFragmentShader": 1,
-                "OOGL.TaskQueue": 1,
                 "context.Texture": 1,
                 "context.Texture2D": 1,
                 "context.AutoTexture": 1,
@@ -979,7 +977,7 @@
             "module": "context",
             "namespace": "",
             "file": "src\\Loader.js",
-            "line": 4,
+            "line": 8,
             "description": "Manages asynchronous asset loading with progress feedback.",
             "extends": "OOGL.TaskQueue",
             "is_constructor": 1,
@@ -1860,10 +1858,10 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "context",
+            "module": "OOGL",
             "namespace": "",
             "file": "src\\TaskQueue.js",
-            "line": 3,
+            "line": 7,
             "description": "Represents a queue of asynchronous tasks. This is mainly used to manage\nasynchronous asset loading and is inherited by\n{{#crossLink \"context.Loader\"}}Loader{{/crossLink}}.",
             "is_constructor": 1,
             "params": [
@@ -2116,7 +2114,7 @@
             "module": "OOGL",
             "namespace": "",
             "file": "src\\Timing.js",
-            "line": 3,
+            "line": 7,
             "description": "Static class providing timing-related functions.",
             "static": 1,
             "example": [
@@ -4058,7 +4056,7 @@
         },
         {
             "file": "src\\Loader.js",
-            "line": 25,
+            "line": 29,
             "description": "Queues an asynchronous task that loads and creates a texture given its\nURL.\n\nAfter being loaded the texture can be retrieved via the\n{{#crossLink \"OOGL.Loader/getTexture\"}}getTexture{{/crossLink}} method as\na {{#crossLink \"context.Texture2D\"}}Texture2D{{/crossLink}} object.",
             "itemtype": "method",
             "name": "queueTexture",
@@ -4092,7 +4090,7 @@
         },
         {
             "file": "src\\Loader.js",
-            "line": 53,
+            "line": 57,
             "description": "Queues an asynchronous task that loads and creates zero or more textures\ngiven their URLs.\n\nAfter being loaded the textures can be retrieved via the\n{{#crossLink \"OOGL.Loader/getTexture\"}}getTexture{{/crossLink}} method as\n{{#crossLink \"context.Texture2D\"}}Texture2D{{/crossLink}} objects.",
             "itemtype": "method",
             "name": "queueTextures",
@@ -4112,7 +4110,7 @@
         },
         {
             "file": "src\\Loader.js",
-            "line": 75,
+            "line": 79,
             "description": "Retrieves a {{#crossLink \"context.Texture2D\"}}Texture2D{{/crossLink}}\nobject loaded from the image identified by the specified URL.",
             "itemtype": "method",
             "name": "getTexture",
@@ -4135,7 +4133,7 @@
         },
         {
             "file": "src\\Loader.js",
-            "line": 92,
+            "line": 96,
             "description": "Queues an asynchronous task that loads, compiles and links the specified\nshader pair.\n\nInternally the `queueProgram` method uses the\n{{#crossLink \"context.AjaxProgram\"}}AjaxProgram{{/crossLink}} class.\n\nThe loaded programs can then be retrieved using the\n{{#crossLink \"context.Loader/getProgram\"}}getProgram{{/crossLink}}\nmethod.",
             "itemtype": "method",
             "name": "queueProgram",
@@ -4160,7 +4158,7 @@
         },
         {
             "file": "src\\Loader.js",
-            "line": 121,
+            "line": 125,
             "description": "Queues an asynchronous task that loads, compiles and links zero or more\nshader pairs.\n\nInternally the `queuePrograms` method uses the\n{{#crossLink \"context.AjaxProgram\"}}AjaxProgram{{/crossLink}} class to\nload each shader pair.\n\nThe loaded programs can then be retrieved using the\n{{#crossLink \"context.Loader/getProgram\"}}getProgram{{/crossLink}}\nmethod.",
             "itemtype": "method",
             "name": "queuePrograms",
@@ -4180,7 +4178,7 @@
         },
         {
             "file": "src\\Loader.js",
-            "line": 164,
+            "line": 168,
             "description": "Retrieves a {{#crossLink \"context.Program\"}}Program{{/crossLink}} object\nloaded from the shader pair identified by the specified URL.",
             "itemtype": "method",
             "name": "getProgram",
@@ -7082,7 +7080,7 @@
         },
         {
             "file": "src\\TaskQueue.js",
-            "line": 27,
+            "line": 31,
             "description": "Queues zero or more asynchronous tasks.",
             "itemtype": "method",
             "name": "queue",
@@ -7106,11 +7104,11 @@
                 "\n\tTODO"
             ],
             "class": "OOGL.TaskQueue",
-            "module": "context"
+            "module": "OOGL"
         },
         {
             "file": "src\\TaskQueue.js",
-            "line": 44,
+            "line": 48,
             "description": "Queues zero or more synchronous tasks.",
             "itemtype": "method",
             "name": "queueSync",
@@ -7127,11 +7125,11 @@
                 "\n\tTODO"
             ],
             "class": "OOGL.TaskQueue",
-            "module": "context"
+            "module": "OOGL"
         },
         {
             "file": "src\\TaskQueue.js",
-            "line": 67,
+            "line": 71,
             "description": "Returns the number of tasks queued so far.",
             "itemtype": "method",
             "name": "count",
@@ -7143,11 +7141,11 @@
                 "\n\tTODO"
             ],
             "class": "OOGL.TaskQueue",
-            "module": "context"
+            "module": "OOGL"
         },
         {
             "file": "src\\TaskQueue.js",
-            "line": 79,
+            "line": 83,
             "description": "Starts executing the queued tasks in queuing order.",
             "itemtype": "method",
             "name": "start",
@@ -7170,7 +7168,7 @@
                 "\n\tTODO"
             ],
             "class": "OOGL.TaskQueue",
-            "module": "context"
+            "module": "OOGL"
         },
         {
             "file": "src\\Textures.js",
@@ -7714,7 +7712,7 @@
         },
         {
             "file": "src\\Timing.js",
-            "line": 13,
+            "line": 17,
             "description": "Returns the current timestamp in milliseconds since the Epoch.\n\nThis method relies on `window.performance.now` where available and\ntransparently falls back to `Date.now`.",
             "itemtype": "method",
             "name": "now",
