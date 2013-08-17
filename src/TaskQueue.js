@@ -86,9 +86,11 @@ OOGL.TaskQueue = function () {
 	 * @method start
 	 * @chainable
 	 * @param [callback] {Function} An optional user-defined callback function
-	 * that gets invoked as soon as all the tasks finish.
+	 * that gets invoked as soon as all the tasks finish. The `TaskQueue` object
+	 * is used as `this` when calling the function.
 	 * @param [progress] {Function} An optional user-defined callback function
-	 * that gets invoked every time a task ends.
+	 * that gets invoked every time a task ends. The `TaskQueue` object is used
+	 * as `this` when calling the function.
 	 * @param progress.progress {Number} A percentage value indicating the
 	 * current progress, computed by the following formula:
 	 *
@@ -103,11 +105,11 @@ OOGL.TaskQueue = function () {
 		(function run(index) {
 			if (index < queue.length) {
 				queue[index](function () {
-					progress && progress(index * 100 / queue.length);
+					progress && progress.call(thisObject, index * 100 / queue.length);
 					run(index + 1);
 				});
 			} else {
-				callback && callback();
+				callback && callback.call(thisObject);
 			}
 		})(0);
 		return thisObject;

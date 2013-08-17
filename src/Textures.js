@@ -510,7 +510,7 @@ context.AsyncCubeMap = function (namePattern, callback, magFilter, minFilter) {
 		};
 	}
 
-	new OOGL.Loader(
+	new OOGL.TaskQueue(
 		bindLoadFace('+X', context.TEXTURE_CUBE_MAP_POSITIVE_X),
 		bindLoadFace('+Y', context.TEXTURE_CUBE_MAP_POSITIVE_Y),
 		bindLoadFace('+Z', context.TEXTURE_CUBE_MAP_POSITIVE_Z),
