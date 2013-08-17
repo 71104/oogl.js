@@ -1,13 +1,20 @@
 /*global OOGL: false */
 
 /**
+ * @module OOGL
+ */
+
+/**
  * Static class providing timing-related functions.
  *
  * @class OOGL.Timing
  * @module OOGL
  * @static
  * @example
- *	TODO
+ *	var loop = new OOGL.RenderLoop(function () {
+ *		console.log(OOGL.Timing.now());
+ *	});
+ *	loop.start();
  */
 OOGL.Timing = {
 	/**
@@ -20,17 +27,16 @@ OOGL.Timing = {
 	 * @static
 	 * @return {Number} The current timestamp in milliseconds.
 	 * @example
-	 *	TODO
+	 *	var loop = new OOGL.RenderLoop(function () {
+	 *		console.log(OOGL.Timing.now());
+	 *	});
+	 *	loop.start();
 	 */
 	now: (function () {
 		if (('performance' in window) && ('now' in window.performance)) {
-			return function () {
-				return window.performance.now();
-			};
+			return window.performance.now.bind(window.performance);
 		} else {
-			return function () {
-				return Date.now();
-			};
+			return Date.now.bind(Date);
 		}
 	})()
 };

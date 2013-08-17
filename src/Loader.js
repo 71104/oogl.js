@@ -2,6 +2,10 @@
 /*global context: false */
 
 /**
+ * @module context
+ */
+
+/**
  * Manages asynchronous asset loading with progress feedback.
  *
  * @class context.Loader

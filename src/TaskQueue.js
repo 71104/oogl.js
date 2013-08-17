@@ -1,6 +1,10 @@
 /*global OOGL: false */
 
 /**
+ * @module OOGL
+ */
+
+/**
  * Represents a queue of asynchronous tasks. This is mainly used to manage
  * asynchronous asset loading and is inherited by
  * {{#crossLink "context.Loader"}}Loader{{/crossLink}}.
