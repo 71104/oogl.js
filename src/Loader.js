@@ -50,7 +50,7 @@ context.Loader = function () {
 	 * @example
 	 *	TODO
 	 */
-	this.queueTexture = function (id, minFilter, magFilter) {
+	this.queueTexture = function (id, magFilter, minFilter) {
 		if (arguments.length < 2) {
 			magFilter = context.LINEAR;
 			minFilter = context.LINEAR;
@@ -58,7 +58,7 @@ context.Loader = function () {
 			minFilter = context.LINEAR;
 		}
 		return thisObject.queue(function (next) {
-			textures[id] = new context.AsyncTexture(id, next, minFilter, magFilter);
+			textures[id] = new context.AsyncTexture(id, next, magFilter, minFilter);
 		});
 	};
 
@@ -76,13 +76,27 @@ context.Loader = function () {
 	 * @method queueTextures
 	 * @chainable
 	 * @param ids {String[]} An array of image URLs.
+	 * @param [magFilter=gl.LINEAR] {Number} An optional value for the
+	 * magnifying filter. See
+	 * {{#crossLink "context.AsyncTexture"}}AsyncTexture{{/crossLink}} for more
+	 * information.
+	 * @param [minFilter=gl.LINEAR] {Number} An optional value for the minifying
+	 * filter. See
+	 * {{#crossLink "context.AsyncTexture"}}AsyncTexture{{/crossLink}} for more
+	 * information.
 	 * @example
 	 *	TODO
 	 */
-	this.queueTextures = function (ids) {
+	this.queueTextures = function (ids, magFilter, minFilter) {
+		if (arguments.length < 2) {
+			magFilter = context.LINEAR;
+			minFilter = context.LINEAR;
+		} else if (arguments.length < 3) {
+			minFilter = context.LINEAR;
+		}
 		return thisObject.queue.apply(thisObject, ids.map(function (id) {
 			return function (next) {
-				textures[id] = new context.AsyncTexture(id, next);
+				textures[id] = new context.AsyncTexture(id, next, magFilter, minFilter);
 			};
 		}));
 	};
