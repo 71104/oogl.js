@@ -23,7 +23,6 @@ context.Loader = function () {
 
 	var textures = {};
 	var programs = {};
-	var data = {};
 
 	/**
 	 * Queues an asynchronous task that loads and creates a texture given its
@@ -206,84 +205,6 @@ context.Loader = function () {
 	this.getProgram = function (id) {
 		if (programs.hasOwnProperty(id)) {
 			return programs[id];
-		}
-	};
-
-	/**
-	 * Queues a task that loads a file of the specified type via AJAX.
-	 *
-	 * @method queueData
-	 * @param id {String} The URL of the file.
-	 * @param [parameters] {Object} An optional object containing parameters to
-	 * be passed to the server in the AJAX request. It specified directly to the
-	 * {{#crossLink "OOGL.Ajax/get"}}OOGL.Ajax.get{{/crossLink}} method.
-	 * @param type {String} The data type, specified directly to the
-	 * {{#crossLink "OOGL.Ajax/get"}}OOGL.Ajax.get{{/crossLink}} method.
-	 * @example
-	 *	TODO
-	 */
-	this.queueData = function (id, parameters, type) {
-		if (arguments.length > 2) {
-			return thisObject.queue(function (next) {
-				OOGL.Ajax.get(id, parameters, function (response) {
-					data[id] = response;
-					next();
-				}, type);
-			});
-		} else {
-			type = data;
-			return thisObject.queue(function (next) {
-				OOGL.Ajax.get(id, function (response) {
-					data[id] = response;
-					next();
-				}, type);
-			});
-		}
-	};
-
-	/**
-	 * Queues a task that loads JSON data via AJAX.
-	 *
-	 * @method queueJSON
-	 * @param id {String} The URL of the JSON data.
-	 * @param [parameters] {Object} An optional object containing parameters to
-	 * be passed to the server in the AJAX request. It specified directly to the
-	 * {{#crossLink "OOGL.Ajax/get"}}OOGL.Ajax.getJSON{{/crossLink}} method.
-	 * @example
-	 *	TODO
-	 */
-	this.queueJSON = function (id, parameters) {
-		if (arguments.length > 1) {
-			return thisObject.queue(function (next) {
-				OOGL.Ajax.getJSON(id, parameters, function (response) {
-					data[id] = response;
-					next();
-				});
-			});
-		} else {
-			return thisObject.queue(function (next) {
-				OOGL.Ajax.getJSON(id, function (response) {
-					data[id] = response;
-					next();
-				});
-			});
-		}
-	};
-
-	/**
-	 * Retrieves data previously loaded via the
-	 * {{#crossLink "context.Loader/queueData"}}queueData{{/crossLink}} or
-	 * {{#crossLink "context.Loader/queueJSON"}}queueJSON{{/crossLink}} method.
-	 *
-	 * @method getData
-	 * @param id {String} The URL of the requested data.
-	 * @return {Object} The requested data.
-	 * @example
-	 *	TODO
-	 */
-	this.getData = function (id) {
-		if (data.hasOwnProperty(id)) {
-			return data[id];
 		}
 	};
 };
