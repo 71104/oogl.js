@@ -73,7 +73,12 @@ OOGL.Async = {
 	 *	TODO
 	 */
 	serial: function () {
-		var tasks = arguments;
+		var tasks;
+		if ((arguments.length === 1) && (typeof arguments[0] !== 'function')) {
+			tasks = arguments[0];
+		} else {
+			tasks = arguments;
+		}
 		return function (callback, scope) {
 			if (tasks.length) {
 				(function run(index) {
@@ -116,7 +121,12 @@ OOGL.Async = {
 	 *	TODO
 	 */
 	parallel: function () {
-		var tasks = arguments;
+		var tasks;
+		if ((arguments.length === 1) && (typeof arguments[0] !== 'function')) {
+			tasks = arguments[0];
+		} else {
+			tasks = arguments;
+		}
 		return function (callback, scope) {
 			if (tasks.length) {
 				var count = tasks.length;

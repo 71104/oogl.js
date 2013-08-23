@@ -448,6 +448,7 @@ context.AsyncTexture = function (url, callback, magFilter, minFilter) {
 	 */
 	texture.image = new Image();
 	texture.image.addEventListener('load', function () {
+		texture.bind();
 		texture.image2D(0, context.RGBA, context.UNSIGNED_BYTE, texture.image);
 		callback && callback.call(texture);
 	}, false);
