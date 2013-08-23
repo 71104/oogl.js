@@ -87,6 +87,8 @@
             
                 <li><a href="../classes/context.Loader.html">context.Loader</a></li>
             
+                <li><a href="../classes/context.Loader.Assets.html">context.Loader.Assets</a></li>
+            
                 <li><a href="../classes/context.Program.html">context.Program</a></li>
             
                 <li><a href="../classes/context.Renderbuffer.html">context.Renderbuffer</a></li>
@@ -115,6 +117,8 @@
             
                 <li><a href="../classes/OOGL.Ajax.html">OOGL.Ajax</a></li>
             
+                <li><a href="../classes/OOGL.Async.html">OOGL.Async</a></li>
+            
                 <li><a href="../classes/OOGL.Context.html">OOGL.Context</a></li>
             
                 <li><a href="../classes/OOGL.IsometricProjection.html">OOGL.IsometricProjection</a></li>
@@ -142,8 +146,6 @@
                 <li><a href="../classes/OOGL.ScalingMatrix3.html">OOGL.ScalingMatrix3</a></li>
             
                 <li><a href="../classes/OOGL.ScalingMatrix4.html">OOGL.ScalingMatrix4</a></li>
-            
-                <li><a href="../classes/OOGL.TaskQueue.html">OOGL.TaskQueue</a></li>
             
                 <li><a href="../classes/OOGL.Timing.html">OOGL.Timing</a></li>
             
@@ -215,10 +217,6 @@
     
 
     
-        <div class="extends">
-            Extends <a href="..\classes\OOGL.TaskQueue.html" class="crosslink">OOGL.TaskQueue</a>
-        </div>
-    
 
     
         <div class="foundat">
@@ -239,6 +237,20 @@
 
 <div class="box intro">
     <p>Manages asynchronous asset loading with progress feedback.</p>
+<p>To load assets using the Loader you must first queue loading tasks using the
+provided <code>queueXxx</code> methods and then start the loading process using the
+<a href="..\classes\context.Loader.html#method_loadAssets" class="crosslink">loadAssets</a> method.</p>
+<p>The <code>Loader</code> is able to load textures, shader pairs and generic data such as
+XML files and JSON objects.</p>
+<p>Textures are loaded using the
+<a href="..\classes\context.AsyncTexture.html" class="crosslink">AsyncTexture</a> class. Shader
+pairs are loaded using the
+<a href="..\classes\context.AjaxProgram.html" class="crosslink">AjaxProgram</a> class and thus
+they are automatically compiled and linked, throwing an exception if
+compilation or linking fails.</p>
+<p>XML files are loaded via <a href="..\classes\OOGL.Ajax.html" class="crosslink">Ajax</a> and
+returned as DOM <code>Document</code> objects. JSON files are returned as natural
+JavaScript objects.</p>
 
 </div>
 
@@ -249,17 +261,7 @@
     <h3 class="name"><code>context.Loader</code></h3>
 
     
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>tasks</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
+        <span class="paren">()</span>
     
 
     
@@ -302,34 +304,6 @@
     </div>
 
     
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">tasks</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
-                    
-
-                    
-                        <span class="flag multiple" title="This argument may occur one or more times.">multiple</span>
-                    
-
-                    <div class="param-description">
-                        <p>Zero or more asynchronous tasks to queue. See the
-<a href="..\classes\OOGL.TaskQueue.html" class="crosslink">TaskQueue</a> description for more
-information.</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
 
     
 
@@ -368,38 +342,10 @@ information.</p>
                 <div class="index-section methods">
                     <h3>Methods</h3>
 
-                    <ul class="index-list methods extends">
-                        
-                            <li class="index-item method inherited">
-                                <a href="#method_count">count</a>
-
-                                
-                                
-                            </li>
+                    <ul class="index-list methods">
                         
                             <li class="index-item method">
-                                <a href="#method_getData">getData</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_getProgram">getProgram</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_getTexture">getTexture</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method inherited">
-                                <a href="#method_queue">queue</a>
+                                <a href="#method_loadAssets">loadAssets</a>
 
                                 
                                 
@@ -433,13 +379,6 @@ information.</p>
                                 
                             </li>
                         
-                            <li class="index-item method inherited">
-                                <a href="#method_queueSync">queueSync</a>
-
-                                
-                                
-                            </li>
-                        
                             <li class="index-item method">
                                 <a href="#method_queueTexture">queueTexture</a>
 
@@ -449,13 +388,6 @@ information.</p>
                         
                             <li class="index-item method">
                                 <a href="#method_queueTextures">queueTextures</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method inherited">
-                                <a href="#method_start">start</a>
 
                                 
                                 
@@ -477,87 +409,8 @@ information.</p>
                 <h2 class="off-left">Methods</h2>
 
                 
-                    <div id="method_count" class="method item inherited">
-    <h3 class="name"><code>count</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="..\classes\OOGL.TaskQueue.html#method_count">OOGL.TaskQueue</a>:
-            
-        
-        
-        <a href="../files/src_TaskQueue.js.html#l71"><code>src\TaskQueue.js:71</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Returns the number of tasks queued so far.</p>
-
-    </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>:
-                    
-                    <p>The number of tasks queued so far.</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>TODO</code></pre>
-
-            </div>
-        </div>
-    
-</div>
-
-                
-                    <div id="method_getData" class="method item">
-    <h3 class="name"><code>getData</code></h3>
+                    <div id="method_loadAssets" class="method item">
+    <h3 class="name"><code>loadAssets</code></h3>
 
     
         <div class="args">
@@ -565,361 +418,13 @@ information.</p>
             
                 <li class="arg">
                     
-                        <code>id</code>
+                        <code>callback</code>
                     
                 </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_Loader.js.html#l255"><code>src\Loader.js:255</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Retrieves data previously loaded via the
-<a href="..\classes\context.Loader.html#method_queueData" class="crosslink">queueData</a> or
-<a href="..\classes\context.Loader.html#method_queueJSON" class="crosslink">queueJSON</a> method.</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">id</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>The URL of the requested data.</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>:
-                    
-                    <p>The requested data.</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>TODO</code></pre>
-
-            </div>
-        </div>
-    
-</div>
-
-                
-                    <div id="method_getProgram" class="method item">
-    <h3 class="name"><code>getProgram</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
             
                 <li class="arg">
                     
-                        <code>id</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type"><a href="..\classes\context.Program.html" class="crosslink">context.Program</a></span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_Loader.js.html#l181"><code>src\Loader.js:181</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Retrieves a <a href="..\classes\context.Program.html" class="crosslink">Program</a> object
-loaded from the shader pair identified by the specified URL.</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">id</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>The URL of a previously loaded shader pair, not
-including the filename extension.</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type"><a href="..\classes\context.Program.html" class="crosslink">context.Program</a></span>:
-                    
-                    <p>A <code>Program</code> object representing the GL program.</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>TODO</code></pre>
-
-            </div>
-        </div>
-    
-</div>
-
-                
-                    <div id="method_getTexture" class="method item">
-    <h3 class="name"><code>getTexture</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>id</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type"><a href="..\classes\context.Texture2D.html" class="crosslink">context.Texture2D</a></span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_Loader.js.html#l90"><code>src\Loader.js:90</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Retrieves a <a href="..\classes\context.Texture2D.html" class="crosslink">Texture2D</a>
-object loaded from the image identified by the specified URL.</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">id</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>The URL of a previously loaded texture image.</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type"><a href="..\classes\context.Texture2D.html" class="crosslink">context.Texture2D</a></span>:
-                    
-                    <p>A <code>Texture2D</code> object representing the GL
-texture.</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>TODO</code></pre>
-
-            </div>
-        </div>
-    
-</div>
-
-                
-                    <div id="method_queue" class="method item inherited">
-    <h3 class="name"><code>queue</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>tasks</code>
+                        <code class="optional">[progress]</code>
                     
                 </li>
             
@@ -946,12 +451,15 @@ texture.</p>
     <div class="meta">
         
             
-                <p>Inherited from
-                <a href="..\classes\OOGL.TaskQueue.html#method_queue">OOGL.TaskQueue</a>:
+                
+                <p>
+                
+                Defined in
+                
             
         
         
-        <a href="../files/src_TaskQueue.js.html#l36"><code>src\TaskQueue.js:36</code></a>
+        <a href="../files/src_Loader.js.html#l363"><code>src\Loader.js:363</code></a>
         
         </p>
 
@@ -962,7 +470,15 @@ texture.</p>
     </div>
 
     <div class="description">
-        <p>Queues zero or more asynchronous tasks.</p>
+        <p>Executes the load tasks queued so far and discards the queue. When the
+loading process finishes, a new
+<a href="..\classes\context.Loader.Assets.html" class="crosslink">Assets</a> object is
+created and can be used to retrieve the loaded assets.</p>
+<p>The same <code>Loader</code> object can be used to load multiple independent asset
+sets: assets belonging to different sets must be queued for different
+<code>loadAssets</code> calls. Each
+<a href="..\classes\context.Loader.Assets.html" class="crosslink">Assets</a> object does
+not affect the others.</p>
 
     </div>
 
@@ -974,19 +490,74 @@ texture.</p>
             
                 <li class="param">
                     
-                        <code class="param-name">tasks</code>
+                        <code class="param-name">callback</code>
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
                     
 
                     
-                        <span class="flag multiple" title="This argument may occur one or more times.">multiple</span>
-                    
 
                     <div class="param-description">
-                        <p>Zero or more asynchronous tasks to queue.</p>
+                        <p>A user-defined callback function invoked by
+the <code>Loader</code> as soon as all the loading tasks have been accomplished.</p>
 
                     </div>
 
+                    
+                        <ul class="params-list">
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name">assets</code>
+                                    <span class="type"><a href="..\classes\context.Loader.Assets.html" class="crosslink">context.Loader.Assets</a></span>
+                                
+
+                                <div class="param-description">
+                                    <p>A new <code>Assets</code> object that
+can be used to retrieve and manage the loaded assets.</p>
+
+                                </div>
+
+                                
+                            </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name optional">[progress]</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>A user-defined callback function invoked
+several times during the loading process. It can be used to provide
+progress feedback to the user.</p>
+
+                    </div>
+
+                    
+                        <ul class="params-list">
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name">progress</code>
+                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                                
+
+                                <div class="param-description">
+                                    <p>The current progress percentage.</p>
+
+                                </div>
+
+                                
+                            </li>
+                            
+                        </ul>
                     
                 </li>
             
@@ -1024,7 +595,7 @@ texture.</p>
             
                 <li class="arg">
                     
-                        <code class="optional">[data]</code>
+                        <code class="optional">[parameters]</code>
                     
                 </li>
             
@@ -1063,7 +634,7 @@ texture.</p>
             
         
         
-        <a href="../files/src_Loader.js.html#l198"><code>src\Loader.js:198</code></a>
+        <a href="../files/src_Loader.js.html#l38"><code>src\Loader.js:38</code></a>
         
         </p>
 
@@ -1102,7 +673,7 @@ texture.</p>
             
                 <li class="param">
                     
-                        <code class="param-name optional">[data]</code>
+                        <code class="param-name optional">[parameters]</code>
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
                         <span class="flag optional" title="This parameter is optional.">optional</span>
                     
@@ -1110,8 +681,8 @@ texture.</p>
                     
 
                     <div class="param-description">
-                        <p>An optional object containing parameters to be
-passed to the server in the AJAX request. It specified directly to the
+                        <p>An optional object containing parameters to
+be passed to the server in the AJAX request. It specified directly to the
 <a href="..\classes\OOGL.Ajax.html#method_get" class="crosslink">OOGL.Ajax.get</a> method.</p>
 
                     </div>
@@ -1170,7 +741,7 @@ passed to the server in the AJAX request. It specified directly to the
             
                 <li class="arg">
                     
-                        <code class="optional">[data]</code>
+                        <code class="optional">[parameters]</code>
                     
                 </li>
             
@@ -1203,7 +774,7 @@ passed to the server in the AJAX request. It specified directly to the
             
         
         
-        <a href="../files/src_Loader.js.html#l228"><code>src\Loader.js:228</code></a>
+        <a href="../files/src_Loader.js.html#l70"><code>src\Loader.js:70</code></a>
         
         </p>
 
@@ -1242,7 +813,7 @@ passed to the server in the AJAX request. It specified directly to the
             
                 <li class="param">
                     
-                        <code class="param-name optional">[data]</code>
+                        <code class="param-name optional">[parameters]</code>
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
                         <span class="flag optional" title="This parameter is optional.">optional</span>
                     
@@ -1250,8 +821,8 @@ passed to the server in the AJAX request. It specified directly to the
                     
 
                     <div class="param-description">
-                        <p>An optional object containing parameters to be
-passed to the server in the AJAX request. It specified directly to the
+                        <p>An optional object containing parameters to
+be passed to the server in the AJAX request. It specified directly to the
 <a href="..\classes\OOGL.Ajax.html#method_get" class="crosslink">OOGL.Ajax.getJSON</a> method.</p>
 
                     </div>
@@ -1328,7 +899,7 @@ passed to the server in the AJAX request. It specified directly to the
             
         
         
-        <a href="../files/src_Loader.js.html#l107"><code>src\Loader.js:107</code></a>
+        <a href="../files/src_Loader.js.html#l182"><code>src\Loader.js:182</code></a>
         
         </p>
 
@@ -1345,7 +916,7 @@ shader pair, and returns it as a
 <p>Internally the <code>queueProgram</code> method uses the
 <a href="..\classes\context.AjaxProgram.html" class="crosslink">AjaxProgram</a> class.</p>
 <p>The loaded program can then be retrieved using the
-<a href="..\classes\context.Loader.html#method_getProgram" class="crosslink">getProgram</a>
+context.Loader/getProgram
 method.</p>
 
     </div>
@@ -1456,7 +1027,7 @@ more information.</p>
             
         
         
-        <a href="../files/src_Loader.js.html#l137"><code>src\Loader.js:137</code></a>
+        <a href="../files/src_Loader.js.html#l215"><code>src\Loader.js:215</code></a>
         
         </p>
 
@@ -1474,7 +1045,7 @@ pairs, and return them as
 <a href="..\classes\context.AjaxProgram.html" class="crosslink">AjaxProgram</a> class to
 load each shader pair.</p>
 <p>The loaded programs can then be retrieved using the
-<a href="..\classes\context.Loader.html#method_getProgram" class="crosslink">getProgram</a>
+context.Loader/getProgram
 method.</p>
 
     </div>
@@ -1505,105 +1076,6 @@ shaders pairs: <code>box.vert</code>, <code>box.frag</code>, <code>sphere.vert</
 Besides, the <code>box</code> shaders use two attribute arrays which are <code>in_Vertex</code>
 and <code>in_TexCoord</code>, while the <code>sphere</code> shaders use three attribute arrays
 which are <code>in_Vertex</code>, <code>in_Normal</code> and <code>in_TexCoord</code>.</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-
-    
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>TODO</code></pre>
-
-            </div>
-        </div>
-    
-</div>
-
-                
-                    <div id="method_queueSync" class="method item inherited">
-    <h3 class="name"><code>queueSync</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>tasks</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <span class="flag chainable">chainable</span>
-    
-
-    
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="..\classes\OOGL.TaskQueue.html#method_queueSync">OOGL.TaskQueue</a>:
-            
-        
-        
-        <a href="../files/src_TaskQueue.js.html#l50"><code>src\TaskQueue.js:50</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Queues zero or more synchronous tasks.</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">tasks</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
-                    
-
-                    
-                        <span class="flag multiple" title="This argument may occur one or more times.">multiple</span>
-                    
-
-                    <div class="param-description">
-                        <p>Zero or more synchronous tasks to queue.</p>
 
                     </div>
 
@@ -1685,7 +1157,7 @@ which are <code>in_Vertex</code>, <code>in_Normal</code> and <code>in_TexCoord</
             
         
         
-        <a href="../files/src_Loader.js.html#l28"><code>src\Loader.js:28</code></a>
+        <a href="../files/src_Loader.js.html#l100"><code>src\Loader.js:100</code></a>
         
         </p>
 
@@ -1800,6 +1272,18 @@ information.</p>
                     
                 </li>
             
+                <li class="arg">
+                    
+                        <code class="optional">[magFilter=gl.LINEAR]</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code class="optional">[minFilter=gl.LINEAR]</code>
+                    
+                </li>
+            
             </ul><span class="paren">)</span>
         </div>
     
@@ -1831,7 +1315,7 @@ information.</p>
             
         
         
-        <a href="../files/src_Loader.js.html#l65"><code>src\Loader.js:65</code></a>
+        <a href="../files/src_Loader.js.html#l140"><code>src\Loader.js:140</code></a>
         
         </p>
 
@@ -1874,106 +1358,20 @@ OOGL.Loader/getTexture method as
                     
                 </li>
             
-            </ul>
-        </div>
-    
-
-    
-
-    
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>TODO</code></pre>
-
-            </div>
-        </div>
-    
-</div>
-
-                
-                    <div id="method_start" class="method item inherited">
-    <h3 class="name"><code>start</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code class="optional">[callback]</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code class="optional">[progress]</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <span class="flag chainable">chainable</span>
-    
-
-    
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="..\classes\OOGL.TaskQueue.html#method_start">OOGL.TaskQueue</a>:
-            
-        
-        
-        <a href="../files/src_TaskQueue.js.html#l83"><code>src\TaskQueue.js:83</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Starts executing the queued tasks in queuing order.</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
                 <li class="param">
                     
-                        <code class="param-name optional">[callback]</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+                        <code class="param-name optional">[magFilter=gl.LINEAR]</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
                         <span class="flag optional" title="This parameter is optional.">optional</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>An optional user-defined callback function
-that gets invoked as soon as all the tasks finish. The <code>TaskQueue</code> object
-is used as <code>this</code> when calling the function.</p>
+                        <p>An optional value for the
+magnifying filter. See
+<a href="..\classes\context.AsyncTexture.html" class="crosslink">AsyncTexture</a> for more
+information.</p>
 
                     </div>
 
@@ -1982,42 +1380,21 @@ is used as <code>this</code> when calling the function.</p>
             
                 <li class="param">
                     
-                        <code class="param-name optional">[progress]</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+                        <code class="param-name optional">[minFilter=gl.LINEAR]</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
                         <span class="flag optional" title="This parameter is optional.">optional</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>An optional user-defined callback function
-that gets invoked every time a task ends. The <code>TaskQueue</code> object is used
-as <code>this</code> when calling the function.</p>
+                        <p>An optional value for the minifying
+filter. See
+<a href="..\classes\context.AsyncTexture.html" class="crosslink">AsyncTexture</a> for more
+information.</p>
 
                     </div>
 
-                    
-                        <ul class="params-list">
-                            
-                            <li class="param">
-                                
-                                    <code class="param-name">progress</code>
-                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
-                                
-
-                                <div class="param-description">
-                                    <p>A percentage value indicating the
-current progress, computed by the following formula:</p>
-<pre><code>i * 100 / c</code></pre>
-<p>Where <code>i</code> indicates the zero-based index of the last executed task and
-<code>c</code> indicates the total number of queued tasks.</p>
-
-                                </div>
-
-                                
-                            </li>
-                            
-                        </ul>
                     
                 </li>
             

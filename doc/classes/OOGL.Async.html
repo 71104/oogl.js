@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>OOGL.TaskQueue - OOGL.js</title>
+    <title>OOGL.Async - OOGL.js</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -87,6 +87,8 @@
             
                 <li><a href="../classes/context.Loader.html">context.Loader</a></li>
             
+                <li><a href="../classes/context.Loader.Assets.html">context.Loader.Assets</a></li>
+            
                 <li><a href="../classes/context.Program.html">context.Program</a></li>
             
                 <li><a href="../classes/context.Renderbuffer.html">context.Renderbuffer</a></li>
@@ -115,6 +117,8 @@
             
                 <li><a href="../classes/OOGL.Ajax.html">OOGL.Ajax</a></li>
             
+                <li><a href="../classes/OOGL.Async.html">OOGL.Async</a></li>
+            
                 <li><a href="../classes/OOGL.Context.html">OOGL.Context</a></li>
             
                 <li><a href="../classes/OOGL.IsometricProjection.html">OOGL.IsometricProjection</a></li>
@@ -142,8 +146,6 @@
                 <li><a href="../classes/OOGL.ScalingMatrix3.html">OOGL.ScalingMatrix3</a></li>
             
                 <li><a href="../classes/OOGL.ScalingMatrix4.html">OOGL.ScalingMatrix4</a></li>
-            
-                <li><a href="../classes/OOGL.TaskQueue.html">OOGL.TaskQueue</a></li>
             
                 <li><a href="../classes/OOGL.Timing.html">OOGL.Timing</a></li>
             
@@ -210,7 +212,7 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>OOGL.TaskQueue Class</h1>
+                        <h1>OOGL.Async Class</h1>
 <div class="box meta">
     
 
@@ -218,7 +220,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_TaskQueue.js.html#l7"><code>src\TaskQueue.js:7</code></a>
+            Defined in: <a href="../files/src_Async.js.html#l7"><code>src\Async.js:7</code></a>
         </div>
     
 
@@ -234,121 +236,15 @@
 
 
 <div class="box intro">
-    <p>Represents a queue of asynchronous tasks. This is mainly used to manage
-asynchronous asset loading and is inherited by
-<a href="..\classes\context.Loader.html" class="crosslink">Loader</a>.</p>
-<p>A task is a function that executes a job and can be either synchronous or
-asynchronous.</p>
-<p>A synchronous task runs synchronously and its job terminates as soon as the
-function returns.</p>
-<p>An asynchronous task, instead, runs asynchronously and always receives one
-single argument, a callback function that is invoked by the task as soon as
-it ends.</p>
+    <p>Manages the serial and parallel execution of asynchronous tasks.</p>
+<p>Mainly used by <a href="..\classes\context.Loader.html" class="crosslink">Loader</a>.</p>
+<p>Asynchronous tasks are specified as functions receiving two arguments: one
+callback function to invoke as soon as the task is accomplished, and one
+optional object to use as <code>this</code> when invoking the callback function. Return
+values are ignored.</p>
 
 </div>
 
-
-    <div class="constructor">
-        <h2>Constructor</h2>
-        <div id="method_OOGL.TaskQueue" class="method item">
-    <h3 class="name"><code>OOGL.TaskQueue</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>tasks</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_TaskQueue.js.html#l7"><code>src\TaskQueue.js:7</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">tasks</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
-                    
-
-                    
-                        <span class="flag multiple" title="This argument may occur one or more times.">multiple</span>
-                    
-
-                    <div class="param-description">
-                        <p>Zero or more asynchronous tasks to queue.</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-
-    
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>TODO</code></pre>
-
-            </div>
-        </div>
-    
-</div>
-
-    </div>
 
 
 <div id="classdocs" class="tabview">
@@ -374,29 +270,28 @@ it ends.</p>
                     <ul class="index-list methods">
                         
                             <li class="index-item method">
-                                <a href="#method_count">count</a>
+                                <a href="#method_async">async</a>
 
+                                
+                                    <span class="flag static">static</span>
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_queue">queue</a>
+                                <a href="#method_parallel">parallel</a>
 
+                                
+                                    <span class="flag static">static</span>
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_queueSync">queueSync</a>
+                                <a href="#method_serial">serial</a>
 
                                 
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_start">start</a>
-
+                                    <span class="flag static">static</span>
                                 
                                 
                             </li>
@@ -417,16 +312,26 @@ it ends.</p>
                 <h2 class="off-left">Methods</h2>
 
                 
-                    <div id="method_count" class="method item">
-    <h3 class="name"><code>count</code></h3>
+                    <div id="method_async" class="method item">
+    <h3 class="name"><code>async</code></h3>
 
     
-        <span class="paren">()</span>
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>task</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
     
 
     
         <span class="returns-inline">
-            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
         </span>
     
 
@@ -437,6 +342,8 @@ it ends.</p>
     
 
     
+        <span class="flag static">static</span>
+    
 
     
 
@@ -453,7 +360,7 @@ it ends.</p>
             
         
         
-        <a href="../files/src_TaskQueue.js.html#l71"><code>src\TaskQueue.js:71</code></a>
+        <a href="../files/src_Async.js.html#l21"><code>src\Async.js:21</code></a>
         
         </p>
 
@@ -464,10 +371,37 @@ it ends.</p>
     </div>
 
     <div class="description">
-        <p>Returns the number of tasks queued so far.</p>
+        <p>Creates an asynchronous task from a synchronous one.</p>
+<p>The returned task function invokes the task function (without specifying
+any arguments) and subsequently invokes the callback function, if
+specified.</p>
 
     </div>
 
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">task</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>A synchronous task function.</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
     
 
     
@@ -477,9 +411,16 @@ it ends.</p>
             <div class="returns-description">
                 
                     
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>:
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>:
                     
-                    <p>The number of tasks queued so far.</p>
+                    <p>A new asynchronous task function.</p>
+<p>The returned function does not return anything but expects two optional
+arguments: the first is a user-defined callback function invoked when all
+the tasks have been executed, the second is a scope object to use as
+<code>this</code> while invoking the callback function.</p>
+<p>The returned function may be specified as a task for
+<a href="..\classes\OOGL.Async.html#method_serial" class="crosslink">serial</a> and
+<a href="..\classes\OOGL.Async.html#method_parallel" class="crosslink">parallel</a>.</p>
 
                 
             </div>
@@ -499,8 +440,8 @@ it ends.</p>
 </div>
 
                 
-                    <div id="method_queue" class="method item">
-    <h3 class="name"><code>queue</code></h3>
+                    <div id="method_parallel" class="method item">
+    <h3 class="name"><code>parallel</code></h3>
 
     
         <div class="args">
@@ -508,7 +449,7 @@ it ends.</p>
             
                 <li class="arg">
                     
-                        <code>tasks</code>
+                        <code class="optional">[tasks]</code>
                     
                 </li>
             
@@ -517,7 +458,9 @@ it ends.</p>
     
 
     
-
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+        </span>
     
 
     
@@ -527,7 +470,9 @@ it ends.</p>
     
 
     
-        <span class="flag chainable">chainable</span>
+        <span class="flag static">static</span>
+    
+
     
 
     
@@ -543,7 +488,7 @@ it ends.</p>
             
         
         
-        <a href="../files/src_TaskQueue.js.html#l36"><code>src\TaskQueue.js:36</code></a>
+        <a href="../files/src_Async.js.html#l99"><code>src\Async.js:99</code></a>
         
         </p>
 
@@ -554,7 +499,8 @@ it ends.</p>
     </div>
 
     <div class="description">
-        <p>Queues zero or more asynchronous tasks.</p>
+        <p>Creates an asynchronous task that executes the specified asynchronous
+tasks in parallel.</p>
 
     </div>
 
@@ -566,8 +512,9 @@ it ends.</p>
             
                 <li class="param">
                     
-                        <code class="param-name">tasks</code>
+                        <code class="param-name optional">[tasks]</code>
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
                     
 
                     
@@ -575,237 +522,7 @@ it ends.</p>
                     
 
                     <div class="param-description">
-                        <p>Zero or more asynchronous tasks to queue.</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-
-    
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>TODO</code></pre>
-
-            </div>
-        </div>
-    
-</div>
-
-                
-                    <div id="method_queueSync" class="method item">
-    <h3 class="name"><code>queueSync</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>tasks</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <span class="flag chainable">chainable</span>
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_TaskQueue.js.html#l50"><code>src\TaskQueue.js:50</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Queues zero or more synchronous tasks.</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">tasks</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
-                    
-
-                    
-                        <span class="flag multiple" title="This argument may occur one or more times.">multiple</span>
-                    
-
-                    <div class="param-description">
-                        <p>Zero or more synchronous tasks to queue.</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-
-    
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>TODO</code></pre>
-
-            </div>
-        </div>
-    
-</div>
-
-                
-                    <div id="method_start" class="method item">
-    <h3 class="name"><code>start</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code class="optional">[callback]</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code class="optional">[progress]</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <span class="flag chainable">chainable</span>
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_TaskQueue.js.html#l83"><code>src\TaskQueue.js:83</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Starts executing the queued tasks in queuing order.</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name optional">[callback]</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
-                        <span class="flag optional" title="This parameter is optional.">optional</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>An optional user-defined callback function
-that gets invoked as soon as all the tasks finish. The <code>TaskQueue</code> object
-is used as <code>this</code> when calling the function.</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name optional">[progress]</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
-                        <span class="flag optional" title="This parameter is optional.">optional</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>An optional user-defined callback function
-that gets invoked every time a task ends. The <code>TaskQueue</code> object is used
-as <code>this</code> when calling the function.</p>
+                        <p>Zero or more task functions.</p>
 
                     </div>
 
@@ -814,16 +531,29 @@ as <code>this</code> when calling the function.</p>
                             
                             <li class="param">
                                 
-                                    <code class="param-name">progress</code>
-                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                                    <code class="param-name">next</code>
+                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
                                 
 
                                 <div class="param-description">
-                                    <p>A percentage value indicating the
-current progress, computed by the following formula:</p>
-<pre><code>i * 100 / c</code></pre>
-<p>Where <code>i</code> indicates the zero-based index of the last executed task and
-<code>c</code> indicates the total number of queued tasks.</p>
+                                    <p>A callback function that must be invoked by
+each task as soon as it is accomplished.</p>
+
+                                </div>
+
+                                
+                            </li>
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[scope]</code>
+                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
+
+                                <div class="param-description">
+                                    <p>An optional object the task must use as
+<code>this</code> when invoking the <code>next</code> callback.</p>
 
                                 </div>
 
@@ -838,6 +568,191 @@ current progress, computed by the following formula:</p>
         </div>
     
 
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>:
+                    
+                    <p>A function that starts the execution.</p>
+<p>The returned function does not return anything but expects two optional
+arguments: the first is a user-defined callback function invoked when all
+the tasks have been executed, the second is a scope object to use as
+<code>this</code> while invoking the callback function.</p>
+<p>The returned function may also be specified as a task for 
+<a href="..\classes\OOGL.Async.html#method_serial" class="crosslink">serial</a> or for another
+<a href="..\classes\OOGL.Async.html#method_parallel" class="crosslink">parallel</a> call.</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>TODO</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_serial" class="method item">
+    <h3 class="name"><code>serial</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code class="optional">[tasks]</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+        <span class="flag static">static</span>
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_Async.js.html#l51"><code>src\Async.js:51</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Creates an asynchronous task that executes the specified asynchronous
+tasks serially.</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name optional">[tasks]</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                    
+
+                    
+                        <span class="flag multiple" title="This argument may occur one or more times.">multiple</span>
+                    
+
+                    <div class="param-description">
+                        <p>Zero or more task functions.</p>
+
+                    </div>
+
+                    
+                        <ul class="params-list">
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name">next</code>
+                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+                                
+
+                                <div class="param-description">
+                                    <p>A callback function that must be invoked by
+each task as soon as it is accomplished.</p>
+
+                                </div>
+
+                                
+                            </li>
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[scope]</code>
+                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
+
+                                <div class="param-description">
+                                    <p>An optional object the task must use as
+<code>this</code> when invoking the <code>next</code> callback.</p>
+
+                                </div>
+
+                                
+                            </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>:
+                    
+                    <p>A function that starts the execution.</p>
+<p>The returned function does not return anything but expects two optional
+arguments: the first is a user-defined callback function invoked when all
+the tasks have been executed, the second is a scope object to use as
+<code>this</code> while invoking the callback function.</p>
+<p>The returned function may also be specified as a task for 
+<a href="..\classes\OOGL.Async.html#method_parallel" class="crosslink">parallel</a> or for another
+<a href="..\classes\OOGL.Async.html#method_serial" class="crosslink">serial</a> call.</p>
+
+                
+            </div>
+        </div>
     
 
     

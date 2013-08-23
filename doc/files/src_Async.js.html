@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>src\TaskQueue.js - OOGL.js</title>
+    <title>src\Async.js - OOGL.js</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -87,6 +87,8 @@
             
                 <li><a href="../classes/context.Loader.html">context.Loader</a></li>
             
+                <li><a href="../classes/context.Loader.Assets.html">context.Loader.Assets</a></li>
+            
                 <li><a href="../classes/context.Program.html">context.Program</a></li>
             
                 <li><a href="../classes/context.Renderbuffer.html">context.Renderbuffer</a></li>
@@ -115,6 +117,8 @@
             
                 <li><a href="../classes/OOGL.Ajax.html">OOGL.Ajax</a></li>
             
+                <li><a href="../classes/OOGL.Async.html">OOGL.Async</a></li>
+            
                 <li><a href="../classes/OOGL.Context.html">OOGL.Context</a></li>
             
                 <li><a href="../classes/OOGL.IsometricProjection.html">OOGL.IsometricProjection</a></li>
@@ -142,8 +146,6 @@
                 <li><a href="../classes/OOGL.ScalingMatrix3.html">OOGL.ScalingMatrix3</a></li>
             
                 <li><a href="../classes/OOGL.ScalingMatrix4.html">OOGL.ScalingMatrix4</a></li>
-            
-                <li><a href="../classes/OOGL.TaskQueue.html">OOGL.TaskQueue</a></li>
             
                 <li><a href="../classes/OOGL.Timing.html">OOGL.Timing</a></li>
             
@@ -210,7 +212,7 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1 class="file-heading">File: src\TaskQueue.js</h1>
+                        <h1 class="file-heading">File: src\Async.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
@@ -221,115 +223,143 @@
  */
 
 /**
- * Represents a queue of asynchronous tasks. This is mainly used to manage
- * asynchronous asset loading and is inherited by
- * {{#crossLink &quot;context.Loader&quot;}}Loader{{/crossLink}}.
+ * Manages the serial and parallel execution of asynchronous tasks.
  *
- * A task is a function that executes a job and can be either synchronous or
- * asynchronous.
+ * Mainly used by {{#crossLink &quot;context.Loader&quot;}}Loader{{/crossLink}}.
  *
- * A synchronous task runs synchronously and its job terminates as soon as the
- * function returns.
+ * Asynchronous tasks are specified as functions receiving two arguments: one
+ * callback function to invoke as soon as the task is accomplished, and one
+ * optional object to use as &#x60;this&#x60; when invoking the callback function. Return
+ * values are ignored.
  *
- * An asynchronous task, instead, runs asynchronously and always receives one
- * single argument, a callback function that is invoked by the task as soon as
- * it ends.
- *
- * @class OOGL.TaskQueue
- * @constructor
- * @param tasks* {Function} Zero or more asynchronous tasks to queue.
- * @example
- *	TODO
+ * @class OOGL.Async
+ * @static
  */
-OOGL.TaskQueue = function () {
-	var thisObject = this;
-
-	var queue = [];
-	for (var i = 0; i &lt; arguments.length; i++) {
-		queue.push(arguments[i]);
-	}
-
+OOGL.Async = {
 	/**
-	 * Queues zero or more asynchronous tasks.
+	 * Creates an asynchronous task from a synchronous one.
 	 *
-	 * @method queue
-	 * @chainable
-	 * @param tasks* {Function} Zero or more asynchronous tasks to queue.
+	 * The returned task function invokes the task function (without specifying
+	 * any arguments) and subsequently invokes the callback function, if
+	 * specified.
+	 *
+	 * @method async
+	 * @static
+	 * @param task {Function} A synchronous task function.
+	 * @return {Function} A new asynchronous task function.
+	 *
+	 * The returned function does not return anything but expects two optional
+	 * arguments: the first is a user-defined callback function invoked when all
+	 * the tasks have been executed, the second is a scope object to use as
+	 * &#x60;this&#x60; while invoking the callback function.
+	 *
+	 * The returned function may be specified as a task for
+	 * {{#crossLink &quot;OOGL.Async/serial&quot;}}serial{{/crossLink}} and
+	 * {{#crossLink &quot;OOGL.Async/parallel&quot;}}parallel{{/crossLink}}.
 	 * @example
 	 *	TODO
 	 */
-	this.queue = function () {
-		queue.push.apply(queue, arguments);
-		return thisObject;
-	};
+	async: function (task) {
+		return function (callback, scope) {
+			task();
+			callback &amp;&amp; callback.call(scope);
+		};
+	},
 
 	/**
-	 * Queues zero or more synchronous tasks.
+	 * Creates an asynchronous task that executes the specified asynchronous
+	 * tasks serially.
 	 *
-	 * @method queueSync
-	 * @chainable
-	 * @param tasks* {Function} Zero or more synchronous tasks to queue.
+	 * @method serial
+	 * @static
+	 * @param [tasks]* {Function} Zero or more task functions.
+	 * @param tasks.next {Function} A callback function that must be invoked by
+	 * each task as soon as it is accomplished.
+	 * @param [tasks.scope] {Object} An optional object the task must use as
+	 * &#x60;this&#x60; when invoking the &#x60;next&#x60; callback.
+	 * @return {Function} A function that starts the execution.
+	 *
+	 * The returned function does not return anything but expects two optional
+	 * arguments: the first is a user-defined callback function invoked when all
+	 * the tasks have been executed, the second is a scope object to use as
+	 * &#x60;this&#x60; while invoking the callback function.
+	 *
+	 * The returned function may also be specified as a task for 
+	 * {{#crossLink &quot;OOGL.Async/parallel&quot;}}parallel{{/crossLink}} or for another
+	 * {{#crossLink &quot;OOGL.Async/serial&quot;}}serial{{/crossLink}} call.
 	 * @example
 	 *	TODO
 	 */
-	this.queueSync = function () {
-		for (var i = 0; i &lt; arguments.length; i++) {
-			(function (task) {
-				queue.push(function (next) {
-					task();
-					next();
-				});
-			})(arguments[i]);
+	serial: function () {
+		var tasks;
+		if ((arguments.length === 1) &amp;&amp; (typeof arguments[0] !== &#x27;function&#x27;)) {
+			tasks = arguments[0];
+		} else {
+			tasks = arguments;
 		}
-		return thisObject;
-	};
-
-	/**
-	 * Returns the number of tasks queued so far.
-	 *
-	 * @method count
-	 * @return {Number} The number of tasks queued so far.
-	 * @example
-	 *	TODO
-	 */
-	this.count = function () {
-		return queue.length;
-	};
-
-	/**
-	 * Starts executing the queued tasks in queuing order.
-	 *
-	 * @method start
-	 * @chainable
-	 * @param [callback] {Function} An optional user-defined callback function
-	 * that gets invoked as soon as all the tasks finish. The &#x60;TaskQueue&#x60; object
-	 * is used as &#x60;this&#x60; when calling the function.
-	 * @param [progress] {Function} An optional user-defined callback function
-	 * that gets invoked every time a task ends. The &#x60;TaskQueue&#x60; object is used
-	 * as &#x60;this&#x60; when calling the function.
-	 * @param progress.progress {Number} A percentage value indicating the
-	 * current progress, computed by the following formula:
-	 *
-	 *	i * 100 / c
-	 *
-	 * Where &#x60;i&#x60; indicates the zero-based index of the last executed task and
-	 * &#x60;c&#x60; indicates the total number of queued tasks.
-	 * @example
-	 *	TODO
-	 */
-	this.start = function (callback, progress) {
-		(function run(index) {
-			if (index &lt; queue.length) {
-				queue[index](function () {
-					progress &amp;&amp; progress.call(thisObject, index * 100 / queue.length);
-					run(index + 1);
-				});
+		return function (callback, scope) {
+			if (tasks.length) {
+				(function run(index) {
+					tasks[index](function () {
+						if (index &lt; tasks.length - 1) {
+							run(index + 1);
+						} else {
+							callback &amp;&amp; callback.call(scope);
+						}
+					});
+				})(0);
 			} else {
-				callback &amp;&amp; callback.call(thisObject);
+				callback &amp;&amp; callback.call(scope);
 			}
-		})(0);
-		return thisObject;
-	};
+		};
+	},
+
+	/**
+	 * Creates an asynchronous task that executes the specified asynchronous
+	 * tasks in parallel.
+	 *
+	 * @method parallel
+	 * @static
+	 * @param [tasks]* {Function} Zero or more task functions.
+	 * @param tasks.next {Function} A callback function that must be invoked by
+	 * each task as soon as it is accomplished.
+	 * @param [tasks.scope] {Object} An optional object the task must use as
+	 * &#x60;this&#x60; when invoking the &#x60;next&#x60; callback.
+	 * @return {Function} A function that starts the execution.
+	 *
+	 * The returned function does not return anything but expects two optional
+	 * arguments: the first is a user-defined callback function invoked when all
+	 * the tasks have been executed, the second is a scope object to use as
+	 * &#x60;this&#x60; while invoking the callback function.
+	 *
+	 * The returned function may also be specified as a task for 
+	 * {{#crossLink &quot;OOGL.Async/serial&quot;}}serial{{/crossLink}} or for another
+	 * {{#crossLink &quot;OOGL.Async/parallel&quot;}}parallel{{/crossLink}} call.
+	 * @example
+	 *	TODO
+	 */
+	parallel: function () {
+		var tasks;
+		if ((arguments.length === 1) &amp;&amp; (typeof arguments[0] !== &#x27;function&#x27;)) {
+			tasks = arguments[0];
+		} else {
+			tasks = arguments;
+		}
+		return function (callback, scope) {
+			if (tasks.length) {
+				var count = tasks.length;
+				for (var i = 0; i &lt; tasks.length; i++) {
+					tasks[i](function () {
+						if (!--count) {
+							callback &amp;&amp; callback.call(scope);
+						}
+					});
+				}
+			} else {
+				callback &amp;&amp; callback.call(scope);
+			}
+		};
+	}
 };
 
     </pre>

@@ -2,6 +2,7 @@ YUI.add("yuidoc-meta", function(Y) {
    Y.YUIDoc = { meta: {
     "classes": [
         "OOGL.Ajax",
+        "OOGL.Async",
         "OOGL.Context",
         "OOGL.IsometricProjection",
         "OOGL.Matrix2",
@@ -16,7 +17,6 @@ YUI.add("yuidoc-meta", function(Y) {
         "OOGL.ScalingMatrix2",
         "OOGL.ScalingMatrix3",
         "OOGL.ScalingMatrix4",
-        "OOGL.TaskQueue",
         "OOGL.Timing",
         "OOGL.TranslationMatrix4",
         "OOGL.Vector2",
@@ -51,6 +51,7 @@ YUI.add("yuidoc-meta", function(Y) {
         "context.FragmentShader",
         "context.Framebuffer",
         "context.Loader",
+        "context.Loader.Assets",
         "context.Program",
         "context.Renderbuffer",
         "context.Shader",

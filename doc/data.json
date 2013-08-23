@@ -29,6 +29,15 @@
             "fors": {},
             "namespaces": {}
         },
+        "src\\Async.js": {
+            "name": "src\\Async.js",
+            "modules": {},
+            "classes": {
+                "OOGL.Async": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
         "src\\Buffers.js": {
             "name": "src\\Buffers.js",
             "modules": {},
@@ -71,9 +80,12 @@
             "name": "src\\Loader.js",
             "modules": {},
             "classes": {
+                "context.Loader": 1,
+                "context.Loader.Assets": 1
+            },
+            "fors": {
                 "context.Loader": 1
             },
-            "fors": {},
             "namespaces": {}
         },
         "src\\Matrix2.js": {
@@ -171,15 +183,6 @@
             "fors": {},
             "namespaces": {}
         },
-        "src\\TaskQueue.js": {
-            "name": "src\\TaskQueue.js",
-            "modules": {},
-            "classes": {
-                "OOGL.TaskQueue": 1
-            },
-            "fors": {},
-            "namespaces": {}
-        },
         "src\\Textures.js": {
             "name": "src\\Textures.js",
             "modules": {},
@@ -238,6 +241,7 @@
             "submodules": {},
             "classes": {
                 "OOGL.Ajax": 1,
+                "OOGL.Async": 1,
                 "OOGL.Context": 1,
                 "OOGL.Matrix2": 1,
                 "OOGL.RotationMatrix2": 1,
@@ -259,7 +263,6 @@
                 "OOGL.IsometricProjection": 1,
                 "OOGL.PerspectiveProjection": 1,
                 "OOGL.RenderLoop": 1,
-                "OOGL.TaskQueue": 1,
                 "OOGL.Timing": 1,
                 "OOGL.Vector2": 1,
                 "OOGL.Vector3": 1,
@@ -297,6 +300,7 @@
                 "context.DynamicElementArrayBuffer": 1,
                 "context.Framebuffer": 1,
                 "context.Loader": 1,
+                "context.Loader.Assets": 1,
                 "context.Program": 1,
                 "context.AutoProgram": 1,
                 "context.AjaxProgram": 1,
@@ -314,11 +318,13 @@
                 "context.AsyncCubeMap": 1,
                 "context.Textures": 1
             },
-            "fors": {},
+            "fors": {
+                "context.Loader": 1
+            },
             "namespaces": {},
             "tag": "main",
             "file": "src\\Textures.js",
-            "line": 525,
+            "line": 526,
             "description": "This is actually a _pseudo_-module used to document OOGL classes whose\nnamespace is a WebGL/OOGL context instance.\n\nYou can get a `context` object by invoking the `OOGL.Context` constructor:\n\n\tvar context = new OOGL.Context(canvas);\n\nYou can then use that object to construct context-specific objects, such as\n`Texture2D` objects:\n\n\tvar texture = new context.Texture2D();\n\nThe `context` object is sometimes referred to with the `oogl` name because it\nis a normal `WebGLContext` object containing all the standard WebGL features,\nsuch as `createTexture`, `createShader`, `flush` and so on, plus\nOOGL-specific features such as `Texture2D`.",
             "itemtype": "main"
         }
@@ -568,6 +574,21 @@
             "example": [
                 "\n\tvar program = new oogl.AutoProgram(vertexSource, fragmentSource, ['in_Vertex', 'in_Color', 'in_TexCoord']);\n\tvar arrays = new oogl.AttributeArrays();\n\tarrays.add3('float', vertices);\n\tarrays.add3('float', colors);\n\tarrays.add2('float', textureCoordinates);\n\tarrays.bindAndPointer();\n\tvar elements = new oogl.ElementArray(indices);\n\telements.bind();\n\tprogram.use();\n\telements.drawTriangles();"
             ]
+        },
+        "OOGL.Async": {
+            "name": "OOGL.Async",
+            "shortname": "OOGL.Async",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "OOGL",
+            "namespace": "",
+            "file": "src\\Async.js",
+            "line": 7,
+            "description": "Manages the serial and parallel execution of asynchronous tasks.\n\nMainly used by {{#crossLink \"context.Loader\"}}Loader{{/crossLink}}.\n\nAsynchronous tasks are specified as functions receiving two arguments: one\ncallback function to invoke as soon as the task is accomplished, and one\noptional object to use as `this` when invoking the callback function. Return\nvalues are ignored.",
+            "static": 1
         },
         "context.Buffer": {
             "name": "context.Buffer",
@@ -978,17 +999,25 @@
             "namespace": "",
             "file": "src\\Loader.js",
             "line": 8,
-            "description": "Manages asynchronous asset loading with progress feedback.",
-            "extends": "OOGL.TaskQueue",
+            "description": "Manages asynchronous asset loading with progress feedback.\n\nTo load assets using the Loader you must first queue loading tasks using the\nprovided `queueXxx` methods and then start the loading process using the\n{{#crossLink \"context.Loader/loadAssets\"}}loadAssets{{/crossLink}} method.\n\nThe `Loader` is able to load textures, shader pairs and generic data such as\nXML files and JSON objects.\n\nTextures are loaded using the\n{{#crossLink \"context.AsyncTexture\"}}AsyncTexture{{/crossLink}} class. Shader\npairs are loaded using the\n{{#crossLink \"context.AjaxProgram\"}}AjaxProgram{{/crossLink}} class and thus\nthey are automatically compiled and linked, throwing an exception if\ncompilation or linking fails.\n\nXML files are loaded via {{#crossLink \"OOGL.Ajax\"}}Ajax{{/crossLink}} and\nreturned as DOM `Document` objects. JSON files are returned as natural\nJavaScript objects.",
             "is_constructor": 1,
-            "params": [
-                {
-                    "name": "tasks",
-                    "description": "Zero or more asynchronous tasks to queue. See the\n{{#crossLink \"OOGL.TaskQueue\"}}TaskQueue{{/crossLink}} description for more\ninformation.",
-                    "type": "Function",
-                    "multiple": true
-                }
-            ],
+            "example": [
+                "\n\tTODO"
+            ]
+        },
+        "context.Loader.Assets": {
+            "name": "context.Loader.Assets",
+            "shortname": "context.Loader.Assets",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "context",
+            "namespace": "",
+            "file": "src\\Loader.js",
+            "line": 261,
+            "description": "Represents a set of loaded assets, including textures, programs and\ngeneric data.\n\nAssets can be retrieved by the URLs from which they have been loaded and\nthe entire set may be eventually discarded.\n\nThis class cannot be instantiated directly; instances are returned by the\n{{#crossLink \"context.Loader/loadAssets\"}}loadAssets{{/crossLink}} method\nto its callback function.",
             "example": [
                 "\n\tTODO"
             ]
@@ -1843,32 +1872,6 @@
                 "\n\tvar program = new oogl.Program();\n\tvar fragmentShader = new oogl.AjaxFragmentShader('frag/box.frag', function () {\n\t\tprogram.attachShader(fragmentShader);\n\t});"
             ]
         },
-        "OOGL.TaskQueue": {
-            "name": "OOGL.TaskQueue",
-            "shortname": "OOGL.TaskQueue",
-            "classitems": [],
-            "plugins": [],
-            "extensions": [],
-            "plugin_for": [],
-            "extension_for": [],
-            "module": "OOGL",
-            "namespace": "",
-            "file": "src\\TaskQueue.js",
-            "line": 7,
-            "description": "Represents a queue of asynchronous tasks. This is mainly used to manage\nasynchronous asset loading and is inherited by\n{{#crossLink \"context.Loader\"}}Loader{{/crossLink}}.\n\nA task is a function that executes a job and can be either synchronous or\nasynchronous.\n\nA synchronous task runs synchronously and its job terminates as soon as the\nfunction returns.\n\nAn asynchronous task, instead, runs asynchronously and always receives one\nsingle argument, a callback function that is invoked by the task as soon as\nit ends.",
-            "is_constructor": 1,
-            "params": [
-                {
-                    "name": "tasks",
-                    "description": "Zero or more asynchronous tasks to queue.",
-                    "type": "Function",
-                    "multiple": true
-                }
-            ],
-            "example": [
-                "\n\tTODO"
-            ]
-        },
         "context.Texture": {
             "name": "context.Texture",
             "shortname": "context.Texture",
@@ -2010,7 +2013,7 @@
             "module": "context",
             "namespace": "",
             "file": "src\\Textures.js",
-            "line": 459,
+            "line": 460,
             "description": "An `oogl.Texture` whose target is `gl.TEXTURE_CUBE_MAP`.",
             "extends": "context.Texture",
             "is_constructor": 1,
@@ -2029,7 +2032,7 @@
             "module": "context",
             "namespace": "",
             "file": "src\\Textures.js",
-            "line": 472,
+            "line": 473,
             "description": "TODO",
             "is_constructor": 1,
             "params": [
@@ -2073,7 +2076,7 @@
             "module": "context",
             "namespace": "",
             "file": "src\\Textures.js",
-            "line": 525,
+            "line": 526,
             "description": "A utility class that aids in the management of multiple textures.\n\nOne `Textures` objects represents a set of textures that must be\nsimultaneously bound (to different texture units) for use by the same\nprogram. The `Textures` object automatically assigns textures to texture\nunits.\n\nContained textures are assigned unique names which are then used as uniform\nvariable names when specifying uniforms with the provided `uniform` method.\n\nA `Texture` object may belong to several `Textures` sets at the same\ntime, so that it can be used by several programs.",
             "is_constructor": 1,
             "params": [
@@ -2235,7 +2238,7 @@
         },
         {
             "file": "src\\Ajax.js",
-            "line": 223,
+            "line": 232,
             "description": "Performs a GET AJAX request. The data returned from the server is passed\nto a user-defined callback function.",
             "itemtype": "method",
             "name": "get",
@@ -2272,7 +2275,7 @@
         },
         {
             "file": "src\\Ajax.js",
-            "line": 242,
+            "line": 251,
             "description": "Performs a GET AJAX request. The data returned from the server is parsed\nas JSON and passed to a user-defined callback function.",
             "itemtype": "method",
             "name": "getJSON",
@@ -2297,7 +2300,7 @@
         },
         {
             "file": "src\\Ajax.js",
-            "line": 260,
+            "line": 269,
             "description": "Performs a POST AJAX request. The data returned from the server is passed\nto a user-defined callback function.",
             "itemtype": "method",
             "name": "post",
@@ -2319,7 +2322,7 @@
         },
         {
             "file": "src\\Ajax.js",
-            "line": 272,
+            "line": 281,
             "description": "Performs a POST AJAX request. The data returned from the server is parsed\nas JSON and passed to a user-defined callback function.",
             "itemtype": "method",
             "name": "postJSON",
@@ -2341,7 +2344,7 @@
         },
         {
             "file": "src\\Ajax.js",
-            "line": 284,
+            "line": 293,
             "description": "Performs a PUT AJAX request. The data returned from the server is passed\nto a user-defined callback function.",
             "itemtype": "method",
             "name": "put",
@@ -2363,7 +2366,7 @@
         },
         {
             "file": "src\\Ajax.js",
-            "line": 296,
+            "line": 305,
             "description": "Performs a PUT AJAX request. The data returned from the server is parsed\nas JSON and passed to a user-defined callback function.",
             "itemtype": "method",
             "name": "putJSON",
@@ -2385,7 +2388,7 @@
         },
         {
             "file": "src\\Ajax.js",
-            "line": 308,
+            "line": 317,
             "description": "Performs a DELETE AJAX request. The data returned from the server is\npassed to a user-defined callback function.",
             "itemtype": "method",
             "name": "_delete",
@@ -2407,7 +2410,7 @@
         },
         {
             "file": "src\\Ajax.js",
-            "line": 320,
+            "line": 329,
             "description": "Performs a DELETE AJAX request. The data returned from the server is\nparsed as JSON and passed to a user-defined callback function.",
             "itemtype": "method",
             "name": "deleteJSON",
@@ -3742,6 +3745,108 @@
             "module": "context"
         },
         {
+            "file": "src\\Async.js",
+            "line": 21,
+            "description": "Creates an asynchronous task from a synchronous one.\n\nThe returned task function invokes the task function (without specifying\nany arguments) and subsequently invokes the callback function, if\nspecified.",
+            "itemtype": "method",
+            "name": "async",
+            "static": 1,
+            "params": [
+                {
+                    "name": "task",
+                    "description": "A synchronous task function.",
+                    "type": "Function"
+                }
+            ],
+            "return": {
+                "description": "A new asynchronous task function.\n\nThe returned function does not return anything but expects two optional\narguments: the first is a user-defined callback function invoked when all\nthe tasks have been executed, the second is a scope object to use as\n`this` while invoking the callback function.\n\nThe returned function may be specified as a task for\n{{#crossLink \"OOGL.Async/serial\"}}serial{{/crossLink}} and\n{{#crossLink \"OOGL.Async/parallel\"}}parallel{{/crossLink}}.",
+                "type": "Function"
+            },
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "OOGL.Async",
+            "module": "OOGL"
+        },
+        {
+            "file": "src\\Async.js",
+            "line": 51,
+            "description": "Creates an asynchronous task that executes the specified asynchronous\ntasks serially.",
+            "itemtype": "method",
+            "name": "serial",
+            "static": 1,
+            "params": [
+                {
+                    "name": "tasks",
+                    "description": "Zero or more task functions.",
+                    "type": "Function",
+                    "optional": true,
+                    "multiple": true,
+                    "props": [
+                        {
+                            "name": "next",
+                            "description": "A callback function that must be invoked by\neach task as soon as it is accomplished.",
+                            "type": "Function"
+                        },
+                        {
+                            "name": "scope",
+                            "description": "An optional object the task must use as\n`this` when invoking the `next` callback.",
+                            "type": "Object",
+                            "optional": true
+                        }
+                    ]
+                }
+            ],
+            "return": {
+                "description": "A function that starts the execution.\n\nThe returned function does not return anything but expects two optional\narguments: the first is a user-defined callback function invoked when all\nthe tasks have been executed, the second is a scope object to use as\n`this` while invoking the callback function.\n\nThe returned function may also be specified as a task for \n{{#crossLink \"OOGL.Async/parallel\"}}parallel{{/crossLink}} or for another\n{{#crossLink \"OOGL.Async/serial\"}}serial{{/crossLink}} call.",
+                "type": "Function"
+            },
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "OOGL.Async",
+            "module": "OOGL"
+        },
+        {
+            "file": "src\\Async.js",
+            "line": 99,
+            "description": "Creates an asynchronous task that executes the specified asynchronous\ntasks in parallel.",
+            "itemtype": "method",
+            "name": "parallel",
+            "static": 1,
+            "params": [
+                {
+                    "name": "tasks",
+                    "description": "Zero or more task functions.",
+                    "type": "Function",
+                    "optional": true,
+                    "multiple": true,
+                    "props": [
+                        {
+                            "name": "next",
+                            "description": "A callback function that must be invoked by\neach task as soon as it is accomplished.",
+                            "type": "Function"
+                        },
+                        {
+                            "name": "scope",
+                            "description": "An optional object the task must use as\n`this` when invoking the `next` callback.",
+                            "type": "Object",
+                            "optional": true
+                        }
+                    ]
+                }
+            ],
+            "return": {
+                "description": "A function that starts the execution.\n\nThe returned function does not return anything but expects two optional\narguments: the first is a user-defined callback function invoked when all\nthe tasks have been executed, the second is a scope object to use as\n`this` while invoking the callback function.\n\nThe returned function may also be specified as a task for \n{{#crossLink \"OOGL.Async/serial\"}}serial{{/crossLink}} or for another\n{{#crossLink \"OOGL.Async/parallel\"}}parallel{{/crossLink}} call.",
+                "type": "Function"
+            },
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "OOGL.Async",
+            "module": "OOGL"
+        },
+        {
             "file": "src\\Buffers.js",
             "line": 61,
             "description": "Indicates whether this is a valid GL buffer.\n\n`gl.isBuffer` equivalent.",
@@ -4042,7 +4147,62 @@
         },
         {
             "file": "src\\Loader.js",
-            "line": 28,
+            "line": 38,
+            "description": "Queues a task that loads a file of the specified type via AJAX.",
+            "itemtype": "method",
+            "name": "queueData",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "The URL of the file.",
+                    "type": "String"
+                },
+                {
+                    "name": "parameters",
+                    "description": "An optional object containing parameters to\nbe passed to the server in the AJAX request. It specified directly to the\n{{#crossLink \"OOGL.Ajax/get\"}}OOGL.Ajax.get{{/crossLink}} method.",
+                    "type": "Object",
+                    "optional": true
+                },
+                {
+                    "name": "type",
+                    "description": "The data type, specified directly to the\n{{#crossLink \"OOGL.Ajax/get\"}}OOGL.Ajax.get{{/crossLink}} method.",
+                    "type": "String"
+                }
+            ],
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "context.Loader",
+            "module": "context"
+        },
+        {
+            "file": "src\\Loader.js",
+            "line": 70,
+            "description": "Queues a task that loads JSON data via AJAX.",
+            "itemtype": "method",
+            "name": "queueJSON",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "The URL of the JSON data.",
+                    "type": "String"
+                },
+                {
+                    "name": "parameters",
+                    "description": "An optional object containing parameters to\nbe passed to the server in the AJAX request. It specified directly to the\n{{#crossLink \"OOGL.Ajax/get\"}}OOGL.Ajax.getJSON{{/crossLink}} method.",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "context.Loader",
+            "module": "context"
+        },
+        {
+            "file": "src\\Loader.js",
+            "line": 100,
             "description": "Queues an asynchronous task that loads and creates a texture given its\nURL.\n\nInternally the `queueTexture` method uses the\n{{#crossLink \"context.AsyncTexture\"}}AsyncTexture{{/crossLink}} class.\n\nAfter being loaded, the texture can be retrieved via the\n{{#crossLink \"OOGL.Loader/getTexture\"}}getTexture{{/crossLink}} method as\na {{#crossLink \"context.Texture2D\"}}Texture2D{{/crossLink}} object.",
             "itemtype": "method",
             "name": "queueTexture",
@@ -4076,7 +4236,7 @@
         },
         {
             "file": "src\\Loader.js",
-            "line": 65,
+            "line": 140,
             "description": "Queues asynchronous tasks that load and create zero or more textures\ngiven their URLs.\n\nInternally the `queueTextures` method uses the\n{{#crossLink \"context.AsyncTexture\"}}AsyncTexture{{/crossLink}} class.\n\nAfter being loaded, the textures can be retrieved via the\n{{#crossLink \"OOGL.Loader/getTexture\"}}getTexture{{/crossLink}} method as\n{{#crossLink \"context.Texture2D\"}}Texture2D{{/crossLink}} objects.",
             "itemtype": "method",
             "name": "queueTextures",
@@ -4086,31 +4246,22 @@
                     "name": "ids",
                     "description": "An array of image URLs.",
                     "type": "String[]"
-                }
-            ],
-            "example": [
-                "\n\tTODO"
-            ],
-            "class": "context.Loader",
-            "module": "context"
-        },
-        {
-            "file": "src\\Loader.js",
-            "line": 90,
-            "description": "Retrieves a {{#crossLink \"context.Texture2D\"}}Texture2D{{/crossLink}}\nobject loaded from the image identified by the specified URL.",
-            "itemtype": "method",
-            "name": "getTexture",
-            "params": [
+                },
                 {
-                    "name": "id",
-                    "description": "The URL of a previously loaded texture image.",
-                    "type": "String"
+                    "name": "magFilter",
+                    "description": "An optional value for the\nmagnifying filter. See\n{{#crossLink \"context.AsyncTexture\"}}AsyncTexture{{/crossLink}} for more\ninformation.",
+                    "type": "Number",
+                    "optional": true,
+                    "optdefault": "gl.LINEAR"
+                },
+                {
+                    "name": "minFilter",
+                    "description": "An optional value for the minifying\nfilter. See\n{{#crossLink \"context.AsyncTexture\"}}AsyncTexture{{/crossLink}} for more\ninformation.",
+                    "type": "Number",
+                    "optional": true,
+                    "optdefault": "gl.LINEAR"
                 }
             ],
-            "return": {
-                "description": "A `Texture2D` object representing the GL\ntexture.",
-                "type": "context.Texture2D"
-            },
             "example": [
                 "\n\tTODO"
             ],
@@ -4119,7 +4270,7 @@
         },
         {
             "file": "src\\Loader.js",
-            "line": 107,
+            "line": 182,
             "description": "Queues an asynchronous task that loads, compiles and links the specified\nshader pair, and returns it as a\n{{#crossLink \"context.Program\"}}Program{{/crossLink}} object.\n\nInternally the `queueProgram` method uses the\n{{#crossLink \"context.AjaxProgram\"}}AjaxProgram{{/crossLink}} class.\n\nThe loaded program can then be retrieved using the\n{{#crossLink \"context.Loader/getProgram\"}}getProgram{{/crossLink}}\nmethod.",
             "itemtype": "method",
             "name": "queueProgram",
@@ -4144,7 +4295,7 @@
         },
         {
             "file": "src\\Loader.js",
-            "line": 137,
+            "line": 215,
             "description": "Queues asynchronous tasks that load, compile and link zero or more shader\npairs, and return them as\n{{#crossLink \"context.Program\"}}Program{{/crossLink}} objects.\n\nInternally the `queuePrograms` method uses the\n{{#crossLink \"context.AjaxProgram\"}}AjaxProgram{{/crossLink}} class to\nload each shader pair.\n\nThe loaded programs can then be retrieved using the\n{{#crossLink \"context.Loader/getProgram\"}}getProgram{{/crossLink}}\nmethod.",
             "itemtype": "method",
             "name": "queuePrograms",
@@ -4164,86 +4315,8 @@
         },
         {
             "file": "src\\Loader.js",
-            "line": 181,
-            "description": "Retrieves a {{#crossLink \"context.Program\"}}Program{{/crossLink}} object\nloaded from the shader pair identified by the specified URL.",
-            "itemtype": "method",
-            "name": "getProgram",
-            "params": [
-                {
-                    "name": "id",
-                    "description": "The URL of a previously loaded shader pair, not\nincluding the filename extension.",
-                    "type": "String"
-                }
-            ],
-            "return": {
-                "description": "A `Program` object representing the GL program.",
-                "type": "context.Program"
-            },
-            "example": [
-                "\n\tTODO"
-            ],
-            "class": "context.Loader",
-            "module": "context"
-        },
-        {
-            "file": "src\\Loader.js",
-            "line": 198,
-            "description": "Queues a task that loads a file of the specified type via AJAX.",
-            "itemtype": "method",
-            "name": "queueData",
-            "params": [
-                {
-                    "name": "id",
-                    "description": "The URL of the file.",
-                    "type": "String"
-                },
-                {
-                    "name": "data",
-                    "description": "An optional object containing parameters to be\npassed to the server in the AJAX request. It specified directly to the\n{{#crossLink \"OOGL.Ajax/get\"}}OOGL.Ajax.get{{/crossLink}} method.",
-                    "type": "Object",
-                    "optional": true
-                },
-                {
-                    "name": "type",
-                    "description": "The data type, specified directly to the\n{{#crossLink \"OOGL.Ajax/get\"}}OOGL.Ajax.get{{/crossLink}} method.",
-                    "type": "String"
-                }
-            ],
-            "example": [
-                "\n\tTODO"
-            ],
-            "class": "context.Loader",
-            "module": "context"
-        },
-        {
-            "file": "src\\Loader.js",
-            "line": 228,
-            "description": "Queues a task that loads JSON data via AJAX.",
-            "itemtype": "method",
-            "name": "queueJSON",
-            "params": [
-                {
-                    "name": "id",
-                    "description": "The URL of the JSON data.",
-                    "type": "String"
-                },
-                {
-                    "name": "data",
-                    "description": "An optional object containing parameters to be\npassed to the server in the AJAX request. It specified directly to the\n{{#crossLink \"OOGL.Ajax/get\"}}OOGL.Ajax.getJSON{{/crossLink}} method.",
-                    "type": "Object",
-                    "optional": true
-                }
-            ],
-            "example": [
-                "\n\tTODO"
-            ],
-            "class": "context.Loader",
-            "module": "context"
-        },
-        {
-            "file": "src\\Loader.js",
-            "line": 255,
-            "description": "Retrieves data previously loaded via the\n{{#crossLink \"context.Loader/queueData\"}}queueData{{/crossLink}} or\n{{#crossLink \"context.Loader/queueJSON\"}}queueJSON{{/crossLink}} method.",
+            "line": 277,
+            "description": "Retrieves data previously loaded via the\n{{#crossLink \"context.Loader/queueData\"}}queueData{{/crossLink}} or\n{{#crossLink \"context.Loader/queueJSON\"}}queueJSON{{/crossLink}}\nmethod.",
             "itemtype": "method",
             "name": "getData",
             "params": [
@@ -4257,6 +4330,99 @@
                 "description": "The requested data.",
                 "type": "Object"
             },
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "context.Loader.Assets",
+            "module": "context"
+        },
+        {
+            "file": "src\\Loader.js",
+            "line": 295,
+            "description": "Retrieves a {{#crossLink \"context.Texture2D\"}}Texture2D{{/crossLink}}\nobject loaded from the image identified by the specified URL.",
+            "itemtype": "method",
+            "name": "getTexture",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "The URL of a previously loaded texture image.",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "A `Texture2D` object representing the GL\ntexture.",
+                "type": "context.Texture2D"
+            },
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "context.Loader.Assets",
+            "module": "context"
+        },
+        {
+            "file": "src\\Loader.js",
+            "line": 312,
+            "description": "Retrieves a {{#crossLink \"context.Program\"}}Program{{/crossLink}}\nobject loaded from the shader pair identified by the specified URL.",
+            "itemtype": "method",
+            "name": "getProgram",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "The URL of a previously loaded shader pair, not\nincluding the filename extension.",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "A `Program` object representing the GL\nprogram.",
+                "type": "context.Program"
+            },
+            "example": [
+                "\n\tTODO"
+            ],
+            "class": "context.Loader.Assets",
+            "module": "context"
+        },
+        {
+            "file": "src\\Loader.js",
+            "line": 330,
+            "description": "Discards all the assets managed by this object: textures and programs\nare destroyed and generic data is discarded.\n\nAfter the assets have been discarded they cannot be retrieved any\nmore by the\n{{#crossLink \"context.Loader.Assets/getData\"}}getData{{/crossLink}},\n{{#crossLink \"context.Loader.Assets/getTextures\"}}getTextures{{/crossLink}}\nand\n{{#crossLink \"context.Loader.Assets/getPrograms\"}}getPrograms{{/crossLink}}\nmethods.",
+            "class": "context.Loader.Assets",
+            "module": "context"
+        },
+        {
+            "file": "src\\Loader.js",
+            "line": 363,
+            "description": "Executes the load tasks queued so far and discards the queue. When the\nloading process finishes, a new\n{{#crossLink \"context.Loader.Assets\"}}Assets{{/crossLink}} object is\ncreated and can be used to retrieve the loaded assets.\n\nThe same `Loader` object can be used to load multiple independent asset\nsets: assets belonging to different sets must be queued for different\n`loadAssets` calls. Each\n{{#crossLink \"context.Loader.Assets\"}}Assets{{/crossLink}} object does\nnot affect the others.",
+            "itemtype": "method",
+            "name": "loadAssets",
+            "chainable": 1,
+            "params": [
+                {
+                    "name": "callback",
+                    "description": "A user-defined callback function invoked by\nthe `Loader` as soon as all the loading tasks have been accomplished.",
+                    "type": "Function",
+                    "props": [
+                        {
+                            "name": "assets",
+                            "description": "A new `Assets` object that\ncan be used to retrieve and manage the loaded assets.",
+                            "type": "context.Loader.Assets"
+                        }
+                    ]
+                },
+                {
+                    "name": "progress",
+                    "description": "A user-defined callback function invoked\nseveral times during the loading process. It can be used to provide\nprogress feedback to the user.",
+                    "type": "Function",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "progress",
+                            "description": "The current progress percentage.",
+                            "type": "Number"
+                        }
+                    ]
+                }
+            ],
             "example": [
                 "\n\tTODO"
             ],
@@ -7191,98 +7357,6 @@
             "module": "context"
         },
         {
-            "file": "src\\TaskQueue.js",
-            "line": 36,
-            "description": "Queues zero or more asynchronous tasks.",
-            "itemtype": "method",
-            "name": "queue",
-            "chainable": 1,
-            "params": [
-                {
-                    "name": "tasks",
-                    "description": "Zero or more asynchronous tasks to queue.",
-                    "type": "Function",
-                    "multiple": true
-                }
-            ],
-            "example": [
-                "\n\tTODO"
-            ],
-            "class": "OOGL.TaskQueue",
-            "module": "OOGL"
-        },
-        {
-            "file": "src\\TaskQueue.js",
-            "line": 50,
-            "description": "Queues zero or more synchronous tasks.",
-            "itemtype": "method",
-            "name": "queueSync",
-            "chainable": 1,
-            "params": [
-                {
-                    "name": "tasks",
-                    "description": "Zero or more synchronous tasks to queue.",
-                    "type": "Function",
-                    "multiple": true
-                }
-            ],
-            "example": [
-                "\n\tTODO"
-            ],
-            "class": "OOGL.TaskQueue",
-            "module": "OOGL"
-        },
-        {
-            "file": "src\\TaskQueue.js",
-            "line": 71,
-            "description": "Returns the number of tasks queued so far.",
-            "itemtype": "method",
-            "name": "count",
-            "return": {
-                "description": "The number of tasks queued so far.",
-                "type": "Number"
-            },
-            "example": [
-                "\n\tTODO"
-            ],
-            "class": "OOGL.TaskQueue",
-            "module": "OOGL"
-        },
-        {
-            "file": "src\\TaskQueue.js",
-            "line": 83,
-            "description": "Starts executing the queued tasks in queuing order.",
-            "itemtype": "method",
-            "name": "start",
-            "chainable": 1,
-            "params": [
-                {
-                    "name": "callback",
-                    "description": "An optional user-defined callback function\nthat gets invoked as soon as all the tasks finish. The `TaskQueue` object\nis used as `this` when calling the function.",
-                    "type": "Function",
-                    "optional": true
-                },
-                {
-                    "name": "progress",
-                    "description": "An optional user-defined callback function\nthat gets invoked every time a task ends. The `TaskQueue` object is used\nas `this` when calling the function.",
-                    "type": "Function",
-                    "optional": true,
-                    "props": [
-                        {
-                            "name": "progress",
-                            "description": "A percentage value indicating the\ncurrent progress, computed by the following formula:\n\n\ti * 100 / c\n\nWhere `i` indicates the zero-based index of the last executed task and\n`c` indicates the total number of queued tasks.",
-                            "type": "Number"
-                        }
-                    ]
-                }
-            ],
-            "example": [
-                "\n\tTODO"
-            ],
-            "class": "OOGL.TaskQueue",
-            "module": "OOGL"
-        },
-        {
             "file": "src\\Textures.js",
             "line": 27,
             "description": "Indicates whether this is a valid GL texture.\n\n`gl.isTexture` equivalent.",
@@ -7738,7 +7812,7 @@
         },
         {
             "file": "src\\Textures.js",
-            "line": 563,
+            "line": 564,
             "description": "Adds a `Texture` to this set associating it a unique uniform variable\nname.\n\nIf the specified name is already in use by another texture in this\nset, the current texture is replaced by the specified one.\n\nThe texture is automatically assigned a texture unit, but the set\nmust be re-bound (using the `bind` method) before its textures can be\nused in programs.",
             "itemtype": "method",
             "name": "add",
@@ -7762,7 +7836,7 @@
         },
         {
             "file": "src\\Textures.js",
-            "line": 601,
+            "line": 602,
             "description": "Binds all the textures in this sets to their target in their\nrespective texture unit.\n\nEquivalent to calling `gl.activeTexture` and `gl.bindTexture` for\neach texture.",
             "itemtype": "method",
             "name": "bind",
@@ -7774,7 +7848,7 @@
         },
         {
             "file": "src\\Textures.js",
-            "line": 619,
+            "line": 620,
             "description": "Specifies uniform variable names for the specified program using the\nautomatically assigned texture units.",
             "itemtype": "method",
             "name": "uniform",
@@ -7793,7 +7867,7 @@
         },
         {
             "file": "src\\Textures.js",
-            "line": 639,
+            "line": 640,
             "description": "Binds all the textures in this sets to their target in their\nrespective texture unit and then specifies uniform variable names for\nthe specified program using the automatically assigned texture units.\n\nEquivalent to calling `bind` and `uniform` subsequently.",
             "itemtype": "method",
             "name": "bindAndUniform",
@@ -7812,7 +7886,7 @@
         },
         {
             "file": "src\\Textures.js",
-            "line": 663,
+            "line": 664,
             "description": "Deletes all the textures that have been added to this set and resets\nit to an empty set.\n\n`Textures` objects may be used again after deletion.",
             "itemtype": "method",
             "name": "_delete",
@@ -8823,5 +8897,10 @@
             "module": "OOGL"
         }
     ],
-    "warnings": []
+    "warnings": [
+        {
+            "message": "Missing item type\nDiscards all the assets managed by this object: textures and programs\nare destroyed and generic data is discarded.\n\nAfter the assets have been discarded they cannot be retrieved any\nmore by the\n{{#crossLink \"context.Loader.Assets/getData\"}}getData{{/crossLink}},\n{{#crossLink \"context.Loader.Assets/getTextures\"}}getTextures{{/crossLink}}\nand\n{{#crossLink \"context.Loader.Assets/getPrograms\"}}getPrograms{{/crossLink}}\nmethods.",
+            "line": " src\\Loader.js:330"
+        }
+    ]
 }
