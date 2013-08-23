@@ -36,8 +36,8 @@ OOGL.Async = {
 	 * `this` while invoking the callback function.
 	 *
 	 * The returned function may be specified as a task for
-	 * {{#crossLink "OOGL.Async.serial"}}serial{{/crossLink}} and
-	 * {{#crossLink "OOGL.Async.parallel"}}parallel{{/crossLink}}.
+	 * {{#crossLink "OOGL.Async/serial"}}serial{{/crossLink}} and
+	 * {{#crossLink "OOGL.Async/parallel"}}parallel{{/crossLink}}.
 	 * @example
 	 *	TODO
 	 */
@@ -67,8 +67,8 @@ OOGL.Async = {
 	 * `this` while invoking the callback function.
 	 *
 	 * The returned function may also be specified as a task for 
-	 * {{#crossLink "OOGL.Async.parallel"}}parallel{{/crossLink}} or for another
-	 * {{#crossLink "OOGL.Async.serial"}}serial{{/crossLink}} call.
+	 * {{#crossLink "OOGL.Async/parallel"}}parallel{{/crossLink}} or for another
+	 * {{#crossLink "OOGL.Async/serial"}}serial{{/crossLink}} call.
 	 * @example
 	 *	TODO
 	 */
@@ -110,8 +110,8 @@ OOGL.Async = {
 	 * `this` while invoking the callback function.
 	 *
 	 * The returned function may also be specified as a task for 
-	 * {{#crossLink "OOGL.Async.serial"}}serial{{/crossLink}} or for another
-	 * {{#crossLink "OOGL.Async.parallel"}}parallel{{/crossLink}} call.
+	 * {{#crossLink "OOGL.Async/serial"}}serial{{/crossLink}} or for another
+	 * {{#crossLink "OOGL.Async/parallel"}}parallel{{/crossLink}} call.
 	 * @example
 	 *	TODO
 	 */

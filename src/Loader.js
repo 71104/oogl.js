@@ -10,18 +10,12 @@
  *
  * @class context.Loader
  * @constructor
- * @param [tasks]* {Function} Zero or more asynchronous tasks to queue. See the
- * {{#crossLink "OOGL.TaskQueue"}}TaskQueue{{/crossLink}} description for more
- * information.
  * @example
  *	TODO
  */
 context.Loader = function () {
 	var thisObject = this;
-
-	var data = {};
-	var textures = {};
-	var programs = {};
+	var queue = [];
 
 	/**
 	 * Queues a task that loads a file of the specified type via AJAX.
@@ -38,21 +32,21 @@ context.Loader = function () {
 	 */
 	this.queueData = function (id, parameters, type) {
 		if (arguments.length > 2) {
-			return thisObject.queue(function (next) {
+			queue.push(function (data, textures, programs, callback, scope) {
 				OOGL.Ajax.get(id, parameters, function (response) {
 					data[id] = response;
-					next();
+					callback && callback.call(scope);
 				}, type);
 			});
 		} else {
-			type = data;
-			return thisObject.queue(function (next) {
+			queue.push(function (data, textures, programs, callback, scope) {
 				OOGL.Ajax.get(id, function (response) {
 					data[id] = response;
-					next();
+					callback && callback.call(scope);
 				}, type);
 			});
 		}
+		return thisObject;
 	};
 
 	/**
@@ -68,37 +62,21 @@ context.Loader = function () {
 	 */
 	this.queueJSON = function (id, parameters) {
 		if (arguments.length > 1) {
-			return thisObject.queue(function (next) {
+			queue.push(function (data, textures, programs, callback, scope) {
 				OOGL.Ajax.getJSON(id, parameters, function (response) {
 					data[id] = response;
-					next();
+					callback && callback.call(scope);
 				});
 			});
 		} else {
-			return thisObject.queue(function (next) {
+			queue.push(function (data, textures, programs, callback, scope) {
 				OOGL.Ajax.getJSON(id, function (response) {
 					data[id] = response;
-					next();
+					callback && callback.call(scope);
 				});
 			});
 		}
-	};
-
-	/**
-	 * Retrieves data previously loaded via the
-	 * {{#crossLink "OOGL.TaskQueue/queueData"}}queueData{{/crossLink}} or
-	 * {{#crossLink "OOGL.TaskQueue/queueJSON"}}queueJSON{{/crossLink}} method.
-	 *
-	 * @method getData
-	 * @param id {String} The URL of the requested data.
-	 * @return {Object} The requested data.
-	 * @example
-	 *	TODO
-	 */
-	this.getData = function (id) {
-		if (data.hasOwnProperty(id)) {
-			return data[id];
-		}
+		return thisObject;
 	};
 
 	/**
@@ -133,9 +111,12 @@ context.Loader = function () {
 		} else if (arguments.length < 3) {
 			minFilter = context.LINEAR;
 		}
-		return thisObject.queue(function (next) {
-			textures[id] = new context.AsyncTexture(id, next, magFilter, minFilter);
+		queue.push(function (data, textures, programs, callback, scope) {
+			textures[id] = new context.AsyncTexture(id, function () {
+				callback && callback.call(scope);
+			}, magFilter, minFilter);
 		});
+		return thisObject;
 	};
 
 	/**
@@ -170,28 +151,14 @@ context.Loader = function () {
 		} else if (arguments.length < 3) {
 			minFilter = context.LINEAR;
 		}
-		return thisObject.queue.apply(thisObject, ids.map(function (id) {
-			return function (next) {
-				textures[id] = new context.AsyncTexture(id, next, magFilter, minFilter);
+		queue.push.apply(queue, ids.map(function (id) {
+			return function (data, textures, programs, callback, scope) {
+				textures[id] = new context.AsyncTexture(id, function () {
+					callback && callback.call(scope);
+				}, magFilter, minFilter);
 			};
 		}));
-	};
-
-	/**
-	 * Retrieves a {{#crossLink "context.Texture2D"}}Texture2D{{/crossLink}}
-	 * object loaded from the image identified by the specified URL.
-	 *
-	 * @method getTexture
-	 * @param id {String} The URL of a previously loaded texture image.
-	 * @return {context.Texture2D} A `Texture2D` object representing the GL
-	 * texture.
-	 * @example
-	 *	TODO
-	 */
-	this.getTexture = function (id) {
-		if (textures.hasOwnProperty(id)) {
-			return textures[id];
-		}
+		return thisObject;
 	};
 
 	/**
@@ -219,9 +186,12 @@ context.Loader = function () {
 	 *	TODO
 	 */
 	this.queueProgram = function (id, attributes) {
-		return thisObject.queue(function (next) {
-			programs[id] = new context.AjaxProgram(id, attributes, next);
+		queue.push(function (data, textures, programs, callback, scope) {
+			programs[id] = new context.AjaxProgram(id, attributes, function () {
+				callback && callback.call(scope);
+			});
 		});
+		return thisObject;
 	};
 
 	/**
@@ -258,9 +228,11 @@ context.Loader = function () {
 	this.queuePrograms = function (map) {
 		for (var id in map) {
 			if (map.hasOwnProperty(id)) {
-				thisObject.queue((function (id, attributes) {
-					return function (next) {
-						programs[id] = new context.AjaxProgram(id, attributes, next);
+				queue.push((function (id, attributes) {
+					return function (data, textures, programs, callback, scope) {
+						programs[id] = new context.AjaxProgram(id, attributes, function () {
+							callback && callback.call(scope);
+						});
 					};
 				})(id, map[id]));
 			}
@@ -269,19 +241,128 @@ context.Loader = function () {
 	};
 
 	/**
-	 * Retrieves a {{#crossLink "context.Program"}}Program{{/crossLink}} object
-	 * loaded from the shader pair identified by the specified URL.
+	 * Represents a set of loaded assets, including textures, programs and
+	 * generic data.
 	 *
-	 * @method getProgram
-	 * @param id {String} The URL of a previously loaded shader pair, not
-	 * including the filename extension.
-	 * @return {context.Program} A `Program` object representing the GL program.
+	 * Assets can be retrieved by the URLs from which they have been loaded and
+	 * the entire set may be eventually discarded.
+	 *
+	 * This class cannot be instantiated directly; instances are returned by the
+	 * {{#crossLink "context.Loader/loadAssets"}}loadAssets{{/crossLink}} method
+	 * to its callback function.
+	 *
+	 * @class context.Loader.Assets
 	 * @example
 	 *	TODO
 	 */
-	this.getProgram = function (id) {
-		if (programs.hasOwnProperty(id)) {
-			return programs[id];
-		}
+	function Assets(data, textures, programs) {
+		/**
+		 * Retrieves data previously loaded via the
+		 * {{#crossLink "context.Loader/queueData"}}queueData{{/crossLink}} or
+		 * {{#crossLink "context.Loader/queueJSON"}}queueJSON{{/crossLink}}
+		 * method.
+		 *
+		 * @method getData
+		 * @param id {String} The URL of the requested data.
+		 * @return {Object} The requested data.
+		 * @example
+		 *	TODO
+		 */
+		this.getData = function (id) {
+			if (data.hasOwnProperty(id)) {
+				return data[id];
+			}
+		};
+
+		/**
+		 * Retrieves a {{#crossLink "context.Texture2D"}}Texture2D{{/crossLink}}
+		 * object loaded from the image identified by the specified URL.
+		 *
+		 * @method getTexture
+		 * @param id {String} The URL of a previously loaded texture image.
+		 * @return {context.Texture2D} A `Texture2D` object representing the GL
+		 * texture.
+		 * @example
+		 *	TODO
+		 */
+		this.getTexture = function (id) {
+			if (textures.hasOwnProperty(id)) {
+				return textures[id];
+			}
+		};
+
+		/**
+		 * Retrieves a {{#crossLink "context.Program"}}Program{{/crossLink}}
+		 * object loaded from the shader pair identified by the specified URL.
+		 *
+		 * @method getProgram
+		 * @param id {String} The URL of a previously loaded shader pair, not
+		 * including the filename extension.
+		 * @return {context.Program} A `Program` object representing the GL
+		 * program.
+		 * @example
+		 *	TODO
+		 */
+		this.getProgram = function (id) {
+			if (programs.hasOwnProperty(id)) {
+				return programs[id];
+			}
+		};
+
+		/**
+		 * Discards all the assets managed by this object: textures and programs
+		 * are destroyed and generic data is discarded.
+		 *
+		 * After the assets have been discarded they cannot be retrieved any
+		 * more by the
+		 * {{#crossLink "context.Loader.Assets/getData"}}getData{{/crossLink}},
+		 * {{#crossLink "context.Loader.Assets/getTextures"}}getTextures{{/crossLink}}
+		 * and
+		 * {{#crossLink "context.Loader.Assets/getPrograms"}}getPrograms{{/crossLink}}
+		 * methods.
+		 */
+		this.discard = function () {
+			data = {};
+
+			var id;
+
+			for (id in textures) {
+				if (textures.hasOwnProperty(id)) {
+					textures[id]._delete();
+				}
+			}
+			textures = {};
+
+			for (id in programs) {
+				if (programs.hasOwnProperty(id)) {
+					programs[id]._delete();
+				}
+			}
+			programs = {};
+		};
+	}
+
+	/**
+	 * TODO
+	 *
+	 * @method loadAssets
+	 * @for context.Loader
+	 * @chainable
+	 * @param callback {Function} TODO
+	 * @param [scope] {Object} TODO
+	 */
+	this.loadAssets = function (callback, scope) {
+		var data = {};
+		var textures = {};
+		var programs = {};
+
+		var boundTasks = queue.map(function (task) {
+			return task.bind(null, data, textures, programs);
+		});
+		queue = [];
+
+		OOGL.Async.parallel(boundTasks)(function () {
+			callback.call(scope, new Assets(data, textures, programs));
+		});
 	};
 };
