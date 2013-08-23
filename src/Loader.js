@@ -8,6 +8,24 @@
 /**
  * Manages asynchronous asset loading with progress feedback.
  *
+ * To load assets using the Loader you must first queue loading tasks using the
+ * provided `queueXxx` methods and then start the loading process using the
+ * {{#crossLink "context.Loader/loadAssets"}}loadAssets{{/crossLink}} method.
+ *
+ * The `Loader` is able to load textures, shader pairs and generic data such as
+ * XML files and JSON objects.
+ *
+ * Textures are loaded using the
+ * {{#crossLink "context.AsyncTexture"}}AsyncTexture{{/crossLink}} class. Shader
+ * pairs are loaded using the
+ * {{#crossLink "context.AjaxProgram"}}AjaxProgram{{/crossLink}} class and thus
+ * they are automatically compiled and linked, throwing an exception if
+ * compilation or linking fails.
+ *
+ * XML files are loaded via {{#crossLink "OOGL.Ajax"}}Ajax{{/crossLink}} and
+ * returned as DOM `Document` objects. JSON files are returned as natural
+ * JavaScript objects.
+ *
  * @class context.Loader
  * @constructor
  * @example
@@ -343,26 +361,50 @@ context.Loader = function () {
 	}
 
 	/**
-	 * TODO
+	 * Executes the load tasks queued so far and discards the queue. When the
+	 * loading process finishes, a new
+	 * {{#crossLink "context.Loader.Assets"}}Assets{{/crossLink}} object is
+	 * created and can be used to retrieve the loaded assets.
+	 *
+	 * The same `Loader` object can be used to load multiple independent asset
+	 * sets: assets belonging to different sets must be queued for different
+	 * `loadAssets` calls. Each
+	 * {{#crossLink "context.Loader.Assets"}}Assets{{/crossLink}} object does
+	 * not affect the others.
 	 *
 	 * @method loadAssets
 	 * @for context.Loader
 	 * @chainable
-	 * @param callback {Function} TODO
-	 * @param [scope] {Object} TODO
+	 * @param callback {Function} A user-defined callback function invoked by
+	 * the `Loader` as soon as all the loading tasks have been accomplished.
+	 * @param callback.assets {context.Loader.Assets} A new `Assets` object that
+	 * can be used to retrieve and manage the loaded assets.
+	 * @param [progress] {Function} A user-defined callback function invoked
+	 * several times during the loading process. It can be used to provide
+	 * progress feedback to the user.
+	 * @param progress.progress {Number} The current progress percentage.
+	 * @example
+	 *	TODO
 	 */
-	this.loadAssets = function (callback, scope) {
+	this.loadAssets = function (callback, progress) {
 		var data = {};
 		var textures = {};
 		var programs = {};
 
+		var count = queue.length;
+		var done = 0;
 		var boundTasks = queue.map(function (task) {
-			return task.bind(null, data, textures, programs);
+			return function (callback, scope) {
+				task(data, textures, programs, function () {
+					progress && progress(++done * 100 / count);
+					callback && callback.call(scope);
+				});
+			};
 		});
 		queue = [];
 
 		OOGL.Async.parallel(boundTasks)(function () {
-			callback.call(scope, new Assets(data, textures, programs));
+			callback(new Assets(data, textures, programs));
 		});
 	};
 };
