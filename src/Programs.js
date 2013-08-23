@@ -1051,11 +1051,11 @@ context.AjaxProgram = function (name, attributes, callback) {
 	var program = new context.Program();
 
 	var vertexShader, fragmentShader;
-	(new OOGL.TaskQueue(function (callback) {
+	OOGL.Async.parallel(function (callback) {
 		vertexShader = new context.AjaxVertexShader(name + '.vert', callback);
 	}, function (callback) {
 		fragmentShader = new context.AjaxFragmentShader(name + '.frag', callback);
-	})).start(function () {
+	})(function () {
 		program.attachShader(vertexShader);
 		program.attachShader(fragmentShader);
 

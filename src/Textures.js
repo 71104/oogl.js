@@ -510,14 +510,14 @@ context.AsyncCubeMap = function (namePattern, callback, magFilter, minFilter) {
 		};
 	}
 
-	new OOGL.TaskQueue(
+	OOGL.Async.parallel(
 		bindLoadFace('+X', context.TEXTURE_CUBE_MAP_POSITIVE_X),
 		bindLoadFace('+Y', context.TEXTURE_CUBE_MAP_POSITIVE_Y),
 		bindLoadFace('+Z', context.TEXTURE_CUBE_MAP_POSITIVE_Z),
 		bindLoadFace('-X', context.TEXTURE_CUBE_MAP_NEGATIVE_X),
 		bindLoadFace('-Y', context.TEXTURE_CUBE_MAP_NEGATIVE_Y),
 		bindLoadFace('-Z', context.TEXTURE_CUBE_MAP_NEGATIVE_Z)
-	).start(callback);
+	)(callback);
 
 	return cubeMap;
 };
