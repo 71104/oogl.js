@@ -12,6 +12,8 @@
  * @static
  */
 OOGL.Ajax = new (function () {
+	var thisObject = this;
+
 	var errorCallback = function () {};
 
 	/**
@@ -19,8 +21,9 @@ OOGL.Ajax = new (function () {
 	 * related to an AJAX request occurs.
 	 *
 	 * @method onError
+	 * @chainable
 	 * @param callback {Function} A user-defined callback function that gets
-	 *	called in case of an error in an AJAX request.
+	 * called in case of an error in an AJAX request.
 	 * @example
 	 *	OOGL.Ajax.onError(function () {
 	 *		alert('AJAX error occurred.');
@@ -28,6 +31,7 @@ OOGL.Ajax = new (function () {
 	 */
 	this.onError = function (callback) {
 		errorCallback = callback || function () {};
+		return thisObject;
 	};
 
 	function XHR(handler) {
@@ -200,6 +204,7 @@ OOGL.Ajax = new (function () {
 			} else {
 				makeRequest(method, url);
 			}
+			return thisObject;
 		};
 	}
 
@@ -226,20 +231,37 @@ OOGL.Ajax = new (function () {
 				}
 				makeRequest(method, settings);
 			}
+			return thisObject;
 		};
 	}
 
 	/**
-	 * Performs a GET AJAX request. The data returned from the server is passed
-	 * to a user-defined callback function.
+	 * Performs a GET AJAX request.
+	 *
+	 * The data returned from the server is passed to a user-defined callback
+	 * function.
 	 *
 	 * @method get
+	 * @chainable
 	 * @param url {String} The URL to request.
-	 * @param [data] {Object} TODO
+	 * @param [data] {Object} An optional object containing parameters to pass
+	 * to the server.
+	 *
+	 * The object is deeply examined, so it may contain nested objects and
+	 * arrays at any level.
+	 *
+	 * The parameters are URL-encoded and attached to the URL using a `?`
+	 * character.
 	 * @param [callback] {Function} An optional one-argument user-defined
-	 *	callback function that is invoked when the request completes
-	 *	successfully.
-	 * @param [type] {String} TODO
+	 * callback function that is invoked when the request completes
+	 * successfully.
+	 * @param callback.response {Mixed} The response object returned by the
+	 * server and passed to the callback function. Its type depends on the
+	 * specified `type` parameter; for example, it is a DOM `Document` object if
+	 * `type` is `document` or a plain JavaScript object if `type` is `json`.
+	 * @param [type=''] {String} The type of the returned data, used to set
+	 * `XHR.responseType`. It can be `arraybuffer`, `blob`, `document`, `json`,
+	 * `text` or an empty string; an empty string equals `text`.
 	 * @example
 	 *	OOGL.Ajax.get('shaders/frag/box.frag', function (source) {
 	 *		fragmentShader = new oogl.FragmentShader(source);
@@ -253,10 +275,21 @@ OOGL.Ajax = new (function () {
 	 * as JSON and passed to a user-defined callback function.
 	 *
 	 * @method getJSON
-	 * @param url {String} url The URL to request.
+	 * @chainable
+	 * @param url {String} The URL to request.
+	 * @param [data] {Object} An optional object containing parameters to pass
+	 * to the server.
+	 *
+	 * The object is deeply examined, so it may contain nested objects and
+	 * arrays at any level.
+	 *
+	 * The parameters are URL-encoded and attached to the URL using a `?`
+	 * character.
 	 * @param [callback] {Function} An optional one-argument user-defined
-	 *	callback function that is invoked when the request completes
-	 *	successfully.
+	 * callback function that is invoked when the request completes
+	 * successfully.
+	 * @param callback.response {Object} The response object returned by the
+	 * server and passed to the callback function.
 	 * @example
 	 *	OOGL.Ajax.getJSON('meshes/box.json', function (box) {
 	 *		vertices = new oogl.VertexArray(0, 3, box.vertices);
@@ -271,10 +304,27 @@ OOGL.Ajax = new (function () {
 	 * to a user-defined callback function.
 	 *
 	 * @method post
+	 * @chainable
 	 * @param url {String} The URL to request.
+	 * @param [data] {Object} An optional object containing parameters to pass
+	 * to the server.
+	 *
+	 * The object is deeply examined, so it may contain nested objects and
+	 * arrays at any level.
+	 *
+	 * The parameters are URL-encoded and sent in the request body.
 	 * @param [callback] {Function} An optional one-argument user-defined
-	 *	callback function that is invoked when the request completes
-	 *	successfully.
+	 * callback function that is invoked when the request completes
+	 * successfully.
+	 * @param callback.response {Mixed} The response object returned by the
+	 * server and passed to the callback function. Its type depends on the
+	 * specified `type` parameter; for example, it is a DOM `Document` object if
+	 * `type` is `document` or a plain JavaScript object if `type` is `json`.
+	 * @param [type=''] {String} The type of the returned data, used to set
+	 * `XHR.responseType`. It can be `arraybuffer`, `blob`, `document`, `json`,
+	 * `text` or an empty string; an empty string equals `text`.
+	 * @example
+	 *	TODO
 	 */
 	this.post = bindRequest('POST');
 
@@ -283,10 +333,22 @@ OOGL.Ajax = new (function () {
 	 * as JSON and passed to a user-defined callback function.
 	 *
 	 * @method postJSON
+	 * @chainable
 	 * @param url {String} The URL to request.
+	 * @param [data] {Object} An optional object containing parameters to pass
+	 * to the server.
+	 *
+	 * The object is deeply examined, so it may contain nested objects and
+	 * arrays at any level.
+	 *
+	 * The parameters are URL-encoded and sent in the request body.
 	 * @param [callback] {Function} An optional one-argument user-defined
-	 *	callback function that is invoked when the request completes
-	 *	successfully.
+	 * callback function that is invoked when the request completes
+	 * successfully.
+	 * @param callback.response {Object} The response object returned by the
+	 * server and passed to the callback function.
+	 * @example
+	 *	TODO
 	 */
 	this.postJSON = bindJSONRequest('POST');
 
@@ -295,10 +357,27 @@ OOGL.Ajax = new (function () {
 	 * to a user-defined callback function.
 	 *
 	 * @method put
+	 * @chainable
 	 * @param url {String} The URL to request.
+	 * @param [data] {Object} An optional object containing parameters to pass
+	 * to the server.
+	 *
+	 * The object is deeply examined, so it may contain nested objects and
+	 * arrays at any level.
+	 *
+	 * The parameters are URL-encoded and sent in the request body.
 	 * @param [callback] {Function} An optional one-argument user-defined
-	 *	callback function that is invoked when the request completes
-	 *	successfully.
+	 * callback function that is invoked when the request completes
+	 * successfully.
+	 * @param callback.response {Mixed} The response object returned by the
+	 * server and passed to the callback function. Its type depends on the
+	 * specified `type` parameter; for example, it is a DOM `Document` object if
+	 * `type` is `document` or a plain JavaScript object if `type` is `json`.
+	 * @param [type=''] {String} The type of the returned data, used to set
+	 * `XHR.responseType`. It can be `arraybuffer`, `blob`, `document`, `json`,
+	 * `text` or an empty string; an empty string equals `text`.
+	 * @example
+	 *	TODO
 	 */
 	this.put = bindRequest('PUT');
 
@@ -307,10 +386,22 @@ OOGL.Ajax = new (function () {
 	 * as JSON and passed to a user-defined callback function.
 	 *
 	 * @method putJSON
+	 * @chainable
 	 * @param url {String} The URL to request.
+	 * @param [data] {Object} An optional object containing parameters to pass
+	 * to the server.
+	 *
+	 * The object is deeply examined, so it may contain nested objects and
+	 * arrays at any level.
+	 *
+	 * The parameters are URL-encoded and sent in the request body.
 	 * @param [callback] {Function} An optional one-argument user-defined
-	 *	callback function that is invoked when the request completes
-	 *	successfully.
+	 * callback function that is invoked when the request completes
+	 * successfully.
+	 * @param callback.response {Object} The response object returned by the
+	 * server and passed to the callback function.
+	 * @example
+	 *	TODO
 	 */
 	this.putJSON = bindJSONRequest('PUT');
 
@@ -319,10 +410,27 @@ OOGL.Ajax = new (function () {
 	 * passed to a user-defined callback function.
 	 *
 	 * @method _delete
+	 * @chainable
 	 * @param url {String} The URL to request.
+	 * @param [data] {Object} An optional object containing parameters to pass
+	 * to the server.
+	 *
+	 * The object is deeply examined, so it may contain nested objects and
+	 * arrays at any level.
+	 *
+	 * The parameters are URL-encoded and sent in the request body.
 	 * @param [callback] {Function} An optional one-argument user-defined
-	 *	callback function that is invoked when the request completes
-	 *	successfully.
+	 * callback function that is invoked when the request completes
+	 * successfully.
+	 * @param callback.response {Mixed} The response object returned by the
+	 * server and passed to the callback function. Its type depends on the
+	 * specified `type` parameter; for example, it is a DOM `Document` object if
+	 * `type` is `document` or a plain JavaScript object if `type` is `json`.
+	 * @param [type=''] {String} The type of the returned data, used to set
+	 * `XHR.responseType`. It can be `arraybuffer`, `blob`, `document`, `json`,
+	 * `text` or an empty string; an empty string equals `text`.
+	 * @example
+	 *	TODO
 	 */
 	this._delete = bindRequest('DELETE');
 
@@ -331,10 +439,22 @@ OOGL.Ajax = new (function () {
 	 * parsed as JSON and passed to a user-defined callback function.
 	 *
 	 * @method deleteJSON
+	 * @chainable
 	 * @param url {String} The URL to request.
+	 * @param [data] {Object} An optional object containing parameters to pass
+	 * to the server.
+	 *
+	 * The object is deeply examined, so it may contain nested objects and
+	 * arrays at any level.
+	 *
+	 * The parameters are URL-encoded and sent in the request body.
 	 * @param [callback] {Function} An optional one-argument user-defined
-	 *	callback function that is invoked when the request completes
-	 *	successfully.
+	 * callback function that is invoked when the request completes
+	 * successfully.
+	 * @param callback.response {Object} The response object returned by the
+	 * server and passed to the callback function.
+	 * @example
+	 *	TODO
 	 */
 	this.deleteJSON = bindJSONRequest('DELETE');
 })();
