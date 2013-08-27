@@ -9,22 +9,25 @@
  * component vertex attribute array.
  *
  * The attribute array is associated to the specified `index`: the provided
- * `enable` and `disable` methods enable and disable the `index`-th attribute
- * array calling `gl.enableVertexAttribArray` and `gl.disableVertexAttribArray`
- * and the provided `pointer` method invokes `gl.vertexAttribPointer` with the
- * specified `index` and `type`.
+ * {{#crossLink "context.AttributeArray1/enable"}}enable{{/crossLink}} and
+ * {{#crossLink "context.AttributeArray1/disable"}}disable{{/crossLink}} methods
+ * enable and disable the `index`-th attribute array calling
+ * `gl.enableVertexAttribArray` and `gl.disableVertexAttribArray` and the
+ * provided
+ * {{#crossLink "context.AttributeArray1/pointer"}}pointer{{/crossLink}} method
+ * invokes `gl.vertexAttribPointer` with the specified `index` and `type`.
  *
  * @class context.AttributeArray1
  * @extends context.StaticArrayBuffer
  * @constructor
  * @param index {Number} The attribute array index.
  * @param type {String} One of `byte`, `ubyte`, `short`, `ushort` or `float`;
- *	indicates the type of the data that will be put in the buffer.
+ * indicates the type of the data that will be put in the buffer.
  * @param data {Number[]} A JavaScript `Array` containing the array data; it
- *	will be automatically converted to a typed array.
+ * will be automatically converted to a typed array.
  * @param [normalize=false] {Boolean} Indicates whether the elements of the
- *	array must be automatically normalized by the GL (see the explanation for
- *	the equivalent argument in `gl.vertexAttribPointer`).
+ * array must be automatically normalized by the GL (see the explanation for the
+ * equivalent argument in `gl.vertexAttribPointer`).
  * @example
  *	var array = new oogl.AttributeArray1(0, 'float', [1, 2, 3, 4, 5, 6, 7, 8]);
  */
@@ -92,10 +95,10 @@ context.AttributeArray1 = function (index, type, data, normalize) {
 	 *
 	 * @method pointer
 	 * @param [stride=0] {Number} The stride between consecutive elements in the
-	 *	array (see the explanation for the equivalent argument in
-	 *	`gl.vertexAttribPointer`).
+	 * array (see the explanation for the equivalent argument in
+	 * `gl.vertexAttribPointer`).
 	 * @param [offset=0] {Number} The index of the first element of the
-	 *	underlying buffer to be used for the attribute array.
+	 * underlying buffer to be used for the attribute array.
 	 *
 	 * This value is multiplied by the data type size and used as the `pointer`
 	 * parameter in the `gl.vertexAttribPointer` call.
@@ -114,14 +117,17 @@ context.AttributeArray1 = function (index, type, data, normalize) {
 	 *
 	 * You may optionally specify `stride` and `offset` parameters.
 	 *
-	 * Equivalent to calling `bind` and `pointer` subsequently.
+	 * Equivalent to calling
+	 * {{#crossLink "context.AttributeArray1/bind"}}bind{{/crossLink}} and
+	 * {{#crossLink "context.AttributeArray1/pointer"}}pointer{{/crossLink}}
+	 * subsequently.
 	 *
 	 * @method bindAndPointer
 	 * @param [stride=0] {Number} The stride between consecutive elements in the
-	 *	array (see the explanation for the equivalent argument in
-	 *	`gl.vertexAttribPointer`).
+	 * array (see the explanation for the equivalent argument in
+	 * `gl.vertexAttribPointer`).
 	 * @param [offset=0] {Number} The index of the first element of the
-	 *	underlying buffer to be used for the attribute array.
+	 * underlying buffer to be used for the attribute array.
 	 *
 	 * This value is multiplied by the data type size and used as the `pointer`
 	 * parameter in the `gl.vertexAttribPointer` call.
@@ -134,14 +140,22 @@ context.AttributeArray1 = function (index, type, data, normalize) {
 	};
 
 	/**
-	 * TODO
+	 * Enables the `index`-th vertex attribute array, binds this buffer to its
+	 * target and specified its pointer for the `index`-th vertex attribute
+	 * array.
+	 *
+	 * Equivalent to calling
+	 * {{#crossLink "context.AttributeArray1/enable"}}enable{{/crossLink}},
+	 * {{#crossLink "context.AttributeArray1/bind"}}bind{{/crossLink}} and
+	 * {{#crossLink "context.AttributeArray1/pointer"}}pointer{{/crossLink}}
+	 * subsequently.
 	 *
 	 * @method enableBindAndPointer
 	 * @param [stride=0] {Number} The stride between consecutive elements in the
-	 *	array (see the explanation for the equivalent argument in
-	 *	`gl.vertexAttribPointer`).
+	 * array (see the explanation for the equivalent argument in
+	 * `gl.vertexAttribPointer`).
 	 * @param [offset=0] {Number} The index of the first element of the
-	 *	underlying buffer to be used for the attribute array.
+	 * underlying buffer to be used for the attribute array.
 	 *
 	 * This value is multiplied by the data type size and used as the `pointer`
 	 * parameter in the `gl.vertexAttribPointer` call.
@@ -162,22 +176,25 @@ context.AttributeArray1 = function (index, type, data, normalize) {
  * vertex attribute array.
  *
  * The attribute array is associated to the specified `index`: the provided
- * `enable` and `disable` methods enable and disable the `index`-th attribute
- * array calling `gl.enableVertexAttribArray` and `gl.disableVertexAttribArray`
- * and the provided `pointer` method invokes `gl.vertexAttribPointer` with the
- * specified `index` and `type`.
+ * {{#crossLink "context.AttributeArray1/enable"}}enable{{/crossLink}} and
+ * {{#crossLink "context.AttributeArray1/disable"}}disable{{/crossLink}} methods
+ * enable and disable the `index`-th attribute array calling
+ * `gl.enableVertexAttribArray` and `gl.disableVertexAttribArray` and the
+ * provided
+ * {{#crossLink "context.AttributeArray1/pointer"}}pointer{{/crossLink}} method
+ * invokes `gl.vertexAttribPointer` with the specified `index` and `type`.
  *
  * @class context.AttributeArray2
  * @extends context.StaticArrayBuffer
  * @constructor
  * @param index {Number} The attribute array index.
  * @param type {String} One of `byte`, `ubyte`, `short`, `ushort` or `float`;
- *	indicates the type of the data that will be put in the buffer.
+ * indicates the type of the data that will be put in the buffer.
  * @param data {Number[]} A JavaScript `Array` containing the array data; it
- *	will be automatically converted to a typed array.
+ * will be automatically converted to a typed array.
  * @param [normalize=false] {Boolean} Indicates whether the elements of the
- *	array must be automatically normalized by the GL (see the explanation for
- *	the equivalent argument in `gl.vertexAttribPointer`).
+ * array must be automatically normalized by the GL (see the explanation for the
+ * equivalent argument in `gl.vertexAttribPointer`).
  * @example
  *	var array = new oogl.AttributeArray2(0, 'float', [1, 2, 3, 4, 5, 6, 7, 8]);
  */
@@ -245,10 +262,10 @@ context.AttributeArray2 = function (index, type, data, normalize) {
 	 *
 	 * @method pointer
 	 * @param [stride=0] {Number} The stride between consecutive elements in the
-	 *	array (see the explanation for the equivalent argument in
-	 *	`gl.vertexAttribPointer`).
+	 * array (see the explanation for the equivalent argument in
+	 * `gl.vertexAttribPointer`).
 	 * @param [offset=0] {Number} The index of the first element of the
-	 *	underlying buffer to be used for the attribute array.
+	 * underlying buffer to be used for the attribute array.
 	 *
 	 * This value is multiplied by the data type size and used as the `pointer`
 	 * parameter in the `gl.vertexAttribPointer` call.
@@ -267,14 +284,17 @@ context.AttributeArray2 = function (index, type, data, normalize) {
 	 *
 	 * You may optionally specify `stride` and `offset` parameters.
 	 *
-	 * Equivalent to calling `bind` and `pointer` subsequently.
+	 * Equivalent to calling
+	 * {{#crossLink "context.AttributeArray1/bind"}}bind{{/crossLink}} and
+	 * {{#crossLink "context.AttributeArray1/pointer"}}pointer{{/crossLink}}
+	 * subsequently.
 	 *
 	 * @method bindAndPointer
 	 * @param [stride=0] {Number} The stride between consecutive elements in the
-	 *	array (see the explanation for the equivalent argument in
-	 *	`gl.vertexAttribPointer`).
+	 * array (see the explanation for the equivalent argument in
+	 * `gl.vertexAttribPointer`).
 	 * @param [offset=0] {Number} The index of the first element of the
-	 *	underlying buffer to be used for the attribute array.
+	 * underlying buffer to be used for the attribute array.
 	 *
 	 * This value is multiplied by the data type size and used as the `pointer`
 	 * parameter in the `gl.vertexAttribPointer` call.
@@ -287,14 +307,22 @@ context.AttributeArray2 = function (index, type, data, normalize) {
 	};
 
 	/**
-	 * TODO
+	 * Enables the `index`-th vertex attribute array, binds this buffer to its
+	 * target and specified its pointer for the `index`-th vertex attribute
+	 * array.
+	 *
+	 * Equivalent to calling
+	 * {{#crossLink "context.AttributeArray2/enable"}}enable{{/crossLink}},
+	 * {{#crossLink "context.AttributeArray2/bind"}}bind{{/crossLink}} and
+	 * {{#crossLink "context.AttributeArray2/pointer"}}pointer{{/crossLink}}
+	 * subsequently.
 	 *
 	 * @method enableBindAndPointer
 	 * @param [stride=0] {Number} The stride between consecutive elements in the
-	 *	array (see the explanation for the equivalent argument in
-	 *	`gl.vertexAttribPointer`).
+	 * array (see the explanation for the equivalent argument in
+	 * `gl.vertexAttribPointer`).
 	 * @param [offset=0] {Number} The index of the first element of the
-	 *	underlying buffer to be used for the attribute array.
+	 * underlying buffer to be used for the attribute array.
 	 *
 	 * This value is multiplied by the data type size and used as the `pointer`
 	 * parameter in the `gl.vertexAttribPointer` call.
