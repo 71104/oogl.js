@@ -1,3 +1,5 @@
+precision mediump float;
+
 uniform struct {
 	vec2 Angle;
 	vec2 Position;

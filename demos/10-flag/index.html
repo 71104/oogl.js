@@ -64,10 +64,14 @@ OOGL(function () {
 				oogl.clear(oogl.COLOR_BUFFER_BIT | oogl.DEPTH_BUFFER_BIT);
 				program.uniform3f('Angle', pitch += 0.015, yaw += 0.01, roll += 0.02);
 				program.uniform1f('Step', step = ++step % 45);
+				backArray.enable();
 				backArray.bindAndPointer();
 				oogl.drawArrays(oogl.LINES, 0, 8280);
+				backArray.disable();
+				frontArray.enable();
 				frontArray.bindAndPointer();
 				oogl.drawArrays(oogl.TRIANGLES, 0, 12150);
+				frontArray.disable();
 				oogl.flush();
 			})).start();
 		});

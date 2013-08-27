@@ -54,12 +54,16 @@ OOGL(function () {
 			oogl.clear(oogl.COLOR_BUFFER_BIT);
 			program.uniform1f('Offset', -1.5);
 			program.uniform2f('Angle', 0, pyramidAngle += Math.PI / 60);
+			pyramidArrays.enable();
 			pyramidArrays.bindAndPointer();
 			pyramidArrays.drawTriangleFan();
+			pyramidArrays.disable();
 			program.uniform1f('Offset', 1.5);
 			program.uniform2f('Angle', boxAngleX += Math.PI / 60, boxAngleY += Math.PI / 60);
+			boxArrays.enable();
 			boxArrays.bindAndPointer();
 			boxArrays.drawTriangles();
+			boxArrays.disable();
 			oogl.flush();
 		})).start();
 	});

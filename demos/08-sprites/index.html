@@ -56,6 +56,7 @@ OOGL(function () {
 	arrays.add1f(angles);
 	arrays.add3f(colors);
 	arrays.add2f(textureCoordinates);
+	arrays.enable();
 	arrays.bindAndPointer();
 	new oogl.AsyncTexture('star.gif', function () {
 		var program = new oogl.AjaxProgram('star', ['in_Vertex', 'in_Center', 'in_Angle', 'in_Color', 'in_TexCoord'], function () {

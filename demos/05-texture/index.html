@@ -42,6 +42,7 @@ OOGL(function () {
 		0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0,
 		0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0,
 		]);
+	arrays.enable();
 	arrays.bindAndPointer();
 	new oogl.AsyncTexture('nehe.gif', function () {
 		var program = new oogl.AjaxProgram('box', ['in_Vertex', 'in_TexCoord'], function () {

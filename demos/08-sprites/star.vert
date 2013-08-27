@@ -1,3 +1,5 @@
+precision mediump float;
+
 uniform float Spin;
 uniform vec2 Angle;
 

@@ -31,6 +31,7 @@ OOGL(function () {
 		var arrays = new oogl.AttributeArrays(walls.vertices.length / 3);
 		arrays.add3f(walls.vertices);
 		arrays.add2f(walls.textureCoordinates);
+		arrays.enable();
 		arrays.bindAndPointer();
 		new oogl.AsyncTexture('mud.gif', function () {
 			var program = new oogl.AjaxProgram('walls', ['in_Vertex', 'in_TexCoord'], function () {

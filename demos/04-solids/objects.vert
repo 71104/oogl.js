@@ -1,3 +1,5 @@
+precision mediump float;
+
 uniform float Offset;
 uniform vec2 Angle;
 

@@ -1,3 +1,5 @@
+precision mediump float;
+
 uniform float Angle;
 
 attribute vec2 in_Vertex;

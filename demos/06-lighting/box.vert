@@ -1,3 +1,5 @@
+precision mediump float;
+
 uniform float Zoom;
 uniform vec2 Angle;
 
