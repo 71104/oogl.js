@@ -10,7 +10,7 @@
  * @class context.Shader
  * @extends WebGLShader
  * @constructor
- * @param {Number} type The type of shader. Either `oogl.VERTEX_SHADER` or
+ * @param type {Number} The type of shader. Either `oogl.VERTEX_SHADER` or
  *	`oogl.FRAGMENT_SHADER`.
  * @example
  *	var vertexShader = new oogl.Shader(oogl.VERTEX_SHADER);
@@ -26,7 +26,7 @@ context.Shader = function (type) {
 	 * `gl.getShaderParameter` equivalent.
 	 *
 	 * @method getParameter
-	 * @param {String} name The parameter name.
+	 * @param name {String} The parameter name.
 	 * @return {Mixed} The queried value.
 	 * @example
 	 *	var shaderType = shader.getParameter(oogl.SHADER_TYPE);
@@ -56,7 +56,7 @@ context.Shader = function (type) {
 	 * `gl.shaderSource` equivalent.
 	 *
 	 * @method source
-	 * @param {String} source The GLSL source code.
+	 * @param source {String} The GLSL source code.
 	 * @example
 	 *	var shader = new oogl.Shader(oogl.VERTEX_SHADER);
 	 *	shader.source(vertexSource);
@@ -190,7 +190,7 @@ context.Shader = function (type) {
  * @class context.VertexShader
  * @extends context.Shader
  * @constructor
- * @param {String} [source] The optional GLSL source code for the shader.
+ * @param [source] {String} The optional GLSL source code for the shader.
  * @example
  *	var vertexShader = new oogl.VertexShader(vertexSource);
  */
@@ -213,7 +213,7 @@ context.VertexShader = function (source) {
  * @class context.FragmentShader
  * @extends context.Shader
  * @constructor
- * @param {String} [source] The optional GLSL source code for the shader.
+ * @param [source] {String} The optional GLSL source code for the shader.
  * @example
  *	var fragmentShader = new oogl.FragmentShader(fragmentSource);
  */
@@ -239,8 +239,8 @@ context.FragmentShader = function (source) {
  * @class context.AjaxVertexShader
  * @extends context.Shader
  * @constructor
- * @param {String} url A URL referring to the GLSL source code.
- * @param {Function} [callback] The callback function.
+ * @param url {String} A URL referring to the GLSL source code.
+ * @param [callback] {Function} The callback function.
  * @example
  *	var program = new oogl.Program();
  *	var vertexShader = new oogl.AjaxVertexShader('vert/box.vert', function () {
@@ -273,8 +273,8 @@ context.AjaxVertexShader = function (url, callback) {
  * @class context.AjaxFragmentShader
  * @extends context.Shader
  * @constructor
- * @param {String} url A URL referring to the GLSL source code.
- * @param {Function} [callback] The callback function.
+ * @param url {String} A URL referring to the GLSL source code.
+ * @param [callback] {Function} The callback function.
  * @example
  *	var program = new oogl.Program();
  *	var fragmentShader = new oogl.AjaxFragmentShader('frag/box.frag', function () {

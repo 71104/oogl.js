@@ -42,7 +42,7 @@ context.Renderbuffer = function () {
 	 * `gl.getRenderbufferParameter` equivalent.
 	 *
 	 * @method getParameter
-	 * @param {String} name TODO
+	 * @param name {String} TODO
 	 * @return {Mixed} TODO
 	 * @example
 	 *	TODO
@@ -176,9 +176,9 @@ context.Renderbuffer = function () {
 	 * TODO
 	 *
 	 * @method storage
-	 * @param {Number} internalFormat TODO
-	 * @param {Number} width TODO
-	 * @param {Number} height TODO
+	 * @param internalFormat {Number} TODO
+	 * @param width {Number} TODO
+	 * @param height {Number} TODO
 	 * @example
 	 *	TODO
 	 */

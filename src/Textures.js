@@ -14,7 +14,7 @@
  * @class context.Texture
  * @extends WebGLTexture
  * @constructor
- * @param {Number} target The target against which this texture will be bound
+ * @param target {Number} The target against which this texture will be bound
  *	when the provided `bind` method is used. Either `gl.TEXTURE_2D` or
  *	`gl.TEXTURE_CUBE_MAP`.
  * @example
@@ -59,7 +59,7 @@ context.Texture = function (target) {
 	 * `gl.getTexParameter` equivalent.
 	 *
 	 * @method getParameter
-	 * @param {Number} name The name of the parameter to query.
+	 * @param name {Number} The name of the parameter to query.
 	 * @return {Mixed} The queried value.
 	 * @example
 	 *	var wrapS = texture.getParameter(oogl.TEXTURE_WRAP_S);
@@ -136,8 +136,8 @@ context.Texture = function (target) {
 	 * `gl.texParameterf` equivalent.
 	 *
 	 * @method parameterf
-	 * @param {Number} name The parameter's name.
-	 * @param {Number} value The new value.
+	 * @param name {Number} The parameter's name.
+	 * @param value {Number} The new value.
 	 */
 	texture.parameterf = function (name, value) {
 		context.texParameterf(target, name, value);
@@ -149,8 +149,8 @@ context.Texture = function (target) {
 	 * `gl.texParameteri` equivalent.
 	 *
 	 * @method parameteri
-	 * @param {Number} name The parameter's name.
-	 * @param {Number} value The new value.
+	 * @param name {Number} The parameter's name.
+	 * @param value {Number} The new value.
 	 * @example
 	 *	texture.parameteri(oogl.TEXTURE_MAG_FILTER, oogl.LINEAR);
 	 */
@@ -164,7 +164,7 @@ context.Texture = function (target) {
 	 * Equivalent to calling `gl.texParameteri` with `gl.TEXTURE_MIN_FILTER`.
 	 *
 	 * @method setMinFilter
-	 * @param {Number} filter The minifying filter; can be `gl.NEAREST`,
+	 * @param filter {Number} The minifying filter; can be `gl.NEAREST`,
 	 *	`gl.LINEAR`, `gl.NEAREST_MIPMAP_NEAREST`, `gl.LINEAR_MIPMAP_NEAREST`,
 	 *	`gl.NEAREST_MIPMAP_LINEAR` or `gl.LINEAR_MIPMAP_LINEAR`.
 	 * @example
@@ -180,7 +180,7 @@ context.Texture = function (target) {
 	 * Equivalent to calling `gl.texParameteri` with `gl.TEXTURE_MAG_FILTER`.
 	 *
 	 * @method setMagFilter
-	 * @param {Number} filter The magnifying filter; can be `gl.NEAREST` or
+	 * @param filter {Number} The magnifying filter; can be `gl.NEAREST` or
 	 *	`gl.LINEAR`.
 	 * @example
 	 *	texture.setMagFilter(oogl.LINEAR);
@@ -195,7 +195,7 @@ context.Texture = function (target) {
 	 * Equivalent to calling `gl.texParameteri` with `gl.TEXTURE_WRAP_S`.
 	 *
 	 * @method setWrapS
-	 * @param {Number} wrap The S wrapping setting; can be `gl.CLAMP_TO_EDGE`,
+	 * @param wrap {Number} The S wrapping setting; can be `gl.CLAMP_TO_EDGE`,
 	 *	`gl.MIRRORED_REPEAT` or `gl.REPEAT`.
 	 * @example
 	 *	texture.setWrapS(oogl.REPEAT);
@@ -210,7 +210,7 @@ context.Texture = function (target) {
 	 * Equivalent to calling `gl.texParameteri` with `gl.TEXTURE_WRAP_T`.
 	 *
 	 * @method setWrapT
-	 * @param {Number} wrap The T wrapping setting; can be `gl.CLAMP_TO_EDGE`,
+	 * @param wrap {Number} The T wrapping setting; can be `gl.CLAMP_TO_EDGE`,
 	 *	`gl.MIRRORED_REPEAT` or `gl.REPEAT`.
 	 * @example
 	 *	texture.setWrapT(oogl.REPEAT);
@@ -238,13 +238,13 @@ context.Texture = function (target) {
 	 * `gl.texImage2D` equivalent.
 	 *
 	 * @method image2D
-	 * @param {Number} level The mipmap reduction level.
-	 * @param {Number} format The texel format; can be `gl.ALPHA`, `gl.RGB`,
+	 * @param level {Number} The mipmap reduction level.
+	 * @param format {Number} The texel format; can be `gl.ALPHA`, `gl.RGB`,
 	 *	`gl.RGBA`, `gl.LUMINANCE` or `gl.LUMINANCE_ALPHA`.
-	 * @param {Number} type The binary data type; can be `gl.UNSIGNED_BYTE`,
+	 * @param type {Number} The binary data type; can be `gl.UNSIGNED_BYTE`,
 	 *	`gl.UNSIGNED_SHORT_5_6_5`, `gl.UNSIGNED_SHORT_4_4_4_4` or
 	 *	`gl.UNSIGNED_SHORT_5_5_5_1`.
-	 * @param {Mixed} object A DOM image, canvas or video element to use as
+	 * @param object {Mixed} A DOM image, canvas or video element to use as
 	 *	texture image.
 	 * @example
 	 *	texture.image2D(0, oogl.RGBA, oogl.UNSIGNED_BYTE, image);
@@ -257,17 +257,17 @@ context.Texture = function (target) {
 	 * Specifies an image, canvas or video for a region of this texture.
 	 *
 	 * @method subImage2D
-	 * @param {Number} level The mipmap reduction level.
-	 * @param {Number} xoffset The X offset within this texture.
-	 * @param {Number} xoffset The Y offset within this texture.
-	 * @param {Number} width The width of the region within this texture.
-	 * @param {Number} width The height of the region within this texture.
-	 * @param {Number} format The texel format; can be `gl.ALPHA`, `gl.RGB`,
+	 * @param level {Number} The mipmap reduction level.
+	 * @param xoffset {Number} The X offset within this texture.
+	 * @param yoffset {Number} The Y offset within this texture.
+	 * @param width {Number} The width of the region within this texture.
+	 * @param height {Number} The height of the region within this texture.
+	 * @param format {Number} The texel format; can be `gl.ALPHA`, `gl.RGB`,
 	 *	`gl.RGBA`, `gl.LUMINANCE` or `gl.LUMINANCE_ALPHA`.
-	 * @param {Number} type The binary data type; can be `gl.UNSIGNED_BYTE`,
+	 * @param type {Number} The binary data type; can be `gl.UNSIGNED_BYTE`,
 	 *	`gl.UNSIGNED_SHORT_5_6_5`, `gl.UNSIGNED_SHORT_4_4_4_4` or
 	 *	`gl.UNSIGNED_SHORT_5_5_5_1`.
-	 * @param {Mixed} object A DOM image, canvas or video element to use as
+	 * @param object {Mixed} A DOM image, canvas or video element to use as
 	 *	texture image.
 	 * @example
 	 *	texture.image2D(0, 200, 150, 400, 300, oogl.RGBA, oogl.UNSIGNED_BYTE, image);
@@ -282,13 +282,13 @@ context.Texture = function (target) {
 	 * `gl.copyTexImage2D` equivalent.
 	 *
 	 * @method copyImage2D
-	 * @param {Number} level The mipmap reduction level.
-	 * @param {Number} internalFormat The texel format; can be `gl.ALPHA`,
+	 * @param level {Number} The mipmap reduction level.
+	 * @param internalFormat {Number} The texel format; can be `gl.ALPHA`,
 	 *	`gl.RGB`, `gl.RGBA`, `gl.LUMINANCE` or `gl.LUMINANCE_ALPHA`.
-	 * @param {Number} x The X window coordinate of the region to be copied.
-	 * @param {Number} y The Y window coordinate of the region to be copied.
-	 * @param {Number} width The width of the region to be copied.
-	 * @param {Number} height The height of the region to be copied.
+	 * @param x {Number} The X window coordinate of the region to be copied.
+	 * @param y {Number} The Y window coordinate of the region to be copied.
+	 * @param width {Number} The width of the region to be copied.
+	 * @param height {Number} The height of the region to be copied.
 	 * @example
 	 *	// copies an 800x600 pixel window
 	 *	texture.copyImage2D(0, oogl.RGBA, 0, 0, 800, 600);
@@ -303,13 +303,13 @@ context.Texture = function (target) {
 	 * `gl.copyTexSubImage2D` equivalent.
 	 *
 	 * @method copySubImage2D
-	 * @param {Number} level The mipmap reduction level.
-	 * @param {Number} xoffset The X offset within this texture.
-	 * @param {Number} xoffset The Y offset within this texture.
-	 * @param {Number} x The X offset within the framebuffer.
-	 * @param {Number} y The Y offset within the framebuffer.
-	 * @param {Number} width The width of the region to copy.
-	 * @param {Number} width The height of the region to copy.
+	 * @param level {Number} The mipmap reduction level.
+	 * @param xoffset {Number} The X offset within this texture.
+	 * @param yoffset {Number} The Y offset within this texture.
+	 * @param x {Number} The X offset within the framebuffer.
+	 * @param y {Number} The Y offset within the framebuffer.
+	 * @param width {Number} The width of the region to copy.
+	 * @param height {Number} The height of the region to copy.
 	 * @example
 	 *	texture.copySubImage2D(0, 0, 0, 200, 150, 400, 300);
 	 */
@@ -360,11 +360,11 @@ context.Texture2D = function () {
  * @class context.AutoTexture
  * @extends context.Texture2D
  * @constructor
- * @param {Mixed} object A DOM image, canvas or video element to use as the
+ * @param object {Mixed} A DOM image, canvas or video element to use as the
  *	texture image.
- * @param {Number} [magFilter=gl.LINEAR] An optional value for the magnifying
+ * @param [magFilter=gl.LINEAR] {Number} An optional value for the magnifying
  *	filter.
- * @param {Number} [minFilter=gl.LINEAR] An optional value for the minifying
+ * @param [minFilter=gl.LINEAR] {Number} An optional value for the minifying
  *	filter.
  * @example
  *	var arrays = new oogl.AttributeArrays(vertices.length);
@@ -404,12 +404,12 @@ context.AutoTexture = function (object, magFilter, minFilter) {
  * @class context.AsyncTexture
  * @extends context.Texture2D
  * @constructor
- * @param {String} url The URL of the texture image.
- * @param {Function} callback A user-defined callback function that is called
+ * @param url {String} The URL of the texture image.
+ * @param callback {Function} A user-defined callback function that is called
  *	after the texture has been loaded and configured.
- * @param {Number} [magFilter=gl.LINEAR] An optional value for the magnifying
+ * @param [magFilter=gl.LINEAR] {Number} An optional value for the magnifying
  *	filter.
- * @param {Number} [minFilter=gl.LINEAR] An optional value for the minifying
+ * @param [minFilter=gl.LINEAR] {Number} An optional value for the minifying
  *	filter.
  * @example
  *	var arrays = new oogl.AttributeArrays(vertices.length);
@@ -475,11 +475,11 @@ context.CubeMap = function () {
  *
  * @class context.AsyncCubeMap
  * @constructor
- * @param {String} name TODO
- * @param {Function} callback TODO
- * @param {Number} [magFilter=gl.LINEAR] An optional value for the magnifying
+ * @param name {String} name TODO
+ * @param callback {Function} callback TODO
+ * @param [magFilter=gl.LINEAR] {Number} An optional value for the magnifying
  *	filter.
- * @param {Number} [minFilter=gl.LINEAR] An optional value for the minifying
+ * @param [minFilter=gl.LINEAR] {Number} An optional value for the minifying
  *	filter.
  * @example
  *	TODO
@@ -539,7 +539,7 @@ context.AsyncCubeMap = function (namePattern, callback, magFilter, minFilter) {
  *
  * @class context.Textures
  * @constructor
- * @param {Object} [textures={}] An optional object that map names to
+ * @param [textures={}] {Object} An optional object that map names to
  *	`oogl.Texture` objects. Names are used when specifying uniform variables
  *	using the provided `uniform` method.
  * @example
@@ -573,8 +573,8 @@ context.Textures = function (textures) {
 		 * used in programs.
 		 *
 		 * @method add
-		 * @param {String} name The name of the associated uniform variable.
-		 * @param {context.Texture} texture The OOGL texture to add.
+		 * @param name {String} The name of the associated uniform variable.
+		 * @param texture {context.Texture} The OOGL texture to add.
 		 * @example
 		 *	var textures = new oogl.Textures();
 		 *	textures.add('Texture', texture);
@@ -622,7 +622,7 @@ context.Textures = function (textures) {
 		 * automatically assigned texture units.
 		 *
 		 * @method uniform
-		 * @param {context.Program} program A `context.Program`.
+		 * @param program {context.Program} A `context.Program`.
 		 * @example
 		 *	var textures = new oogl.Textures({
 		 *		'Texture': texture,
@@ -645,7 +645,7 @@ context.Textures = function (textures) {
 		 * Equivalent to calling `bind` and `uniform` subsequently.
 		 *
 		 * @method bindAndUniform
-		 * @param {context.Program} program A `context.Program`.
+		 * @param program {context.Program} A `context.Program`.
 		 * @example
 		 *	var textures = new oogl.Textures({
 		 *		'Texture': texture,

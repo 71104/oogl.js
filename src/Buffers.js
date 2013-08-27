@@ -14,12 +14,12 @@
  * @class context.Buffer
  * @extends WebGLBuffer
  * @constructor
- * @param {Number} target The target against which this buffer will be bound
+ * @param target {Number} The target against which this buffer will be bound
  *	when the provided `bind` method is used. Either `gl.ARRAY_BUFFER` or
  *	`gl.ELEMENT_ARRAY_BUFFER`.
- * @param {String} type One of `byte`, `ubyte`, `short`, `ushort` and `float`;
+ * @param type {String} One of `byte`, `ubyte`, `short`, `ushort` and `float`;
  *	indicates the type of the data that will be put in the buffer.
- * @param {Number} usage One of `gl.STATIC_DRAW`, `gl.STREAM_DRAW` or
+ * @param usage {Number} One of `gl.STATIC_DRAW`, `gl.STREAM_DRAW` or
  *	`gl.DYNAMIC_DRAW`; will be used when calling `gl.bufferData` through the
  *	provided `data` method.
  * @example
@@ -80,7 +80,7 @@ context.Buffer = (function () {
 		 * `gl.getBufferParameter` equivalent.
 		 *
 		 * @method getParameter
-		 * @param {Number} name The name of the parameter to query.
+		 * @param name {Number} The name of the parameter to query.
 		 * @return {Mixed} The queried value.
 		 * @example
 		 *	var size = buffer.getParameter(oogl.BUFFER_SIZE);
@@ -144,7 +144,7 @@ context.Buffer = (function () {
 		 * on the `type` specified to the constructor.
 		 *
 		 * @method data
-		 * @param {Mixed} sizeOrData Either a number representing the size to
+		 * @param sizeOrData {Mixed} Either a number representing the size to
 		 *	allocate or a JavaScript `Array` containing the data to store.
 		 * @example
 		 *	buffer.data([1, 1, -1, 1, -1, -1, 1, -1]);
@@ -163,7 +163,7 @@ context.Buffer = (function () {
 		 * Equivalent to calling `bind` and `data` subsequently.
 		 *
 		 * @method bindAndData
-		 * @param {Mixed} sizeOrData Either a number representing the size to
+		 * @param sizeOrData {Mixed} Either a number representing the size to
 		 *	allocate or a JavaScript `Array` containing the data to store. See
 		 *	the `bind` method.
 		 * @example
@@ -184,8 +184,8 @@ context.Buffer = (function () {
 		 * the constructor.
 		 *
 		 * @method subData
-		 * @param {Number} offset The index of the first element to overwrite.
-		 * @param {Array} data A JavaScript `Array` containing the data to
+		 * @param offset {Number} The index of the first element to overwrite.
+		 * @param data {Array} A JavaScript `Array` containing the data to
 		 *	store; the array will be automatically converted to a typed array,
 		 *	depending on the `type` specified to the constructor.
 		 * @example
@@ -219,10 +219,10 @@ context.Buffer = (function () {
  * @class context.StaticBuffer
  * @extends context.Buffer
  * @constructor
- * @param {Number} target The target against which this buffer will be bound
+ * @param target {Number} The target against which this buffer will be bound
  *	when the provided `bind` method is used. Either `gl.ARRAY_BUFFER` or
  *	`gl.ELEMENT_ARRAY_BUFFER`.
- * @param {String} type One of `byte`, `ubyte`, `short`, `ushort` and `float`;
+ * @param type {String} One of `byte`, `ubyte`, `short`, `ushort` and `float`;
  *	indicates the type of the data that will be put in the buffer.
  * @example
  *	var buffer = new oogl.StaticBuffer(oogl.ARRAY_BUFFER, 'float');
@@ -237,10 +237,10 @@ context.StaticBuffer = function (target, type) {
  * @class context.StreamBuffer
  * @extends context.Buffer
  * @constructor
- * @param {Number} target The target against which this buffer will be bound
+ * @param target {Number} The target against which this buffer will be bound
  *	when the provided `bind` method is used. Either `gl.ARRAY_BUFFER` or
  *	`gl.ELEMENT_ARRAY_BUFFER`.
- * @param {String} type One of `byte`, `ubyte`, `short`, `ushort` and `float`;
+ * @param type {String} One of `byte`, `ubyte`, `short`, `ushort` and `float`;
  *	indicates the type of the data that will be put in the buffer.
  * @example
  *	var buffer = new oogl.StreamBuffer(oogl.ARRAY_BUFFER, 'float');
@@ -256,10 +256,10 @@ context.StreamBuffer = function (target, type) {
  * @module context
  * @extends context.Buffer
  * @constructor
- * @param {Number} target The target against which this buffer will be bound
+ * @param target {Number} The target against which this buffer will be bound
  *	when the provided `bind` method is used. Either `gl.ARRAY_BUFFER` or
  *	`gl.ELEMENT_ARRAY_BUFFER`.
- * @param {String} type One of `byte`, `ubyte`, `short`, `ushort` and `float`;
+ * @param type {String} One of `byte`, `ubyte`, `short`, `ushort` and `float`;
  *	indicates the type of the data that will be put in the buffer.
  * @example
  *	var buffer = new oogl.DynamicBuffer(oogl.ARRAY_BUFFER, 'float');
@@ -274,9 +274,9 @@ context.DynamicBuffer = function (target, type) {
  * @class context.ArrayBuffer
  * @extends context.Buffer
  * @constructor
- * @param {String} type One of `byte`, `ubyte`, `short`, `ushort` and `float`;
+ * @param type {String} One of `byte`, `ubyte`, `short`, `ushort` and `float`;
  *	indicates the type of the data that will be put in the buffer.
- * @param {Number} usage One of `gl.STATIC_DRAW`, `gl.STREAM_DRAW` or
+ * @param usage {Number} One of `gl.STATIC_DRAW`, `gl.STREAM_DRAW` or
  *	`gl.DYNAMIC_DRAW`; will be used when calling `gl.bufferData` through the
  *	provided `data` method.
  * @example
@@ -292,9 +292,9 @@ context.ArrayBuffer = function (type, usage) {
  * @class context.ElementArrayBuffer
  * @extends context.Buffer
  * @constructor
- * @param {String} type One of `byte`, `ubyte`, `short`, `ushort` and `float`;
+ * @param type {String} One of `byte`, `ubyte`, `short`, `ushort` and `float`;
  *	indicates the type of the data that will be put in the buffer.
- * @param {Number} usage One of `gl.STATIC_DRAW`, `gl.STREAM_DRAW` or
+ * @param usage {Number} One of `gl.STATIC_DRAW`, `gl.STREAM_DRAW` or
  *	`gl.DYNAMIC_DRAW`; will be used when calling `gl.bufferData` through the
  *	provided `data` method.
  * @example
@@ -311,7 +311,7 @@ context.ElementArrayBuffer = function (type, usage) {
  * @class context.StaticArrayBuffer
  * @extends context.StaticBuffer
  * @constructor
- * @param {String} type One of `byte`, `ubyte`, `short`, `ushort` and `float`;
+ * @param type {String} One of `byte`, `ubyte`, `short`, `ushort` and `float`;
  *	indicates the type of the data that will be put in the buffer.
  * @example
  *	var buffer = new oogl.StaticArrayBuffer('float');
@@ -327,7 +327,7 @@ context.StaticArrayBuffer = function (type) {
  * @class context.StaticElementArrayBuffer
  * @extends context.StaticBuffer
  * @constructor
- * @param {String} type One of `byte`, `ubyte`, `short`, `ushort` and `float`;
+ * @param type {String} One of `byte`, `ubyte`, `short`, `ushort` and `float`;
  *	indicates the type of the data that will be put in the buffer.
  * @example
  *	var buffer = new oogl.StaticElementArrayBuffer('float');
@@ -343,7 +343,7 @@ context.StaticElementArrayBuffer = function (type) {
  * @class context.StreamArrayBuffer
  * @extends context.StreamBuffer
  * @constructor
- * @param {String} type One of `byte`, `ubyte`, `short`, `ushort` and `float`;
+ * @param type {String} One of `byte`, `ubyte`, `short`, `ushort` and `float`;
  *	indicates the type of the data that will be put in the buffer.
  * @example
  *	var buffer = new oogl.StreamArrayBuffer('float');
@@ -359,7 +359,7 @@ context.StreamArrayBuffer = function (type) {
  * @class context.StreamElementArrayBuffer
  * @extends context.StreamBuffer
  * @constructor
- * @param {String} type One of `byte`, `ubyte`, `short`, `ushort` and `float`;
+ * @param type {String} One of `byte`, `ubyte`, `short`, `ushort` and `float`;
  *	indicates the type of the data that will be put in the buffer.
  * @example
  *	var buffer = new oogl.StreamElementArrayBuffer('float');
@@ -375,7 +375,7 @@ context.StreamElementArrayBuffer = function (type) {
  * @class context.DynamicArrayBuffer
  * @extends context.DynamicBuffer
  * @constructor
- * @param {String} type One of `byte`, `ubyte`, `short`, `ushort` and `float`;
+ * @param type {String} One of `byte`, `ubyte`, `short`, `ushort` and `float`;
  *	indicates the type of the data that will be put in the buffer.
  * @example
  *	var buffer = new oogl.DynamicArrayBuffer('float');
@@ -391,7 +391,7 @@ context.DynamicArrayBuffer = function (type) {
  * @class context.DynamicElementArrayBuffer
  * @extends context.DynamicBuffer
  * @constructor
- * @param {String} type One of `byte`, `ubyte`, `short`, `ushort` and `float`;
+ * @param type {String} One of `byte`, `ubyte`, `short`, `ushort` and `float`;
  *	indicates the type of the data that will be put in the buffer.
  * @example
  *	var buffer = new oogl.DynamicElementArrayBuffer('float');

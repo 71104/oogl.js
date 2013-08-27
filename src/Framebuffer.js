@@ -42,8 +42,8 @@ context.Framebuffer = function () {
 	 * `gl.getAttachmentParameter` equivalent.
 	 *
 	 * @method getAttachmentParameter
-	 * @param {Number} attachment TODO
-	 * @param {Number} name TODO
+	 * @param attachment {Number} TODO
+	 * @param name {Number} TODO
 	 * @return {Mixed} TODO
 	 * @example
 	 *	var attachmentType = framebuffer.getAttachmentParameter(oogl.COLOR_ATTACHMENT0, oogl.FRAMEBUFFER_ATTACHMENT_TYPE);
@@ -85,8 +85,8 @@ context.Framebuffer = function () {
 	 * `gl.framebufferRenderbuffer` equivalent.
 	 *
 	 * @method renderbuffer
-	 * @param {Number} attachment TODO
-	 * @param {WebGLRenderbuffer} renderbuffer TODO
+	 * @param attachment {Number} TODO
+	 * @param renderBuffer {WebGLRenderbuffer} TODO
 	 * @example
 	 *	TODO
 	 */
@@ -100,10 +100,10 @@ context.Framebuffer = function () {
 	 * `gl.framebufferTexture2D` equivalent.
 	 *
 	 * @method texture2D
-	 * @param {Number} attachment TODO
-	 * @param {Number} textarget TODO
-	 * @param {WebGLTexture} texture TODO
-	 * @param {Number} level TODO
+	 * @param attachment {Number} TODO
+	 * @param textarget {Number} TODO
+	 * @param texture {WebGLTexture} TODO
+	 * @param level {Number} TODO
 	 * @example
 	 *	TODO
 	 */

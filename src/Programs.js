@@ -35,7 +35,7 @@ context.Program = function () {
 	 * `gl.getProgramParameter` equivalent.
 	 *
 	 * @method getParameter
-	 * @param {String} name The name of the parameter to query.
+	 * @param name {String} The name of the parameter to query.
 	 * @return {Mixed} The queried value.
 	 * @example
 	 *	if (!program.getParameter(oogl.LINK_STATUS)) {
@@ -52,7 +52,7 @@ context.Program = function () {
 	 * `gl.attachShader` equivalent.
 	 *
 	 * @method attachShader
-	 * @param {WebGLShader} shader The shader to attach. Can also be an OOGL
+	 * @param shader {WebGLShader} The shader to attach. Can also be an OOGL
 	 *	`Shader`.
 	 * @example
 	 *	var program = new oogl.Program();
@@ -70,7 +70,7 @@ context.Program = function () {
 	 * `gl.detachShader` equivalent.
 	 *
 	 * @method detachShader
-	 * @param {WebGLShader} shader The shader to detach. Can also be an OOGL
+	 * @param shader {WebGLShader} The shader to detach. Can also be an OOGL
 	 *	`Shader`.
 	 * @example
 	 *	var vertexShader = new oogl.Shader(oogl.VERTEX_SHADER);
@@ -125,8 +125,8 @@ context.Program = function () {
 	 * `gl.bindAttribLocation` equivalent.
 	 *
 	 * @method bindAttribLocation
-	 * @param {Number} index The index of the attribute array.
-	 * @param {String} name The name of the shader attribute variable.
+	 * @param index {Number} The index of the attribute array.
+	 * @param name {String} The name of the shader attribute variable.
 	 * @example
 	 *	program.bindAttribLocation(0, 'in_Vertex');
 	 *	program.bindAttribLocation(1, 'in_Color');
@@ -149,7 +149,7 @@ context.Program = function () {
 	 *	program.bindAttribLocations(['in_Vertex', 'in_Color', 'in_TexCoords']);
 	 *
 	 * @method bindAttribLocations
-	 * @param {String[]} attributes The array, or index-to-string map,
+	 * @param attributes {String[]} The array, or index-to-string map,
 	 *	specifying the names to bind and their respective indices.
 	 * @example
 	 *	program.bindAttribLocations(['in_Vertex', 'in_Color', 'in_TexCoords']);
@@ -305,7 +305,7 @@ context.Program = function () {
 	 * `gl.getActiveAttrib` equivalent.
 	 *
 	 * @method getActiveAttrib
-	 * @param {Number} index The index of the attribute array.
+	 * @param index {Number} The index of the attribute array.
 	 * @return {WebGLActiveInfo} The requested information.
 	 * @example
 	 *	console.dir(program.getActiveAttrib(0));
@@ -335,7 +335,7 @@ context.Program = function () {
 	 * `gl.getActiveUniform` equivalent.
 	 *
 	 * @method getActiveUniform
-	 * @param {Number} index The index of the uniform variable.
+	 * @param index {Number} The index of the uniform variable.
 	 * @return {WebGLActiveInfo} The requested information.
 	 * @example
 	 *	console.dir(program.getActiveUniform(0));
@@ -364,7 +364,7 @@ context.Program = function () {
 	 * `gl.getAttribLocation` equivalent.
 	 *
 	 * @method getAttribLocation
-	 * @param {String} name The name of the attribute.
+	 * @param name {String} The name of the attribute.
 	 * @return {Number} The location of the named attribute.
 	 * @example
 	 *	console.log(program.getAttribLocation('in_Vertex'));
@@ -385,7 +385,7 @@ context.Program = function () {
 	 * method.
 	 *
 	 * @method getUniform
-	 * @param {Mixed} locationOrName Either the location or the name of the
+	 * @param locationOrName {Mixed} Either the location or the name of the
 	 *	uniform variable.
 	 * @return {Mixed} The value of the uniform variable.
 	 * @example
@@ -410,7 +410,7 @@ context.Program = function () {
 	 * `gl.getUniformLocation` equivalent.
 	 *
 	 * @method getUniformLocation
-	 * @param {String} name The name of the uniform variable.
+	 * @param name {String} The name of the uniform variable.
 	 * @return {Number} The location of the uniform variable.
 	 * @example
 	 *	var location = program.getUniformLocation('Angle');
@@ -422,9 +422,9 @@ context.Program = function () {
 	 * TODO
 	 *
 	 * @method uniform
-	 * @param {Object} map TODO
-	 * @param {String} map[key].type TODO
-	 * @param {Mixed} map[key].value TODO
+	 * @param map {Object} map TODO
+	 * @param map[key].type {String} TODO
+	 * @param map[key].value {Mixed} TODO
 	 * @example
 	 *	TODO
 	 */
@@ -447,8 +447,8 @@ context.Program = function () {
 	 * the provided `link` method.
 	 *
 	 * @method uniform1f
-	 * @param {String} name The name of the uniform variable.
-	 * @param {Number} x The new value.
+	 * @param name {String} The name of the uniform variable.
+	 * @param x {Number} The new value.
 	 * @example
 	 *	program.uniform1f('Angle', 0);
 	 */
@@ -467,9 +467,9 @@ context.Program = function () {
 	 * the provided `link` method.
 	 *
 	 * @method uniform2f
-	 * @param {String} name The name of the uniform variable.
-	 * @param {Number} x The new value for the first component.
-	 * @param {Number} y The new value for the second component.
+	 * @param name {String} The name of the uniform variable.
+	 * @param x {Number} The new value for the first component.
+	 * @param y {Number} The new value for the second component.
 	 * @example
 	 *	TODO
 	 */
@@ -488,10 +488,10 @@ context.Program = function () {
 	 * the provided `link` method.
 	 *
 	 * @method uniform3f
-	 * @param {String} name The name of the uniform variable.
-	 * @param {Number} x The new value for the first component.
-	 * @param {Number} y The new value for the second component.
-	 * @param {Number} z The new value for the third component.
+	 * @param name {String} The name of the uniform variable.
+	 * @param x {Number} The new value for the first component.
+	 * @param y {Number} The new value for the second component.
+	 * @param z {Number} The new value for the third component.
 	 * @example
 	 *	TODO
 	 */
@@ -511,11 +511,11 @@ context.Program = function () {
 	 * the provided `link` method.
 	 *
 	 * @method uniform4f
-	 * @param {String} name The name of the uniform variable.
-	 * @param {Number} x The new value for the first component.
-	 * @param {Number} y The new value for the second component.
-	 * @param {Number} z The new value for the third component.
-	 * @param {Number} w The new value for the fourth component.
+	 * @param name {String} The name of the uniform variable.
+	 * @param x {Number} The new value for the first component.
+	 * @param y {Number} The new value for the second component.
+	 * @param z {Number} The new value for the third component.
+	 * @param w {Number} The new value for the fourth component.
 	 * @example
 	 *	TODO
 	 */
@@ -534,8 +534,8 @@ context.Program = function () {
 	 * the provided `link` method.
 	 *
 	 * @method uniform1fv
-	 * @param {String} name The name of the uniform variable.
-	 * @param {Number[]} values An array containing the new value.
+	 * @param name {String} The name of the uniform variable.
+	 * @param values {Number[]} An array containing the new value.
 	 * @example
 	 *	TODO
 	 */
@@ -554,8 +554,8 @@ context.Program = function () {
 	 * the provided `link` method.
 	 *
 	 * @method uniform2fv
-	 * @param {String} name The name of the uniform variable.
-	 * @param {Number[]} values An array containing the new values.
+	 * @param name {String} The name of the uniform variable.
+	 * @param values {Number[]} An array containing the new values.
 	 * @example
 	 *	TODO
 	 */
@@ -574,8 +574,8 @@ context.Program = function () {
 	 * the provided `link` method.
 	 *
 	 * @method uniform3fv
-	 * @param {String} name The name of the uniform variable.
-	 * @param {Number[]} values An array containing the new values.
+	 * @param name {String} The name of the uniform variable.
+	 * @param values {Number[]} An array containing the new values.
 	 * @example
 	 *	TODO
 	 */
@@ -594,8 +594,8 @@ context.Program = function () {
 	 * the provided `link` method.
 	 *
 	 * @method uniform4fv
-	 * @param {String} name The name of the uniform variable.
-	 * @param {Number[]} values An array containing the new values.
+	 * @param name {String} The name of the uniform variable.
+	 * @param values {Number[]} An array containing the new values.
 	 * @example
 	 *	TODO
 	 */
@@ -614,8 +614,8 @@ context.Program = function () {
 	 * the provided `link` method.
 	 *
 	 * @method uniform1i
-	 * @param {String} name The name of the uniform variable.
-	 * @param {Number} x The new value.
+	 * @param name {String} The name of the uniform variable.
+	 * @param x {Number} The new value.
 	 * @example
 	 *	TODO
 	 */
@@ -634,9 +634,9 @@ context.Program = function () {
 	 * the provided `link` method.
 	 *
 	 * @method uniform2i
-	 * @param {String} name The name of the uniform variable.
-	 * @param {Number} x The new value for the first component.
-	 * @param {Number} y The new value for the second component.
+	 * @param name {String} The name of the uniform variable.
+	 * @param x {Number} The new value for the first component.
+	 * @param y {Number} The new value for the second component.
 	 * @example
 	 *	TODO
 	 */
@@ -655,10 +655,10 @@ context.Program = function () {
 	 * the provided `link` method.
 	 *
 	 * @method uniform3i
-	 * @param {String} name The name of the uniform variable.
-	 * @param {Number} x The new value for the first component.
-	 * @param {Number} y The new value for the second component.
-	 * @param {Number} z The new value for the third component.
+	 * @param name {String} The name of the uniform variable.
+	 * @param x {Number} The new value for the first component.
+	 * @param y {Number} The new value for the second component.
+	 * @param z {Number} The new value for the third component.
 	 * @example
 	 *	TODO
 	 */
@@ -677,11 +677,11 @@ context.Program = function () {
 	 * the provided `link` method.
 	 *
 	 * @method uniform4i
-	 * @param {String} name The name of the uniform variable.
-	 * @param {Number} x The new value for the first component.
-	 * @param {Number} y The new value for the second component.
-	 * @param {Number} z The new value for the third component.
-	 * @param {Number} w The new value for the fourth component.
+	 * @param name {String} The name of the uniform variable.
+	 * @param x {Number} The new value for the first component.
+	 * @param y {Number} The new value for the second component.
+	 * @param z {Number} The new value for the third component.
+	 * @param w {Number} The new value for the fourth component.
 	 * @example
 	 *	TODO
 	 */
@@ -701,8 +701,8 @@ context.Program = function () {
 	 * the provided `link` method.
 	 *
 	 * @method uniform1iv
-	 * @param {String} name The name of the uniform variable.
-	 * @param {Number[]} values An array containing the new value.
+	 * @param name {String} The name of the uniform variable.
+	 * @param values {Number[]} An array containing the new value.
 	 * @example
 	 *	TODO
 	 */
@@ -721,8 +721,8 @@ context.Program = function () {
 	 * the provided `link` method.
 	 *
 	 * @method uniform2iv
-	 * @param {String} name The name of the uniform variable.
-	 * @param {Number[]} values An array containing the new values.
+	 * @param name {String} The name of the uniform variable.
+	 * @param values {Number[]} An array containing the new values.
 	 * @example
 	 *	TODO
 	 */
@@ -741,8 +741,8 @@ context.Program = function () {
 	 * the provided `link` method.
 	 *
 	 * @method uniform3iv
-	 * @param {String} name The name of the uniform variable.
-	 * @param {Number[]} values An array containing the new values.
+	 * @param name {String} The name of the uniform variable.
+	 * @param values {Number[]} An array containing the new values.
 	 * @example
 	 *	TODO
 	 */
@@ -761,8 +761,8 @@ context.Program = function () {
 	 * the provided `link` method.
 	 *
 	 * @method uniform4iv
-	 * @param {String} name The name of the uniform variable.
-	 * @param {Number[]} values An array containing the new values.
+	 * @param name {String} The name of the uniform variable.
+	 * @param values {Number[]} An array containing the new values.
 	 * @example
 	 *	TODO
 	 */
@@ -774,8 +774,8 @@ context.Program = function () {
 	 * TODO
 	 *
 	 * @method uniformVec2
-	 * @param {String} name TODO
-	 * @param {OOGL.Vector2} v TODO
+	 * @param name {String} TODO
+	 * @param v {OOGL.Vector2} TODO
 	 * @example
 	 *	TODO
 	 */
@@ -787,8 +787,8 @@ context.Program = function () {
 	 * TODO
 	 *
 	 * @method uniformVec3
-	 * @param {String} name TODO
-	 * @param {OOGL.Vector3} v TODO
+	 * @param name {String} TODO
+	 * @param v {OOGL.Vector3} TODO
 	 * @example
 	 *	TODO
 	 */
@@ -800,8 +800,8 @@ context.Program = function () {
 	 * TODO
 	 *
 	 * @method uniformVec4
-	 * @param {String} name TODO
-	 * @param {OOGL.Vector4} v TODO
+	 * @param name {String} TODO
+	 * @param v {OOGL.Vector4} TODO
 	 * @example
 	 *	TODO
 	 */
@@ -813,8 +813,8 @@ context.Program = function () {
 	 * TODO
 	 *
 	 * @method uniformMatrix2fv
-	 * @param {String} name TODO
-	 * @param {Number[]} values TODO
+	 * @param name {String} TODO
+	 * @param values {Number[]} TODO
 	 * @example
 	 *	TODO
 	 */
@@ -826,8 +826,8 @@ context.Program = function () {
 	 * TODO
 	 *
 	 * @method uniformMatrix3fv
-	 * @param {String} name TODO
-	 * @param {Number[]} values TODO
+	 * @param name {String} TODO
+	 * @param values {Number[]} TODO
 	 * @example
 	 *	TODO
 	 */
@@ -839,8 +839,8 @@ context.Program = function () {
 	 * TODO
 	 *
 	 * @method uniformMatrix4fv
-	 * @param {String} name TODO
-	 * @param {Number[]} values TODO
+	 * @param name {String} TODO
+	 * @param values {Number[]} TODO
 	 * @example
 	 *	TODO
 	 */
@@ -852,8 +852,8 @@ context.Program = function () {
 	 * TODO
 	 *
 	 * @method uniformMat2
-	 * @param {String} name TODO
-	 * @param {OOGL.Matrix2} matrix TODO
+	 * @param name {String} TODO
+	 * @param matrix {OOGL.Matrix2} TODO
 	 * @example
 	 *	TODO
 	 */
@@ -868,8 +868,8 @@ context.Program = function () {
 	 * TODO
 	 *
 	 * @method uniformMat3
-	 * @param {String} name TODO
-	 * @param {OOGL.Matrix3} matrix TODO
+	 * @param name {String} TODO
+	 * @param matrix {OOGL.Matrix3} TODO
 	 * @example
 	 *	TODO
 	 */
@@ -885,8 +885,8 @@ context.Program = function () {
 	 * TODO
 	 *
 	 * @method uniformMat4
-	 * @param {String} name TODO
-	 * @param {OOGL.Matrix4} matrix TODO
+	 * @param name {String} TODO
+	 * @param matrix {OOGL.Matrix4} TODO
 	 * @example
 	 *	TODO
 	 */
@@ -941,9 +941,9 @@ context.Program = function () {
  * @class context.AutoProgram
  * @extends context.Program
  * @constructor
- * @param {String} vertexSource The GLSL source code for the vertex shader.
- * @param {String} fragmentSource The GLSL source code for the fragment shader.
- * @param {String[]} attributes An array of attribute variable names that are
+ * @param vertexSource {String} The GLSL source code for the vertex shader.
+ * @param fragmentSource {String} The GLSL source code for the fragment shader.
+ * @param attributes {String[]} An array of attribute variable names that are
  *	automatically bound to their respective indices in the array before linking.
  * @example
  *	var program = new oogl.AutoProgram(vertexSource, fragmentSource, ['in_Vertex', 'in_Color', 'in_TexCoords']);
@@ -1030,11 +1030,11 @@ context.AutoProgram = function (vertexSource, fragmentSource, attributes) {
  * @class context.AjaxProgram
  * @extends context.Program
  * @constructor
- * @param {String} name The URL to the shader sources excluding the file name
+ * @param name {String} The URL to the shader sources excluding the file name
  *	extension, which is automatically appended.
- * @param {String[]} attributes An array of attribute variable names that are
+ * @param attributes {String[]} An array of attribute variable names that are
  *	automatically bound to their respective indices in the array before linking.
- * @param {Function} callback A user-defined callback function that is called
+ * @param callback {Function} A user-defined callback function that is called
  *	after the program has been successfully compiled and linked.
  * @example
  *	var arrays = new oogl.AttributeArrays(vertices.length);

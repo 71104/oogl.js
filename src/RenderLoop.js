@@ -10,7 +10,7 @@
  *
  * @class OOGL.RenderLoop
  * @constructor
- * @param {Function} tick A user-defined callback function that is invoked at
+ * @param tick {Function} A user-defined callback function that is invoked at
  *	each iteration of the loop. It typically contains (OO)GL calls that render
  *	the full scene.
  * @example
@@ -314,7 +314,7 @@ OOGL.RenderLoop = (function () {
 	 *
 	 * @method setType
 	 * @static
-	 * @param {String} newType The loop type; can be `request`, `interval` or
+	 * @param newType {String} The loop type; can be `request`, `interval` or
 	 *	`auto`.
 	 * @example
 	 *	RenderLoop.setType('request');
@@ -371,7 +371,7 @@ OOGL.RenderLoop = (function () {
 	 *
 	 * @method setRate
 	 * @static
-	 * @param {Number} newRate The new frame rate value.
+	 * @param newRate {Number} The new frame rate value.
 	 * @example
 	 *	RenderLoop.setRate(100);
 	 */
