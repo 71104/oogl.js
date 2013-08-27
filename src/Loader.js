@@ -57,6 +57,7 @@ context.Loader = function () {
 				}, type);
 			});
 		} else {
+			type = parameters;
 			queue.push(function (data, textures, programs, callback, scope) {
 				OOGL.Ajax.get(id, function (response) {
 					data[id] = response;
