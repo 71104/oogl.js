@@ -118,7 +118,7 @@ context.AttributeArray1 = function (index, type, data, normalize) {
 	 * You may optionally specify `stride` and `offset` parameters.
 	 *
 	 * Equivalent to calling
-	 * {{#crossLink "context.AttributeArray1/bind"}}bind{{/crossLink}} and
+	 * {{#crossLink "context.Buffer/bind"}}bind{{/crossLink}} and
 	 * {{#crossLink "context.AttributeArray1/pointer"}}pointer{{/crossLink}}
 	 * subsequently.
 	 *
@@ -146,7 +146,7 @@ context.AttributeArray1 = function (index, type, data, normalize) {
 	 *
 	 * Equivalent to calling
 	 * {{#crossLink "context.AttributeArray1/enable"}}enable{{/crossLink}},
-	 * {{#crossLink "context.AttributeArray1/bind"}}bind{{/crossLink}} and
+	 * {{#crossLink "context.Buffer/bind"}}bind{{/crossLink}} and
 	 * {{#crossLink "context.AttributeArray1/pointer"}}pointer{{/crossLink}}
 	 * subsequently.
 	 *
@@ -176,12 +176,12 @@ context.AttributeArray1 = function (index, type, data, normalize) {
  * vertex attribute array.
  *
  * The attribute array is associated to the specified `index`: the provided
- * {{#crossLink "context.AttributeArray1/enable"}}enable{{/crossLink}} and
- * {{#crossLink "context.AttributeArray1/disable"}}disable{{/crossLink}} methods
+ * {{#crossLink "context.AttributeArray2/enable"}}enable{{/crossLink}} and
+ * {{#crossLink "context.AttributeArray2/disable"}}disable{{/crossLink}} methods
  * enable and disable the `index`-th attribute array calling
  * `gl.enableVertexAttribArray` and `gl.disableVertexAttribArray` and the
  * provided
- * {{#crossLink "context.AttributeArray1/pointer"}}pointer{{/crossLink}} method
+ * {{#crossLink "context.AttributeArray2/pointer"}}pointer{{/crossLink}} method
  * invokes `gl.vertexAttribPointer` with the specified `index` and `type`.
  *
  * @class context.AttributeArray2
@@ -285,8 +285,8 @@ context.AttributeArray2 = function (index, type, data, normalize) {
 	 * You may optionally specify `stride` and `offset` parameters.
 	 *
 	 * Equivalent to calling
-	 * {{#crossLink "context.AttributeArray1/bind"}}bind{{/crossLink}} and
-	 * {{#crossLink "context.AttributeArray1/pointer"}}pointer{{/crossLink}}
+	 * {{#crossLink "context.Buffer/bind"}}bind{{/crossLink}} and
+	 * {{#crossLink "context.AttributeArray2/pointer"}}pointer{{/crossLink}}
 	 * subsequently.
 	 *
 	 * @method bindAndPointer
@@ -313,7 +313,7 @@ context.AttributeArray2 = function (index, type, data, normalize) {
 	 *
 	 * Equivalent to calling
 	 * {{#crossLink "context.AttributeArray2/enable"}}enable{{/crossLink}},
-	 * {{#crossLink "context.AttributeArray2/bind"}}bind{{/crossLink}} and
+	 * {{#crossLink "context.Buffer/bind"}}bind{{/crossLink}} and
 	 * {{#crossLink "context.AttributeArray2/pointer"}}pointer{{/crossLink}}
 	 * subsequently.
 	 *
