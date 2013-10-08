@@ -55,19 +55,19 @@
 <h2>
 <a name="current-version" class="anchor" href="#current-version"><span class="octicon octicon-link"></span></a>Current version</h2>
 
-<p>The latest version is <a href="https://github.com/71104/oogl.js/tree/1.0.0rc">1.0.0rc</a> (<a href="https://github.com/71104/oogl.js/archive/1.0.0rc.zip">zip</a>, <a href="https://github.com/71104/oogl.js/archive/1.0.0rc.tar.gz">tar</a>).</p>
+<p>The latest version is <a href="https://github.com/71104/oogl.js/tree/1.0.0">1.0.0</a> (<a href="https://github.com/71104/oogl.js/archive/1.0.0.zip">zip</a>, <a href="https://github.com/71104/oogl.js/archive/1.0.0.tar.gz">tar</a>).</p>
 
 <h1>
 <a name="getting-started" class="anchor" href="#getting-started"><span class="octicon octicon-link"></span></a>Getting started</h1>
 
 <p>To get started with OOGL, include it using a <code>&lt;script&gt;</code> tag in the <code>&lt;head&gt;</code> of your document:</p>
 
-<div class="highlight"><pre><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">src=</span><span class="s">"oogl-1.0.0.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<div class="highlight highlight-html"><pre><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">src=</span><span class="s">"oogl-1.0.0.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
 </pre></div>
 
 <p>Then place a <code>&lt;canvas&gt;</code> in your DOM and create an OOGL context through JavaScript:</p>
 
-<div class="highlight"><pre><span class="nt">&lt;canvas</span> <span class="na">id=</span><span class="s">"canvas"</span> <span class="na">width=</span><span class="s">"800"</span> <span class="na">height=</span><span class="s">"600"</span><span class="nt">&gt;</span>
+<div class="highlight highlight-html"><pre><span class="nt">&lt;canvas</span> <span class="na">id=</span><span class="s">"canvas"</span> <span class="na">width=</span><span class="s">"800"</span> <span class="na">height=</span><span class="s">"600"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;p&gt;</span>No browser support.<span class="nt">&lt;/p&gt;</span>
 <span class="nt">&lt;/canvas&gt;</span>
 <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
@@ -91,7 +91,9 @@
 
 <p>Let's first create a pair of shaders. Here's the vertex one:</p>
 
-<div class="highlight"><pre><span class="k">attribute</span> <span class="k">vec2</span> <span class="n">in_Vertex</span><span class="p">;</span>
+<div class="highlight highlight-glsl"><pre><span class="k">precision</span> <span class="k">mediump</span> <span class="k">float</span><span class="p">;</span>
+
+<span class="k">attribute</span> <span class="k">vec2</span> <span class="n">in_Vertex</span><span class="p">;</span>
 
 <span class="k">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="n">gl_Position</span> <span class="o">=</span> <span class="k">vec4</span><span class="p">(</span><span class="n">in_Vertex</span><span class="p">,</span> <span class="mo">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
@@ -100,7 +102,7 @@
 
 <p>And the fragment one:</p>
 
-<div class="highlight"><pre><span class="k">precision</span> <span class="k">mediump</span> <span class="k">float</span><span class="p">;</span>
+<div class="highlight highlight-glsl"><pre><span class="k">precision</span> <span class="k">mediump</span> <span class="k">float</span><span class="p">;</span>
 
 <span class="k">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="n">gl_FragColor</span> <span class="o">=</span> <span class="k">vec4</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
@@ -111,7 +113,7 @@
 
 <p>The OOGL calls needed to create a vertex array, load the shaders and make the drawing are as follows:</p>
 
-<div class="highlight"><pre><span class="nx">OOGL</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+<div class="highlight highlight-javascript"><pre><span class="nx">OOGL</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">oogl</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">OOGL</span><span class="p">.</span><span class="nx">Context</span><span class="p">(</span><span class="s1">'canvas'</span><span class="p">);</span>
     <span class="nx">oogl</span><span class="p">.</span><span class="nx">clearColor</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
     <span class="nx">oogl</span><span class="p">.</span><span class="nx">clear</span><span class="p">(</span><span class="nx">oogl</span><span class="p">.</span><span class="nx">COLOR_BUFFER_BIT</span><span class="p">);</span>
@@ -131,7 +133,9 @@
 
 <p>Should you wish to apply per-vertex interpolated colors, you first modify the shaders as follows:</p>
 
-<div class="highlight"><pre><span class="k">attribute</span> <span class="k">vec2</span> <span class="n">in_Vertex</span><span class="p">;</span>
+<div class="highlight highlight-glsl"><pre><span class="k">precision</span> <span class="k">mediump</span> <span class="k">float</span><span class="p">;</span>
+
+<span class="k">attribute</span> <span class="k">vec2</span> <span class="n">in_Vertex</span><span class="p">;</span>
 <span class="k">attribute</span> <span class="k">vec3</span> <span class="n">in_Color</span><span class="p">;</span>
 
 <span class="k">varying</span> <span class="k">vec3</span> <span class="n">ex_Color</span><span class="p">;</span>
@@ -142,7 +146,7 @@
 <span class="p">}</span>
 </pre></div>
 
-<div class="highlight"><pre><span class="k">precision</span> <span class="k">mediump</span> <span class="k">float</span><span class="p">;</span>
+<div class="highlight highlight-glsl"><pre><span class="k">precision</span> <span class="k">mediump</span> <span class="k">float</span><span class="p">;</span>
 
 <span class="k">varying</span> <span class="k">vec3</span> <span class="n">ex_Color</span><span class="p">;</span>
 
@@ -153,7 +157,7 @@
 
 <p>And then use the <code>AttributeArrays</code> utility class in the JavaScript code:</p>
 
-<div class="highlight"><pre><span class="nx">OOGL</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+<div class="highlight highlight-javascript"><pre><span class="nx">OOGL</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">oogl</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">OOGL</span><span class="p">.</span><span class="nx">Context</span><span class="p">(</span><span class="s1">'canvas'</span><span class="p">);</span>
     <span class="nx">oogl</span><span class="p">.</span><span class="nx">clearColor</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
     <span class="nx">oogl</span><span class="p">.</span><span class="nx">clear</span><span class="p">(</span><span class="nx">oogl</span><span class="p">.</span><span class="nx">COLOR_BUFFER_BIT</span><span class="p">);</span>
@@ -178,13 +182,13 @@
 
 <p>For example you can specify a <code>vec3</code> uniform variable in this way:</p>
 
-<div class="highlight"><pre><span class="kd">var</span> <span class="nx">v</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">OOGL</span><span class="p">.</span><span class="nx">Vector3</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">,</span> <span class="nx">z</span><span class="p">);</span>
+<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">v</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">OOGL</span><span class="p">.</span><span class="nx">Vector3</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">,</span> <span class="nx">z</span><span class="p">);</span>
 <span class="nx">program</span><span class="p">.</span><span class="nx">uniformVec3</span><span class="p">(</span><span class="s1">'Vector'</span><span class="p">,</span> <span class="nx">v</span><span class="p">);</span>
 </pre></div>
 
 <p>Similarly, you can specify a <code>mat3</code> uniform like this:</p>
 
-<div class="highlight"><pre><span class="kd">var</span> <span class="nx">m</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">OOGL</span><span class="p">.</span><span class="nx">Matrix3</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]);</span>
+<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">m</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">OOGL</span><span class="p">.</span><span class="nx">Matrix3</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]);</span>
 <span class="nx">program</span><span class="p">.</span><span class="nx">uniformMat3</span><span class="p">(</span><span class="s1">'Matrix'</span><span class="p">,</span> <span class="nx">m</span><span class="p">);</span>
 </pre></div>
 
