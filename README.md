@@ -15,7 +15,7 @@ Download
 Current version
 ---------------
 
-The latest version is [1.0.0rc](https://github.com/71104/oogl.js/tree/1.0.0rc) ([zip](https://github.com/71104/oogl.js/archive/1.0.0rc.zip), [tar](https://github.com/71104/oogl.js/archive/1.0.0rc.tar.gz)).
+The latest version is [1.0.0](https://github.com/71104/oogl.js/tree/1.0.0) ([zip](https://github.com/71104/oogl.js/archive/1.0.0.zip), [tar](https://github.com/71104/oogl.js/archive/1.0.0.tar.gz)).
 
 Getting started
 ===============
@@ -54,6 +54,8 @@ Drawing with OOGL is easier than doing it with plain WebGL.
 Let's first create a pair of shaders. Here's the vertex one:
 
 ```glsl
+precision mediump float;
+
 attribute vec2 in_Vertex;
 
 void main() {
@@ -97,6 +99,8 @@ The last calls (`program.use()` through `oogl.flush()`) are made asynchronously 
 Should you wish to apply per-vertex interpolated colors, you first modify the shaders as follows:
 
 ```glsl
+precision mediump float;
+
 attribute vec2 in_Vertex;
 attribute vec3 in_Color;
 
